@@ -1,6 +1,6 @@
 ![matters](https://cdn-images-1.medium.com/max/2000/1*Pl-fB1X01RfcEbPP-FVlew.jpeg)
 
-Projet web ENSIIE 1A 2018
+Projet web ENSIIE 1A 2019
 ======
 
 Objectif pédagogique
@@ -68,9 +68,9 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 ### Séances
 
-> * **3 avril 2018** : choix du sujet, début des projets, présentation de cloud9 (documentation)
-> * **24 avril 2018** : point d’avancement, échange sur les bonnes pratiques, analyse du code
-> * **22 mai 2018** : soutenance, livraison des sources
+> * **26 mars 2019** : choix du sujet, début des projets, présentation de cloud9 (documentation)
+> * **09 avril 2019** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+> * **14 mai 2019** : soutenance, livraison des sources
 
 ### La notation
 

@@ -62,6 +62,4 @@ Voici en exemple une petite liste de fonctionnalités qui pourraient être impl�
 > * Le suivi de l’avancée de l’accueil d’une promo. Une page permettant de savoir quels élèves ont quels tuteurs et où ils en sont de l’avancée de leur onboarding.
 > * Ce sont ici bien évidemment des propositions de fonctionnalités supplémentaires, il y en a beaucoup d’autres qui pourraient être pertinentes dans le cadre du projet. Ces fonctionnalités dépendront des objectifs que vous souhaiterez donner à votre projet.
 
-Ce sont ici bien évidemment des propositions de fonctionnalités supplémentaires, il y en a beaucoup d’autres qui pourraient être pertinentes dans le cadre du projet. Ces fonctionnalités dépendront des objectifs que vous souhaiterez donner à votre projet.
-
 **Bon courage.**
