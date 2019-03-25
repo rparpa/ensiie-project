@@ -8,7 +8,7 @@ Contexte du projet
 
 Les premiers jours à Evry, c’est pas toujours facile. On arrive dans une toute nouvelle ville, on ne connait personne, et la seule chose que l’on a à faire c’est d’aller à l’école.
 
-La vie serait tellement plus simple si les élèves s’entraidait un peu plus pour échanger sur tout ce qu’il y a à savoir. Connaître les endroits important dans la ville, connaître la répartition des salles de l’école, qui contacter lorsqu’on a tel ou tel problème, où retrouver le planning de l’école, comment fonctionne le bar etc.
+La vie serait tellement plus simple si les élèves s’entraidaient un peu plus pour échanger sur tout ce qu’il y a à savoir. Connaître les endroits importants dans la ville, connaître la répartition des salles de l’école, qui contacter lorsqu’on a tel ou tel problème, où retrouver le planning de l’école, comment fonctionne le bar, etc.
 
 ### Pré-requis
 Comme pour tous les sujets, on devra au moins retrouver dans l’application finale les parties suivantes :

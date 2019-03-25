@@ -7,23 +7,23 @@ Objectif pédagogique
 ----------
 
 >Apprendre à concevoir et développer des applications web utilisant un serveur de bases de données.
->Prendre conscience des problématiques d’organisations d’équipes et de répartition des tâches.
+>Prendre conscience des problématiques d’organisation d’équipes et de répartition des tâches.
 
 Les sujets
 ------------
 
 Nous proposons trois sujets qui seront détaillés ultérieurement et présentés lors de la première séance :
 
-* [Agenda des associations](https://github.com/Un3x/ensiie-project/tree/master/document/sujets/agenda-des-associations.md)
-* [Accueil des nouveaux arrivants](https://github.com/Un3x/ensiie-project/tree/master/document/sujets/accueil-des-nouveaux-arrivants.md)
-* [Le twitter de l’ENSIIE](https://github.com/Un3x/ensiie-project/tree/master/document/sujets/twittiie-le-twitter-de-ensiie.md)
+* [Agenda des associations](sujets/agenda-des-associations.md)
+* [Accueil des nouveaux arrivants](/sujets/accueil-des-nouveaux-arrivants.md)
+* [Le twitter de l’ENSIIE](sujets/twittiie-le-twitter-de-ensiie.md)
 
 PROJET LIBRE
 -----
 
->Vous pouvez également proposer votre propre sujet. Celui-ci devra défini au plus tard à la fin de la première séance et devra être validé.
+>Vous pouvez également proposer votre propre sujet. Celui-ci devra être défini, au plus tard, à la fin de la première séance et devra être validé.
 
-Soyez imaginatifs ! Mais veillez tout de même à respecter les contraintes présentées ci-dessous. N’hésitez pas à imaginer des sujets qui pourraient vous servir (ou vos associations) aux quotidiens. Nous serons là pour vous accompagner au cours de la réalisation de ce projet, alors profitez en !
+Soyez imaginatifs ! Mais veillez, tout de même, à respecter les contraintes présentées ci-dessous. N’hésitez pas à imaginer des sujets qui pourraient vous servir (ou vos associations) au quotidien. Nous serons là pour vous accompagner au cours de la réalisation de ce projet, alors profitez-en !
 
 Must have
 -------
@@ -61,7 +61,7 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 #### On n’aimera pas
 
-* Les framework
+* Les frameworks (Zend Framework, Symfony, Angular, etc)
 * Le XML
 * jQuery utilisé n’importe comment
 * HTML5 utilisé n’importe comment
@@ -74,19 +74,19 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 ### La notation
 
-Une partie de la note sera attribuée par groupe, une autre, réservé à l’investissement personnel.
+Une partie de la note sera attribuée par groupe, une autre réservée à l’investissement personnel.
 
-> * Les points auxquels nous ferons attention lors de la notation :
+> Les points auxquels nous ferons attention lors de la notation :
 > * La méthodologie, quels vont être vos choix d’organisation ?
 > * La participation au sein de l’équipe, on attend que vous soyez moteur et que vous soyez force de proposition.
-> * La qualité technique du projet, nous voulons pouvoir comprendre votre code sans nous arracher les cheveux. Préférez peu de code bien fait avec des fonctionnalités complètes à une grosse quantité de code illisible, avec beaucoup de fonctionnalités copiées collées et/ou à moitiés terminées.
+> * La qualité technique du projet, nous voulons pouvoir comprendre votre code sans nous arracher les cheveux. Préférez peu de code bien fait avec des fonctionnalités complètes à une grosse quantité de code illisible, avec beaucoup de fonctionnalités copiées collées et/ou à moitié terminées.
 > * La soutenance du projet, nous souhaitons voir une soutenance dynamique. Pas de présentation point par point afin de vérifier que oui il y a bien une inscription et ou un CRUD. On veut voir que ça marche, on veut être convaincu et on veut se l’arracher votre projet. Encore moins une lecture de votre rapport.
-> * Le rapport du projet a un but complètement différent de la soutenance. La soutenance nous permet de voir le produit tel que vous avez imaginé son utilisation, le rapport nous permet de comprendre la partie interne du fonctionnement de votre groupe. Il est très important pour nous de bien comprendre quels ont été les enjeux de chaque groupe, quelles ont été les difficultés rencontrées et surtout quels ont été les solutions trouvées pour les contourner.
+> * Le rapport du projet a un but complètement différent de la soutenance. La soutenance nous permet de voir le produit tel que vous avez imaginé son utilisation, le rapport nous permet de comprendre la partie interne du fonctionnement de votre groupe. Il est très important pour nous de bien comprendre quels ont été les enjeux de chaque groupe, quelles ont été les difficultés rencontrées et surtout quelles ont été les solutions trouvées pour les contourner.
 
 ### L’environnement de développement
 
 Afin de s’affranchir de problème d’infrastructure, nous vous mettons à disposition un environnement de développement pour ce projet.
->Lors du premier cours nous vous présenterons l'utilisation du git que nous avons mis à votre disposition ainsi que le fonctionnement d'un docker entièrement configuré et prêt à être utiliser pour développer le projet.
+>Lors du premier cours nous vous présenterons l'utilisation du git que nous avons mis à votre disposition ainsi que le fonctionnement d'un Docker entièrement configuré et prêt à être utilisé pour développer votre projet.
 
 ### Le rendu des sources et du rapport
 

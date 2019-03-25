@@ -8,7 +8,7 @@ Contexte du projet
 
 Les associations à l’écoles, ça nous connait. Le BdE, le bar, LudIIe, l’AS, ForumIIe, GalaxIIe etc. Et forcément, quand on est dans une association, on a besoin d’échanger de s’organiser et de se réunir.
 
-Etant donné que beaucoup d’élèves sont de petit cumulars et il est parfois difficile d’organiser des réunions où tout le monde pourra être présent (et encore, sans compter la multitude de raisons personnelles qu’il peut y avoir).
+Etant donné que beaucoup d’élèves sont de petits cumulars et il est parfois difficile d’organiser des réunions où tout le monde pourra être présent (et encore, sans compter la multitude de raisons personnelles qu’il peut y avoir).
 Heureusement, l’agenda des associations sera bientôt là pour vous faciliter la vie. Grâce à cet agenda dédié aux associations vous pourrez savoir et gérer qui sera présent lors des réunions.
 
 ### Pré-requis
@@ -50,7 +50,7 @@ Si un élève a déjà une réunion à ce moment là, il en sera notifié (et ne
 La gestion des dates pourra aussi s’avérer être un challenge technique. Faites bien attention aux formats de dates que vous allez utiliser. Nous vous renvoyons vers PhpTheRightWay pour un premier aperçu de la gestion des dates en PHP.
 
 Il faudra aussi penser un affichage propre de l’agenda.
-Enfin, la gestion des statut pourra s’avérer être un problème. Cela implique une gestion de droit au niveau de la participation aux réunions (qui peut être invité ?), mais aussi au niveau des administrateurs des associations qui seront les seuls à pouvoir créer des réunions ou événements.
+Enfin, la gestion des statuts pourra s’avérer être un problème. Cela implique une gestion de droit au niveau de la participation aux réunions (qui peut être invité ?), mais aussi au niveau des administrateurs des associations qui seront les seuls à pouvoir créer des réunions ou événements.
 
 ### Propositions de features
 

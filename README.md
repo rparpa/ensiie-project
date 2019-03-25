@@ -1,17 +1,30 @@
-# ENSIIE Project Skeleton
+# ENSIIE Web Project Skeleton
 
-## Install you application
-* Change the parameters in .env file by your own values.
-* To install and start the application run `make install`
-* Your web site is running here [http:localhost:8080](http:localhost:8080)
+## Install your application
+This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
 
-## Start you application
-`make start`
+The only packages you need to install right now are **docker** and **docker-compose**
+* [Install Docker](https://docs.docker.com/install/) :
+    * [(Optional: docker w/o sudo on linux)](https://docs.docker.com/install/linux/linux-postinstall/)
+* [Install Docker Compose](https://docs.docker.com/compose/install/)
 
-This command starts the application without installing anything.
+Then, clone the Web Project skeleton on your machine:
+* `git clone https://github.com/Kirouane/ensiie-project.git`
+* `cd ensiie-project`
 
-## Connect to the database
-`make db.connect`
+The next step is to set some environment variables in the `.env` file
+* Open this Skeleton on your favorite IDE : PHPStorm or VSCode.
+* Open the file .env
+    * DOCKER_USER_ID: to obtain the value of this variable you need to execute this command `$(echo id -u $USER)` on a Terminal. Copy and past the output.
+    * REMOTE_HOST: For those who want to use the PHPStorm Debugger, put your IP address. Otherwise, skip this step.
 
-## Run unit tests
-`make phpunit.run`
+Now, let's begin the installation :
+* `make install`. This command may take time.  
+* That's it! Your website is running [http:localhost:8080](http:localhost:8080)
+
+Below are some useful commands :
+* `make stop` Stop the containers
+* `make start` Start the containers
+* `make db.connect` Connect to th database
+* `make phpunit.run` Run the PHPUnit tests
+* `make install` Reinstall all containers
