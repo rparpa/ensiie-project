@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:7.4-fpm
 
 ARG DOCKER_USER
 ARG DOCKER_USER_ID
@@ -10,7 +10,7 @@ RUN apt-get update -qq \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && docker-php-ext-install -j$(nproc) pdo pdo_pgsql bcmath mbstring xml curl zip \
+    && docker-php-ext-install -j$(nproc) pdo pdo_pgsql bcmath xml curl zip \
     && curl -sS http://getcomposer.org/installer | php -- --filename=composer \
     && chmod a+x composer \
     && mv composer /usr/local/bin/composer \

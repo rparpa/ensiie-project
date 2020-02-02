@@ -1,9 +1,12 @@
-FROM nginx:1.13-alpine
+FROM nginx:1.17
 
 COPY ./config /tmp
 RUN mv /tmp/site.conf /etc/nginx/conf.d/default.conf \
- && mv /tmp/entrypoint.sh /root/entrypoint.sh \
- && apk add --no-cache tzdata
+ && mv /tmp/entrypoint.sh /root/entrypoint.sh
+
+RUN apt-get update \
+    && apt-get install \
+        tzdata
 
 STOPSIGNAL SIGTERM
 
