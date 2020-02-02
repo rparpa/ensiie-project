@@ -27,12 +27,12 @@ class UserTest extends TestCase
 
     /**
      * @test
-     * @expectedException \OutOfRangeException
      */
     public function ageWhenBirthdayInTheFuture()
     {
         $user = new User();
         $user->setBirthday(new \DateTime('+10 years'));
+        $this->expectException(\OutOfRangeException::class);
         $user->getAge();
     }
 }

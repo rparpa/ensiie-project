@@ -1,15 +1,18 @@
 {
     "require-dev": {
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^8.5"
     },
     "autoload": {
         "psr-4": {
-            "User\\": "src/User/"
+            "": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "User\\": "test/unit/User/"
         }
+    },
+    "require": {
+        "ext-pdo": "*"
     }
 }

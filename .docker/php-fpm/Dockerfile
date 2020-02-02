@@ -5,12 +5,31 @@ ARG DOCKER_USER_ID
 
 RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
-        gettext-base openssh-client wget git make cmake libssl-dev libssl-doc libxml2-dev libcurl3-dev sudo libpq-dev zlib1g-dev libzip-dev \
+        cmake \
+        gettext-base \
+        git \
+        libcurl3-dev \
+        libpq-dev \
+        libssl-dev \
+        libssl-doc \
+        libxml2-dev \
+        libzip-dev \
+        make \
+        openssh-client \
+        sudo \
+        wget \
+        zlib1g-dev \
     && pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && docker-php-ext-install -j$(nproc) pdo pdo_pgsql bcmath xml curl zip \
+    && docker-php-ext-install -j$(nproc) \
+        pdo \
+        pdo_pgsql \
+        bcmath \
+        xml \
+        curl \
+        zip \
     && curl -sS http://getcomposer.org/installer | php -- --filename=composer \
     && chmod a+x composer \
     && mv composer /usr/local/bin/composer \

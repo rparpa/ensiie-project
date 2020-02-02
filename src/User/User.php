@@ -98,7 +98,7 @@ class User
 
     /**
      * @return int
-     * @throws \OutOfRangeException
+     * @throws \Exception
      */
     public function getAge(): int
     {
