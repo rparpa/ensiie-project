@@ -9,7 +9,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "User\\": "test/unit/User/"
+            "": "test/unit/"
         }
     },
     "require": {

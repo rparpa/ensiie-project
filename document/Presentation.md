@@ -9,6 +9,7 @@ Objectif pédagogique
 >Apprendre à concevoir et développer des applications web utilisant un serveur de bases de données.
 >Prendre conscience des problématiques d’organisation d’équipes et de répartition des tâches.
 
+
 Les sujets
 ------------
 
@@ -30,6 +31,7 @@ Must have
 
 ### Les sujets devront tous proposer **au minimum**
 
+> * POO (design pattern, héritage)
 > * Une authentification
 > * Un compte administrateur donnant les droits à certaines fonctionnalités (au choix)
 > * Un profil utilisateur éditable
@@ -39,6 +41,7 @@ Must have
 > * au moins une jointure dans une requête
 > * des INSERT, DELETE, UPDATE, SELECT
 > * Un CRUD (Create Read Update Delete)
+> * Du javascript (au minimum validation JS des formulaires)
 
 Du javascript (au minimum validation JS des formulaires).
 Nous attendons de la part des élèves une véritable appropriation du sujet. Il ne suffira pas de remplir des cases à cocher pour avoir la moyenne, nous voulons voir une démarche d’ingénieur, pas d’exécutant.
@@ -61,16 +64,15 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 #### On n’aimera pas
 
-* Les frameworks (Zend Framework, Symfony, Angular, etc)
 * Le XML
 * jQuery utilisé n’importe comment
 * HTML5 utilisé n’importe comment
 
 ### Séances
 
-> * **26 mars 2019** : choix du sujet, début des projets, présentation de cloud9 (documentation)
-> * **09 avril 2019** : point d’avancement, échange sur les bonnes pratiques, analyse du code
-> * **14 mai 2019** : soutenance, livraison des sources
+> * **05 février 2020** : choix du sujet, début des projets, présentation de cloud9 (documentation)
+> * **19 février 2020** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+> * **04 mars 2020** : soutenance, livraison des sources
 
 ### La notation
 
@@ -129,9 +131,7 @@ Aussi, n’oubliez pas qu’on est là pour passer un bon moment, pas de lynchag
 
 ### Notre équipe
 
-* Thomas COMES : ENSIIE promo 2012, Project Lead chez Matters.
-* Nassim Kirouane : Tech Lead chez Matters.
-* Remi Parpaillon : Php Gourou chez Matters.
+* Remi Parpaillon : Tech lead chez Matters.
 
 ### Comment nous contacter
 

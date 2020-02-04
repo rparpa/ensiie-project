@@ -13,6 +13,7 @@ Je vous présente TwittIIe, l’application qui copie tout de twitter et qui va 
 
 Comme pour tous les sujets, on devra au moins retrouver dans l’application finale les parties suivantes :
 
+> * POO (design pattern, héritage)
 > * Une authentification
 > * Un compte administrateur donnant les droits à certaines fonctionnalités (au choix)
 > * Un profil utilisateur éditable

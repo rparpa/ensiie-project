@@ -4,12 +4,12 @@
 This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
 
 The only packages you need to install right now are **docker** and **docker-compose**
-* [Install Docker](https://docs.docker.com/install/) :
-    * [(Optional: docker w/o sudo on linux)](https://docs.docker.com/install/linux/linux-postinstall/)
+* [Install Docker](https://docs.docker.com/install/)
+* [Docker w/o sudo](https://docs.docker.com/install/linux/linux-postinstall/)
 * [Install Docker Compose](https://docs.docker.com/compose/install/)
 
 Then, clone the Web Project skeleton on your machine:
-* `git clone https://github.com/Kirouane/ensiie-project.git`
+* `git clone https://github.com/rparpa/ensiie-project.git`
 * `cd ensiie-project`
 
 The next step is to set some environment variables in the `.env` file

@@ -14,6 +14,7 @@ Heureusement, l’agenda des associations sera bientôt là pour vous faciliter 
 ### Pré-requis
 Comme pour tous les sujets, on devra au moins retrouver dans l’application finale les parties suivantes :
 
+> * POO (design pattern, héritage)
 > * Une authentification
 > * Un compte administrateur donnant les droits à certaines fonctionnalités (au choix)
 > * Un profil utilisateur éditable
