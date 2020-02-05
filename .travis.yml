@@ -1,5 +1,6 @@
 language: php
 php:
   - '7.4.2'
-  - hhvm # on Trusty only
-  - nightly
+
+script:
+  - phpunit
