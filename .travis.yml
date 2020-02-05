@@ -1,15 +1,12 @@
-language: node_js
-node_js:
-  - "stable"
-cache:
-  directories:
-    - node_modules
+language: ruby
+rvm:
+  - "2.1.3"
+env:
+  - DB=postgresql
 script:
-  - npm run build
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $github_token
-  local_dir: build
-  on:
-    branch: master
+  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+  - bundle exec rspec test/
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - mysql -e 'create database mydb_test'
+bundler_args: --binstubs=./bundler_stubs
