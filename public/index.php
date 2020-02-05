@@ -18,10 +18,11 @@ $users = $userRepository->fetchAll();
 
     <table class="table table-bordered table-hover table-striped">
         <thead style="font-weight: bold">
-            <td>#</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-            <td>Age</td>
+        <td>#</td>
+        <td>Firstname</td>
+        <td>Lastname</td>
+        <td>Age</td>
+        <td>ok</td>
         </thead>
         <?php /** @var \User\User $user */
         foreach ($users as $user) : ?>
@@ -30,6 +31,7 @@ $users = $userRepository->fetchAll();
                 <td><?php echo $user->getFirstname() ?></td>
                 <td><?php echo $user->getLastname() ?></td>
                 <td><?php echo $user->getAge() ?> years</td>
+                <td>ok</td>
             </tr>
         <?php endforeach; ?>
     </table>
