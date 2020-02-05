@@ -2,4 +2,6 @@ language: php
 php:
   - '7.4.2'
 
-script: phpunit
+script:
+    - composer install
+    - vendor/bin/phpunit
