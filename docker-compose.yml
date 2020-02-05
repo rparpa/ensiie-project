@@ -33,7 +33,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
     volumes:
       - .:/var/www/html
-      - $SSH_AUTH_SOCK:/ssh-agent
+      - /run/user/1001/keyring/ssh:/ssh-agent
     working_dir: /var/www/html
     user: "${DOCKER_USER}"
     entrypoint:
