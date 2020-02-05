@@ -1,12 +1,7 @@
-language: php
-rvm:
-  - "2.1.3"
-env:
-  - DB=postgresql
-script:
-  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
-  - bundle exec rspec test/
-before_script:
-  - cp config/database.travis.yml config/database.yml
-  - mysql -e 'create database mydb_test'
-bundler_args: --binstubs=./bundler_stubs
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: mfpMrH8KSO4GP9kAuhf_0g  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
