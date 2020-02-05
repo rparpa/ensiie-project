@@ -1,7 +1,7 @@
 <?php
 namespace User;
 
-// add for PR
+// push for PR
 
 class User
 {
