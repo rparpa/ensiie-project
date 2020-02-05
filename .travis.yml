@@ -1,7 +1,11 @@
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: mfpMrH8KSO4GP9kAuhf_0g  # Set in the settings page of your repository, as a secure variable
-  keep_history: true
-  on:
-    branch: master
+language: php
+php:
+  - 5.5
+  - 5.6
+  - 7.0
+
+before_script:
+  - composer install --no-interaction
+
+script:
+  - vendor/bin/phpunit
