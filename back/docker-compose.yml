@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+    - "3000:3000"
+    volumes:
+    - .:/app
+    - ./error.log:/usr/src/app/error.log
+    links:
+      - postgres
+    networks:
+      - "ensiie"
+
+  postgres:
+    build:
+      context: .docker/postgres
+    ports:
+      - ${DB_PORT_EXTERNAL}
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - .:/var/www/html
+    working_dir: /var/www/html
+    networks:
+      - "ensiie"
+
+networks:
+    ensiie:
+        driver: bridge
