@@ -46,6 +46,11 @@ class MeetingRepository
         return $meetings;
     }
 
+    /**
+     * @param $meetingId
+     * @return Meeting
+     * @throws Exception
+     */
     public function findOneById($meetingId)
     {
         $stmt = $this->connection->prepare('SELECT * FROM "meeting" WHERE id = :id');
