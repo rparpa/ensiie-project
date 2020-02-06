@@ -1,8 +1,10 @@
 <?php
 namespace Message;
 
+use DateTimeInterface;
 use Exception;
 use PDO;
+use User\User;
 
 
 class MessageRepository
@@ -34,7 +36,7 @@ class MessageRepository
      */
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "message"')->fetchAll(PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM message')->fetchAll(PDO::FETCH_OBJ);
         $messages = [];
         foreach ($rows as $row) {
             $message = $this->messageHydrator->hydrateObj($row);
@@ -51,7 +53,7 @@ class MessageRepository
      */
     public function findOneById($messageId)
     {
-        $stmt = $this->connection->prepare('SELECT * FROM "message" WHERE id = :id');
+        $stmt = $this->connection->prepare('SELECT * FROM message WHERE id = :id');
         $stmt->bindValue(':id', $messageId, PDO::PARAM_INT);
         $stmt->execute();
         $rawMessage = $stmt->fetch(PDO::FETCH_OBJ);
@@ -66,7 +68,7 @@ class MessageRepository
      */
     public function findAllByUserId($userId)
     {
-        $stmt = $this->connection->prepare('SELECT * FROM "message" WHERE iduser = :id');
+        $stmt = $this->connection->prepare('SELECT * FROM message WHERE iduser = :id');
         $stmt->bindValue(':id', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -78,5 +80,36 @@ class MessageRepository
         return $messages;
     }
 
+    /**
+     * @param int $messageId
+     */
+    public function delete(int $messageId)
+    {
+        $stmt = $this->connection->prepare(
+            'DELETE FROM message WHERE id = :id'
+        );
+        $stmt->bindValue(':id',$messageId,PDO::PARAM_INT);
+        $stmt->execute();
+    }
 
+    /**
+     * @param User $user
+     * @param string $message
+     * @param DateTimeInterface $creationdate
+     */
+    public function insert(User $user, string $message, DateTimeInterface $creationdate)
+    {
+        //TODO Confirmer la provenance des entrées pour l'insert
+        $stmt = $this->connection->prepare(
+            'INSERT INTO message (iduser, source, idsource, message, creationdate) 
+            VALUES (:iduser, :source, :idsource, :message, :creationdate)'
+        );
+
+        $stmt->bindValue(':iduser', $user->getId(),PDO::PARAM_INT);
+        //$stmt->bindValue(':source', ,PDO::PARAM_INT);
+        //$stmt->bindValue(':idsource', ,PDO::PARAM_INT);
+        $stmt->bindValue(':message', $message,PDO::PARAM_STR);
+        $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }
