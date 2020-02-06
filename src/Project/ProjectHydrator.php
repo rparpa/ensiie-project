@@ -4,7 +4,6 @@
 namespace Project;
 
 use Exception;
-use \Project\Project as ProjectEntity;
 
 class ProjectHydrator
 {
@@ -13,9 +12,9 @@ class ProjectHydrator
      * @return Project
      * @throws Exception
      */
-    public function hydrate($data): ProjectEntity
+    public function hydrate($data)
     {
-        $project = new ProjectEntity();
+        $project = new Project();
         $project
             ->setId($data['id'])
             ->setName($data['name'])
@@ -31,7 +30,7 @@ class ProjectHydrator
      */
     public function hydrateObj($data)
     {
-        $project = new ProjectEntity();
+        $project = new Project();
         $project
             ->setId($data->id)
             ->setName($data->name)

@@ -4,7 +4,6 @@
 namespace Organization;
 
 use Exception;
-use \Organization\Organization as OrganizationEntity;
 
 class OrganizationHydrator
 {
@@ -13,9 +12,9 @@ class OrganizationHydrator
      * @return Organization
      * @throws Exception
      */
-    public function hydrate($data): OrganizationEntity
+    public function hydrate($data)
     {
-        $organization = new OrganizationEntity();
+        $organization = new Organization();
         $organization
             ->setId($data['id'])
             ->setName($data['name'])
@@ -28,9 +27,9 @@ class OrganizationHydrator
      * @return Organization
      * @throws Exception
      */
-    public function hydrateObj($data): OrganizationEntity
+    public function hydrateObj($data)
     {
-        $organization = new OrganizationEntity();
+        $organization = new Organization();
         $organization
             ->setId($data->id)
             ->setName($data->name)

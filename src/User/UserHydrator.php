@@ -4,7 +4,6 @@
 namespace User;
 
 use Exception;
-use \User\User as UserEntity;
 
 class UserHydrator
 {
@@ -13,9 +12,9 @@ class UserHydrator
      * @return User
      * @throws Exception
      */
-    public function hydrate($data): UserEntity
+    public function hydrate($data)
     {
-        $user = new UserEntity();
+        $user = new User();
         $user
             ->setId($data['id'])
             ->setUsername($data['username'])
@@ -34,7 +33,7 @@ class UserHydrator
      */
     public function hydrateObj($data)
     {
-        $user = new UserEntity();
+        $user = new User();
         $user
             ->setId($data->id)
             ->setUsername($data->username)

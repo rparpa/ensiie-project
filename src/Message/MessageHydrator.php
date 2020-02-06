@@ -5,7 +5,6 @@ namespace Message;
 
 
 use Exception;
-use Message\Message as MessageEntity;
 
 class MessageHydrator
 {
@@ -14,9 +13,9 @@ class MessageHydrator
      * @return Message
      * @throws Exception
      */
-    public function hydrate($data): MessageEntity
+    public function hydrate($data)
     {
-        $message = new MessageEntity();
+        $message = new Message();
         $message
             ->setId($data['id'])
             ->setIduser($data['iduser'])
@@ -32,9 +31,9 @@ class MessageHydrator
      * @return Message
      * @throws Exception
      */
-    public function hydrateObj($data): MessageEntity
+    public function hydrateObj($data)
     {
-        $message = new MessageEntity();
+        $message = new Message();
         $message
             ->setId($data->id)
             ->setIduser($data->iduser)
