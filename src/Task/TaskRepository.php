@@ -3,9 +3,10 @@
 namespace Task;
 
 
+use DateTimeInterface;
 use Exception;
 use PDO;
-use Task;
+use User\User;
 
 class TaskRepository
 {
@@ -36,7 +37,7 @@ class TaskRepository
      */
     public function fetchAll()
     {
-        $rows = $this->connection->query('SELECT * FROM "task"')->fetchAll(PDO::FETCH_OBJ);
+        $rows = $this->connection->query('SELECT * FROM task')->fetchAll(PDO::FETCH_OBJ);
         $tasks = [];
         foreach ($rows as $row) {
             $task = $this->taskHydrator->hydrateObj($row);
@@ -47,16 +48,52 @@ class TaskRepository
     }
 
     /**
-     * @param $taskId
+     * @param int $taskId
      * @return Task
      * @throws Exception
      */
-    public function findOneById($taskId)
+    public function findOneById(int $taskId)
     {
-        $stmt = $this->connection->prepare('SELECT * FROM "organization" WHERE id = :id');
+        $stmt = $this->connection->prepare('SELECT * FROM task WHERE id = :id');
         $stmt->bindValue(':id', $taskId, PDO::PARAM_INT);
         $stmt->execute();
         $rawTask = $stmt->fetch(PDO::FETCH_OBJ);
         return $this->taskHydrator->hydrateObj($rawTask);
+    }
+
+    /**
+     * @param int $taskId
+     */
+    public function delete(int $taskId)
+    {
+        $stmt = $this->connection->prepare(
+            'DELETE FROM task WHERE id = :id'
+        );
+        $stmt->bindValue(':id',$taskId,PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    /**
+     * @param User $creator
+     * @param User $assignee
+     * @param string $title
+     * @param string $content
+     * @param int $state
+     * @param DateTimeInterface $creationdate
+     */
+    public function insert(User $creator, User $assignee, string $title, string $content, int $state, DateTimeInterface $creationdate)
+    {
+        $stmt = $this->connection->prepare(
+            'INSERT INTO task (idcreator, idassignee, title, content, state, creationdate) 
+            VALUES (:idcreator, :idassignee, :title, :content, :state, :creationdate)'
+        );
+
+        $stmt->bindValue(':idcreator', $creator->getId(),PDO::PARAM_INT);
+        $stmt->bindValue(':idassignee', $assignee->getId(),PDO::PARAM_INT);
+        $stmt->bindValue(':title', $title,PDO::PARAM_STR);
+        $stmt->bindValue(':content', $content,PDO::PARAM_STR);
+        $stmt->bindValue(':state', $state,PDO::PARAM_INT);
+        $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
+        $stmt->execute();
     }
 }
