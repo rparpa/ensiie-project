@@ -8,5 +8,8 @@ before_install:
   - npm install
   - npm run start.ci
 
+before_script:
+  - cd back
+
 script:
   - npm run unit.test
