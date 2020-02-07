@@ -1,9 +1,12 @@
-language: php
-php:
-  - 7.4.1
+language: node_js
+node_js:
+  - "node"
 
-before_script:
-  - composer install --no-interaction
+cache: false
+
+before_install:
+  - npm install
+  - npm run start.ci
 
 script:
-  - vendor/bin/phpunit
+  - npm run unit.test
