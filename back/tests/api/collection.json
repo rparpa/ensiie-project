@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "7825f743-8b59-486c-8521-a5fad710b7d6",
+		"name": "web-parking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get API infos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6d07fed4-8487-4a8c-89b7-234bb1e4876e",
+						"exec": [
+							"pm.globals.set('url', 'https://opendata.paris.fr/api/datasets/1.0/')"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/stationnement-voie-publique-emplacements",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"stationnement-voie-publique-emplacements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get liste parking moto",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6d07fed4-8487-4a8c-89b7-234bb1e4876e",
+						"exec": [
+							"pm.globals.set('url', 'https://opendata.paris.fr/api/records/1.0/search')"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}?dataset=stationnement-voie-publique-emplacements&regpar=\"Motos\"",
+					"host": [
+						"{{url}}"
+					],
+					"query": [
+						{
+							"key": "dataset",
+							"value": "stationnement-voie-publique-emplacements"
+						},
+						{
+							"key": "regpar",
+							"value": "\"Motos\""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
