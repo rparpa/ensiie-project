@@ -1,6 +1,6 @@
 {
   "apps" : [{
-    "name"        : "TrollopParking",
+    "name"        : "trollop-parking",
     "script"      : "./app.js",
     "instances"   : "1",
     "exec_mode"   : "cluster",
