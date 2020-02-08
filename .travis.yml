@@ -5,6 +5,7 @@ node_js:
 cache: false
 
 before_install:
+  - cd back
   - npm install
   - npm run start.ci
 
