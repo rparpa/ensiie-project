@@ -23,22 +23,15 @@ stop:
 install: uninstall start db.install
 
 uninstall: stop
-	@sudo rm -rf postgres-data
+	@sudo rm -rf postgres-data error.log
 
 reinstall: install
 
 #Connects to the databatase
 db.connect:
+	sleep 3
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER'
 
 db.install:
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER -h localhost -f data/db.sql'
 
-php.connect:
-	docker-compose exec php /bin/bash
-
-phpunit.run:
-	docker-compose exec php vendor/bin/phpunit --config=phpunit.xml
-
-composer.install:
-	docker-compose exec php composer install || exit 0
