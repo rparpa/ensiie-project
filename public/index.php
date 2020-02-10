@@ -11,6 +11,7 @@ $users = $userRepository->fetchAll();
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,6 +33,21 @@ $users = $userRepository->fetchAll();
 </nav>
 
 <body>
+
+    <form class="center">
+        <div class="form-group">
+            <label for="exampleInputJobs">Quoi ?</label>
+            <input type="text" class="form-control" id="exampleInputJobs" aria-describedby="jobsHelp" placeholder="">
+            <small id="jobsHelp" class="form-text text-muted">Que cherchez vous ?</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputLocation">Ou ?</label>
+            <input type="text" class="form-control" id="exampleInputLocation" placeholder="">
+            <small id="jobsHelp" class="form-text text-muted">Ou ça ? Quelle ville ?</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Chercher</button>
+    </form>
 
 </body>
 
