@@ -3,6 +3,5 @@ postgres-data
 vendor
 composer.lock
 .phpunit.result.cache
-bin
 error.log
 node_modules
