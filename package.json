@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "start.ci": "pm2 start process.json",
     "unit.test": "jest"
   },
   "dependencies": {
@@ -13,7 +14,8 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
-    "newman": "^4.5.7"
+    "newman": "^4.5.7",
+    "pm2": "^4.2.3"
   },
   "devDependencies": {
     "jest": "^25.1.0"
