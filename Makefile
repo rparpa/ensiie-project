@@ -21,9 +21,11 @@ stop:
 	docker-compose rm -v
 
 install: uninstall start db.install
+	npm install
+	sleep 3
 
 uninstall: stop
-	@sudo rm -rf postgres-data error.log
+	sudo rm -rf postgres-data error.log node_modules
 
 reinstall: install
 
