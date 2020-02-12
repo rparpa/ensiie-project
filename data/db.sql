@@ -1,19 +1,189 @@
-CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY ,
-    firstname VARCHAR NOT NULL ,
-    lastname VARCHAR NOT NULL ,
-    birthday date
+-- Create schemas
+
+-- Create tables
+CREATE TABLE IF NOT EXISTS info
+(
+    id INTEGER NOT NULL,
+    source TEXT NOT NULL,
+    idsource INTEGER NOT NULL,
+    idcreator INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    creationdate TIMESTAMP NOT NULL,
+    PRIMARY KEY(id)
 );
 
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+CREATE TABLE IF NOT EXISTS task
+(
+    id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    creationdate TIMESTAMP NOT NULL,
+    state TEXT NOT NULL,
+    idcreator INTEGER NOT NULL,
+    idassignee INTEGER NOT NULL,
+    idproject INTEGER NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS message
+(
+    id INTEGER NOT NULL,
+    iduser INTEGER NOT NULL,
+    source TEXT NOT NULL,
+    message TEXT NOT NULL,
+    creationdate TIMESTAMP NOT NULL,
+    idsource INTEGER NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS project
+(
+    id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    idorganization INTEGER NOT NULL,
+    creationdate TIMESTAMP NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS meeting
+(
+    id INTEGER NOT NULL,
+    source TEXT NOT NULL,
+    idsource INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    place TEXT NOT NULL,
+    creationdate TIMESTAMP NOT NULL,
+    description TEXT NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS organization
+(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    creationdate TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "user"
+(
+    id SERIAL PRIMARY KEY,
+    username TEXT NOT NULL,
+    surname TEXT NOT NULL,
+    name TEXT NOT NULL,
+    mail TEXT NOT NULL,
+    password TEXT NOT NULL,
+    creationdate TIMESTAMP NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS usermeeting
+(
+    iduser INTEGER NOT NULL,
+    idmeeting INTEGER NOT NULL,
+    role TEXT NOT NULL,
+    date TIMESTAMP NOT NULL,
+    PRIMARY KEY(iduser, idmeeting)
+);
+
+CREATE TABLE IF NOT EXISTS userorganization
+(
+    idorganization INTEGER NOT NULL,
+    iduser INTEGER NOT NULL,
+    role TEXT,
+    date TIMESTAMP NOT NULL,
+    PRIMARY KEY(idorganization, iduser)
+);
+
+CREATE TABLE IF NOT EXISTS userproject
+(
+    iduser INTEGER NOT NULL,
+    idproject INTEGER NOT NULL,
+    role TEXT NOT NULL,
+    date TIMESTAMP NOT NULL,
+    PRIMARY KEY(iduser, idproject)
+);
+
+
+-- Create FKs
+ALTER TABLE info
+    ADD    FOREIGN KEY (idcreator)
+    REFERENCES "user"(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE task
+    ADD    FOREIGN KEY (idcreator)
+    REFERENCES "user"(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE task
+    ADD    FOREIGN KEY (idassignee)
+    REFERENCES "user"(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE message
+    ADD    FOREIGN KEY (iduser)
+    REFERENCES "user"(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE project
+    ADD    FOREIGN KEY (idorganization)
+    REFERENCES organization(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE usermeeting
+    ADD    FOREIGN KEY (iduser)
+    REFERENCES "user"(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE usermeeting
+    ADD    FOREIGN KEY (idmeeting)
+    REFERENCES meeting(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE userorganization
+    ADD    FOREIGN KEY (idorganization)
+    REFERENCES organization(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE userorganization
+    ADD    FOREIGN KEY (iduser)
+    REFERENCES "user"(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE userproject
+    ADD    FOREIGN KEY (iduser)
+    REFERENCES "user"(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE userproject
+    ADD    FOREIGN KEY (idproject)
+    REFERENCES project(id)
+    MATCH SIMPLE
+;
+
+ALTER TABLE task
+    ADD    FOREIGN KEY (idproject)
+    REFERENCES project(id)
+    MATCH SIMPLE
+;
+
+
+-- Create Indexes
+
+
+INSERT INTO "user"(username, surname, name, mail, password, creationdate )
+VALUES ('JD', 'John', 'Doe', 'j.d@hl.com', 'JD', '1967-11-22');
+
+
+INSERT INTO organization(name, creationdate)
+VALUES ('Ile Mysterieuse', '2019-12-20');

@@ -92,4 +92,34 @@ class UserRepository
         $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
         $stmt->execute();
     }
+
+    /**
+     * @param int $id
+     * @param string $username
+     * @param string $surname
+     * @param string $name
+     * @param string $mail
+     * @param string $password
+     * @throws Exception
+     */
+    public function update(int $id, string $username, string $surname, string $name, string $mail, string $password)
+    {
+        $user = $this->findOneById($id);
+        if($user)
+        {
+            $stmt = $this->connection->prepare(
+               'UPDATE "user" SET  
+                    username = :username,
+                    surname = :surname,
+                    name = :name,
+                    mail = :mail,
+                    password = :password'
+            );
+            $stmt->bindValue(':username', $username?$username:$user->getUsername(),PDO::PARAM_STR);
+            $stmt->bindValue(':surname', $surname,PDO::PARAM_STR);
+            $stmt->bindValue(':name', $name,PDO::PARAM_STR);
+            $stmt->bindValue(':mail', $mail,PDO::PARAM_STR);
+            $stmt->bindValue(':password', $password,PDO::PARAM_STR);
+        }
+    }
 }

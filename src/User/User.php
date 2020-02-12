@@ -1,32 +1,28 @@
 <?php
 namespace User;
 
+use DateTimeInterface;
+
 class User
 {
-    /**
-     * @var int
-     */
-    private $id;
+    private int $id;
 
-    /**
-     * @var string
-     */
-    private $firstname;
+    private string $username;
 
-    /**
-     * @var string
-     */
-    private $lastname;
+    private string $surname;
 
-    /**
-     * @var \DateTimeInterface
-     */
-    private $birthday;
+    private string $name;
+
+    private string $mail;
+
+    private string $password;
+
+    private DateTimeInterface $creationdate;
 
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -35,7 +31,7 @@ class User
      * @param int $id
      * @return User
      */
-    public function setId($id)
+    public function setId(int $id): User
     {
         $this->id = $id;
         return $this;
@@ -44,71 +40,109 @@ class User
     /**
      * @return string
      */
-    public function getFirstname()
+    public function getUsername(): string
     {
-        return $this->firstname;
+        return $this->username;
     }
 
     /**
-     * @param string $firstname
+     * @param string $username
      * @return User
      */
-    public function setFirstname($firstname)
+    public function setUsername(string $username): User
     {
-        $this->firstname = $firstname;
+        $this->username = $username;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getLastname()
+    public function getSurname(): string
     {
-        return $this->lastname;
+        return $this->surname;
     }
 
     /**
-     * @param string $lastname
+     * @param string $surname
      * @return User
      */
-    public function setLastname($lastname)
+    public function setSurname(string $surname): User
     {
-        $this->lastname = $lastname;
+        $this->surname = $surname;
         return $this;
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return string
      */
-    public function getBirthday(): \DateTimeInterface
+    public function getName(): string
     {
-        return $this->birthday;
+        return $this->name;
     }
 
     /**
-     * @param \DateTimeInterface $birthday
+     * @param string $name
      * @return User
      */
-    public function setBirthday(\DateTimeInterface $birthday)
+    public function setName(string $name): User
     {
-        $this->birthday = $birthday;
+        $this->name = $name;
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getMail(): string
+    {
+        return $this->mail;
+    }
 
     /**
-     * @return int
-     * @throws \Exception
+     * @param string $mail
+     * @return User
      */
-    public function getAge(): int
+    public function setMail(string $mail): User
     {
-        $now = new \DateTime();
+        $this->mail = $mail;
+        return $this;
+    }
 
-        if ($now < $this->getBirthday()) {
-            throw new \OutOfRangeException('Birthday in the future');
-        }
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
 
-        return $now->diff($this->getBirthday())->y;
+    /**
+     * @param string $password
+     * @return User
+     */
+    public function setPassword(string $password): User
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @return DateTimeInterface
+     */
+    public function getCreationdate(): DateTimeInterface
+    {
+        return $this->creationdate;
+    }
+
+    /**
+     * @param DateTimeInterface $creationdate
+     * @return User
+     */
+    public function setCreationdate(DateTimeInterface $creationdate): User
+    {
+        $this->creationdate = $creationdate;
+        return $this;
     }
 }
 
