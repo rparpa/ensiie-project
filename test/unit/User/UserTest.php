@@ -8,31 +8,12 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function ageWhenBirthdayInThePast()
+    public function TestFictifUser()
     {
         $user = new User();
-        $user->setBirthday(new \DateTime('-10 years'));
-        self::assertSame(10, $user->getAge());
+        $user->setUsername("J.D");
+        self::assertSame("J.D", $user->getUsername());
     }
 
-    /**
-     * @test
-     */
-    public function ageWhenBirthdayNow()
-    {
-        $user = new User();
-        $user->setBirthday(new \DateTime());
-        self::assertSame(0, $user->getAge());
-    }
 
-    /**
-     * @test
-     */
-    public function ageWhenBirthdayInTheFuture()
-    {
-        $user = new User();
-        $user->setBirthday(new \DateTime('+10 years'));
-        $this->expectException(\OutOfRangeException::class);
-        $user->getAge();
-    }
 }
