@@ -3,7 +3,7 @@
 -- Create tables
 CREATE TABLE IF NOT EXISTS info
 (
-    id INTEGER NOT NULL,
+    id SERIAL,
     source TEXT NOT NULL,
     idsource INTEGER NOT NULL,
     idcreator INTEGER NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS info
 
 CREATE TABLE IF NOT EXISTS task
 (
-    id INTEGER NOT NULL,
+    id SERIAL,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
     creationdate TIMESTAMP NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS task
 
 CREATE TABLE IF NOT EXISTS message
 (
-    id INTEGER NOT NULL,
+    id SERIAL,
     iduser INTEGER NOT NULL,
     source TEXT NOT NULL,
     message TEXT NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS message
 
 CREATE TABLE IF NOT EXISTS project
 (
-    id INTEGER NOT NULL,
+    id SERIAL,
     name TEXT NOT NULL,
     idorganization INTEGER NOT NULL,
     creationdate TIMESTAMP NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS project
 
 CREATE TABLE IF NOT EXISTS meeting
 (
-    id INTEGER NOT NULL,
+    id SERIAL,
     source TEXT NOT NULL,
     idsource INTEGER NOT NULL,
     name TEXT NOT NULL,
@@ -60,20 +60,22 @@ CREATE TABLE IF NOT EXISTS meeting
 
 CREATE TABLE IF NOT EXISTS organization
 (
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     name TEXT NOT NULL,
-    creationdate TEXT NOT NULL
+    creationdate TEXT NOT NULL,
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS "user"
 (
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     username TEXT NOT NULL,
     surname TEXT NOT NULL,
     name TEXT NOT NULL,
     mail TEXT NOT NULL,
     password TEXT NOT NULL,
-    creationdate TIMESTAMP NOT NULL
+    creationdate TIMESTAMP NOT NULL,
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS usermeeting
