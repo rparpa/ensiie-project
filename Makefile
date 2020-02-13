@@ -14,7 +14,7 @@ help:
 
 start:
 	docker-compose up --build -d
-	sleep 3
+	sleep 10
 
 stop:
 	docker-compose down -v
