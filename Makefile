@@ -14,13 +14,14 @@ help:
 
 start:
 	docker-compose up --build -d
-	sleep 3
+	sleep 10
 
 stop:
 	docker-compose down -v
 	docker-compose rm -v
 
 install: uninstall start db.install
+	sleep 3
 	npm install
 	sleep 3
 
@@ -31,7 +32,6 @@ reinstall: install
 
 #Connects to the databatase
 db.connect:
-	sleep 3
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER'
 
 db.install:
