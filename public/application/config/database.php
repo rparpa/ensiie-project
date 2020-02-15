@@ -74,13 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	//'dsn'	=> 'pgsql:host=localhost;port=5431;dbname=ensiie',
-	'hostname' => 'localhost',
-	'port' => 5431,
+	'dsn'	=> 'pgsql:host=ensiie-project_postgres_1;port=5432;dbname=ensiie',
+	'hostname' => '',
 	'username' => 'ensiie',
 	'password' => 'ensiie',
-	'database' => 'ensiie',
-	'dbdriver' => 'postgre',
+	'database' => '',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
