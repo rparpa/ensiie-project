@@ -71,5 +71,5 @@ CREATE TABLE Image (
     id_image SERIAL NOT NULL PRIMARY KEY,
     id_annonce INTEGER NOT NULL,
     url TEXT,
-    CONSTRAINT fk_annonce_image FOREIGN KEY (id_annonce) REFERENCES Annonce(id_annonce)
+    CONSTRAINT fk_annonce_image FOREIGN KEY (id_annonce) REFERENCES Annonce(id_annonce) ON DELETE CASCADE
 );
