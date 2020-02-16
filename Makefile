@@ -22,11 +22,12 @@ stop:
 
 install: uninstall start db.install
 	sleep 3
-	npm install
+	cd back && npm install 
+	cd ../front/ && npm install
 	sleep 3
 
 uninstall: stop
-	sudo rm -rf postgres-data error.log node_modules
+	cd back && sudo rm -rf postgres-data error.log node_modules
 
 reinstall: install
 

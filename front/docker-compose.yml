@@ -1,0 +1,11 @@
+version: '2.2'
+services:
+  my-app:
+    container_name: park-ton-char
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+    ports:
+      - '8081:8080'
