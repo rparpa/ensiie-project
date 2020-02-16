@@ -1,17 +1,17 @@
 {
   "apps" : [{
     "name"        : "trollop-parking",
-    "script"      : "./app.js",
+    "script"      : "app.js",
     "instances"   : "1",
     "exec_mode"   : "cluster",
     "env": {
       "NODE_ENV": "development",
-      "PORT"    : 4000,
+      "PORT"    : 3000,
       "watch"   : true
     },
     "env_production" : {
       "NODE_ENV": "production",
-      "PORT"    : 4000
+      "PORT"    : 3000
     },
     "ignore_watch" : ["node_modules", "data/db.sql"]
   }]
