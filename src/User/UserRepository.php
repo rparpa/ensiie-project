@@ -64,6 +64,37 @@ class UserRepository
     }
 
     /**
+     * @param string $username
+     * @return User
+     * @throws Exception
+     */
+    public function findOneByUsername(string $username)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM "user" WHERE username = :username');
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+        $rawUser = $stmt->fetch(PDO::FETCH_OBJ);
+        return $this->userHydrator->hydrateObj($rawUser);
+    }
+
+    /**
+     * @param string $mail
+     * @return User
+     * @throws Exception
+     */
+    public function findOneByMail(string $mail)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM "user" WHERE mail = :mail');
+        $stmt->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $stmt->execute();
+        $rawUser = $stmt->fetch(PDO::FETCH_OBJ);
+        if (!$rawUser){
+            return null;
+        }
+        return $this->userHydrator->hydrateObj($rawUser);
+    }
+
+    /**
      * @param int $userId
      */
     public function delete(int $userId)

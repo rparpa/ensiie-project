@@ -1,7 +1,17 @@
 <?php
 
-function loadView($view, $data) {
+use Db\Connection;
+use Service\AuthenticatorService;
+use User\UserHydrator;
+use User\UserRepository;
 
+$userHydrator = new UserHydrator();
+$userRepository = new UserRepository(Connection::get(), $userHydrator);
+$authenticatorService = new AuthenticatorService($userRepository);
+$user = $authenticatorService->getCurrentUser();
+
+function loadView($view, $data) {
+    session_start();
     ?>
     <html>
     <head>

@@ -1,9 +1,10 @@
 <?php
 
-namespace Rediite\Model\Service;
+namespace Service;
 
-use Rediite\Model\Repository\UserRepository;
-use Rediite\Model\Entity\User as UserEntity;
+
+use User\User;
+use User\UserRepository;
 
 class AuthenticatorService
 {
@@ -32,9 +33,10 @@ class AuthenticatorService
     return $this->isAuthenticated() ? $_SESSION['user_id'] : null;
   }
 
-  function getCurrentUser(): ?UserEntity
+  function getCurrentUser(): ?User
    {
     $userId = $this->getCurrentUserId();
+    //var_dump($userId);
     if ($userId) {
       return $this->userRepository->findOneById($userId);
     }
