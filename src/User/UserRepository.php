@@ -37,6 +37,12 @@ class UserRepository
         $users = [];
         foreach ($rows as $row) {
             $user = $this->userHydrator->hydrateObj($row);
+//            $rowmeetings = $this->connection->query(
+//                'SELECT idmeeting FROM usermeeting WHERE iduser = ' + $user->getId())->fetchAll(PDO::FETCH_OBJ);
+//            foreach ($rowmeetings as $rowmeeting){
+//               $array[] = $rowmeeting->idmeeting;
+//            }
+//            $user->setMeetings($array);
             $users[] = $user;
         }
 
@@ -62,6 +68,9 @@ class UserRepository
      */
     public function delete(int $userId)
     {
+        //TODO : Doit on également le supprimer des réunions(voir les réunions elles meme)
+        // dont il est l'organisateur et également le supprimer des réunions dont il est simple participant.
+        // et pour les messages/Infos/Tasks??
         $stmt = $this->connection->prepare(
             'DELETE FROM "user" WHERE id = :id'
         );
