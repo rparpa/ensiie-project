@@ -1,4 +1,7 @@
 <?php
+
+use User\User;
+
 $users = $data["users"];
 ?>
 
@@ -12,7 +15,7 @@ $users = $data["users"];
     <td>Password</td>
     <td>Date de Creation</td>
     </thead>
-    <?php /** @var \User\User $user */
+    <?php /** @var User $user */
         foreach ($users as $user) : ?>
     <tr>
         <td><?php echo $user->getId() ?></td>
