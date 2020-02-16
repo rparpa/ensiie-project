@@ -19,6 +19,10 @@ class User
 
     private DateTimeInterface $creationdate;
 
+    private array $task;
+
+    private array $meetings;
+
     /**
      * @return int
      */
@@ -144,5 +148,43 @@ class User
         $this->creationdate = $creationdate;
         return $this;
     }
+
+    /**
+     * @return array
+     */
+    public function getTask(): array
+    {
+        return $this->task;
+    }
+
+    /**
+     * @param array $task
+     * @return User
+     */
+    public function setTask(array $task): User
+    {
+        $this->task = $task;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMeetings(): array
+    {
+        return $this->meetings;
+    }
+
+    /**
+     * @param array $meetings
+     * @return User
+     */
+    public function setMeetings(array $meetings): User
+    {
+        $this->meetings = $meetings;
+        return $this;
+    }
+
+
 }
 

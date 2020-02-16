@@ -189,3 +189,6 @@ VALUES ('JD', 'John', 'Doe', 'j.d@hl.com', 'JD', '1967-11-22');
 
 INSERT INTO organization(name, creationdate)
 VALUES ('Ile Mysterieuse', '2019-12-20');
+
+INSERT INTO message( iduser, source, message, creationdate, idsource)
+VALUES (1, 'chat', 'Le premier message.', '2020-02-16', 1);

@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: 'Arvo', serif;
+}
+
+.header {
+  background-color: #ddd;
+  padding: 23px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.link-header-container {
+  display: inline;
+}
+
+.link-header-item {
+  display: inline;
+}
+
+.link-header-item-a{
+  color: black;
+}
+
+.logo-container {
+  font-size: 28px;
+}
+
+.main {
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.main-container {
+  width: 75%;
+  min-height: 90vh;
+  float:left;
+}
+
+.main-chat {
+  width: 25%;
+  min-height: 90vh;
+  float:right;
+}
+
+.footer {
+  padding: 10px;
+  background-color: #ddd;
+}
