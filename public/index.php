@@ -30,30 +30,108 @@ $users = $userRepository->fetchAll();
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#exampleModal" >Connexion</button>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#connexionModal" >Connexion</button>
         </form>
 
         <form class="form-inline my-2 my-lg-0 pl-2">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#exampleModal" >Inscription</button>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#inscriptionModal" >Inscription</button>
         </form>
     </div>
 
     <!-- Modal connexion -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="connexionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
-                ...
+                <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Identifiant</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Adresse mail</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Mot de passe</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                </form>
             </div>
+
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary">Confirmer</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal inscription -->
+    <div class="modal fade" id="inscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Inscription</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <label for="inputNom">Nom</label>
+                    <input type="text" class="form-control" id="inputNom">
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label for="inputPrenom">Prenom</label>
+                    <input type="text" class="form-control" id="inputPrenom">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4">
+                    </div>
+                    <div class="form-group col-md-6">
+                    <label for="inputPassword4">Mot de passe</label>
+                    <input type="password" class="form-control" id="inputPassword4">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Adresse</label>
+                    <input type="text" class="form-control" id="inputAddress">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                    <label for="inputCity">Ville</label>
+                    <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                    <label for="inputZip">Code Postal</label>
+                    <input type="text" class="form-control" id="inputZip">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Je suis une entreprise
+                    </label>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary">Confirmer</button>
             </div>
             </div>
         </div>
@@ -80,5 +158,6 @@ $users = $userRepository->fetchAll();
     </form>
 
 </body>
+
 
 </html>
