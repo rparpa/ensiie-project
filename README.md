@@ -13,6 +13,7 @@ make install
 
 ## Lancement
 
-```angular2html
+```
+cd back
 npm start
 ```

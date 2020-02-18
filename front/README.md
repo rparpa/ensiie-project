@@ -7,3 +7,9 @@
 
 ## Stop Project 
 > ``` docker-compose stop```
+
+## Launch server
+
+`npm run serve`
+
+And go to http://localhost:8080
