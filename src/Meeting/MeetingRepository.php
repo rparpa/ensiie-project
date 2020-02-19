@@ -47,6 +47,23 @@ class MeetingRepository
         return $meetings;
     }
 
+    public function fetchByUser(int $userId)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM "meeting" JOIN "usermeeting" WHERE iduser = :iduser');
+        $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $meetings = [];
+        foreach ($rows as $row) {
+            $meetings[] = [
+                "meeting" => $this->meetingHydrator->hydrateObj($row),
+                "role" => $row->role,
+                "date" => $row->date
+            ];
+        }
+        return $meetings;
+    }
+
     /**
      * @param $meetingId
      * @return Meeting
