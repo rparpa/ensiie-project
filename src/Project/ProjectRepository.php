@@ -1,6 +1,7 @@
 <?php
 namespace Project;
 
+use DateTimeInterface;
 use Exception;
 use Organization\Organization;
 use PDO;
@@ -79,13 +80,30 @@ class ProjectRepository
     public function insert(string $name, Organization $organization, DateTimeInterface $creationdate)
     {
         $stmt = $this->connection->prepare(
-            'INSERT INTO organization ("name", idorganization, creationdate) 
-            VALUES (":name", :idorganization, :creationdate)'
+            'INSERT INTO project (name, idorganization, creationdate) 
+            VALUES (:name, :idorganization, :creationdate)'
         );
 
         $stmt->bindValue(':name', $name,PDO::PARAM_STR);
         $stmt->bindValue(':idorganization', $organization->getId(),PDO::PARAM_INT);
         $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
         $stmt->execute();
+    }
+
+    /**
+     * @param int $id
+     * @param string $name
+     * @param Organization $organization
+     */
+    public function update(int $id, string $name, Organization $organization)
+    {
+        $stmt = $this->connection->prepare(
+            'UPDATE project SET name = :name, idorganization =:idorganization WHERE id =:id'
+        );
+
+        $stmt->bindValue(':name', $name,PDO::PARAM_STR);
+        $stmt->bindValue(':idorganization', $organization->getId(),PDO::PARAM_INT);
+        $stmt->bindValue(':id', $id,PDO::PARAM_INT);
+        $res = $stmt->execute();
     }
 }
