@@ -16,7 +16,7 @@
 				<!-- Header -->
 					<header id="header">
 						<div class="logo">
-							<img src="images/logo.png" width="90"></img>
+							<img src="images/logo.png" width="80%"></img>
 						</div>
 						<div class="content">
 							<div class="inner">
