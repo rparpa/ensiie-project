@@ -186,9 +186,14 @@ ALTER TABLE task
 INSERT INTO "user"(username, surname, name, mail, password, creationdate )
 VALUES ('JD', 'John', 'Doe', 'j.d@hl.com', 'JD', '1967-11-22');
 
-
 INSERT INTO organization(name, creationdate)
 VALUES ('Ile Mysterieuse', '2019-12-20');
 
 INSERT INTO message( iduser, source, message, creationdate, idsource)
-VALUES (1, 'chat', 'Le premier message.', '2020-02-16', 1);
+VALUES (1, 'organization', 'Le premier message.', '2020-02-16', 1);
+
+INSERT INTO info(source, idsource, idcreator, title, content, creationdate)
+VALUES ('organization',1,1,'Les dauphins','sont nos amis','2020-02-17');
+
+INSERT INTO meeting(source, idsource, name, place, creationdate, description)
+VALUES ('organization', 1, 'Coucou cest nous', 'chez ta maman', '2020-02-17', 'Un peu de mousse ?');
