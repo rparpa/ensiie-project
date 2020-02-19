@@ -9,8 +9,10 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "leaflet": "^1.6.0",
     "vue": "^2.6.11",
-    "vue-router": "^3.1.5"
+    "vue-router": "^3.1.5",
+    "vue2-leaflet": "^2.5.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-e2e-cypress": "~4.2.0",
