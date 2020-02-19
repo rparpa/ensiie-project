@@ -18,18 +18,18 @@ require_once '../src/Bootstrap.php';
             $userController = new \User\UserController(\Db\Connection::get());
             $users = $userController->listUsers();
         } else if ($_GET['action'] == 'connect') {
-            $connexionController = new \Connexion\ConnexionController(\Db\Connection::get());
+            $connexionController = new \User\UserController(\Db\Connection::get());
             if(isset($_POST["email"])) {
                 $connexionController->identification($_POST);
             } else {
-                $connexionController->afficheFormulaire();
+                $connexionController->afficheFormulaireConnexion();
             }
         } else if ($_GET['action'] == 'register') {
-            $registerController = new \Register\RegisterController(\Db\Connection::get());
+            $registerController = new \User\UserController(\Db\Connection::get());
             if(isset($_POST["email"])) {
                 $registerController->enregistrement($_POST);
             } else {
-                $registerController->afficheFormulaire();
+                $registerController->afficheFormulaireInscription();
             }
         }
     } else {
