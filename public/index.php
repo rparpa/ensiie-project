@@ -1,18 +1,6 @@
 <?php
 
 require_once '../src/Bootstrap.php';
-
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'listUsers') {
-        $userController = new \User\UserController(\Db\Connection::get());
-        $users = $userController->listUsers();
-    } else if ($_GET['action'] == 'post') {
-        // TODO   
-    }
-} else {
-    $userController = new \User\UserController(\Db\Connection::get());
-    $users = $userController->listUsers();
-}
 ?>
 
 <html>
@@ -24,24 +12,19 @@ if (isset($_GET['action'])) {
 
 <div class="container">
     <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
-
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-            <td>Age</td>
-        </thead>
-        <?php /** @var \User\User $user */
-        foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $user->getId() ?></td>
-                <td><?php echo $user->getFirstname() ?></td>
-                <td><?php echo $user->getLastname() ?></td>
-                <td><?php echo $user->getAge() ?> years</td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+    <?php
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] == 'listUsers') {
+            $userController = new \User\UserController(\Db\Connection::get());
+            $users = $userController->listUsers();
+        } else if ($_GET['action'] == 'post') {
+            // TODO   
+        }
+    } else {
+        $userController = new \User\UserController(\Db\Connection::get());
+        $users = $userController->listUsers();
+    }
+    ?>
 </div>
 </body>
 </html>
