@@ -11,13 +11,18 @@ $authenticatorService = new AuthenticatorService($userRepository);
 $user = $authenticatorService->getCurrentUser();
 
 function loadView($view, $data) {
-    session_start();
     ?>
+    <!DOCTYPE html>
     <html>
     <head>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous">
+        </script>
     </head>
     <body>
     <?php include_once '../src/View/layout/header.php' ?>
