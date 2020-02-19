@@ -1,0 +1,25 @@
+{
+  "name": "ensiie-project",
+  "version": "1.0.0",
+  "description": "## Install your application This tutorial will guide you through the installation procedure of the Web Project Skeleton.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonahR1/ensiie-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonahR1/ensiie-project/issues"
+  },
+  "homepage": "https://github.com/JonahR1/ensiie-project#readme",
+  "dependencies": {
+    "node-dev": "^4.0.0"
+  }
+}

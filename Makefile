@@ -41,4 +41,4 @@ phpunit.run:
 	docker-compose exec php vendor/bin/phpunit --config=phpunit.xml
 
 composer.install:
-	docker-compose exec php composer install || exit 0
+	docker-compose exec nodejs npm install || exit 0
