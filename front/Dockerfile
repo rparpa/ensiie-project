@@ -6,12 +6,12 @@ WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH
 
-COPY . /app/
+#COPY . /app/
 
-RUN npm install @vue/cli@3.7.0 -g
+#RUN npm install @vue/cli@3.7.0 -g
 
 EXPOSE 8080
 
-VOLUME /app/
+#VOLUME /app/
 
 CMD ["npm", "run", "serve"]

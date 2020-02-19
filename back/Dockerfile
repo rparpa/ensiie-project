@@ -2,13 +2,13 @@ FROM node:12
 
 WORKDIR /app
 
-COPY ["package.json", "package-lock.json*", "./"]
+#COPY ["package.json", "package-lock.json*", "./"]
 #COPY package.json .
 
 #RUN npm install --production --silent && mv node_modules ../
-RUN npm install
+#RUN npm install
 
-COPY . ./
+#COPY . ./
 
 EXPOSE 3000
 
