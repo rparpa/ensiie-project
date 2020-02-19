@@ -16,13 +16,12 @@
 				<!-- Header -->
 					<header id="header">
 						<div class="logo">
-							<img src="images/logo.png" width="90"></img>
+							<img src="images/logo.png" width="80%"></img>
 						</div>
 						<div class="content">
 							<div class="inner">
-								<h1>Dimension</h1>
-								<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a> and released<br />
-								for free under the <a href="https://html5up.net/license">Creative Commons</a> license.</p>
+								<h1>La SandwicherIIE</h1>
+								<p>L'association Sandwiche de l'ENSIIE, commendez votre menu avec nous</p>
 							</div>
 						</div>
 						<nav>
