@@ -4,12 +4,12 @@ node_js:
 
 cache: false
 
-#before_install:
-#  - cd back && npm install
-#  - npm run start.ci
+before_install:
+  - make install
 
 script:
 
-  - make install
+
+
 #script:
 #  - npm run unit.test
