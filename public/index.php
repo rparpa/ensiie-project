@@ -2,8 +2,17 @@
 
 require_once '../src/Bootstrap.php';
 
-$userRepository = new \User\UserRepository(\Db\Connection::get());
-$users = $userRepository->fetchAll();
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'listUsers') {
+        $userController = new \User\UserController(\Db\Connection::get());
+        $users = $userController->listUsers();
+    } else if ($_GET['action'] == 'post') {
+        // TODO   
+    }
+} else {
+    $userController = new \User\UserController(\Db\Connection::get());
+    $users = $userController->listUsers();
+}
 ?>
 
 <html>

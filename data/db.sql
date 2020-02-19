@@ -36,11 +36,11 @@ CREATE TABLE "puissance" (
 
 CREATE TABLE "finition" (
 	id_finition SERIAL,
-	id_modele int,
+	id_marque int,
 	nom_finition VARCHAR NOT NULL,
 	liste_options VARCHAR,
-	FOREIGN KEY (id_modele) REFERENCES modele (id_modele),
-	PRIMARY KEY (id_modele,id_finition)
+	FOREIGN KEY (id_marque) REFERENCES marque (id_marque),
+	PRIMARY KEY (id_marque,id_finition)
 );
 
 CREATE TABLE "voiture" (
@@ -53,7 +53,7 @@ CREATE TABLE "voiture" (
 	id_finition int NOT NULL,
 	FOREIGN KEY (id_modele) REFERENCES modele (id_modele),
 	FOREIGN KEY (id_puissance,id_marque) REFERENCES puissance (id_puissance,id_marque),
-	FOREIGN KEY (id_modele,id_finition) REFERENCES finition (id_modele,id_finition)
+	FOREIGN KEY (id_marque,id_finition) REFERENCES finition (id_marque,id_finition)
 );
 
 CREATE TABLE "location" (
@@ -102,10 +102,10 @@ INSERT INTO "puissance"(id_puissance,id_marque,puissance_fisc,puissance_ch) VALU
 INSERT INTO "puissance"(id_puissance,id_marque,puissance_fisc,puissance_ch) VALUES (1,1,9,150);
 INSERT INTO "puissance"(id_puissance,id_marque,puissance_fisc,puissance_ch) VALUES (2,1,10,190);
 
-INSERT INTO "finition"(id_finition,id_modele,nom_finition) VALUES (0,0,'KINETIC');
-INSERT INTO "finition"(id_finition,id_modele,nom_finition) VALUES (1,0,'MOMENTUM');
-INSERT INTO "finition"(id_finition,id_modele,nom_finition) VALUES (2,0,'SUMMUM');
-INSERT INTO "finition"(id_finition,id_modele,nom_finition) VALUES (3,0,'XENIUM');
+INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (0,1,'KINETIC');
+INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (1,1,'MOMENTUM');
+INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (2,1,'SUMMUM');
+INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (3,1,'XENIUM');
 
-INSERT INTO "voiture"(immat,date_immat,id_marque,id_modele,id_puissance,id_finition) VALUES ('FE-504-ZZ','01-05-2019',0,0,2,3);
-INSERT INTO "voiture"(immat,date_immat,id_marque,id_modele,id_puissance,id_finition) VALUES ('FK-824-BS','09-02-2019',0,4,0,3);
+INSERT INTO "voiture"(immat,date_immat,id_marque,id_modele,id_puissance,id_finition) VALUES ('FE-504-ZZ','01-05-2019',1,0,2,3);
+INSERT INTO "voiture"(immat,date_immat,id_marque,id_modele,id_puissance,id_finition) VALUES ('FK-824-BS','09-02-2019',1,4,0,3);
