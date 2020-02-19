@@ -77,6 +77,9 @@ class UserRepository
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         $rawUser = $stmt->fetch(PDO::FETCH_OBJ);
+        if (!$rawUser){
+            return null;
+        }
         return $this->userHydrator->hydrateObj($rawUser);
     }
 
@@ -123,8 +126,8 @@ class UserRepository
     public function insert(string $username, string $surname, string $name, string $mail, string $password, DateTimeInterface $creationdate)
     {
         $stmt = $this->connection->prepare(
-            'INSERT INTO "user" (username, surname, "name", mail, password, creationdate) 
-            VALUES (:username, :surname, ":name", :mail, :password, :creationdate)'
+            'INSERT INTO "user" (username, surname, name, mail, password, creationdate) 
+            VALUES (:username, :surname, :name, :mail, :password, :creationdate)'
         );
 
         $stmt->bindValue(':username', $username,PDO::PARAM_STR);
