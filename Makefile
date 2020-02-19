@@ -14,19 +14,20 @@ help:
 
 start:
 	docker-compose up --build -d
-	sleep 10
+	sleep 20
 
 stop:
 	docker-compose down -v
 	docker-compose rm -v
 
 install: uninstall start db.install
-	sleep 3
-	npm install
-	sleep 3
+	sleep 5
+	cd back && npm install 
+	cd front && npm install
+	sleep 5
 
 uninstall: stop
-	sudo rm -rf postgres-data error.log node_modules
+	cd back && sudo rm -rf postgres-data error.log node_modules
 
 reinstall: install
 

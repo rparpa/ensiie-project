@@ -4,9 +4,10 @@ node_js:
 
 cache: false
 
-before_install:
-  - npm install
-  - npm run start.ci
-
+#before_install:
+#  - cd back && npm install
+#  - npm run start.ci
+script:
+  - cd back && npm install && npm test && cd ../front && npm install && npm test
 #script:
 #  - npm run unit.test

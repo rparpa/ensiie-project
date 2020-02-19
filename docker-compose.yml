@@ -1,16 +1,25 @@
 version: '3.3'
 services:
-
+  vuejs:
+    build:
+      context: ./front/
+    restart: always
+    ports: 
+      - "8081:8080"
+    volumes: 
+      - "./front/:/app/"
+    networks: 
+      - "ensiie"
+      
   node:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ./back/
     restart: always
     ports:
     - "3000:3000"
     volumes:
-    - .:/app
-    - ./error.log:/usr/src/app/error.log
+    - ./back/:/app
+    - ./back/error.log:/usr/src/app/error.log
     links:
       - postgres
     networks:
@@ -18,15 +27,15 @@ services:
 
   postgres:
     build:
-      context: .docker/postgres
+      context: ./back/.docker/postgres/
     ports:
       - ${DB_PORT_EXTERNAL}
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-      - .:/var/www/html
+      - ./back/postgres-data:/var/lib/postgresql/data
+      - ./back:/var/www/html
     working_dir: /var/www/html
     networks:
       - "ensiie"
