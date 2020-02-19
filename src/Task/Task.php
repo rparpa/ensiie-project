@@ -13,6 +13,15 @@ class Task
     private int $idassignee;
     private int $idproject;
 
+
+    /**
+     * @return string
+     */
+    public function getTable(): string
+    {
+        return "task";
+    }
+
     /**
      * @return int
      */
