@@ -2,6 +2,8 @@
 
 class Etat_model extends CI_Model
 {
+    public $idEtat;
+    public $nom;
     public function insert()
     {
 

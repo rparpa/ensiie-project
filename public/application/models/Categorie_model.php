@@ -2,10 +2,13 @@
 
 class Categorie_model extends CI_Model
 {
+    public $idCategorie;
+    public $nom;
+    
     public function insert()
-{
+    {
 
-}
+    }
 
     public function delete()
     {

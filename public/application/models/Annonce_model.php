@@ -2,6 +2,14 @@
 
 class Annonce_model extends CI_Model
 {
+    public $idAnnonce;
+    public $titre;
+    public $description;
+    public $prix;
+    public $vendu;
+    public $nbSignaler;
+    public $datePublication;
+
     public function insert()
     {
 

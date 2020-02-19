@@ -2,6 +2,9 @@
 
 class Image_model extends CI_Model
 {
+    public $idImage;
+    public $url;
+    
     public function insert()
     {
 

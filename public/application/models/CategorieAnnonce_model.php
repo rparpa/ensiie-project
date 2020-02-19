@@ -2,6 +2,8 @@
 
 class CategorieAnnonce_model extends CI_Model
 {
+    public $idAnnonce;
+    public $idCategorie;
 
     public function insert()
     {
