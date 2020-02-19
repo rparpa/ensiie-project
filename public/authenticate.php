@@ -18,7 +18,6 @@ $viewData = [];
 if (null !== $email && null !== $password) {
   $user = $userRepository->findOneByMail($email);
   if (null !== $user && $password==$user->getPassword()) {
-      session_start();
       $_SESSION['user_id'] = $user->getId();
       header('Location: index.php');
       exit;
