@@ -4,12 +4,13 @@ node_js:
 
 cache: false
 
+env:
+  - TEST_DIR=back
+  - TEST_DIR=front
+
 before_install:
   - make install
 
 script:
+ - cd $TEST_DIR && npm install && npm test
 
-
-
-#script:
-#  - npm run unit.test
