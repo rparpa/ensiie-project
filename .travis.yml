@@ -7,7 +7,9 @@ cache: false
 #before_install:
 #  - cd back && npm install
 #  - npm run start.ci
+
 script:
-  - cd back && npm install && npm test && cd ../front && npm install && npm test
+
+  - make install
 #script:
 #  - npm run unit.test
