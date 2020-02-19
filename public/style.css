@@ -87,7 +87,7 @@ body {
 
 .formulaire{
   border:black 1px solid;
-  margin: 40vh auto auto;
+  margin: 40vh;
   transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
 }
 
@@ -96,4 +96,10 @@ body {
   display: inline-block;
   vertical-align: top;
   margin: 6px;
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+  color: #f00;
 }
