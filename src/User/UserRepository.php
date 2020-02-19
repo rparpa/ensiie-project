@@ -60,6 +60,9 @@ class UserRepository
         $stmt->bindValue(':id', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $rawUser = $stmt->fetch(PDO::FETCH_OBJ);
+        if (!$rawUser){
+            throw new Exception('Aucun utilisateur.');
+        }
         return $this->userHydrator->hydrateObj($rawUser);
     }
 
@@ -148,18 +151,21 @@ class UserRepository
         if($user)
         {
             $stmt = $this->connection->prepare(
-               'UPDATE "user" SET  
-                    username = :username,
-                    surname = :surname,
-                    name = :name,
-                    mail = :mail,
-                    password = :password'
+               'UPDATE "user" SET 
+                    username = :username, 
+                    surname = :surname, 
+                    name = :name, 
+                    mail = :mail, 
+                    password = :password
+                    WHERE id = :id'
             );
-            $stmt->bindValue(':username', $username?$username:$user->getUsername(),PDO::PARAM_STR);
+            $stmt->bindValue(':username', $username,PDO::PARAM_STR);
             $stmt->bindValue(':surname', $surname,PDO::PARAM_STR);
             $stmt->bindValue(':name', $name,PDO::PARAM_STR);
             $stmt->bindValue(':mail', $mail,PDO::PARAM_STR);
             $stmt->bindValue(':password', $password,PDO::PARAM_STR);
+            $stmt->bindValue(':id', $id,PDO::PARAM_INT);
+            $res = $stmt->execute();
         }
     }
 }
