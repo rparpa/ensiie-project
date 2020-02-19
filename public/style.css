@@ -84,3 +84,9 @@ body {
   overflow:scroll;
   border:black 1px solid;
 }
+
+.formulaire{
+  border:black 1px solid;
+  margin: 40vh auto auto;
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+}
