@@ -43,5 +43,21 @@ class UserRepository
         return $users;
     }
 
+    public function createUser(User $newUser)
+    {
+        $query = $this->connection->prepare('INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail) VALUES (:firstname , :lastname, :birthday, :pseudo, :mail)');
+        $query->bindValue(':firstname', $newUser->getFirstname());
+        $query->bindValue(':lastname', $newUser->getLastname());
+        $query->bindValue(':birthday', $newUser->getBirthday()->format("Y-m-d"));
+        $query->bindValue(':pseudo', $newUser->getPseudo());
+        $query->bindValue(':mail', $newUser->getMail());
+        $result = $query->execute();
+        if ($result == false)
+        {
+            $query->errorInfo();
+        }
+    }
+
+
 
 }

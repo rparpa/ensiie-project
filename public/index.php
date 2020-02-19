@@ -3,6 +3,19 @@
 require_once '../src/Bootstrap.php';
 
 $userRepository = new \User\UserRepository(\Db\Connection::get());
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    $newUser = new \User\User();
+    $newUser->setFirstname($_POST["firstname"]);
+    $newUser->setLastname($_POST["lastname"]);
+    $newUser->setBirthday(new DateTimeImmutable($_POST["birthday"]));
+    $newUser->setPseudo($_POST["pseudo"]);
+    $newUser->setMail($_POST["mail"]);
+
+    $userRepository->createUser($newUser);
+}
+
 $users = $userRepository->fetchAll();
 ?>
 
@@ -37,6 +50,24 @@ $users = $userRepository->fetchAll();
             </tr>
         <?php endforeach; ?>
     </table>
+    <form action="" method="POST">
+        <label for="firstname">Prénom :</label><br>
+        <input type="text" id="firstname" name="firstname"><br>
+
+        <label for="lastname">Nom :</label><br>
+        <input type="text" id="lastname" name="lastname"><br>
+
+        <label for="birthday">Date de naissance:</label><br>
+        <input type="date" id="birthday" name="birthday" value="2010-01-01"><br>
+
+        <label for="pseudo">Pseudo :</label><br>
+        <input type="text" id="pseudo" name="pseudo"><br>
+
+        <label for="mail">Adresse mail :</label><br>
+        <input type="text" id="mail" name="mail"><br>
+
+        <input type="submit" value="Créer un compte"><br>
+    </form>
 </div>
 </body>
 </html>
