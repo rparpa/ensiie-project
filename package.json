@@ -1,0 +1,46 @@
+{
+  "name": "ensiie-project",
+  "version": "1.0.0",
+  "description": "## Install your application This tutorial will guide you through the installation procedure of the Web Project Skeleton.",
+  "main": "index.js",
+  "devDependencies": {
+    "@stryker-mutator/core": "^1.1.1",
+    "@stryker-mutator/html-reporter": "^1.1.1",
+    "@stryker-mutator/javascript-mutator": "^1.1.1",
+    "@stryker-mutator/jest-runner": "^1.1.1",
+    "jest": "^24.1.0",
+    "stryker-cli": "^1.0.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "unit.test": "jest",
+    "unit.test.coverage": "jest --coverage",
+    "unit.test.mutation": "stryker run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonahR1/ensiie-project.git"
+  },
+  "jest": {
+    "verbose": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonahR1/ensiie-project/issues"
+  },
+  "homepage": "https://github.com/JonahR1/ensiie-project#readme",
+  "dependencies": {
+    "node-dev": "^4.0.0"
+  }
+}
