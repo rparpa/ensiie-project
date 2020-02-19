@@ -15,7 +15,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "unit.test": "jest",
+    "unit.test.coverage": "jest --coverage",
+    "unit.test.mutation": "stryker run"
   },
   "repository": {
     "type": "git",
