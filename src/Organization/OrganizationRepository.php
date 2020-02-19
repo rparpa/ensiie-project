@@ -55,6 +55,9 @@ class OrganizationRepository
         $stmt->bindValue(':id', $organizationId, PDO::PARAM_INT);
         $stmt->execute();
         $rawOrganization = $stmt->fetch(PDO::FETCH_OBJ);
+        if (!$rawOrganization){
+            return null;
+        }
         return $this->organizationHydrator->hydrateObj($rawOrganization);
     }
 
@@ -77,12 +80,27 @@ class OrganizationRepository
     public function insert(string $name, DateTimeInterface $creationdate)
     {
         $stmt = $this->connection->prepare(
-            'INSERT INTO organization ("name", creationdate) 
-            VALUES (":name", :creationdate)'
+            'INSERT INTO organization (name, creationdate) 
+            VALUES (:name, :creationdate)'
         );
 
         $stmt->bindValue(':name', $name,PDO::PARAM_STR);
         $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
+    /**
+     * @param int $id
+     * @param string $name
+     */
+    public function update(int $id, string $name)
+    {
+        $stmt = $this->connection->prepare(
+            'UPDATE organization SET name = :name WHERE id = :id'
+        );
+
+        $stmt->bindValue(':name', $name,PDO::PARAM_STR);
+        $stmt->bindValue(':id', $id,PDO::PARAM_INT);
         $stmt->execute();
     }
 }
