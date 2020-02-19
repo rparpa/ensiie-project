@@ -90,3 +90,10 @@ body {
   margin: 40vh auto auto;
   transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
 }
+
+.label-lenght-fix{
+  width: 200px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 6px;
+}

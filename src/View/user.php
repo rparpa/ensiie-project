@@ -13,58 +13,63 @@ else{
 ?>
 
 <form novalidate method="post" onsubmit="return verif()" action="addorupdateuser.php">
-    <input type="hidden" value="<?php echo $user?$user->getId():'' ?>" name="id">
-    <p>
-        <label for="username">
-            <span>Username :</span>
-            <input type="text" value="<?php echo $user?$user->getUsername():'' ?>" name="username" id="username">
+    <div class="formulaire">
+        <input type="hidden" value="<?php echo $user?$user->getId():'' ?>" name="id">
+        <div align="center">
+            <label class="label-lenght-fix" for="username">Username : </label>
+            <input type="text"
+                   value="<?php echo $user?$user->getUsername():'' ?>"
+                   name="username"
+                   id="username"
+                   required="">
             <span class="error" aria-live="polite" id="errorusername"></span>
-        </label>
-    <p>
-    <p>
-        <label for="surname">
-            <span>Surname :</span>
-            <input type="text" value="<?php echo $user?$user->getSurname():'' ?>" name="surname" id="surname">
+        </div>
+        <div align="center">
+            <label class="label-lenght-fix" for="surname">Surname : </label>
+            <input type="text"
+                   value="<?php echo $user?$user->getSurname():'' ?>"
+                   name="surname"
+                   id="surname">
             <span class="error" aria-live="polite" id="errorsurname"></span>
-        </label>
-    <p>
-    <p>
-        <label for="name">
-            <span>Name :</span>
-            <input type="text" value="<?php echo $user?$user->getName():'' ?>" name="name" id="name">
+        </div>
+        <div align="center">
+            <label class="label-lenght-fix" for="name">Name : </label>
+            <input type="text"
+                   value="<?php echo $user?$user->getName():'' ?>"
+                   name="name"
+                   id="name">
             <span class="error" aria-live="polite" id="errorname"></span>
-        </label>
-    <p>
-    <p>
-        <label for="mail">
-            <span>Mail :</span>
-            <input type="email" value="<?php echo $user?$user->getMail():'' ?>" id="mail" name="mail">
+        </div>
+        <div align="center">
+            <label class="label-lenght-fix" for="mail">Mail : </label>
+            <input type="email"
+                   value="<?php echo $user?$user->getMail():'' ?>"
+                   id="mail"
+                   name="mail">
             <span class="error" aria-live="polite" id="errormail"></span>
-        </label>
-    <p>
-    <p>
-        <label for="password">
-            <span>Password :</span>
-            <input type="password" value="<?php echo $user?$user->getPassword():'' ?>" id="password" name="password">
+        </div>
+        <div align="center">
+            <label class="label-lenght-fix" for="password">Password : </label>
+            <input type="password"
+                   value="<?php echo $user?$user->getPassword():'' ?>"
+                   id="password"
+                   name="password">
             <span class="error" aria-live="polite" id="errorpassword"></span>
-        </label>
-    <p>
-    <p>
-        <label for="passwordcheck">
-            <span>Password Verification :</span>
-            <input type="password" value="<?php echo $user?$user->getPassword():'' ?>" id="passwordcheck" name="passwordcheck">
+        </div>
+        <div align="center">
+            <label class="label-lenght-fix" for="passwordcheck">Password Verification : </label>
+            <input type="password"
+                   value="<?php echo $user?$user->getPassword():'' ?>"
+                   id="passwordcheck"
+                   name="passwordcheck">
             <span class="error" aria-live="polite" id="errorpasswordcheck"></span>
-        </label>
-    <p>
-        <button>Envoyer</button>
+        </div>
+        <div align="center">
+            <p><button>Envoyer</button>
+        </div>
+
+    </div>
 </form>
-
-
-
-
-
-
-
 
 
 <script>
