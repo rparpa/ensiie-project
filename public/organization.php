@@ -13,6 +13,6 @@ $data = [
   'organizations' => $orgarepository->fetchAll()
 ];
 
-loadView('organization', $data);
+loadView('organization', []);
 
 
