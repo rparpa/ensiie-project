@@ -1,0 +1,45 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: |
+        export DOCKER_USER_ID=$(id -u)
+        docker-compose build
+      env:
+        DOCKER_USER: ENSIIE
+        NGINX_PORT: 8080
+        SERVER_NAME: php-docker.local
+        PHP_ADDRESS: php
+        TIMEZONE: 'Europe/Paris'
+        DB_USER: ensiie
+        DB_PASSWORD: ensiie
+        DB_PORT_EXTERNAL: 5431
+    - name: Start
+      run: |
+        export DOCKER_USER_ID=$(id -u)
+        docker-compose up -d
+      env:
+        DOCKER_USER: ENSIIE
+        NGINX_PORT: 8080
+        SERVER_NAME: php-docker.local
+        PHP_ADDRESS: php
+        TIMEZONE: 'Europe/Paris'
+        DB_USER: ensiie
+        DB_PASSWORD: ensiie
+        DB_PORT_EXTERNAL: 5431
+    - name: Install composer
+      run: docker-compose exec -T php composer install || exit 0
+    - name: Install DB
+      run: docker-compose exec -T postgres /bin/bash -c "psql -U $DB_USER -h localhost -f data/db.sql"
+      env: 
+        DB_USER: ensiie
+    - name: Run php unit test
+      run: docker-compose exec -T php vendor/bin/phpunit --config=phpunit.xml
