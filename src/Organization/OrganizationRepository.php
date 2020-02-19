@@ -62,6 +62,23 @@ class OrganizationRepository
     }
 
     /**
+     * @param $nameorga
+     * @return Organization|null
+     * @throws Exception
+     */
+    public function findOneByName($nameorga)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM organization WHERE name = :name');
+        $stmt->bindValue(':name', $nameorga, PDO::PARAM_STR);
+        $stmt->execute();
+        $rawOrganization = $stmt->fetch(PDO::FETCH_OBJ);
+        if (!$rawOrganization){
+            return null;
+        }
+        return $this->organizationHydrator->hydrateObj($rawOrganization);
+    }
+
+    /**
      * @param int $organizationId
      */
     public function delete(int $organizationId)
