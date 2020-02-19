@@ -22,7 +22,8 @@ $users = $userRepository->fetchAll();
         <td>Firstname</td>
         <td>Lastname</td>
         <td>Age</td>
-        <td>ok</td>
+        <td>Pseudo</td>
+        <td>e-mail</td>
         </thead>
         <?php /** @var \User\User $user */
         foreach ($users as $user) : ?>
@@ -31,7 +32,8 @@ $users = $userRepository->fetchAll();
                 <td><?php echo $user->getFirstname() ?></td>
                 <td><?php echo $user->getLastname() ?></td>
                 <td><?php echo $user->getAge() ?> years</td>
-                <td>ok</td>
+                <td><?php echo $user->getPseudo() ?></td>
+                <td><?php echo $user->getMail() ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

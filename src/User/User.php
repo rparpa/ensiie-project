@@ -1,27 +1,72 @@
 <?php
 namespace User;
 
+use DateTimeInterface;
+use Exception;
+
 class User
 {
     /**
      * @var int
      */
-    private $id;
+    private int $id;
 
     /**
      * @var string
      */
-    private $firstname;
+    private string $pseudo;
 
     /**
      * @var string
      */
-    private $lastname;
+    private string $firstname;
 
     /**
-     * @var \DateTimeInterface
+     * @var string
      */
-    private $birthday;
+    private string $lastname;
+
+    /**
+     * @var DateTimeInterface
+     */
+    private DateTimeInterface $birthday;
+
+    /**
+     * @var string
+     */
+    private string $mail;
+
+    /**
+     * @return string
+     */
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param $mail
+     * @return User
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+        return $this;
+    }
 
     /**
      * @return int
@@ -78,18 +123,18 @@ class User
     }
 
     /**
-     * @return \DateTimeInterface
+     * @return DateTimeInterface
      */
-    public function getBirthday(): \DateTimeInterface
+    public function getBirthday(): DateTimeInterface
     {
         return $this->birthday;
     }
 
     /**
-     * @param \DateTimeInterface $birthday
+     * @param DateTimeInterface $birthday
      * @return User
      */
-    public function setBirthday(\DateTimeInterface $birthday)
+    public function setBirthday(DateTimeInterface $birthday)
     {
         $this->birthday = $birthday;
         return $this;
@@ -98,7 +143,7 @@ class User
 
     /**
      * @return int
-     * @throws \Exception
+     * @throws Exception
      */
     public function getAge(): int
     {

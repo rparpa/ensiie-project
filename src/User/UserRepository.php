@@ -1,5 +1,6 @@
 <?php
 namespace User;
+use DateTimeImmutable;
 use PDO;
 
 class UserRepository
@@ -32,7 +33,9 @@ class UserRepository
                 ->setId($row->id)
                 ->setFirstname($row->firstname)
                 ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
+                ->setBirthday(new DateTimeImmutable($row->birthday))
+                ->setPseudo($row->pseudo)
+                ->setMail($row->mail);
 
             $users[] = $user;
         }
