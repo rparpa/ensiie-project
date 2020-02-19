@@ -14,6 +14,14 @@ class Organization
     private DateTimeInterface $creationdate;
 
     /**
+     * @return string
+     */
+    public function getTable(): string
+    {
+        return "organization";
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
