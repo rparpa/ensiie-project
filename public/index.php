@@ -20,9 +20,8 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-								<h1>Dimension</h1>
-								<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a> and released<br />
-								for free under the <a href="https://html5up.net/license">Creative Commons</a> license.</p>
+								<h1>La SandwicherIIE</h1>
+								<p>L'association Sandwiche de l'ENSIIE, commendez votre menu avec nous</p>
 							</div>
 						</div>
 						<nav>
