@@ -1,19 +1,5 @@
 <?php
 
-use Db\Connection;
-use Message\MessageHydrator;
-use Message\MessageRepository;
-use User\UserHydrator;
-use User\UserRepository;
-
-$messageHydrator = new MessageHydrator();
-$messageRepository =
-    new MessageRepository(Connection::get(), $messageHydrator);
-
-$userHydrator = new UserHydrator();
-$userRepository =
-    new UserRepository(Connection::get(), $userHydrator);
-
 ?>
 
 <form action="chat.php" method="post">
@@ -26,16 +12,18 @@ $userRepository =
     <?php } ?>
 </form>
 
-<table class="table">
-<?php
-$messages = $messageRepository->fetchAll();
-foreach (array_reverse($messages) as $message) {
-    ?>
-    <tr>
-        <td> <?php  echo $userRepository->findOneById($message->getIduser())->getUsername()?></td>
-        <td> <?php echo $message->getMessage(); ?> </td>
-    </tr>
-    <?php
-}
-?>
+
+
+<table class="table" id="infos">
+    <?php include_once 'refresh_chat.php' ?>
 </table>
+
+<script type="text/javascript">
+    function autoRefresh_div()
+    {
+        console.log(
+        $("table#infos").load('refresh_chat.php'));
+    }
+
+    setInterval('autoRefresh_div()', 5000); // refresh tab after 5 secs
+</script>
