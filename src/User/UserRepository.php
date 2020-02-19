@@ -37,15 +37,26 @@ class UserRepository
         $users = [];
         foreach ($rows as $row) {
             $user = $this->userHydrator->hydrateObj($row);
-//            $rowmeetings = $this->connection->query(
-//                'SELECT idmeeting FROM usermeeting WHERE iduser = ' + $user->getId())->fetchAll(PDO::FETCH_OBJ);
-//            foreach ($rowmeetings as $rowmeeting){
-//               $array[] = $rowmeeting->idmeeting;
-//            }
-//            $user->setMeetings($array);
             $users[] = $user;
         }
 
+        return $users;
+    }
+
+    public function fetchByOrganization(int $orgId)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN "userorganization" WHERE idorganization = :idorg');
+        $stmt->bindValue(':idorg', $orgId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $users = [];
+        foreach ($rows as $row) {
+            $users[] = [
+                "user" => $this->userHydrator->hydrateObj($row),
+                "role" => $row->role,
+                "date" => $row->date
+            ];
+        }
         return $users;
     }
 

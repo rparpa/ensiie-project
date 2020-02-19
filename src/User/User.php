@@ -19,10 +19,6 @@ class User
 
     private DateTimeInterface $creationdate;
 
-    private array $task;
-
-    private array $meetings;
-
     /**
      * @return int
      */

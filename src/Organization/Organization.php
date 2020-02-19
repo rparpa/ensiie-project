@@ -12,7 +12,7 @@ class Organization
     private int $id;
     private string $name;
     private DateTimeInterface $creationdate;
-
+    
     /**
      * @return string
      */
