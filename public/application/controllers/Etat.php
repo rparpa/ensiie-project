@@ -1,19 +1,24 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Utilisateur extends CI_Controller
+/**
+ * Created by PhpStorm.
+ * User: standard
+ * Date: 19/02/20
+ * Time: 00:45
+ */
+class Etat extends CI_Controller
 {
     /**
-     * Lists all Utilisateur models.
+     * Lists all Etat models.
      * @return mixed
      */
 
     public function index()
-	{
-        
-	}
+    {
+
+    }
     /**
-     * Displays a single Utilisateur model.
+     * Displays a single Etat model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -25,7 +30,7 @@ class Utilisateur extends CI_Controller
     }
 
     /**
-     * Creates a new Utilisateur model.
+     * Creates a new Etat model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -36,7 +41,7 @@ class Utilisateur extends CI_Controller
     }
 
     /**
-     * Updates an existing Utilisateur model.
+     * Updates an existing Etat model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -49,7 +54,7 @@ class Utilisateur extends CI_Controller
     }
 
     /**
-     * Deletes an existing Utilisateur model.
+     * Deletes an existing Etat model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed

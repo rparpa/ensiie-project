@@ -1,8 +1,7 @@
 <?php
 
-class Utilisateur_model extends CI_Model
+class Etat_model extends CI_Model
 {
-
     public function insert()
     {
 
@@ -18,12 +17,12 @@ class Utilisateur_model extends CI_Model
 
     }
 
-    public function getAllUser()
+    public function getAllEtat()
     {
 
-        
+
     }
-    public function getUser()
+    public function getEtat()
     {
 
     }

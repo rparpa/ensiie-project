@@ -1,12 +1,11 @@
 <?php
 
-class Utilisateur_model extends CI_Model
+class Categorie_model extends CI_Model
+{
+    public function insert()
 {
 
-    public function insert()
-    {
-
-    }
+}
 
     public function delete()
     {
@@ -18,12 +17,12 @@ class Utilisateur_model extends CI_Model
 
     }
 
-    public function getAllUser()
+    public function getAllCategorie()
     {
 
-        
+
     }
-    public function getUser()
+    public function getCategorie()
     {
 
     }

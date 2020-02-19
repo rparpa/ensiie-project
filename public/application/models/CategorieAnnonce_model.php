@@ -1,6 +1,6 @@
 <?php
 
-class Utilisateur_model extends CI_Model
+class CategorieAnnonce_model extends CI_Model
 {
 
     public function insert()
@@ -18,12 +18,12 @@ class Utilisateur_model extends CI_Model
 
     }
 
-    public function getAllUser()
+    public function getAllCategorieAnnonce()
     {
 
-        
+
     }
-    public function getUser()
+    public function getCategorieAnnonce()
     {
 
     }
