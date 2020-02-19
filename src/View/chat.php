@@ -22,8 +22,7 @@
 <script type="text/javascript">
     function autoRefresh_div()
     {
-        console.log(
-        $("table#infos").load('refresh_chat.php'));
+        $("table#infos").load('refresh_chat.php');
     }
 
     setInterval('autoRefresh_div()', 5000); // refresh tab after 5 secs
