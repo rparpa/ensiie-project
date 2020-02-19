@@ -52,14 +52,16 @@ class MeetingRepository
         $stmt = $this->connection->prepare('SELECT * FROM "meeting" JOIN "usermeeting" ON (meeting.id=usermeeting.idmeeting) WHERE iduser = :iduser');
         $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
         $stmt->execute();
-        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $rows = $stmt->fetch(PDO::FETCH_OBJ);
         $meetings = [];
-        foreach ($rows as $row) {
-            $meetings[] = [
-                "meeting" => $this->meetingHydrator->hydrateObj($row),
-                "role" => $row->role,
-                "date" => $row->date
-            ];
+        if ($rows) {
+            foreach ($rows as $row) {
+                $meetings[] = [
+                    "meeting" => $this->meetingHydrator->hydrateObj($row),
+                    "role" => $row->role,
+                    "date" => $row->date
+                ];
+            }
         }
         return $meetings;
     }
@@ -86,7 +88,7 @@ class MeetingRepository
         $stmt = $this->connection->prepare(
             'DELETE FROM meeting WHERE id = :id'
         );
-        $stmt->bindValue(':id',$meetingId,PDO::PARAM_INT);
+        $stmt->bindValue(':id', $meetingId, PDO::PARAM_INT);
         $stmt->execute();
     }
 
@@ -106,14 +108,13 @@ class MeetingRepository
             VALUES (:source, :idsource, :name, :place, :description, :creationdate)'
         );
 
-        $stmt->bindValue(':source', $source,PDO::PARAM_STR);
-        $stmt->bindValue(':idsource', $idsource,PDO::PARAM_INT);
-        $stmt->bindValue(':name', $name,PDO::PARAM_STR);
-        $stmt->bindValue(':place', $place,PDO::PARAM_STR);
-        $stmt->bindValue(':description', $description,PDO::PARAM_STR);
-        $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
+        $stmt->bindValue(':source', $source, PDO::PARAM_STR);
+        $stmt->bindValue(':idsource', $idsource, PDO::PARAM_INT);
+        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':place', $place, PDO::PARAM_STR);
+        $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+        $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"), PDO::PARAM_STR);
         $stmt->execute();
-
     }
 
     /**
@@ -136,13 +137,12 @@ class MeetingRepository
                    WHERE id = :id'
         );
 
-        $stmt->bindValue(':source', $source,PDO::PARAM_STR);
-        $stmt->bindValue(':idsource', $idsource,PDO::PARAM_INT);
-        $stmt->bindValue(':name', $name,PDO::PARAM_STR);
-        $stmt->bindValue(':place', $place,PDO::PARAM_STR);
-        $stmt->bindValue(':description', $description,PDO::PARAM_STR);
-        $stmt->bindValue(':id', $id,PDO::PARAM_INT);
+        $stmt->bindValue(':source', $source, PDO::PARAM_STR);
+        $stmt->bindValue(':idsource', $idsource, PDO::PARAM_INT);
+        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':place', $place, PDO::PARAM_STR);
+        $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-
     }
 }
