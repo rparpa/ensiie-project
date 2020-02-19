@@ -1,3 +1,6 @@
+.*
+!/.gitignore
+!/.travis.yml
 postgres-data
 .idea/
 vendor
