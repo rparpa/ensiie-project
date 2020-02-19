@@ -4,6 +4,7 @@
 namespace Meeting;
 
 
+use DateTimeInterface;
 use Exception;
 use PDO;
 
@@ -73,25 +74,57 @@ class MeetingRepository
     }
 
     /**
+     * @param string $source
+     * @param int $idsource
      * @param string $name
      * @param string $place
      * @param string $description
      * @param DateTimeInterface $creationdate
      */
-    public function insert(string $name, string $place, string $description, DateTimeInterface $creationdate)
+    public function insert(string $source, int $idsource, string $name, string $place, string $description, DateTimeInterface $creationdate)
     {
         //TODO Confirmer la provenance des entrées pour l'insert
         $stmt = $this->connection->prepare(
-            'INSERT INTO meeting (source, idsource, "name", place, description, creationdate) 
-            VALUES (:source, :idsource, ":name", :place, :description, :creationdate)'
+            'INSERT INTO meeting (source, idsource, name, place, description, creationdate) 
+            VALUES (:source, :idsource, :name, :place, :description, :creationdate)'
         );
 
-//        $stmt->bindValue(':source', ,PDO::PARAM_INT);
-//        $stmt->bindValue(':idsource', ,PDO::PARAM_INT);
+        $stmt->bindValue(':source', $source,PDO::PARAM_STR);
+        $stmt->bindValue(':idsource', $idsource,PDO::PARAM_INT);
         $stmt->bindValue(':name', $name,PDO::PARAM_STR);
         $stmt->bindValue(':place', $place,PDO::PARAM_STR);
         $stmt->bindValue(':description', $description,PDO::PARAM_STR);
         $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
+        $stmt->execute();
+
+    }
+
+    /**
+     * @param int $id
+     * @param string $source
+     * @param int $idsource
+     * @param string $name
+     * @param string $place
+     * @param string $description
+     */
+    public function update(int $id, string $source, int $idsource, string $name, string $place, string $description)
+    {
+        $stmt = $this->connection->prepare(
+            'UPDATE meeting SET 
+                   source = :source, 
+                   idsource = :idsource, 
+                   name = :name, 
+                   place = :place, 
+                   description = :description
+                   WHERE id = :id'
+        );
+
+        $stmt->bindValue(':source', $source,PDO::PARAM_STR);
+        $stmt->bindValue(':idsource', $idsource,PDO::PARAM_INT);
+        $stmt->bindValue(':name', $name,PDO::PARAM_STR);
+        $stmt->bindValue(':place', $place,PDO::PARAM_STR);
+        $stmt->bindValue(':description', $description,PDO::PARAM_STR);
+        $stmt->bindValue(':id', $id,PDO::PARAM_INT);
         $stmt->execute();
 
     }
