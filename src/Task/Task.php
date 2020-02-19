@@ -13,7 +13,7 @@ class Task
     private int $idassignee;
     private int $idproject;
 
-    **
+    /**
      * @return int
      */
     public function getId(): int
@@ -31,7 +31,7 @@ class Task
         return $this;
     }
 
-    **
+    /**
      * @return string
      */
     public function getTitle(): string
@@ -49,7 +49,7 @@ class Task
         return $this;
     }
 
-    **
+    /**
      * @return string
      */
     public function getContent(): string
@@ -67,7 +67,7 @@ class Task
         return $this;
     }
 
-    **
+    /**
      * @return DateTimeInterface
      */
     public function getCreationdate(): DateTimeInterface
@@ -85,7 +85,7 @@ class Task
         return $this;
     }
 
-    **
+    /**
      * @return string
      */
     public function getState(): string
@@ -103,7 +103,7 @@ class Task
         return $this;
     }
 
-    **
+    /**
      * @return int
      */
     public function getIdcreator(): int
@@ -121,7 +121,7 @@ class Task
         return $this;
     }
 
-    **
+    /**
      * @return int
      */
     public function getIdassignee(): int
@@ -139,7 +139,7 @@ class Task
         return $this;
     }
 
-    **
+    /**
      * @return int
      */
     public function getIdproject(): int

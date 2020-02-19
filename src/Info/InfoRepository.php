@@ -77,17 +77,18 @@ class InfoRepository
      * @param string $title
      * @param string $content
      * @param DateTimeInterface $creationdate
+     * @param Object $source
      */
-    public function insert(User $creator, string $title, string $content, DateTimeInterface $creationdate)
+    public function insert(User $creator, string $title, string $content, DateTimeInterface $creationdate, Object $source)
     {
-        //TODO Confirmer la provenance des entrées pour l'insert
+        
         $stmt = $this->connection->prepare(
             'INSERT INTO info (source, idsource, idcreator, title, content, creationdate) 
             VALUES (:source, :idsource, :idcreator, :title, :content, :creationdate)'
         );
 
-//        $stmt->bindValue(':source', ,PDO::PARAM_INT);
-//        $stmt->bindValue(':idsource', ,PDO::PARAM_INT);
+        $stmt->bindValue(':source', $source->getTable(),PDO::PARAM_INT);
+        $stmt->bindValue(':idsource', $source->getId(),PDO::PARAM_INT);
         $stmt->bindValue(':idcreator', $creator->getId(),PDO::PARAM_INT);
         $stmt->bindValue(':title', $title,PDO::PARAM_STR);
         $stmt->bindValue(':content', $content,PDO::PARAM_STR);
