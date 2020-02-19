@@ -3,6 +3,7 @@
 require_once '../src/Bootstrap.php';
 
 $userRepository = new \User\UserRepository(\Db\Connection::get());
+$userService = new \User\UserService($userRepository);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -13,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $newUser->setPseudo($_POST["pseudo"]);
     $newUser->setMail($_POST["mail"]);
 
-    $userRepository->createUser($newUser);
+    $userService->createUser($newUser);
 }
 
-$users = $userRepository->fetchAll();
+$users = $userService->getAllUser();
 ?>
 
 <html>

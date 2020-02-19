@@ -58,6 +58,18 @@ class UserRepository
         }
     }
 
+    public function deleteUser(User $userToDelete)
+    {
+        $query = $this->connection->prepare('DELETE FROM "user" WHERE id = :id');
+        $query->bindValue(':id', $userToDelete->getId());
+        $result = $query->execute();
+        if ($result == false)
+        {
+            $query->errorInfo();
+        }
+        return $result;
+    }
+
 
 
 }
