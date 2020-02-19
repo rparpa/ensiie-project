@@ -1,0 +1,26 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install
+      run: |
+        export DOCKER_USER_ID=$(id -u)
+        make install
+      env:
+        DOCKER_USER: ENSIIE
+        NGINX_PORT: 8080
+        SERVER_NAME: php-docker.local
+        PHP_ADDRESS: php
+        TIMEZONE: 'Europe/Paris'
+        DB_USER: ensiie
+        DB_PASSWORD: ensiie
+        DB_PORT_EXTERNAL: 5431
+    - name: Run phpunit test
+      run: make phpunit.run
