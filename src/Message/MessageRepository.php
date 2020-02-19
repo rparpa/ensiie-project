@@ -95,19 +95,19 @@ class MessageRepository
     /**
      * @param User $user
      * @param string $message
+     * @param Object $source
      * @param DateTimeInterface $creationdate
      */
-    public function insert(User $user, string $source, int $idsoure,  string $message, DateTimeInterface $creationdate)
+    public function insert(User $user, Object $source, string $message, DateTimeInterface $creationdate)
     {
-        //TODO Confirmer la provenance des entrées pour l'insert
         $stmt = $this->connection->prepare(
             'INSERT INTO message (iduser, source, idsource, message, creationdate) 
             VALUES (:iduser, :source, :idsource, :message, :creationdate)'
         );
 
         $stmt->bindValue(':iduser', $user->getId(),PDO::PARAM_INT);
-        $stmt->bindValue(':source', $source,PDO::PARAM_STR);
-        $stmt->bindValue(':idsource', $idsoure,PDO::PARAM_INT);
+        $stmt->bindValue(':source', $source->getTable(),PDO::PARAM_STR);
+        $stmt->bindValue(':idsource', $source->getId(),PDO::PARAM_INT);
         $stmt->bindValue(':message', $message,PDO::PARAM_STR);
         $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
         $stmt->execute();

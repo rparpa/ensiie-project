@@ -87,7 +87,7 @@ class InfoRepository
             VALUES (:source, :idsource, :idcreator, :title, :content, :creationdate)'
         );
 
-        $stmt->bindValue(':source', $source->getTable(),PDO::PARAM_INT);
+        $stmt->bindValue(':source', $source->getTable(),PDO::PARAM_STR);
         $stmt->bindValue(':idsource', $source->getId(),PDO::PARAM_INT);
         $stmt->bindValue(':idcreator', $creator->getId(),PDO::PARAM_INT);
         $stmt->bindValue(':title', $title,PDO::PARAM_STR);
