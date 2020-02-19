@@ -36,7 +36,7 @@ $user = $authenticatorService->getCurrentUser();
             </li>
         <?php else: ?>
             <li class="link-header-item">
-                Bienvenue <?= $user->getUsername() ?>
+                Bienvenue <a class="link-header-item-a" href="profil.php"><?= $user->getUsername() ?></a>
             </li>
             <li class="link-header-item">
                 <a class="link-header-item-a" href="logout.php">Logout</a>
