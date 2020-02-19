@@ -45,7 +45,7 @@ class UserRepository
 
     public function fetchByOrganization(int $orgId)
     {
-        $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN "userorganization" WHERE idorganization = :idorg');
+        $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN "userorganization" ON (user.id=userorganization.iduser) WHERE idorganization = :idorg');
         $stmt->bindValue(':idorg', $orgId, PDO::PARAM_INT);
         $stmt->execute();
         $rows=$stmt->fetch(PDO::FETCH_OBJ);
