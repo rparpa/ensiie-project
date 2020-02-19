@@ -52,7 +52,7 @@ class UserRepository
         $users = [];
         foreach ($rows as $row) {
             $users[] = [
-                "user" => $this->userHydrator->hydrateObj($row)
+                "user" => $this->userHydrator->hydrateObj($row),
                 "role" => $row->role,
                 "date" => $row->date
             ];
