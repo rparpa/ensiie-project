@@ -49,7 +49,7 @@ class MeetingRepository
 
     public function fetchByUser(int $userId)
     {
-        $stmt = $this->connection->prepare('SELECT * FROM "meeting" JOIN "usermeeting" WHERE iduser = :iduser');
+        $stmt = $this->connection->prepare('SELECT * FROM "meeting" JOIN "usermeeting" ON (meeting.id=usermeeting.idmeeting) WHERE iduser = :iduser');
         $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $rows=$stmt->fetch(PDO::FETCH_OBJ);
