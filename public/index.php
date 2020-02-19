@@ -11,14 +11,26 @@ require_once '../src/Bootstrap.php';
 <body>
 
 <div class="container">
-    <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
+    <h3><?php echo 'Insérer Header' ?></h3>
     <?php
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listUsers') {
             $userController = new \User\UserController(\Db\Connection::get());
             $users = $userController->listUsers();
-        } else if ($_GET['action'] == 'post') {
-            // TODO   
+        } else if ($_GET['action'] == 'connect') {
+            $connexionController = new \Connexion\ConnexionController(\Db\Connection::get());
+            if(isset($_POST["email"])) {
+                $connexionController->identification($_POST);
+            } else {
+                $connexionController->afficheFormulaire();
+            }
+        } else if ($_GET['action'] == 'register') {
+            $registerController = new \Register\RegisterController(\Db\Connection::get());
+            if(isset($_POST["email"])) {
+                $registerController->enregistrement($_POST);
+            } else {
+                $registerController->afficheFormulaire();
+            }
         }
     } else {
         $userController = new \User\UserController(\Db\Connection::get());
