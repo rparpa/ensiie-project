@@ -26,6 +26,14 @@ class Project
     private DateTimeInterface $creationdate;
 
     /**
+     * @return string
+     */
+    public function getTable(): string
+    {
+        return "project";
+    }
+
+    /**
      * @return int
      */
     public function getId(): int

@@ -4,12 +4,22 @@
 namespace Organization;
 
 
+use DateTimeInterface;
+
 class Organization
 {
 
     private int $id;
     private string $name;
     private DateTimeInterface $creationdate;
+
+    /**
+     * @return string
+     */
+    public function getTable(): string
+    {
+        return "organization";
+    }
 
     /**
      * @return int
@@ -38,7 +48,7 @@ class Organization
     }
 
     /**
-     * @param int $name
+     * @param string $name
      * @return Organization;
      */
     public function setName(string $name): Organization

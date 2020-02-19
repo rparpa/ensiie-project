@@ -96,4 +96,33 @@ class TaskRepository
         $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
         $stmt->execute();
     }
+
+    /**
+     * @param int $id
+     * @param User $creator
+     * @param User $assignee
+     * @param string $title
+     * @param string $content
+     * @param string $state
+     */
+    public function update(int $id, User $creator, User $assignee, string $title, string $content, string $state)
+    {
+        $stmt = $this->connection->prepare(
+            'UPDATE task SET
+                idcreator = :idcreator, 
+                idassignee = :idassignee, 
+                title = :title, 
+                content = :content, 
+                state = :state
+                WHERE id = :id'
+        );
+
+        $stmt->bindValue(':idcreator', $creator->getId(),PDO::PARAM_INT);
+        $stmt->bindValue(':idassignee', $assignee->getId(),PDO::PARAM_INT);
+        $stmt->bindValue(':title', $title,PDO::PARAM_STR);
+        $stmt->bindValue(':content', $content,PDO::PARAM_STR);
+        $stmt->bindValue(':state', $state,PDO::PARAM_STR);
+        $stmt->bindValue(':id', $id,PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

@@ -44,6 +44,14 @@ class Meeting
     private DateTimeInterface $creationdate;
 
     /**
+     * @return string
+     */
+    public function getTable(): string
+    {
+        return "meeting";
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
