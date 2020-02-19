@@ -4,6 +4,8 @@
 namespace Organization;
 
 
+use DateTimeInterface;
+
 class Organization
 {
 
@@ -38,7 +40,7 @@ class Organization
     }
 
     /**
-     * @param int $name
+     * @param string $name
      * @return Organization;
      */
     public function setName(string $name): Organization
