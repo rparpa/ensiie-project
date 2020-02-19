@@ -1,13 +1,25 @@
-<html>
+<html><body>
+<div id="mapdiv"></div>
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script>
+  map = new OpenLayers.Map("mapdiv");
+  map.addLayer(new OpenLayers.Layer.OSM());
 
-<head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
 
-<body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-</body>
+  let coord = [[-0.1279688 ,51.5077286], [2.366808697896359,
+    48.82982789622593]] ;
+  var markers = new OpenLayers.Layer.Markers( "Markers" );
+  map.addLayer(markers);
 
-</html>
+  for (i of coord) {
+    var lonLat = new OpenLayers.LonLat(i)
+            .transform(
+                    new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                    map.getProjectionObject() // to Spherical Mercator Projection
+            );
+    markers.addMarker(new OpenLayers.Marker(lonLat));
+  }
+  var zoom=16;
+  map.setCenter (lonLat, zoom);
+</script>
+</body></html>
