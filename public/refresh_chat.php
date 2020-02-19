@@ -15,7 +15,7 @@ $userHydrator = new UserHydrator();
 $userRepository =
     new UserRepository(Connection::get(), $userHydrator);
 
-$messages = $messageRepository->fetchAll();
+$messages = $messageRepository->fetchForChat();
 foreach (array_reverse($messages) as $message) {
     ?>
     <tr>

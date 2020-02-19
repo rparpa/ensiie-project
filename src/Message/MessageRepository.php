@@ -47,6 +47,22 @@ class MessageRepository
     }
 
     /**
+     * @return array
+     * @throws Exception
+     */
+    public function fetchForChat()
+    {
+        $rows = $this->connection->query('SELECT * FROM message ORDER BY id DESC LIMIT 20')->fetchAll(PDO::FETCH_OBJ);
+        $messages = [];
+        foreach ($rows as $row) {
+            $message = $this->messageHydrator->hydrateObj($row);
+            $messages[] = $message;
+        }
+
+        return $messages;
+    }
+
+    /**
      * @param $messageId
      * @return Message
      * @throws Exception
