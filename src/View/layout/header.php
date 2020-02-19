@@ -24,6 +24,13 @@ $user = $authenticatorService->getCurrentUser();
         <li class="link-header-item">
             <a class="link-header-item-a" href="about.php">About</a>
         </li>
+        
+        <?php if ($authenticatorService->isAuthenticated()) ?>
+        <li class="link-header-item">
+            <a class="link-header-item-a" href="userhome.php">Vos_projets</a>
+        </li>
+        
+
     </ul>
 
     <ul class="link-header-container">

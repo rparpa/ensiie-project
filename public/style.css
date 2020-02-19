@@ -49,6 +49,35 @@ body {
   background-color: #ddd;
 }
 
+
+.project_navigation_button {
+  width: 700px;
+  height: 50px;
+  text-align: center;
+}
+
+.button_style {
+  padding: 10px;
+  width: 200px;
+  background-color: darkseagreen;
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+}
+
+.organisation_navigation_button {
+  width: 700px;
+  height: 50px;
+  text-align: center;
+  display: inline-block;
+}
 .chat{
   min-height: 70vh;
   max-height: 70vh;
