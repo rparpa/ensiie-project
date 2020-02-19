@@ -13,7 +13,7 @@ else{
 ?>
 
 <form novalidate method="post" onsubmit="return verif()" action="addorupdateuser.php">
-    <input type="hidden" value=<?php echo $user?$user->getId():'' ?> name="id">
+    <input type="hidden" value="<?php echo $user?$user->getId():'' ?>" name="id">
     <p>
         <label for="username">
             <span>Username :</span>
