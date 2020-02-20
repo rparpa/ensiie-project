@@ -1,14 +1,20 @@
-version: '3'
+version: '3.7'
 services:
   nodejs:
     build: ./.docker/nodejs
-    networks:
-      - "ensiie"
+    expose:
+      - "3000"
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: development
+      PORT: "3000"
     ports:
        - "3000:3000"
+    network_mode: host
     volumes: 
       - "./:/usr/src/app/"
-
+    
   postgres:
     build:
       context: ./.docker/postgres
@@ -21,9 +27,3 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
       - .:/var/www/html
     working_dir: /var/www/html
-    networks:
-      - "ensiie"
-
-networks:
-    ensiie:
-        driver: bridge
