@@ -76,6 +76,8 @@ if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
     }
 
     function showform() {
+        document.getElementById('name').value = "";
+        document.getElementById('id').value = "";
         document.getElementById('formulaire').style.display = "block";
     };
 
