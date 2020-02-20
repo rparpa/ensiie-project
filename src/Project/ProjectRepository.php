@@ -48,7 +48,7 @@ class ProjectRepository
 
     /**
      * @param $projectId
-     * @return Project
+     * @return Project|null
      * @throws Exception
      */
     public function findOneById($projectId)
@@ -57,6 +57,26 @@ class ProjectRepository
         $stmt->bindValue(':id', $projectId, PDO::PARAM_INT);
         $stmt->execute();
         $rawProject = $stmt->fetch(PDO::FETCH_OBJ);
+        if (!$rawProject){
+            return null;
+        }
+        return $this->projectHydrator->hydrateObj($rawProject);
+    }
+
+    /**
+     * @param $projectName
+     * @return Project|null
+     * @throws Exception
+     */
+    public function findOneByName($projectName)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM project WHERE name = :name');
+        $stmt->bindValue(':name', $projectName, PDO::PARAM_STR);
+        $stmt->execute();
+        $rawProject = $stmt->fetch(PDO::FETCH_OBJ);
+        if (!$rawProject){
+            return null;
+        }
         return $this->projectHydrator->hydrateObj($rawProject);
     }
 
@@ -87,7 +107,7 @@ class ProjectRepository
         $stmt->bindValue(':name', $name,PDO::PARAM_STR);
         $stmt->bindValue(':idorganization', $organization->getId(),PDO::PARAM_INT);
         $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
-        $stmt->execute();
+        $res = $stmt->execute();
     }
 
     /**
