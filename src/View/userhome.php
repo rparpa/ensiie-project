@@ -37,7 +37,7 @@ require_once '../src/Bootstrap.php';
     <div class="row" >
         <div class="col" align="center" style="padding: 1em;">
             <form>
-                <button class="button_style" type="button">Projet où je participe</button>
+                <button class="button_style" type="submit" formaction="myproject.php">Projet où je participe</button>
             </form>
         </div>
         <div class="col" align="center" style="padding: 1em;">

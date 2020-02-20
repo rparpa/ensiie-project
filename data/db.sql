@@ -189,6 +189,12 @@ VALUES ('JD', 'John', 'Doe', 'j.d@hl.com', 'JD', '1967-11-22');
 INSERT INTO organization(name, creationdate)
 VALUES ('Ile Mysterieuse', '2019-12-20');
 
+INSERT INTO project
+VALUES(1, 'NewProject', 1, '2020-02-20');
+
+INSERT INTO project
+VALUES(2, 'NewProject2', 1, '2020-02-20');
+
 INSERT INTO message( iduser, source, message, creationdate, idsource)
 VALUES (1, 'organization', 'Le premier message.', '2020-02-16', 1);
 
@@ -199,5 +205,11 @@ INSERT INTO meeting(source, idsource, name, place, creationdate, description)
 VALUES ('organization', 1, 'Coucou cest nous', 'chez ta maman', '2020-02-17', 'Un peu de mousse ?');
 
 INSERT INTO userorganization
-VALUES(1,1,'Big Boss','2000-04-01');
+VALUES(1, 1,'Big Boss','2000-04-01');
+
+INSERT INTO userproject
+VALUES(1, 1, 'Larbin', '2020-02-20');
+
+INSERT INTO userproject
+VALUES(1, 2, 'Scripteur', '2020-02-20');
 
