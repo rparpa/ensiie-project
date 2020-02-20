@@ -12,5 +12,8 @@ before_install:
   - make install
 
 script:
+
+
  - cd $TEST_DIR && npm install && npm test
+
 
