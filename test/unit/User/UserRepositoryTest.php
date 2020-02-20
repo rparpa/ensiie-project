@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class UserRepositoryTest extends TestCase
 {
-    private Object_ $data, $data2;
+    private Object $data, $data2;
 
     private User $user, $user2;
 
@@ -102,7 +102,6 @@ class UserRepositoryTest extends TestCase
 
         $hydrator = new UserHydrator();
         $repository = new UserRepository($pdoMock, $hydrator);
-        var_dump(sizeof($repository->fetchAll()));
         self::assertEquals(2,sizeof($repository->fetchAll()));
     }
 
