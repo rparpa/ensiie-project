@@ -1,60 +1,29 @@
 {
 	"info": {
-		"_postman_id": "7825f743-8b59-486c-8521-a5fad710b7d6",
-		"name": "web-parking",
+		"_postman_id": "abc2c1af-4070-408c-b4c7-c640e735a3b6",
+		"name": "ParkTonChar",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Get API infos",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "6d07fed4-8487-4a8c-89b7-234bb1e4876e",
-						"exec": [
-							"pm.globals.set('url', 'https://opendata.paris.fr/api/datasets/1.0/')"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
+			"name": "Get motorycles spot places",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/stationnement-voie-publique-emplacements",
+					"raw": "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&facet=regpri&facet=regpar&facet=typsta&facet=arrond&refine.regpar=Motos",
+					"protocol": "https",
 					"host": [
-						"{{url}}"
+						"opendata",
+						"paris",
+						"fr"
 					],
 					"path": [
-						"stationnement-voie-publique-emplacements"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get liste parking moto",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "6d07fed4-8487-4a8c-89b7-234bb1e4876e",
-						"exec": [
-							"pm.globals.set('url', 'https://opendata.paris.fr/api/records/1.0/search')"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}?dataset=stationnement-voie-publique-emplacements&regpar=\"Motos\"",
-					"host": [
-						"{{url}}"
+						"api",
+						"records",
+						"1.0",
+						"search",
+						""
 					],
 					"query": [
 						{
@@ -62,8 +31,221 @@
 							"value": "stationnement-voie-publique-emplacements"
 						},
 						{
-							"key": "regpar",
-							"value": "\"Motos\""
+							"key": "facet",
+							"value": "regpri"
+						},
+						{
+							"key": "facet",
+							"value": "regpar"
+						},
+						{
+							"key": "facet",
+							"value": "typsta"
+						},
+						{
+							"key": "facet",
+							"value": "arrond"
+						},
+						{
+							"key": "refine.regpar",
+							"value": "Motos"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all spot places",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&facet=regpri&facet=regpar&facet=typsta&facet=arrond",
+					"protocol": "https",
+					"host": [
+						"opendata",
+						"paris",
+						"fr"
+					],
+					"path": [
+						"api",
+						"records",
+						"1.0",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "dataset",
+							"value": "stationnement-voie-publique-emplacements"
+						},
+						{
+							"key": "facet",
+							"value": "regpri"
+						},
+						{
+							"key": "facet",
+							"value": "regpar"
+						},
+						{
+							"key": "facet",
+							"value": "typsta"
+						},
+						{
+							"key": "facet",
+							"value": "arrond"
+						}
+					]
+				},
+				"description": "All spot places in dataset"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all cars spot places",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&facet=regpri&facet=regpar&facet=typsta&facet=arrond&refine.regpri=PAYANT+MIXTE",
+					"protocol": "https",
+					"host": [
+						"opendata",
+						"paris",
+						"fr"
+					],
+					"path": [
+						"api",
+						"records",
+						"1.0",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "dataset",
+							"value": "stationnement-voie-publique-emplacements"
+						},
+						{
+							"key": "facet",
+							"value": "regpri"
+						},
+						{
+							"key": "facet",
+							"value": "regpar"
+						},
+						{
+							"key": "facet",
+							"value": "typsta"
+						},
+						{
+							"key": "facet",
+							"value": "arrond"
+						},
+						{
+							"key": "refine.regpri",
+							"value": "PAYANT+MIXTE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all delivery spot places",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&facet=regpri&facet=regpar&facet=typsta&facet=arrond&refine.regpri=LIVRAISON",
+					"protocol": "https",
+					"host": [
+						"opendata",
+						"paris",
+						"fr"
+					],
+					"path": [
+						"api",
+						"records",
+						"1.0",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "dataset",
+							"value": "stationnement-voie-publique-emplacements"
+						},
+						{
+							"key": "facet",
+							"value": "regpri"
+						},
+						{
+							"key": "facet",
+							"value": "regpar"
+						},
+						{
+							"key": "facet",
+							"value": "typsta"
+						},
+						{
+							"key": "facet",
+							"value": "arrond"
+						},
+						{
+							"key": "refine.regpri",
+							"value": "LIVRAISON"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all free spot places",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&facet=regpri&facet=regpar&facet=typsta&facet=arrond&refine.regpri=GRATUIT",
+					"protocol": "https",
+					"host": [
+						"opendata",
+						"paris",
+						"fr"
+					],
+					"path": [
+						"api",
+						"records",
+						"1.0",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "dataset",
+							"value": "stationnement-voie-publique-emplacements"
+						},
+						{
+							"key": "facet",
+							"value": "regpri"
+						},
+						{
+							"key": "facet",
+							"value": "regpar"
+						},
+						{
+							"key": "facet",
+							"value": "typsta"
+						},
+						{
+							"key": "facet",
+							"value": "arrond"
+						},
+						{
+							"key": "refine.regpri",
+							"value": "GRATUIT"
 						}
 					]
 				}
