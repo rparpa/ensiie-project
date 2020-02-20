@@ -3,4 +3,7 @@ postgres-data
 vendor
 composer.lock
 node_modules
-package-lock.jsongit
+package-lock.json
+coverage
+reports
+npm-debug.log
