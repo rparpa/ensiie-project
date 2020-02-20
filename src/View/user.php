@@ -14,6 +14,9 @@ else{
 
 <form novalidate method="post" onsubmit="return verif()" action="addorupdateuser.php">
     <div class="formulaire">
+        <div align="center">
+            <legend>Utilisateur </legend>
+        </div>
         <input type="hidden" value="<?php echo $user?$user->getId():'' ?>" name="id">
         <div align="center">
             <label class="label-lenght-fix" for="username">Username : <em>*</em></label>

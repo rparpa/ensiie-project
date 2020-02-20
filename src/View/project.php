@@ -43,6 +43,9 @@ if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
     <div class="formulaire">
         <input type="hidden" value="" name="id" id="id">
         <div align="center">
+            <legend>Projet </legend>
+        </div>
+        <div align="center">
             <label class="label-lenght-fix" for="name">Name : <em>*</em></label>
             <input type="text"
                    value=""
