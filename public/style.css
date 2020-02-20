@@ -28,8 +28,6 @@ body {
 
 .main {
   width: 100%;
-/*  margin-left: 10px;
-  margin-right: 10px;*/
 }
 
 .main-container {
@@ -82,20 +80,22 @@ body {
   min-height: 70vh;
   max-height: 70vh;
   overflow:scroll;
+  overflow-scrolling: auto;
   border:black 1px solid;
 }
 
 .formulaire{
-  border:black 1px solid;
-  margin: 40vh;
-  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+  margin: 15em 20em 20em;
+  border:2px solid black;
+  -moz-border-radius:7em;
+  -webkit-border-radius:7em;
+  border-radius:10em;
 }
 
 .label-lenght-fix{
-  width: 200px;
+  width: 15em;
   display: inline-block;
   vertical-align: top;
-  margin: 6px;
 }
 
 em {
