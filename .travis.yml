@@ -4,10 +4,16 @@ node_js:
 
 cache: false
 
-#before_install:
-#  - cd back && npm install
-#  - npm run start.ci
+env:
+  - TEST_DIR=back
+  - TEST_DIR=front
+
+before_install:
+  - make install
+
 script:
-  - cd back && npm install && npm test && cd ../front && npm install && npm test
-#script:
-#  - npm run unit.test
+
+
+ - cd $TEST_DIR && npm install && npm test
+
+
