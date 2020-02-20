@@ -5,27 +5,18 @@ use User\User;
 $users = $data["users"];
 ?>
 
-<table class="table table-bordered table-hover table-striped">
-    <thead style="font-weight: bold">
-    <td>#</td>
-    <td>UserName</td>
-    <td>SurName</td>
-    <td>Name</td>
-    <td>Mail</td>
-    <td>Password</td>
-    <td>Date de Creation</td>
-    </thead>
-    <?php /** @var User $user */
-        foreach ($users as $user) : ?>
-    <tr>
-        <td><?php echo $user->getId() ?></td>
-        <td><?php echo $user->getUsername() ?></td>
-        <td><?php echo $user->getSurname() ?></td>
-        <td><?php echo $user->getName() ?></td>
-        <td><?php echo $user->getMail() ?></td>
-        <td><?php echo $user->getPassword() ?></td>
-        <td><?php echo $user->getCreationdate()->format("Y-m-d H:i:s") ?></td>
-    </tr>
-    <?php endforeach; ?>
-
-</table>
+<div class="container" style="padding: 20em" >
+    <div class="row" >
+        <div class="col" >
+            <h1 align="center">Welcome</h1>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col" align="right">
+                <a class="link-header-item-a" href="login.php">Login</a>
+        </div>
+        <div class="col" align="left">
+                <a class="link-header-item-a" href="signup.php">Signup</a>
+        </div>
+    </div>
+</div>

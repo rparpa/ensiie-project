@@ -20,6 +20,7 @@ body {
 
 .link-header-item-a{
   color: black;
+  padding-left:0.5em;
 }
 
 .logo-container {
@@ -55,7 +56,6 @@ body {
 }
 
 .button_style {
-  padding: 10px;
   width: 200px;
   background-color: darkseagreen;
   display:inline-block;
@@ -80,7 +80,7 @@ body {
   min-height: 70vh;
   max-height: 70vh;
   overflow:scroll;
-  overflow-scrolling: auto;
+  overflow-scrolling: revert;
   border:black 1px solid;
 }
 
