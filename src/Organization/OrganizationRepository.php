@@ -44,6 +44,25 @@ class OrganizationRepository
         return $organizations;
     }
 
+    public function fetchByUser(int $userId)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM organization JOIN userorganization ON (organization.id=userorganization.idorganization) WHERE iduser = :iduser');
+        $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $organization = [];
+        if ($rows) {
+            foreach ($rows as $row) {
+                $organization[] = [
+                    "organization" => $this->organizationHydrator->hydrateObj($row),
+                    "role" => $row->role,
+                    "date" => $row->date
+                ];
+            }
+        }
+        return $organization;
+    }
+
     /**
      * @param $organizationId
      * @return Organization

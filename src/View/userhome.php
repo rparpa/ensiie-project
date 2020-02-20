@@ -21,28 +21,32 @@ $meetings = $meetingRepository->fetchByUser($authenticatorService->getCurrentUse
 require_once '../src/Bootstrap.php';
 ?>
 
-<div class="project_navigation_button">
-    <div style="width: 50%; float:left;">
-        <form>
-            <button class="button_style" type="button" >Mes projets</button>
-        </form>
-        <form>
-            <button class="button_style" type="submit" formaction="organization.php">Organisations</button>
-        </form>
+<div class="container" style="padding: 15em;" >
+    <div class="row" >
+        <div class="col" style="padding: 1em;" align="center">
+            <form>
+                <button class="button_style" type="button" >Mes projets</button>
+            </form>
+        </div>
+        <div class="col" align="center" style="padding: 1em;">
+            <form>
+                <button class="button_style" type="submit" formaction="myorganization.php">Mon organisation</button>
+            </form>
+        </div>
     </div>
-    <div style="width: 50%; float:right;">
-        <form>
-            <button class="button_style" type="button">Projet où je participe</button>
-        </form>
-        <form>
-            <button class="button_style" type="button">Collaborateurs</button>
-        </form>
+    <div class="row" >
+        <div class="col" align="center" style="padding: 1em;">
+            <form>
+                <button class="button_style" type="button">Projet où je participe</button>
+            </form>
+        </div>
+        <div class="col" align="center" style="padding: 1em;">
+            <form>
+                <button class="button_style" type="button">Collaborateurs</button>
+            </form>
+        </div>
     </div>
-
-
 </div>
-<br><br><br><br>
-	
 
 
 
