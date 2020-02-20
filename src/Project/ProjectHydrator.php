@@ -18,7 +18,7 @@ class ProjectHydrator
         $project
             ->setId($data['id'])
             ->setName($data['name'])
-            ->setIdorganization($data['idorganisation'])
+            ->setIdorganization($data['idorganization'])
             ->setCreationdate(new \DateTimeImmutable($data['creationdate']));
         return $project;
     }
@@ -34,7 +34,7 @@ class ProjectHydrator
         $project
             ->setId($data->id)
             ->setName($data->name)
-            ->setIdorganization($data->idorganisation)
+            ->setIdorganization($data->idorganization)
             ->setCreationdate(new \DateTimeImmutable($data->creationdate));
         return $project;
     }
