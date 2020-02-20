@@ -47,6 +47,50 @@ class ProjectRepository
     }
 
     /**
+     * @param int $userId
+     * @return array
+     * @throws Exception
+     */
+    public function fetchByUser(int $userId)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM project JOIN userproject ON (project.id=userproject.idproject) WHERE iduser = :iduser');
+        $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $projects = [];
+        if ($rows) {
+            foreach ($rows as $row) {
+                $projects[] = [
+                    "project" => $this->projectHydrator->hydrateObj($row),
+                    "role" => $row->role,
+                    "date" => $row->date
+                ];
+            }
+        }
+        return $projects;
+    }
+
+    /**
+     * @param $idorganization
+     * @return array
+     * @throws Exception
+     */
+    public function fetchByIdOrganization($idorganization)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM project WHERE idorganization = :idorganization');
+        $stmt->bindValue(':idorganization', $idorganization, PDO::PARAM_INT);
+        $stmt->execute();
+        $rawProject = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $projects = [];
+        foreach ($rawProject as $row) {
+            $project = $this->projectHydrator->hydrateObj($row);
+            $projects[] = $project;
+        }
+
+        return $projects;
+    }
+
+    /**
      * @param $projectId
      * @return Project|null
      * @throws Exception
