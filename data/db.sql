@@ -197,3 +197,7 @@ VALUES ('organization',1,1,'Les dauphins','sont nos amis','2020-02-17');
 
 INSERT INTO meeting(source, idsource, name, place, creationdate, description)
 VALUES ('organization', 1, 'Coucou cest nous', 'chez ta maman', '2020-02-17', 'Un peu de mousse ?');
+
+INSERT INTO userorganization
+VALUES(1,1,'Big Boss','2000-04-01');
+

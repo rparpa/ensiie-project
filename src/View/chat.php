@@ -1,22 +1,24 @@
 <?php
 
 ?>
+<div style="display: none" id="chat">
+    <div class="chat">
+        <table class="table" id="infos">
+            <?php include_once 'refresh_chat.php' ?>
+        </table>
+    </div>
 
-<div style="overflow:scroll; border:#000000 1px solid;" class="chat">
-    <table class="table" id="infos">
-        <?php include_once 'refresh_chat.php' ?>
-    </table>
+    <form action="chat.php" method="post">
+        <?php if ($authenticatorService->isAuthenticated()) {?>
+            <p>
+                <input type="hidden" value=<?php echo $authenticatorService->getCurrentUser()->getUsername()?> name="pseudo"/>
+                <label for="message">Message</label> :  <input type="text" name="message" id="message" /><br />
+                <input type="submit" value="Envoyer" />
+            </p>
+        <?php } ?>
+    </form>
 </div>
 
-<form action="chat.php" method="post">
-    <?php if ($authenticatorService->isAuthenticated()) {?>
-        <p>
-            <input type="hidden" value=<?php echo $authenticatorService->getCurrentUser()->getUsername()?> name="pseudo"/>
-            <label for="message">Message</label> :  <input type="text" name="message" id="message" /><br />
-            <input type="submit" value="Envoyer" />
-        </p>
-    <?php } ?>
-</form>
 
 
 <script type="text/javascript">

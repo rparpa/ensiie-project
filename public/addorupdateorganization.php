@@ -4,6 +4,9 @@ use Db\Connection;
 use Organization\OrganizationHydrator;
 use Organization\OrganizationRepository;
 
+if(!isset($_SESSION["user_id"]))
+    header('Location: index.php');
+
 require_once '../src/Bootstrap.php';
 include_once '../src/View/template.php';
 

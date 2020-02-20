@@ -21,19 +21,32 @@ $meetings = $meetingRepository->fetchByUser($authenticatorService->getCurrentUse
 require_once '../src/Bootstrap.php';
 ?>
 
-	<div class="project_navigation_button">
-		<button class="button_style" type="button">Mes projets</button>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button class="button_style" type="button">Organisations</button>
-		<br>
-		<button class="button_style" type="button">Projet où je participe</button>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button class="button_style" type="button">Collaborateurs</button>
-	</div>
-	<br><br><br><br>
-	
+<div class="container" style="padding: 15em;" >
+    <div class="row" >
+        <div class="col" style="padding: 1em;" align="center">
+            <form>
+                <button class="button_style" type="button" >Mes projets</button>
+            </form>
+        </div>
+        <div class="col" align="center" style="padding: 1em;">
+            <form>
+                <button class="button_style" type="submit" formaction="myorganization.php">Mon organisation</button>
+            </form>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col" align="center" style="padding: 1em;">
+            <form>
+                <button class="button_style" type="button">Projet où je participe</button>
+            </form>
+        </div>
+        <div class="col" align="center" style="padding: 1em;">
+            <form>
+                <button class="button_style" type="button">Collaborateurs</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 

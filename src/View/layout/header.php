@@ -26,12 +26,12 @@ $user = $authenticatorService->getCurrentUser();
         </li>
         
         <?php if ($authenticatorService->isAuthenticated()) {?>
-        <li class="link-header-item">
-            <a class="link-header-item-a" href="organization.php">Gestion Organisations</a>
-        </li>
-        <li class="link-header-item">
-            <a class="link-header-item-a" href="project.php">Gestion Projets</a>
-        </li>
+            <li class="link-header-item">
+                <a class="link-header-item-a" href="manageorganization.php">Gestion Organisations</a>
+            </li>
+            <li class="link-header-item">
+                <a class="link-header-item-a" href="manageproject.php">Gestion Projets</a>
+            </li>
         <?php }?>
         
 
