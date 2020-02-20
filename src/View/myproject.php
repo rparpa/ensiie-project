@@ -23,31 +23,40 @@ $authenticatorService = new AuthenticatorService($userRepository);
 
 <div class="container" style="margin-top: 5em">
     <div>
-        <span>Liste de mes projets</span>
+        <h5>Liste de mes projets</h5>
     </div>
     <div>
         <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Mon role</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
             <?php
             $userprojects = $projrepository->fetchByUser($authenticatorService->getCurrentUserId());
 
             foreach ($userprojects as $userproject) {
                 /** @var Project $project */
                 $project = ((Object)$userproject)->project?>
-                <tr>
-                    <td>
-                       Nom du projet :<?php  echo $project->getName() ?>
-                    </td>
-                    <td>
-                       Mon role : <?php  echo ((Object)$userproject)->role ?>
-                    </td>
+                <tr onclick="ShowAlert()" name="<?php  echo $project->getId() ?>">
+                    <th scope="row" ><?php  echo $project->getId() ?></th>
+                    <td><?php  echo $project->getName() ?></td>
+                    <td><?php  echo ((Object)$userproject)->role ?></td>
+                    <td><?php  echo $project->getCreationdate()->format("Y-m-d H:i:s") ?></td>
                 </tr>
             <?php }?>
+            </tbody>
         </table>
     </div>
 </div>
 
-<!--$projects[] = [
-"project" => $this->projectHydrator->hydrateObj($row),
-"role" => $row->role,
-"date" => $row->date
-];-->
+<script>
+    function ShowAlert() {
+        alert("Un truc cool a faire je pense!!")
+    }
+
+</script>

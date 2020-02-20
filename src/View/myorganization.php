@@ -30,20 +30,29 @@ $myorga = (object)$myorgas[0];
 
 <div class="container" style="margin-top: 5em">
     <div>
-        <span>Liste des projets de l'organisation</span>
+        <h5>Liste des projets de l'organisation</h5>
     </div>
     <div>
         <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Date</th>
+            </tr>
+            </thead>
+            <tbody>
             <?php
             $projects = $projrepository->fetchByIdOrganization($myorga->organization->getId());
             /** @var Project $project */
             foreach ($projects as $project) { ?>
                 <tr>
-                    <td>
-                        <?php  echo $project->getName() ?>
-                    </td>
+                    <th scope="row" ><?php  echo $project->getId() ?></th>
+                    <td><?php  echo $project->getName() ?></td>
+                    <td><?php  echo $project->getCreationdate()->format("Y-m-d H:i:s") ?></td>
                 </tr>
             <?php }?>
+            </tbody>
         </table>
     </div>
 </div>

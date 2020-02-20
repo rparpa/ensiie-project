@@ -13,7 +13,7 @@ else{
 ?>
 
 <form novalidate method="post" onsubmit="return verif()" action="addorupdateuser.php">
-    <div class="formulaire">
+    <div class="formulaire" style="background-color: #86cfda">
         <div align="center">
             <legend>Utilisateur </legend>
         </div>

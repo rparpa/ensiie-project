@@ -8,7 +8,7 @@ $users = $data["users"];
 <div class="container" style="padding: 20em" >
     <div class="row" >
         <div class="col" >
-            <h1 align="center">Welcome</h1>
+            <h1 class="display-1" align="center">Welcome</h1>
         </div>
     </div>
     <div class="row" >

@@ -95,6 +95,11 @@ if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
     }
 
     function showform() {
+        document.getElementById('id').value = "";
+        document.getElementById('name').value = "";
+        document.getElementById('idorganization').value = "";
+        document.getElementById('choix_organisations').value = "";
+
         document.getElementById('formulaire').style.display = "block";
     };
 
