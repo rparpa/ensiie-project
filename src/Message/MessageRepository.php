@@ -96,6 +96,21 @@ class MessageRepository
         return $messages;
     }
 
+    public function fetchBySource(string $source, int $sourceId)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM message WHERE source = :nmsrc AND idsource = :idsrc');
+        $stmt->bindValue(':nmsrc', $source, PDO::PARAM_STR);
+        $stmt->bindValue(':idsrc', $sourceId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $messages = [];
+        foreach ($rows as $row) {
+            $message = $this->messageHydrator->hydrateObj($row);
+            $messages[] = $message;
+        }
+        return $messages;
+    }
+
     /**
      * @param int $messageId
      */
