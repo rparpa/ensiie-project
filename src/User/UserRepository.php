@@ -60,6 +60,23 @@ class UserRepository
         return $users;
     }
 
+    public function fetchByProject(int $projectId)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN "userproject" ON (user.id=userproject.iduser) WHERE idproject = :idproj');
+        $stmt->bindValue(':idproj', $projectId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $users = [];
+        foreach ($rows as $row) {
+            $users[] = [
+                "user" => $this->userHydrator->hydrateObj($row),
+                "role" => $row->role,
+                "date" => $row->date
+            ];
+        }
+        return $users;
+    }
+
     /**
      * @param int $userId
      * @return User
