@@ -1,11 +1,21 @@
 module.exports = class {
-    constructor(id, firstName, lastName, numVoie, typeVoie, nomVoie, arrond) {
+    constructor(id, firstName, lastName, numVoie, typeVoie, nomVoie, arrond, vehiculeId) {
         this._id = id;
         this._firstName = firstName;
         this._lastName = lastName;
         this._numVoie = numVoie;
         this._typeVoie = typeVoie;
         this._arrond = arrond;
+        this._vehiculeId = vehiculeId ;
+    }
+
+
+    get vehiculeId() {
+        return this._vehiculeId;
+    }
+
+    set vehiculeId(value) {
+        this._vehiculeId = value;
     }
 
     get id() {
@@ -72,7 +82,8 @@ module.exports = class {
             numVoie: this._numVoie,
             typeVoie: this._typeVoie,
             nomVoie: this._nomVoie,
-            arrond: this._arrond
+            arrond: this._arrond,
+            vehiculeId: this.vehiculeId
         }
     };
 
