@@ -125,4 +125,18 @@ class TaskRepository
         $stmt->bindValue(':id', $id,PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    public function fetchByProject(int $projectId)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM task WHERE idproject = :idproj');
+        $stmt->bindValue(':idproj', $projectId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $tasks = [];
+        foreach ($rows as $row) {
+            $task = $this->taskHydrator->hydrateObj($row);
+            $tasks[] = $task;
+        }
+        return $tasks;
+    }
 }
