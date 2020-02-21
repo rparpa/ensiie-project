@@ -1,6 +1,7 @@
 module.exports = class {
-    constructor(id, numVoie, typeVoie, nomVoie, arrond, status) {
+    constructor(id, vehiculeId, numVoie, typeVoie, nomVoie, arrond, status) {
         this._id = id;
+        this._vehiculeId = vehiculeId ;
         this._numvoie = numVoie ;
         this._typeVoie = typeVoie ;
         this._nomVoie = nomVoie ;
@@ -13,6 +14,15 @@ module.exports = class {
 
     get id() {
         return this._id;
+    }
+
+
+    get vehiculeId() {
+        return this._vehiculeId;
+    }
+
+    set vehiculeId(value) {
+        this._vehiculeId = value;
     }
 
     set id(value) {
@@ -58,10 +68,11 @@ module.exports = class {
     set status(value) {
         this._status = value;
     }
-    
+
     toJson() {
         return {
             id: this.id,
+            vehiculeId: this.vehiculeId,
             numVoie: this._numVoie,
             typeVoie: this._typeVoie,
             nomVoie: this._nomVoie,

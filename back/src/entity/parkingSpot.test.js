@@ -5,6 +5,7 @@ describe('Parking spot to Json', function () {
     test('Test toJson', () => {
         let parkingSpot = new ParkingSpot();
         parkingSpot.id = "1" ;
+        parkingSpot.vehiculeId = "20207654"
         parkingSpot.numVoie = 9 ;
         parkingSpot.typeVoie = "Rue du" ;
         parkingSpot.nomVoie = "Père Brottier" ;
@@ -13,6 +14,7 @@ describe('Parking spot to Json', function () {
 
         expect(parkingSpot.toJson()).toMatchObject({
             id: "1",
+            vehiculeId: "20207654",
             numVoie: 9,
             typeVoie: "Rue du",
             nomVoie: "Père Brottier",
