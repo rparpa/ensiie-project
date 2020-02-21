@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+
+    <a class="navbar-brand" href="./accueil">In Fact</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="./accueil">Lancer une recherche</a>
+            </li>
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: none;">
+                  Mon compte
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="./profil">Mon profil</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" id="contribution" href="#">Mes contributions</a>
+                  <a class="dropdown-item" id="offres" href="#">Mes offres d'emploi</a>
+                  <a class="dropdown-item" id="newoffre" href="#">Déposer une offre d'emploi</a>
+                </div>
+            </li>
+        </ul>
+        
+        <form class="form-inline my-2 my-lg-0 pl-2">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="button" id="deconnexion" onClick="localStorage.setItem('id',0);location.reload();
+            return false;">Deconnexion</button>
+        </form>
+
+    </div>
+
+</nav>
+
+<body>
+
+    <!-- Informations du compte -->
+    <form class="center">
+
+        <h3 class="modal-title">Mes informations</h3>
+        
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Nom</label>
+                  <input type="text" class="form-control" id="inputNom">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Prenom</label>
+                  <input type="text" class="form-control" id="inputPrenom">
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputAddress">Email</label>
+              <input type="email" class="form-control" id="inputAddress">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">Mot de Passe</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="form-group" id="AdrSiege">
+                <label for="inputAddress">Adresse du si&egrave;ge</label>
+                <input type="email" class="form-control" id="inputAddressSiege">
+              </div>
+
+            <button type="submit" class="btn btn-primary">Modifier</button>
+
+        </form>
+
+    </form>
+
+    <!-- Information CV -->
+    <form class="center">
+        
+        <h3 class="modal-title">Mon CV</h3>
+
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="inputCV">
+            </div>
+        </form>
+
+    </form>
+
+</body>
+
+    <script>
+    // Détection du support
+    if(localStorage.getItem('id') == "1" || localStorage.getItem('id') == "2") {
+        document.getElementById("navbarDropdown").style.display = "block";
+    }
+    if(localStorage.getItem('id') == "1") {
+        document.getElementById("contribution").style.display = "none";
+    }
+    else if (localStorage.getItem('id') == "2") {
+        document.getElementById("offres").style.display = "none";
+        document.getElementById("newoffre").style.display = "none";
+        document.getElementById("AdrSiege").style.display = "none";
+    }
+    </script>
+
+</html>

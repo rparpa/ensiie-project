@@ -11,7 +11,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
 
-    <a class="navbar-brand" href="#">In Fact</a>
+    <a class="navbar-brand" href="./accueil">In Fact</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,19 +19,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="./index.html">Lancer une recherche</a>
+                <a class="nav-link" href="./accueil">Lancer une recherche</a>
             </li>
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: none;">
                   Mon compte
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Mes informations</a>
+                  <a class="dropdown-item" href="./profil">Mon profil</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Mon CV</a>
-                  <a class="dropdown-item" href="#">Mes contributions</a>
-                  <a class="dropdown-item" href="#">Mes offres d'emploi</a>
-                  <a class="dropdown-item" href="#">Déposer une offre d'emploi</a>
+                  <a class="dropdown-item" id="contribution" href="#">Mes contributions</a>
+                  <a class="dropdown-item" id="offres" href="#">Mes offres d'emploi</a>
+                  <a class="dropdown-item" id="newoffre" href="#">Déposer une offre d'emploi</a>
                 </div>
             </li>
         </ul>
@@ -41,6 +40,11 @@
 
         <form class="form-inline my-2 my-lg-0 pl-2">
             <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#inscriptionModal" id="inscription">Inscription</button>
+        </form>
+
+        <form class="form-inline my-2 my-lg-0 pl-2">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="button" id="deconnexion" onClick="localStorage.setItem('id',0);location.reload();
+            return false;">Deconnexion</button>
         </form>
     </div>
 
@@ -71,7 +75,8 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary" onClick="sessionStorage.id=2">Confirmer</button>
+                <button type="button" class="btn btn-primary" onClick="localStorage.setItem('id',2);location.reload();
+                return false;">Confirmer</button>
             </div>
             </div>
         </div>
@@ -123,7 +128,8 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary" onClick="sessionStorage.id=1">Confirmer</button>
+                <button type="button" class="btn btn-primary" onClick="localStorage.setItem('id',1);location.reload();
+                return false;">Confirmer</button>
             </div>
             </div>
         </div>
@@ -138,7 +144,7 @@
         <div class="form-group">
             <label for="exampleInputJobs">Quoi ?</label>
             <input type="text" class="form-control" id="exampleInputJobs" aria-describedby="jobsHelp" placeholder="">
-            <small id="jobsHelp" class="form-text text-muted">Quel métier ?</small>
+            <small id="jobsHelp" class="form-text text-muted">Quel m&eacute;tier ?</small>
         </div>
         <div class="form-group">
             <label for="exampleInputLocation">Ou ?</label>
@@ -153,10 +159,20 @@
 
     <script>
     // Détection du support
-    if(sessionStorage.getItem('id') == "1" || sessionStorage.getItem('id') == "2") {
+    if(localStorage.getItem('id') == "1" || localStorage.getItem('id') == "2") {
         document.getElementById("navbarDropdown").style.display = "block";
         document.getElementById("connexion").style.display = "none";
         document.getElementById("inscription").style.display = "none";
+    }
+    if(localStorage.getItem('id') == "1") {
+        document.getElementById("contribution").style.display = "none";
+    }
+    else if (localStorage.getItem('id') == "2") {
+        document.getElementById("offres").style.display = "none";
+        document.getElementById("newoffre").style.display = "none";
+    }
+    else {
+        document.getElementById("deconnexion").style.display = "none";
     }
     </script>
 
