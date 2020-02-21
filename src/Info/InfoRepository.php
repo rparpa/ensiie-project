@@ -95,4 +95,20 @@ class InfoRepository
         $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
         $stmt->execute();
     }
+
+    public function fetchBySource(string $source, int $sourceId)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM info WHERE source = :nmsrc AND idsource = :idsrc');
+        $stmt->bindValue(':nmsrc', $source, PDO::PARAM_STR);
+        $stmt->bindValue(':idsrc', $sourceId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $infos = [];
+        foreach ($rows as $row) {
+            $info = $this->infoHydrator->hydrateObj($row);
+            $infos[] = $info;
+        }
+        return $infos;
+    }
+
 }
