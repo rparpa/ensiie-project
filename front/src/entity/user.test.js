@@ -11,6 +11,8 @@ describe('User toJson', function () {
         user.typeVoie = "rue";
         user.nomVoie = "Code Quantum",
             user.arrond = 5;
+        user.vehiculeId = 324543
+
         expect(user.toJson()).toMatchObject({
             id: "1",
             firstName: "Sam",
@@ -18,7 +20,8 @@ describe('User toJson', function () {
             numVoie: 7,
             typeVoie: "rue",
             nomVoie: "Code Quantum",
-            arrond : 5
+            arrond : 5,
+            vehiculeId : 324543
         })
     });
 
