@@ -10,6 +10,7 @@
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+
     <a class="navbar-brand" href="#">In Fact</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -18,21 +19,28 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Lancer une recherche<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="./index.html">Lancer une recherche</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#" id="compte" style="display: none;">Gérer mon compte<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#" id="contribution" style="display: none;">Mes contributions<span class="sr-only">(current)</span></a>
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: none;">
+                  Mon compte
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Mes informations</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Mon CV</a>
+                  <a class="dropdown-item" href="#">Mes contributions</a>
+                  <a class="dropdown-item" href="#">Mes offres d'emploi</a>
+                  <a class="dropdown-item" href="#">Déposer une offre d'emploi</a>
+                </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#connexionModal" >Connexion</button>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#connexionModal" id="connexion">Connexion</button>
         </form>
 
         <form class="form-inline my-2 my-lg-0 pl-2">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#inscriptionModal" >Inscription</button>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#inscriptionModal" id="inscription">Inscription</button>
         </form>
     </div>
 
@@ -63,7 +71,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Confirmer</button>
+                <button type="button" class="btn btn-primary" onClick="sessionStorage.id=2">Confirmer</button>
             </div>
             </div>
         </div>
@@ -115,7 +123,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button id="1" type="button" class="btn btn-primary" name="message" onClick="sessionStorage.id=1">Confirmer</button>
+                <button type="button" class="btn btn-primary" onClick="sessionStorage.id=1">Confirmer</button>
             </div>
             </div>
         </div>
@@ -143,11 +151,12 @@
 
 </body>
 
-<script>
+    <script>
     // Détection du support
-    if(sessionStorage.getItem('id') == "1") {
-        document.getElementById("compte").style.display = "block";
-        document.getElementById("contribution").style.display = "block";
+    if(sessionStorage.getItem('id') == "1" || sessionStorage.getItem('id') == "2") {
+        document.getElementById("navbarDropdown").style.display = "block";
+        document.getElementById("connexion").style.display = "none";
+        document.getElementById("inscription").style.display = "none";
     }
     </script>
 
