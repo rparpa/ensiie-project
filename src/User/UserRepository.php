@@ -48,7 +48,7 @@ class UserRepository
         $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN "userorganization" ON (user.id=userorganization.iduser) WHERE idorganization = :idorg');
         $stmt->bindValue(':idorg', $orgId, PDO::PARAM_INT);
         $stmt->execute();
-        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $rows=$stmt->fetchAll(PDO::FETCH_OBJ);
         $users = [];
         foreach ($rows as $row) {
             $users[] = [
@@ -65,7 +65,7 @@ class UserRepository
         $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN "userproject" ON (user.id=userproject.iduser) WHERE idproject = :idproj');
         $stmt->bindValue(':idproj', $projectId, PDO::PARAM_INT);
         $stmt->execute();
-        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $rows=$stmt->fetchAll(PDO::FETCH_OBJ);
         $users = [];
         foreach ($rows as $row) {
             $users[] = [

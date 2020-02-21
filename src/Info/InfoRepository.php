@@ -102,7 +102,7 @@ class InfoRepository
         $stmt->bindValue(':nmsrc', $source, PDO::PARAM_STR);
         $stmt->bindValue(':idsrc', $sourceId, PDO::PARAM_INT);
         $stmt->execute();
-        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $rows=$stmt->fetchAll(PDO::FETCH_OBJ);
         $infos = [];
         foreach ($rows as $row) {
             $info = $this->infoHydrator->hydrateObj($row);
