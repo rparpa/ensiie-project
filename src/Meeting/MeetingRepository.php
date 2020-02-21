@@ -145,4 +145,20 @@ class MeetingRepository
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    public function fetchBySource(string $source, int $sourceId)
+    {
+        $stmt = $this->connection->prepare('SELECT * FROM meeting WHERE source = :nmsrc AND idsource = :idsrc');
+        $stmt->bindValue(':nmsrc', $source, PDO::PARAM_STR);
+        $stmt->bindValue(':idsrc', $sourceId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows=$stmt->fetch(PDO::FETCH_OBJ);
+        $meetings = [];
+        foreach ($rows as $row) {
+            $meeting = $this->meetingHydrator->hydrateObj($row);
+            $meetings[] = $meeting;
+        }
+        return $meetings;
+    }
+
 }
