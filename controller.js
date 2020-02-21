@@ -9,16 +9,16 @@ module.exports = http.createServer((req, res) => {
     var pathname = url.parse(req.url).pathname;
     
     if(pathname == "/accueil") {
-        res.writeHead(200, {"Content-Type": "text/html"});
         fs.readFile('./public/index.html',function (err, data){
-            res.writeHead(200, {'Content-Type': 'text/html','Content-Length':data.length});
-            res.write(data);
-            res.end();
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end(data, 'utf-8');
         });
     }
-    else {
-        res.writeHead(200, {"Content-Type": "application/json"});
-        res.end(JSON.stringify(req.method));
+    else if (pathname == "/style.css") {
+        fs.readFile('./public/style.css',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/css'});
+            res.end(data, 'utf-8');
+        });
     }
 
     // GET Endpoint
