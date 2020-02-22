@@ -2,7 +2,7 @@
   <div class="test">
       <MglMap :accessToken="accessToken" :mapStyle="mapStyle" >
         <div v-if="listCoordinates">
-           <MglMarker v-for="coordinates in listCoordinates" :key="coordinates" :coordinates="coordinates" color="blue"/>     
+           <MglMarker class="points" v-for="coordinates in listCoordinates" :key="coordinates[0]*coordinates[1]" :coordinates="coordinates" color="green"/>     
         </div>        
       </MglMap>      
   </div>  
@@ -30,7 +30,7 @@ export default {
       accessToken: "pk.eyJ1IjoiZGV2c3Bpbm96YSIsImEiOiJjazZ2enV4aW0wNnd2M2ZwNzU3NXFvc2c5In0.c4mfJ5n3hsVYXURtgRPUyQ", // your access token. Needed if you using Mapbox maps
       mapStyle: "mapbox://styles/mapbox/light-v10",
       listCoordinates: [],
-      apiAdr : "http://localhost:5001/"
+      apiAdr : "http://localhost:5001/bigQuery"
     };
   },
 
