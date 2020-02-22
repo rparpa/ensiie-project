@@ -27,8 +27,8 @@ export default {
   data() {
     return {
       accessToken: "pk.eyJ1IjoiZGV2c3Bpbm96YSIsImEiOiJjazZ2enV4aW0wNnd2M2ZwNzU3NXFvc2c5In0.c4mfJ5n3hsVYXURtgRPUyQ", // your access token. Needed if you using Mapbox maps
-      mapStyle: "mapbox://styles/mapbox/dark-v10",
-      listCoordinates: [[-111,39],[49,2],[2.3488,48.8534]]
+      mapStyle: "mapbox://styles/mapbox/light-v10",
+      listCoordinates: [[-5.92,37.28],[49,2.56754],[2.3488,48.8534]]
     };
   },
 
