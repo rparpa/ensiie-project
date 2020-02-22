@@ -1,19 +1,32 @@
-const https = require('https');
+var https = require("https");
 
-https.get('https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&facet=regpri&facet=regpar&facet=typsta&facet=arrond', (resp) => {
+class OpenDataParis{
+    constructor(){
+        this.base = "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&rows=10000&facet=regpri&facet=regpar&facet=typsta&facet=arrond";
+    }
 
-    let data = '';
+    getAllParkingSpots(){
 
-   resp.on('data', (chunk) => {
-        data += chunk;
-    });
+        let url = this.base;
 
-    resp.on('end', () => {
-        console.log(JSON.parse(data));
+        https.get(url, (res) => {
+            let data = "";
+            res.on('data', (d) => {
+                data += d;
+            });
+            res.on('end', () => {
+                console.log(JSON.parse(data));
+            });
+        }).on('error', (e) => {
+            console.error(e);
+        });
+    }
+}
 
-    });
 
-}).on("error", (err) => {
-    console.log("Error: " + err.message);
-});
+module.exports = OpenDataParis;
 
+
+let test = new OpenDataParis() ;
+
+test.getAllParkingSpots()
