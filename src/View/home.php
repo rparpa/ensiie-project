@@ -5,7 +5,7 @@ use User\User;
 $users = $data["users"];
 ?>
 
-<div class="container" style="padding: 20em" >
+<div class="container-fluid" style="padding: 20em" >
     <div class="row" >
         <div class="col" >
             <h1 class="display-1" align="center">Welcome</h1>

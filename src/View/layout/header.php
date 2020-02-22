@@ -5,8 +5,7 @@ use Service\AuthenticatorService;
 use User\UserHydrator;
 use User\UserRepository;
 
-$userHydrator = new UserHydrator();
-$userRepository = new UserRepository(Connection::get(), $userHydrator);
+$userRepository = new UserRepository(Connection::get(), new UserHydrator());
 $authenticatorService = new AuthenticatorService($userRepository);
 $user = $authenticatorService->getCurrentUser();
 ?>
@@ -33,8 +32,6 @@ $user = $authenticatorService->getCurrentUser();
                 <a class="link-header-item-a" href="manageproject.php">Gestion Projets</a>
             </li>
         <?php }?>
-        
-
     </ul>
 
     <ul class="link-header-container">

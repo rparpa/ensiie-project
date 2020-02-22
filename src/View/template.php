@@ -35,11 +35,14 @@ function loadView($view, $data) {
     </head>
     <body>
     <?php include_once '../src/View/layout/header.php' ?>
-    <div class="main">
-        <div class="main-container">
+    <div class="main row">
+        <div class="main-info col">
+            <?php include_once '../src/View/info.php' ?>
+        </div>
+        <div class="main-container col">
             <?php include_once '../src/View/'.$view.'.php' ?>
         </div>
-        <div class="main-chat">
+        <div class="main-chat col">
             <?php include_once '../src/View/chat.php' ?>
         </div>
     </div>
