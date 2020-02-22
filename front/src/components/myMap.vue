@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-      <MglMap :accessToken="accessToken" :mapStyle="mapStyle"  @map-load="addMarkers">
+      <MglMap :accessToken="accessToken" :mapStyle="mapStyle" >
         <div v-if="listCoordinates">
            <MglMarker v-for="coordinates in listCoordinates" :key="coordinates" :coordinates="coordinates" color="blue"/>     
         </div>        
@@ -18,6 +18,7 @@
 <script>
 import Mapbox from "mapbox-gl";
 import { MglMap,MglMarker } from "vue-mapbox";
+const axios = require('axios');
 
 export default {
   components: {
@@ -28,14 +29,17 @@ export default {
     return {
       accessToken: "pk.eyJ1IjoiZGV2c3Bpbm96YSIsImEiOiJjazZ2enV4aW0wNnd2M2ZwNzU3NXFvc2c5In0.c4mfJ5n3hsVYXURtgRPUyQ", // your access token. Needed if you using Mapbox maps
       mapStyle: "mapbox://styles/mapbox/light-v10",
-      listCoordinates: [[-5.92,37.28],[49,2.56754],[2.3488,48.8534]]
+      listCoordinates: [],
+      apiAdr : "http://localhost:5001/"
     };
   },
 
-  methods: {
+  mounted() {
+      axios.get(this.apiAdr).then(response => (console.log(response)))
+  },
 
+  methods: {
     created() {
-      // We need to set mapbox-gl library here in order to use it in template
       this.mapbox = Mapbox;
     }
   }
