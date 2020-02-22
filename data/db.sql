@@ -186,6 +186,9 @@ ALTER TABLE task
 INSERT INTO "user"(username, surname, name, mail, password, creationdate )
 VALUES ('JD', 'John', 'Doe', 'j.d@hl.com', 'JD', '1967-11-22');
 
+INSERT INTO "user"(username, surname, name, mail, password, creationdate )
+VALUES ('GAT', 'Oli', 'Gat', 'oli@gat.fr', 'GA', '1967-11-22');
+
 INSERT INTO organization(name, creationdate)
 VALUES ('Ile Mysterieuse', '2019-12-20');
 

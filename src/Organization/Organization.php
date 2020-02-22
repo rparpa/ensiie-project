@@ -5,8 +5,13 @@ namespace Organization;
 
 
 use DateTimeInterface;
+use SourceInterface;
 
-class Organization
+/**
+ * Class Organization
+ * @package Organization
+ */
+class Organization implements SourceInterface
 {
 
     private int $id;

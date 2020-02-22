@@ -45,8 +45,31 @@ class UserRepository
 
     public function fetchByOrganization(int $orgId)
     {
-        $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN "userorganization" ON (user.id=userorganization.iduser) WHERE idorganization = :idorg');
+        $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN userorganization ON ("user".id=userorganization.iduser) WHERE idorganization = :idorg');
         $stmt->bindValue(':idorg', $orgId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows=$stmt->fetchAll(PDO::FETCH_OBJ);
+        $users = [];
+        foreach ($rows as $row) {
+            $users[] = [
+                "user" => $this->userHydrator->hydrateObj($row),
+                "role" => $row->role,
+                "date" => $row->date
+            ];
+        }
+        return $users;
+    }
+
+    public function fetchByOrganizationNotInProject(int $projId)
+    {
+        //TODO Voir pour faire mieux
+        $stmt = $this->connection->
+            prepare('SELECT * FROM "user" 
+                                WHERE id NOT IN (
+                                SELECT id FROM "user" 
+                                JOIN userproject ON ("user".id = userproject.iduser) 
+                                WHERE idproject = :idproj)');
+        $stmt->bindValue(':idproj', $projId, PDO::PARAM_INT);
         $stmt->execute();
         $rows=$stmt->fetchAll(PDO::FETCH_OBJ);
         $users = [];
@@ -62,7 +85,7 @@ class UserRepository
 
     public function fetchByProject(int $projectId)
     {
-        $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN "userproject" ON (user.id=userproject.iduser) WHERE idproject = :idproj');
+        $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN userproject ON ("user".id=userproject.iduser) WHERE idproject = :idproj');
         $stmt->bindValue(':idproj', $projectId, PDO::PARAM_INT);
         $stmt->execute();
         $rows=$stmt->fetchAll(PDO::FETCH_OBJ);

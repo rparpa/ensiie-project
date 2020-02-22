@@ -2,21 +2,36 @@
 use Db\Connection;
 use Message\MessageHydrator;
 use Message\MessageRepository;
+use Organization\OrganizationHydrator;
+use Organization\OrganizationRepository;
+use Service\AuthenticatorService;
 use User\UserHydrator;
 use User\UserRepository;
 
+
 require_once '../src/Bootstrap.php';
 
-$messageHydrator = new MessageHydrator();
 $messageRepository =
-    new MessageRepository(Connection::get(), $messageHydrator);
+    new MessageRepository(Connection::get(), new MessageHydrator());
 
-$userHydrator = new UserHydrator();
 $userRepository =
-    new UserRepository(Connection::get(), $userHydrator);
+    new UserRepository(Connection::get(), new UserHydrator());
 
-$messages = $messageRepository->fetchForChat();
-foreach (array_reverse($messages) as $message) {
+$authenticatorService = new AuthenticatorService($userRepository);
+
+$orgarepository =
+    new OrganizationRepository(Connection::get(), new OrganizationHydrator());
+
+//TODO changer pour ajouter la gestion des sources
+$source = new Chat();
+
+$userorga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
+if($userorga)
+    $source = ((Object)$userorga)->organization;
+
+$messages = $messageRepository->fetchAllForChat($source);
+
+foreach ($messages as $message) {
     ?>
     <tr>
         <td> <?php  echo $userRepository->findOneById($message->getIduser())->getUsername()?></td>

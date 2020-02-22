@@ -33,8 +33,10 @@ body {
 
 .main-container {
   width: 75%;
-  min-height: 90vh;
+  min-height: 85vh;
+  max-height: 85vh;
   float:left;
+  overflow:scroll;
 }
 
 .main-chat {

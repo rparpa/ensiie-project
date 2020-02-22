@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<div style="display: none" id="chat">
+<div style="display: block" id="chat">
     <div class="chat">
         <table class="table" id="infos">
             <?php include_once 'refresh_chat.php' ?>
@@ -20,12 +20,11 @@
 </div>
 
 
-
-<script type="text/javascript">
+<script>
     function autoRefresh_div()
     {
-        $("table#infos").load('refresh_chat.php');
+        $("#infos").load('refresh_chat.php');
     }
 
-    setInterval('autoRefresh_div()', 5000); // refresh tab after 5 secs
+    setInterval('autoRefresh_div()', 1000); // refresh tab after 5 secs
 </script>

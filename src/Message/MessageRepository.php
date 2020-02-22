@@ -4,6 +4,7 @@ namespace Message;
 use DateTimeInterface;
 use Exception;
 use PDO;
+use SourceInterface;
 use User\User;
 
 
@@ -47,12 +48,16 @@ class MessageRepository
     }
 
     /**
+     * @param SourceInterface $source
      * @return array
      * @throws Exception
      */
-    public function fetchForChat()
+    public function fetchAllForChat(SourceInterface $source)
     {
-        $rows = $this->connection->query('SELECT * FROM message ORDER BY id DESC LIMIT 20')->fetchAll(PDO::FETCH_OBJ);
+        $stmt = $this->connection->prepare('SELECT * FROM message WHERE idsource = :idsource ORDER BY id DESC LIMIT 20');
+        $stmt->bindValue(':idsource', $source->getId(), PDO::PARAM_INT);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
         $messages = [];
         foreach ($rows as $row) {
             $message = $this->messageHydrator->hydrateObj($row);
@@ -129,7 +134,7 @@ class MessageRepository
      * @param Object $source
      * @param DateTimeInterface $creationdate
      */
-    public function insert(User $user, Object $source, string $message, DateTimeInterface $creationdate)
+    public function insert(User $user, SourceInterface $source, string $message, DateTimeInterface $creationdate)
     {
         $stmt = $this->connection->prepare(
             'INSERT INTO message (iduser, source, idsource, message, creationdate) 

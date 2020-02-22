@@ -1,8 +1,6 @@
 <?php
 
 use Db\Connection;
-use Organization\OrganizationHydrator;
-use Organization\OrganizationRepository;
 use Project\ProjectHydrator;
 use Project\ProjectRepository;
 use Service\AuthenticatorService;
