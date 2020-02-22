@@ -38,3 +38,8 @@ db.connect:
 db.install:
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER -h localhost -f data/db.sql'
 
+front.update.dependencies:
+	docker-compose exec vuejs npm install
+
+back.update.dependencies:
+	docker-compose exec node npm install
