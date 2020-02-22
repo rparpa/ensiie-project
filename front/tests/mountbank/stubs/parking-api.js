@@ -12,8 +12,8 @@ function addService() {
             arond: 10,
             status: "status",
             coords: {
-                lat:2.456765,
-                long:34.576765
+                lat:48.8634,
+                long:2.3460
             }
         },
         {
@@ -25,8 +25,8 @@ function addService() {
             arond: 10,
             status: "status",
             coords: {
-                lat:2.556765,
-                long:33.576765
+                lat:48.8536,
+                long:2.3469
             }
         },
         {
@@ -38,8 +38,8 @@ function addService() {
             arond: 9,
             status: "status",
             coords: {
-                lat:2.256765,
-                long:34.876765
+                lat:48.8544,
+                long:2.3478
             }
         },
         {
@@ -51,8 +51,8 @@ function addService() {
             arond: 3,
             status: "status",
             coords: {
-                lat:2.156765,
-                long:34.176765
+                lat:48.8564,
+                long:2.3480
             }
         },
         {
@@ -64,8 +64,8 @@ function addService() {
             arond: 10,
             status: "status",
             coords: {
-                lat:2.956765,
-                long:34.2276765
+                lat:48.8584,
+                long:2.3498
             }
         },
         {
@@ -77,8 +77,8 @@ function addService() {
             arond: 1,
             status: "status",
             coords: {
-                lat:2.856765,
-                long:34.976765
+                lat:48.8534,
+                long:2.3488
             }
         },
         {
@@ -90,8 +90,8 @@ function addService() {
             arond: 10,
             status: "status",
             coords: {
-                lat:2.336765,
-                long:34.8876765
+                lat:48.8534,
+                long:2.3488
             }
         }
     ];
