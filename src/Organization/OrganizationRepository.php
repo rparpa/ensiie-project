@@ -49,18 +49,12 @@ class OrganizationRepository
         $stmt = $this->connection->prepare('SELECT * FROM organization JOIN userorganization ON (organization.id=userorganization.idorganization) WHERE iduser = :iduser');
         $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
         $stmt->execute();
-        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
-        $organization = [];
-        if ($rows) {
-            foreach ($rows as $row) {
-                $organization[] = [
-                    "organization" => $this->organizationHydrator->hydrateObj($row),
-                    "role" => $row->role,
-                    "date" => $row->date
-                ];
-            }
-        }
-        return $organization;
+        $row = $stmt->fetch(PDO::FETCH_OBJ);
+        return [
+            "organization" => $this->organizationHydrator->hydrateObj($row),
+            "role" => $row->role,
+            "date" => $row->date
+        ];
     }
 
     /**
