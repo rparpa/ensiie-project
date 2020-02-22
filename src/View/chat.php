@@ -4,7 +4,7 @@
 <div style="display: block" id="chat">
     <div class="chat">
         <table class="table" id="infos">
-            <?php include_once 'refresh_chat.php' ?>
+            <?php include_once 'chat/refresh_chat.php' ?>
         </table>
     </div>
 

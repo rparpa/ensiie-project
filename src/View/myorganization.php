@@ -18,14 +18,14 @@ $authenticatorService = new AuthenticatorService($userRepository);
 //TODO Faire bien mieux mais la je fatigue un peu
 $myorgas = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
 
-$myorga = (object)$myorgas[0];
+$myorga = (object)$myorgas;
 
 ?>
 <h1>
     Vous etes sur la page de l'organisation <?php echo $myorga->organization->getName() ?>
 </h1>
 <h3>
-    Salut <?php echo ((object)$myorgas[0])->role ?>
+    Salut <?php echo ((object)$myorgas)->role ?>
 </h3>
 
 <div class="container" style="margin-top: 5em">

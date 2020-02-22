@@ -4,6 +4,8 @@
 namespace Info;
 
 
+use DateTimeInterface;
+
 class Info
 {
 

@@ -10,10 +10,8 @@ if(!isset($_SESSION["user_id"]))
 require_once '../src/Bootstrap.php';
 include_once '../src/View/template.php';
 
-$orgahydrator =
-    new OrganizationHydrator();
 $ograrepository =
-    new OrganizationRepository(Connection::get(), $orgahydrator);
+    new OrganizationRepository(Connection::get(), new OrganizationHydrator());
 
 $id =  !empty($_POST['id']) ? $_POST['id'] : null;
 $name =  !empty($_POST['name']) ? $_POST['name'] : null;
@@ -47,9 +45,6 @@ function checkFormData(OrganizationRepository $organizationRepository, $id, $nam
     return $errorMessage;
 }
 
-
-$id =  !empty($_POST['id']) ? $_POST['id'] : null;
-$name =  !empty($_POST['name']) ? $_POST['name'] : null;
 
 $viewData = checkFormData($ograrepository, $id, $name);
 if (empty($viewData)) {

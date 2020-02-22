@@ -12,15 +12,11 @@ if(!isset($_SESSION["user_id"]))
 require_once '../src/Bootstrap.php';
 include_once '../src/View/template.php';
 
-$projecthydrator =
-    new ProjectHydrator();
 $projectrepository =
-    new ProjectRepository(Connection::get(), $projecthydrator);
+    new ProjectRepository(Connection::get(), new ProjectHydrator());
 
-$orgahydrator =
-    new OrganizationHydrator();
 $orgarepository =
-    new OrganizationRepository(Connection::get(), $orgahydrator);
+    new OrganizationRepository(Connection::get(), new OrganizationHydrator());
 
 $id =  !empty($_POST['id']) ? $_POST['id'] : null;
 $name =  !empty($_POST['name']) ? $_POST['name'] : null;
