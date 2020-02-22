@@ -10,9 +10,8 @@ include_once '../src/View/template.php';
 if(!isset($_SESSION["user_id"]))
     header('Location: index.php');
 
-$userHydrator = new UserHydrator();
 $userRepository =
-    new UserRepository(Connection::get(), $userHydrator);
+    new UserRepository(Connection::get(), new UserHydrator());
 
 $id =  !empty($_POST['id']) ? $_POST['id'] : null;
 $username =  !empty($_POST['username']) ? $_POST['username'] : null;
