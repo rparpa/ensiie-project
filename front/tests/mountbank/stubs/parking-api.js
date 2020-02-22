@@ -1,101 +1,9 @@
 const mbHelper = require('../conf/mountbank-helper');
 const settings = require('../conf/settings');
+const simpleQuery = require("./ressources/parking-query");
+const bigQuery = require("./ressources/parking-bigQuery");
 
 function addService() {
-    const response = [
-        {
-            id: 1,
-            vehiculeId: 2,
-            numvoie: 12,
-            typeVoie: "Rue",
-            nomVoie: "lorem ipsum",
-            arond: 10,
-            status: "status",
-            coords: {
-                lat:48.8634,
-                long:2.3460
-            }
-        },
-        {
-            id: 1,
-            vehiculeId: 4,
-            numvoie: 10,
-            typeVoie: "Rue",
-            nomVoie: "lorem ipsum",
-            arond: 10,
-            status: "status",
-            coords: {
-                lat:48.8536,
-                long:2.3469
-            }
-        },
-        {
-            id: 1,
-            vehiculeId: 5,
-            numvoie: 34,
-            typeVoie: "Rue",
-            nomVoie: "lorem ipsum",
-            arond: 9,
-            status: "status",
-            coords: {
-                lat:48.8544,
-                long:2.3478
-            }
-        },
-        {
-            id: 1,
-            vehiculeId: 9,
-            numvoie: 1,
-            typeVoie: "Rue",
-            nomVoie: "lorem ipsum",
-            arond: 3,
-            status: "status",
-            coords: {
-                lat:48.8564,
-                long:2.3480
-            }
-        },
-        {
-            id: 1,
-            vehiculeId: 45,
-            numvoie: 12,
-            typeVoie: "Rue",
-            nomVoie: "lorem ipsum",
-            arond: 10,
-            status: "status",
-            coords: {
-                lat:48.8584,
-                long:2.3498
-            }
-        },
-        {
-            id: 1,
-            vehiculeId: 98,
-            numvoie: 12,
-            typeVoie: "Avenue",
-            nomVoie: "lorem ipsum",
-            arond: 1,
-            status: "status",
-            coords: {
-                lat:48.8534,
-                long:2.3488
-            }
-        },
-        {
-            id: 1,
-            vehiculeId: 78,
-            numvoie: 12,
-            typeVoie: "Rue",
-            nomVoie: "lorem ipsum",
-            arond: 10,
-            status: "status",
-            coords: {
-                lat:48.8534,
-                long:2.3488
-            }
-        }
-    ];
-
     const stubs = [
         {
             predicates: [ {
@@ -112,7 +20,27 @@ function addService() {
                             "Access-Control-Allow-Origin": "*",
                             "Content-Type": "application/json"
                         },
-                        body: JSON.stringify(response)
+                        body: JSON.stringify(simpleQuery.response)
+                    }
+                }
+            ]
+        },
+        {
+            predicates: [ {
+                equals: {
+                    method: "GET",
+                    "path": "/bigQuery"
+                }
+            }],
+            responses: [
+                {
+                    is: {
+                        statusCode: 200,
+                        headers: {
+                            "Access-Control-Allow-Origin": "*",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(bigQuery.response)
                     }
                 }
             ]
