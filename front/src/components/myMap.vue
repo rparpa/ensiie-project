@@ -18,7 +18,7 @@
 <script>
 import Mapbox from "mapbox-gl";
 import { MglMap,MglMarker } from "vue-mapbox";
-const axios = require('axios');
+import  axios from "axios";
 
 export default {
   components: {
@@ -35,7 +35,7 @@ export default {
   },
 
   mounted() {
-      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x.coords.lat,x.coords.long])))
+      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x.coords.long,x.coords.lat])))
   },
 
   methods: {
