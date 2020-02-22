@@ -6,10 +6,12 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e"
+    "test:e2e": "vue-cli-service test:e2e",
+    "mountbank-start": "node tests/mountbank/index.js"
   },
   "dependencies": {
     "mapbox-gl": "^1.8.0",
+    "node-fetch": "^2.6.0",
     "vue": "^2.6.11",
     "vue-mapbox": "^0.4.1",
     "vue-router": "^3.1.5"
