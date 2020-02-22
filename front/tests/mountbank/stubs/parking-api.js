@@ -11,7 +11,7 @@ function addService() {
             nomVoie: "lorem ipsum",
             arond: 10,
             status: "status",
-            coord: {
+            coords: {
                 lat:2.456765,
                 long:34.576765
             }
@@ -24,7 +24,7 @@ function addService() {
             nomVoie: "lorem ipsum",
             arond: 10,
             status: "status",
-            coord: {
+            coords: {
                 lat:2.556765,
                 long:33.576765
             }
@@ -37,7 +37,7 @@ function addService() {
             nomVoie: "lorem ipsum",
             arond: 9,
             status: "status",
-            coord: {
+            coords: {
                 lat:2.256765,
                 long:34.876765
             }
@@ -50,7 +50,7 @@ function addService() {
             nomVoie: "lorem ipsum",
             arond: 3,
             status: "status",
-            coord: {
+            coords: {
                 lat:2.156765,
                 long:34.176765
             }
@@ -63,7 +63,7 @@ function addService() {
             nomVoie: "lorem ipsum",
             arond: 10,
             status: "status",
-            coord: {
+            coords: {
                 lat:2.956765,
                 long:34.2276765
             }
@@ -76,7 +76,7 @@ function addService() {
             nomVoie: "lorem ipsum",
             arond: 1,
             status: "status",
-            coord: {
+            coords: {
                 lat:2.856765,
                 long:34.976765
             }
@@ -89,7 +89,7 @@ function addService() {
             nomVoie: "lorem ipsum",
             arond: 10,
             status: "status",
-            coord: {
+            coords: {
                 lat:2.336765,
                 long:34.8876765
             }
