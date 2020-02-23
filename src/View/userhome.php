@@ -21,7 +21,6 @@ $meetings = $meetingRepository->fetchByUser($authenticatorService->getCurrentUse
 require_once '../src/Bootstrap.php';
 ?>
 
-<div class="container" style="padding: 15em;" >
     <div class="row" >
         <div class="col" style="padding: 1em;" align="center">
             <form>
@@ -46,7 +45,7 @@ require_once '../src/Bootstrap.php';
             </form>
         </div>
     </div>
-</div>
+
 
 
 
