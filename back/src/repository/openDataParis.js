@@ -20,7 +20,29 @@ class OpenDataParis{
             console.error(e);
         });
     }
-}//end getAllParkingSpots
+
+    getAllParkingSpotsCars(onOpenDataApiReturn){
+        let url = this.base + "&refine.regpri=PAYANT+MIXTE";
+
+        https.get(url, (res) => {
+            let data = "";
+            res.on('data', (d) => {
+                data += d;
+            });
+            res.on('end', () => {
+                onOpenDataApiReturn(JSON.parse(data));
+            });
+        }).on('error', (e) => {
+            console.error(e);
+        });
+    }
+
+
+}//end constructor
+
+
+
+
 
 
 module.exports = OpenDataParis;
