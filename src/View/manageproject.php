@@ -8,10 +8,8 @@ use Project\Project;
 use Project\ProjectHydrator;
 use Project\ProjectRepository;
 
-$projecthydrator = new ProjectHydrator();
-$projectrepository = new ProjectRepository(Connection::get(),$projecthydrator);
-$orgahydrator = new OrganizationHydrator();
-$orgarepository = new OrganizationRepository(Db\Connection::get(),$orgahydrator);
+$projectrepository = new ProjectRepository(Connection::get(),new ProjectHydrator());
+$orgarepository = new OrganizationRepository(Db\Connection::get(),new OrganizationHydrator());
 $projects = $projectrepository->fetchAll();
 $organizations = $orgarepository->fetchAll();
 
