@@ -4,13 +4,11 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css" rel="stylesheet" />
     <Header />
     <Home />
-    <MyMap />
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
-import MyMap from '@/components/myMap.vue'
 import Home from '@/views/Home.vue'
 
 export default {

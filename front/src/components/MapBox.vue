@@ -21,6 +21,7 @@ import { MglMap,MglMarker } from "vue-mapbox";
 import  axios from "axios";
 
 export default {
+  name: 'MapBox',
   components: {
     MglMap,
     MglMarker

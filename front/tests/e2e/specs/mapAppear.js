@@ -1,7 +1,8 @@
 describe('Map and markers appears visible', () => {
-    it('visit the map URL', () => {
-      cy.visit('/map')
+    it('visit the / url', () => {
+      cy.visit('/')
       cy.get('.mgl-map-wrapper').should('be.visible')
+      cy.get('.mapboxgl-canvas').should('be.visible')
       cy.get('.mapboxgl-marker').should('be.visible')
     })
   })
