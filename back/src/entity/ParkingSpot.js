@@ -125,7 +125,7 @@ module.exports = class {
         typeSta: this.typeSta ,
         typeMob: this.typeMob ,
         tarif: this.tarif ,
-        latitude: thi.latitude ,
+        latitude: this.latitude ,
         longitude: this.longitude
         }
     };
