@@ -4,14 +4,16 @@ node_js:
 
 cache: false
 
-#before_install:
-#  - cd back && npm install
-#  - npm run start.ci
+env:
+  - TEST_DIR=back
+  - TEST_DIR=front
+
+before_install:
+  - make install
+
 script:
   - cd back && npm install 
   - cd ../front && npm install
   - npm run mountbank-start &
   - cd ../back && npm test 
   - cd ../front && npm run test:e2e-headless
-#script:
-#  - npm run unit.test

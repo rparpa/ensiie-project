@@ -8,3 +8,4 @@ node_modules
 front/logs/
 front/tests/e2e/videos/
 front/tests/e2e/screenshots/
+.env

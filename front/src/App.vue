@@ -1,15 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">      
-      <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css" rel="stylesheet" />
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/map">Map</router-link>
-    </div>
-    <router-view/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">      
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css" rel="stylesheet" />
+    <Header />
+    <Home />
+    <MyMap />
   </div>
 </template>
+
+<script>
+import Header from '@/components/Header.vue'
+import MyMap from '@/components/myMap.vue'
+import Home from '@/views/Home.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+    Home
+  }
+}
+
+</script>
 
 <style>
 #app {
