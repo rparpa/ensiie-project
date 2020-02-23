@@ -4,11 +4,16 @@ var openDataRepository = require('../repository/openDataParis');
 var ParkingSpot = require('../entity/ParkingSpot');
 
 
+
 router.get('/getAllParkingSpots', function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
         res.json(dataFromOpenDataParisRepo);
+
+        console.log(dataFromOpenDataParisRepo.records[0].geometry.coordinates[0])
+        console.log(typeof (dataFromOpenDataParisRepo.records[0].geometry.coordinates[0]))
+
     }
 
     var urlOptions = req.query;
