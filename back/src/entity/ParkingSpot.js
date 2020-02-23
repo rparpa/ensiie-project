@@ -13,7 +13,6 @@ module.exports = class {
         this._tarif = tarif ;
         this._latitude = latitude ;
         this._longitude = longitude;
-
     }
 
 
@@ -129,7 +128,5 @@ module.exports = class {
         longitude: this.longitude
         }
     };
-
-
 };
 

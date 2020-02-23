@@ -10,6 +10,8 @@ router.get('/getAllParkingSpots', function(req, res, next) {
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
         res.json(dataFromOpenDataParisRepo);
 
+
+        //TODO make a function and add it to all routers
         parkingSpotObjectList = [] ;
 
         for (var indice = 0; indice < dataFromOpenDataParisRepo.records.length; indice++) {

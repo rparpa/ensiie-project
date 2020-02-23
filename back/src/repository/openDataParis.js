@@ -2,7 +2,8 @@ var https = require("https");
 
 class OpenDataParis{
     constructor(){
-        this.base = "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&rows=10&facet=regpri&facet=regpar&facet=typsta&facet=arrond";
+        //TODO make 3 waves of 10000 records to API
+        this.base = "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&rows=10000&start=0&facet=regpri&facet=regpar&facet=typsta&facet=arrond";
     }
 
     getAllParkingSpots(urlOptions, onOpenDataApiReturn){
@@ -55,7 +56,7 @@ class OpenDataParis{
         for(var optionName in urlOptions){
             //console.log(optionName)
             var optionValue = urlOptions[optionName];
-            url += "&" + optionName + "=" + optionValue;
+            url += "&" + optionName + "=" + optionValue;6
         }
 
         https.get(url, (res) => {
@@ -71,7 +72,7 @@ class OpenDataParis{
         });
     }
 
-    //TODO bug Velos if options
+    //TODO  fix bug if options
     getAllParkingSpotsVelos(urlOptions, onOpenDataApiReturn){
         let url = this.base + "&refine.regpri=2+ROUES&refine.regpar=V%C3%A9los ";
 
