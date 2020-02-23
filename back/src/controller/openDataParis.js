@@ -11,20 +11,21 @@ router.get('/getAllParkingSpots', function(req, res, next) {
         res.json(dataFromOpenDataParisRepo);
     }
 
-    repository.getAllParkingSpots(onDataFromOpenDataParisRepo);
+    var urlOptions = req.query;
+    repository.getAllParkingSpots(urlOptions, onDataFromOpenDataParisRepo);
 
 });
 
-router.get('/getAllParkingSpotsCars', function(req, res, next) {
+router.get('/getAllParkingSpotsVoitures', function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
         res.json(dataFromOpenDataParisRepo);
     }
 
-    repository.getAllParkingSpotsCars(function (dataFromOpenDataParisRepo){
-                res.json(dataFromOpenDataParisRepo);
-    });
+    var urlOptions = req.query;
+    repository.getAllParkingSpotsVoitures(urlOptions, onDataFromOpenDataParisRepo);
+
 });
 
 router.get('/getAllParkingSpotsMotos', function(req, res, next) {
@@ -34,9 +35,8 @@ router.get('/getAllParkingSpotsMotos', function(req, res, next) {
         res.json(dataFromOpenDataParisRepo);
     }
 
-    repository.getAllParkingSpotsMotos(function (dataFromOpenDataParisRepo){
-        res.json(dataFromOpenDataParisRepo);
-    });
+    var urlOptions = req.query;
+    repository.getAllParkingSpotsMotos(urlOptions, onDataFromOpenDataParisRepo);
 });
 
 router.get('/getAllParkingSpotsVelos', function(req, res, next) {
@@ -46,9 +46,8 @@ router.get('/getAllParkingSpotsVelos', function(req, res, next) {
         res.json(dataFromOpenDataParisRepo);
     }
 
-    repository.getAllParkingSpotsVelos(function (dataFromOpenDataParisRepo){
-        res.json(dataFromOpenDataParisRepo);
-    });
+    var urlOptions = req.query;
+    repository.getAllParkingSpotsVelos(urlOptions, onDataFromOpenDataParisRepo);
 });
 
 router.get('/getAllParkingSpotsGratuit', function(req, res, next) {
@@ -58,9 +57,8 @@ router.get('/getAllParkingSpotsGratuit', function(req, res, next) {
         res.json(dataFromOpenDataParisRepo);
     }
 
-    repository.getAllParkingSpotsGratuit(function (dataFromOpenDataParisRepo){
-        res.json(dataFromOpenDataParisRepo);
-    });
+    var urlOptions = req.query;
+    repository.getAllParkingSpotsGratuit(urlOptions, onDataFromOpenDataParisRepo);
 });
 
 router.get('/getAllParkingSpotsLivraison', function(req, res, next) {
@@ -70,9 +68,8 @@ router.get('/getAllParkingSpotsLivraison', function(req, res, next) {
         res.json(dataFromOpenDataParisRepo);
     }
 
-    repository.getAllParkingSpotsLivraison(function (dataFromOpenDataParisRepo){
-        res.json(dataFromOpenDataParisRepo);
-    });
+    var urlOptions = req.query;
+    repository.getAllParkingSpotsLivraison(urlOptions, onDataFromOpenDataParisRepo);
 });
 
 router.get('/getAllParkingSpotsAutocar', function(req, res, next) {
@@ -82,9 +79,8 @@ router.get('/getAllParkingSpotsAutocar', function(req, res, next) {
         res.json(dataFromOpenDataParisRepo);
     }
 
-    repository.getAllParkingSpotsAutocar(function (dataFromOpenDataParisRepo){
-        res.json(dataFromOpenDataParisRepo);
-    });
+    var urlOptions = req.query;
+    repository.getAllParkingSpotsAutocar(urlOptions, onDataFromOpenDataParisRepo);
 });
 
 router.get('/getAllParkingSpotsElectrique', function(req, res, next) {
@@ -94,9 +90,8 @@ router.get('/getAllParkingSpotsElectrique', function(req, res, next) {
         res.json(dataFromOpenDataParisRepo);
     }
 
-    repository.getAllParkingSpotsElectrique(function (dataFromOpenDataParisRepo){
-        res.json(dataFromOpenDataParisRepo);
-    });
+    var urlOptions = req.query;
+    repository.getAllParkingSpotsElectrique(urlOptions, onDataFromOpenDataParisRepo);
 });
 
 
