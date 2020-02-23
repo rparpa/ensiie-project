@@ -35,12 +35,16 @@ export default {
   },
 
   mounted() {
-      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x.coords.long,x.coords.lat])))
+    this.getAllMarkers();  
   },
 
   methods: {
     created() {
       this.mapbox = Mapbox;
+    },
+
+    getAllMarkers(){
+      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x.coords.long,x.coords.lat])))
     }
   }
   };
