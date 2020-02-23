@@ -22,3 +22,4 @@
 {"message":"[http:5001] ::ffff:127.0.0.1:55732 => GET /bigQuery","level":"info","timestamp":"2020-02-23T16:00:18.086Z"}
 {"message":"[http:5001] ::ffff:127.0.0.1:55924 => GET /bigQuery","level":"info","timestamp":"2020-02-23T16:00:38.081Z"}
 {"message":"[http:5001] ::ffff:127.0.0.1:56060 => GET /bigQuery","level":"info","timestamp":"2020-02-23T16:03:01.339Z"}
+{"message":"[http:5001] ::1:58818 => GET /bigQuery","level":"info","timestamp":"2020-02-23T16:07:51.538Z"}
