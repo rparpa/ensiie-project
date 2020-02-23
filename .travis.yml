@@ -4,9 +4,9 @@ node_js:
 
 cache: false
 
-env:
-  - TEST_DIR=back
-  - TEST_DIR=front
+# env:
+#   - TEST_DIR=back
+#   - TEST_DIR=front
 
 before_install:
   - make install
