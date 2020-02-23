@@ -25,9 +25,12 @@ $orgarepository =
 //TODO changer pour ajouter la gestion des sources
 $source = new Chat();
 
-$userorga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
-if($userorga)
-    $source = ((Object)$userorga)->organization;
+if($authenticatorService->isAuthenticated()){
+    $userorga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
+    if($userorga)
+        $source = ((Object)$userorga)->organization;
+}
+
 
 $messages = $messageRepository->fetchAllForChat($source);
 

@@ -1,15 +1,22 @@
 <?php
 
 use Db\Connection;
+use Meeting\Meeting;
+use Meeting\MeetingHydrator;
+use Meeting\MeetingRepository;
 use Project\ProjectHydrator;
 use Project\ProjectRepository;
 use Service\AuthenticatorService;
 use Project\Project;
+use Task\TaskHydrator;
+use Task\TaskRepository;
 use User\User;
 use User\UserHydrator;
 use User\UserRepository;
 
 $projrepository = new ProjectRepository(Connection::get(), new ProjectHydrator());
+$taskrepository = new TaskRepository(Connection::get(), new TaskHydrator());
+$meetingrepository = new MeetingRepository(Connection::get(), new MeetingHydrator());
 $authenticatorService = new AuthenticatorService($userRepository);
 $userprojects = $projrepository->fetchByUser($authenticatorService->getCurrentUserId());
 
@@ -20,74 +27,96 @@ $userRepository = new UserRepository(Connection::get(), new UserHydrator());
     Vous etes sur la page des projets en gestion
 </h2>
 
-<div class="container" style="margin-top: 5em">
+
+<div class="container-fluid" id="listchefprojects">
     <?php
+    $userprojects = $projrepository->fetchByUser($authenticatorService->getCurrentUserId());
     foreach ($userprojects as $userproject) {
-        /**
-         * @var Project $project
-         */
-        $project = ((Object)$userproject)->project;?>
+    /** @var Project $project*/
+    $project = ((Object)$userproject)->project;?>
+    <div class="container" id="row-project-<? echo $project->getId()?>" >
         <div class="row">
-            <a onClick="toggleForm(<?= $project->getId() ?>)">
-                <?php echo $project->getName() ?>
-            </a>
-            <div  id="project-<?= $project->getId() ?>" style="display: none; margin-left: 1em">
-                <input type="hidden" id="name-<?= $project->getId() ?>" value="<?= $project->getName(); ?>">
-                <input type="hidden" id="idorganization-<?= $project->getId() ?>" value="<?= $project->getIdorganization(); ?>">
-                <input type="hidden" id="id-<?= $project->getId() ?>" value="<?= $project->getId(); ?>">
+            <div class="col">
+                <? echo $project->getName()?>
+            </div>
+            <div class="col">
+                <button name="button-collaborateurs" id="<? echo $project->getId()?>">Collaborateurs</button>
+            </div>
+            <div class="col">
+                <button name="button-taches" id="<? echo $project->getId()?>" >Taches</button>
+            </div>
+            <div class="col">
+                <button name="button-reunions" id="<? echo $project->getId()?>">Réunions</button>
+            </div>
+            <div class="col">
+                <button>Gerer</button>
             </div>
         </div>
-        <div >
-            <div class="container"  id="UpdateProject-<?= $project->getId() ?>" style="display: none" >
-            </div>
-            <div class="row" style="display: none" id="ListUser-<?= $project->getId() ?>" >
-                <div class="col" >
-                    <label for="choix_users">Liste des users du projet: </label>
-                    <?php
-                    $usersofproject = $userRepository->fetchByProject($project->getId());
-                    foreach ($usersofproject as $userofproject) {
-                        /** @var User $user */
-                        $user = ((Object)$userofproject)->user;?>
-                        <div>
-                            <? echo $user->getName(); ?>
-                        </div>
-                    <?}?>
-                </div>
-                <div class="col">
-                    <label for="choix_users">Liste des users : </label>
-                    <input list="users-<?= $project->getId() ?>" type="text" id="choix_users-<?= $project->getId() ?>" name="choix_users-<?= $project->getId() ?>">
-                    <datalist id="users-<?= $project->getId() ?>">
-                        <?php
-                        $usersoforganization = $userRepository->fetchByOrganizationNotInProject($project->getId());
-                        foreach ($usersoforganization as $useroforganization) {
-                        /** @var User $user */
-                        $user = ((object)$useroforganization)->user;?>
-                        <option value="<?php echo $user->getName() ?>" data-value=<?php echo $user->getId() ?>>
-                            <?php } ?>
-                    </datalist>
-                </div>
-            </div>
-
+        <div class="row" id="listusers-<? echo $project->getId()?>" style="display: none;" >
+            <? $usersofproject = $userRepository->fetchByProject($project->getId());
+            foreach ($usersofproject as $userofproject) {
+            /** @var User $user */
+            $user = ((Object)$userofproject)->user;
+            ?>
+            <ul>
+                <il>
+                    <? echo $user->getName(); ?>
+                </il>
+            </ul>
+            <? }?>
         </div>
-
-        <?php
-    }
-    ?>
+        <div class="row" id="listtasks-<? echo $project->getId()?>" style="display: none;">
+            <? $taskssofproject = $taskrepository->fetchByProject($project->getId());
+            foreach ($taskssofproject as $tasksofproject) {
+                /** @var Task $task */
+                $task = ((Object)$tasksofproject)->task;
+                ?>
+                <ul>
+                    <il>
+                        <? echo $task->getTitle(); ?>  <? echo $task->getContent()?>
+                    </il>
+                </ul>
+            <? }?>
+        </div>
+        <div class="row" id="listmeetings-<? echo $project->getId()?>" style="display: none;">
+            <? $meetingssofproject = $meetingrepository->fetchByProject($project->getId());
+            foreach ($meetingssofproject as $meetingsofproject) {
+                /** @var Meeting $meeting */
+                $meeting = ((Object)$meetingsofproject)->meeting;
+                ?>
+                <ul>
+                    <il>
+                        <? echo $meeting->getName(); ?>  <? echo $meeting->getDescription()?> <? echo $meeting->getPlace()?>
+                    </il>
+                </ul>
+            <? }?>
+        </div>
+    </div>
+    <?}?>
 </div>
 
 
 
 
 <script type="text/javascript">
-    function toggleForm(id) {
 
-        $('#UpdateProject-' + id).load('updateproject.php', {
-            name: $('#name-' + id).val(),
-            idorganization: $('#idorganization-' + id).val(),
-            id: $('#id-' + id).val()
-        }).toggle("slow");
-        $('#ListUser-' + id).toggle("slow");
-    }
+    var buttons = document.getElementById("listchefprojects");
+
+    buttons.addEventListener('click', function (e) {
+        switch (e.target.name) {
+            case "button-collaborateurs":
+                $('#listusers-' + e.target.id).toggle("slow");
+                break;
+            case "button-taches":
+                $('#listtasks-' + e.target.id).toggle("slow");
+                break;
+            case "button-reunions":
+                $('#listmeetings-' + e.target.id).toggle("slow");
+                break;
+        }
+    })
+
+
 
 
 
