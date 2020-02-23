@@ -69,6 +69,22 @@ class OpenDataParis{
         });
     }
 
+    getAllParkingSpotsGratuit(onOpenDataApiReturn){
+        let url = this.base + "&refine.regpri=GRATUIT ";
+
+        https.get(url, (res) => {
+            let data = "";
+            res.on('data', (d) => {
+                data += d;
+            });
+            res.on('end', () => {
+                onOpenDataApiReturn(JSON.parse(data));
+            });
+        }).on('error', (e) => {
+            console.error(e);
+        });
+    }
+
 
 }//end constructor
 
