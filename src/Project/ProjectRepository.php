@@ -1,6 +1,7 @@
 <?php
 namespace Project;
 
+use DateTimeImmutable;
 use DateTimeInterface;
 use Exception;
 use Organization\Organization;
@@ -168,6 +169,27 @@ class ProjectRepository
         $stmt->bindValue(':name', $name,PDO::PARAM_STR);
         $stmt->bindValue(':idorganization', $organization->getId(),PDO::PARAM_INT);
         $stmt->bindValue(':id', $id,PDO::PARAM_INT);
+        $res = $stmt->execute();
+    }
+
+    public function addUser(int $iduser, int $idproject, string $role){
+        $stmt = $this->connection->prepare(
+            'INSERT INTO userproject (iduser, idproject, role, date) 
+            VALUES (:iduser, :idproject, :role, :creationdate)'
+        );
+        $stmt->bindValue(':iduser', $iduser,PDO::PARAM_INT);
+        $stmt->bindValue(':idproject', $idproject,PDO::PARAM_INT);
+        $stmt->bindValue(':role', $role,PDO::PARAM_STR);
+        $stmt->bindValue(':creationdate', (new DateTimeImmutable("now"))->format("Y-m-d H:i:s"),PDO::PARAM_STR);
+        $res = $stmt->execute();
+    }
+
+    public function deleteUser(int $iduser, int $idproject){
+        $stmt = $this->connection->prepare(
+            'DELETE FROM userproject WHERE iduser = :iduser AND idproject = :idproject'
+        );
+        $stmt->bindValue(':iduser', $iduser,PDO::PARAM_INT);
+        $stmt->bindValue(':idproject', $idproject,PDO::PARAM_INT);
         $res = $stmt->execute();
     }
 }
