@@ -76,8 +76,8 @@ class UserRepository
         foreach ($rows as $row) {
             $users[] = [
                 "user" => $this->userHydrator->hydrateObj($row),
-                "role" => $row->role,
-                "date" => $row->date
+                "role" => $row->role??'',
+                "date" => $row->date??''
             ];
         }
         return $users;
