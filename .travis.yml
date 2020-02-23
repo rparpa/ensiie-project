@@ -10,7 +10,7 @@ cache: false
 script:
   - cd back && npm install 
   - cd ../front && npm install
-  - npm run mountbank-start
+  - npm run mountbank-start &
   - cd ../back && npm test 
   - cd ../front && npm run test:e2e-headless
 #script:
