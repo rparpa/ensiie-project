@@ -19,6 +19,11 @@ class User
     /**
      * @var string
      */
+    private string $password;
+
+    /**
+     * @var string
+     */
     private string $firstname;
 
     /**
@@ -140,6 +145,21 @@ class User
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
 
     /**
      * @return int

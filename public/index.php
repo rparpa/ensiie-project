@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $newUser->setBirthday(new DateTimeImmutable($_POST["birthday"]));
     $newUser->setPseudo($_POST["pseudo"]);
     $newUser->setMail($_POST["mail"]);
+    $newUser->setPassword($_POST["password"]);
 
     $userService->createUser($newUser);
 }
@@ -52,23 +53,37 @@ $users = $userService->getAllUser();
         <?php endforeach; ?>
     </table>
     <form action="" method="POST">
-        <label for="firstname">Prénom :</label><br>
+        <label for="firstname">Prénom 🎫 :</label><br>
         <input type="text" id="firstname" name="firstname"><br>
 
-        <label for="lastname">Nom :</label><br>
+        <label for="lastname">Nom 🎫 :</label><br>
         <input type="text" id="lastname" name="lastname"><br>
 
-        <label for="birthday">Date de naissance:</label><br>
+        <label for="birthday">Date de naissance 📅 :</label><br>
         <input type="date" id="birthday" name="birthday" value="2010-01-01"><br>
 
-        <label for="pseudo">Pseudo :</label><br>
+        <label for="pseudo">Pseudo 💳 :</label><br>
         <input type="text" id="pseudo" name="pseudo"><br>
 
-        <label for="mail">Adresse mail :</label><br>
+        <label for="mail">Adresse mail ✉️ :</label><br>
         <input type="text" id="mail" name="mail"><br>
+
+        <label for="password">Mot de passe 🔐 :</label><br>
+        <input type="password" id="password" name="password"><br>
 
         <input type="submit" value="Créer un compte"><br>
     </form>
+    <h3>Login</h3>
+    <form class = "form-signin" action="login.php" method="POST">
+        <label for="pseudo">Pseudo 💳 :</label><br>
+        <input type="text" id="pseudo" name="pseudo"><br>
+
+        <label for="password">Mot de passe 🔐 :</label><br>
+        <input type="password" id="password" name="password"><br>
+
+        <input type="submit" value="Se connecter"><br>
+    </form>
+
 </div>
 </body>
 </html>
