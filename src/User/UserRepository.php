@@ -65,6 +65,7 @@ class UserRepository
         //TODO Voir pour faire mieux
         $stmt = $this->connection->
             prepare('SELECT * FROM "user" 
+                                JOIN userproject ON ("user".id = userproject.iduser)
                                 WHERE id NOT IN (
                                 SELECT id FROM "user" 
                                 JOIN userproject ON ("user".id = userproject.iduser) 
