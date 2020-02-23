@@ -28,9 +28,8 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="./profil">Mon profil</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" id="contribution" href="#">Mes contributions</a>
-                  <a class="dropdown-item" id="offres" href="#">Mes offres d'emploi</a>
-                  <a class="dropdown-item" id="newoffre" href="#">Déposer une offre d'emploi</a>
+                  <a class="dropdown-item" id="contribution" href="./contribution">Mes contributions</a>
+                  <a class="dropdown-item" id="offres" href="./offre">Mes offres d'emploi</a>
                 </div>
             </li>
         </ul>
@@ -169,7 +168,6 @@
     }
     else if (localStorage.getItem('id') == "2") {
         document.getElementById("offres").style.display = "none";
-        document.getElementById("newoffre").style.display = "none";
     }
     else {
         document.getElementById("deconnexion").style.display = "none";
