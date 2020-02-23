@@ -8,6 +8,6 @@ cache: false
 #  - cd back && npm install
 #  - npm run start.ci
 script:
-  - cd back && npm install && npm test && cd ../front && npm install && npm run test:e2e-headless
+  - cd back && npm install && npm test && cd ../front && npm install && npm run mountbank-start &&npm run test:e2e-headless
 #script:
 #  - npm run unit.test
