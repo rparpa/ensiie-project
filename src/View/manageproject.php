@@ -23,7 +23,7 @@ if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <label for="choix_project">Liste des organisations : </label>
+            <label for="choix_project">Liste des projets : </label>
             <select id="select-projets">
                 <option></option>
                 <?php /** @var Project $project */

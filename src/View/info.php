@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <div class="info">
     <table class="table" id="infos">
         <?php include_once 'chat/refresh_info.php' ?>
