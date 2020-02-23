@@ -3,8 +3,11 @@
     <b-jumbotron>
       <b-row>
         <!--<img src="../assets/map.jpg" height="500" width="700" class="mr-5">-->
-        <MapBox/>
         <MapSettings/>
+      </b-row>
+      <br>
+      <b-row>
+        <MapBox/>
       </b-row>
     </b-jumbotron>
   </b-container>
