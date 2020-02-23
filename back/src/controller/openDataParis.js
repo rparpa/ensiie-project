@@ -87,6 +87,17 @@ router.get('/getAllParkingSpotsAutocar', function(req, res, next) {
     });
 });
 
+router.get('/getAllParkingSpotsElectrique', function(req, res, next) {
+    let repository = new openDataRepository();
+
+    var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
+        res.json(dataFromOpenDataParisRepo);
+    }
+
+    repository.getAllParkingSpotsElectrique(function (dataFromOpenDataParisRepo){
+        res.json(dataFromOpenDataParisRepo);
+    });
+});
 
 
 module.exports = router;
