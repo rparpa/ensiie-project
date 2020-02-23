@@ -9,9 +9,9 @@ cache: false
 #  - npm run start.ci
 script:
   - cd back && npm install 
-  - cd front && npm install
-  - cd front && npm run mountbank-start
-  - cd back && npm test 
-  - cd front && npm run test:e2e-headless
+  - cd ../front && npm install
+  - npm run mountbank-start
+  - cd ../back && npm test 
+  - cd ../front && npm run test:e2e-headless
 #script:
 #  - npm run unit.test
