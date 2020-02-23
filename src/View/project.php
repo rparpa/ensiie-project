@@ -55,20 +55,20 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                     </div>
                 </div>
                 <div class="row" style="min-height: 15em;" >
-                    <fieldset>
+                    <fieldset id="field-user-delete">
                         <? $usersofproject = $userrepository->fetchByProject($idproject);
                         foreach ($usersofproject as $userofproject) {
                             /** @var User $user */
                             $user = ((Object)$userofproject)->user;?>
                             <div>
                                 <label for="nameuser"><? echo $user->getSurname(); ?> <? echo $user->getName(); ?> </label>
-                                <input type="checkbox" value data-iduser="<? $user->getId()?>">
+                                <input name="check-user-delete" type="checkbox" value data-iduser="<? echo $user->getId()?>">
                             </div>
                         <? }?>
                     </fieldset>
                 </div>
                 <div class="row">
-                    <button>Supprimer</button>
+                    <button id="button-delete" >Supprimer</button>
                 </div>
             </div>
             <div class="col">
@@ -144,6 +144,23 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 idproject:<?php echo $idproject; ?>
             }
         });
+    })
+
+    document.getElementById("button-delete").addEventListener('click', function () {
+        var checkboxs = document.getElementsByName("check-user-delete");
+        for (var checkbox of checkboxs){
+            if(checkbox.checked){
+                var iduser = checkbox.attributes["data-iduser"].value;
+                $.ajax({
+                    type: 'GET',
+                    url: 'deleteusertoproject.php',
+                    data: {
+                        iduser:iduser,
+                        idproject:<?php echo $idproject; ?>
+                    }
+                });
+            }
+        }
     })
 
 
