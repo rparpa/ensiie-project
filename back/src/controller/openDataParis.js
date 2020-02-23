@@ -4,15 +4,36 @@ var openDataRepository = require('../repository/openDataParis');
 var ParkingSpot = require('../entity/ParkingSpot');
 
 
-
 router.get('/getAllParkingSpots', function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
         res.json(dataFromOpenDataParisRepo);
 
-        console.log(dataFromOpenDataParisRepo.records[0].geometry.coordinates[0])
-        console.log(typeof (dataFromOpenDataParisRepo.records[0].geometry.coordinates[0]))
+        parkingSpotObjectList = [] ;
+
+        for (var indice = 0; indice < dataFromOpenDataParisRepo.records.length; indice++) {
+
+            var objectParkingSpot = new ParkingSpot(
+            parkingSpotId = dataFromOpenDataParisRepo.records[indice].recordid,
+            statut = null,
+            vehiculeId = null,
+            numVoie = dataFromOpenDataParisRepo.records[indice].fields.numvoie,
+            typeVoie = dataFromOpenDataParisRepo.records[indice].fields.typevoie,
+            nomVoie = dataFromOpenDataParisRepo.records[indice].fields.nomvoie,
+            arrond = dataFromOpenDataParisRepo.records[indice].fields.arrond,
+            typeSta = dataFromOpenDataParisRepo.records[indice].fields.typesta,
+            typeMob = dataFromOpenDataParisRepo.records[indice].fields.typemob,
+            tarif = dataFromOpenDataParisRepo.records[indice].fields.tar,
+            latitude = dataFromOpenDataParisRepo.records[indice].geometry.coordinates[0],
+            longitude = dataFromOpenDataParisRepo.records[indice].geometry.coordinates[1]
+            );
+
+            parkingSpotObjectList.push(objectParkingSpot) ;
+        }
+
+        console.log(parkingSpotObjectList)
+        console.log(parkingSpotObjectList.length)
 
     }
 

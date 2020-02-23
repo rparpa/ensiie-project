@@ -6,7 +6,7 @@ class OpenDataParis{
     }
 
     getAllParkingSpots(urlOptions, onOpenDataApiReturn){
-        let url = this.base;
+        let url = this.base
 
         for(var optionName in urlOptions){
             //console.log(optionName)
@@ -28,7 +28,7 @@ class OpenDataParis{
     }
 
     getAllParkingSpotsVoitures(urlOptions,onOpenDataApiReturn){
-        let url = this.base;
+        let url = this.base + "&refine.regpri=PAYANT+MIXTE" ;
 
         for(var optionName in urlOptions){
             //console.log(optionName)
