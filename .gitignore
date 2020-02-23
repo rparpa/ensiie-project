@@ -6,3 +6,4 @@ composer.lock
 error.log
 node_modules
 front/logs/
+front/tests/e2e/videos/

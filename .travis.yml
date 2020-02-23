@@ -8,6 +8,6 @@ cache: false
 #  - cd back && npm install
 #  - npm run start.ci
 script:
-  - cd back && npm install && npm test && cd ../front && npm install && npm test
+  - cd back && npm install && npm test && cd ../front && npm install && npm test:e2e-headless
 #script:
 #  - npm run unit.test
