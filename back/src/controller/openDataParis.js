@@ -75,5 +75,18 @@ router.get('/getAllParkingSpotsLivraison', function(req, res, next) {
     });
 });
 
+router.get('/getAllParkingSpotsAutocar', function(req, res, next) {
+    let repository = new openDataRepository();
+
+    var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
+        res.json(dataFromOpenDataParisRepo);
+    }
+
+    repository.getAllParkingSpotsAutocar(function (dataFromOpenDataParisRepo){
+        res.json(dataFromOpenDataParisRepo);
+    });
+});
+
+
 
 module.exports = router;
