@@ -42,3 +42,8 @@ db.install:
 	sleep 10
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER -h localhost -f src/data/db.sql'
 
+front.update.dependencies:
+	docker-compose exec vuejs npm install
+
+back.update.dependencies:
+	docker-compose exec node npm install

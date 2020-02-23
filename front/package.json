@@ -6,12 +6,17 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e"
+    "test:e2e-headless": "vue-cli-service test:e2e --headless",
+    "test:e2e": "vue-cli-service test:e2e",
+    "mountbank-start": "node tests/mountbank/index.js"
   },
   "dependencies": {
+    "mapbox-gl": "^1.8.0",
+    "node-fetch": "^2.6.0",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.5.0",
     "vue": "^2.6.11",
+    "vue-mapbox": "^0.4.1",
     "vue-router": "^3.1.5"
   },
   "devDependencies": {
@@ -20,6 +25,9 @@
     "@vue/cli-plugin-unit-jest": "~4.2.0",
     "@vue/cli-service": "~4.2.0",
     "@vue/test-utils": "1.0.0-beta.31",
+    "axios": "^0.19.2",
+    "cypress": "^4.0.2",
+    "mountebank": "^2.2.0",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
