@@ -53,6 +53,22 @@ class OpenDataParis{
         });
     }
 
+    getAllParkingSpotsVelos(onOpenDataApiReturn){
+        let url = this.base + "&refine.regpri=2+ROUES&refine.regpar=V%C3%A9los ";
+
+        https.get(url, (res) => {
+            let data = "";
+            res.on('data', (d) => {
+                data += d;
+            });
+            res.on('end', () => {
+                onOpenDataApiReturn(JSON.parse(data));
+            });
+        }).on('error', (e) => {
+            console.error(e);
+        });
+    }
+
 
 }//end constructor
 

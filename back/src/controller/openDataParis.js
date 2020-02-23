@@ -39,4 +39,16 @@ router.get('/getAllParkingSpotsMotos', function(req, res, next) {
     });
 });
 
+router.get('/getAllParkingSpotsVelos', function(req, res, next) {
+    let repository = new openDataRepository();
+
+    var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
+        res.json(dataFromOpenDataParisRepo);
+    }
+
+    repository.getAllParkingSpotsVelos(function (dataFromOpenDataParisRepo){
+        res.json(dataFromOpenDataParisRepo);
+    });
+});
+
 module.exports = router;
