@@ -28,6 +28,7 @@
     "axios": "^0.19.2",
     "cypress": "^4.0.2",
     "mountebank": "^2.2.0",
+    "vue-places": "^2.1.3",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
