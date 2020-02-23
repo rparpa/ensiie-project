@@ -28,12 +28,6 @@ $userrepository =
 $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
 
 
-
-
-
-
-
-
 ?>
 
 <div class="container">
@@ -46,18 +40,18 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 </div>
                 <div class="row">
                     <div class="col">
-                        <select >
+                        <select id="select-user-add">
                             <? $usersoforganization = $userrepository->fetchByOrganizationNotInProject($idproject);
                             foreach ($usersoforganization as $useroforganization) {
                                 /** @var User $user */
                                 $user = ((Object)$useroforganization)->user;
                                 ?>
-                            <option><? echo $user->getName()?></option>
+                            <option data-id="<? echo $user->getId();?>"><? echo $user->getName()?></option>
                             <? }?>
                         </select>
                     </div>
                     <div class="col">
-                        <button>Ajouter</button>
+                        <button id="button-add" >Ajouter</button>
                     </div>
                 </div>
                 <div class="row" style="min-height: 15em;" >
@@ -132,3 +126,26 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
         </div>
     </div>
 </div>
+
+<script>
+
+    document.getElementById("button-add").addEventListener('click', function () {
+        var select = document.getElementById("select-user-add");
+        var index = select.selectedIndex;
+        var iduser = select.options[index].attributes["data-id"].value;
+        //TODO ajouter une saisie lors de la selection
+        var role = "Larbin";
+        $.ajax({
+            type: 'GET',
+            url: 'addusertoproject.php',
+            data: {
+                iduser:iduser,
+                role:role,
+                idproject:<?php echo $idproject; ?>
+            }
+        });
+    })
+
+
+
+</script>
