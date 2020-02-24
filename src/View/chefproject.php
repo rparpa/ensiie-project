@@ -18,7 +18,6 @@ $projrepository = new ProjectRepository(Connection::get(), new ProjectHydrator()
 $taskrepository = new TaskRepository(Connection::get(), new TaskHydrator());
 $meetingrepository = new MeetingRepository(Connection::get(), new MeetingHydrator());
 $authenticatorService = new AuthenticatorService($userRepository);
-$userprojects = $projrepository->fetchByUser($authenticatorService->getCurrentUserId());
 $userRepository = new UserRepository(Connection::get(), new UserHydrator());
 
 
