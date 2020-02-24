@@ -1,10 +1,12 @@
 <?php
 use Db\Connection;
-use Meeting\Meeting;
 use Meeting\MeetingHydrator;
 use Meeting\MeetingRepository;
+use Organization\OrganizationHydrator;
+use Organization\OrganizationRepository;
 use Project\ProjectHydrator;
 use Project\ProjectRepository;
+use Service\AuthenticatorService;
 use Task\TaskHydrator;
 use Task\TaskRepository;
 use User\User;
@@ -24,9 +26,14 @@ $meetingrepository =
 $userrepository =
     new UserRepository(Connection::get(), new UserHydrator());
 
+$orgarepository =
+    new OrganizationRepository(Connection::get(),new OrganizationHydrator());
+
+$authenticatorService =
+    new AuthenticatorService($userrepository);
+
 
 $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
-
 
 ?>
 
@@ -41,34 +48,20 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 <div class="row">
                     <div class="col">
                         <select id="select-user-add">
-                            <? $usersoforganization = $userrepository->fetchByOrganizationNotInProject($idproject);
-                            foreach ($usersoforganization as $useroforganization) {
-                                /** @var User $user */
-                                $user = ((Object)$useroforganization)->user;
-                                ?>
-                            <option data-id="<? echo $user->getId();?>"><? echo $user->getName()?></option>
-                            <? }?>
+                            <?php include_once 'select_usersoforganization.php' ?>
                         </select>
                     </div>
                     <div class="col">
-                        <button id="button-add" >Ajouter</button>
+                        <button id="button-user-add" >Ajouter</button>
                     </div>
                 </div>
                 <div class="row" style="min-height: 15em;" >
                     <fieldset id="field-user-delete">
-                        <? $usersofproject = $userrepository->fetchByProject($idproject);
-                        foreach ($usersofproject as $userofproject) {
-                            /** @var User $user */
-                            $user = ((Object)$userofproject)->user;?>
-                            <div>
-                                <label for="nameuser"><? echo $user->getSurname(); ?> <? echo $user->getName(); ?> </label>
-                                <input name="check-user-delete" type="checkbox" value data-iduser="<? echo $user->getId()?>">
-                            </div>
-                        <? }?>
+                        <?php include_once 'field_usersofproject.php' ?>
                     </fieldset>
                 </div>
                 <div class="row">
-                    <button id="button-delete" >Supprimer</button>
+                    <button id="button-user-delete" >Supprimer</button>
                 </div>
             </div>
             <div class="col">
@@ -77,24 +70,16 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button>Ajouter</button>
+                        <button id="button-task-add">Ajouter</button>
                     </div>
                 </div>
                 <div class="row" style="min-height: 15em;" >
-                    <fieldset>
-                        <? $tasksofproject = $taskrepository->fetchByProject($idproject);
-                        foreach ($tasksofproject as $taskofproject) {
-                            /** @var Task $task */
-                            $task = ((Object)$taskofproject)->task;?>
-                            <div>
-                                <label for="nametask"><? echo $task->getTitle(); ?> <? echo $task->getContent(); ?> </label>
-                                <input type="checkbox" value data-iduser="<? $task->getId()?>">
-                            </div>
-                        <? }?>
+                    <fieldset id="field-task-delete">
+                        <?php include_once 'field_tasksofproject.php' ?>
                     </fieldset>
                 </div>
                 <div class="row">
-                    <button>Supprimer</button>
+                    <button id="button-task-delete">Supprimer</button>
                 </div>
             </div>
             <div class="col">
@@ -103,66 +88,183 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button>Ajouter</button>
+                        <button id="button-meeting-add">Ajouter</button>
                     </div>
                 </div>
                 <div class="row" style="min-height: 15em;" >
-                    <fieldset>
-                        <? $meetingsofproject = $meetingrepository->fetchByProject($idproject);
-                        foreach ($meetingsofproject as $meetingofproject) {
-                            /** @var Meeting $meeting */
-                            $meeting = ((Object)$meetingofproject)->meeting;?>
-                            <div>
-                                <label for="namemeeting"><? echo $meeting->getName(); ?> <? echo $meeting->getDescription(); ?> </label>
-                                <input type="checkbox" value data-iduser="<? $meeting->getId()?>">
-                            </div>
-                        <? }?>
+                    <fieldset id="field-meeting-delete">
+                        <?php include_once 'field_meetingsofproject.php' ?>
                     </fieldset>
                 </div>
                 <div class="row">
-                    <button>Supprimer</button>
+                    <button id="button-meeting-delete" >Supprimer</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
+<!-- Modal HTML -->
+<div id="Modaltask" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+            <div class="modal-header">
+                <h5 class="modal-title">Ajout d'un tache</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="col">
+                        <label >Title</label>
+                    </div>
+                    <div class="col">
+                        <input id="modal-task-title">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label >Content</label>
+                    </div>
+                    <div class="col">
+                        <textarea id="modal-task-content"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label >State</label>
+                    </div>
+                    <div class="col">
+                        <input id="modal-task-state" value="Assignée">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label >Responsable</label>
+                    </div>
+                    <div class="col">
+                        <select id="modal-task-assignee">
+                            <option></option>
+                            <?php
+                            //TODO corriger avec un vrai idorga
+                            $useroforga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
+                            $usersoforga = $userrepository->fetchByOrganization(((object)$useroforga)->organization->getId());
+                            foreach ($usersoforga as $useroforga) {
+                            /** @var User $user */
+                            $user = ((Object)$useroforga)->user;?>
+                            <option data-id="<? echo $user->getId()?>"><?php echo $user->getSurname() . ' ' . $user->getName() ?></option>
+                            <? }?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal">Cancel</button>
+                <button type="submit" >Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
 
-    document.getElementById("button-add").addEventListener('click', function () {
-        var select = document.getElementById("select-user-add");
-        var index = select.selectedIndex;
-        var iduser = select.options[index].attributes["data-id"].value;
-        //TODO ajouter une saisie lors de la selection
-        var role = "Larbin";
-        $.ajax({
-            type: 'GET',
-            url: 'addusertoproject.php',
-            data: {
-                iduser:iduser,
-                role:role,
-                idproject:<?php echo $idproject; ?>
-            }
-        });
-    })
+    document.getElementById("button-user-add").addEventListener('click', function () {
+        var index = $("#select-user-add").prop("selectedIndex");
+        if(index>=0){
+            var iduser = $("#select-user-add").find(':selected').attr('data-id');
+            //TODO ajouter une saisie lors de la selection
+            var role = "Larbin";
+            $.post({
+                type: 'GET',
+                url: 'addusertoproject.php',
+                data: {
+                    iduser:iduser,
+                    role:role,
+                    idproject:<?php echo $idproject; ?>
+                },success:refreshuser
+            });
+        }
+    });
 
-    document.getElementById("button-delete").addEventListener('click', function () {
+    document.getElementById("button-task-add").addEventListener('click', function () {
+        $("#Modaltask").modal("show");
+    });
+
+    document.getElementById("button-meeting-add").addEventListener('click', function () {
+        alert('TODO');
+    });
+
+
+    document.getElementById("button-user-delete").addEventListener('click', function () {
         var checkboxs = document.getElementsByName("check-user-delete");
         for (var checkbox of checkboxs){
             if(checkbox.checked){
                 var iduser = checkbox.attributes["data-iduser"].value;
-                $.ajax({
+                $.post({
                     type: 'GET',
                     url: 'deleteusertoproject.php',
                     data: {
                         iduser:iduser,
                         idproject:<?php echo $idproject; ?>
-                    }
+                    },success:refreshuser
                 });
             }
         }
+    });
+
+    document.getElementById("button-task-delete").addEventListener('click', function () {
+        alert('TODO');
+    });
+
+    document.getElementById("button-meeting-delete").addEventListener('click', function () {
+        alert('TODO');
+    });
+
+    function refreshuser() {
+        var data = {idproject:<?echo $idproject;?>};
+        $('#field-user-delete').load('field_usersofproject.php',data);
+        $('#select-user-add').load('select_usersoforganization.php', data);
+    }
+
+    function refreshtask() {
+        var $data = {idproject:<?echo $idproject;?>};
+        $('#field-task-delete').load('field_tasksofproject.php',$data);
+    }
+
+    function refreshmeeting() {
+        var $data = {idproject:<?echo $idproject;?>};
+        $('#field-meeting-delete').load('field_meetingsofproject.php',$data);
+    }
+
+    function submit_modal_task() {
+        var title = $("#modal-task-title").val();
+        var content = $("#modal-task-content").val();
+        var state = $("#modal-task-state").val();
+        var idassignee = $("#modal-task-assignee").find(':selected').attr('data-id');
+        $.post({
+            type:"GET",
+            url:"addtask.php",
+            data:{
+                title:title,
+                content:content,
+                state:state,
+                idcreator:<? echo $authenticatorService->getCurrentUserId();?>,
+                idassignee:idassignee,
+                idproject:<? echo $idproject;?>
+            },success:refreshtask
+        }).done(function () {
+            $('#Modaltask').modal('hide')
+        })
+    }
+
+    $(function(){
+        $('form').submit(function(event){
+            // cancels the form submission
+            event.preventDefault();
+            submit_modal_task();
+        })
     })
-
-
 
 </script>

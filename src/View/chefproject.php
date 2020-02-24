@@ -18,7 +18,6 @@ $projrepository = new ProjectRepository(Connection::get(), new ProjectHydrator()
 $taskrepository = new TaskRepository(Connection::get(), new TaskHydrator());
 $meetingrepository = new MeetingRepository(Connection::get(), new MeetingHydrator());
 $authenticatorService = new AuthenticatorService($userRepository);
-$userprojects = $projrepository->fetchByUser($authenticatorService->getCurrentUserId());
 $userRepository = new UserRepository(Connection::get(), new UserHydrator());
 
 
@@ -50,7 +49,7 @@ $userRepository = new UserRepository(Connection::get(), new UserHydrator());
                 <button name="button-reunions" id="<? echo $project->getId()?>">Réunions</button>
             </div>
             <div class="col">
-                <a class="link-header-item-a" href="project.php?idproject=<? echo $project->getId()?>">Gerer</a>
+                <button name="button-gerer" id="<? echo $project->getId()?>" onclick="location.href='project.php?idproject=<? echo $project->getId()?>'">Gerer</button>
             </div>
         </div>
         <div class="row" id="listusers-<? echo $project->getId()?>" style="display: none;" >
