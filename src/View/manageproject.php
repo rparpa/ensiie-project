@@ -29,8 +29,8 @@ if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
                 <?php /** @var Project $project */
                 foreach ($projects as $project) { ?>
                     <option value="<?php echo $project->getName() ?>"
-                            data-value=<?php echo $project->getId() ?>
-                            data-idorga=<? echo $project->getIdorganization()?>
+                            data-value="<?php echo $project->getId() ?>"
+                            data-idorga="<? echo $project->getIdorganization()?>"
                             data-nameorga="<? echo $orgarepository->findOneById($project->getIdorganization())->getName()?>" > <?php echo $project->getName() ?></option>
                 <?php } ?>
             </select>
