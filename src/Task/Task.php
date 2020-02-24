@@ -1,5 +1,8 @@
 <?php
 
+namespace Task;
+
+use DateTimeInterface;
 
 class Task
 {
