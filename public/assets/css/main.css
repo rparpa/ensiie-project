@@ -972,6 +972,7 @@ input, select, textarea {
 				border: solid 1px #ffffff;
 				border-left-width: 0;
 				border-top-width: 0;
+				vertical-align: middle
 			}
 
 				table.alt tbody tr td:first-child {
@@ -979,7 +980,7 @@ input, select, textarea {
 				}
 
 			table.alt tbody tr:first-child td {
-				border-top-width: 1px;
+				border-top-width: 1px;				
 			}
 
 			table.alt thead {

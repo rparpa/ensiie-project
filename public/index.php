@@ -59,9 +59,9 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td></td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
+													<td><img src="images/Salade.jpg" width="100%" alt="" style="vertical-align: middle"/></td>
+													<td>De la bonne grosse salade pour te donner l'impression que tu manges sainement </td>
+													<td>0.3</td>
 												</tr>
 												<tr>
 													<td>Item Two</td>
