@@ -23,6 +23,6 @@ $tasksofproject = $taskrepository->fetchByProject($idproject);
 foreach ($tasksofproject as $taskofproject) {?>
     <div>
         <label for="nametask"><? echo $taskofproject->getTitle(); ?> <? echo $taskofproject->getContent(); ?> </label>
-        <input type="checkbox" value data-iduser="<? $taskofproject->getId()?>">
+        <input name="check-task-delete" type="checkbox" value data-iduser="<? $taskofproject->getId()?>">
     </div>
 <? }?>

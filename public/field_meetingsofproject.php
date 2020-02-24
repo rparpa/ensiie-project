@@ -24,6 +24,6 @@ foreach ($meetingsofproject as $meetingofproject) {
     $meeting = ((Object)$meetingofproject)->meeting;?>
     <div>
         <label for="namemeeting"><? echo $meeting->getName(); ?> <? echo $meeting->getDescription(); ?> </label>
-        <input type="checkbox" value data-iduser="<? $meeting->getId()?>">
+        <input name="check-meeting-delete" type="checkbox" value data-iduser="<? $meeting->getId()?>">
     </div>
 <? }?>
