@@ -5,6 +5,7 @@ require_once '../src/Bootstrap.php';
 include_once '../src/View/template.php';
 
 use Db\Connection;
+use Task\Task;
 use Task\TaskHydrator;
 use Task\TaskRepository;
 
@@ -18,11 +19,10 @@ $taskrepository =
     new TaskRepository(Connection::get(), new TaskHydrator());
 
 $tasksofproject = $taskrepository->fetchByProject($idproject);
-foreach ($tasksofproject as $taskofproject) {
-    /** @var Task $task */
-    $task = ((Object)$taskofproject)->task;?>
+/** @var Task $taskofproject */
+foreach ($tasksofproject as $taskofproject) {?>
     <div>
-        <label for="nametask"><? echo $task->getTitle(); ?> <? echo $task->getContent(); ?> </label>
-        <input type="checkbox" value data-iduser="<? $task->getId()?>">
+        <label for="nametask"><? echo $taskofproject->getTitle(); ?> <? echo $taskofproject->getContent(); ?> </label>
+        <input type="checkbox" value data-iduser="<? $taskofproject->getId()?>">
     </div>
 <? }?>
