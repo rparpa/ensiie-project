@@ -19,11 +19,11 @@ $meetingrepository =
     new MeetingRepository(Connection::get(), new MeetingHydrator());
 
 $meetingsofproject = $meetingrepository->fetchByProject($idproject);
-foreach ($meetingsofproject as $meetingofproject) {
-    /** @var Meeting $meeting */
-    $meeting = ((Object)$meetingofproject)->meeting;?>
+
+/** @var Meeting $meeting */
+foreach ($meetingsofproject as $meeting) {?>
     <div>
         <label for="namemeeting"><? echo $meeting->getName(); ?> <? echo $meeting->getDescription(); ?> </label>
-        <input name="check-meeting-delete" type="checkbox" value data-iduser="<? $meeting->getId()?>">
+        <input name="check-meeting-delete" type="checkbox" value data-idmeeting="<? echo $meeting->getId()?>">
     </div>
 <? }?>
