@@ -13,10 +13,12 @@
   "dependencies": {
     "mapbox-gl": "^1.8.0",
     "node-fetch": "^2.6.0",
-    "bootstrap": "^4.4.1",
-    "bootstrap-vue": "^2.5.0",
     "vue": "^2.6.11",
     "vue-mapbox": "^0.4.1",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.5.0",
+    "vue-axios": "^2.1.5",
     "vue-router": "^3.1.5"
   },
   "devDependencies": {
