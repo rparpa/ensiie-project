@@ -69,21 +69,18 @@ class MeetingRepository
     public function fetchByProject(int $projectId)
     {
         //TODO a implementer
-        return [];
-        $stmt = $this->connection->prepare('SELECT * FROM "meeting" JOIN "usermeeting" ON (meeting.id=usermeeting.idmeeting) WHERE iduser = :iduser');
-        $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
+        $stmt = $this->connection->prepare(
+            'SELECT * FROM meeting WHERE idsource = :idsource AND source = :source');
+        $stmt->bindValue(':idsource', $projectId, PDO::PARAM_INT);
+        $stmt->bindValue(':source', 'project', PDO::PARAM_STR);
         $stmt->execute();
-        $rows = $stmt->fetch(PDO::FETCH_OBJ);
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
         $meetings = [];
-        if ($rows) {
-            foreach ($rows as $row) {
-                $meetings[] = [
-                    "meeting" => $this->meetingHydrator->hydrateObj($row),
-                    "role" => $row->role,
-                    "date" => $row->date
-                ];
-            }
+        foreach ($rows as $row) {
+            $meeting = $this->meetingHydrator->hydrateObj($row);
+            $meetings[] = $meeting;
         }
+
         return $meetings;
     }
 
