@@ -40,7 +40,7 @@ router.get('/getAllParkingSpots', function(req, res, next) {
         allParkingSpotObjectList = fromJsonToObject(dataFromOpenDataParisRepo);
 
         //console.log(parkingSpotObjectList)
-        console.log(parkingSpotObjectList.length)
+        console.log(allParkingSpotObjectList.length)
 
         res.json(allParkingSpotObjectList);
 
