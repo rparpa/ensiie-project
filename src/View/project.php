@@ -109,7 +109,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
 <div id="Modaltask" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form id="form-modal-task">
             <div class="modal-header">
                 <h5 class="modal-title">Ajout d'un tache</h5>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -147,7 +147,6 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                         <select id="modal-task-assignee">
                             <option></option>
                             <?php
-                            //TODO corriger avec un vrai idorga
                             $useroforga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
                             $usersoforga = $userrepository->fetchByOrganization(((object)$useroforga)->organization->getId());
                             foreach ($usersoforga as $useroforga) {
@@ -163,6 +162,50 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 <button type="button" data-dismiss="modal">Cancel</button>
                 <button type="submit" >Save changes</button>
             </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal HTML -->
+<div id="Modalmeeting" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="form-modal-meeting">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ajout d'une réunion</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col">
+                            <label >Name</label>
+                        </div>
+                        <div class="col">
+                            <input id="modal-meeting-name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label >Description</label>
+                        </div>
+                        <div class="col">
+                            <textarea id="modal-meeting-description"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label >Place</label>
+                        </div>
+                        <div class="col">
+                            <input id="modal-meeting-place" value="Bureau invisible">
+                        </div>
+                    </div>
+               </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal">Cancel</button>
+                    <button type="submit" >Ajout réunion</button>
+                </div>
             </form>
         </div>
     </div>
@@ -193,7 +236,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
     });
 
     document.getElementById("button-meeting-add").addEventListener('click', function () {
-        alert('TODO');
+        $("#Modalmeeting").modal("show");
     });
 
 
@@ -204,7 +247,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 var iduser = checkbox.attributes["data-iduser"].value;
                 $.post({
                     type: 'GET',
-                    url: 'deleteusertoproject.php',
+                    url: 'deleteuserofproject.php',
                     data: {
                         iduser:iduser,
                         idproject:<?php echo $idproject; ?>
@@ -215,11 +258,35 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
     });
 
     document.getElementById("button-task-delete").addEventListener('click', function () {
-        alert('TODO');
+        var checkboxs = document.getElementsByName("check-task-delete");
+        for (var checkbox of checkboxs) {
+            if (checkbox.checked) {
+                var idtask = checkbox.attributes["data-idtask"].value;
+                $.post({
+                    type: 'GET',
+                    url: 'deletetaskofproject.php',
+                    data: {
+                        idtask:idtask
+                    },success:refreshtask
+                });
+            }
+        }
     });
 
     document.getElementById("button-meeting-delete").addEventListener('click', function () {
-        alert('TODO');
+        var checkboxs = document.getElementsByName("check-meeting-delete");
+        for (var checkbox of checkboxs) {
+            if (checkbox.checked) {
+                var idmeeting = checkbox.attributes["data-idmeeting"].value;
+                $.post({
+                    type: 'GET',
+                    url: 'deletemeetingofproject.php',
+                    data: {
+                        idmeeting:idmeeting
+                    },success:refreshmeeting
+                });
+            }
+        }
     });
 
     function refreshuser() {
@@ -259,11 +326,38 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
         })
     }
 
+    function submit_modal_meeting() {
+        var name = $('#modal-meeting-name').val();
+        var place = $('#modal-meeting-place').val();
+        var description = $('#modal-meeting-description').val();
+        $.post({
+            type:"GET",
+            url:"addmeeting.php",
+            data:{
+                name:name,
+                place:place,
+                description:description,
+                idsource:<? echo $idproject;?>,
+                source:"project"
+            },success:refreshmeeting
+        }).done(function () {
+            $('#Modalmeeting').modal('hide')
+        })
+    }
+
     $(function(){
-        $('form').submit(function(event){
+        $('#form-modal-task').submit(function(event){
             // cancels the form submission
             event.preventDefault();
             submit_modal_task();
+        })
+    })
+
+    $(function(){
+        $('#form-modal-meeting').submit(function(event){
+            // cancels the form submission
+            event.preventDefault();
+            submit_modal_meeting();
         })
     })
 
