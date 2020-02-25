@@ -73,13 +73,20 @@ export default {
   },
   methods: {
     onLogIn(evt) {
-      evt.preventDefault()
+      evt.preventDefault();
 
-      // JSON.stringify(this.logIn) => send to back end
+      this.axios.post('http://localhost:3000'
+      , JSON.stringify(this.logIn)
+      )
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      })
     },
     onSignIn(evt) {
       evt.preventDefault()
-
       // JSON.stringify(this.signIn) => send to back end
     }
   }
