@@ -1,9 +1,9 @@
 var https = require("https");
 
-class OpenDataParis{
+class OpenDataParisRepository{
     constructor(){
         //TODO make 3 waves of 10000 records to API
-        this.base = "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&rows=10000&start=0&facet=regpri&facet=regpar&facet=typsta&facet=arrond";
+        this.base = "https://opendata.paris.fr/api/records/1.0/search/?dataset=stationnement-voie-publique-emplacements&rows=500&start=0&facet=regpri&facet=regpar&facet=typsta&facet=arrond";
     }
 
     getAllParkingSpots(urlOptions, onOpenDataApiReturn){
@@ -190,4 +190,4 @@ class OpenDataParis{
 
 
 
-module.exports = OpenDataParis;
+module.exports = OpenDataParisRepository;
