@@ -1,177 +1,191 @@
 <html>
 
-<head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</head>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
 
-    <a class="navbar-brand" href="./accueil">In Fact</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <a class="navbar-brand" href="./accueil">In Fact</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="./accueil">Lancer une recherche</a>
-            </li>
-            <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: none;">
-                  Mon compte
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="./profil">Mon profil</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" id="contribution" href="./contribution">Mes contributions</a>
-                  <a class="dropdown-item" id="offres" href="./offre">Mes offres d'emploi</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./accueil">Lancer une recherche</a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: none;">
+                    Mon compte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="./profil">Mon profil</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" id="contribution" href="./contribution">Mes contributions</a>
+                    <a class="dropdown-item" id="offres" href="./offre">Mes offres d'emploi</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#connexionModal" id="connexion">Connexion</button>
+            </form>
+
+            <form class="form-inline my-2 my-lg-0 pl-2">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#inscriptionModal" id="inscription">Inscription</button>
+            </form>
+
+            <form class="form-inline my-2 my-lg-0 pl-2">
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="button" id="deconnexion" onClick="localStorage.setItem('id',0);location.reload();
+                return false;">Deconnexion</button>
+            </form>
+        </div>
+
+        <!-- Modal connexion -->
+        <div class="modal fade" id="connexionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#connexionModal" id="connexion">Connexion</button>
-        </form>
 
-        <form class="form-inline my-2 my-lg-0 pl-2">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="button" data-toggle="modal" data-target="#inscriptionModal" id="inscription">Inscription</button>
-        </form>
-
-        <form class="form-inline my-2 my-lg-0 pl-2">
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="button" id="deconnexion" onClick="localStorage.setItem('id',0);location.reload();
-            return false;">Deconnexion</button>
-        </form>
-    </div>
-
-    <!-- Modal connexion -->
-    <div class="modal fade" id="connexionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-                <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Identifiant</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">Adresse mail</small>
+                <div class="modal-body">
+                    <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Identifiant</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Adresse mail</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Mot de passe</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Mot de passe</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                </form>
-            </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary" onClick="localStorage.setItem('id',2);location.reload();
-                return false;">Confirmer</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" onClick="localStorage.setItem('id',2);location.reload();
+                    return false;">Confirmer</button>
+                </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal inscription -->
-    <div class="modal fade" id="inscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Inscription</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        <!-- Modal inscription -->
+        <div class="modal fade" id="inscriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Inscription</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-            <div class="modal-body">
-                <form>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                    <label class="form-check-label" for="inlineRadio1">Entreprise</label>
-                    </div>
+                <div class="modal-body">
+                    <form>
                     <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
-                    <label class="form-check-label" for="inlineRadio2">Particulier</label>
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                        <label class="form-check-label" for="inlineRadio1">Entreprise</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
+                        <label class="form-check-label" for="inlineRadio2">Particulier</label>
+                        </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label for="inputNom">Nom</label>
+                        <input type="text" class="form-control" id="inputNom">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label for="inputPrenom">Prenom</label>
+                        <input type="text" class="form-control" id="inputPrenom">
+                        </div>
                     </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                    <label for="inputNom">Nom</label>
-                    <input type="text" class="form-control" id="inputNom">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4">
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label for="inputPassword4">Mot de passe</label>
+                        <input type="password" class="form-control" id="inputPassword4">
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                    <label for="inputPrenom">Prenom</label>
-                    <input type="text" class="form-control" id="inputPrenom">
-                    </div>
+                    </form>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4">
-                    </div>
-                    <div class="form-group col-md-6">
-                    <label for="inputPassword4">Mot de passe</label>
-                    <input type="password" class="form-control" id="inputPassword4">
-                    </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" onClick="localStorage.setItem('id',1);location.reload();
+                    return false;">Confirmer</button>
                 </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary" onClick="localStorage.setItem('id',1);location.reload();
-                return false;">Confirmer</button>
-            </div>
+                </div>
             </div>
         </div>
-    </div>
 
-</nav>
+    </nav>
 
-<body>
+    <body>
 
-    <!-- Recherche -->
-    <form class="center">
-        <div class="form-group">
-            <label for="exampleInputJobs">Quoi ?</label>
-            <input type="text" class="form-control" id="exampleInputJobs" aria-describedby="jobsHelp" placeholder="">
-            <small id="jobsHelp" class="form-text text-muted">Quel m&eacute;tier ?</small>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputLocation">Ou ?</label>
-            <input type="text" class="form-control" id="exampleInputLocation" placeholder="">
-            <small id="jobsHelp" class="form-text text-muted">Quelle ville ?</small>
-        </div>
+        <!-- Recherche -->
+        <form class="center">
+            <div class="form-group">
+                <label for="exampleInputJobs">Quoi ?</label>
+                <input type="text" class="form-control" id="exampleInputJobs" aria-describedby="jobsHelp" placeholder="">
+                <small id="jobsHelp" class="form-text text-muted">Quel m&eacute;tier ?</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputLocation">Ou ?</label>
+                <input type="text" class="form-control" id="exampleInputLocation" placeholder="">
+                <small id="jobsHelp" class="form-text text-muted">Quelle ville ?</small>
+            </div>
 
-        <button type="submit" class="btn btn-primary">Chercher</button>
-    </form>
+            <div class="form-row">
 
-</body>
+                <div class="form-group col-md-4">
+                    <label for="inputContrat">Type de contrat</label>
+                    <select id="inputContrat" class="form-control">
+                    <option selected>CDI</option>
+                    <option>Alernance</option>
+                    </select>
+                </div>
 
-    <script>
-    // Détection du support
-    if(localStorage.getItem('id') == "1" || localStorage.getItem('id') == "2") {
-        document.getElementById("navbarDropdown").style.display = "block";
-        document.getElementById("connexion").style.display = "none";
-        document.getElementById("inscription").style.display = "none";
-    }
-    if(localStorage.getItem('id') == "1") {
-        document.getElementById("contribution").style.display = "none";
-    }
-    else if (localStorage.getItem('id') == "2") {
-        document.getElementById("offres").style.display = "none";
-    }
-    else {
-        document.getElementById("deconnexion").style.display = "none";
-    }
-    </script>
+                <div class="form-group col-md-4">
+                    <label for="inputSalaire">Salaire</label>
+                    <select id="inputSalaire" class="form-control">
+                    <option selected>12K - 20K</option>
+                    <option>20K - 30K</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputSalaire">Date de parution</label>
+                    <select id="inputSalaire" class="form-control">
+                    <option selected> < 1 mois </option>
+                    <option>< 2 semaines</option>
+                    <option>< 1 semaine</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="btnChercher">Chercher</button>
+        </form>
+
+    </body>
+
+    <script src="./index.js" type="text/javascript"></script> 
+
 
 </html>
