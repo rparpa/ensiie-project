@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="logvue">
     <b-form class= "my-3" inline @submit="onLogIn">
       <label class="sr-only" for="login-form-username">Username</label>
       <b-input
@@ -22,7 +22,7 @@
         <!-- Using modifiers -->
         <b-button v-b-modal.signInModal>Sign In</b-button>
         <!-- The modal -->
-        <b-modal id="signInModal" title="Sign In">
+        <b-modal id="signInModal" title="Sign In" hide-footer>
             <b-form @submit="onSignIn">
             <label class="sr-only" for="signin-form-username">Username</label>
             <b-input
@@ -58,6 +58,13 @@
   </div>
 </template>
 
+<style>
+
+.logvue {
+ padding-right: 20px;
+}
+</style>
+
 <script>
 export default {
   data() {
@@ -75,13 +82,20 @@ export default {
   },
   methods: {
     onLogIn(evt) {
-      evt.preventDefault()
+      evt.preventDefault();
 
-      // JSON.stringify(this.logIn) => send to back end
+      this.axios.post('http://localhost:3000'
+      , JSON.stringify(this.logIn)
+      )
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      })
     },
     onSignIn(evt) {
       evt.preventDefault()
-      
       // JSON.stringify(this.signIn) => send to back end
     }
   }
