@@ -1,26 +1,25 @@
-const ParticulierRepository = require('./ParticulierRepository')
-const offreRepository = require('./OffreRepository')
+
 module.exports = class {
     constructor(db) {
         this.db = db;
     }
 
-    create(candidat){
-        if (!candidat) {
+    create(Candidat){
+        if (!Candidat) {
             throw 'candidat object is undefined';
         }
 
-        if (!candidat.idOffre || !candidat.idParticulier || !candidat.date) {
+        if (!Candidat.idOffre || !Candidat.idParticulier || !Candidat.date) {
             throw 'candidat object is missing information';
         }
 
-        if (Object.prototype.toString.call(candidat.date) !== "[object Date]") {
+        if (Object.prototype.toString.call(Candidat.date) !== "[object Date]") {
             throw 'Invalid date in candidat object';
         }
 
         this.db
             .get('candidats')
-            .push(candidat.toJson())
+            .push(Candidat.toJson())
             .write()
     }
 
