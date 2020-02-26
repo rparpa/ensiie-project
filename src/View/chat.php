@@ -35,9 +35,7 @@
                 data:{
                     pseudo: $('#pseudo').val(),
                     message: $('#message').val()
-                },success:function () {
-                    alert("Big boss");
-                }
+                },success:autoRefresh_chat
                 }
             )
         })
