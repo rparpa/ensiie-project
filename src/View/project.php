@@ -106,7 +106,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
 
 
 <!-- Modal HTML -->
-<div id="Modaltask" class="modal">
+<div id="ModalAddtask" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="form-modal-task">
@@ -168,7 +168,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
 </div>
 
 <!-- Modal HTML -->
-<div id="Modalmeeting" class="modal">
+<div id="ModalAddmeeting" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="form-modal-meeting">
@@ -231,11 +231,11 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
     });
 
     document.getElementById("button-task-add").addEventListener('click', function () {
-        $("#Modaltask").modal("show");
+        $("#ModalAddtask").modal("show");
     });
 
     document.getElementById("button-meeting-add").addEventListener('click', function () {
-        $("#Modalmeeting").modal("show");
+        $("#ModalAddmeeting").modal("show");
     });
 
 
@@ -317,7 +317,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 idproject:<? echo $idproject;?>
             },success:refreshtask
         }).done(function () {
-            $('#Modaltask').modal('hide')
+            $('#ModalAddtask').modal('hide')
         })
     }
 
@@ -335,7 +335,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 source:"project"
             },success:refreshmeeting
         }).done(function () {
-            $('#Modalmeeting').modal('hide')
+            $('#ModalAddmeeting').modal('hide')
         })
     }
 
