@@ -8,7 +8,7 @@ describe("Create tests", () => {
         let Candidature = new Candidat();
         Candidat.idOffre = "1";
         Candidat.idParticulier = "1";
-        Candidat.date = new Date(2020,02,25);
+        Candidat.date = new Date(2020,2,25);
 
         const dbMock = {
             get : jest.fn().mockReturnThis(),
@@ -36,7 +36,7 @@ describe("Create tests", () => {
 
     test('Throw Candidat object is missing information (id Offre case) exception', () => {
         let Candidat = new Candidat();
-        Candidat.date = new Date(2020, 02, 25);
+        Candidat.date = new Date(2020, 2, 25);
         Candidat.idParticulier = "2"
         const repository = new CandidatRepository();
 
