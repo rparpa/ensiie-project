@@ -41,7 +41,7 @@ require_once '../src/Bootstrap.php';
         </div>
         <div class="col" align="center" style="padding: 1em;">
             <form>
-                <button class="button_style" type="button">Collaborateurs</button>
+                <button class="button_style" type="submit" formaction="collaborator.php">Collaborateurs</button>
             </form>
         </div>
     </div>
