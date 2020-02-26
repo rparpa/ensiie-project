@@ -41,7 +41,7 @@ module.exports = class {
             throw 'no password specified';
         }
         if (!logo){
-            throw 'no cv specified';
+            throw 'no logo specified';
         }
         if(!adresseMail){
             throw 'no email specified';
@@ -55,7 +55,7 @@ module.exports = class {
         //   .assign({ nom, adresseMail,adresseSiege,logo,motDePasse, adresseMail,isValid})
         //   .write();
     
-        return { id, nom, adresseSiege,motdepasse,logo,adresseMail, isValid };
+        // return { id, nom, adresseSiege,motdepasse,logo,adresseMail, isValid };
       }
 
     //   getAll(){
