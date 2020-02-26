@@ -120,7 +120,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                         <label >Title</label>
                     </div>
                     <div class="col">
-                        <input id="modal-task-title">
+                        <input id="modal-task-title" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -128,7 +128,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                         <label >Content</label>
                     </div>
                     <div class="col">
-                        <textarea id="modal-task-content"></textarea>
+                        <textarea id="modal-task-content" required></textarea>
                     </div>
                 </div>
                 <div class="form-row">
@@ -136,7 +136,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                         <label >State</label>
                     </div>
                     <div class="col">
-                        <input id="modal-task-state" value="Assignée">
+                        <input id="modal-task-state" value="Assignée" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -144,7 +144,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                         <label >Responsable</label>
                     </div>
                     <div class="col">
-                        <select id="modal-task-assignee">
+                        <select id="modal-task-assignee" required>
                             <option></option>
                             <?php
                             $useroforga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
@@ -182,7 +182,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                             <label >Name</label>
                         </div>
                         <div class="col">
-                            <input id="modal-meeting-name">
+                            <input id="modal-meeting-name" required>
                         </div>
                     </div>
                     <div class="form-row">
@@ -190,7 +190,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                             <label >Description</label>
                         </div>
                         <div class="col">
-                            <textarea id="modal-meeting-description"></textarea>
+                            <textarea id="modal-meeting-description" required></textarea>
                         </div>
                     </div>
                     <div class="form-row">
@@ -198,7 +198,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                             <label >Place</label>
                         </div>
                         <div class="col">
-                            <input id="modal-meeting-place" value="Bureau invisible">
+                            <input id="modal-meeting-place" value="Bureau invisible" required>
                         </div>
                     </div>
                </div>
