@@ -115,21 +115,21 @@ describe("Create tests", () => {
 
 
 
-        describe('GetAll tests', () => {
-            test('GetAll calls', () => {
+        // describe('GetAll tests', () => {
+        //     test('GetAll calls', () => {
         
-                const dbMock2 = {
-                    get : jest.fn().mockReturnThis(),
-                    value : jest.fn().mockReturnValue([])
-                };
+        //         const dbMock2 = {
+        //             get : jest.fn().mockReturnThis(),
+        //             value : jest.fn().mockReturnValue([])
+        //         };
         
-                const repository = new OffreRepository(dbMock2);
-                const offre = repository.getAll();
+        //         const repository = new OffreRepository(dbMock2);
+        //         const offre = repository.getAll();
         
-                expect(offre).toBe(offre);
-                expect(dbMock2.get).toHaveBeenCalledWith('Offres');
-                expect(dbMock2.get.mock.calls.length).toBe(1);
-                expect(dbMock2.value.mock.calls.length).toBe(1);
-            });
-        });
+        //         expect(offre).toBe(offre);
+        //         expect(dbMock2.get).toHaveBeenCalledWith('Offres');
+        //         expect(dbMock2.get.mock.calls.length).toBe(1);
+        //         expect(dbMock2.value.mock.calls.length).toBe(1);
+        //     });
+        // });
 });

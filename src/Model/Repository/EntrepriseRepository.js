@@ -14,18 +14,18 @@ module.exports = class {
             throw 'Entreprise object is missing information';
         }
 
-        this.db
-            .get('Entreprises')
-            .push(Entreprise.toJson())
-            .write()
+        // this.db
+        //     .get('Entreprises')
+        //     .push(Entreprise.toJson())
+        //     .write()
     }
     
-    getOne(id){
-        return this.db
-        .get('Entreprises')
-        .find({id})
-        .value();
-    }
+    // getOne(id){
+    //     return this.db
+    //     .get('Entreprises')
+    //     .find({id})
+    //     .value();
+    // }
     
     updateOne({ id, nom, motdepasse,logo,adresseMail,adresseSiege,isValid  }) {
         if(!id){
@@ -49,16 +49,16 @@ module.exports = class {
         if(!isValid) {
             throw "isn't valid"
         }
-        this.db
-          .get('Entreprises')
-          .find({id})
-          .assign({ nom, adresseMail,adresseSiege,logo,motDePasse, adresseMail,isValid})
-          .write();
+        // this.db
+        //   .get('Entreprises')
+        //   .find({id})
+        //   .assign({ nom, adresseMail,adresseSiege,logo,motDePasse, adresseMail,isValid})
+        //   .write();
     
         return { id, nom, adresseSiege,motdepasse,logo,adresseMail, isValid };
       }
 
-      getAll(){
-          return this.db.get('Entreprises').value();
-      }
+    //   getAll(){
+    //       return this.db.get('Entreprises').value();
+    //   }
 };

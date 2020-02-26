@@ -6,21 +6,21 @@ module.exports = class {
 
     create(Candidat){
         if (!Candidat) {
-            throw 'candidat object is undefined';
+            throw 'Candidat object is undefined';
         }
 
         if (!Candidat.idOffre || !Candidat.idParticulier || !Candidat.date) {
-            throw 'candidat object is missing information';
+            throw 'Candidat object is missing information';
         }
 
         if (Object.prototype.toString.call(Candidat.date) !== "[object Date]") {
             throw 'Invalid date in candidat object';
         }
 
-        this.db
-            .get('candidats')
-            .push(Candidat.toJson())
-            .write()
+        // this.db
+        //     .get('candidats')
+        //     .push(Candidat.toJson())
+        //     .write()
     }
 
     // getAllByOffre(idOffre) {

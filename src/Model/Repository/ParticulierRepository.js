@@ -12,18 +12,18 @@ module.exports = class {
             throw 'Particulier object is missing information';
         }
 
-        this.db
-            .get('Particuliers')
-            .push(Particulier.toJson())
-            .write()
+        // this.db
+        //     .get('Particuliers')
+        //     .push(Particulier.toJson())
+        //     .write()
     }
     
-    getOne(id){
-        return this.db
-        .get('Particuliers')
-        .find({id})
-        .value();
-    }
+    // getOne(id){
+    //     return this.db
+    //     .get('Particuliers')
+    //     .find({id})
+    //     .value();
+    // }
     
     updateOne({ id, nom, prenom, motdepasse,cv,adresseMail  }) {
         if(!id){
@@ -44,16 +44,16 @@ module.exports = class {
         if(!adresseMail){
             throw 'no email specified';
         }
-        this.db
-          .get('Particuliers')
-          .find({id})
-          .assign({ nom, prenom,motdepasse,cv,adresseMail})
-          .write();
+        // this.db
+        //   .get('Particuliers')
+        //   .find({id})
+        //   .assign({ nom, prenom,motdepasse,cv,adresseMail})
+        //   .write();
     
         return { id, nom, prenom,motdepasse,cv,adresseMail };
       }
 
-      getAll(){
-          return this.db.get('Particuliers').value();
-      }
+    //   getAll(){
+    //       return this.db.get('Particuliers').value();
+    //   }
 };

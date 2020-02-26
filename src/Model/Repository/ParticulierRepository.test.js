@@ -1,48 +1,44 @@
-const CandidatRepository = require('./CandidatRepository');
-const Candidat = require('../Entity/Candidat');
-
-
 describe("Create tests", () => {
-    test('Create a Candidature with a correct object', () => {
+    // test('Create a Particulier with a correct object', () => {
 
-        let Candidature = new Candidat();
-        Candidat.idOffre = "1";
-        Candidat.idParticulier = "1";
-        Candidat.date = new Date(2020,2,25);
+    //     let Part = new Particulier();
+    //     Part.idOffre = "1";
+    //     Part.idParticulier = "1";
+    //     Part.date = new Date(2020,2,25);
 
-        const dbMock = {
-            get : jest.fn().mockReturnThis(),
-            push : jest.fn().mockReturnThis(),
-            write : jest.fn().mockReturnThis()
-        };
-        const repository = new CandidatRepository(dbMock);
-        repository.create(Candidat);
+    //     const dbMock = {
+    //         get : jest.fn().mockReturnThis(),
+    //         push : jest.fn().mockReturnThis(),
+    //         write : jest.fn().mockReturnThis()
+    //     };
+    //     const repository = new PartRepository(dbMock);
+    //     repository.create(Part);
 
-        expect(dbMock.get).toHaveBeenCalledWith('Candidats');
-        expect(dbMock.get.mock.calls.length).toBe(1);
-        expect(dbMock.push.mock.calls.length).toBe(1);
-        expect(dbMock.write.mock.calls.length).toBe(1);
-    });
+    //     expect(dbMock.get).toHaveBeenCalledWith('Parts');
+    //     expect(dbMock.get.mock.calls.length).toBe(1);
+    //     expect(dbMock.push.mock.calls.length).toBe(1);
+    //     expect(dbMock.write.mock.calls.length).toBe(1);
+    // });
 
-    test('Throw Candidat object undefined exception', () => {
+    test('Throw Part object undefined exception', () => {
 
-        const repository = new CandidatRepository();
+        const repository = new ParticulierRepository();
 
         function create() {
             repository.create();
         }
-        expect(create).toThrow(new Error('candidat object is undefined'));
+        expect(create).toThrow(new Error('Part object is undefined'));
     });
 
-    test('Throw Candidat object is missing information (id Offre case) exception', () => {
-        let Candidat = new Candidat();
-        Candidat.date = new Date(2020, 2, 25);
-        Candidat.idParticulier = "2"
-        const repository = new CandidatRepository();
+    test('Throw Part object is missing information (id Offre case) exception', () => {
+        let Part = new Particulier();
+        Part.id = "1"
+        Part.adresseMail = "adresse@mail.com"
+        const repository = new ParticulierRepository();
 
-        function create() {
-            repository.create(Candidat);
+        function create() {s
+            repository.create(Part);
         }
-        expect(create).toThrow(new Error('Candidat object is missing information'));
+        expect(create).toThrow(new Error('Part object is missing information'));
     });
 });

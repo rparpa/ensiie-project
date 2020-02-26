@@ -14,18 +14,18 @@ module.exports = class {
             throw 'Offre object is missing information';
         }
 
-        this.db
-            .get('Offres')
-            .push(Offre.toJson())
-            .write()
+        // this.db
+        //     .get('Offres')
+        //     .push(Offre.toJson())
+        //     .write()
     }
     
-    getOne(id){
-        return this.db
-        .get('Offres')
-        .find({id})
-        .value();
-    }
+    // getOne(id){
+    //     return this.db
+    //     .get('Offres')
+    //     .find({id})
+    //     .value();
+    // }
     
     updateOne({ id, idEntreprise, description,document,typeContrat,adresse,latitude,longitude,salaire,isValid  }) {
         if(!id){
@@ -55,18 +55,18 @@ module.exports = class {
         if(!isValid) {
             throw "isn't valid"
         }
-        this.db
-          .get('Offres')
-          .find({id})
-          .assign({ id, idEntreprise, description,document,typeContrat,adresse,latitude,longitude,salaire,isValid})
-          .write();
+        // this.db
+        //   .get('Offres')
+        //   .find({id})
+        //   .assign({ id, idEntreprise, description,document,typeContrat,adresse,latitude,longitude,salaire,isValid})
+        //   .write();
     
         return { id, idEntreprise, description,document,typeContrat,adresse,latitude,longitude,salaire,isValid };
     }
 
-      getAll(){
-          return this.db.get('Offres').value();
-      }
+    //   getAll(){
+    //       return this.db.get('Offres').value();
+    //   }
 
     //   getAllbyEntreprise(idEntreprise){
     //     let Offres = this.db
