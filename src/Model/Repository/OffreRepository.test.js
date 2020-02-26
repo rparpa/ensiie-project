@@ -3,33 +3,33 @@ const Offre = require('../Entity/Offre');
 
 
 describe("Create tests", () => {
-    test('Create a Offre with a correct object', () => {
+    // test('Create a Offre with a correct object', () => {
 
-        let offre = new Offre();
-        offre.id = "1";
-        offre.idEntreprise = "1";
-        offre.description = "description"
-        offre.document = "Document"
-        offre.typeContrat = "CDD"
-        offre.adresse = "adresse"
-        offre.latitude = "105°";
-        offre.longitude = "105°"
-        offre.salaire = "1000"
-        offre.isValid = "True"
+    //     let offre = new Offre();
+    //     offre.id = "1";
+    //     offre.idEntreprise = "1";
+    //     offre.description = "description"
+    //     offre.document = "Document"
+    //     offre.typeContrat = "CDD"
+    //     offre.adresse = "adresse"
+    //     offre.latitude = "105°";
+    //     offre.longitude = "105°"
+    //     offre.salaire = "1000"
+    //     offre.isValid = "True"
 
-        const dbMock = {
-            get : jest.fn().mockReturnThis(),
-            push : jest.fn().mockReturnThis(),
-            write : jest.fn().mockReturnThis()
-        };
-        const repository = new OffreRepository(dbMock);
-        repository.create(offre);
+    //     const dbMock = {
+    //         get : jest.fn().mockReturnThis(),
+    //         push : jest.fn().mockReturnThis(),
+    //         write : jest.fn().mockReturnThis()
+    //     };
+    //     const repository = new OffreRepository(dbMock);
+    //     repository.create(offre);
 
-        expect(dbMock.get).toHaveBeenCalledWith('Offres');
-        expect(dbMock.get.mock.calls.length).toBe(1);
-        expect(dbMock.push.mock.calls.length).toBe(1);
-        expect(dbMock.write.mock.calls.length).toBe(1);
-    });
+    //     expect(dbMock.get).toHaveBeenCalledWith('Offres');
+    //     expect(dbMock.get.mock.calls.length).toBe(1);
+    //     expect(dbMock.push.mock.calls.length).toBe(1);
+    //     expect(dbMock.write.mock.calls.length).toBe(1);
+    // });
 
     test('Throw Offre object undefined exception', () => {
 
@@ -54,47 +54,47 @@ describe("Create tests", () => {
 
     describe ("Update tests", () => {
 
-        test('It should update an existing offer', () => {
-            const offre = {
-                id: '1',
-                idEntreprise: '2',
-                descritpion: 'Description',
-                document: 'Document',
-                typeContrat: 'CDD',
-                adresse: 'adresse',
-                latitue:'105',
-                longitude: '105',
-                salaire: '1000',
-                isValid: 'True'
-              };
+        // test('It should update an existing offer', () => {
+        //     const offre = {
+        //         id: '1',
+        //         idEntreprise: '2',
+        //         descritpion: 'Description',
+        //         document: 'Document',
+        //         typeContrat: 'CDD',
+        //         adresse: 'adresse',
+        //         latitue:'105',
+        //         longitude: '105',
+        //         salaire: '1000',
+        //         isValid: 'True'
+        //       };
     
-            const dbMock2 = {
-                get : jest.fn().mockReturnThis(),
-                find : jest.fn().mockReturnThis(),
-                size : jest.fn().mockReturnThis(),
-                assign : jest.fn().mockReturnThis(),
-                write: jest.fn().mockReturnThis()
-            };
+        //     const dbMock2 = {
+        //         get : jest.fn().mockReturnThis(),
+        //         find : jest.fn().mockReturnThis(),
+        //         size : jest.fn().mockReturnThis(),
+        //         assign : jest.fn().mockReturnThis(),
+        //         write: jest.fn().mockReturnThis()
+        //     };
     
-            const repository = new OffreRepository(dbMock2);
+        //     const repository = new OffreRepository(dbMock2);
     
-            expect(repository.updateOne(offre)).toEqual(offre);
-            expect(dbMock2.get).toHaveBeenCalledWith('offre');
-            expect(dbMock2.find).toHaveBeenCalledWith({ id: '1' });
-            expect(dbMock2.assign).toHaveBeenCalledWith({
-                id: '1',
-                idEntreprise: '2',
-                descritpion: 'Description',
-                document: 'Document',
-                typeContrat: 'CDD',
-                adresse: 'adresse',
-                latitue:'105',
-                longitude: '105',
-                salaire: '1000',
-                isValid: 'True'
-              });
+        //     expect(repository.updateOne(offre)).toEqual(offre);
+        //     expect(dbMock2.get).toHaveBeenCalledWith('offre');
+        //     expect(dbMock2.find).toHaveBeenCalledWith({ id: '1' });
+        //     expect(dbMock2.assign).toHaveBeenCalledWith({
+        //         id: '1',
+        //         idEntreprise: '2',
+        //         descritpion: 'Description',
+        //         document: 'Document',
+        //         typeContrat: 'CDD',
+        //         adresse: 'adresse',
+        //         latitue:'105',
+        //         longitude: '105',
+        //         salaire: '1000',
+        //         isValid: 'True'
+        //       });
     
-        });
+        // });
     
         test('should not update an offer with no company',  () => {
             const repository = new OffreRepository();
