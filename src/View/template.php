@@ -35,16 +35,45 @@ function loadView($view, $data) {
     </head>
     <body>
     <?php include_once '../src/View/layout/header.php' ?>
-    <div class="main row">
-        <div class="main-info col">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">*
+            <?php include_once '../src/View/chat.php' ?>
+
+            </div>
+            <div class="col-md-6">
+            <?php include_once '../src/View/'.$view.'.php' ?>
+            </div>
+            <div class="col-md-3">
+            <?php include_once '../src/View/info.php' ?>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main">
+    <?php if ($authenticatorService->isAuthenticated()) {?>
+        <div class="main-info col-md-offset-3 ">
             <?php include_once '../src/View/info.php' ?>
         </div>
-        <div class="main-container col">
+
+        <div class="main-container col-md-offset-6">
             <?php include_once '../src/View/'.$view.'.php' ?>
         </div>
-        <div class="main-chat col">
+
+        <div class="main-chat col-md-offset-3 " >
             <?php include_once '../src/View/chat.php' ?>
         </div>
+
+
+        <?php } else { ?>
+
+        <div class="main-container col-md-12">
+            <?php include_once '../src/View/'.$view.'.php' ?>
+        </div>
+        <?php } ?>
+
     </div>
         <?php include_once '../src/View/layout/footer.php' ?>
     </body>
