@@ -58,7 +58,7 @@ describe("Create tests", () => {
         //     const offre = {
         //         id: '1',
         //         idEntreprise: '2',
-        //         descritpion: 'Description',
+        //         description: 'description',
         //         document: 'Document',
         //         typeContrat: 'CDD',
         //         adresse: 'adresse',
@@ -84,7 +84,7 @@ describe("Create tests", () => {
         //     expect(dbMock2.assign).toHaveBeenCalledWith({
         //         id: '1',
         //         idEntreprise: '2',
-        //         descritpion: 'Description',
+        //         description: 'description',
         //         document: 'Document',
         //         typeContrat: 'CDD',
         //         adresse: 'adresse',
@@ -101,7 +101,7 @@ describe("Create tests", () => {
             function update() {
                 repository.updateOne({ id:'1' ,
                 // idEntreprise: '1',
-                descritpion: 'Description',
+                description: 'description',
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
@@ -117,7 +117,7 @@ describe("Create tests", () => {
             function update() {
                 repository.updateOne({ id:'1' ,
                 idEntreprise: '1',
-                // descritpion: 'Description',
+                // description: 'Description',
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
@@ -133,7 +133,7 @@ describe("Create tests", () => {
             function update() {
                 repository.updateOne({ id:'1' ,
                 idEntreprise: '1',
-                descritpion: 'Description',
+                description: 'Description',
                 // document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
@@ -149,7 +149,7 @@ describe("Create tests", () => {
             function update() {
                 repository.updateOne({ id:'1' ,
                 idEntreprise: '1',
-                descritpion: 'Description',
+                description: 'description',
                 document: 'Document',
                 // typeContrat: 'CDD',
                 adresse: 'adresse',
@@ -165,7 +165,7 @@ describe("Create tests", () => {
             function update() {
                 repository.updateOne({ id:'1' ,
                 idEntreprise: '1',
-                descritpion: 'Description',
+                description: 'description',
                 document: 'Document',
                 typeContrat: 'CDD',
                 // adresse: 'adresse',
@@ -181,7 +181,7 @@ describe("Create tests", () => {
             function update() {
                 repository.updateOne({ id:'1' ,
                 idEntreprise: '1',
-                descritpion: 'Description',
+                description: 'description',
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
@@ -197,7 +197,7 @@ describe("Create tests", () => {
             function update() {
                 repository.updateOne({ id:'1' ,
                 idEntreprise: '1',
-                descritpion: 'Description',
+                description: 'description',
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
@@ -213,7 +213,7 @@ describe("Create tests", () => {
             function update() {
                 repository.updateOne({ id:'1' ,
                 idEntreprise: '1',
-                descritpion: 'Description',
+                description: 'description',
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
@@ -229,7 +229,7 @@ describe("Create tests", () => {
             function update() {
                 repository.updateOne({ id:'1' ,
                 idEntreprise: '1',
-                descritpion: 'Description',
+                description: 'description',
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
