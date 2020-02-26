@@ -64,7 +64,7 @@ module.exports = class {
         //   .assign({ id, idEntreprise, description,document,typeContrat,adresse,latitude,longitude,salaire,isValid})
         //   .write();
     
-        return { id, idEntreprise, description,document,typeContrat,adresse,latitude,longitude,salaire,isValid };
+        // return { id, idEntreprise, description,document,typeContrat,adresse,latitude,longitude,salaire,isValid };
     }
 
     //   getAll(){

@@ -131,6 +131,24 @@ describe("Create tests", () => {
           test('should not update an offer with no document',  () => {
             const repository = new OffreRepository();
             function update() {
+                repository.updateOne({ 
+                // id:'1' ,
+                idEntreprise: '1',
+                description: 'Description',
+                // document: 'Document',
+                typeContrat: 'CDD',
+                adresse: 'adresse',
+                latitude:'105',
+                longitude: '105',
+                salaire: '1000',
+                isValid: 'True'})
+            }
+            expect(update).toThrow(new Error('no id specified'));
+          });
+
+          test('should not update an offer with no document',  () => {
+            const repository = new OffreRepository();
+            function update() {
                 repository.updateOne({ id:'1' ,
                 idEntreprise: '1',
                 description: 'Description',
