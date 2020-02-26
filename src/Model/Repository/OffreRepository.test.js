@@ -76,7 +76,7 @@ describe("Create tests", () => {
                 write: jest.fn().mockReturnThis()
             };
     
-            const repository = new JetPackRepository(dbMock2);
+            const repository = new OffreRepository(dbMock2);
     
             expect(repository.updateOne(offre)).toEqual(offre);
             expect(dbMock2.get).toHaveBeenCalledWith('offre');
@@ -97,7 +97,7 @@ describe("Create tests", () => {
         });
     
         test('should not update an offer with no company',  () => {
-            const repository = new JetPackRepository();
+            const repository = new OffreRepository();
             function update() {
                 repository.updateOne({ id:'1' ,
                 descritpion: 'Description',

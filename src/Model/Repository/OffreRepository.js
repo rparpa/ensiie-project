@@ -1,5 +1,5 @@
 const EntrepriseRepository = require('./EntrepriseRepository');
-
+const Offre = require('../Entity/Offre')
 module.exports = class {
     constructor(db) {
         this.db = db;
