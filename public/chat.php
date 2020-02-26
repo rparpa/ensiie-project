@@ -20,9 +20,10 @@ $userRepository =
 
 $orgarepository = new OrganizationRepository(Connection::get(), new OrganizationHydrator());
 
-$pseudo =  !empty($_POST['pseudo']) ? $_POST['pseudo'] : null;
-$message =  !empty($_POST['message']) ? $_POST['message'] : null;
+$pseudo =  !empty($_GET['pseudo']) ? $_GET['pseudo'] : null;
+$message =  !empty($_GET['message']) ? $_GET['message'] : null;
 
+var_dump($_GET);
 $source = new Chat();
 
 if (null != $pseudo && null != $message) {
@@ -35,4 +36,4 @@ if (null != $pseudo && null != $message) {
 
     $messageRepository->insert($user, $source, $message, new \DateTimeImmutable("now"));
 }
-header("location:" . $_SERVER['HTTP_REFERER']);
+//header("location:" . $_SERVER['HTTP_REFERER']);
