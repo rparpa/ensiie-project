@@ -106,7 +106,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
 
 
 <!-- Modal HTML -->
-<div id="Modaltask" class="modal">
+<div id="ModalAddtask" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="form-modal-task">
@@ -120,7 +120,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                         <label >Title</label>
                     </div>
                     <div class="col">
-                        <input id="modal-task-title">
+                        <input id="modal-task-title" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -128,7 +128,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                         <label >Content</label>
                     </div>
                     <div class="col">
-                        <textarea id="modal-task-content"></textarea>
+                        <textarea id="modal-task-content" required></textarea>
                     </div>
                 </div>
                 <div class="form-row">
@@ -136,7 +136,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                         <label >State</label>
                     </div>
                     <div class="col">
-                        <input id="modal-task-state" value="Assignée">
+                        <input id="modal-task-state" value="Assignée" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -144,7 +144,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                         <label >Responsable</label>
                     </div>
                     <div class="col">
-                        <select id="modal-task-assignee">
+                        <select id="modal-task-assignee" required>
                             <option></option>
                             <?php
                             $useroforga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
@@ -160,7 +160,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal">Cancel</button>
-                <button type="submit" >Save changes</button>
+                <button type="submit" >Ajouter Taches</button>
             </div>
             </form>
         </div>
@@ -168,7 +168,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
 </div>
 
 <!-- Modal HTML -->
-<div id="Modalmeeting" class="modal">
+<div id="ModalAddmeeting" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="form-modal-meeting">
@@ -182,7 +182,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                             <label >Name</label>
                         </div>
                         <div class="col">
-                            <input id="modal-meeting-name">
+                            <input id="modal-meeting-name" required>
                         </div>
                     </div>
                     <div class="form-row">
@@ -190,7 +190,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                             <label >Description</label>
                         </div>
                         <div class="col">
-                            <textarea id="modal-meeting-description"></textarea>
+                            <textarea id="modal-meeting-description" required></textarea>
                         </div>
                     </div>
                     <div class="form-row">
@@ -198,13 +198,30 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                             <label >Place</label>
                         </div>
                         <div class="col">
-                            <input id="modal-meeting-place" value="Bureau invisible">
+                            <input id="modal-meeting-place" value="Bureau invisible" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label >Participant(s)</label>
+                        </div>
+                        <div class="col">
+                            <select id='modal-meeting-users' multiple='multiple'>
+                                <?php
+                                $useroforga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
+                                $usersoforga = $userrepository->fetchByOrganization(((object)$useroforga)->organization->getId());
+                                foreach ($usersoforga as $useroforga) {
+                                    /** @var User $user */
+                                    $user = ((Object)$useroforga)->user;?>
+                                    <option data-id="<? echo $user->getId()?>"><?php echo $user->getSurname() . ' ' . $user->getName() ?></option>
+                                <? }?>
+                            </select>
                         </div>
                     </div>
                </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal">Cancel</button>
-                    <button type="submit" >Ajout réunion</button>
+                    <button type="submit" >Ajouter Réunion</button>
                 </div>
             </form>
         </div>
@@ -231,11 +248,11 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
     });
 
     document.getElementById("button-task-add").addEventListener('click', function () {
-        $("#Modaltask").modal("show");
+        $("#ModalAddtask").modal("show");
     });
 
     document.getElementById("button-meeting-add").addEventListener('click', function () {
-        $("#Modalmeeting").modal("show");
+        $("#ModalAddmeeting").modal("show");
     });
 
 
@@ -317,7 +334,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 idproject:<? echo $idproject;?>
             },success:refreshtask
         }).done(function () {
-            $('#Modaltask').modal('hide')
+            $('#ModalAddtask').modal('hide')
         })
     }
 
@@ -335,7 +352,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 source:"project"
             },success:refreshmeeting
         }).done(function () {
-            $('#Modalmeeting').modal('hide')
+            $('#ModalAddmeeting').modal('hide')
         })
     }
 

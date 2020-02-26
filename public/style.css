@@ -29,12 +29,13 @@ body {
 
 .main {
   width: 100%;
+  overflow: hidden;
 }
 
 .main-container {
-   min-height: 85em;
-  max-height: 85em;
-  overflow:scroll;
+  min-height: 85vh;
+  max-height: 85vh;
+  overflow: auto;
 }
 
 .main-chat {
@@ -53,16 +54,10 @@ body {
 
 .footer {
   position: fixed;
-  height: 30px;
+  height: 3vh;
   bottom: 0;
   width: 100%;
   background-color: #ddd;
-}
-
-.project_navigation_button {
-  width: 700px;
-  height: 50px;
-  text-align: center;
 }
 
 .button_style {
@@ -80,22 +75,16 @@ body {
   transition: all 0.2s;
 }
 
-.organisation_navigation_button {
-  width: 700px;
-  height: 50px;
-  text-align: center;
-  display: inline-block;
-}
 .chat{
-  min-height: 65vh;
-  max-height: 65vh;
-  overflow:scroll;
+  min-height: 60vh;
+  max-height: 60vh;
+  overflow:auto;
 }
 
 .info{
-  min-height: 85vh;
-  max-height: 85vh;
-  overflow:scroll;
+  /*min-height: 85vh;
+  max-height: 85vh;*/
+  overflow:auto;
 }
 
 .formulaire{
