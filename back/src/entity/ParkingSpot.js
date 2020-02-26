@@ -1,21 +1,36 @@
 module.exports = class {
-    constructor(id, vehiculeId, numVoie, typeVoie, nomVoie, arrond, status) {
-        this._id = id;
+    constructor(parkingSpotId, statut, vehiculeId, numVoie, typeVoie, nomVoie, arrond, typeSta, typeMob, tarif, latitude, longitude) {
+
+        this._parkingSpotId = parkingSpotId;
+        this._statut = statut ;
         this._vehiculeId = vehiculeId ;
-        this._numvoie = numVoie ;
+        this._numVoie = numVoie ;
         this._typeVoie = typeVoie ;
         this._nomVoie = nomVoie ;
-        this._arond = arrond ;
-        this._status = status ;
-        this._numVoie = numVoie;
-        this._arrond = arrond;
+        this._arrond = arrond ;
+        this._typeSta = typeSta ;
+        this._typeMob = typeMob ;
+        this._tarif = tarif ;
+        this._latitude = latitude ;
+        this._longitude = longitude;
     }
 
 
-    get id() {
-        return this._id;
+    get parkingSpotId() {
+        return this._parkingSpotId;
     }
 
+    set parkingSpotId(value) {
+        this._parkingSpotId = value;
+    }
+
+    get statut() {
+        return this._statut;
+    }
+
+    set statut(value) {
+        this._statut = value;
+    }
 
     get vehiculeId() {
         return this._vehiculeId;
@@ -23,10 +38,6 @@ module.exports = class {
 
     set vehiculeId(value) {
         this._vehiculeId = value;
-    }
-
-    set id(value) {
-        this._id = value;
     }
 
     get numVoie() {
@@ -61,23 +72,61 @@ module.exports = class {
         this._arrond = value;
     }
 
-    get status() {
-        return this._status;
+    get typeSta() {
+        return this._typeSta;
     }
 
-    set status(value) {
-        this._status = value;
+    set typeSta(value) {
+        this._typeSta = value;
+    }
+
+    get typeMob() {
+        return this._typeMob;
+    }
+
+    set typeMob(value) {
+        this._typeMob = value;
+    }
+
+    get tarif() {
+        return this._tarif;
+    }
+
+    set tarif(value) {
+        this._tarif = value;
+    }
+
+    get latitude() {
+        return this._latitude;
+    }
+
+    set latitude(value) {
+        this._latitude = value;
+    }
+
+    get longitude() {
+        return this._longitude;
+    }
+
+    set longitude(value) {
+        this._longitude = value;
     }
 
     toJson() {
         return {
-            id: this.id,
-            vehiculeId: this.vehiculeId,
-            numVoie: this._numVoie,
-            typeVoie: this._typeVoie,
-            nomVoie: this._nomVoie,
-            arrond: this._arrond,
-            status: this._status
+        parkingSpotId: this.parkingSpotId,
+        statut: this.statut ,
+        vehiculeId: this.vehiculeId ,
+        numVoie: this.numVoie,
+        typeVoie: this.typeVoie ,
+        nomVoie: this.nomVoie ,
+        arrond: this.arrond ,
+        typeSta: this.typeSta ,
+        typeMob: this.typeMob ,
+        tarif: this.tarif ,
+        latitude: this.latitude ,
+        longitude: this.longitude
         }
     };
 };
+
