@@ -28,27 +28,27 @@ body {
 }
 
 .main {
-  /*width: 100%;*/
+  width: 100%;
 }
 
 .main-container {
-  /* min-height: 85em;
+   min-height: 85em;
   max-height: 85em;
-  overflow:scroll; */
+  overflow:scroll;
 }
 
 .main-chat {
-  /* max-width: 20em;
+  max-width: 20em;
   min-height: 85vh;
   max-height: 85vh;
-  background-color: #0f6674; */
+  background-color: #0f6674;
 }
 
 .main-info {
-  /* max-width: 20em;
+  max-width: 20em;
   min-height: 85vh;
   max-height: 85vh;
-  background-color: #0f6674; */
+  background-color: #0f6674;
 }
 
 .footer {
@@ -87,15 +87,15 @@ body {
   display: inline-block;
 }
 .chat{
-  /* min-height: 70vh;
-  max-height: 70vh;
-  overflow:scroll; */
+  min-height: 65vh;
+  max-height: 65vh;
+  overflow:scroll;
 }
 
 .info{
-  /* min-height: 85vh;
+  min-height: 85vh;
   max-height: 85vh;
-  overflow:scroll; */
+  overflow:scroll;
 }
 
 .formulaire{
