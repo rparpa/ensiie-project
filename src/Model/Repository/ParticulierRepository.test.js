@@ -1,3 +1,5 @@
+const ParticulierRepository = require('./ParticulierRepository');
+const Particulier = require('../Entity/Particulier');
 describe("Create tests", () => {
     // test('Create a Particulier with a correct object', () => {
 

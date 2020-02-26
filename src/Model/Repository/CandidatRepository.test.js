@@ -31,7 +31,7 @@ describe("Create tests", () => {
         function create() {
             repository.create();
         }
-        expect(create).toThrow(new Error('candidat object is undefined'));
+        expect(create).toThrow(new Error('Candidat object is undefined'));
     });
 
     test('Throw Candidat object is missing information (id Offre case) exception', () => {
