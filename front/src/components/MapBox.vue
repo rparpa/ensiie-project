@@ -54,15 +54,11 @@ export default {
     },
 
     getAllMarkers(){
-<<<<<<< Updated upstream
-      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x.coords.long,x.coords.lat])))
+      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x._longitude,x._latitude])))
     },
 
     onAdressFilled(address) {
       console.log("Adresse recue ", address);
-=======
-      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x._longitude,x._latitude])))
->>>>>>> Stashed changes
     }
   }
   };
