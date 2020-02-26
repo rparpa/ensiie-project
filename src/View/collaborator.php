@@ -11,9 +11,9 @@ use Organization\OrganizationHydrator;
 $userhydrator = new UserHydrator();
 $authenticatorService = new AuthenticatorService($userRepository);
 $organizationHydrator = new OrganizationHydrator();
-$organizationRepository = new OrganizationRepository(Connection::get() ,$organizationHydrator);
+$organizationRepository = new OrganizationRepository(Connection::get(), $organizationHydrator);
 
-$org = ((Object) $organizationRepository->fetchByUser($authenticatorService->getCurrentUserId()))->organization;
+$org = ((object) $organizationRepository->fetchByUser($authenticatorService->getCurrentUserId()))->organization;
 //TODO Faire bien mieux mais la je fatigue un peu
 
 ?>
@@ -29,33 +29,24 @@ $org = ((Object) $organizationRepository->fetchByUser($authenticatorService->get
     <div>
         <table class="table">
             <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Pseudo</th>
-                <th scope="col">Prénom</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Email</th>
-                <th scope="col">Date d'inscription</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            $collabs = $userRepository->fetchByOrganization($authenticatorService->getCurrentUserId());
-            foreach ($collabs as $collab) {
-                /** @var User $collab */
-                $collab = ((Object)$collab)->user?>
-                <tr onclick="ShowAlert()" name="<?php  echo $collab->getId() ?>">
-                    <th scope="row" ><?php  echo $collab->getId() ?></th>
-                    <td><?php  echo $collab->getUsername() ?></td>
-                    <td><?php  echo $collab->getName() ?></td>
-                    <td><?php  echo $collab->getSurname() ?></td>
-                    <td><?php  echo $collab->getMail() ?></td>
-                    <td><?php  echo $collab->getCreationdate()->format("Y-m-d H:i:s") ?></td>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date d'inscription</th>
                 </tr>
-            <?php }?>
+            </thead>
+            <tbody id="tableusers">
+                <?php include_once 'select_usersinorga.php' ?>
             </tbody>
         </table>
     </div>
+    <select id="select-user-add">
+        <?php include_once 'select_usersnotinorga.php' ?>
+    </select>
+    <button id="button-user-add">Ajouter</button>
 </div>
 
 <script>
@@ -63,4 +54,26 @@ $org = ((Object) $organizationRepository->fetchByUser($authenticatorService->get
         alert("Un truc cool a faire je pense!!")
     }
 
+    document.getElementById("button-user-add").addEventListener('click', function () {
+        var index = $("#select-user-add").prop("selectedIndex");
+        if(index>=0){
+            var iduser = $("#select-user-add").find(':selected').attr('data-id');
+            //TODO ajouter une saisie lors de la selection
+            var role = "Larbin";
+            $.get({
+                url: 'addusertoorga.php',
+                data: {
+                    iduser:iduser,
+                    role:role,
+                    idorganization:<?php echo $org->getId(); ?>
+                },success:refreshuser
+            });
+        }
+    });
+
+
+    function refreshuser() {
+        $('#select-user-add').load('select_usersnotinorga.php');
+        $('#tableusers').load('select_usersinorga.php');
+    }
 </script>

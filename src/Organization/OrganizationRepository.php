@@ -1,6 +1,7 @@
 <?php
 namespace Organization;
 
+use DateTimeImmutable;
 use DateTimeInterface;
 use Exception;
 use PDO;
@@ -132,5 +133,17 @@ class OrganizationRepository
         $stmt->bindValue(':name', $name,PDO::PARAM_STR);
         $stmt->bindValue(':id', $id,PDO::PARAM_INT);
         $stmt->execute();
+    }
+
+    public function addUser(int $iduser, int $idorga, string $role){
+        $stmt = $this->connection->prepare(
+            'INSERT INTO userorganization (iduser, idorganization, role, date) 
+            VALUES (:iduser, :idorga, :role, :creationdate)'
+        );
+        $stmt->bindValue(':iduser', $iduser,PDO::PARAM_INT);
+        $stmt->bindValue(':idorga', $idorga,PDO::PARAM_INT);
+        $stmt->bindValue(':role', $role,PDO::PARAM_STR);
+        $stmt->bindValue(':creationdate', (new DateTimeImmutable("now"))->format("Y-m-d H:i:s"),PDO::PARAM_STR);
+        $res = $stmt->execute();
     }
 }
