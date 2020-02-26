@@ -32,6 +32,30 @@ module.exports = http.createServer((req, res) => {
             res.end(data, 'utf-8');
         });
     }
+    else if(pathname == "/index.js") {
+        fs.readFile('./public/index.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/contribution.js") {
+        fs.readFile('./public/contribution.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/offre.js") {
+        fs.readFile('./public/offre.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/profil.js") {
+        fs.readFile('./public/profil.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
     else if (pathname == "/style.css") {
         fs.readFile('./public/style.css',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/css'});
