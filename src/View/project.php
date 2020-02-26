@@ -219,8 +219,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
             var iduser = $("#select-user-add").find(':selected').attr('data-id');
             //TODO ajouter une saisie lors de la selection
             var role = "Larbin";
-            $.post({
-                type: 'GET',
+            $.get({
                 url: 'addusertoproject.php',
                 data: {
                     iduser:iduser,
@@ -245,8 +244,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
         for (var checkbox of checkboxs){
             if(checkbox.checked){
                 var iduser = checkbox.attributes["data-iduser"].value;
-                $.post({
-                    type: 'GET',
+                $.get({
                     url: 'deleteuserofproject.php',
                     data: {
                         iduser:iduser,
@@ -262,8 +260,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
         for (var checkbox of checkboxs) {
             if (checkbox.checked) {
                 var idtask = checkbox.attributes["data-idtask"].value;
-                $.post({
-                    type: 'GET',
+                $.get({
                     url: 'deletetaskofproject.php',
                     data: {
                         idtask:idtask
@@ -278,8 +275,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
         for (var checkbox of checkboxs) {
             if (checkbox.checked) {
                 var idmeeting = checkbox.attributes["data-idmeeting"].value;
-                $.post({
-                    type: 'GET',
+                $.get({
                     url: 'deletemeetingofproject.php',
                     data: {
                         idmeeting:idmeeting
@@ -310,8 +306,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
         var content = $("#modal-task-content").val();
         var state = $("#modal-task-state").val();
         var idassignee = $("#modal-task-assignee").find(':selected').attr('data-id');
-        $.post({
-            type:"GET",
+        $.get({
             url:"addtask.php",
             data:{
                 title:title,
@@ -330,8 +325,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
         var name = $('#modal-meeting-name').val();
         var place = $('#modal-meeting-place').val();
         var description = $('#modal-meeting-description').val();
-        $.post({
-            type:"GET",
+        $.get({
             url:"addmeeting.php",
             data:{
                 name:name,
