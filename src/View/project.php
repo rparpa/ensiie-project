@@ -47,7 +47,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 </div>
                 <div class="row">
                     <div class="col">
-                        <select id="select-user-add">
+                        <select>
                             <?php include_once 'select_usersoforganization.php' ?>
                         </select>
                     </div>

@@ -83,6 +83,25 @@ class UserRepository
         return $users;
     }
 
+    public function fetchByOrganizationNotInOrga()
+    {
+        //TODO Voir pour faire mieux
+        $stmt = $this->connection->
+            prepare('SELECT * FROM "user" 
+                                WHERE id NOT IN (
+                                SELECT iduser FROM userorganization)');
+        $stmt->execute();
+        var_dump($stmt->errorInfo());
+        $rows=$stmt->fetchAll(PDO::FETCH_OBJ);
+        $users = [];
+        foreach ($rows as $row) {
+            $users[] = [
+                "user" => $this->userHydrator->hydrateObj($row)
+            ];
+        }
+        return $users;
+    }
+
     public function fetchByProject(int $projectId)
     {
         $stmt = $this->connection->prepare('SELECT * FROM "user" JOIN userproject ON ("user".id=userproject.iduser) WHERE idproject = :idproj');
