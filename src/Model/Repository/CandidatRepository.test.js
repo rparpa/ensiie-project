@@ -57,5 +57,17 @@ describe("Create tests", () => {
         }
         expect(create).toThrow(new Error('Candidat object is missing information'));
     });
+    test('Throw Candidat incorrect date', () => {
+        let Candidature = new Candidat();
+        Candidature.idParticulier = "2"
+        Candidature.idOffre = "1"
+        Candidature.date = "12344"
+        const repository = new CandidatRepository();
+
+        function create() {
+            repository.create(Candidature);
+        }
+        expect(create).toThrow(new Error('Invalid date in candidat object'));
+    });
   
 });
