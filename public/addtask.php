@@ -11,6 +11,7 @@ use User\UserRepository;
 require_once '../src/Bootstrap.php';
 include_once '../src/View/template.php';
 
+var_dump($_GET);
 
 $title = !empty($_GET['title']) ? $_GET['title'] : null;;
 $content = !empty($_GET['content']) ? $_GET['content'] : null;;

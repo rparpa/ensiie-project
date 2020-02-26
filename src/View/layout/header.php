@@ -31,6 +31,9 @@ $user = $authenticatorService->getCurrentUser();
             <li class="link-header-item">
                 <a class="link-header-item-a" href="manageproject.php">Gestion Projets</a>
             </li>
+            <li class="link-header-item">
+                <a class="link-header-item-a" href="task.php">Task</a>
+            </li>
         <?php }?>
     </ul>
 
