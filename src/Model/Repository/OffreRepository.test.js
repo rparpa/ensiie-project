@@ -5,17 +5,17 @@ const Offre = require('../Entity/Offre');
 describe("Create tests", () => {
     test('Create a Offre with a correct object', () => {
 
-        let Offre = new Offre();
-        Offre.id = "1";
-        Offre.idEntreprise = "1";
-        Offre.description = "description"
-        Offre.document = "Document"
-        Offre.typeContrat = "CDD"
-        Offre.adresse = "adresse"
-        Offre.latitude = "105°";
-        Offre.longitude = "105°"
-        Offre.salaire = "1000"
-        Offre.isValid = "True"
+        let offre = new Offre();
+        offre.id = "1";
+        offre.idEntreprise = "1";
+        offre.description = "description"
+        offre.document = "Document"
+        offre.typeContrat = "CDD"
+        offre.adresse = "adresse"
+        offre.latitude = "105°";
+        offre.longitude = "105°"
+        offre.salaire = "1000"
+        offre.isValid = "True"
 
         const dbMock = {
             get : jest.fn().mockReturnThis(),
@@ -23,7 +23,7 @@ describe("Create tests", () => {
             write : jest.fn().mockReturnThis()
         };
         const repository = new OffreRepository(dbMock);
-        repository.create(Offre);
+        repository.create(offre);
 
         expect(dbMock.get).toHaveBeenCalledWith('Offres');
         expect(dbMock.get.mock.calls.length).toBe(1);
