@@ -32,7 +32,7 @@ module.exports = class {
             throw 'no id specified';
         }
         if(!idEntreprise){
-            throw 'no Company specified';
+            throw 'no company specified';
         }
         if(!description){
             throw 'no description specified';

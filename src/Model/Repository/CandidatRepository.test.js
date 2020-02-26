@@ -45,4 +45,17 @@ describe("Create tests", () => {
         }
         expect(create).toThrow(new Error('Candidat object is missing information'));
     });
+
+    test('Throw Candidat object is missing information (date  case) exception', () => {
+        let Candidature = new Candidat();
+        Candidature.idParticulier = "2"
+        Candidature.idOffre = "1"
+        const repository = new CandidatRepository();
+
+        function create() {
+            repository.create(Candidature);
+        }
+        expect(create).toThrow(new Error('Candidat object is missing information'));
+    });
+  
 });

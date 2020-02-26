@@ -100,6 +100,7 @@ describe("Create tests", () => {
             const repository = new OffreRepository();
             function update() {
                 repository.updateOne({ id:'1' ,
+                // idEntreprise: '1',
                 descritpion: 'Description',
                 document: 'Document',
                 typeContrat: 'CDD',
@@ -109,7 +110,136 @@ describe("Create tests", () => {
                 salaire: '1000',
                 isValid: 'True'})
             }
-            expect(update).toThrow(new Error('no Company specified'));
+            expect(update).toThrow(new Error('no company specified'));
+          });
+          test('should not update an offer with no description',  () => {
+            const repository = new OffreRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                idEntreprise: '1',
+                // descritpion: 'Description',
+                document: 'Document',
+                typeContrat: 'CDD',
+                adresse: 'adresse',
+                latitue:'105',
+                longitude: '105',
+                salaire: '1000',
+                isValid: 'True'})
+            }
+            expect(update).toThrow(new Error('no description specified'));
+          });
+          test('should not update an offer with no document',  () => {
+            const repository = new OffreRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                idEntreprise: '1',
+                descritpion: 'Description',
+                // document: 'Document',
+                typeContrat: 'CDD',
+                adresse: 'adresse',
+                latitue:'105',
+                longitude: '105',
+                salaire: '1000',
+                isValid: 'True'})
+            }
+            expect(update).toThrow(new Error('no document specified'));
+          });
+          test('should not update an offer with no contract type',  () => {
+            const repository = new OffreRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                idEntreprise: '1',
+                descritpion: 'Description',
+                document: 'Document',
+                // typeContrat: 'CDD',
+                adresse: 'adresse',
+                latitue:'105',
+                longitude: '105',
+                salaire: '1000',
+                isValid: 'True'})
+            }
+            expect(update).toThrow(new Error('no contract type specified'));
+          });
+          test('should not update an offer with no address',  () => {
+            const repository = new OffreRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                idEntreprise: '1',
+                descritpion: 'Description',
+                document: 'Document',
+                typeContrat: 'CDD',
+                // adresse: 'adresse',
+                latitue:'105',
+                longitude: '105',
+                salaire: '1000',
+                isValid: 'True'})
+            }
+            expect(update).toThrow(new Error('no address specified'));
+          });
+          test('should not update an offer with no latitude',  () => {
+            const repository = new OffreRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                idEntreprise: '1',
+                descritpion: 'Description',
+                document: 'Document',
+                typeContrat: 'CDD',
+                adresse: 'adresse',
+                // latitue:'105',
+                longitude: '105',
+                salaire: '1000',
+                isValid: 'True'})
+            }
+            expect(update).toThrow(new Error('no latitude specified'));
+          });
+          test('should not update an offer with no longitude',  () => {
+            const repository = new OffreRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                idEntreprise: '1',
+                descritpion: 'Description',
+                document: 'Document',
+                typeContrat: 'CDD',
+                adresse: 'adresse',
+                latitue:'105',
+                // longitude: '105',
+                salaire: '1000',
+                isValid: 'True'})
+            }
+            expect(update).toThrow(new Error('no longitude specified'));
+          });
+          test('should not update an offer with no salary',  () => {
+            const repository = new OffreRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                idEntreprise: '1',
+                descritpion: 'Description',
+                document: 'Document',
+                typeContrat: 'CDD',
+                adresse: 'adresse',
+                latitue:'105',
+                longitude: '105',
+                // salaire: '1000',
+                isValid: 'True'})
+            }
+            expect(update).toThrow(new Error('no salary specified'));
+          });
+          test('should not update an offer which is not valid',  () => {
+            const repository = new OffreRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                idEntreprise: '1',
+                descritpion: 'Description',
+                document: 'Document',
+                typeContrat: 'CDD',
+                adresse: 'adresse',
+                latitue:'105',
+                longitude: '105',
+                salaire: '1000'
+                // isValid: 'True'
+            })
+            }
+            expect(update).toThrow(new Error("isn't valid"));
           });
         }) ;
 
