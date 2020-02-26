@@ -38,7 +38,7 @@ describe("Create tests", () => {
         Part.adresseMail = "adresse@mail.com"
         const repository = new ParticulierRepository();
 
-        function create() {s
+        function create() {
             repository.create(Part);
         }
         expect(create).toThrow(new Error('Particulier object is missing information'));
