@@ -67,9 +67,8 @@ describe("Create tests", () => {
                     id:'1' ,
                     nom: 'nom',
                     prenom: 'prenom',
-                    motDePasse: 'mdp',
+                    motdepasse: 'mdp',
                     cv: 'cv'
-                    // adresseMail:'adresse'
                 })
             }
             expect(update).toThrow(new Error('no email specified'));
@@ -81,7 +80,6 @@ describe("Create tests", () => {
                     id:'1' ,
                     nom: 'nom',
                     prenom: 'prenom',
-                    // motDePasse: 'mdp',
                     cv: 'cv',
                     adresseMail: 'adresse'
                 })
@@ -95,8 +93,7 @@ describe("Create tests", () => {
                     id:'1' ,
                     nom: 'nom',
                     prenom: 'prenom',
-                    motDePasse: 'mdp',
-                    // cv: 'cv',
+                    motdepasse: 'mdp',
                     adresseMail: 'adresse'
                 })
             }
@@ -109,7 +106,7 @@ describe("Create tests", () => {
                     id:'1' ,
                     // nom: 'nom',
                     prenom: 'prenom',
-                    motDePasse: 'mdp',
+                    motdepasse: 'mdp',
                     cv: 'cv',
                     adresseMail:'adresse'
                 })
@@ -123,7 +120,7 @@ describe("Create tests", () => {
                     id:'1' ,
                     nom: 'nom',
                     // prenom: 'prenom',
-                    motDePasse: 'mdp',
+                    motdepasse: 'mdp',
                     cv: 'cv',
                     adresseMail:'adresse'
                 })
