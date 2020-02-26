@@ -23,6 +23,9 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - postgres-data-volume:/var/lib/postgresql/data:z
       - .:/var/www/html
     working_dir: /var/www/html
+volumes:
+    postgres-data-volume:
+         external: true
