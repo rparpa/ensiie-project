@@ -105,7 +105,7 @@ describe("Create tests", () => {
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
-                latitue:'105',
+                latitude:'105',
                 longitude: '105',
                 salaire: '1000',
                 isValid: 'True'})
@@ -137,7 +137,7 @@ describe("Create tests", () => {
                 // document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
-                latitue:'105',
+                latitude:'105',
                 longitude: '105',
                 salaire: '1000',
                 isValid: 'True'})
@@ -153,7 +153,7 @@ describe("Create tests", () => {
                 document: 'Document',
                 // typeContrat: 'CDD',
                 adresse: 'adresse',
-                latitue:'105',
+                latitude:'105',
                 longitude: '105',
                 salaire: '1000',
                 isValid: 'True'})
@@ -169,7 +169,7 @@ describe("Create tests", () => {
                 document: 'Document',
                 typeContrat: 'CDD',
                 // adresse: 'adresse',
-                latitue:'105',
+                latitude:'105',
                 longitude: '105',
                 salaire: '1000',
                 isValid: 'True'})
@@ -201,7 +201,7 @@ describe("Create tests", () => {
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
-                latitue:'105',
+                latitude:'105',
                 // longitude: '105',
                 salaire: '1000',
                 isValid: 'True'})
@@ -217,7 +217,7 @@ describe("Create tests", () => {
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
-                latitue:'105',
+                latitude:'105',
                 longitude: '105',
                 // salaire: '1000',
                 isValid: 'True'})
@@ -233,7 +233,7 @@ describe("Create tests", () => {
                 document: 'Document',
                 typeContrat: 'CDD',
                 adresse: 'adresse',
-                latitue:'105',
+                latitude:'105',
                 longitude: '105',
                 salaire: '1000'
                 // isValid: 'True'
