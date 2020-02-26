@@ -43,4 +43,87 @@ describe("Create tests", () => {
         }
         expect(create).toThrow(new Error('Particulier object is missing information'));
     });
+
+    describe ("Update tests", () => {
+
+        test('should not update a particulier with no id',  () => {
+            const repository = new ParticulierRepository();
+            function update() {
+                repository.updateOne({ 
+                // id:'1' ,
+                adresseMail: 'description',
+                motDePasse: 'Document',
+                cv: 'CDD',
+                nom: 'adresse',
+                prenom:'105'
+            })
+            }
+            expect(update).toThrow(new Error('no id specified'));
+          });
+          test('should not update a particulier with no mail',  () => {
+            const repository = new ParticulierRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                // adresseMail: 'description',
+                motDePasse: 'Document',
+                cv: 'CDD',
+                nom: 'adresse',
+                prenom:'105'
+            })
+            }
+            expect(update).toThrow(new Error('no email specified'));
+          });
+          test('should not update a particulier with no password',  () => {
+            const repository = new ParticulierRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                adresseMail: 'description',
+                // motDePasse: 'Document',
+                cv: 'CDD',
+                nom: 'adresse',
+                prenom:'105'
+            })
+            }
+            expect(update).toThrow(new Error('no password specified'));
+          });
+          test('should not update a particulier with no cv',  () => {
+            const repository = new ParticulierRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                adresseMail: 'description',
+                motDePasse: 'Document',
+                // cv: 'CDD',
+                nom: 'adresse',
+                prenom:'105'
+            })
+            }
+            expect(update).toThrow(new Error('no cv specified'));
+          });
+          test('should not update a particulier with no name',  () => {
+            const repository = new ParticulierRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                adresseMail: 'description',
+                motDePasse: 'Document',
+                cv: 'CDD',
+                // nom: 'adresse',
+                prenom:'105'
+            })
+            }
+            expect(update).toThrow(new Error('no name specified'));
+          });
+          test('should not update a particulier with no firstname',  () => {
+            const repository = new ParticulierRepository();
+            function update() {
+                repository.updateOne({ id:'1' ,
+                adresseMail: 'description',
+                motDePasse: 'Document',
+                cv: 'CDD',
+                nom: 'adresse',
+                // prenom:'105'
+            })
+            }
+            expect(update).toThrow(new Error('no firstname specified'));
+          });
+});
 });

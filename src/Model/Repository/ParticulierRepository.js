@@ -11,19 +11,7 @@ module.exports = class {
         if (!Particulier.id || !Particulier.nom || !Particulier.prenom || !Particulier.motdepasse || !Particulier.cv || !Particulier.adresseMail) {
             throw 'Particulier object is missing information';
         }
-
-        // this.db
-        //     .get('Particuliers')
-        //     .push(Particulier.toJson())
-        //     .write()
     }
-    
-    // getOne(id){
-    //     return this.db
-    //     .get('Particuliers')
-    //     .find({id})
-    //     .value();
-    // }
     
     updateOne({ id, nom, prenom, motdepasse,cv,adresseMail  }) {
         if(!id){
@@ -50,10 +38,6 @@ module.exports = class {
         //   .assign({ nom, prenom,motdepasse,cv,adresseMail})
         //   .write();
     
-        return { id, nom, prenom,motdepasse,cv,adresseMail };
+        // return { id, nom, prenom,motdepasse,cv,adresseMail };
       }
-
-    //   getAll(){
-    //       return this.db.get('Particuliers').value();
-    //   }
 };
