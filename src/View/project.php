@@ -160,7 +160,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal">Cancel</button>
-                <button type="submit" >Save changes</button>
+                <button type="submit" >Ajouter Taches</button>
             </div>
             </form>
         </div>
@@ -201,10 +201,27 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                             <input id="modal-meeting-place" value="Bureau invisible" required>
                         </div>
                     </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label >Participant(s)</label>
+                        </div>
+                        <div class="col">
+                            <select id='modal-meeting-users' multiple='multiple'>
+                                <?php
+                                $useroforga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
+                                $usersoforga = $userrepository->fetchByOrganization(((object)$useroforga)->organization->getId());
+                                foreach ($usersoforga as $useroforga) {
+                                    /** @var User $user */
+                                    $user = ((Object)$useroforga)->user;?>
+                                    <option data-id="<? echo $user->getId()?>"><?php echo $user->getSurname() . ' ' . $user->getName() ?></option>
+                                <? }?>
+                            </select>
+                        </div>
+                    </div>
                </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal">Cancel</button>
-                    <button type="submit" >Ajout réunion</button>
+                    <button type="submit" >Ajouter Réunion</button>
                 </div>
             </form>
         </div>
