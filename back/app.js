@@ -5,7 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./router');
 var usersRouter = require('./src/controller/users');
-var openDataParisRouter = require('./src/controller/openDataParis') ;
+var openDataParisRouter = require('./src/controller/openDataParisController') ;
 
 var app = express();
 
