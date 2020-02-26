@@ -67,9 +67,9 @@ $userRepository = new UserRepository(Connection::get(), new UserHydrator());
         </div>
         <div class="row" id="listtasks-<? echo $project->getId()?>" style="display: none;">
             <? $taskssofproject = $taskrepository->fetchByProject($project->getId());
-            foreach ($taskssofproject as $tasksofproject) {
+            /** @var Task $task */
+            foreach ($taskssofproject as $task) {
                 /** @var Task $task */
-                $task = ((Object)$tasksofproject)->task;
                 ?>
                 <ul>
                     <il>
@@ -80,9 +80,8 @@ $userRepository = new UserRepository(Connection::get(), new UserHydrator());
         </div>
         <div class="row" id="listmeetings-<? echo $project->getId()?>" style="display: none;">
             <? $meetingssofproject = $meetingrepository->fetchByProject($project->getId());
-            foreach ($meetingssofproject as $meetingsofproject) {
-                /** @var Meeting $meeting */
-                $meeting = ((Object)$meetingsofproject)->meeting;
+            /** @var Meeting $meeting */
+            foreach ($meetingssofproject as $meeting) {
                 ?>
                 <ul>
                     <il>

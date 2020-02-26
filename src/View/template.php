@@ -32,49 +32,19 @@ function loadView($view, $data) {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
                 crossorigin="anonymous"></script>
-        
     </head>
     <body>
     <?php include_once '../src/View/layout/header.php' ?>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">*
-            <?php include_once '../src/View/chat.php' ?>
-                
-            </div>
-            <div class="col-md-6">
-            <?php include_once '../src/View/'.$view.'.php' ?>
-            </div>
-            <div class="col-md-3">
-            <?php include_once '../src/View/info.php' ?>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="main">
-    <?php if ($authenticatorService->isAuthenticated()) {?>
-        <div class="main-info col-md-offset-3 ">
+    <div class="main row">
+        <div class="main-info col">
             <?php include_once '../src/View/info.php' ?>
         </div>
-
-        <div class="main-container col-md-offset-6">
+        <div class="main-container col">
             <?php include_once '../src/View/'.$view.'.php' ?>
         </div>
-        
-        <div class="main-chat col-md-offset-3 " >
+        <div class="main-chat col">
             <?php include_once '../src/View/chat.php' ?>
         </div>
-        
-
-        <?php } else { ?>
-            
-        <div class="main-container col-md-12">
-            <?php include_once '../src/View/'.$view.'.php' ?>
-        </div>
-        <?php } ?>
-         
     </div>
         <?php include_once '../src/View/layout/footer.php' ?>
     </body>
