@@ -53,13 +53,34 @@ class IngredientRepository
         return $ingredient;
     }
 
+    public function updateIngredient(Ingredient $ingredient)
+    {
+        $query = $this->connection->prepare(
+            'UPDATE "ingredient" 
+            SET id = :id,
+                label = :label,
+                available = :available,
+                price = :price');
+
+        $query->bindValue(':id', $ingredient->getId());
+        $query->bindValue(':label', $ingredient->getLabel());
+        $query->bindValue(':available', $ingredient->getAvailable());
+        $query->bindValue(':price', $ingredient->getPrice());
+        $result = $query->execute();
+        if ($result == false)
+        {
+            $query->errorInfo();
+        }
+    }
+
     public function createIngredient(Ingredient $newIngredient)
     {
         $query = $this->connection->prepare(
-            'INSERT INTO "ingredient"(label, available) VALUES (:label , :available)');
+            'INSERT INTO "ingredient"(label, available, price) VALUES (:label , :available, :price)');
         
         $query->bindValue(':label', $newIngredient->getLabel());
         $query->bindValue(':available', $newIngredient->getAvailable());
+        $query->bindValue(':price', $newIngredient->getPrice());
         $result = $query->execute();
         if ($result == false)
         {

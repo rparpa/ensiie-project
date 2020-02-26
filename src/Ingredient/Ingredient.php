@@ -11,7 +11,7 @@ class Ingredient
     /**
      * @var string
      */
-    private string $name;
+    private string $label;
 
     /**
      * @var bool
