@@ -13,7 +13,7 @@ module.exports = class {
         }
     }
     
-    updateOne({ id, nom, prenom, motdepasse,cv,adresseMail  }) {
+    updateOne({id, nom, prenom, motdepasse,cv,adresseMail}) {
         if(!id){
             throw 'no id specified';
         }

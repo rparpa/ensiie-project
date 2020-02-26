@@ -68,7 +68,7 @@ describe("Create tests", () => {
                     nom: 'nom',
                     prenom: 'prenom',
                     motDePasse: 'mdp',
-                    cv: 'cv',
+                    cv: 'cv'
                     // adresseMail:'adresse'
                 })
             }
@@ -83,7 +83,7 @@ describe("Create tests", () => {
                     prenom: 'prenom',
                     // motDePasse: 'mdp',
                     cv: 'cv',
-                    adresseMail:'adresse'
+                    adresseMail: 'adresse'
                 })
             }
             expect(update).toThrow(new Error('no password specified'));
@@ -97,7 +97,7 @@ describe("Create tests", () => {
                     prenom: 'prenom',
                     motDePasse: 'mdp',
                     // cv: 'cv',
-                    adresseMail:'adresse'
+                    adresseMail: 'adresse'
                 })
             }
             expect(update).toThrow(new Error('no cv specified'));
