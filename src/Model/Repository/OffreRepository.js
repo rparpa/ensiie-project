@@ -37,6 +37,9 @@ module.exports = class {
         if(!description){
             throw 'no description specified';
         }
+        if(!document){
+            throw 'no document specified';
+        }
         if(!typeContrat){
             throw 'no contract type specified';
         }
