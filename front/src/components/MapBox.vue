@@ -2,10 +2,10 @@
   <div class="test">
       <MglMap :accessToken="accessToken" :mapStyle="mapStyle" >
         <div v-if="listCoordinates">
-           <MglMarker class="points" v-for="coordinates in listCoordinates" :key="coordinates[0]*coordinates[1]" :coordinates="coordinates" color="green"/>     
-        </div>        
-      </MglMap>      
-  </div>  
+           <MglMarker class="points" v-for="coordinates in listCoordinates" :key="coordinates[0]*coordinates[1]" :coordinates="coordinates" color="green"/>
+        </div>
+      </MglMap>
+  </div>
 </template>
 
 <style>
@@ -19,6 +19,12 @@
 import Mapbox from "mapbox-gl";
 import { MglMap,MglMarker } from "vue-mapbox";
 import  axios from "axios";
+import {EventBus} from "./event-bus";
+
+EventBus.$on('addressFilled', address => {
+  console.log("Evenement bien recu!");
+  this.onAdressFilled(addressFilled);
+});
 
 export default {
   name: 'MapBox',
@@ -26,17 +32,20 @@ export default {
     MglMap,
     MglMarker
   },
-  data() {
+  props: ['address'],
+  data: function() {
     return {
       accessToken: "pk.eyJ1IjoiZGV2c3Bpbm96YSIsImEiOiJjazZ2enV4aW0wNnd2M2ZwNzU3NXFvc2c5In0.c4mfJ5n3hsVYXURtgRPUyQ", // your access token. Needed if you using Mapbox maps
       mapStyle: "mapbox://styles/mapbox/light-v10",
       listCoordinates: [],
-      apiAdr : "http://localhost:5001/bigQuery"
+      apiAdr : "http://localhost:5001/bigQuery",
+      center: [48.864716, 2.349014],
+      zoom: 12
     };
   },
 
   mounted() {
-    this.getAllMarkers();  
+    this.getAllMarkers();
   },
 
   methods: {
@@ -46,6 +55,10 @@ export default {
 
     getAllMarkers(){
       axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x.coords.long,x.coords.lat])))
+    },
+
+    onAdressFilled(address) {
+      console.log("Adresse recue ", address);
     }
   }
   };
