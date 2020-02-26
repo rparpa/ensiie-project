@@ -11,7 +11,7 @@ class UserHydratorTest extends TestCase
     /**
      * @test
      */
-    public function messageIsAJson()
+    public function UserIsArray()
     {
         $hydrator = new UserHydrator();
         $data = ['id'=>1, 'username'=>'JD', 'surname'=>'John', 'name'=>'Doe',
@@ -26,7 +26,6 @@ class UserHydratorTest extends TestCase
         $userRef->setPassword('JD');
         $userRef->setCreationdate(new \DateTimeImmutable('1967-11-22'));
 
-
         $user = $hydrator->hydrate($data);
         self::assertEquals($userRef ,$user);
     }
@@ -34,7 +33,7 @@ class UserHydratorTest extends TestCase
     /**
      * @test
      */
-    public function messageIsAObjet()
+    public function UserIsAObjet()
     {
         $hydrator = new UserHydrator();
         $data = new Object_();
