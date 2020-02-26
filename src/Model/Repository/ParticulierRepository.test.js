@@ -22,17 +22,17 @@ describe("Create tests", () => {
     //     expect(dbMock.write.mock.calls.length).toBe(1);
     // });
 
-    test('Throw Part object undefined exception', () => {
+    test('Throw Particulier object undefined exception', () => {
 
         const repository = new ParticulierRepository();
 
         function create() {
             repository.create();
         }
-        expect(create).toThrow(new Error('Part object is undefined'));
+        expect(create).toThrow(new Error('Particulier object is undefined'));
     });
 
-    test('Throw Part object is missing information (id Offre case) exception', () => {
+    test('Throw Particulier object is missing information (id Offre case) exception', () => {
         let Part = new Particulier();
         Part.id = "1"
         Part.adresseMail = "adresse@mail.com"
@@ -41,6 +41,6 @@ describe("Create tests", () => {
         function create() {s
             repository.create(Part);
         }
-        expect(create).toThrow(new Error('Part object is missing information'));
+        expect(create).toThrow(new Error('Particulier object is missing information'));
     });
 });
