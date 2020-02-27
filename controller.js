@@ -32,6 +32,12 @@ module.exports = http.createServer((req, res) => {
             res.end(data, 'utf-8');
         });
     }
+    else if(pathname == "/test") {
+        fs.readFile('./public/test.html',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end(data, 'utf-8');
+        });
+    }
     else if(pathname == "/index.js") {
         fs.readFile('./public/index.js',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/javascript'});
@@ -52,6 +58,12 @@ module.exports = http.createServer((req, res) => {
     }
     else if(pathname == "/profil.js") {
         fs.readFile('./public/profil.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/dist/bundle.js") {
+        fs.readFile('./public/dist/bundle.js',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/javascript'});
             res.end(data, 'utf-8');
         });

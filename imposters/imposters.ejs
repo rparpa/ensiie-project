@@ -1,5 +1,11 @@
 {
-    "imposters": [
-      <% include index.json %>
-    ]
-}  
+  "imposters": [
+      {
+          "port": 8090,
+          "protocol": "http",
+          "stubs": [
+              <% include searchOffres.json %>
+          ]
+      }
+  ]
+}

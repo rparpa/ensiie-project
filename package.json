@@ -9,7 +9,9 @@
     "@stryker-mutator/javascript-mutator": "^1.1.1",
     "@stryker-mutator/jest-runner": "^1.1.1",
     "jest": "^24.1.0",
-    "stryker-cli": "^1.0.0"
+    "stryker-cli": "^1.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   },
   "directories": {
     "test": "test"
@@ -17,7 +19,9 @@
   "scripts": {
     "unit.test": "jest",
     "unit.test.coverage": "jest --coverage",
-    "unit.test.mutation": "stryker run"
+    "unit.test.mutation": "stryker run",
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
