@@ -1,8 +1,11 @@
 <template>
   <places
-    v-model="form.address.label"
+    v-model="address.label"
     placeholder="Où allez-vous ?"
-    @change="val => { form.address.data = val; emitGlobalClickEvent(form.address.data) }"
+    @change="val => {
+      this.address.data = val;
+      emitGlobalClickEvent(this.address.data)
+    }"
     :options="{ address: ['FR'], language: 'fr' }">
   </places>
 
@@ -20,7 +23,7 @@
 
 <script>
   import Places from 'vue-places'
-  import {EventBus} from "./event-bus";
+  import { EventBus } from "./event-bus.js";
 
   export default {
     /*props: {
@@ -31,13 +34,10 @@
     },*/
     data() {
       return {
-        form: {
-          address: {
-            label: null,
-            data: {
-              lat: '',
-              lng: ''
-            },
+        address: {
+          data: {
+            lat: '',
+            lng: ''
           },
         },
       };
@@ -47,9 +47,9 @@
     },
     methods: {
       emitGlobalClickEvent(address) {
-        //console.log("emitGlobalClickEvent in MapSettings ", address.latlng.lat);
-        console.log("emitGlobalClickEvent in MapSettings ", address);
-        EventBus.$emit('adressFilled', address);
+        if(address !== undefined) {
+          EventBus.$emit('addressFilled', this.address.data);
+        }
       }
     }
   }

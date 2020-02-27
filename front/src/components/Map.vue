@@ -3,9 +3,7 @@
     <b-jumbotron>
       <b-row>
         <!--<img src="../assets/map.jpg" height="500" width="700" class="mr-5">-->
-        <MapSettings
-          v-on:change="showAddress($event)"
-        ></MapSettings>
+        <MapSettings/>
       </b-row>
       <br>
       <b-row>
@@ -18,28 +16,13 @@
 <script>
 import MapSettings from './MapSettings.vue'
 import MapBox from './MapBox.vue'
+import {EventBus} from "./event-bus";
 
 export default {
   name: 'Map',
   components: {
     MapSettings,
     MapBox
-  },
-  data () {
-    return {
-      form: {
-        data: ''
-      }
-    }
-  },
-  methods: {
-    showAddress (adr) {
-      const trimmedAddress = adr.trim();
-      console.log("Adresse à afficher: ", adr);
-      if (trimmedAddress) {
-        this.MapBox.setCenter(trimmedAddress);
-      }
-    }
   }
 }
 </script>
