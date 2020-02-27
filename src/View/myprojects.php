@@ -24,7 +24,7 @@ $authenticatorService = new AuthenticatorService($userRepository);
         <h5>Liste de mes projets</h5>
     </div>
     <div>
-        <table class="table">
+        <table class="table" id="list-project">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -40,11 +40,17 @@ $authenticatorService = new AuthenticatorService($userRepository);
             foreach ($userprojects as $userproject) {
                 /** @var Project $project */
                 $project = ((Object)$userproject)->project?>
-                <tr onclick="ShowAlert()" name="<?php  echo $project->getId() ?>">
+                <tr id="project-<?php  echo $project->getId() ?>">
                     <th scope="row" ><?php  echo $project->getId() ?></th>
                     <td><?php  echo $project->getName() ?></td>
                     <td><?php  echo ((Object)$userproject)->role ?></td>
                     <td><?php  echo $project->getCreationdate()->format("Y-m-d H:i:s") ?></td>
+                    <td>
+                        <button type="submit" onclick="location.href='projectconsultation.php?idproject=<?php  echo $project->getId(); ?>'" >Consulter</button>
+                    </td>
+                    <td>
+                        <button type="submit" onclick="Deleteuserofproject('<?php  echo $project->getId(); ?>')" >Quitter le projet</button>
+                    </td>
                 </tr>
             <?php }?>
             </tbody>
@@ -53,8 +59,20 @@ $authenticatorService = new AuthenticatorService($userRepository);
 </div>
 
 <script>
-    function ShowAlert() {
-        alert("Un truc cool a faire je pense!!")
+
+    function Deleteuserofproject(idproject) {
+        $.get({
+            url:'deleteuserofproject.php',
+            data:{
+                iduser:<? echo $authenticatorService->getCurrentUserId()?>,
+                idproject:idproject
+            }
+        }
+        );
+        $('#project-'+ idproject).remove();
     }
+
+
+
 
 </script>

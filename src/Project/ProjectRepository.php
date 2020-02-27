@@ -54,8 +54,33 @@ class ProjectRepository
      */
     public function fetchByUser(int $userId)
     {
-        $stmt = $this->connection->prepare('SELECT * FROM project JOIN userproject ON (project.id=userproject.idproject) WHERE iduser = :iduser');
+        //return $this->fetchByUserByRole($userId, "Larbin");
+
+        $stmt = $this->connection->prepare(
+            'SELECT * FROM project JOIN userproject ON (project.id=userproject.idproject) 
+                        WHERE iduser = :iduser');
         $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $projects = [];
+        if ($rows) {
+            foreach ($rows as $row) {
+                $projects[] = [
+                    "project" => $this->projectHydrator->hydrateObj($row),
+                    "role" => $row->role,
+                    "date" => $row->date
+                ];
+            }
+        }
+        return $projects;
+    }
+
+    public function fetchByUserByRole(int $userId, string $role){
+        $stmt = $this->connection->prepare(
+            'SELECT * FROM project JOIN userproject ON (project.id=userproject.idproject) 
+                        WHERE iduser = :iduser AND role = :role');
+        $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
+        $stmt->bindValue(':role', $role, PDO::PARAM_STR);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_OBJ);
         $projects = [];

@@ -27,74 +27,76 @@ $userRepository = new UserRepository(Connection::get(), new UserHydrator());
     Vous etes sur la page des projets en gestion
 </h2>
 
-
-<div class="container-fluid" id="listchefprojects">
-    <?php
-    $userprojects = $projrepository->fetchByUser($authenticatorService->getCurrentUserId());
-    foreach ($userprojects as $userproject) {
-    /** @var Project $project*/
-    $project = ((Object)$userproject)->project;?>
-    <div class="container" id="row-project-<? echo $project->getId()?>" >
-        <div class="row">
-            <div class="col">
-                <? echo $project->getName()?>
-            </div>
-            <div class="col">
-                <button name="button-collaborateurs" id="<? echo $project->getId()?>">Collaborateurs</button>
-            </div>
-            <div class="col">
-                <button name="button-taches" id="<? echo $project->getId()?>" >Taches</button>
-            </div>
-            <div class="col">
-                <button name="button-reunions" id="<? echo $project->getId()?>">Réunions</button>
-            </div>
-            <div class="col">
-                <button name="button-gerer" id="<? echo $project->getId()?>" onclick="location.href='project.php?idproject=<? echo $project->getId()?>'">Gerer</button>
-            </div>
-        </div>
-        <div class="row" id="listusers-<? echo $project->getId()?>" style="display: none;" >
-            <? $usersofproject = $userRepository->fetchByProject($project->getId());
-            foreach ($usersofproject as $userofproject) {
-            /** @var User $user */
-            $user = ((Object)$userofproject)->user;
-            ?>
-            <ul>
-                <il>
-                    <? echo $user->getName(); ?>
-                </il>
-            </ul>
-            <? }?>
-        </div>
-        <div class="row" id="listtasks-<? echo $project->getId()?>" style="display: none;">
-            <? $taskssofproject = $taskrepository->fetchByProject($project->getId());
-            /** @var Task $task */
-            foreach ($taskssofproject as $task) {
-                /** @var Task $task */
-                ?>
-                <ul>
-                    <il>
-                        <? echo $task->getTitle(); ?>  <? echo $task->getContent()?>
-                    </il>
-                </ul>
-            <? }?>
-        </div>
-        <div class="row" id="listmeetings-<? echo $project->getId()?>" style="display: none;">
-            <? $meetingssofproject = $meetingrepository->fetchByProject($project->getId());
-            /** @var Meeting $meeting */
-            foreach ($meetingssofproject as $meeting) {
-                ?>
-                <ul>
-                    <il>
-                        <? echo $meeting->getName(); ?>  <? echo $meeting->getDescription()?> <? echo $meeting->getPlace()?>
-                    </il>
-                </ul>
-            <? }?>
-        </div>
+<div class="container" style="margin-top: 5em">
+    <div>
+        <h5>Liste de mes projets</h5>
     </div>
-    <?}?>
+    <div class="container-fluid" id="listchefprojects">
+        <?php
+        $userprojects = $projrepository->fetchByUserByRole($authenticatorService->getCurrentUserId(), 'Chef');
+        foreach ($userprojects as $userproject) {
+            /** @var Project $project*/
+            $project = ((Object)$userproject)->project;?>
+            <div class="container" id="row-project-<? echo $project->getId()?>" >
+                <div class="row">
+                    <div class="col">
+                        <? echo $project->getName()?>
+                    </div>
+                    <div class="col">
+                        <button name="button-collaborateurs" id="<? echo $project->getId()?>">Collaborateurs</button>
+                    </div>
+                    <div class="col">
+                        <button name="button-taches" id="<? echo $project->getId()?>" >Taches</button>
+                    </div>
+                    <div class="col">
+                        <button name="button-reunions" id="<? echo $project->getId()?>">Réunions</button>
+                    </div>
+                    <div class="col">
+                        <button name="button-gerer" id="<? echo $project->getId()?>" onclick="location.href='project.php?idproject=<? echo $project->getId()?>'">Gerer</button>
+                    </div>
+                </div>
+                <div class="row" id="listusers-<? echo $project->getId()?>" style="display: none;" >
+                    <? $usersofproject = $userRepository->fetchByProject($project->getId());
+                    foreach ($usersofproject as $userofproject) {
+                        /** @var User $user */
+                        $user = ((Object)$userofproject)->user;
+                        ?>
+                        <ul>
+                            <il>
+                                <? echo $user->getName(); ?>
+                            </il>
+                        </ul>
+                    <? }?>
+                </div>
+                <div class="row" id="listtasks-<? echo $project->getId()?>" style="display: none;">
+                    <? $taskssofproject = $taskrepository->fetchByProject($project->getId());
+                    /** @var Task $task */
+                    foreach ($taskssofproject as $task) {
+                        /** @var Task $task */
+                        ?>
+                        <ul>
+                            <il>
+                                <? echo $task->getTitle(); ?>  <? echo $task->getContent()?>
+                            </il>
+                        </ul>
+                    <? }?>
+                </div>
+                <div class="row" id="listmeetings-<? echo $project->getId()?>" style="display: none;">
+                    <? $meetingssofproject = $meetingrepository->fetchByProject($project->getId());
+                    /** @var Meeting $meeting */
+                    foreach ($meetingssofproject as $meeting) {
+                        ?>
+                        <ul>
+                            <il>
+                                <? echo $meeting->getName(); ?>  <? echo $meeting->getDescription()?> <? echo $meeting->getPlace()?>
+                            </il>
+                        </ul>
+                    <? }?>
+                </div>
+            </div>
+        <?}?>
+    </div>
 </div>
-
-
 
 
 <script type="text/javascript">
