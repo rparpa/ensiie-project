@@ -1,0 +1,41 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "GET",
+        "path": "/searchOffres"
+      }
+    },
+    {
+      "matches": {
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "headers": { "Access-Control-Allow-Origin": "*" },
+        "body": [
+          {
+            "titre" : "Alternance datascience",
+            "description" : "Ca va être ouf tu vas voir",
+            "document" : "none",
+            "typeContrat" : "Alternance",
+            "adresse" : "Quelque part",
+            "salaire": "12k",
+            "dateParution" : "02-20-2020"
+          },
+          {
+            "titre" : "Président de la république",
+            "description" : "Les voyages toussa toussa",
+            "document" : "yes",
+            "typeContrat" : "CDD",
+            "adresse" : "Paname",
+            "salaire": "200k",
+            "dateParution" : "20-20-2020"
+          }
+        ]
+      }
+    }
+  ]
+}

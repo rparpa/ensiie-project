@@ -28,6 +28,12 @@ uninstall: stop
 
 reinstall: install
 
+mountebank:
+	docker-compose run nodejs npm run mountebank.start
+
+watch :
+	docker-compose run nodejs npm run watch
+
 #Connects to the databatase
 db.connect:
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER'
