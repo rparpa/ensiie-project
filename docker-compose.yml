@@ -26,7 +26,6 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
       - .:/var/www/html
     working_dir: /var/www/html
-
   mountebank:
     container_name: mountebank
     image: jkris/mountebank:latest
