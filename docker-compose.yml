@@ -23,9 +23,15 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
-      - postgres-data-volume:/var/lib/postgresql/data:z
+      - ./postgres-data:/var/lib/postgresql/data
       - .:/var/www/html
     working_dir: /var/www/html
-volumes:
-    postgres-data-volume:
-         external: true
+  mountebank:
+    container_name: mountebank
+    image: jkris/mountebank:latest
+    volumes:
+    - ./imposters:/imposters
+    ports:
+    - 2525:2525
+    - 8090:8090
+    command: --configfile /imposters/imposters.ejs --allowInjection
