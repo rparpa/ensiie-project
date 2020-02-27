@@ -7,12 +7,17 @@ use Project\ProjectHydrator;
 use Project\ProjectRepository;
 use Service\AuthenticatorService;
 use Project\Project;
+use User\User;
+use User\UserHydrator;
+use User\UserRepository;
 
 $orgahydrator = new OrganizationHydrator();
 $orgarepository = new OrganizationRepository(Connection::get(),$orgahydrator);
 $projhydrator = new ProjectHydrator();
 $projrepository = new ProjectRepository(Connection::get(),$projhydrator);
 $authenticatorService = new AuthenticatorService($userRepository);
+$userrepository =
+    new UserRepository(Connection::get(), new UserHydrator());
 
 
 //TODO Faire bien mieux mais la je fatigue un peu
@@ -81,6 +86,11 @@ $myorga = (object)$myorgas;
                     <th scope="row" ><?php  echo $project->getId() ?></th>
                     <td><?php  echo $project->getName() ?></td>
                     <td><?php  echo $project->getCreationdate()->format("Y-m-d H:i:s") ?></td>
+                    <td>
+                        <? if(!$projrepository->hasResponableByIdProject($project->getId())){?>
+                        <button id="button-add-responsable" name="button-add-responsable-<?php  echo $project->getId() ?>" data-id="<?php  echo $project->getId() ?>" >Ajouter un responsable</button>
+                        <?}?>
+                    </td>
                 </tr>
             <?php }?>
             </tbody>
@@ -88,7 +98,73 @@ $myorga = (object)$myorgas;
     </div>
 </div>
 
+
+<!-- Modal HTML -->
+<div id="ModalAddresponsable" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="form-modal-responsable">
+                <div class="modal-header">
+                    <h5 class="modal-title">Choisir un responsable</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col">
+                            <label >Responsable</label>
+                            <input type="hidden" id="modal-idproject">
+                        </div>
+                        <div class="col">
+                            <select id="modal-user-responsable" required>
+                                <option></option>
+                                <?
+                                $usersoforga = $userrepository->fetchByOrganization($myorga->organization->getId());
+                                foreach ($usersoforga as $useroforga) {
+                                /** @var User $user */
+                                $user = ((Object)$useroforga)->user;
+                                ?>
+                                <option data-id="<? echo $user->getId();?>"><? echo $user->getSurname() . ' ' . $user->getName() ?></option>
+                                <? }?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" data-dismiss="modal">Cancel</button>
+                    <button type="submit">Ajouter Taches</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
+
+    $(function(){
+        $('#form-modal-responsable').submit(function(event){
+            // cancels the form submission
+            event.preventDefault();
+            var index = $("#modal-user-responsable").prop("selectedIndex");
+            if(index>=0){
+                var iduser = <? echo $authenticatorService->getCurrentUserId(); ?>;
+                var idproject = $("#modal-idproject").val();
+                var role = "Chef";
+                $.get({
+                    url: 'addusertoproject.php',
+                    data: {
+                        iduser:iduser,
+                        role:role,
+                        idproject:idproject
+                    },
+                    success:function () {
+                        $('#ModalAddresponsable').modal('hide');
+                        document.getElementsByName('button-add-responsable-'+idproject)[0].hidden = true;
+
+                    }
+                })
+            }
+        })
+    });
 
     $(function(){
         $('#form-add-project-to-my-orga').submit(function(event){
@@ -124,7 +200,12 @@ $myorga = (object)$myorgas;
                     }
                 });
         })
-    })
+    });
+
+    document.getElementById("button-add-responsable").addEventListener('click', function () {
+        $("#modal-idproject").val(this.attributes['data-id'].value);
+        $("#ModalAddresponsable").modal("show");
+    });
 
 </script>
 

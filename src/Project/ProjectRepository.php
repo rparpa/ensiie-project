@@ -96,6 +96,17 @@ class ProjectRepository
         return $projects;
     }
 
+    public function hasResponableByIdProject(int $idproject){
+        $stmt = $this->connection->prepare(
+            'SELECT count(*) FROM project JOIN userproject ON (project.id=userproject.idproject) 
+                        WHERE role = :role AND idproject = :idproject;');
+        $stmt->bindValue(':idproject', $idproject, PDO::PARAM_INT);
+        $stmt->bindValue(':role', 'Chef', PDO::PARAM_STR);
+        $stmt->execute();
+        $nb = $stmt->fetch();
+        return ($nb['count'] > 0);
+    }
+
     /**
      * @param $idorganization
      * @return array
@@ -207,6 +218,7 @@ class ProjectRepository
         $stmt->bindValue(':role', $role,PDO::PARAM_STR);
         $stmt->bindValue(':creationdate', (new DateTimeImmutable("now"))->format("Y-m-d H:i:s"),PDO::PARAM_STR);
         $res = $stmt->execute();
+        var_dump($stmt->errorInfo());
     }
 
     public function deleteUser(int $iduser, int $idproject){
