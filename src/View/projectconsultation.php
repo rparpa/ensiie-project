@@ -51,7 +51,14 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 </div>
                 <div class="row" style="min-height: 15em;" >
                     <fieldset id="field-user-delete">
-                        <?php include_once 'field_usersofproject.php' ?>
+                        <?$usersofproject = $userrepository->fetchByProject($idproject);
+                        foreach ($usersofproject as $userofproject) {
+                        /** @var User $user */
+                        $user = ((Object)$userofproject)->user;?>
+                        <div>
+                            <label for="nameuser"><? echo $user->getSurname(); ?> <? echo $user->getName(); ?> </label>
+                        </div>
+                        <? }?>
                     </fieldset>
                 </div>
             </div>
@@ -63,7 +70,13 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 </div>
                 <div class="row" style="min-height: 15em;" >
                     <fieldset id="field-task-delete">
-                        <?php include_once 'field_tasksofproject.php' ?>
+                        <? $tasksofproject = $taskrepository->fetchByProject($idproject);
+                        /** @var Task $taskofproject */
+                        foreach ($tasksofproject as $taskofproject) {?>
+                        <div>
+                            <label for="nametask"><? echo $taskofproject->getTitle(); ?> <? echo $taskofproject->getContent(); ?> </label>
+                        </div>
+                        <? }?>
                     </fieldset>
                 </div>
             </div>
@@ -75,7 +88,13 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
                 </div>
                 <div class="row" style="min-height: 15em;" >
                     <fieldset id="field-meeting-delete">
-                        <?php include_once 'field_meetingsofproject.php' ?>
+                        <? $meetingsofproject = $meetingrepository->fetchByProject($idproject);
+                        /** @var Meeting $meeting */
+                        foreach ($meetingsofproject as $meeting) {?>
+                        <div>
+                            <label for="namemeeting"><? echo $meeting->getName(); ?> <? echo $meeting->getDescription(); ?> </label>
+                        </div>
+                        <? }?>
                     </fieldset>
                 </div>
             </div>
