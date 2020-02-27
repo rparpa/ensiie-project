@@ -36,6 +36,7 @@ $org = ((object) $organizationRepository->fetchByUser($authenticatorService->get
                     <th scope="col">Nom</th>
                     <th scope="col">Email</th>
                     <th scope="col">Date d'inscription</th>
+                    <th scope="col">Renvoyer</th>
                 </tr>
             </thead>
             <tbody id="tableusers">
@@ -54,23 +55,39 @@ $org = ((object) $organizationRepository->fetchByUser($authenticatorService->get
         alert("Un truc cool a faire je pense!!")
     }
 
-    document.getElementById("button-user-add").addEventListener('click', function () {
+    document.getElementById("button-user-add").addEventListener('click', function() {
         var index = $("#select-user-add").prop("selectedIndex");
-        if(index>=0){
+        if (index >= 0) {
             var iduser = $("#select-user-add").find(':selected').attr('data-id');
             //TODO ajouter une saisie lors de la selection
             var role = "Larbin";
             $.get({
                 url: 'addusertoorga.php',
                 data: {
-                    iduser:iduser,
-                    role:role,
-                    idorganization:<?php echo $org->getId(); ?>
-                },success:refreshuser
+                    iduser: iduser,
+                    role: role,
+                    idorganization: <?php echo $org->getId(); ?>
+                },
+                success: refreshuser
             });
         }
     });
-
+    
+    var removebuttons = document.getElementsByClassName("remove");
+        for (var i = 0; i < removebuttons.length; i++) {
+            removebuttons[i].addEventListener('click', function() {
+                var iduser = this.value;
+                //TODO ajouter une saisie lors de la selection
+                $.get({
+                    url: 'removefromorga.php',
+                    data: {
+                        iduser: iduser,
+                        idorganization: <?php echo $org->getId(); ?>
+                    },
+                    success: refreshuser
+                });
+            });
+        }
 
     function refreshuser() {
         $('#select-user-add').load('select_usersnotinorga.php');

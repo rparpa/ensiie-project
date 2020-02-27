@@ -146,4 +146,13 @@ class OrganizationRepository
         $stmt->bindValue(':creationdate', (new DateTimeImmutable("now"))->format("Y-m-d H:i:s"),PDO::PARAM_STR);
         $res = $stmt->execute();
     }
+
+    public function removeUser(int $iduser, int $idorga) {
+        $stmt = $this->connection->prepare(
+            'DELETE FROM userorganization WHERE iduser = :iduser AND idorganization = :idorga'
+        );
+        $stmt->bindValue(':iduser', $iduser,PDO::PARAM_INT);
+        $stmt->bindValue(':idorga', $idorga,PDO::PARAM_INT);
+        $res = $stmt->execute();
+    }
 }
