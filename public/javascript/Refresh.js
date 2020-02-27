@@ -12,4 +12,4 @@ function autoRefresh_info()
     $("#infos_info").load('refresh_info.php');
 }
 
-setInterval('autoRefresh_info()', 5000); // refresh tab after 5 secs
+setInterval('autoRefresh_info()', 1*60*1000); // refresh tab after 5 secs
