@@ -4,12 +4,13 @@ CREATE TABLE "user" (
     lastname VARCHAR NOT NULL,
     email VARCHAR NOT NULL,
     password VARCHAR NOT NULL,
-    birthday date
+    birthday date,
+    role int NOT NULL
 );
 
-INSERT INTO "user"(firstname, lastname, email, password, birthday) VALUES ('John', 'Doe', 'johndoe@ba.com', 'aaa', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, email, password, birthday) VALUES ('Yvette', 'Angel', 'yvangel@ba.com', 'bbb', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, email, password, birthday) VALUES ('Amelia', 'Waters', 'amwater@ho.com', 'ccc', '1981-12-01');
+INSERT INTO "user"(firstname, lastname, email, password, birthday, role) VALUES ('John', 'Doe', 'johndoe@ba.com', 'aaa', '1967-11-22',0);
+INSERT INTO "user"(firstname, lastname, email, password, birthday, role) VALUES ('Yvette', 'Angel', 'yvangel@ba.com', 'bbb', '1932-01-24',0);
+INSERT INTO "user"(firstname, lastname, email, password, birthday, role) VALUES ('Amelia', 'Waters', 'amwater@ho.com', 'ccc', '1981-12-01',1);
 
 
 CREATE TABLE "marque" (
@@ -47,6 +48,7 @@ CREATE TABLE "voiture" (
 	id_voiture SERIAL PRIMARY KEY,
 	immat VARCHAR NOT NULL,
 	date_immat date NOT NULL,
+	prix int NOT NULL,
 	id_marque int NOT NULL,
 	id_modele int NOT NULL,
 	id_puissance int NOT NULL,
@@ -77,7 +79,7 @@ INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,0,'S60');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,1,'V60');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,2,'V70');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,3,'S40');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,4,'V40');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (1,4,'V40','https://sf2.viepratique.fr/wp-content/uploads/sites/9/2017/06/volvo-v40.jpg');
 
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (0,5,'Serie 1');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (0,6,'Serie 2');
@@ -107,5 +109,5 @@ INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (1,1,'MOMENTUM
 INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (2,1,'SUMMUM');
 INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (3,1,'XENIUM');
 
-INSERT INTO "voiture"(immat,date_immat,id_marque,id_modele,id_puissance,id_finition) VALUES ('FE-504-ZZ','01-05-2019',1,0,2,3);
-INSERT INTO "voiture"(immat,date_immat,id_marque,id_modele,id_puissance,id_finition) VALUES ('FK-824-BS','09-02-2019',1,4,0,3);
+INSERT INTO "voiture"(immat,date_immat,id_marque,id_modele,id_puissance,id_finition,prix) VALUES ('FE-504-ZZ','01-05-2019',1,0,2,3,270);
+INSERT INTO "voiture"(immat,date_immat,id_marque,id_modele,id_puissance,id_finition,prix) VALUES ('FK-824-BS','09-02-2019',1,4,0,3,400);

@@ -49,7 +49,8 @@ class UserRepository
 			$result=$statement->fetch(PDO::FETCH_ASSOC);
 			if(password_verify($post["password"],$result["password"])) {
 				$_SESSION["id_user"] = $result["id"];
-				$_SESSION["name_firstname"] = $result["lastname"] . " " . $result["firstname"];
+                $_SESSION["name_firstname"] = $result["lastname"] . " " . $result["firstname"];
+                $_SESSION["role"] = $result["role"];
 				return true;
 			} else {
 				return false;
@@ -60,14 +61,15 @@ class UserRepository
     }
     
     public function enregistrement($post) {
-		$statement = $this->connection->prepare("INSERT INTO \"user\" (firstname,lastname,email,password,birthday) values(:firstname,:lastname,:email,:password,:birthday)");	
+		$statement = $this->connection->prepare("INSERT INTO \"user\" (firstname,lastname,email,password,birthday,role) values(:firstname,:lastname,:email,:password,:birthday,:role)");	
 
 		$statement->bindParam(":firstname",$post["firstname"]);
 		$statement->bindParam(":lastname",$post["lastname"]);
 		$statement->bindParam(":email",$post["email"]);
 		$statement->bindParam(":birthday",$post["birthday"]);
 		$mdp = password_hash($post["password"],PASSWORD_DEFAULT);
-		$statement->bindParam(":password",$mdp);
+        $statement->bindParam(":password",$mdp);
+        $statement->bindParam(":role",0);
 
 		// manque des verifications not null dans le schema sql
 		// modifier varchar mdp en 256
