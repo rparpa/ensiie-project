@@ -1,18 +1,28 @@
 <?php
 
-class annonce extends CI_Controller {
+class Annonce extends CI_Controller {
+
+	private $data;
 
 	function __construct() {
 		parent::__construct();
-		$this->load->model('annonce_model');
 	}
 
 	function index()
 	{
-		$this->load->view('annonces_view');
+		$this->liste_annonces();
 	}
-	function create()
-	{
+
+	public function liste_annonces(){
+		
+		$annonces = $this->annonce->getAllAnnonce();
+		$this->data = array('annonces'=>$annonces);
+
+		$this->load->view('elements/header');
+		$this->load->view('annonces_view', $this->data);
+		$this->load->view('elements/footer');
+	}
+	function create(){
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
 		//Validating Name Field
@@ -49,8 +59,7 @@ class annonce extends CI_Controller {
 		}
 	}
 
-	function delete()
-	{
+	function delete(){
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('annonces_view');
 			//display js error pop-up
@@ -68,8 +77,7 @@ class annonce extends CI_Controller {
 		}
 	}
 
-	function update()
-	{
+	function update(){
 		$id = $_GET['id'];
 		$current_data = $this->annonce_model->getAnnonce($id);
 		$this->load->view('annonceUpdate', $current_data);
