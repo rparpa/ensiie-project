@@ -34,7 +34,7 @@ $myorga = (object)$myorgas;
 </h3>
 
 <div class="row">
-    <form class="formulaire" id="form-add-project-to-my-orga">
+    <div class="formulaire" id="form-add-project-to-my-orga">
         <div class="container-fluid">
             <div class="form-row" align="center">
                 <legend>Projet </legend>
@@ -58,10 +58,11 @@ $myorga = (object)$myorgas;
                 <input type="hidden" id="idorganization" name="idorganization" value="<?php echo $myorga->organization->getId() ?>">
             </div>
             <div class="form-row">
-                <button type="submit">Ajouter</button>
+                <button type="submit"
+                        onclick="addProjectToMyOrga()">Ajouter</button>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 <div class="container" style="margin-top: 5em">
@@ -88,8 +89,15 @@ $myorga = (object)$myorgas;
                     <td><?php  echo $project->getCreationdate()->format("Y-m-d H:i:s") ?></td>
                     <td>
                         <? if(!$projrepository->hasResponableByIdProject($project->getId())){?>
-                        <button id="button-add-responsable" name="button-add-responsable-<?php  echo $project->getId() ?>" data-id="<?php  echo $project->getId() ?>" >Ajouter un responsable</button>
+                            <button id="button-add-responsable"
+                                    onclick="add_responsable_project(<?php  echo $project->getId() ?>)"
+                                    >Ajouter <br/>un responsable</button>
                         <?}?>
+                    </td>
+                    <td>
+                        <button id="button-delete-project"
+                                onclick="delete_project(<?php  echo $project->getId() ?>)"
+                                >Supprimer <br/>le projet</button>
                     </td>
                 </tr>
             <?php }?>
@@ -120,10 +128,10 @@ $myorga = (object)$myorgas;
                                 <?
                                 $usersoforga = $userrepository->fetchByOrganization($myorga->organization->getId());
                                 foreach ($usersoforga as $useroforga) {
-                                /** @var User $user */
-                                $user = ((Object)$useroforga)->user;
-                                ?>
-                                <option data-id="<? echo $user->getId();?>"><? echo $user->getSurname() . ' ' . $user->getName() ?></option>
+                                    /** @var User $user */
+                                    $user = ((Object)$useroforga)->user;
+                                    ?>
+                                    <option data-id="<? echo $user->getId();?>"><? echo $user->getSurname() . ' ' . $user->getName() ?></option>
                                 <? }?>
                             </select>
                         </div>
@@ -131,7 +139,9 @@ $myorga = (object)$myorgas;
                 </div>
                 <div class="modal-footer">
                     <button type="button" data-dismiss="modal">Cancel</button>
-                    <button type="submit">Ajouter Taches</button>
+                    <button
+                            onclick="saveResponsableProject()"
+                            type="submit">Ajouter Responsable</button>
                 </div>
             </form>
         </div>
@@ -140,72 +150,84 @@ $myorga = (object)$myorgas;
 
 <script>
 
-    $(function(){
-        $('#form-modal-responsable').submit(function(event){
-            // cancels the form submission
-            event.preventDefault();
-            var index = $("#modal-user-responsable").prop("selectedIndex");
-            if(index>=0){
-                var iduser = <? echo $authenticatorService->getCurrentUserId(); ?>;
-                var idproject = $("#modal-idproject").val();
-                var role = "Chef";
-                $.get({
-                    url: 'addusertoproject.php',
-                    data: {
-                        iduser:iduser,
-                        role:role,
-                        idproject:idproject
-                    },
-                    success:function () {
-                        $('#ModalAddresponsable').modal('hide');
-                        document.getElementsByName('button-add-responsable-'+idproject)[0].hidden = true;
-
+    function delete_project(idproject) {
+        $.get({
+            url:'deleteproject.php',
+            data:{
+                idproject:idproject
+            },
+            success:function () {
+                $.get(
+                    {
+                        url: 'table_projectoforganization.php',
+                        datatype:'html',
+                        success:function (html) {
+                            $('#tab-project-my-orga').replaceWith(html);
+                        }
                     }
-                })
+                )
             }
         })
-    });
+    }
 
-    $(function(){
-        $('#form-add-project-to-my-orga').submit(function(event){
-            // cancels the form submission
-            event.preventDefault();
-            var name = $("#name").val();
-            var idorganization = $("#idorganization").val();
-            $.get(
-                {
-                    url: 'addproject.php',
-                    data: {
-                        name:name,
-                        idorganization:idorganization
-                    },
-                    datatype:'json',
-                    success:function (json) {
-                        var data = JSON.parse(json);
-                        if(Object.keys(data).length==0){
-                            $.get(
-                                {
-                                    url: 'table_projectoforganization.php',
-                                    datatype:'html',
-                                    success:function (html) {
-                                        $('#tab-project-my-orga').replaceWith(html);
-                                    }
-                                }
-                            )
-                        }
-                        else{
-                            for(var key in data) alert(data[key])
-                        }
-
-                    }
-                });
-        })
-    });
-
-    document.getElementById("button-add-responsable").addEventListener('click', function () {
-        $("#modal-idproject").val(this.attributes['data-id'].value);
+    function add_responsable_project(idproject){
+        $("#modal-idproject").val(idproject);
         $("#ModalAddresponsable").modal("show");
-    });
+    }
+
+    function saveResponsableProject(){
+        var index = $("#modal-user-responsable").prop("selectedIndex");
+        if(index>=0){
+            var iduser = <? echo $authenticatorService->getCurrentUserId(); ?>;
+            var idproject = $("#modal-idproject").val();
+            var role = "Chef";
+            $.get({
+                url: 'addusertoproject.php',
+                data: {
+                    iduser:iduser,
+                    role:role,
+                    idproject:idproject
+                },
+                success:function () {
+                    $('#ModalAddresponsable').modal('hide');
+                    document.getElementsByName('button-add-responsable-'+idproject)[0].hidden = true;
+
+                }
+            })
+        }
+    }
+
+    function addProjectToMyOrga(){
+        var name = $("#name").val();
+        var idorganization = $("#idorganization").val();
+        $.get(
+            {
+                url: 'addproject.php',
+                data: {
+                    name:name,
+                    idorganization:idorganization
+                },
+                datatype:'json',
+                success:function (json) {
+                    var data = JSON.parse(json);
+                    if(Object.keys(data).length==0){
+                        $.get(
+                            {
+                                url: 'table_projectoforganization.php',
+                                datatype:'html',
+                                success:function (html) {
+                                    $('#tab-project-my-orga').replaceWith(html);
+                                }
+                            }
+                        )
+                    }
+                    else{
+                        for(var key in data) alert(data[key])
+                    }
+
+                }
+            });
+    }
 
 </script>
 
