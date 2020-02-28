@@ -36,7 +36,7 @@ $messages = $messageRepository->fetchAllForChat($source);
 
 foreach ($messages as $message) {
     ?>
-    <tr>
+    <tr class="infotext">
         <td> <?php  echo $userRepository->findOneById($message->getIduser())->getUsername()?></td>
         <td> <?php echo $message->getMessage(); ?> </td>
     </tr>

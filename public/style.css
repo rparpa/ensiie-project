@@ -8,11 +8,13 @@ body {
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  font-size: 28px;
 }
 
 .link-header-container {
   display: inline;
 }
+
 
 .link-header-item {
   display: inline;
@@ -21,10 +23,6 @@ body {
 .link-header-item-a{
   color: black;
   padding-left:0.5em;
-}
-
-.logo-container {
-  font-size: 28px;
 }
 
 .main {
@@ -85,6 +83,11 @@ body {
   /*min-height: 85vh;
   max-height: 85vh;*/
   overflow:auto;
+  padding: 15px;
+}
+
+.infotext {
+  color: white;
 }
 
 .formulaire{

@@ -13,7 +13,7 @@ $user = $authenticatorService->getCurrentUser();
     <div>
         <span class="logo-container">LOLIIE</span>
     </div>
-    <ul class="link-header-container">
+    <ul class="link-header-container" id="main-header">
         <li class="link-header-item">
             <a  class="link-header-item-a"href="index.php">Home</a>
         </li>
