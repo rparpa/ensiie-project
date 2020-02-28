@@ -8,6 +8,12 @@
  */
 class Etat extends CI_Controller
 {
+
+	function __construct() {
+		parent::__construct();
+		$this->load->model('Etat_model');
+	}
+
     /**
      * Lists all Etat models.
      * @return mixed
@@ -15,7 +21,8 @@ class Etat extends CI_Controller
 
     public function index()
     {
-
+		$etat=$this->etat->getAllEtat();
+		print_r($etat);
     }
     /**
      * Displays a single Etat model.
@@ -24,9 +31,11 @@ class Etat extends CI_Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
 
-    public function view($id)
+    public function view()
     {
-
+		$id = $_GET['id'];
+		$etat = $this->etat->getEtat($id);
+		print_r($etat);
     }
 
     /**
@@ -35,9 +44,16 @@ class Etat extends CI_Controller
      * @return mixed
      */
 
-    public function create()
+    public function create($etat)
     {
-
+		if($this->etat->insert($etat))
+		{
+			die("Etat créé");
+		}
+		else
+		{
+			die("La création de l'état a échoué!");
+		}
     }
 
     /**
@@ -48,9 +64,22 @@ class Etat extends CI_Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
 
-    public function update($id)
+    public function update()
     {
+		if($this->input->method()=="post")
+		{
+			if($this->etat->update($this->input->post(NULL, TRUE))) // returns all POST items with XSS filter
+			{
+				die("Etat mis-à-jour!");
+			}
+			else
+			{
+				die ("La mise-à-jour de l'état a échoué!");
+			}
+		}
 
+		$model = $this->etat->getEtat($_GET['id']);
+		$this->load->view('etat',['model'=>$model]);
     }
 
     /**
@@ -61,8 +90,16 @@ class Etat extends CI_Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
 
-    public function delete($id)
+    public function delete()
     {
-
+		$id = $_GET['id'];
+		if($this->etat->delete($id))
+		{
+			die("Etat supprimé");
+		}
+		else
+		{
+			die ("L'état existe encore");
+		}
     }
 }
