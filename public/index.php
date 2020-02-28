@@ -35,11 +35,24 @@
 
 						<!-- connexion -->
 							<article id="connexion">
-								<h2 class="major">connexion</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#commander">awesome commander</a>.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-							</article>
+							<section>
+									<h3 class="major">Se connecter</h3>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field half">
+												<label for="peudo">Pseudo</label>
+												<input type="text" name="pseudo" id="pseudo" value="" placeholder="Snitchy" />
+											</div>
+											<div class="field half">
+												<label for="mdp">Mot de passe</label>
+												<input type="password" name="mdp" id="mdp" value="" placeholder="**********" autocomplete="off" />
+											</div>
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Se connecter" class="primary" /></li>
+										</ul>
+									</form>
+								</section></article>
 
 						<!-- commander -->
 							<article id="commander">
