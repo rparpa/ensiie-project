@@ -204,6 +204,9 @@ VALUES (1, 'organization', 'Le premier message.', '2020-02-16', 1);
 INSERT INTO info(source, idsource, idcreator, title, content, creationdate)
 VALUES ('organization',1,1,'Les dauphins','sont nos amis','2020-02-17');
 
+INSERT INTO info(source, idsource, idcreator, title, content, creationdate)
+VALUES ('organization',1,1,'Les pingouins','ont trahi la horde','2020-02-19');
+
 INSERT INTO meeting(source, idsource, name, place, creationdate, description)
 VALUES ('organization', 1, 'Coucou cest nous', 'chez ta maman', '2020-02-17', 'Un peu de mousse ?');
 
