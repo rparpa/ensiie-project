@@ -36,7 +36,7 @@ class IngredientRepository
     public function findOneById($ingredientId)
     {        
         $query = $this->connection->prepare(
-            'SELECT * FROM "user" WHERE id = :id');
+            'SELECT * FROM "ingredient" WHERE id = :id');
         
         $query->bindValue(':id', $ingredientId, PDO::PARAM_INT);
         $query->execute();
@@ -56,11 +56,11 @@ class IngredientRepository
     public function updateIngredient(Ingredient $ingredient)
     {
         $query = $this->connection->prepare(
-            'UPDATE "ingredient" 
-            SET id = :id,
-                label = :label,
+            'UPDATE ingredient
+            SET label = :label,
                 available = :available,
-                price = :price');
+                price = :price
+            WHERE id = :id');
 
         $query->bindValue(':id', $ingredient->getId());
         $query->bindValue(':label', $ingredient->getLabel());
@@ -86,11 +86,12 @@ class IngredientRepository
         {
             $query->errorInfo();
         }
+        $newIngredient->setId($this->connection->lastInsertId());
     }
 
     public function deleteIngredient(Ingredient $ingredientToDelete)
     {
-        $query = $this->connection->prepare('DELETE FROM "user" WHERE id = :id');
+        $query = $this->connection->prepare('DELETE FROM "ingredient" WHERE id = :id');
         $query->bindValue(':id', $ingredientToDelete->getId());
         $result = $query->execute();
         if ($result == false)
