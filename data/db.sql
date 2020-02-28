@@ -189,17 +189,29 @@ VALUES ('JD', 'John', 'Doe', 'j.d@hl.com', 'JD', '1967-11-22');
 INSERT INTO "user"(username, surname, name, mail, password, creationdate )
 VALUES ('GAT', 'Oli', 'Gat', 'oli@gat.fr', 'GA', '1967-11-22');
 
+INSERT INTO "user"(username, surname, name, mail, password, creationdate )
+VALUES ('Erl', 'Danel', 'Pierre', 'erl@erl.erl', 'erl', '1987-11-22');
+
 INSERT INTO organization(name, creationdate)
 VALUES ('Ile Mysterieuse', '2019-12-20');
 
-INSERT INTO project
-VALUES(1, 'NewProject', 1, '2020-02-20');
+INSERT INTO organization(name, creationdate)
+VALUES ('Le conseil des 4', '2019-12-23');
 
 INSERT INTO project
-VALUES(2, 'NewProject2', 1, '2020-02-20');
+VALUES(3, 'Devenir le meilleur dresseur', 2, '2020-02-20');
+
+INSERT INTO project
+VALUES(1, 'Projet 1', 1, '2020-02-20');
+
+INSERT INTO project
+VALUES(2, 'Notre projeeet', 1, '2020-02-20');
 
 INSERT INTO message( iduser, source, message, creationdate, idsource)
 VALUES (1, 'organization', 'Le premier message.', '2020-02-16', 1);
+
+INSERT INTO message( iduser, source, message, creationdate, idsource)
+VALUES (1, 'organization', 'Un autre message', '2020-02-16', 2);
 
 INSERT INTO info(source, idsource, idcreator, title, content, creationdate)
 VALUES ('organization',1,1,'Les dauphins','sont nos amis','2020-02-17');
@@ -213,9 +225,14 @@ VALUES ('organization', 1, 'Coucou cest nous', 'chez ta maman', '2020-02-17', 'U
 INSERT INTO userorganization
 VALUES(1, 1,'Big Boss','2000-04-01');
 
+INSERT INTO userorganization
+VALUES(2, 3,'Big Boss','2000-04-01');
+
 INSERT INTO userproject
 VALUES(1, 1, 'Larbin', '2020-02-20');
 
 INSERT INTO userproject
 VALUES(1, 2, 'Scripteur', '2020-02-20');
 
+INSERT INTO userproject
+VALUES(3, 3, 'Chef', '2020-02-20');
