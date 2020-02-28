@@ -13,3 +13,42 @@ INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password) VALUES
 INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password) VALUES ('Mike', 'MALECOT', '1995-08-06', 'Adolf', 'mike.malecot@ensiie.fr', '1234');
 INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password) VALUES ('Nicolas', 'CHARLON', '1996-11-09', 'Kozak', 'nicolas.charlon@ensiie.fr', '1234');
 INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password) VALUES ('Rayan', 'BELMADANI', '1996-10-18', 'Greenns', 'rayan.belmadani@ensiie.fr', '1234');
+
+DROP TABLE  "ingredient";
+CREATE TABLE "ingredient" (
+    id SERIAL PRIMARY KEY,
+    label VARCHAR,
+    available BOOLEAN,
+    price REAL
+);
+
+INSERT INTO "ingredient" (label, available, price)
+VALUES ('Salade', true, 0.2);
+INSERT INTO "ingredient" (label, available, price)
+VALUES ('Tomate', true, 0.3);
+INSERT INTO "ingredient" (label, available, price)
+VALUES ('Oignon', true, 0.3);
+
+DROP TABLE  "sandwich";
+CREATE TABLE "sandwich" (
+    id SERIAL PRIMARY KEY,
+    label VARCHAR
+);
+
+INSERT INTO "sandwich" (label)
+VALUES ('Le kozak gourmand');
+INSERT INTO "sandwich" (label)
+VALUES ('Le marwoille');
+
+DROP TABLE  "sandwich_ingredient";
+CREATE TABLE "sandwich_ingredient" (
+    sandwich_id BIGINT,
+    ingredient_id BIGINT
+);
+
+INSERT INTO "sandwich_ingredient" (sandwich_id, ingredient_id)
+VALUES (1, 1);
+INSERT INTO "sandwich_ingredient" (sandwich_id, ingredient_id)
+VALUES (1, 2);
+INSERT INTO "sandwich_ingredient" (sandwich_id, ingredient_id)
+VALUES (1, 3);
