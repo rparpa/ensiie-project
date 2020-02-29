@@ -16,11 +16,10 @@ $meetingRepository = new MeetingRepository(Connection::get(),$meetingHydrator);
 $user = $authenticatorService->getCurrentUser();
 $meetings = $meetingRepository->fetchByUser($authenticatorService->getCurrentUserId());
 
-/*$meetings = $data['meetings'];
-*/
 require_once '../src/Bootstrap.php';
 ?>
 
+<?php if(!$authenticatorService->isAdministrateur()):?>
     <div class="row" >
         <div class="col" style="padding: 1em;" align="center">
             <form>
@@ -45,6 +44,7 @@ require_once '../src/Bootstrap.php';
             </form>
         </div>
     </div>
+<?php endif;?>
 
 
 

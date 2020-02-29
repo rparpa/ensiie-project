@@ -68,7 +68,7 @@ class UserRepository
                                 WHERE id NOT IN (
                                 SELECT id FROM "user" 
                                 JOIN userproject ON ("user".id = userproject.iduser) 
-                                WHERE idproject = :idproj)');
+                                WHERE idproject = :idproj) AND isadmin = FALSE');
         $stmt->bindValue(':idproj', $projId, PDO::PARAM_INT);
         $stmt->execute();
         $rows=$stmt->fetchAll(PDO::FETCH_OBJ);
@@ -89,7 +89,7 @@ class UserRepository
         $stmt = $this->connection->
             prepare('SELECT * FROM "user" 
                                 WHERE id NOT IN (
-                                SELECT iduser FROM userorganization)');
+                                SELECT iduser FROM userorganization) AND isadmin = FALSE ');
         $stmt->execute();
         var_dump($stmt->errorInfo());
         $rows=$stmt->fetchAll(PDO::FETCH_OBJ);
@@ -192,13 +192,20 @@ class UserRepository
      * @param string $mail
      * @param string $password
      * @param DateTimeInterface $creationdate
+     * @param bool $isadmin
      */
-    public function insert(string $username, string $surname, string $name, string $mail, string $password, DateTimeInterface $creationdate)
+    public function insert(string $username, string $surname, string $name, string $mail, string $password, DateTimeInterface $creationdate, bool $isadmin = false)
     {
-        $stmt = $this->connection->prepare(
-            'INSERT INTO "user" (username, surname, name, mail, password, creationdate) 
-            VALUES (:username, :surname, :name, :mail, :password, :creationdate)'
-        );
+        if($isadmin){
+            $statement =  'INSERT INTO "user" (username, surname, name, mail, password, creationdate, isadmin)
+                            VALUES (:username, :surname, :name, :mail, :password, :creationdate, :isadmin)';
+        }
+        else{
+            $statement =  'INSERT INTO "user" (username, surname, name, mail, password, creationdate) 
+                            VALUES (:username, :surname, :name, :mail, :password, :creationdate)';
+        }
+
+        $stmt = $this->connection->prepare($statement);
 
         $stmt->bindValue(':username', $username,PDO::PARAM_STR);
         $stmt->bindValue(':surname', $surname,PDO::PARAM_STR);
@@ -206,6 +213,9 @@ class UserRepository
         $stmt->bindValue(':mail', $mail,PDO::PARAM_STR);
         $stmt->bindValue(':password', $password,PDO::PARAM_STR);
         $stmt->bindValue(':creationdate', $creationdate->format("Y-m-d H:i:s"),PDO::PARAM_STR);
+        if($isadmin)
+            $stmt->bindValue(':isadmin', $isadmin,PDO::PARAM_BOOL);
+
         $stmt->execute();
     }
 
@@ -216,28 +226,32 @@ class UserRepository
      * @param string $name
      * @param string $mail
      * @param string $password
+     * @param bool $isadmin
      * @throws Exception
      */
-    public function update(int $id, string $username, string $surname, string $name, string $mail, string $password)
+    public function update(int $id, string $username, string $surname, string $name, string $mail, string $password, bool $isadmin = false)
     {
         $user = $this->findOneById($id);
         if($user)
         {
-            $stmt = $this->connection->prepare(
-               'UPDATE "user" SET 
-                    username = :username, 
-                    surname = :surname, 
-                    name = :name, 
-                    mail = :mail, 
-                    password = :password
-                    WHERE id = :id'
-            );
+            if($isadmin)
+                $statement = 'UPDATE "user" SET username = :username, surname = :surname, isdamin = :isadmin,
+                                name = :name, mail = :mail,password = :password WHERE id = :id';
+            else
+                $statement = 'UPDATE "user" SET username = :username, surname = :surname, 
+                                name = :name, mail = :mail,password = :password WHERE id = :id';
+
+            $stmt = $this->connection->prepare($statement);
+
             $stmt->bindValue(':username', $username,PDO::PARAM_STR);
             $stmt->bindValue(':surname', $surname,PDO::PARAM_STR);
             $stmt->bindValue(':name', $name,PDO::PARAM_STR);
             $stmt->bindValue(':mail', $mail,PDO::PARAM_STR);
             $stmt->bindValue(':password', $password,PDO::PARAM_STR);
             $stmt->bindValue(':id', $id,PDO::PARAM_INT);
+            if($isadmin)
+                $stmt->bindValue(':isadmin', $isadmin,PDO::PARAM_BOOL);
+
             $res = $stmt->execute();
         }
     }

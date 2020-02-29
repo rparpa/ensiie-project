@@ -192,6 +192,9 @@ VALUES ('GAT', 'Oli', 'Gat', 'oli@gat.fr', 'GA', '1967-11-22');
 INSERT INTO "user"(username, surname, name, mail, password, creationdate )
 VALUES ('Erl', 'Danel', 'Pierre', 'erl@erl.erl', 'erl', '1987-11-22');
 
+INSERT INTO "user"(username, surname, name, mail, password, creationdate )
+VALUES ('admin', 'admin', 'admin', 'admin@admin.admin', 'admin', '1789-07-14');
+
 INSERT INTO organization(name, creationdate)
 VALUES ('Ile Mysterieuse', '2019-12-20');
 
@@ -232,7 +235,12 @@ INSERT INTO userproject
 VALUES(1, 1, 'Larbin', '2020-02-20');
 
 INSERT INTO userproject
-VALUES(1, 2, 'Scripteur', '2020-02-20');
+VALUES(1, 2, 'Larbin', '2020-02-20');
 
 INSERT INTO userproject
 VALUES(3, 3, 'Chef', '2020-02-20');
+
+ALTER TABLE "user" ADD isadmin BOOLEAN NOT NULL DEFAULT FALSE;
+
+UPDATE "user" SET isadmin = TRUE WHERE name = 'admin';
+
