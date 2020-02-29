@@ -27,10 +27,6 @@ function checkFormData(ProjectRepository $projectrepository, $name, $idorganizat
     if(null==$name) {
         $errorMessage['nameEmpty'] = "The name can't be empty";
     }
-    if(null==$idorganization)
-    {
-        $errorMessage['nameproject'] = "The organization can't be empty";
-    }
     $proj = $projectrepository->findOneByName($name);
     if(null!=$proj){
         $errorMessage['existproject'] = "The project name exist";

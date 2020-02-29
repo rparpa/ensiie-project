@@ -41,18 +41,13 @@ $myorga = (object)$myorgas;
             </div>
             <div class="form-row">
                 <label class="label-lenght-fix" for="name">Name : <em>*</em></label>
-                <input type="text" value="" name="name" id="name" required="">
-                <span class="error" aria-live="polite" id="errorname"></span>
+                <input type="text" name="name" id="name" required>
             </div>
             <div class="form-row">
-                <?php if (isset($data['nameAlreadyExist'])): ?>
-                    <span class="error-message" ><?= $data['nameAlreadyExist'] ?></span>
-                <?php endif; ?>
+                <span id="nameEmpty"></span>
             </div>
             <div class="form-row">
-                <?php if (isset($data['nameEmpty'])): ?>
-                    <span class="error-message"><?= $data['nameEmpty'] ?></span>
-                <?php endif; ?>
+                <span id="existproject"></span>
             </div>
             <div class="form-row">
                 <input type="hidden" id="idorganization" name="idorganization" value="<?php echo $myorga->organization->getId() ?>">
@@ -217,17 +212,26 @@ $myorga = (object)$myorgas;
                                 datatype:'html',
                                 success:function (html) {
                                     $('#tab-project-my-orga').replaceWith(html);
+                                    $('#name').val("");
                                 }
                             }
                         )
                     }
                     else{
-                        for(var key in data) alert(data[key])
+                        for(var key in data) {
+                            $('#' + key).html(data[key])
+                        }
                     }
 
                 }
             });
     }
+
+
+    document.getElementById("name").addEventListener('keyup', function (event) {
+        document.getElementById('nameEmpty').innerHTML = "";
+        document.getElementById('existproject').innerHTML = "";
+    })
 
 </script>
 
