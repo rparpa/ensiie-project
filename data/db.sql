@@ -9,8 +9,9 @@ CREATE TABLE "user" (
 );
 
 INSERT INTO "user"(firstname, lastname, email, password, birthday, role) VALUES ('John', 'Doe', 'johndoe@ba.com', 'aaa', '1967-11-22',0);
-INSERT INTO "user"(firstname, lastname, email, password, birthday, role) VALUES ('Yvette', 'Angel', 'yvangel@ba.com', 'bbb', '1932-01-24',0);
-INSERT INTO "user"(firstname, lastname, email, password, birthday, role) VALUES ('Amelia', 'Waters', 'amwater@ho.com', 'ccc', '1981-12-01',1);
+INSERT INTO "user"(firstname, lastname, email, password, birthday, role) VALUES ('Yvette', 'Angel', 'yvangel@ba.com', '$2y$10$W7g/ViwtQnWb6iVtG4BG2OtzhEISGfscQvODPKuvUbzm22KaNVHbC', '1932-01-24',0);
+INSERT INTO "user"(firstname, lastname, email, password, birthday, role) VALUES ('Amelia', 'Waters', 'amwater@ho.com', '$2y$10$W7g/ViwtQnWb6iVtG4BG2OtzhEISGfscQvODPKuvUbzm22KaNVHbC', '1981-12-01',1);
+/* pwd : blabla94 */
 
 
 CREATE TABLE "marque" (
@@ -75,7 +76,7 @@ INSERT INTO "marque"(id_marque,nom_marque) VALUES (1,'Volvo');
 INSERT INTO "marque"(id_marque,nom_marque) VALUES (2,'Renault');
 INSERT INTO "marque"(id_marque,nom_marque) VALUES (3,'Peugeot');
 
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,0,'S60');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (1,0,'S60', 'https://i.ytimg.com/vi/LNc6Bal1lR0/hqdefault.jpg');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,1,'V60');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,2,'V70');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,3,'S40');

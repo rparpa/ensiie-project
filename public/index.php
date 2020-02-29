@@ -17,10 +17,14 @@ session_start();
     </a>
     <form class="form-inline my-2 my-lg-0">
     <?php if(!isset($_SESSION["name_firstname"])) { ?>
-      <button class="btn btn-outline-primary" id="btn_header" onclick="window.location.href='index.php?action=connect'">Se connecter</button>
-      <button class="btn btn-outline-primary" onclick="window.location.href='index.php?action=register'">S'inscrire</button>
+      <a class="btn btn-outline-primary" id="btn_header" href='index.php?action=connect'>Se connecter</a>
+      <a class="btn btn-outline-primary" href='index.php?action=register'>S'inscrire</a>
     <?php } else {?>
-        Bienvenue, <?php echo $_SESSION["name_firstname"]; ?>
+        Bienvenue, <?php echo $_SESSION["name_firstname"]; ?>.
+        <?php if($_SESSION["role"] == 1) {?>
+            <a href="index.php?action=admin">Panel admin</a> | 
+        <?php } ?>
+         <a href="index.php?action=logout"> Se déconnecter</a>
     <?php } ?>
     </form>
   </nav>
@@ -38,12 +42,20 @@ session_start();
             } else {
                 $controller->afficheFormulaireConnexion();
             }
+        } else if ($_GET['action'] == 'logout') {
+            $controller = new \User\UserController(\Db\Connection::get());
+            $controller->deconnexion();
         } else if ($_GET['action'] == 'register') {
             $controller = new \User\UserController(\Db\Connection::get());
             if(isset($_POST["email"])) {
                 $controller->enregistrement($_POST);
             } else {
                 $controller->afficheFormulaireInscription();
+            }
+        } else if ($_GET['action'] == 'showCar') {
+            if(isset($_GET['car_id'])) {
+                $controller = new \Car\CarController(\Db\Connection::get());
+                $controller->afficheVoiture($_GET['car_id']);
             }
         } else if ($_GET['action'] == 'admin') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
@@ -57,6 +69,35 @@ session_start();
 	</div>
 	<div id="page" class="container">
 		<div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <dl class="param param-feature">
+                        <dt>Début de location</dt>
+                        <input type="date" name="datedeb" placeholder="Début de location">
+                        </dl>
+                    </div>
+                    <div class="col-lg-4">
+                        <dl class="param param-feature">
+                        <dt>Fin de location</dt>
+                        <input type="date" name="datefin" placeholder="Fin de location">
+                        </dl>
+                    </div>
+                    <div class="col-lg-4">
+                        <dl class="param param-feature">
+                        <dt>Marque, modèle ...</dt>
+                        <input type="text" name="voiture" placeholder="Marque, modele, ...">
+                        </dl>
+                    </div>
+                    <div class="col-lg-4">
+                        <dl class="param param-feature">
+                        <dt>Budget</dt>
+                        <input type="text" name="budget" placeholder="Budget">
+                        </dl>
+                    </div>
+                    <div class="col-lg-8">
+                        <a style="color:white;" type="button" class="btn btn-danger">Trouver la voiture de mes rêves</a>
+                    </div>
+                </div>
 			<div class="entry">
 				<p>Below is our list of cars available for hire.<br>
 					You will find all the details by clicking on "More details".</p>

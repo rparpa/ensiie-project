@@ -49,6 +49,33 @@ class CarRepository
         return $voitures;
     }
 
+    public function fetch($id)
+    {
+        $statement = $this->connection->prepare('SELECT * FROM "voiture" inner join marque USING(id_marque)
+         inner join modele USING(id_modele) 
+         inner join puissance USING(id_puissance) 
+         inner join finition USING(id_finition)
+         WHERE id_voiture=:id_voiture');
+
+        $statement->bindParam(":id_voiture",$id);
+        $statement->execute();
+        $row = $statement->fetch(PDO::FETCH_OBJ);
+
+        $voiture = new Car();
+        $voiture
+            ->setId($row->id_voiture)
+            ->setImmat($row->immat)
+            ->setDateImmat(new \DateTimeImmutable($row->date_immat))
+            ->setMarque($row->nom_marque)
+            ->setModele($row->nom_modele)
+            ->setPuissance($row->puissance_ch)
+            ->setFinition($row->nom_finition)
+            ->setImage($row->lien_img)
+            ->setPrix($row->prix);
+
+        return $voiture;
+    }
+
     public function fetchAvailable(\DateTimeInterface $dateDeb, $dateFin)
     {
         $statement = $this->connection->prepare('SELECT * FROM "voiture" inner join marque USING(id_marque)
@@ -61,7 +88,7 @@ class CarRepository
         $statement->bindParam(":date_fin",$dateFin);
 
         $statement->execute();
-        $rows = $statement->fetch(PDO::FETCH_OBJ);
+        $rows = $statement->fetchAll(PDO::FETCH_OBJ);
 
         $voitures = [];
         foreach ($rows as $row) {

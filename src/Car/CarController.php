@@ -19,6 +19,15 @@ class CarController {
 		}
 	}
 
+	public function afficheVoiture($id) {
+		try {
+			$voitures[] = $this->carRepository->fetch($id);
+			$this->carView->afficheVoitures($voitures);
+		} catch(Exception $e) {
+			//$this->connexionView->vue_erreur($e->getMessage());
+		}
+	}
+
 	public function afficheVoituresIndex() {
 		try {
 			$this->carView->afficheVoituresIndex($this->carRepository->fetchAll());

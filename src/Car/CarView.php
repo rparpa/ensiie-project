@@ -18,7 +18,7 @@ class CarView {
               <div class="image"><img src="<?php echo $voiture->getImage(); ?>" width="324" height="200" alt="" /></div>
               <h2><?php echo $voiture->getMarque() . " " . $voiture->getModele(); ?></h2>
               <p><?php echo $voiture->getFinition() . " " . $voiture->getPuissance() . "ch"; ?></p>
-              <a href="#" class="button">A partir de <?php echo $voiture->getPrix() . " €"; ?></a>
+              <a href="index.php?action=showCar&car_id=<?php echo $voiture->getId();?>" class="button">A partir de <?php echo $voiture->getPrix() . " €"; ?></a>
             </div>
           </div>
         </div>
