@@ -2,20 +2,20 @@
 <!DOCTYPE html>
 <!-- Menu de navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	<div class="container">
-		<a class="navbar-brand" href="#">AnnoncIIE</a>
+
+		<a class="navbar-brand" href="<?php echo site_url('/Annonce/liste_annonces'); ?>">AnnoncIIE</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
+			<ul class="navbar-nav mr-auto">
 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Annonce
 						<span class="sr-only">(current)</span>
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown01">
-						<a class="dropdown-item" href="#">Lister les annonces</a>
+						<a class="dropdown-item" href="<?php echo site_url('/Annonce/liste_annonces'); ?>">Lister les annonces</a>
 						<a class="dropdown-item" href="#">Mes annonces...</a>
 						<a class="dropdown-item" href="<?php echo site_url('/Annonce/ajouter_annonce'); ?>">Ajouter une annonce...</a>
 					</div>
@@ -41,6 +41,21 @@
 
 			</ul>
 		</div>
-		<button type="button" class="btn btn-success" onclick="window.location.replace('<?php  echo base_url().'index.php/annonce/create/'?>');">Ajouter</button>
-	</div>
+		
+		<button type="button" class="btn btn-success" onclick="window.location.replace('<?php echo site_url('/Annonce/ajouter_annonce'); ?>');">Nouvelle annonce ...</button>
+		<div class="dropdown open">
+			<button class="btn btn-secondary dropdown-toggle"
+					type="button" id="dropdownMenu5" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false">
+					<i class="fas fa-user-circle"></i>
+					<!--https://www.w3schools.com/icons/fontawesome5_icons_users_people.asp-->
+			</button>
+			
+			<div class="dropdown-menu dropdown-menu-right">
+				<a class="dropdown-item" href="#!">Mon profil</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="<?php echo site_url('/authentification/logout'); ?>">Se déconnecter</a>
+			</div>
+		</div>
+
 </nav>
