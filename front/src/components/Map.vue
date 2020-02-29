@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <b-container class="map-container col-8">
+    <b-container class="map-container col">
       <b-jumbotron>
         <b-row>
           <MapSettings/>
@@ -11,12 +11,21 @@
         </b-row>      
       </b-jumbotron>
   </b-container>
-  <b-container class="map-container col-4">
-      <b-jumbotron>        
-        <b-row>
-          <MarkerInfo/>
-        </b-row>
-      </b-jumbotron>
+  <b-container v-if="markerInfoStatus" class="map-container side-panel col-4">    
+    <b-row>
+      <b-card
+          header="Parking Informations"
+          header-tag="header"
+          footer="🅿️"
+          footer-tag="footer"
+          style="min-width: 100%;"
+          class="mb-2"
+        >
+        <b-card-text>
+          <MarkerInfo v-bind:info="markerInfo"/>
+        </b-card-text>
+      </b-card>
+    </b-row>
   </b-container>
   </div>
 </template>
@@ -33,6 +42,24 @@ export default {
     MapSettings,
     MapBox,
     MarkerInfo
+  },
+
+  mounted() {
+    EventBus.$on('setMarkerInfo', markerInfo => {    
+      this.markerInfoStatus = true;
+      this.markerInfo = markerInfo;
+    });
+
+    EventBus.$on('closeInfo',(() =>{
+      this.markerInfoStatus = false;
+    }));
+  },
+
+  data : function(){
+     return {
+       markerInfoStatus : false,
+       markerInfo : null
+     }     
   }
 }
 </script>
@@ -46,4 +73,9 @@ export default {
   .map-container {
     margin-top: 20px
   }
+
+  .map-container.side-panel.col-4{
+    margin: 20px;
+  }
+
 </style>
