@@ -53,8 +53,10 @@ $hide = true;
                     <span id="nameEmpty" ></span>
                 </div>
                 <div class="form-row">
-                    <button type="submit"
+                    <button id="button-addUpdate-Orga" type="submit"
                             onclick="addUpdateOrganization()" >Envoyer</button>
+                    <button id="button-delete-Orga" type="submit"
+                            onclick="DeleteOrganization()">Supprimer</button>
                 </div>
             </div>
         </div>
@@ -66,10 +68,37 @@ $hide = true;
 
 <script>
 
+    function DeleteOrganization() {
+        var id = $('#id').val();
+        $.get(
+            {
+                url:'deleteorganization.php',
+                data:{
+                    id:id
+                },
+                success:function () {
+                    $.get(
+                        {
+                            url: 'select_organization.php',
+                            datatype:'html',
+                            success:function (html) {
+                                $('#select-organizations').replaceWith(html);
+                                $('#name').val("");
+                                showformSelect();
+                            }
+                        }
+                    )
+                }
+            }
+        )
+    }
+
     function showform() {
         $('#name').val('');
         $('#id').val('');
         $('#formulaire').css('display','block');
+        $('#button-delete-Orga').css('display', 'none');
+        $('#button-addUpdate-Orga').html('Ajouter');
     }
 
     function showformSelect(){
@@ -86,6 +115,8 @@ $hide = true;
         $('#name').val(name);
         $('#id').val(id);
         $('#formulaire').css('display',display);
+        $('#button-delete-Orga').css('display', 'block');
+        $('#button-addUpdate-Orga').html('Update');
 
     }
 
@@ -115,6 +146,7 @@ $hide = true;
                                 success:function (html) {
                                     $('#select-organizations').replaceWith(html);
                                     $('#name').val("");
+                                    showformSelect();
                                 }
                             }
                         )

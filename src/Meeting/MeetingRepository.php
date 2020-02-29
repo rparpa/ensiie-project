@@ -47,6 +47,11 @@ class MeetingRepository
         return $meetings;
     }
 
+    /**
+     * @param int $userId
+     * @return array
+     * @throws Exception
+     */
     public function fetchByUser(int $userId)
     {
         $stmt = $this->connection->prepare('SELECT * FROM "meeting" JOIN "usermeeting" ON (meeting.id=usermeeting.idmeeting) WHERE iduser = :iduser');
@@ -66,6 +71,11 @@ class MeetingRepository
         return $meetings;
     }
 
+    /**
+     * @param int $projectId
+     * @return array
+     * @throws Exception
+     */
     public function fetchByProject(int $projectId)
     {
         //TODO a implementer
@@ -111,6 +121,20 @@ class MeetingRepository
     }
 
     /**
+     * @param int $userid
+     * @param int $meetingId
+     */
+    public function deleteUser(int $userid, int $meetingId)
+    {
+        $stmt = $this->connection->prepare(
+            'DELETE FROM usermeeting WHERE iduser = :iduser AND idmeeting = :idmeeting'
+        );
+        $stmt->bindValue(':idmeeting', $meetingId, PDO::PARAM_INT);
+        $stmt->bindValue(':iduser', $userid, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    /**
      * @param string $source
      * @param int $idsource
      * @param string $name
@@ -120,7 +144,6 @@ class MeetingRepository
      */
     public function insert(string $source, int $idsource, string $name, string $place, string $description, DateTimeInterface $creationdate)
     {
-        //TODO Confirmer la provenance des entrées pour l'insert
         $stmt = $this->connection->prepare(
             'INSERT INTO meeting (source, idsource, name, place, description, creationdate) 
             VALUES (:source, :idsource, :name, :place, :description, :creationdate)'
@@ -164,6 +187,12 @@ class MeetingRepository
         $stmt->execute();
     }
 
+    /**
+     * @param string $source
+     * @param int $sourceId
+     * @return array
+     * @throws Exception
+     */
     public function fetchBySource(string $source, int $sourceId)
     {
         $stmt = $this->connection->prepare('SELECT * FROM meeting WHERE source = :nmsrc AND idsource = :idsrc');
