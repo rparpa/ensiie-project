@@ -13,19 +13,22 @@
 		<?php
 			if (count($annonces)>0){
 				foreach($annonces as $annonce){
+
 					echo '<div class="col-lg-3 col-md-6 mb-4">';
-					echo '<div class="card h-20">';
-					echo '<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>';
-						echo '<div class="card-body">';
-							echo '<h5 class="card-title">';
-								echo '<a href="#">'.$annonce["titre"].'</a>';
-							echo '</h5>';
-							echo '<div class="card-footer">';
-								echo '<h5>'.$annonce["prix"].'€</h5>';
+						echo '<div class="card mb-4 box-shadow">';
+							echo '<img class="card-img-top" src="http://placehold.it/700x400" alt="Card image cap">';
+								echo '<div class="card-body">';
+								echo '<p class="card-title">';
+									echo '<a href="#">'.$annonce["titre"].'</a>';
+								echo '</p>';									
+								echo '<div class="d-flex justify-content-between align-items-center">';
+										echo '<div class="btn-group">';
+										//echo '<button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>';
+										echo '</div>';
+									echo '<p class="h6">'.$annonce["prix"].'€</p>';
+								echo '</div>';
 							echo '</div>';
 						echo '</div>';
-	
-					echo '</div>';
 					echo '</div>';
 				}
 			}
