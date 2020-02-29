@@ -9,23 +9,28 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Annonce
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Annonce
 						<span class="sr-only">(current)</span>
 					</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="#">Lister les annonces</a>
+						<a class="dropdown-item" href="#">Mes annonces...</a>
+						<a class="dropdown-item" href="#">Ajouter une annonce...</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Mon profil</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">Administration</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Mon profil
-					</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link" href="#">A propos</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Se déconnecter</a>
+					<a class="nav-link glyphicon glyphicon-log-in" href="#">Se déconnecter</a>
 				</li>
 			</ul>
 		</div>
