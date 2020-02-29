@@ -2,6 +2,9 @@
 
 <html>
 	<head>
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>	
+		<script type="text/javascript" src="./index.js"></script>
 		<title>SandwicherIIE</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -49,7 +52,7 @@
 											</div>
 										</div>
 										<ul class="actions">
-											<li><input type="submit" value="Se connecter" class="primary" /></li>
+											<li><input type="submit" value="Connexion" class="primary" /></li>
 										</ul>
 									</form>
 								</section></article>
@@ -60,49 +63,45 @@
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 								<section>
 									<h3 class="major">Pimp my sandwich</h3>
-
 									<div class="table-wrapper">
 										<table class="alt">
 											<thead>
 												<tr>
 													<th>Ingrédient</th>
 													<th>Description</th>
-													<th>Prix</th>
+													<th>Quantité</th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr>
 													<td><img src="images/Salade.jpg" width="100%" alt="" style="vertical-align: middle"/></td>
-													<td>De la bonne grosse salade pour te donner l'impression que tu manges sainement </td>
-													<td>0.3</td>
+													<td>													<div class="input-group" style="width:50%">
+									               	<span class="input-group-btn">
+									                  	<button class="btn btn-white btn-minuse" type="button">-</button>
+									               	</span>
+									               	<input type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
+									               	<span class="input-group-btn">
+									                  	<button class="btn btn-red btn-pluss" type="button">+</button>
+									               	</span>
+												</div><!-- /input-group --></td>
+													<td>2 tranches</td>
 												</tr>
 												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
+													<td><img src="images/bacon.jpeg" width="100%" alt="" style="vertical-align: middle"/></td>
+													<td>Des tranches de bacons fraichement achetée chez le boucher (c'est faux, c'est sans doute du Carrefour discount)</td>
+													<td>
+													<div class="input-group" style="width:50%">
+									               	<span class="input-group-btn">
+									                  	<button class="btn btn-white btn-minuse" type="button">-</button>
+									               	</span>
+									               	<input type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
+									               	<span class="input-group-btn">
+									                  	<button class="btn btn-red btn-pluss" type="button">+</button>
+									               	</span>
+												</div><!-- /input-group -->
+													</td>
 												</tr>
 											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
 										</table>
 									</div>
 								</section>
