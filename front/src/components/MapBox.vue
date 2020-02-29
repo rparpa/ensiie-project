@@ -91,7 +91,7 @@ export default {
     },
 
     emitMarkerInfo(markerInfo) {
-      console.log('marker clicked',markerInfo);
+      EventBus.$emit('markerClicked',markerInfo);
     }
   }
 };
