@@ -6,15 +6,15 @@
         @load="onMapLoaded"
       >
         <div v-if="listCoordinates">
-           <MglMarker 
-            class="points" 
-            v-for="coordinates in listCoordinates" 
-            :key="coordinates._parkingSpotId" 
-            :coordinates="[coordinates._latitude,coordinates._longitude]" 
-            color="green" 
+           <MglMarker
+            class="points"
+            v-for="coordinates in listCoordinates"
+            :key="coordinates._parkingSpotId"
+            :coordinates="[coordinates._latitude,coordinates._longitude]"
+            color="green"
             @click="val => {
               emitMarkerInfo(coordinates)
-            }" 
+            }"
           />
         </div>
       </MglMap>
@@ -80,14 +80,25 @@ export default {
       axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data))
     },
 
-    onAddressFilled(address) {
-      if (address !== undefined) {
-        this.mapbox.flyTo({
-          center: [address.latlng.lng, address.latlng.lat],
-          zoom: 17,
-          speed: 1
-        });
+    getCoordinatesFromAddress(address) {
+      let coordinates = [];
+      if (address !== undefined && address.latlng.lng && address.latlng.lat){
+        coordinates = [address.latlng.lng, address.latlng.lat];
       }
+      return coordinates;
+    },
+
+    centerMapOn(coordinates, zoom) {
+      this.mapbox.flyTo({
+        center: coordinates,
+        zoom: zoom,
+        speed: 1
+      })
+    },
+
+    onAddressFilled(address) {
+      let coords = this.getCoordinatesFromAddress(address);
+      this.centerMapOn(coords, 17);
     },
 
     emitMarkerInfo(markerInfo) {
