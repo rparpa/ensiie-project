@@ -68,7 +68,7 @@ export default {
     },
 
     getAllMarkers(){
-      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x._longitude,x._latitude])))
+      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data.map(x => [x._latitude,x._longitude])))
     },
 
     onAddressFilled(address) {
