@@ -21,17 +21,24 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Mon profil</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link" href="#">Administration</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#">A propos</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link glyphicon glyphicon-log-in" href="#">Se déconnecter</a>
-				</li>
+				<?php if(isset($email)) { // TODO : il faut qu'on teste l'existence des variables sessions
+					echo "<li class=\"nav-item\">
+					<a class=\"nav-link\" href=".base_url()."index.php/authentification/profil>Mon profil ($nom $prenom)</a>
+				</li>";
+					echo "<li class=\"nav-item\">
+					<a class=\"nav-link glyphicon glyphicon-log-in\" href=".base_url()."index.php/authentification/logout>Se déconnecter</a>
+				</li>";
+				}
+				else echo "<li class=\"nav-item\">
+					<a class=\"nav-link glyphicon glyphicon-log-in\" href=".base_url()."index.php/authentification/login>Se connecter</a>
+				</li>";
+						?>
+
 			</ul>
 		</div>
 		<button type="button" class="btn btn-success" onclick="window.location.replace('<?php  echo base_url().'index.php/annonce/create/'?>');">Ajouter</button>
