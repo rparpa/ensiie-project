@@ -13,7 +13,8 @@
 		<?php
 			if (count($annonces)>0){
 				foreach($annonces as $annonce){
-
+					$id_ann = $annonce["id_annonce"];
+					$images = $this->image->getImage($id_ann);
 					echo '<div class="col-lg-3 col-md-6 mb-4">';
 						echo '<div class="card mb-4 box-shadow">';
 						echo '<a href="#"><img class="card-img-top" src="'.base_url().'/assets/images/'.$images[0]['url'].'" width="600" height="300" alt=""></a>';
