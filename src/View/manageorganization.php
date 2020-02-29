@@ -12,8 +12,8 @@ $hide = true;
 
 ?>
 
-<div class="container-fluid">
-    <div align="center" class="row">
+<div class="container-fluid" style="margin: 2em;">
+    <div align="center" class="row" style="margin: 2em;">
         <div class="col">
             <label for="choix_organisations">Liste des organisations : </label>
             <select id="select-organizations" onchange="showformSelect()">
@@ -31,8 +31,8 @@ $hide = true;
             <button id="add_orga" onclick="showform()">Ajouter une organisation</button>
         </div>
     </div>
-    <div class="row">
-        <div class="formulaire" id="formulaire" style="display: <?php echo $hide?'none':'block'?>">
+    <div class="row" style="margin: 2em;">
+        <div class="formulaire" id="formulaire" style="display: none">
             <input type="hidden" value="" name="id" id="id">
             <div class="container-fluid">
                 <div class="form-row" align="center">
@@ -61,12 +61,53 @@ $hide = true;
             </div>
         </div>
     </div>
+    <div class="row" id="div-select-bigBoss" align="center" style="display: none;">
+        <div class="col" >
+            <label for="select-futur-BigBoss">Choisir un utilisateur pour devenir BigBoss : </label>
+            <select id="select-futur-BigBoss">
+                <option></option>
+                <?php
+                include_once 'select_usersnotinorga.php';
+                ?>
+            </select>
+        </div>
+        <div class="col">
+            <button id="button-futur-BigBoss" type="submit"
+                    onclick="AddBigBossToOrga()">Add Big Boss</button>
+        </div>
+    </div>
 </div>
 
 
 
 
 <script>
+
+    function AddBigBossToOrga() {
+        var selectuser = $("#select-futur-BigBoss");
+        var selectorga = $("#select-organizations");
+        var index = selectuser.prop('selectedIndex');
+        if(index>0){
+            var iduser = selectuser.find(':selected').attr('data-id');
+            var idorga = selectorga.find(':selected').attr('data-id');
+            var role = "Big Boss";
+            $.get({
+                url: 'addusertoorga.php',
+                data: {
+                    iduser: iduser,
+                    role: role,
+                    idorganization: idorga
+                },
+                success: refreshuser
+            });
+        }
+        else
+            alert('Selectionner une personne a ajouter!')
+    }
+
+    function refreshuser() {
+        $('#select-futur-BigBoss').load('select_usersnotinorga.php');
+    }
 
     function DeleteOrganization() {
         var id = $('#id').val();
@@ -115,7 +156,8 @@ $hide = true;
         $('#name').val(name);
         $('#id').val(id);
         $('#formulaire').css('display',display);
-        $('#button-delete-Orga').css('display', 'block');
+        $('#button-delete-Orga').css('display', display);
+        $('#div-select-bigBoss').css('display', display);
         $('#button-addUpdate-Orga').html('Update');
 
     }
