@@ -84,6 +84,20 @@ $users = $userService->getAllUser();
         <input type="submit" value="Se connecter"><br>
     </form>
 
+    <?php
+    $testUser = new \User\User();
+    $testUser->setFirstname("toto");
+    $testUser->setLastname("tata");
+    $testUser->setPassword("thisisatest");
+    $testUser->setPseudo("test_User");
+    $testUser->setMail("test@test.net");
+    $testUser->setBirthday(new DateTimeImmutable("1990-01-01"));
+    $userService->createUser($testUser);
+    $testUser = $userService->getUser("test_User", "thisisatest");
+    $userService->getUserById($testUser->getId());
+    $userService->deleteUser($testUser);
+    ?>
+
 </div>
 </body>
 </html>

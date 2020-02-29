@@ -137,6 +137,29 @@ class UserRepository
         return false;
     }
 
+    public function findOneById($userId)
+    {
+        $query = $this->connection->prepare(
+            'SELECT * FROM "user" WHERE id = :id');
+
+        $query->bindValue(':id', $userId, PDO::PARAM_INT);
+        $query->execute();
+        $row = $query->fetch(PDO::FETCH_OBJ);
+        $user = new User();
+
+        $row ? $user
+            ->setId($row->id)
+            ->setFirstname($row->firstname)
+            ->setLastname($row->lastname)
+            ->setBirthday(new DateTimeImmutable($row->birthday))
+            ->setPseudo($row->pseudo)
+            ->setMail($row->mail)
+            ->setPassword($row->password)
+            : null;
+
+        return $user;
+    }
+
     public function deleteUser(User $userToDelete)
     {
         $query = $this->connection->prepare('DELETE FROM "user" WHERE id = :id');
@@ -147,6 +170,34 @@ class UserRepository
             $query->errorInfo();
         }
         return $result;
+    }
+
+    public function updateUser(User $user)
+    {
+        $query = $this->connection->prepare(
+            'UPDATE "user"
+            SET firstname = :firstname,
+                lastname = :lastname,
+                birthday = :birthday,
+                pseudo = :pseudo,
+                mail = :mail,
+                password = :password
+            WHERE id = :id');
+
+        $query->bindValue(':id', $user->getId());
+
+        $query->bindValue(':firstname', $user->getFirstname());
+        $query->bindValue(':lastname', $user->getLastname());
+        $query->bindValue(':birthday', $user->getBirthday()->format("Y-m-d"));
+        $query->bindValue(':pseudo', $user->getPseudo());
+        $query->bindValue(':mail', $user->getMail());
+        $query->bindValue(':password', crypt($user->getPassword(), 'st'));
+
+        $result = $query->execute();
+        if ($result == false)
+        {
+            $query->errorInfo();
+        }
     }
 
 
