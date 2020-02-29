@@ -50,6 +50,15 @@ class Annonce_model extends CI_Model
 		  return $this->db->get_where('annonce',array('id_annonce' => $idAnnonce))->result_array();
   }
 
+  public function getFilteredAnnonce($min, $max){
+		$this->db->select('*');
+		$this->db->from("annonce");
+		$this->db->where('prix >=', $min);
+		$this->db->where('prix <=', $max);
+		$this->db->order_by("date_publication", "ASC");
+		return $this->db->get()->result_array();
+  }
+
   public function minPrice(){
   		$this->db->select_min('prix');
   		return $this->db->get('annonce')->row()->prix;

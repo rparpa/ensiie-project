@@ -14,14 +14,34 @@ class Annonce extends CI_Controller {
 	}
 
 	public function liste_annonces(){
-		
+
+		$min = $this->annonce->minPrice();
+		$max = $this->annonce->maxPrice();
 		$annonces = $this->annonce->getAllAnnonce();
-		$this->data = array('annonces'=>$annonces);
+		$this->data = array('annonces'=>$annonces, 'min'=>$min, 'max'=>$max);
 
 		$this->load->view('elements/header');
 		$this->load->view('annonces_view', $this->data);
 		$this->load->view('elements/footer');
 	}
+
+	public function filter(){
+
+		$minPrice = $this->input->post('min');
+		$maxPrice = $this->input->post('max');
+		if($minPrice<=$maxPrice){
+			$annonces = $this->annonce->getFilteredAnnonce($minPrice, $maxPrice);
+			$this->data = array('annonces'=>$annonces, 'min'=>$minPrice, 'max'=>$maxPrice);
+
+			$this->load->view('elements/header');
+			$this->load->view('annonces_view', $this->data);
+			$this->load->view('elements/footer');
+		}
+		else {?>.<script type=text/javascript>alert("Le prix minimum doit être inférieur au prix maximum!");</script>.<?php
+			$this->liste_annonces();
+		}
+	}
+
 	function create(){
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
