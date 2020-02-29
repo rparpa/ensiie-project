@@ -4,6 +4,7 @@
   "description": "## Install your application This tutorial will guide you through the installation procedure of the Web Project Skeleton.",
   "main": "index.js",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@stryker-mutator/core": "^1.1.1",
     "@stryker-mutator/html-reporter": "^1.1.1",
     "@stryker-mutator/javascript-mutator": "^1.1.1",

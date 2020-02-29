@@ -1,11 +1,17 @@
 module.exports = class ClientSession {
-    static session = null;
+    static session;
     
     static getSession() {
         if(ClientSession.session == null) {
-            var pg = require('pg');
-            ClientSession.session = new pg.Client("postgres://ensiie:ensiie@postgres:5432/ensiie");
-            ClientSession.session.connect();
+            var {Client} = require('pg');
+            ClientSession.session = new Client("postgres://ensiie:ensiie@postgres:5432/ensiie");
+            ClientSession.session.connect(err => {
+                if (err) {
+                    ClientSession.session = null;
+                    throw 'Could not connect to postgres database ' + err;
+                }
+              }
+            );
         }
 
         return ClientSession.session;
