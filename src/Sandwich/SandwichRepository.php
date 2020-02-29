@@ -52,10 +52,10 @@ class SandwichRepository
 
         if($row) {
             $sandwich
-            ->setId($row->id)
-            ->setLabel($row->label);
+                ->setId($row['id'])
+                ->setLabel($row['label']);
             $sandwich
-            ->setIngredients(
+                ->setIngredients(
                 $this->fetchIngredients($sandwich->getId())
             );
         } else {

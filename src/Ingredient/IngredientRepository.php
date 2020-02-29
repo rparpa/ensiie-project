@@ -44,10 +44,10 @@ class IngredientRepository
         $ingredient = new Ingredient();
 
         $row ? $ingredient
-            ->setId($row->id)
-            ->setLabel($row->label)
-            ->setAvailable($row->available)
-            ->setPrice($row->price)
+            ->setId($row['id'])
+            ->setLabel($row['label'])
+            ->setAvailable($row['available'])
+            ->setPrice($row['price'])
             : null;
 
         return $ingredient;

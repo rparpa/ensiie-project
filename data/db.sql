@@ -52,3 +52,26 @@ INSERT INTO "sandwich_ingredient" (sandwich_id, ingredient_id)
 VALUES (1, 2);
 INSERT INTO "sandwich_ingredient" (sandwich_id, ingredient_id)
 VALUES (1, 3);
+
+DROP TABLE  "order";
+CREATE TABLE "order" (
+    id SERIAL PRIMARY KEY,
+    order_date DATE,
+    approval BOOLEAN
+);
+
+INSERT INTO "order" (order_date, approval)
+VALUES ('2020-02-01', true);
+INSERT INTO "order" (order_date, approval)
+VALUES ('2020-02-01', false);
+
+DROP TABLE  "order_sandwich";
+CREATE TABLE "order_sandwich" (
+    order_id BIGINT,
+    sandwich_id BIGINT
+);
+
+INSERT INTO "order_sandwich" (order_id, sandwich_id)
+VALUES (1, 1);
+INSERT INTO "order_sandwich" (order_id, sandwich_id)
+VALUES (2, 2);
