@@ -4,7 +4,6 @@ require_once '../src/Bootstrap.php';
 
 use Sandwich\Sandwich;
 use Sandwich\SandwichRepository;
-use Ingredient\Ingredient;
 use Ingredient\IngredientRepository;
 
 $sandwichRepository = new SandwichRepository(\Db\Connection::get());
@@ -101,13 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input id="saveButton" type="submit" value="Sauvegarder"><br>
     </form>
 
-  </div>
-  <script>
-      document.getElementById("saveButton").onclick = function() {
-        console.log(
-            "label : " + document.getElementById("label").value + "\n"
-        );
-      };
-  </script>  
+  </div> 
 </body>
 </html>

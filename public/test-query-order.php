@@ -10,9 +10,9 @@ use Order\Order;
 use Order\OrderRepository;
 
 $my_connection = \Db\Connection::get();
-$orderRepository = new OrderRepository(\Db\Connection::get());
-$sandwichRepository = new SandwichRepository(\Db\Connection::get());
-$ingredientRepository = new IngredientRepository(\Db\Connection::get());
+$orderRepository = new OrderRepository($my_connection);
+$sandwichRepository = new SandwichRepository($my_connection);
+$ingredientRepository = new IngredientRepository($my_connection);
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ingredients = $ingredientRepository->fetchAll();
-    $newSandwich = new Sandwich();
 
     $filterIngredients = [];
     foreach ($ingredients as $ingredient) {
@@ -49,15 +48,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    $newSandwich = new Sandwich();
     $newSandwich
         ->setLabel($_POST["label"])
         ->setIngredients($filterIngredients);
 
     $newSandwich = $sandwichRepository->createSandwich($newSandwich);
-    
+    $newSandwichs = [];
+    $newSandwichs[] = $newSandwich;
+
+    $newOrder = new Order();
     $newOrder
             ->setApproval(true)
-            ->setDate(new DateTimeImmutable('2020-02-05'));
+            ->setDate(new DateTimeImmutable('2020-02-05'))
+            ->setSandwichs($newSandwichs);
+    
     $orderRepository->createOrder($newOrder);
 
     $orders = $orderRepository->getAll();

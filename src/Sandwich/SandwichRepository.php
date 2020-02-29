@@ -2,6 +2,7 @@
 namespace Sandwich;
 
 use Ingredient\Ingredient;
+use Ingredient\IngredientRepository;
 use PDO;
 
 class SandwichRepository
@@ -153,6 +154,29 @@ class SandwichRepository
     private function fetchIngredients($sandwichId)
     {
         $query = $this->connection->prepare(
+            'SELECT sandwich_ingredient.ingredient_id AS id
+            FROM sandwich_ingredient
+            WHERE sandwich_ingredient.sandwich_id = :sandwichId');
+        
+        $query->bindValue(':sandwichId', $sandwichId, PDO::PARAM_INT);
+        $query->execute();
+        $rows = $query->fetchAll(PDO::FETCH_OBJ);
+
+        $ingredientRepository = new IngredientRepository($this->connection);
+
+        $ingredients = [];
+        foreach ($rows as $row) {
+            $ingredient = new Ingredient();
+            $ingredient = $ingredientRepository->findOneById($row->id);
+            $ingredients[] = $ingredient;
+        }
+
+        return $ingredients;
+    }
+    /*
+    private function fetchIngredients($sandwichId)
+    {
+        $query = $this->connection->prepare(
             'SELECT ingredient.id AS id,
              ingredient.label AS label,
              ingredient.available AS available,
@@ -179,5 +203,5 @@ class SandwichRepository
         }
 
         return $ingredients;
-    }
+    }*/
 }
