@@ -17,7 +17,7 @@
 					<div class="dropdown-menu" aria-labelledby="dropdown01">
 						<a class="dropdown-item" href="#">Lister les annonces</a>
 						<a class="dropdown-item" href="#">Mes annonces...</a>
-						<a class="dropdown-item" href="#">Ajouter une annonce...</a>
+						<a class="dropdown-item" href="<?php echo site_url('/Annonce/ajouter_annonce'); ?>">Ajouter une annonce...</a>
 					</div>
 				</li>
 				<li class="nav-item">

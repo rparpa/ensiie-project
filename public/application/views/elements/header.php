@@ -17,7 +17,20 @@
 	<!-- CSS customisé -->
 	<link href="../../../assets/css/annonce.css" rel="stylesheet">
 
+	<!-- CSS Dropzone -->
+	<link href="../../../assets/css/dropzone.css" rel="stylesheet">
+
+	<!-- JS Dropzone -->
+	<script src="../../../assets/js/dropzone.js" type="text/javascript" ></script>
+
+	<!-- JS Dropzone -->
+	<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" ></script>
+
+
+
+
 </head>
 
 <body>
     <?php $this->load->view('elements/menu');?>
+

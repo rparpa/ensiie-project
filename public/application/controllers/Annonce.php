@@ -2,7 +2,7 @@
 
 class Annonce extends CI_Controller {
 
-	private $data;
+	private $data=array();
 
 	function __construct() {
 		parent::__construct();
@@ -22,6 +22,7 @@ class Annonce extends CI_Controller {
 
 		$this->load->view('elements/header');
 		$this->load->view('annonces_view', $this->data);
+		//$this->load->view('ajout_annonce_view');
 		$this->load->view('elements/footer');
 	}
 
@@ -42,41 +43,43 @@ class Annonce extends CI_Controller {
 		}
 	}
 
-	function create(){
+	public function ajouter_annonce(){
+  
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+		$this->form_validation->set_rules('titre', 'Titre', 'required');
+		$this->form_validation->set_rules('description', 'Description', 'required');
+		$this->form_validation->set_rules('prix', 'Prix', 'required|numeric');
 
-		//Validating Name Field
-		$this->form_validation->set_rules('titre', 'Titre', 'required|min_length[5]|max_length[25]');
+		$etats=array_column($this->etat->getAllEtat(), 'etat');
+		$this->data+=array("etats"=>$etats);
 
-		//Validating Email Field
-		$this->form_validation->set_rules('descri', 'Description', 'required|min_length[10]');
+		if($this->input->post('titre')){
+			if ($this->form_validation->run() == TRUE) {
 
-		//Validating Mobile no. Field
-		$this->form_validation->set_rules('prix', 'prix', 'required|numeric');
+				//TODO : mettre l'id de l'utilisation
+				$this->annonce->insertAnnonce(
+								2,
+								$this->input->post('titre'),
+								$this->input->post('description'),
+								$this->input->post('prix'),
+								$this->input->post('etat'));
 
-		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('annonceCreate');
+				redirect('Annonce/liste_annonces');
+				$this->session->set_flashdata('message', 'Annonce ajoutée');
+	
+			}else{
+				$this->session->set_flashdata('error', 'Annonce non ajoutée, veuillez réessayer');
+				$this->load->view('elements/header');
+				$this->load->view('ajout_annonce_view',$this->data);
+				$this->load->view('elements/footer');
+			}
 		}
-		else
-		{
-			$format = "%Y-%M-%d %H:%i";
-			$date = "echo @mdate($format)";
-			//Setting values for table columns
-			$data = array(
-				'titre' => $this->input->post('titre'),
-				'description' => $this->input->post('descri'),
-				'prix' => $this->input->post('prix'),
-				'vendu' => false,
-				'nb_signal' => 0,
-				'date_publication' => $date
-			);
-
-			//Transfering data to Model
-			$this->annonce_model->insert($data);
-
-			//Loading View
-			$this->load->view('annonces_view');
+		else{
+			$this->load->view('elements/header');
+			$this->load->view('ajout_annonce_view',$this->data);
+			$this->load->view('elements/footer');			
 		}
+
 	}
 
 	function delete(){
@@ -132,6 +135,31 @@ class Annonce extends CI_Controller {
 
 			//Loading View
 			$this->load->view('annonces_view');
+		}
+	}
+
+	// File upload
+	public function fileUpload(){
+
+		if(!empty($_FILES['file']['name'])){
+	 
+		  // Set preference
+		  $config['upload_path'] = 'assets/images/'; 
+		  $config['allowed_types'] = 'jpg|jpeg|png|gif';
+		  //$config['max_size'] = '2024'; // max_size in kb
+		  $config['file_name'] = $_FILES['file']['name'];
+		  $this->data+=array('files'=>$_FILES['file']['name']);
+	 
+		  //Load upload library
+		  $this->load->library('upload',$config); 
+	 
+		  // File upload
+		  if($this->upload->do_upload('file')){
+			// Get data about the file
+			$uploadData = $this->upload->data();
+			$this->data+=array('data_img'=>$uploadData);
+		  }
+		  print_r($this->data);
 		}
 	}
 
