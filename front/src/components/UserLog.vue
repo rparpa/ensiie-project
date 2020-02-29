@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import {HTTP} from '../http-constants'
+
 export default {
   data() {
     return {
@@ -76,9 +78,9 @@ export default {
   methods: {
     onLogIn(evt) {
       evt.preventDefault();
-
-      this.axios.post('http://localhost:3000'
-      , JSON.stringify(this.logIn)
+      
+      HTTP.post('authentication'
+      , JSON.stringify(this.login)
       )
       .then(response => {
         console.log(response);
