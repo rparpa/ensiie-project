@@ -40,6 +40,17 @@ class AuthenticatorService
         return $this->isAuthenticated() ? $_SESSION['user_id'] : null;
     }
 
+    /**
+     * @return bool
+     */
+    function isAdministrateur():bool {
+        if($this->isAuthenticated())
+        {
+            return $this->getCurrentUser()->getIsadmin();
+        }
+        return false;
+    }
+
     function getCurrentUser(): ?User
     {
         $userId = $this->getCurrentUserId();

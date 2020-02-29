@@ -22,7 +22,8 @@ class UserHydrator
             ->setName($data['name'])
             ->setMail($data['mail'])
             ->setPassword($data['password'])
-            ->setCreationdate(new \DateTimeImmutable($data['creationdate']));
+            ->setCreationdate(new \DateTimeImmutable($data['creationdate']))
+            ->setIsadmin(isset($data[''])?$data['']:false);
         return $user;
     }
 
@@ -41,7 +42,8 @@ class UserHydrator
             ->setName($data->name)
             ->setMail($data->mail)
             ->setPassword($data->password)
-            ->setCreationdate(new \DateTimeImmutable($data->creationdate));
+            ->setCreationdate(new \DateTimeImmutable($data->creationdate))
+            ->setIsadmin(property_exists($data, 'isadmin')?$data->isadmin:false);
         return $user;
     }
 }

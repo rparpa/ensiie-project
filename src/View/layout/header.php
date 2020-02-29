@@ -14,19 +14,22 @@ $user = $authenticatorService->getCurrentUser();
         <span class="logo-container">LOLIIE</span>
     </div>
     <ul class="link-header-container" id="main-header">
-        <li class="link-header-item">
-            <a  class="link-header-item-a"href="index.php">Home</a>
-        </li>
-        <li class="link-header-item">
-            <a class="link-header-item-a" href="contact.php">Contact</a>
-        </li>
-        <li class="link-header-item">
-            <a class="link-header-item-a" href="about.php">About</a>
-        </li>
-        
-        <?php if ($authenticatorService->isAuthenticated()) {?>
+        <?php if ($authenticatorService->isAdministrateur()) {?>
             <li class="link-header-item">
                 <a class="link-header-item-a" href="manageorganization.php">Gestion Organisations</a>
+            </li>
+            <li class="link-header-item">
+                <a class="link-header-item-a" href="addadministrator.php">Ajouter un adminsitrateur</a>
+            </li>
+        <?php }else {?>
+            <li class="link-header-item">
+                <a  class="link-header-item-a"href="index.php">Home</a>
+            </li>
+            <li class="link-header-item">
+                <a class="link-header-item-a" href="contact.php">Contact</a>
+            </li>
+            <li class="link-header-item">
+                <a class="link-header-item-a" href="about.php">About</a>
             </li>
         <?php }?>
     </ul>

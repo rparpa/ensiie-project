@@ -2,6 +2,7 @@
 namespace User;
 
 use DateTimeInterface;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class User
 {
@@ -18,6 +19,16 @@ class User
     private string $password;
 
     private DateTimeInterface $creationdate;
+
+    private bool $isadmin;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->isadmin = false;
+    }
 
     /**
      * @return int
@@ -178,6 +189,24 @@ class User
     public function setMeetings(array $meetings): User
     {
         $this->meetings = $meetings;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsadmin(): bool
+    {
+        return $this->isadmin;
+    }
+
+    /**
+     * @param bool $isadmin
+     * @return User
+     */
+    public function setIsadmin(bool $isadmin): User
+    {
+        $this->isadmin = $isadmin;
         return $this;
     }
 

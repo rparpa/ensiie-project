@@ -1,6 +1,10 @@
 <?php
 
+use Db\Connection;
+use Service\AuthenticatorService;
 use User\User;
+use User\UserHydrator;
+use User\UserRepository;
 
 if (isset($data['user'])) {
     /** @var User $user */
@@ -10,10 +14,13 @@ else{
     $user=null;
 }
 
+$userRepository = new UserRepository(Connection::get(), new UserHydrator());
+$authenticatorService = new AuthenticatorService($userRepository);
+
 ?>
 
 <form class="formulaire" method="post" action="addorupdateuser.php">
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <div class="form-row" align="center">
             <legend>Utilisateur</legend>
         </div>
@@ -51,6 +58,15 @@ else{
                    name="mail"><br>
             <span class="error" aria-live="polite" id="errormail"></span>
         </div>
+        <?php if($authenticatorService->isAdministrateur()):?>
+        <div class="form-row">
+            <label class="label-lenght-fix" for="admin">Admin : <em>*</em></label>
+            <input type="checkbox"
+                   value="<?php echo $user?$user->getIsadmin():'' ?>"
+                   id="admin"
+                   name="admin"><br>
+        </div>
+        <?php endif;?>
         <div class="form-row">
             <label class="label-lenght-fix" for="password">Password : <em>*</em></label>
             <input type="password"
