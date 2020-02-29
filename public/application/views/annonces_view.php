@@ -23,7 +23,11 @@
 					$images = $this->image->getImage($id_ann);
 					echo '<div class="col-lg-3 col-md-6 mb-4">';
 						echo '<div class="card mb-4 box-shadow">';
-						echo '<a href="#"><img class="card-img-top" src="'.base_url().'/assets/images/'.$images[0]['url'].'" width="600" height="200" alt=""></a>';
+						if(!isset($images[0]['url']))
+							echo '<a href="#"><img class="card-img-top" src="'.base_url().'/assets/images/default.jpg" width="600" height="200" alt=""></a>';
+						else
+							echo '<a href="#"><img class="card-img-top" src="'.base_url().'/assets/images/'.$images[0]['url'].'" width="600" height="200" alt=""></a>';
+
 						echo '<div class="card-body">';
 								echo '<p class="card-title">';
 									echo '<a href="#">'.$annonce["titre"].'</a>';
@@ -53,7 +57,3 @@
 <!-- Bootstrap core JavaScript -->
 <script src="../../assets/jquery/jquery.min.js"></script>
 <script src="../../assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>

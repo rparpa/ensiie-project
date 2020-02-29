@@ -3,24 +3,6 @@
 class Annonce_model extends CI_Model
 {
 
-  public function insert(){
-
-	  /*$format = "%Y-%M-%d %H:%i";
-	  $date = "echo @mdate($format)"*/
-	  //Setting values for table columns
-
-	  //$id_user = $this->session->userdata('id_user');
-	  $data = array(
-	  	 //'id_user' => $id_user,
-		  'titre' => $this->input->post('titre'),
-		  'description' => $this->input->post('descri'),
-		  'prix' => $this->input->post('prix'),
-		  'vendu' => false,
-		  'nb_signal' => 0
-	  );
-		return $this->db->insert('annonce',$data);
-  }
-
   public function delete($id){
 		  return $this->db->delete('annonce',array('id_annonce'=>$id));
   }
@@ -69,4 +51,23 @@ class Annonce_model extends CI_Model
 		return $this->db->get('annonce')->row()->prix;
 	}
 
+  /**
+   * Fonction permettant d'ajouter une annonce dans la bdd
+   * 
+   * @param $user Id de l'utilisateur
+   * @param $titre Titre de l'annonce
+   * @param $description Description de l'annonce
+   * @param @prix Prix de l'annonce
+   */
+  public function insertAnnonce($user,$titre,$description,$prix,$etat){
+
+    $data = array('id_user' => $user,
+            'id_etat'=>$etat,
+            'titre' => $titre,
+					  'description'=>$description,
+					  'prix'=>$prix,
+					  );
+
+		$this->db->insert('annonce', $data);
+  }
 }

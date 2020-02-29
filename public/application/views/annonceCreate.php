@@ -20,7 +20,7 @@
 	<?php echo form_label('Prix :'); form_error('prix'); ?><br />
 	<?php echo form_input(array('id' => 'prix', 'name' => 'prix', 'type' => 'number', 'placeholder' => 'Ex : 500')); ?><br />
 
-	<?php echo form_submit(array('id' => 'submit', 'name' => 'save', 'value' => 'Submit')); ?>
+	<?php echo form_submit(array('class'=>'btn btn-success','id' => 'submit', 'name' => 'save', 'value' => 'Submit')); ?>
 	<?php echo form_close(); ?><br/>
 	<div>
 
