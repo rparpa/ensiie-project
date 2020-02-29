@@ -6,5 +6,4 @@ postgres-data
 vendor
 composer.lock
 .phpunit.result.cache
-.env
 docker-compose.yml

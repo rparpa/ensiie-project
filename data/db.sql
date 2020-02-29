@@ -1,19 +1,77 @@
+DROP TABLE  "user";
 CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY ,
-    firstname VARCHAR NOT NULL ,
-    lastname VARCHAR NOT NULL ,
-    birthday date
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR,
+    lastname VARCHAR,
+    birthday date,
+    pseudo VARCHAR,
+    mail VARCHAR,
+    password VARCHAR
 );
 
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password) VALUES ('Marwan', 'GUERNOUG', '1997-12-18', 'Kart', 'marwan.guernoug@ensiie.fr', '1234');
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password) VALUES ('Mike', 'MALECOT', '1995-08-06', 'Adolf', 'mike.malecot@ensiie.fr', '1234');
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password) VALUES ('Nicolas', 'CHARLON', '1996-11-09', 'Kozak', 'nicolas.charlon@ensiie.fr', '1234');
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password) VALUES ('Rayan', 'BELMADANI', '1996-10-18', 'Greenns', 'rayan.belmadani@ensiie.fr', '1234');
+
+DROP TABLE  "ingredient";
+CREATE TABLE "ingredient" (
+    id SERIAL PRIMARY KEY,
+    label VARCHAR,
+    available BOOLEAN,
+    price REAL
+);
+
+INSERT INTO "ingredient" (label, available, price)
+VALUES ('Salade', true, 0.2);
+INSERT INTO "ingredient" (label, available, price)
+VALUES ('Tomate', true, 0.3);
+INSERT INTO "ingredient" (label, available, price)
+VALUES ('Oignon', true, 0.3);
+
+DROP TABLE  "sandwich";
+CREATE TABLE "sandwich" (
+    id SERIAL PRIMARY KEY,
+    label VARCHAR
+);
+
+INSERT INTO "sandwich" (label)
+VALUES ('Le kozak gourmand');
+INSERT INTO "sandwich" (label)
+VALUES ('Le marwoille');
+
+DROP TABLE  "sandwich_ingredient";
+CREATE TABLE "sandwich_ingredient" (
+    sandwich_id BIGINT,
+    ingredient_id BIGINT
+);
+
+INSERT INTO "sandwich_ingredient" (sandwich_id, ingredient_id)
+VALUES (1, 1);
+INSERT INTO "sandwich_ingredient" (sandwich_id, ingredient_id)
+VALUES (1, 2);
+INSERT INTO "sandwich_ingredient" (sandwich_id, ingredient_id)
+VALUES (1, 3);
+
+DROP TABLE  "order";
+CREATE TABLE "order" (
+    id SERIAL PRIMARY KEY,
+    order_date DATE,
+    approval BOOLEAN
+);
+
+INSERT INTO "order" (order_date, approval)
+VALUES ('2020-02-01', true);
+INSERT INTO "order" (order_date, approval)
+VALUES ('2020-02-01', false);
+
+DROP TABLE  "order_sandwich";
+CREATE TABLE "order_sandwich" (
+    order_id BIGINT,
+    sandwich_id BIGINT
+);
+
+INSERT INTO "order_sandwich" (order_id, sandwich_id)
+VALUES (1, 1);
+INSERT INTO "order_sandwich" (order_id, sandwich_id)
+VALUES (2, 2);
