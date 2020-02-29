@@ -60,4 +60,9 @@ class Utilisateur extends CI_Controller
     {
 
     }
+    
+    public function login($data)
+    {
+        
+    }
 }
