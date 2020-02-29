@@ -41,16 +41,23 @@ class OrganizationRepository
             $organization = $this->organizationHydrator->hydrateObj($row);
             $organizations[] = $organization;
         }
-
         return $organizations;
     }
 
+    /**
+     * @param int $userId
+     * @return array|null
+     * @throws Exception
+     */
     public function fetchByUser(int $userId)
     {
         $stmt = $this->connection->prepare('SELECT * FROM organization JOIN userorganization ON (organization.id=userorganization.idorganization) WHERE iduser = :iduser');
         $stmt->bindValue(':iduser', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_OBJ);
+        if(!$row)
+            return null;
+
         return [
             "organization" => $this->organizationHydrator->hydrateObj($row),
             "role" => $row->role,
@@ -135,6 +142,12 @@ class OrganizationRepository
         $stmt->execute();
     }
 
+    /**
+     * @param int $iduser
+     * @param int $idorga
+     * @param string $role
+     * @throws Exception
+     */
     public function addUser(int $iduser, int $idorga, string $role){
         $stmt = $this->connection->prepare(
             'INSERT INTO userorganization (iduser, idorganization, role, date) 
@@ -147,6 +160,10 @@ class OrganizationRepository
         $res = $stmt->execute();
     }
 
+    /**
+     * @param int $iduser
+     * @param int $idorga
+     */
     public function removeUser(int $iduser, int $idorga) {
         $stmt = $this->connection->prepare(
             'DELETE FROM userorganization WHERE iduser = :iduser AND idorganization = :idorga'
