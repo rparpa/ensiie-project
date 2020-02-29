@@ -1,6 +1,7 @@
 <?php
 namespace User;
 use DateTimeImmutable;
+use Exception;
 
 /**
  * Class UserService
@@ -8,6 +9,9 @@ use DateTimeImmutable;
  */
 class UserService
 {
+    /**
+     * @var UserRepository
+     */
     private UserRepository $userRepository;
 
     /**
@@ -72,6 +76,9 @@ class UserService
         return $this->userRepository->rememberUser($id, $pseudo);
     }
 
+    /**
+     * @return bool
+     */
     public function isLogged()
     {
         return $this->userRepository->isLogged();
@@ -80,10 +87,45 @@ class UserService
     /**
      * @param string $pseudo
      * @param string $password
-     * @return bool|User
+     * @return User
+     * @throws Exception
      */
     public function getUser(string $pseudo, string $password)
     {
-        return $this->userRepository->getUser($pseudo, $password);
+        $result = $this->userRepository->getUser($pseudo, $password);
+        if($result == null)
+        {
+            throw new Exception("User not found.");
+        }
+        return $result;
+    }
+
+    /**
+     * @param string $userId
+     * @return User
+     * @throws Exception
+     */
+    public function getUserById(string $userId)
+    {
+        $result = $this->userRepository->findOneById($userId);
+        if ($result == null)
+        {
+            throw new Exception("User not found.");
+        }
+        return $result;
+    }
+
+    public function updateUser(User $userToUpdate)
+    {
+        try
+        {
+            if ($this->getUserById($userToUpdate->getId()))
+            {
+                $this->userRepository->updateUser($userToUpdate);
+            }
+        } catch (Exception $e)
+        {
+            throw new Exception("User not found.");
+        }
     }
 }
