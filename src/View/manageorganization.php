@@ -16,7 +16,7 @@ if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
 ?>
 
 <div class="container-fluid">
-    <div class="row">
+    <div align="center" class="row">
         <div class="col">
             <label for="choix_organisations">Liste des organisations : </label>
             <select id="select-organizations">
