@@ -75,6 +75,12 @@ class ProjectRepository
         return $projects;
     }
 
+    /**
+     * @param int $userId
+     * @param string $role
+     * @return array
+     * @throws Exception
+     */
     public function fetchByUserByRole(int $userId, string $role){
         $stmt = $this->connection->prepare(
             'SELECT * FROM project JOIN userproject ON (project.id=userproject.idproject) 
@@ -96,6 +102,10 @@ class ProjectRepository
         return $projects;
     }
 
+    /**
+     * @param int $idproject
+     * @return bool
+     */
     public function hasResponableByIdProject(int $idproject){
         $stmt = $this->connection->prepare(
             'SELECT count(*) FROM project JOIN userproject ON (project.id=userproject.idproject) 
@@ -208,6 +218,12 @@ class ProjectRepository
         $res = $stmt->execute();
     }
 
+    /**
+     * @param int $iduser
+     * @param int $idproject
+     * @param string $role
+     * @throws Exception
+     */
     public function addUser(int $iduser, int $idproject, string $role){
         $stmt = $this->connection->prepare(
             'INSERT INTO userproject (iduser, idproject, role, date) 
@@ -218,9 +234,12 @@ class ProjectRepository
         $stmt->bindValue(':role', $role,PDO::PARAM_STR);
         $stmt->bindValue(':creationdate', (new DateTimeImmutable("now"))->format("Y-m-d H:i:s"),PDO::PARAM_STR);
         $res = $stmt->execute();
-        var_dump($stmt->errorInfo());
     }
 
+    /**
+     * @param int $iduser
+     * @param int $idproject
+     */
     public function deleteUser(int $iduser, int $idproject){
         $stmt = $this->connection->prepare(
             'DELETE FROM userproject WHERE iduser = :iduser AND idproject = :idproject'

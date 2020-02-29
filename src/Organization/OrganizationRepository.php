@@ -112,6 +112,20 @@ class OrganizationRepository
     }
 
     /**
+     * @param int $iduser
+     * @param int $organizationId
+     */
+    public function deleteUser(int $iduser, int $organizationId)
+    {
+        $stmt = $this->connection->prepare(
+            'DELETE FROM userorganization WHERE iduser = :iduser AND idorganization = :idorganization'
+        );
+        $stmt->bindValue(':iduser', $iduser,PDO::PARAM_INT);
+        $stmt->bindValue(':idorganization',$organizationId,PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    /**
      * @param string $name
      * @param DateTimeInterface $creationdate
      */
