@@ -108,3 +108,13 @@ INSERT INTO Categorie(categorie) VALUES ('Meuble');
 INSERT INTO Categorie(categorie) VALUES ('Évènement');
 INSERT INTO Categorie(categorie) VALUES ('Billeterie');
 INSERT INTO Categorie(categorie) VALUES ('Cours particuliers');
+
+INSERT INTO Image (id_annonce, url) VALUES ('1', 'img1.jpeg');
+INSERT INTO Image (id_annonce, url) VALUES ('2', 'img2.jpeg');
+INSERT INTO Image (id_annonce, url) VALUES ('3', 'img3.jpeg');
+INSERT INTO Image (id_annonce, url) VALUES ('4', 'img4.jpeg');
+INSERT INTO Image (id_annonce, url) VALUES ('5', 'img5.jpeg');
+INSERT INTO Image (id_annonce, url) VALUES ('6', 'img6.jpeg');
+INSERT INTO Image (id_annonce, url) VALUES ('7', 'img7.jpeg');
+INSERT INTO Image (id_annonce, url) VALUES ('8', 'img8.jpeg');
+INSERT INTO Image (id_annonce, url) VALUES ('9', 'img9.jpeg');

@@ -25,8 +25,9 @@ class Image_model extends CI_Model
 
 
     }
-    public function getImage()
+    public function getImage($id_annonce)
     {
-
+		return $this->db->get_where('image',array('id_annonce' => $id_annonce))->result_array();
     }
+
 }
