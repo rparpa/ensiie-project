@@ -91,7 +91,6 @@ class UserRepository
                                 WHERE id NOT IN (
                                 SELECT iduser FROM userorganization) AND isadmin = FALSE ');
         $stmt->execute();
-        var_dump($stmt->errorInfo());
         $rows=$stmt->fetchAll(PDO::FETCH_OBJ);
         $users = [];
         foreach ($rows as $row) {
@@ -235,7 +234,7 @@ class UserRepository
         if($user)
         {
             if($isadmin)
-                $statement = 'UPDATE "user" SET username = :username, surname = :surname, isdamin = :isadmin,
+                $statement = 'UPDATE "user" SET username = :username, surname = :surname, isadmin = :isadmin,
                                 name = :name, mail = :mail,password = :password WHERE id = :id';
             else
                 $statement = 'UPDATE "user" SET username = :username, surname = :surname, 
@@ -253,6 +252,17 @@ class UserRepository
                 $stmt->bindValue(':isadmin', $isadmin,PDO::PARAM_BOOL);
 
             $res = $stmt->execute();
+        }
+    }
+
+    public function becomeAdmin(int $iduser)
+    {
+        /** @var User $user */
+        $user = $this->findOneById($iduser);
+        if($user)
+        {
+            $this->update($user->getId(),$user->getUsername(),$user->getSurname(),
+                $user->getName(),$user->getMail(),$user->getPassword(),true);
         }
     }
 }

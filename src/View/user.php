@@ -62,9 +62,10 @@ $authenticatorService = new AuthenticatorService($userRepository);
         <div class="form-row">
             <label class="label-lenght-fix" for="admin">Admin : <em>*</em></label>
             <input type="checkbox"
-                   value="<?php echo $user?$user->getIsadmin():'' ?>"
+                   checked
                    id="admin"
-                   name="admin"><br>
+                   name="admin"
+                   value="admin"><br>
         </div>
         <?php endif;?>
         <div class="form-row">
