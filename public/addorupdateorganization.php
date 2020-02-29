@@ -4,8 +4,8 @@ use Db\Connection;
 use Organization\OrganizationHydrator;
 use Organization\OrganizationRepository;
 
-if(!isset($_SESSION["user_id"]))
-    header('Location: index.php');
+//if(!isset($_SESSION["user_id"]))
+//    header('Location: index.php');
 
 require_once '../src/Bootstrap.php';
 include_once '../src/View/template.php';
@@ -13,8 +13,8 @@ include_once '../src/View/template.php';
 $ograrepository =
     new OrganizationRepository(Connection::get(), new OrganizationHydrator());
 
-$id =  !empty($_POST['id']) ? $_POST['id'] : null;
-$name =  !empty($_POST['name']) ? $_POST['name'] : null;
+$id =  !empty($_GET['id']) ? $_GET['id'] : null;
+$name =  !empty($_GET['name']) ? $_GET['name'] : null;
 
 
 $viewData = [];
@@ -28,10 +28,9 @@ function checkFormData(OrganizationRepository $organizationRepository, $id, $nam
         return $errorMessage;
     }
     if($id) {
-        $organization = $organizationRepository->findOneById($id);
         $orga = $organizationRepository->findOneByName($name);
         if($orga){
-            if($organization->getId()!==$orga->getId()){
+            if($id!=$orga->getId()){
                 $errorMessage['nameAlreadyExist'] = "The name you tried to update already exists";
             }
         }
@@ -57,7 +56,7 @@ if (empty($viewData)) {
         } else {
             $ograrepository->insert($name, new DateTimeImmutable("now"));
         }
-        header("location:" . $_SERVER['HTTP_REFERER']);
 }
-loadView('organization', $viewData);
+
+echo json_encode($viewData);
 

@@ -10,21 +10,21 @@ $organizations = $orgarepository->fetchAll();
 
 $hide = true;
 
-if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
-    $hide = false;
-
 ?>
 
 <div class="container-fluid">
     <div align="center" class="row">
         <div class="col">
             <label for="choix_organisations">Liste des organisations : </label>
-            <select id="select-organizations">
+            <select id="select-organizations" onchange="showformSelect()">
                 <option></option>
                 <?php /** @var Organization $organization */
                 foreach ($organizations as $organization) { ?>
-                    <option value="<?php echo $organization->getName() ?>" data-value=<?php echo $organization->getId() ?>><?php echo $organization->getName() ?></option>
-                    <?php } ?>
+                    <option
+                            data-name="<?php echo $organization->getName() ?>"
+                            data-id=<?php echo $organization->getId() ?>
+                    ><?php echo $organization->getName() ?></option>
+                <?php } ?>
             </select>
         </div>
         <div class="col">
@@ -32,7 +32,7 @@ if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
         </div>
     </div>
     <div class="row">
-        <form class="formulaire" id="formulaire" action="addorupdateorganization.php" method="post" style="display: <?php echo $hide?'none':'block'?>">
+        <div class="formulaire" id="formulaire" style="display: <?php echo $hide?'none':'block'?>">
             <input type="hidden" value="" name="id" id="id">
             <div class="container-fluid">
                 <div class="form-row" align="center">
@@ -45,23 +45,19 @@ if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
                            name="name"
                            id="name"
                            required="">
-                    <span class="error" aria-live="polite" id="errorname"></span>
                 </div>
                 <div class="form-row">
-                    <?php if (isset($data['nameAlreadyExist'])): ?>
-                        <span class="error-message" ><?= $data['nameAlreadyExist'] ?></span>
-                    <?php endif; ?>
+                    <span id="nameAlreadyExist" ></span>
                 </div>
                 <div class="form-row">
-                    <?php if (isset($data['nameEmpty'])): ?>
-                        <span class="error-message"><?= $data['nameEmpty'] ?></span>
-                    <?php endif; ?>
+                    <span id="nameEmpty" ></span>
                 </div>
                 <div class="form-row">
-                    <button>Envoyer</button>
+                    <button type="submit"
+                            onclick="addUpdateOrganization()" >Envoyer</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
@@ -69,42 +65,69 @@ if (isset($data['nameAlreadyExist']) || isset($data['nameEmpty']))
 
 
 <script>
-    function verif() {
-        var valide = true;
-        var name = document.getElementById('name');
-
-        if (name.value==='') {
-            document.getElementById('errorname').innerHTML = "Le nom n'est pas renseigné !";
-            valide &= false;
-        }
-        else{
-            document.getElementById('errorname').innerHTML = ""; // On réinitialise le contenu
-        }
-        return valide==1;
-    }
 
     function showform() {
-        document.getElementById('name').value = "";
-        document.getElementById('id').value = "";
-        document.getElementById('formulaire').style.display = "block";
-    };
+        $('#name').val('');
+        $('#id').val('');
+        $('#formulaire').css('display','block');
+    }
 
-    var select = document.getElementById('select-organizations');
-    select.addEventListener('change', function () {
-        var index = select.selectedIndex
-        if (index<1)
-        {
-            document.getElementById('id').value = '';
-            document.getElementById('name').value = '';
-            document.getElementById('formulaire').style.display = "none";
+    function showformSelect(){
+        var select = $("#select-organizations");
+        var index = select.prop('selectedIndex');
+        var id = '';
+        var name = '';
+        var display = 'none';
+        if(index>0){
+            id = select.find(':selected').attr('data-id');
+            name = select.find(':selected').attr('data-name');
+            display = 'block';
         }
-        else {
-            document.getElementById('id').value = select.options[index].attributes["data-value"].value;
-            document.getElementById('name').value = this.value;
-            document.getElementById('formulaire').style.display = "block";
-        }
-    })
+        $('#name').val(name);
+        $('#id').val(id);
+        $('#formulaire').css('display',display);
 
+    }
+
+
+    document.getElementById("name").addEventListener('keyup', function (event) {
+        document.getElementById('nameEmpty').innerHTML = "";
+        document.getElementById('nameAlreadyExist').innerHTML = "";
+    });
+
+    function addUpdateOrganization() {
+        var id = $('#id').val();
+        var name = $('#name').val();
+        $.get(
+            {
+                url:'addorupdateorganization.php',
+                data:{
+                    id:id,
+                    name:name
+                },
+                dataType:'json',
+                success:function (json) {
+                    if(Object.keys(json).length===0){
+                        $.get(
+                            {
+                                url: 'select_organization.php',
+                                datatype:'html',
+                                success:function (html) {
+                                    $('#select-organizations').replaceWith(html);
+                                    $('#name').val("");
+                                }
+                            }
+                        )
+                    }
+                    else {
+                        for(var key in json) {
+                            $('#' + key).html(json[key])
+                        }
+                    }
+                }
+            }
+        )
+    }
 
 
 </script>
