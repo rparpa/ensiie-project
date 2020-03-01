@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const OffreWebService = require('./src/Model/Controller/OffreWebService');  
 var fs = require('fs');
 
 module.exports = http.createServer((req, res) => {
@@ -26,7 +27,7 @@ module.exports = http.createServer((req, res) => {
             res.end(data, 'utf-8');
         });
     }
-    else if(pathname == "/offre") {
+    else if(pathname == "/offre" && req.method === 'GET') {
         fs.readFile('./public/offre.html',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/html'});
             res.end(data, 'utf-8');
@@ -73,6 +74,11 @@ module.exports = http.createServer((req, res) => {
             res.writeHead(200, {'Content-Type': 'text/css'});
             res.end(data, 'utf-8');
         });
+    }
+    else if(pathname == "/offre/request") {
+        if(req.method == 'POST') {
+            OffreWebService.create(req, res);
+        }
     }
 
     // GET Endpoint
