@@ -4,9 +4,10 @@
     placeholder="Où allez-vous ?"
     @change="val => {
       this.address.data = val;
-      handleOnChange(this.address.data)
+      handleOnChange()
     }"
-    :options="{ country: ['FR'], language: 'fr' }">
+    :options="{ countries: ['fr'], language: 'fr' }"
+  >
   </places>
 
 </template>
@@ -31,8 +32,8 @@
       Places
     },
     methods: {
-      handleOnChange(address) {
-        if(address.latlng !== undefined) {
+      handleOnChange() {
+        if(this.address.data.latlng !== undefined) {
           EventBus.$emit('addressFilled', this.address.data);
         } else {
           this.handleOnClear()
