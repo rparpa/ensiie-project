@@ -3,49 +3,43 @@ namespace Car;
 use PDO;
 
 class CarView {
-    public function __construct() {
-    }
-    
-    public function afficheVoituresIndex($voitures) {
-      $i = 0;
-      foreach($voitures as $voiture) {
-        if($i % 3 == 0) {
-          ?><div id="three-column" class="container"><?php
-        }?>
-        <div class="tbox<?php echo $i+1; ?>">
-          <div class="box-style box-style0<?php echo $i+1; ?>">
-            <div class="content">
-              <div class="image"><img src="<?php echo $voiture->getImage(); ?>" width="324" height="200" alt="" /></div>
-              <h2><?php echo $voiture->getMarque() . " " . $voiture->getModele(); ?></h2>
-              <p><?php echo $voiture->getFinition() . " " . $voiture->getPuissance() . "ch"; ?></p>
-              <a href="index.php?action=showCar&car_id=<?php echo $voiture->getId();?>" class="button">A partir de <?php echo $voiture->getPrix() . " €"; ?></a>
-            </div>
+  public function __construct() {
+  }
+
+  public function afficheVoituresIndex($voitures) {
+    $i = 0;
+    foreach($voitures as $voiture) {
+      if($i % 3 == 0) {
+        ?><div id="three-column" class="container"><?php
+      }?>
+      <div class="tbox<?php echo $i+1; ?>">
+        <div class="box-style box-style0<?php echo $i+1; ?>">
+          <div class="content">
+            <div class="image"><a href="#"><img src="<?php echo $voiture->getImage(); ?>" width="324" height="200" alt="" /></a></div>
+            <h2><?php echo $voiture->getMarque() . " " . $voiture->getModele(); ?></h2>
+            <p><?php echo $voiture->getFinition() . " " . $voiture->getPuissance() . "ch"; ?></p>
+            <a href="index.php?action=showCar&car_id=<?php echo $voiture->getId();?>" class="button">A partir de <?php echo $voiture->getPrix() . " €"; ?></a>
           </div>
         </div>
-        <?php
-        $i++;
-        if($i % 3 == 0) {
-          ?></div><?php
-        }
+      </div>
+      <?php
+      $i++;
+      if($i % 3 == 0) {
+        ?></div><?php
       }
     }
+  }
 
-    public function afficheVoitures($voitures) {
-      foreach($voitures as $voiture) {
+  public function afficheVoitures($voitures) {
+    foreach($voitures as $voiture) {
       ?>
-       <div class="fadeIn first title">
+      <div class="fadeIn first title">
         <div class="card">
           <div class="row">
             <aside class="col-sm-5 border-right">
               <article class="gallery-wrap"> 
                 <div class="img-big-wrap">
-                  <div> <a href="#"><img src="<?php echo $voiture->getImage(); ?>" style="width: 100%;"></a></div>
-                </div>
-                <div class="img-small-wrap">
-                  <div class="item-gallery"> <img src=""> </div>
-                  <div class="item-gallery"> <img src=""> </div>
-                  <div class="item-gallery"> <img src=""> </div>
-                  <div class="item-gallery"> <img src=""> </div>
+                  <div><a href="#"><img id="car-img" src="<?php echo $voiture->getImage(); ?>" style="width: 100%;"></a></div>
                 </div>
               </article>
             </aside>
@@ -92,7 +86,7 @@ class CarView {
         </div>
       </div>
       <?php
-      }
     }
+  }
 }
 ?>

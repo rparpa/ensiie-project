@@ -2,32 +2,35 @@
 
 require_once '../src/Bootstrap.php';
 session_start();
+ob_start();
 ?>
 
 <html>
 <head>
   <link rel="stylesheet" href="style.css" type="text/css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="index.php">
       <img src="https://img.icons8.com/android/24/000000/kitchen.png" width="30" height="30" class="d-inline-block align-top" alt="">
       Cook Rental
-    </a>
-    <form class="form-inline my-2 my-lg-0">
+  </a>
+  <form class="form-inline my-2 my-lg-0">
     <?php if(!isset($_SESSION["name_firstname"])) { ?>
       <a class="btn btn-outline-primary" id="btn_header" href='index.php?action=connect'>Se connecter</a>
       <a class="btn btn-outline-primary" href='index.php?action=register'>S'inscrire</a>
-    <?php } else {?>
-        Bienvenue, <?php echo $_SESSION["name_firstname"]; ?>.
-        <?php if($_SESSION["role"] == 1) {?>
-            <a href="index.php?action=admin">Panel admin</a> | 
-        <?php } ?>
-         <a href="index.php?action=logout"> Se déconnecter</a>
+  <?php } else {?>
+    Bienvenue, <?php echo $_SESSION["name_firstname"]; ?>.
+    <?php if($_SESSION["role"] == 1) {?>
+        <a href="index.php?action=admin">Panel admin</a> | 
     <?php } ?>
-    </form>
-  </nav>
+    <a href="index.php?action=logout">Se déconnecter</a>
+<?php } ?>
+</form>
+</nav>
 
 <div id="wrapper">
     <?php
@@ -52,6 +55,13 @@ session_start();
             } else {
                 $controller->afficheFormulaireInscription();
             }
+        } else if ($_GET['action'] == 'reset') {
+            $controller = new \User\UserController(\Db\Connection::get());
+            if(isset($_POST["email"])) {
+                $controller->reset($_POST);
+            } else {
+                $controller->afficheFormulaireReset();
+            }
         } else if ($_GET['action'] == 'showCar') {
             if(isset($_GET['car_id'])) {
                 $controller = new \Car\CarController(\Db\Connection::get());
@@ -64,49 +74,50 @@ session_start();
     } else {
         ?><link href="style.css" rel="stylesheet" type="text/css" media="screen" />
         <div id="logo" class="container">
-		<h1><a href="#">CookRental</a></h1>
-		<p>You are cooked and looking for a car quickly, we are the solution.</p>
-	</div>
-	<div id="page" class="container">
-		<div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <dl class="param param-feature">
+          <h1><a href="#">CookRental</a></h1>
+          <p>You are cooked and looking for a car quickly, we are the solution.</p>
+      </div>
+      <div id="page" class="container">
+          <div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dl class="param param-feature">
                         <dt>Début de location</dt>
                         <input type="date" name="datedeb" placeholder="Début de location">
-                        </dl>
-                    </div>
-                    <div class="col-lg-4">
-                        <dl class="param param-feature">
+                    </dl>
+                </div>
+                <div class="col-lg-4">
+                    <dl class="param param-feature">
                         <dt>Fin de location</dt>
                         <input type="date" name="datefin" placeholder="Fin de location">
-                        </dl>
-                    </div>
-                    <div class="col-lg-4">
-                        <dl class="param param-feature">
+                    </dl>
+                </div>
+                <div class="col-lg-4">
+                    <dl class="param param-feature">
                         <dt>Marque, modèle ...</dt>
                         <input type="text" name="voiture" placeholder="Marque, modele, ...">
-                        </dl>
-                    </div>
-                    <div class="col-lg-4">
-                        <dl class="param param-feature">
+                    </dl>
+                </div>
+                <div class="col-lg-4">
+                    <dl class="param param-feature">
                         <dt>Budget</dt>
                         <input type="text" name="budget" placeholder="Budget">
-                        </dl>
-                    </div>
-                    <div class="col-lg-8">
-                        <a style="color:white;" type="button" class="btn btn-danger">Trouver la voiture de mes rêves</a>
-                    </div>
+                    </dl>
                 </div>
-			<div class="entry">
-				<p>Below is our list of cars available for hire.<br>
-					You will find all the details by clicking on "More details".</p>
-			</div>
-		</div>
-	</div><?php
+                <div class="col-lg-8">
+                    <a style="color:white;" type="button" class="btn btn-danger">Trouver la voiture de mes rêves</a>
+                </div>
+            </div>
+            <div class="entry">
+                <p>Below is our list of cars available for hire.<br>
+                You will find all the details by clicking on "More details".</p>
+            </div>
+        </div>
+        </div><?php
         $carController = new \Car\CarController(\Db\Connection::get());
         $carController->afficheVoituresIndex();
     }
+    ob_end_flush();
     ?>
 </div>
 </body>

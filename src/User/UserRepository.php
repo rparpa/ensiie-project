@@ -64,12 +64,13 @@ class UserRepository
 		$statement = $this->connection->prepare("INSERT INTO \"user\" (firstname,lastname,email,password,birthday,role) values(:firstname,:lastname,:email,:password,:birthday,:role)");	
 
 		$statement->bindParam(":firstname",$post["firstname"]);
-		$statement->bindParam(":lastname",$post["lastname"]);
+		$statement->bindParam(":lastname",$post["name"]);
 		$statement->bindParam(":email",$post["email"]);
 		$statement->bindParam(":birthday",$post["birthday"]);
 		$mdp = password_hash($post["password"],PASSWORD_DEFAULT);
         $statement->bindParam(":password",$mdp);
-        $statement->bindParam(":role",0);
+        $role = 0;
+        $statement->bindParam(":role", $role);
 
 		// manque des verifications not null dans le schema sql
 		// modifier varchar mdp en 256

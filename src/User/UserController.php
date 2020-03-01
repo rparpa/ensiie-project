@@ -15,7 +15,7 @@ class UserController {
 		try {
 			$this->userView->afficheFormulaireInscription();
 		} catch(Exception $e) {
-			//$this->connexionView->vue_erreur($e->getMessage());
+			$this->userView->vueErreur($e->getMessage());
 		}
 	}
 
@@ -23,7 +23,7 @@ class UserController {
 		try {
 			$this->userView->afficheFormulaireConnexion();
 		} catch(Exception $e) {
-			//$this->connexionView->vue_erreur($e->getMessage());
+			$this->userView->vueErreur($e->getMessage());
 		}
 	}
 
@@ -34,32 +34,29 @@ class UserController {
 	public function identification($post) {
 		try {
 			if(($rep=$this->userRepository->identification($post))!=false) {
-				?>Bien connecté !<?php
-				//$this->connexionView->vue_confirm("Vous vous êtes connecté!");
-				//header("Refresh:2; url=index.php");
+				$this->userView->vueConfirm("Vous êtes désormais connecté.");
+				header("Refresh:0; url=index.php");
 			} else {
 				?>Vérifiez vos credentials ...<?php
-				//$this->connexionView->vue_erreur("Mauvais mail ou mot de passe!");
-				//header("Refresh:2; url=index.php?module=connexion");
+				$this->userView->vueErreur("Erreur dans le formulaire.");
+				header("Refresh:0; url=index.php?action=connect");
 			}
 		} catch(Exception $e) {
-			//$this->connexionView->vue_erreur($e->getMessage());
+			$this->userView->vueErreur($e->getMessage());
 		}
 	}
 
 	public function enregistrement($post) {
 		try {
 			if(($rep=$this->userRepository->enregistrement($post))!==false) {
-				?>INSCRIT !<?php
-				//$this->connexionView->vue_confirm("Vous vous êtes connecté!");
-				//header("Refresh:2; url=index.php");
+				$this->userView->vueConfirm("Vous êtes désormais inscrit.");
+				header("Refresh:0; url=index.php");
 			} else {
-				?>Problème inscription<?php
-				//$this->connexionView->vue_erreur("Mauvais mail ou mot de passe!");
-				//header("Refresh:2; url=index.php?module=connexion");
+				$this->userView->vueErreur("Erreur dans le formulaire.");
+				header("Refresh:0; url=index.php?action=register");
 			}
 		} catch(Exception $e) {
-			//$this->connexionView->vue_erreur($e->getMessage());
+			$this->userView->vueErreur($e->getMessage());
 		}
 	}
 
@@ -67,12 +64,29 @@ class UserController {
 		if(isset($_SESSION["id_user"])) {
 			try {
 				$this->userRepository->deconnexion();
-				//$this->connexionView->vue_confirm("Vous vous êtes correctement déconnecté");
-				header("Refresh:2; url=index.php");
+				$this->userView->vueConfirm("Vous êtes désormais déconnecté.");
+				header("Refresh:0; url=index.php");
 
 			} catch(Exception $e) {
-				//$this->connexionView->vue_erreur("La déconnexion a échoué");
+				$this->userView->vueErreur("La déconnexion a échoué");
 			}
+		}
+	}
+
+	public function afficheFormulaireReset() {
+		try {
+			$this->userView->afficheFormulaireReset();
+		} catch(Exception $e) {
+			$this->userView->vueErreur($e->getMessage());
+		}
+	}
+
+	public function reset($email) {
+		try {
+			$this->userView->vueConfirm("Un email de réinitialisation a été envoyé.");
+			header("Refresh:0; url=index.php");
+		} catch(Exception $e) {
+			$this->userView->vueErreur($e->getMessage());
 		}
 	}
 }
