@@ -40,6 +40,17 @@ class Annonce_model extends CI_Model
 		  return $this->db->get_where('annonce',array('id_annonce' => $idAnnonce))->result_array();
   }
 
+  	/**
+	* Fonction permettant de récuperer les annonces d'un utilisateur
+	* 
+	* @param $id_user Id de l'utilisateur
+	* @return
+	* annonces de l'utilisateur sous forme d'un array
+	*/
+	public function getUserAnnonce($id_user){
+		return $this->db->get_where('annonce',array('id_user' => $id_user))->result_array();
+	}
+
   public function getFilteredAnnonce($min, $max){
 		$this->db->select('*');
 		$this->db->from("annonce");

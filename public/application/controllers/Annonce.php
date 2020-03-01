@@ -21,8 +21,7 @@ class Annonce extends CI_Controller {
 		}
 	}
 
-	function index()
-	{
+	function index(){
 		$this->liste_annonces();
 	}
 
@@ -34,7 +33,21 @@ class Annonce extends CI_Controller {
 
 		$this->load->view('elements/header',$this->data);
 		$this->load->view('annonces_view', $this->data);
-		//$this->load->view('ajout_annonce_view');
+		$this->load->view('elements/footer');
+	}
+
+	/**
+	 * Fonction permettant d'afficher les annonces de l'utilisateur connecté
+	 */
+	public function mes_annonces(){
+
+		$min = $this->annonce->minPrice();
+		$max = $this->annonce->maxPrice();
+		$this->data += array('min'=>$min, 'max'=>$max);
+		$mes_annonces=$this->annonce->getUserAnnonce($this->data['id_user']);
+		$this->data+=array('mes_annonces'=>$mes_annonces);
+		$this->load->view('elements/header',$this->data);
+		$this->load->view('mes_annonces_view',$this->data);
 		$this->load->view('elements/footer');
 	}
 
