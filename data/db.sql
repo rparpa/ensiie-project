@@ -184,16 +184,16 @@ ALTER TABLE task
 
 
 INSERT INTO "user"(username, surname, name, mail, password, creationdate )
-VALUES ('JD', 'John', 'Doe', 'j.d@hl.com', 'JD', '1967-11-22');
+VALUES ('JD', 'John', 'Doe', 'j.d@hl.com', '$2y$10$xLe4r1.aD5SY2nVfErx4BeI.BKrdXn.AYFvr2hqNqKa3QivJRMpQu', '1967-11-22');
 
 INSERT INTO "user"(username, surname, name, mail, password, creationdate )
-VALUES ('GAT', 'Oli', 'Gat', 'oli@gat.fr', 'GA', '1967-11-22');
+VALUES ('GAT', 'Oli', 'Gat', 'oli@gat.fr', '$2y$10$OFNUtx4KmC4nigEgTCObXeIwp/HMzH9uvwZyeiy9cP8dPLWdv5.Ou', '1967-11-22');
 
 INSERT INTO "user"(username, surname, name, mail, password, creationdate )
-VALUES ('Erl', 'Danel', 'Pierre', 'erl@erl.erl', 'erl', '1987-11-22');
+VALUES ('Erl', 'Danel', 'Pierre', 'erl@erl.erl', '$2y$10$7phoabKhqhxdn/dMx9hepeaUTPxJtYSammg9romPhpJCzzyOcid8.', '1987-11-22');
 
 INSERT INTO "user"(username, surname, name, mail, password, creationdate )
-VALUES ('admin', 'admin', 'admin', 'admin@admin.admin', 'admin', '1789-07-14');
+VALUES ('admin', 'admin', 'admin', 'admin@admin.admin', '$2y$10$I.QC4gSwJTzTDtweWKW1ae8DLpG7tPJlOryztXdD9fhYZl9opKd02', '1789-07-14');
 
 INSERT INTO organization(name, creationdate)
 VALUES ('Ile Mysterieuse', '2019-12-20');
