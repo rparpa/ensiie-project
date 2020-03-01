@@ -5,17 +5,17 @@
               emitClose()
             }"
             >Close</b-button>
-        </div>        
+        </div>
         <div class="info-card" @change="val => {
           emitOpen()
         }">
-            <p class="adr">Adress : {{ this.adr = this.info._typeVoie.toLowerCase()  + " " + this.info._nomVoie.toLowerCase() + ", arrondissement n°" + this.info._arrond +" de Paris" | capitalize }}</p> 
-            <div> Status : 
-                <b-badge v-if="info._statut != '' || null || undefined" class="statut" variant="success">Disponible</b-badge>        
-                <b-badge v-else class="statut" variant="danger">Indisponible</b-badge>        
+            <p class="adr">Adresse : {{ this.adr = (this.info._typeVoie ? this.info._typeVoie.toLowerCase() : " N/A ") + " " + (this.info._nomVoie ? this.info._nomVoie.toLowerCase() : "N/A") + ", arrondissement n°" + this.info._arrond +" de Paris" | capitalize }}</p>
+            <div> Status :
+                <b-badge v-if="info._statut != '' || null || undefined" class="statut" variant="success">Disponible</b-badge>
+                <b-badge v-else class="statut" variant="danger">Indisponible</b-badge>
             </div>
             <p class="tarif">Tarif : {{info._tarif}} </p>
-        </div>        
+        </div>
     </div>
 </template>
 
@@ -32,7 +32,7 @@
     }
 
     .marker-info-layout{
-        display: flex;        
+        display: flex;
         flex-direction: column;
         width: 100%;
     }
