@@ -6,7 +6,7 @@
  * Date: 26/02/20
  * Time: 22:47
  */
-
+include_once (dirname(__FILE__) . "/Utilisateur.php");
 
 class Authentification extends CI_Controller
 {

@@ -7,6 +7,9 @@ class Utilisateur extends CI_Controller
      * Lists all Utilisateur models.
      * @return mixed
      */
+    function __construct() {
+        parent::__construct();
+    }
 
     public function index()
 	{
@@ -64,5 +67,20 @@ class Utilisateur extends CI_Controller
     public function login($data)
     {
         
+    }
+    public function profil()
+    {
+        if(isset($this->session->userdata['logged_in']))
+        {
+            $annonce=$infos=$this->annonce->getAnnonceByUser($this->session->userdata('logged_in')['id']);
+            $infos=$this->utilisateur->getUser($this->session->userdata('logged_in')['id']);
+            $promo=$infos[0]['promo'];
+            $telephone=$infos[0]['telephone'];
+            $pseudo=$infos[0]['pseudo'];
+            $data = ["nbAnnonces" => $this->annonce->totalAnnonces(),"promo"=>$promo,"pseudo"=>$pseudo,"telephone"=>$telephone,"annonces"=>$annonce];
+            $this->load->view('elements/header');
+            $this->load->view('profil',$data);
+            $this->load->view('elements/footer');
+        }
     }
 }
