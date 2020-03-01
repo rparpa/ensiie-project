@@ -56,4 +56,17 @@ describe('Get ParkingSpots', () => {
     expect(res.body[0]).toHaveProperty("_longitude");
   })
 
+  it('should get all parking spots gratuit', async () => {
+    const res = await request(app)
+        .get('/openDataParis/getAllParkingSpotsGratuit')
+    expect(res.statusCode).toEqual(200)
+    expect(res.body).toBeDefined()
+    expect(res.body).toBeInstanceOf(Array);
+    expect(res.body[0]).toHaveProperty("_parkingSpotId");
+    expect(res.body[15]["_parkingSpotId"]).toHaveLength(40);
+    expect(res.body[0]).toHaveProperty("_vehiculeId");
+    expect(res.body[0]).toHaveProperty("_latitude");
+    expect(res.body[0]).toHaveProperty("_longitude");
+  })
+
 });
