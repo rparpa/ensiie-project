@@ -147,6 +147,29 @@ class Annonce extends CI_Controller {
 	 }
 
 	/**
+	 * Fonction permettant de signaler une annonce
+	 *
+	 * @param $id_annonce Id de l'annonce à signaler
+	 */
+	public function signaler_annonce(){
+
+		$id_annonce = $this->uri->segment('3');
+
+		$annonce = $this->annonce->getAnnonce($id_annonce);
+		if ($annonce[0]['nb_signal'] == 3)
+		{
+			$this->annonce->delete($id_annonce);
+			$this->liste_annonces();
+		}
+		else if ($annonce[0]['nb_signal'] > -1 && $annonce[0]['nb_signal'] < 3)
+		{
+			$this->annonce->signaler($id_annonce);
+			$this->liste_annonces();
+		}
+
+	}
+
+	/**
 	 * Fonction permettant d'afficher le détail d'une annonce
 	 * 
 	 * @param $id Id de l'annonce

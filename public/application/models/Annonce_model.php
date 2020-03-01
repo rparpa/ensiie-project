@@ -111,4 +111,17 @@ class Annonce_model extends CI_Model
 	{
 		return $this->db->get_where('annonce',array('id_user' => $id))->result_array();
 	}
+
+
+	/**
+	 * Fonction permettant de signaler une annonce dans la bdd
+	 * en incrémentant l'attribut nb_signal
+	 * @param $id_annonce Id de l'annonce
+	 */
+	public function signaler($id_annonce)
+	{
+		$this->db->where('id_annonce', $id_annonce);
+		$this->db->set('nb_signal', 'nb_signal+1', FALSE);
+		$this->db->update('annonce');
+	}
 }

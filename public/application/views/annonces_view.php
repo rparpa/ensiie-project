@@ -34,6 +34,9 @@
 								echo '</p>';									
 								echo '<div class="d-flex justify-content-between align-items-center">';
 										echo '<div class="btn-group">';
+										?>
+										<button type="button" id="Signaler" name="Signaler" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/signaler_annonce/'.$annonce['id_annonce']); ?>');">Signaler</button>
+										<?php
 										//echo '<button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>';
 										echo '</div>';
 									echo '<p class="h6">'.$annonce["prix"].'€</p>';
