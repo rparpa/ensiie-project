@@ -11,71 +11,82 @@ $userrepository =
     new UserRepository(Connection::get(), new UserHydrator());
 
 ?>
-    <div class="mx-auto">
-        <div align="center" class="row">
-            <div class="col">
-                <label for="select-user-add">Selectionner un utilisateur</label>
-                <select id="select-user-add" onchange="LoadFormualire()">
-                    <option></option>
-                    <?
-                    $usersnotinorg = $userrepository->fetchByOrganizationNotInOrga();
+<div class="mx-auto">
+    <div align="center" class="row">
+        <div class="col">
+            <label for="select-user-add">Selectionner un utilisateur</label>
+            <select id="select-user-add" onchange="LoadFormualire()">
+                <option></option>
+                <?
+                $usersnotinorg = $userrepository->fetchByOrganizationNotInOrga();
 
-                    foreach ($usersnotinorg as $usernotinorg) {
-                        /** @var User $user */
-                        $user = ((Object)$usernotinorg)->user;
-                        ?>
-                        <option
-                                data-id="<? echo $user->getId();?>"
-                                data-surname="<? echo $user->getSurname(); ?>"
-                                data-name="<? echo $user->getName()?>"
-                                ><? echo $user->getSurname() . ' ' . $user->getName()?>
-                        </option>
-                    <? } ?>
-                </select>
-            </div>
-            <div class="col">
-                <button onclick="DisplayAndloadFormUser()">Ajouter <br/>un utilisateur</button>
-            </div>
+                foreach ($usersnotinorg as $usernotinorg) {
+                    /** @var User $user */
+                    $user = ((Object)$usernotinorg)->user;
+                    ?>
+                    <option
+                            data-id="<? echo $user->getId();?>"
+                            data-surname="<? echo $user->getSurname(); ?>"
+                            data-name="<? echo $user->getName()?>"
+                    ><? echo $user->getSurname() . ' ' . $user->getName()?>
+                    </option>
+                <? } ?>
+            </select>
         </div>
-        <div class="row">
-            <div class="col align-self-center" id="form-update-to-admin" style="display: none">
-                <div class="formulaire">
-                    <input id="id-user-admin" type="hidden" >
-                    <div style="display: table-row">
-                        <label class="label-lenght-fix" for="name-user-admin">Name :</label>
-                        <input id="name-user-admin" readonly>
-                    </div>
-                    <div style="display: table-row">
-                        <label class="label-lenght-fix" for="surname-user-admin">Prénom :</label>
-                        <input id="surname-user-admin" readonly>
-                    </div>
-                    <div>
-                        <button onclick="BecomeAdmin()">Devient Admin</button>
-                    </div>
+        <div class="col">
+            <button onclick="DisplayAndloadFormUser()">Ajouter <br/>un utilisateur</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col align-self-center" id="form-update-to-admin" style="display: none">
+            <div class="formulaire">
+                <input id="id-user-admin" type="hidden" >
+                <div style="display: table-row">
+                    <label class="label-lenght-fix" for="name-user-admin">Name :</label>
+                    <input id="name-user-admin" readonly>
+                </div>
+                <div style="display: table-row">
+                    <label class="label-lenght-fix" for="surname-user-admin">Prénom :</label>
+                    <input id="surname-user-admin" readonly>
+                </div>
+                <div>
+                    <button onclick="BecomeAdmin()">Devient Admin</button>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col align-self-center" id="form-add-admin" style="display: none">
-                <?php
-                include_once 'user.php';
-                ?>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col align-self-center" id="form-add-admin" style="display: none">
+            <?php
+            include_once 'user.php';
+            ?>
         </div>
     </div>
+</div>
 
 
 
 <script>
     function BecomeAdmin() {
         var id = $("#id-user-admin").val();
-        $.get({
-            url:'becomeadmin.php',
-            data:{
-                id:id
+        $.get(
+            {
+                url:'becomeadmin.php',
+                data:{
+                    id:id
+                },
+                success:function () {
+                    $.get({
+                            url:'select_usersnotinorgaAdmin.php',
+                            dataType:'html',
+                            success:function (html) {
+                                $('#select-user-add').replaceWith(html);
+                            }
+                        }
+                    )
+                }
             }
-            //TODO Ajouter le refresh de la liste select-user-add
-        })
+        )
 
     }
 
