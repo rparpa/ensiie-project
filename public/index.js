@@ -28,4 +28,9 @@ $(document).ready(function(){
         }
     });
 
+    /*Payment*/
+
+    $('.f-modal-alert').hide();
+    $('.f-modal-alert').fadeIn();
+
 });

@@ -204,6 +204,24 @@
                             <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
                         </article>
 
+
+                        <!-- Pay -->
+                        <article id="pay">
+                            <h2 class="major">Validation</h2>
+
+                            <div class="f-modal-alert">
+                                <div class="f-modal-icon f-modal-success animate">
+                                    <span class="f-modal-line f-modal-tip animateSuccessTip"></span>
+                                    <span class="f-modal-line f-modal-long animateSuccessLong"></span>
+                                    <div class="f-modal-placeholder"></div>
+                                    <div class="f-modal-fix"></div>
+                                </div>
+                            </div>
+
+                            <p class="align-center"> Merci pour votre commande<br>Votre commande vous attendra au foyer.</p>
+                            <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
+                        </article>
+
 						<!-- Elements -->
 							<article id="elements">
 								<h2 class="major">Elements</h2>
