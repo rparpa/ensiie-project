@@ -137,6 +137,73 @@
 								</ul>
 							</article>
 
+
+                        <!-- Recap -->
+                        <article id="recap">
+                            <h2 class="major">Validation</h2>
+                            <form method="post" action="#">
+                                <div class="table-wrapper">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Sandwich</th>
+                                            <th>Extra</th>
+                                            <th>Prix</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tabvalidation">
+                                        <tr>
+                                            <td>
+                                                <div class="sandwich">Le Kozak
+                                                    <div id="tooltip">- Janbon<br>- Fromage<br>- Cornichon</div>
+                                                </div>
+                                            </td>
+                                            <td>Comté</td>
+                                            <td>3.52 €</td>
+                                            <td class="min"><i class="fas fa-times"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="sandwich">Le Traitre
+                                                    <div id="tooltip">- Thon<br>- Mayonnaise<br>- Olives</div>
+                                                </div>
+                                            </td>
+                                            <td>Pas d'extra</td>
+                                            <td>4.83 €</td>
+                                            <td class="min"><i class="fas fa-times"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Le Sauerkraut</td>
+                                            <td>Pas d'extra</td>
+                                            <td>3.12 €</td>
+                                            <td class="min"><i class="fas fa-times"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Le Sarrasin</td>
+                                            <td>Mozzarella di Bufala</td>
+                                            <td>2.42 €</td>
+                                            <td class="min"><i class="fas fa-times"></i></td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <td colspan="2">
+                                                <a id="add" href="#commander" class="fas fa-plus"></a>
+                                            </td>
+                                            <td>13,89 €</td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="validation">
+                                        <a href="#" class="button primary">Payer</a>
+
+                                </div>
+                            </form>
+                            <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
+                        </article>
+
 						<!-- Elements -->
 							<article id="elements">
 								<h2 class="major">Elements</h2>

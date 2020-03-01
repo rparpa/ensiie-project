@@ -991,6 +991,18 @@ input, select, textarea {
 				border-top: 0;
 			}
 
+			table td.min {
+				width: 1%;
+				white-space: nowrap;
+				padding-left: 0px;
+			}
+
+			a#add:hover, a#add:visited, a#add:link, a#add:active {
+				text-decoration: underline;
+				text-decoration-line:  none;
+				border-bottom-color: transparent;
+			}
+
 /* Button */
 
 		.number{
@@ -1018,6 +1030,9 @@ input, select, textarea {
       vertical-align: middle;
 		}
 
+	.validation {
+		text-align: center !important
+	}
 
 	input[type="submit"],
 	input[type="reset"],
@@ -1321,10 +1336,6 @@ input, select, textarea {
 
 			#header .logo img {
 				padding-top: 20%;
-<<<<<<< HEAD
-=======
-				
->>>>>>> front
 			}
 
 		#header .content {
@@ -1648,6 +1659,19 @@ input, select, textarea {
 
 		}
 
+/* PopOver */
+
+
+	#tooltip {
+		color: white;
+		padding: 5px 10px;
+		border-radius: 4px;
+		font-size: 13px;
+	}
+
+
+
+
 /* Footer */
 
 	#footer {
@@ -1683,4 +1707,9 @@ input, select, textarea {
 
 		body.is-preload #footer {
 			opacity: 0;
+		}
+
+		#disclaimer {
+			font-size: 0.7rem;
+			opacity: 0.75;
 		}
