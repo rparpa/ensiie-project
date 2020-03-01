@@ -165,19 +165,8 @@ class Annonce extends CI_Controller {
 	public function signaler_annonce(){
 
 		$id_annonce = $this->uri->segment('3');
-
-		$annonce = $this->annonce->getAnnonce($id_annonce);
-		if ($annonce[0]['nb_signal'] == 3)
-		{
-			$this->annonce->delete($id_annonce);
-			$this->liste_annonces();
-		}
-		else if ($annonce[0]['nb_signal'] > -1 && $annonce[0]['nb_signal'] < 3)
-		{
-			$this->annonce->signaler($id_annonce);
-			$this->liste_annonces();
-		}
-
+		$this->annonce->signaler($id_annonce);
+		$this->liste_annonces();
 	}
 
 	/**
@@ -186,8 +175,11 @@ class Annonce extends CI_Controller {
 	 * @param $id_annonce Id de l'annonce à supprimer
 	 */
 	public function supprimer_annonce($id_annonce){
+		/*$this->annonce->deleteAnnonce($id_annonce);
+		redirect('Annonce/mes_annonces');*/
+		$id_annonce = $this->uri->segment('3');
 		$this->annonce->deleteAnnonce($id_annonce);
-		redirect('Annonce/mes_annonces');
+		$this->liste_annonces();
 	}
 	/**
 	 * Fonction permettant d'afficher le détail d'une annonce

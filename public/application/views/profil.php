@@ -154,7 +154,7 @@
                                             foreach($annonces as $annonce)
                                             {
                                                 echo "<li class=\"list-group-item\"> ** [".$annonce['id_annonce']."] ".$annonce['titre']."<br>Prix : ".$annonce["prix"]."€"."</li>";
-                                            }
+										    }
                                         ?>
                                     </ul>
                                 </div>
@@ -163,8 +163,9 @@
 										<?php
 										foreach($annonces_sig as $ann_sig)
 										{
-											echo "<li class=\"list-group-item\"> ** [".$ann_sig['id_annonce']."] ".$ann_sig['titre']."<br>Prix : ".$ann_sig['prix']."€<br>"."Signalée : ".$ann_sig['nb_signal']." fois"."</li>";
-										}
+											echo "<li class=\"list-group-item\"> ** [".$ann_sig['id_annonce']."] ".$ann_sig['titre']."<br>Prix : ".$ann_sig['prix']."€<br>"."Signalée : ".$ann_sig['nb_signal']." fois"."</li>";?>
+											<button type="button" id="Supprimer" name="Supprimer" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/supprimer_annonce/'.$ann_sig['id_annonce']); ?>');">Supprimer</button>
+										<?php }
 										?>
 									</ul>
 								</div>
