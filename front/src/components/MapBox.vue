@@ -3,6 +3,8 @@
       <MglMap
         :accessToken="accessToken"
         :mapStyle.sync="mapStyle"
+        :center="center"
+        :zoom="zoom"
         @load="onMapLoaded"
       >
         <div v-if="listCoordinates">
@@ -47,8 +49,8 @@ export default {
       mapStyle: "mapbox://styles/mapbox/light-v10",
       listCoordinates: [],
       apiAdr : "http://localhost:3000/openDataParis/getAllParkingSpots",
-      center: [48.864716, 2.349014],
-      zoom: 12
+      center: [2.349014, 48.864716],
+      zoom: 11
     };
   },
 
@@ -56,13 +58,14 @@ export default {
     //this.mapbox = Mapbox;
 
     EventBus.$on('addressFilled', address => {
-      if(address){
+      if(address.latlng !== undefined){
         //console.log("MapBox: Evenement bien recu!", address);
         this.onAddressFilled(address);
       }
     });
-    EventBus.$on('clear', handleOnClear => {
+    EventBus.$on('addressEmpty', handleOnClear => {
       console.log("Evenement clear recu");
+      this.onEmptyAddress();
     })
   },
 
@@ -99,6 +102,10 @@ export default {
     onAddressFilled(address) {
       let coords = this.getCoordinatesFromAddress(address);
       this.centerMapOn(coords, 17);
+    },
+
+    onEmptyAddress() {
+      this.centerMapOn(this.center, 11);
     },
 
     emitMarkerInfo(markerInfo) {
