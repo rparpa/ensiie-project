@@ -1,6 +1,8 @@
 <html>
 <?php
 if (isset($this->session->userdata['logged_in'])) {
+			print_r($this->session->userdata('logged_in)'));
+
     $nom = ($this->session->userdata['logged_in']['nom']);
     $prenom = ($this->session->userdata['logged_in']['prenom']);
     $email = ($this->session->userdata['logged_in']['email']);
@@ -11,7 +13,6 @@ if (isset($this->session->userdata['logged_in'])) {
 <head>
     <title>Utilisateur Page</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/login.css">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div id="profile">
@@ -25,7 +26,6 @@ if (isset($this->session->userdata['logged_in'])) {
     echo "Your Email is " . $email;
     echo "<br/>";
     ?>
-    <b id="logout"><a href="logout">Déconnexion</a></b>
 </div>
 <br/>
 <h1>PARTIE PROFIL...</h1>

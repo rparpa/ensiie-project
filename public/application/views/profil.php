@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css"/>
+<!--<link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css"/>-->
 <script>
     $(document).ready(function () {
         $imgSrc = $('#imgProfile').attr('src');

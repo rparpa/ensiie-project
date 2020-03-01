@@ -6,6 +6,19 @@ class Annonce extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
+
+		if ($this->session->userdata('logged_in') == null && $this->uri->ruri_string() != 'authentificiation/login') {
+            redirect('authentification/login');
+        } elseif ($this->uri->ruri_string() != 'authentificiation/login') {
+			$this->data+=array('id_user' => $this->session->userdata('logged_in')['id_user']);
+			$this->data+=array('nom_user' => $this->session->userdata('logged_in')['nom']);
+			$this->data+=array('prenom_user' => $this->session->userdata('logged_in')['prenom']);
+			$this->data+=array('email_user' => $this->session->userdata('logged_in')['email']);
+			$this->data+=array('tel_user' => $this->session->userdata('logged_in')['telephone']);
+			$this->data+=array('promo' => $this->session->userdata('logged_in')['promo']);
+			$this->data+=array('nb_signal_user' => $this->session->userdata('logged_in')['nb_signal_user']);
+			$this->data+=array('admin_user' => $this->session->userdata('logged_in')['admin']);
+		}
 	}
 
 	function index()

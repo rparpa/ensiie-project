@@ -75,36 +75,27 @@ class Authentification extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
 
             if(isset($this->session->userdata['logged_in'])){
-
-                $this->load->view('utilisateur_view');
+                redirect('Utilisateur/profil');
             } else {
                 $this->load->view('login_form');
             }
 
-        } else
-        {
+        } else{
             $data = array(
                 'mail' => $this->input->post('email'),
                 'password' => $this->input->post('password')
             );
-            if($this->utilisateur->login($data))
-            {
+            if($this->utilisateur->login($data)){   
                 $mail = $this->input->post('email');
 
-                $result = $this->utilisateur->userByEmail($mail);
-                if ($result != false) {
-                    $session_data = array(
-                        'nom' => $result[0]['nom'],
-                        'prenom' => $result[0]['prenom'],
-                        'email' => $result[0]['email'],
-                        'id' => $result[0]['id_user']
-                    );
+                $user = $this->utilisateur->userByEmail($mail);
+                if ($user != false) {
 
-                    $this->session->set_userdata('logged_in', $session_data);
-                    $this->load->view('utilisateur_view');
+                    unset($user[0]['password']);
+                    $this->session->set_userdata('logged_in', $user[0]);
+                    redirect('Utilisateur/profil');
                 }
-            } else
-            {
+            } else{
                 $data = array('error_message' => 'Nom de compte/mot de passe incorrect');
                 $this->load->view('login_form', $data);
             }
@@ -120,9 +111,4 @@ class Authentification extends CI_Controller
         $data['message_display'] = 'Déconnexion réussie';
         $this->load->view('login_form', $data);
     }
-    public function profil()
-    {
-        $this->load->view('utilisateur_view');
-    }
-
 }
