@@ -6,7 +6,7 @@ class Ingredient
     /**
      * @var int
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @var string
@@ -16,12 +16,12 @@ class Ingredient
     /**
      * @var bool
      */
-    private bool $available;
+    private ?bool $available = true;
 
     /**
      * @var float
      */
-    private float $price;
+    private ?float $price = 0;
 
     /**
      * @return int

@@ -6,7 +6,7 @@ class Sandwich
     /**
      * @var int
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @var string

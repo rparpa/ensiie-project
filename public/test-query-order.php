@@ -4,65 +4,72 @@ require_once '../src/Bootstrap.php';
 
 use Sandwich\Sandwich;
 use Sandwich\SandwichRepository;
-use Ingredient\Ingredient;
 use Ingredient\IngredientRepository;
+use Ingredient\IngredientService;
 use Order\Order;
 use Order\OrderRepository;
+use Order\OrderService;
 
 $my_connection = \Db\Connection::get();
-$orderRepository = new OrderRepository(\Db\Connection::get());
-$sandwichRepository = new SandwichRepository(\Db\Connection::get());
-$ingredientRepository = new IngredientRepository(\Db\Connection::get());
+$orderService = new OrderService(
+                    new OrderRepository($my_connection),
+                    new SandwichRepository($my_connection)
+                );
+$ingredientService = new IngredientService(new IngredientRepository($my_connection));
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $newOrder = new Order();
     
+    $newSandwich = new Sandwich();
+    $newSandwich->setLabel('test');
+    $newSandwichs = [];
+    $newSandwichs[] = $newSandwich;
+
     $newOrder
             ->setApproval(true)
-            ->setDate(new DateTimeImmutable('2020-02-01'));
+            ->setDate(new DateTimeImmutable('2020-02-01'))
+            ->setSandwichs($newSandwichs);
 
     #create example
-    $newOrder = $orderRepository->createOrder($newOrder);
+    $newOrder = $orderService->createOrder($newOrder);
 
     #delete example
-    $orderRepository->deleteOrder($newOrder);
+    $orderService->deleteOrder($newOrder);
 
     #get all example
-    $orders = $orderRepository->getAll();
-    $sandwichs = $sandwichRepository->getAll();
-    $ingredients = $ingredientRepository->fetchAll();
+    $orders = $orderService->getAllOrders();
+    $ingredients = $ingredientService->getAvailableIngredients();
 }
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $ingredients = $ingredientRepository->fetchAll();
-    $newSandwich = new Sandwich();
+    $ingredients = $ingredientService->getAvailableIngredients();
 
     $filterIngredients = [];
     foreach ($ingredients as $ingredient) {
-        
-        if($ingredient->getAvailable() == true) {
-            if(isset($_POST[$ingredient->getLabel()])) {
-                $filterIngredients[] = $ingredient;
-            }
+        if(isset($_POST[$ingredient->getLabel()])) {
+            $filterIngredients[] = $ingredient;
         }
     }
 
+    $newSandwich = new Sandwich();
     $newSandwich
         ->setLabel($_POST["label"])
         ->setIngredients($filterIngredients);
+    $newSandwichs = [];
+    $newSandwichs[] = $newSandwich;
 
-    $newSandwich = $sandwichRepository->createSandwich($newSandwich);
-    
+    $newOrder = new Order();
     $newOrder
             ->setApproval(true)
-            ->setDate(new DateTimeImmutable('2020-02-05'));
-    $orderRepository->createOrder($newOrder);
+            ->setDate(new DateTimeImmutable('2020-02-05'))
+            ->setSandwichs($newSandwichs);
+    
+    $orderService->createOrder($newOrder);
+    $orderService->getTotalPrice($newOrder);
 
-    $orders = $orderRepository->getAll();
-    $sandwichs = $sandwichRepository->getAll();
-    $ingredients = $ingredientRepository->fetchAll();
+    $orders = $orderService->getAllOrders();
 }
 
 ?>
