@@ -1,6 +1,7 @@
 <?php
 namespace Car;
 use PDO;
+use Exception;
 
 class CarController {
 	private CarRepository $carRepository;
@@ -35,5 +36,14 @@ class CarController {
 			//$this->connexionView->vue_erreur($e->getMessage());
 		}
 	}
+
+	public function createLocation($post)
+    {
+        try {
+            $this->locationRepository->create($post);
+        } catch (Exception $e) {
+            //$this->userView->vueErreur($e->getMessage());
+        }
+    }
 }
 ?>

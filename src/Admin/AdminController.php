@@ -1,17 +1,22 @@
 <?php
 namespace Admin;
+
 use PDO;
+use Exception;
+
 require_once '../src/Bootstrap.php';
 
 class AdminController {
 	private \Car\CarRepository $carRepository;
 	private \Car\CarView $carView;
+	private \Location\LocationRepository $locationRepository;
 	private AdminView $adminView;
 	private AdminModel $adminModel;
 
 	public function __construct(PDO $connection) {
 		$this->accessControl();
 		$this->carRepository = new \Car\CarRepository($connection);
+		$this->locationRepository = new \Location\LocationRepository($connection, $this->carRepository);
 		$this->carView = new \Car\CarView();
 		$this->adminView = new AdminView();
 	}
@@ -62,5 +67,14 @@ class AdminController {
 			echo "pasok";
 		}
 	}
+
+	public function deleteLocation($post)
+    {
+        try {
+            $this->locationRepository->delete($post);
+        } catch (Exception $e) {
+            //$this->userView->vueErreur($e->getMessage());
+        }
+    }
 }
 ?>

@@ -3,8 +3,10 @@
 namespace Location;
 
 use Car\CarRepository;
+use Exception;
 use OutOfRangeException;
 use PDO;
+use RangeException;
 
 class LocationRepository
 {
@@ -16,35 +18,42 @@ class LocationRepository
     /**
      * UserRepository constructor.
      * @param PDO $connection
+     * @param CarRepository $carRepository
      */
-    public function __construct(PDO $connection)
+    public function __construct(PDO $connection, CarRepository $carRepository)
     {
         $this->connection = $connection;
+        $this->carRepository = $carRepository;
     }
 
     public function create($post)
     {
         $date_debut = new \DateTimeImmutable($post["date_debut"]);
         $date_fin = new \DateTimeImmutable($post["date_fin"]);
-        $date_diff = $date_debut->diff($date_fin)->format("%d");
+        $date_diff = $date_debut->diff($date_fin)->format("%d");     
 
         if ($date_diff < 0) {
-            throw new OutOfRangeException("La date du debut est apres la date de fin");
+            throw new RangeException("La date du debut est apres la date de fin");
         }
         if ($date_diff > 30) {
             throw new OutOfRangeException("La location dure plus de 30 jours");
+        }
+        if (!$this->isAvailable($post["id_voiture"], $date_debut, $date_fin))
+        {
+            throw new Exception("La voiture n'est pas disponible");
         }
 
         $statement = $this->connection->prepare("INSERT INTO \"location\" (id_voiture,id_user,date_debut,date_fin,prix,km_max) values(:id_voiture,:id_user,:date_debut,:date_fin,:prix,:km_max)");
 
         $statement->bindParam(":id_voiture", $post["id_voiture"]);
         $statement->bindParam(":id_user", $_SESSION["id_user"]);
-        $statement->bindParam(":date_debut", $post["date_debut"]);
-        $statement->bindParam(":date_fin", $post["date_fin"]);
+        $statement->bindParam(":date_debut", $date_debut);
+        $statement->bindParam(":date_fin", $date_fin);
         $statement->bindParam(":km_max", $post["km_max"]);
 
-        $voiture = CarRepository->fetch($post["id_voiture"]);
-        $prix = $voiture->getPrix() * $date_diff;
+        $car = $this->carRepository->fetch($post["id_voiture"]);
+
+        $prix = $car->prix * $date_diff;
         $statement->bindParam(":prix", $prix);
 
         $statement->execute();
@@ -162,5 +171,15 @@ class LocationRepository
         $statement = $this->connection->prepare("DELETE FROM \"location\" WHERE id_location = :id_location");
         $statement->bindParam(":id_location", $post["id_location"]);
         $statement->execute();
+    }
+
+    public function isAvailable($id_voiture, $date_debut, $date_fin)
+    {
+        $statement = $this->connection->prepare("SELECT FROM \"location\" WHERE id_voiture = :id_voiture AND ((date_debut >= :date_debut AND date_debut <= :date_fin) OR (:date_debut >= date_debut AND :date_debut <= date_fin))");
+        $statement->bindParam(":id_voiture", $id_voiture);
+        $statement->bindParam(":date_debut", $date_debut);
+        $statement->bindParam(":date_fin", $date_fin);
+        $statement->execute();
+        return $statement->rowCount() == 0;
     }
 }
