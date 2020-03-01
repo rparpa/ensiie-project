@@ -181,7 +181,8 @@ else{
         function saveResponsableProject(){
             var index = $("#modal-user-responsable").prop("selectedIndex");
             if(index>=0){
-                var iduser = <? echo $authenticatorService->getCurrentUserId(); ?>;
+                //var iduser = <? echo $authenticatorService->getCurrentUserId(); ?>;
+                var iduser = $("#modal-user-responsable").find(':selected').attr('data-id');
                 var idproject = $("#modal-idproject").val();
                 var role = "Chef";
                 $.get({
@@ -193,7 +194,7 @@ else{
                     },
                     success:function () {
                         $('#ModalAddresponsable').modal('hide');
-                        document.getElementsByName('button-add-responsable-'+idproject)[0].hidden = true;
+                        document.getElementsByName('button-add-responsable'+idproject)[0].hidden = true;
 
                     }
                 })

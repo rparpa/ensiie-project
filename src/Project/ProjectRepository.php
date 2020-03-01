@@ -227,13 +227,28 @@ class ProjectRepository
     public function addUser(int $iduser, int $idproject, string $role){
         $stmt = $this->connection->prepare(
             'INSERT INTO userproject (iduser, idproject, role, date) 
-            VALUES (:iduser, :idproject, :role, :creationdate)'
+            VALUES (:iduser, :idproject, :role, :creationdate)
+            ;'
         );
+        //ON CONFLICT (role) DO 
+        //UPDATE SET role = EXCLUDED.role
         $stmt->bindValue(':iduser', $iduser,PDO::PARAM_INT);
         $stmt->bindValue(':idproject', $idproject,PDO::PARAM_INT);
         $stmt->bindValue(':role', $role,PDO::PARAM_STR);
         $stmt->bindValue(':creationdate', (new DateTimeImmutable("now"))->format("Y-m-d H:i:s"),PDO::PARAM_STR);
         $res = $stmt->execute();
+        if (!$res) {
+            $stmt = $this->connection->prepare(
+                'UPDATE userproject
+                SET role=:role
+                WHERE iduser=:iduser AND idproject=:idproject
+                ;'
+            );
+            $stmt->bindValue(':iduser', $iduser,PDO::PARAM_INT);
+            $stmt->bindValue(':idproject', $idproject,PDO::PARAM_INT);
+            $stmt->bindValue(':role', $role,PDO::PARAM_STR);
+            $res = $stmt->execute();
+        }
     }
 
     /**
