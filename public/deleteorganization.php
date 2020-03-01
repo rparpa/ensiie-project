@@ -66,7 +66,7 @@ if ($idorga) {
                 $user = ((Object)$userofmeeting)->user;
                 $meetingrepository->deleteUser($user->getId(),$meeting->getId());
             }
-            $meetingrepository->delete($meetings->getId());
+            $meetingrepository->delete($meeting->getId());
         }
 
         $usersofproject = $userrepository->fetchByProject($projectoforga->getId());
