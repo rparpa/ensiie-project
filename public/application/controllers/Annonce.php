@@ -95,17 +95,56 @@ class Annonce extends CI_Controller {
 			}else{
 				$this->session->set_flashdata('error', 'Annonce non ajoutée, veuillez réessayer');
 				$this->load->view('elements/header',$this->data);
-				$this->load->view('ajout_annonce_view',$this->data);
+				$this->load->view('gestion_annonce_view',$this->data);
 				$this->load->view('elements/footer');
 			}
 		}
 		else{
 			$this->load->view('elements/header',$this->data);
-			$this->load->view('ajout_annonce_view',$this->data);
+			$this->load->view('gestion_annonce_view',$this->data);
 			$this->load->view('elements/footer');			
 		}
 
 	}
+
+	/**
+	 * Fonction permettant de modifier une annonce
+	 * 
+	 * @param $id_annonce Id de l'annonce à modifier
+	 */
+	public function modifier_annonce($id_annonce){
+
+		$this->form_validation->set_error_delimiters('<p class="form_erreur">', '</p>');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+		$this->form_validation->set_rules('titre', 'Titre', 'required');
+		$this->form_validation->set_rules('description', 'Description', 'required');
+		$this->form_validation->set_rules('prix', 'Prix', 'required|numeric');
+
+		$etats=array_column($this->etat->getAllEtat(), 'etat');
+		$etats=array_combine(range(1, count($etats)), array_values($etats));
+		$this->data+=array("etats"=>$etats);
+
+		if($this->form_validation->run()){
+			
+			$this->annonce->updateAnnonce($id_annonce,
+				$this->data['id_user'],
+				$this->input->post('titre'),
+				$this->input->post('description'),
+				$this->input->post('prix'),
+				$this->input->post('etat'));
+
+			redirect('Annonce/liste_annonces');
+			$this->session->set_flashdata('message', 'Annonce modifiée');		  
+		}
+		else{
+		 $annonce=$this->annonce->getAnnonce($id_annonce);
+		 $this->data+=array("annonce_modif"=>$annonce[0]);
+		 $this->load->view("elements/header",$this->data);
+		 $this->load->view('gestion_annonce_view',$this->data);
+		 $this->load->view("elements/footer");
+	   }
+ 
+	 }
 
 	/**
 	 * Fonction permettant d'afficher le détail d'une annonce
@@ -141,44 +180,6 @@ class Annonce extends CI_Controller {
 			//Transfering data to Model
 			$this->annonce_model->delete($id);
 			$data['message'] = 'Annonce supprimée avec succès';
-
-			//Loading View
-			$this->load->view('annonces_view');
-		}
-	}
-
-	function update(){
-		$id = $_GET['id'];
-		$current_data = $this->annonce_model->getAnnonce($id);
-		$this->load->view('annonceUpdate', $current_data);
-		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-
-		//Validating Name Field
-		$this->form_validation->set_rules('titre', 'Titre', 'required|min_length[5]|max_length[25]');
-
-		//Validating Email Field
-		$this->form_validation->set_rules('descri', 'Description', 'required|min_length[10]');
-
-		//Validating Mobile no. Field
-		$this->form_validation->set_rules('prix', 'prix', 'required|numeric');
-
-		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('annonceUpdate', $current_data);
-			//add js error pop-up
-		}
-		else
-		{
-			//Setting values for table columns
-			$data = array(
-				'id_annonce' => $id,
-				'titre' => $this->input->post('titre'),
-				'description' => $this->input->post('descri'),
-				'prix' => $this->input->post('prix')
-			);
-
-			//Transfering data to Model
-			$this->annonce_model->update($data);
-			$data['message'] = 'Annonce créée avec succès';
 
 			//Loading View
 			$this->load->view('annonces_view');

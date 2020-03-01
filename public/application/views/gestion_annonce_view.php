@@ -14,6 +14,11 @@
 	?>
 
     <?php 
+        //Variable modif à true si modification
+        $modif=false;
+        if($this->uri->ruri_string() != 'Annonce/ajouter_annonce')
+            $modif=true;
+        
         //Ouverture du formulaire
         //echo form_open($this->uri->uri_string(), array('id' => 'formModif', 'class' => 'form-horizontal'));
         echo form_open('');
@@ -22,25 +27,29 @@
 
         <!--Structure de la rubrique description-->
         <div class="card ">
-                <h5 class="card-header text-white bg-success">Nouvelle annonce</h5>
+                <?php
+                    if(!$modif)
+                        echo '<h5 class="card-header text-white bg-success">Nouvelle annonce</h5>';
+                    else
+                        echo '<h5 class="card-header text-black bg-warning">Modifier annonce</h5>';
+                ?>
             <div class="card-body">
 
                 <!-- //Ouverture de la balise row correspondant à la ligne titre -->
                 <div class="row">
                 <?php
-                //Si l'utilisation créé une nouvelle annonce
-                    if(1==1){
+                //Si l'utilisateur créé une nouvelle annonce
+                    if(!$modif){
                         echo '<div class="col-md">';
                             echo form_label('Titre de l\'annonce :&nbsp;', 'titre','class="control-label"');
                             echo form_input('titre', "", 'class="form-control"');
                         echo '</div>';
-
                     //Sinon
                     }else{
                         echo '<div class="col-md">';
-                            echo '<b>Titre de l\'annonce : </b>' . "valeur" . '<br>';
-                        echo '</div>';
-                    echo '</br>';
+                        echo form_label('Titre de l\'annonce :&nbsp;', 'titre','class="control-label"');
+                        echo form_input('titre',$annonce_modif['titre'], 'class="form-control"');
+                    echo '</div>';
                     }
                 ?>
                 <!-- Fermeture de la balise row correspondant à la ligne titre-->
@@ -53,7 +62,7 @@
                 <?php
                 //if($this->uri->ruri_string()!= 'formations/demande_ajout_formation')
                 //Si l'utilisation créé une nouvelle annonce
-                    if(1==1){
+                    if(!$modif){
                         echo '<div class="col-md">';
                             echo form_label('Description de l\'annonce :&nbsp;', 'description');
                             echo form_textarea('description', "", 'class="form-control" style="resize: none;"');
@@ -61,11 +70,9 @@
                     }
                     //Sinon
                     else {
-                        echo '<div class="col-md-4">';
-                            echo '<b>Description de la formation : </b>';
-                        echo '</div>';
-                        echo '<div class="col-md-8" align="justify">';
-                            echo '<p>' . nl2br("valeur") . '</p><br>';
+                        echo '<div class="col-md">';
+                            echo form_label('Description de l\'annonce :&nbsp;', 'description');
+                            echo form_textarea('description', $annonce_modif['description'], 'class="form-control" style="resize: none;"');
                         echo '</div>';
                     }
                 ?>    
@@ -77,8 +84,8 @@
                 <!-- //Ouverture de la balise row correspondant à la ligne prix -->
                 <div class="row">
                 <?php
-                //Si l'utilisation créé une nouvelle annonce
-                    if(1==1){
+                //Si l'utilisateur créé une nouvelle annonce
+                    if(!$modif){
                         echo '<div class="col-md-2 mb-3">';
                             echo form_label('Prix de l\'objet :&nbsp;', 'prix','class="control-label"');
                             echo form_input('prix', "", 'class="form-control"');
@@ -86,14 +93,14 @@
                     
                     //Sinon
                     }else{
-                        echo '<div class="col-md">';
-                            echo '<b>Prix de l\'annonce : </b>' . "valeur" . '<br>';
+                        echo '<div class="col-md-2 mb-3">';
+                            echo form_label('Prix de l\'objet (en €):&nbsp;', 'prix','class="control-label"');
+                            echo form_input('prix', $annonce_modif['prix'], 'class="form-control"');
                         echo '</div>';
-                    echo '</br>';
                     }
 
                 //Si l'utilisation créé une nouvelle annonce
-                    if(1==1){
+                    if(!$modif){
                         echo '<div class="col-md-2 mb-3">';
                             echo form_label('Etat de l\'objet :&nbsp;', 'etat','class="control-label"');
                             echo form_dropdown('etat',$etats,5,'class="form-control"');
@@ -101,10 +108,10 @@
                     
                     //Sinon
                     }else{
-                        echo '<div class="col-md">';
-                            echo '<b>Prix de l\'annonce : </b>' . "valeur" . '<br>';
+                        echo '<div class="col-md-2 mb-3">';
+                            echo form_label('Etat de l\'objet :&nbsp;', 'etat','class="control-label"');
+                            echo form_dropdown('etat',$etats,$annonce_modif['id_etat'],'class="form-control"');
                         echo '</div>';
-                    echo '</br>';
                     }
                 ?>
                 <!-- Fermeture de la balise row correspondant à la ligne prix-->
@@ -143,7 +150,10 @@
     
     </br>
 	<?php
-        echo form_submit('ajout_annonce','Ajouter',array('type'=>'button','class'=>"float-right btn btn-success"));
+        if(!$modif=true)
+            echo form_submit('ajout_annonce','Ajouter',array('type'=>'button','class'=>"float-right btn btn-success"));
+        else 
+            echo form_submit('modif_annonce','Mettre à jour',array('type'=>'button','class'=>"float-right btn btn-warning"));          
         echo form_close();
     ?>
 

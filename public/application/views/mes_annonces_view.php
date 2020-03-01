@@ -27,15 +27,17 @@
 							echo '<a href="#"><img class="card-img-top" src="'.base_url().'/assets/images/default.jpg" width="600" height="200" alt=""></a>';
 						else
 							echo '<a href="#"><img class="card-img-top" src="'.base_url().'/assets/images/'.$images[0]['url'].'" width="600" height="200" alt=""></a>';
-
+		
 						echo '<div class="card-body">';
 								echo '<p class="card-title">';
 									echo '<a href="'.site_url('/Annonce/details_annonce/'.$annonce["id_annonce"]).'">'.$annonce["titre"].'</a>';
                                 echo '</p>';
                                 echo '<div class="d-flex justify-content-between align-items-center">';
-                                echo '<div class="btn-group">';
-                                echo '<button type="button" class="btn btn-sm btn-outline-warning">Modifier</button>';
-                                echo '<button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button>';
+								echo '<div class="btn-group">';
+						?>
+								<button type="button" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/modifier_annonce/'.$annonce['id_annonce']); ?>');">Modifier</button>
+								<button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button>
+						<?php
                                 echo '</div>';
 								echo '<div class="d-flex justify-content-between align-items-center">';
 									echo '<p class="h6">'.$annonce["prix"].'€</p>';
