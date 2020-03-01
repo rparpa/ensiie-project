@@ -43,7 +43,7 @@
 									<form method="post" action="#">
 										<div class="fields">
 											<div class="field half">
-												<label for="peudo">Pseudo</label>
+												<label for="pseudo">Pseudo</label>
 												<input type="text" name="pseudo" id="pseudo" value="" placeholder="Snitchy" />
 											</div>
 											<div class="field half">
@@ -55,8 +55,35 @@
 											<li><input type="submit" value="Connexion" class="primary" /></li>
 										</ul>
 										<ul class="actions">
-											<li ><input type="submit" value="Créer un compte" class="primary" /></li>
+											<a class="primary" href="#CreerCompte">Créer un compte</a>
 										</ul>
+									</form>
+								</section></article>
+
+							<article id="CreerCompte">
+							<section>
+									<h3 class="major">Création de compte</h3>
+									<form method="post" action="#">
+										<div class="fields">
+											<div class="field thrid">
+												<label for="newpseudo">Pseudo</label>
+												<input type="text" name="newpseudo" id="newpseudo" value="" placeholder="Snitchy" />
+											</div>
+											<div class="field half">
+												<label for="newmdp">Mot de passe</label>
+												<input type="password" name="newmdp" id="newmdp" value="" placeholder="**********" autocomplete="off" />
+											</div>
+											<div class="field half">
+												<label for="newmdp2">Confirmation mot de passe</label>
+												<input type="password" name="newmdp2" id="newmdp2" value="" placeholder="**********" autocomplete="off" />
+											</div>
+
+										</div>
+										<div>
+											<ul class="actions">
+											<li><input type="submit" value="Créer un compte" class="primary" /></li>
+											</ul>
+										</div>
 									</form>
 								</section></article>
 
