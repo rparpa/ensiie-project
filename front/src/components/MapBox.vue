@@ -36,6 +36,11 @@ import { MglMap,MglMarker } from "vue-mapbox";
 import  axios from "axios";
 import { EventBus } from "./event-bus.js";
 
+let latLngCenterParis = {
+  lat: 48.864716,
+  lng: 2.349014
+};
+
 export default {
   name: 'MapBox',
   components: {
@@ -49,7 +54,7 @@ export default {
       mapStyle: "mapbox://styles/mapbox/light-v10",
       listCoordinates: [],
       apiAdr : "http://localhost:3000/openDataParis/getAllParkingSpots",
-      center: [2.349014, 48.864716],
+      center: latLngCenterParis,
       zoom: 11
     };
   },
@@ -64,7 +69,6 @@ export default {
       }
     });
     EventBus.$on('addressEmpty', handleOnClear => {
-      console.log("Evenement clear recu");
       this.onEmptyAddress();
     })
   },
