@@ -11,8 +11,6 @@ $projrepository = new ProjectRepository(Connection::get(),$projhydrator);
 $authenticatorService = new AuthenticatorService($userRepository);
 
 
-//TODO Faire bien mieux mais la je fatigue un peu
-
 ?>
 <h1 align="center" style="margin: 1em">
     Vous etes sur la page de mes projets

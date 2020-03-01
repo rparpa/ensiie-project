@@ -20,7 +20,6 @@ $userrepository =
     new UserRepository(Connection::get(), new UserHydrator());
 
 
-//TODO Faire bien mieux mais la je fatigue un peu
 $userorga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
 
 if(!$userorga){?>

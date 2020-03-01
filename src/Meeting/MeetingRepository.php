@@ -78,7 +78,6 @@ class MeetingRepository
      */
     public function fetchByProject(int $projectId)
     {
-        //TODO a implementer
         $stmt = $this->connection->prepare(
             'SELECT * FROM meeting WHERE idsource = :idsource AND source = :source');
         $stmt->bindValue(':idsource', $projectId, PDO::PARAM_INT);

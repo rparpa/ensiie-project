@@ -234,7 +234,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
         var index = $("#select-user-add").prop("selectedIndex");
         if(index>=0){
             var iduser = $("#select-user-add").find(':selected').attr('data-id');
-            //TODO ajouter une saisie lors de la selection
+            // Forcement un Larbin
             var role = "Larbin";
             $.get({
                 url: 'addusertoproject.php',

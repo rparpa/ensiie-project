@@ -92,7 +92,6 @@ class UserRepository
 
     public function fetchByOrganizationNotInOrga()
     {
-        //TODO Voir pour faire mieux
         $stmt = $this->connection->prepare('SELECT * FROM "user" 
                                 WHERE id NOT IN (
                                 SELECT iduser FROM userorganization) AND isadmin = FALSE ');
