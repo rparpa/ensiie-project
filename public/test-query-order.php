@@ -11,8 +11,10 @@ use Order\OrderRepository;
 use Order\OrderService;
 
 $my_connection = \Db\Connection::get();
-$sandwichRepository = new SandwichRepository($my_connection);
-$orderService = new OrderService(new OrderRepository($my_connection), $sandwichRepository);
+$orderService = new OrderService(
+                    new OrderRepository($my_connection),
+                    new SandwichRepository($my_connection)
+                );
 $ingredientService = new IngredientService(new IngredientRepository($my_connection));
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -37,20 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     #get all example
     $orders = $orderService->getAllOrders();
-    $ingredients = $ingredientService->getAllIngredients();
+    $ingredients = $ingredientService->getAvailableIngredients();
 }
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $ingredients = $ingredientService->getAllIngredients();
+    $ingredients = $ingredientService->getAvailableIngredients();
 
     $filterIngredients = [];
     foreach ($ingredients as $ingredient) {
-        
-        if($ingredient->getAvailable() == true) {
-            if(isset($_POST[$ingredient->getLabel()])) {
-                $filterIngredients[] = $ingredient;
-            }
+        if(isset($_POST[$ingredient->getLabel()])) {
+            $filterIngredients[] = $ingredient;
         }
     }
 
@@ -70,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $orderService->createOrder($newOrder);
 
     $orders = $orderService->getAllOrders();
-    $ingredients = $ingredientService->getAllIngredients();
 }
 
 ?>
