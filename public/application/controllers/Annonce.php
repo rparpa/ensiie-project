@@ -94,7 +94,7 @@ class Annonce extends CI_Controller {
 
 				//TODO : mettre l'id de l'utilisation
 				$this->annonce->insertAnnonce(
-								2,
+								$this->data['id_user'],
 								$this->input->post('titre'),
 								$this->input->post('description'),
 								$this->input->post('prix'),
@@ -180,6 +180,15 @@ class Annonce extends CI_Controller {
 
 	}
 
+	/**
+	 * Fonction permettant de supprimer une annonce
+	 * 
+	 * @param $id_annonce Id de l'annonce à supprimer
+	 */
+	public function supprimer_annonce($id_annonce){
+		$this->annonce->deleteAnnonce($id_annonce);
+		redirect('Annonce/mes_annonces');
+	}
 	/**
 	 * Fonction permettant d'afficher le détail d'une annonce
 	 * 

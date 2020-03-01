@@ -36,7 +36,7 @@
 								echo '<div class="btn-group">';
 						?>
 								<button type="button" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/modifier_annonce/'.$annonce['id_annonce']); ?>');">Modifier</button>
-								<button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button>
+								<button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#suppressionModal<?php echo $annonce['id_annonce'];?>">Supprimer</button>
 						<?php
                                 echo '</div>';
 								echo '<div class="d-flex justify-content-between align-items-center">';
@@ -46,6 +46,38 @@
 							echo '</div>';
 						echo '</div>';
 					echo '</div>';
+					//echo $annonce["titre"];
+
+
+					?>
+						<!-- The Modal -->
+						<div class="modal fade" id="suppressionModal<?php echo $annonce['id_annonce'];?>" >
+							<div class="modal-dialog">
+							<div class="modal-content">
+
+								<!-- Modal Header -->
+								<div class="modal-header text-white bg-danger">
+								<h4 class="modal-title">Supprimer annonce</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								
+								<!-- Modal body -->
+								<div class="modal-body">
+								&Ecirctes-vous sûr de vouloir supprimer cette annonce ?
+								</br>Cette action est irreversible.
+								</div>
+								
+								<!-- Modal footer -->
+								<div class="modal-footer">								
+									<button type="button" class="btn btn-danger" onclick="window.location.replace('<?php echo site_url('/Annonce/supprimer_annonce/'.$annonce['id_annonce']); ?>');">Supprimer</button>
+									<button type="button" class="btn btn-secondary " data-dismiss="modal" aria-hidden="true">Annuler</button>
+								</div>
+								
+							</div>
+							</div>
+						</div>
+						
+					<?php
 				}
 			}
 		?>
@@ -54,6 +86,7 @@
 		<!-- <button type="button" class="btn btn-success" onclick="window.location.replace('<?php  echo base_url().'index.php/annonce/delete/'?>');">Supprimer</button> -->
 	</div>
 	<!-- /.row -->
+
 
 </div>
 <!-- /.container -->

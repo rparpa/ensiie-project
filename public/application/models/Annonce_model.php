@@ -127,4 +127,14 @@ class Annonce_model extends CI_Model
 		$this->db->set('nb_signal', 'nb_signal+1', FALSE);
 		$this->db->update('annonce');
 	}
+
+	/**
+	 * Fonction permettant de supprimer une annonce
+	 * 
+	 * @param $id_annonce Id de l'annonce
+	 */
+	public function deleteAnnonce($id_annonce){
+
+		$this->db->delete('annonce', array('id_annonce' => $id_annonce));
+	}
 }
