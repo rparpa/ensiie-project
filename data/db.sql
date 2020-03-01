@@ -108,6 +108,17 @@ INSERT INTO Categorie(categorie) VALUES ('Meuble');
 INSERT INTO Categorie(categorie) VALUES ('Évènement');
 INSERT INTO Categorie(categorie) VALUES ('Billeterie');
 INSERT INTO Categorie(categorie) VALUES ('Cours particuliers');
+INSERT INTO Categorie(categorie) VALUES ('Sport');
+
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('1', '1');
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('2', '1');
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('3', '8');
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('4', '8');
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('5', '13');
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('6', '1');
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('7', '1');
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('8', '2');
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('9', '2');
 
 INSERT INTO Image (id_annonce, url) VALUES ('1', 'img1.jpeg');
 INSERT INTO Image (id_annonce, url) VALUES ('2', 'img2.jpeg');
