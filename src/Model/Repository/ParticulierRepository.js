@@ -2,6 +2,7 @@ const ClientSession = require('../Factory/ClientSession');
 const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom) VALUES($1, $2, $3, $4, $5) RETURNING adressemail, cv, nom, prenom";
 const selectAll = "SELECT * from particulier";
 const updateOne = "UPDATE particulier SET adressemail = $1, motdepasse = $2, cv = $3, nom = $4, prenom = $5 WHERE id = $6 RETURNING adressemail, motdepasse, cv, nom, prenom";
+const deleteOne = "DELETE FROM particulier WHERE id = $1 RETURNING adressemail, motdepasse, cv, nom, prenom";
 
 module.exports = class {
     static async create(Particulier) {
@@ -52,6 +53,16 @@ module.exports = class {
         var values = [adressemail, motdepasse, cv, nom, prenom, id];
         
         var result = await ClientSession.getSession().query(updateOne, values)
+        .catch(e => {throw 'Error in the database'});
+
+        return result.rows[0];
+    }
+
+    static async deleteById(id) {
+        if(!id){
+            throw 'No id specified';
+        }
+        var result = await ClientSession.getSession().query(deleteOne, [id])
         .catch(e => {throw 'Error in the database'});
 
         return result.rows[0];

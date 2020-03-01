@@ -4,10 +4,9 @@ const ParticulierWebService = require('./src/Model/Controller/ParticulierWebServ
 var fs = require('fs');
 
 module.exports = http.createServer((req, res) => {
-
-    // var service = require('./service.js');
     const reqUrl = url.parse(req.url, true);
-    var pathname = url.parse(req.url).pathname;
+    var pathname = reqUrl.pathname;
+    var params = new URL("http://" + req.url).searchParams;
     
     if(pathname == "/accueil") {
         fs.readFile('./public/index.html',function (err, data){
@@ -85,9 +84,11 @@ module.exports = http.createServer((req, res) => {
         else if(req.method == 'PUT') {
             ParticulierWebService.updateOne(req, res);
         }
-        // else if(req.method == 'DELETE') {
-
-        // }
+        else if(req.method == 'DELETE') {
+            if(params.has('id')) {
+                ParticulierWebService.deleteById(req, res, params.get('id'));
+            }
+        }
     }
 
     // GET Endpoint

@@ -74,4 +74,26 @@ module.exports = class ParticulierWebService {
             res.end(JSON.stringify(response));
         })
     }
+
+    static async deleteById(req, res, id) {
+        let response;
+        let codestatus;
+        try {
+            response = await ParticulierRepository.delete(id);
+            codestatus = 200;
+        }
+        catch(e) {
+            if(e == 'No id specified') {
+                response = 'No id specified';
+                codestatut = 400;
+            }
+            else if(e == 'Error in the database') {
+                response = 'Error in the database';
+                codestatut = 500;
+            }
+        }
+        
+        res.writeHead(codestatus, {'Content-Type': 'application/json'});
+        res.end(JSON.stringify(response));
+    }
 }
