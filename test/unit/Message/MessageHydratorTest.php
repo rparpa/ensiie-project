@@ -30,9 +30,9 @@ class MessageHydratorTest extends TestCase
         self::assertEquals($messageRef,$message);
     }
 
-    // /**
-    //  * @test
-    //  */
+    /**
+     * @test
+     */
     // public function messageIsAObjet()
     // {
     //     $hydrator = new MessageHydrator();
@@ -43,7 +43,7 @@ class MessageHydratorTest extends TestCase
     //     $data->source = "";
     //     $data->idsource = 1;
     //     $data->message = "";
-    //     $data->creationDate = "1999-11-22";
+    //     $data->creationDate = '1999-11-22';
 
     //     $messageRef = new Message();
     //     $messageRef->setId(1);
