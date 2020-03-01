@@ -53,6 +53,26 @@ class IngredientRepository
         return $ingredient;
     }
 
+    public function findOneByLabel($ingredientLabel)
+    {        
+        $query = $this->connection->prepare(
+            'SELECT * FROM "ingredient" WHERE label = :label');
+        
+        $query->bindValue(':label', $ingredientLabel, PDO::PARAM_STR);
+        $query->execute();
+        $row = $query->fetch();
+        $ingredient = new Ingredient();
+
+        $row ? $ingredient
+            ->setId($row['id'])
+            ->setLabel($row['label'])
+            ->setAvailable($row['available'])
+            ->setPrice($row['price'])
+            : null;
+
+        return $ingredient;
+    }
+
     public function updateIngredient(Ingredient $ingredient)
     {
         $query = $this->connection->prepare(
@@ -71,6 +91,7 @@ class IngredientRepository
         {
             $query->errorInfo();
         }
+        return $ingredient;
     }
 
     public function createIngredient(Ingredient $newIngredient)
@@ -87,6 +108,7 @@ class IngredientRepository
             $query->errorInfo();
         }
         $newIngredient->setId($this->connection->lastInsertId());
+        return $newIngredient;
     }
 
     public function deleteIngredient(Ingredient $ingredientToDelete)

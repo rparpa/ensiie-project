@@ -4,8 +4,11 @@ require_once '../src/Bootstrap.php';
 
 use Ingredient\Ingredient;
 use Ingredient\IngredientRepository;
+use Ingredient\IngredientService;
 
-$ingredientRepository = new IngredientRepository(\Db\Connection::get());
+$ingredientService = new IngredientService(
+                            new IngredientRepository(\Db\Connection::get())
+                        );
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
@@ -16,44 +19,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             ->setPrice(2.0);
 
     #create example
-    $ingredientRepository->createIngredient($newIngredient);
+    $newIngredient = $ingredientService->saveIngredient($newIngredient);
+
+    $newIngredient->setLabel('final_test');
+    #update example
+    $ingredientService->saveIngredient($newIngredient);
+
+    #delete example
+    $ingredientService->deleteIngredient($newIngredient);
 
     #get all example
-    $ingredients = $ingredientRepository->fetchAll();
-
-    #$newIngredient->setId(end($ingredients)->getId());
-    #$newIngredient->setLabel('final_test');
-    #update example
-    #$ingredientRepository->updateIngredient($newIngredient);
-
-    $newIngredient->setId(end($ingredients)->getId());
-    #delete example
-    $ingredientRepository->deleteIngredient($newIngredient);
-
-    $ingredients = $ingredientRepository->fetchAll();
+    $ingredients = $ingredientService->getAllIngredients();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $newIngredient = new Ingredient();
 
-    if (!empty($_POST["id"])) {
-        $newIngredient
-        ->setId($_POST["id"])
+    if (!empty($_POST["id"]))
+        $newIngredient->setId($_POST["id"]);
+
+    $newIngredient
         ->setLabel($_POST["label"])
         ->setAvailable(!empty($_POST["available"]))
         ->setPrice(($_POST["price"]));
-        $ingredientRepository->updateIngredient($newIngredient);   
-    
-    } else {
-        $newIngredient
-            ->setLabel($_POST["label"])
-            ->setAvailable(!empty($_POST["available"]))
-            ->setPrice(($_POST["price"]));
-        $ingredientRepository->createIngredient($newIngredient);
-    
-    }
-    $ingredients = $ingredientRepository->fetchAll();
+
+    $ingredientService->saveIngredient($newIngredient);
+    $ingredients = $ingredientService->getAllIngredients();
 
 }
 
