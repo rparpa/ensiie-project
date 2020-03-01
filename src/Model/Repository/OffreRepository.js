@@ -1,23 +1,26 @@
-const EntrepriseRepository = require('./EntrepriseRepository');
-const Offre = require('../Entity/Offre')
-module.exports = class {
-    constructor(db) {
-        this.db = db;
-    }
+const ClientSession = require('../Factory/ClientSession');
+const insert = "INSERT INTO offre(identreprise, description, document, typecontrat, adresse, latitude, longitude, salaire, isvalid) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *";
 
-    create(Offre) {
+module.exports = class {
+    static create(Offre) {
         if (!Offre) {
             throw 'Offre object is undefined';
         }
 
-        if (!Offre.id || !Offre.idEntreprise || !Offre.description || !Offre.document || !Offre.typeContrat ||!Offre.adresse || !Offre.latitude || !Offre.longitude ||!Offre.salaire ||!Offre.isValid) {
+        if (!Offre.idEntreprise || !Offre.description || !Offre.document || !Offre.typeContrat ||!Offre.adresse || !Offre.latitude || !Offre.longitude ||!Offre.salaire ||!Offre.isValid) {
             throw 'Offre object is missing information';
         }
 
-        // this.db
-        //     .get('Offres')
-        //     .push(Offre.toJson())
-        //     .write()
+        let values = [Offre.idEntreprise, Offre.description, Offre.document, Offre.typeContrat, Offre.adresse, Offre.latitude, Offre.longitude, Offre.salaire, Offre.isValid];
+
+        ClientSession.getSession().query(insert, values, (err, res) => {
+            if(err) {
+                throw 'Error in the database'
+            }
+            else {
+                return res.rows[0];
+            }
+        });
     }
     
     // getOne(id){

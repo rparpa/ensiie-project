@@ -1,23 +1,27 @@
-const OffreRepository = require('./OffreRepository');
+const insert = "INSERT INTO particulier(nom, adressemail, adressesiege, motdepasse, logo, isvalid) VALUES($1, $2, $3, $4, $5, $6) RETURNING *";
 
 module.exports = class {
-    constructor(db) {
-        this.db = db;
-    }
-
-    create(Entreprise) {
+    static create(Entreprise) {
         if (!Entreprise) {
             throw 'Entreprise object is undefined';
         }
 
-        if (!Entreprise.id || !Entreprise.nom || !Entreprise.motdepasse || !Entreprise.logo || !Entreprise.adresseSiege ||!Entreprise.adresseMail || !Entreprise.isValid) {
+        if (!Entreprise.nom || !Entreprise.motdepasse || !Entreprise.logo || !Entreprise.adressesiege ||!Entreprise.adressemail || !Entreprise.isvalid) {
             throw 'Entreprise object is missing information';
         }
+        let result;
+        let values = [Entreprise.nom, Entreprise.adressemail, Entreprise.adressesiege, Entreprise.motdepasse, Entreprise.logo, Entreprise.isvalid];
 
-        // this.db
-        //     .get('Entreprises')
-        //     .push(Entreprise.toJson())
-        //     .write()
+        ClientSession.getSession().query(insert, values, (err, res) => {
+            if(err) {
+                throw 'Error in the database'
+            }
+            else {
+                result =  res.rows[0];
+            }
+        });
+
+        return result;
     }
     
     // getOne(id){
