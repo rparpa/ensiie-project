@@ -1,6 +1,7 @@
 <?php
 namespace User;
 
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
@@ -12,7 +13,16 @@ class UserTest extends TestCase
     {
         $user = new User();
         $user->setBirthday(new \DateTime('-10 years'));
-        self::assertSame(10, $user->getAge());
+        $aDate = new DateTime();
+        $bDate = new DateTime('2020-02-29');
+        if($aDate->format("m-d") == $bDate->format("m-d"))
+        {
+            self::assertSame(9, $user->getAge());
+        }
+        else
+        {
+            self::assertSame(10, $user->getAge());
+        }
     }
 
     /**
