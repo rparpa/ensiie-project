@@ -58,11 +58,10 @@ if (null !== $mail && null !== $password) {
     $viewData = checkFormData($userRepository, $id, $username, $surname, $name ,$mail, $password, $passwordcheck);
     if (empty($viewData)) {
         if($id){
-            $userRepository->update($id, $username, $surname, $name, $mail, $password);
+            $userRepository->update($id, $username, $surname, $name, $mail, password_hash($password, PASSWORD_DEFAULT));
         }
         else {
-            //$userRepository->insert($email, password_hash($password, PASSWORD_BCRYPT));
-            $userRepository->insert($username, $surname, $name, $mail, $password, new DateTimeImmutable("now"));
+            $userRepository->insert($username, $surname, $name, $mail, password_hash($password, PASSWORD_DEFAULT), new DateTimeImmutable("now"));
         }
         header('Location: index.php');
     }
