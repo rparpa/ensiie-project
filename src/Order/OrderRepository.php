@@ -94,6 +94,23 @@ class OrderRepository
         return $newOrder;
     }
 
+    public function setApproval(Order $order)
+    {
+        $query = $this->connection->prepare(
+            'UPDATE order
+            SET approval = :approval
+            WHERE id = :id');
+
+        $query->bindValue(':id', $order->getId());
+        $query->bindValue(':approval', $order->getApproval());
+        $result = $query->execute();
+        if ($result == false)
+        {
+            $query->errorInfo();
+        }
+        return $result;
+    }
+
     public function deleteOrder(Order $orderToDelete)
     {
         $query = $this->connection->prepare('DELETE FROM "order" WHERE id = :id');
