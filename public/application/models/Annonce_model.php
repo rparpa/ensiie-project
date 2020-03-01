@@ -45,9 +45,12 @@ class Annonce_model extends CI_Model
 		return $this->db->get_where('annonce',array('id_user' => $id_user))->result_array();
 	}
 
-  public function getFilteredAnnonce($min, $max){
+  public function getFilteredAnnonce($min, $max,$id_user=null){
 		$this->db->select('*');
 		$this->db->from("annonce");
+		if($id_user!=null)
+			$this->db->where('id_user', $id_user);
+		
 		$this->db->where('prix >=', $min);
 		$this->db->where('prix <=', $max);
 		$this->db->order_by("date_publication", "DESC");

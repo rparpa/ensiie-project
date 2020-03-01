@@ -51,16 +51,27 @@ class Annonce extends CI_Controller {
 		$this->load->view('elements/footer');
 	}
 
-	public function filter(){
+	public function filter($id_user=null){
 
 		$minPrice = $this->input->post('min');
 		$maxPrice = $this->input->post('max');
 		if($minPrice<=$maxPrice){
-			$annonces = $this->annonce->getFilteredAnnonce($minPrice, $maxPrice);
-			$this->data += array('annonces'=>$annonces, 'min'=>$minPrice, 'max'=>$maxPrice);
+			
+			//Si le filtre s'effectue dans la vue mes_annonces
+			if($id_user!=null){
+				$mes_annonces = $this->annonce->getFilteredAnnonce($minPrice, $maxPrice,$this->data['id_user']);
+				$this->data += array('mes_annonces'=>$mes_annonces, 'min'=>$minPrice, 'max'=>$maxPrice);
+			}
+			else{
+				$annonces = $this->annonce->getFilteredAnnonce($minPrice, $maxPrice,null);
+				$this->data += array('annonces'=>$annonces, 'min'=>$minPrice, 'max'=>$maxPrice);
+			}
 
 			$this->load->view('elements/header',$this->data);
-			$this->load->view('annonces_view', $this->data);
+			if($id_user!=null)
+				$this->load->view('mes_annonces_view', $this->data);				
+			else	
+				$this->load->view('annonces_view', $this->data);
 			$this->load->view('elements/footer');
 		}
 		else {?>.<script type=text/javascript>alert("Le prix minimum doit être inférieur au prix maximum!");</script>.<?php
@@ -189,24 +200,6 @@ class Annonce extends CI_Controller {
 		$this->load->view('elements/header',$this->data);
 		$this->load->view('details_annonce_view.php',$this->data);
 		$this->load->view('elements/footer');	
-	}
-
-	function delete(){
-		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('annonces_view');
-			//display js error pop-up
-		}
-		else
-		{
-			$id = $_GET['id'];
-
-			//Transfering data to Model
-			$this->annonce_model->delete($id);
-			$data['message'] = 'Annonce supprimée avec succès';
-
-			//Loading View
-			$this->load->view('annonces_view');
-		}
 	}
 
 	// File upload

@@ -7,7 +7,7 @@
 	<!-- Jumbotron Header -->
 	<header class="jumbotron my-4">
 		<div>
-			<form method="post" action="<?php  echo base_url().'index.php/annonce/filter/'?>">
+			<form method="post" action="<?php  echo base_url().'index.php/annonce/filter/'.$id_user?>">
 				<input type="number" id="min" name="min" value="<?php echo $min;?>">
 				<input type="number" id="max" name="max" value="<?php echo $max;?>">
 				<input type="submit" id="filtre" name="filtre" value="Filtrer">
