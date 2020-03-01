@@ -8,11 +8,11 @@ $userService = new \User\UserService($userRepository);
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $newUser = new \User\User();
-    $newUser->setFirstname($_POST["Nicolas"]);//ballec
-    $newUser->setLastname($_POST["Charlon"]);//ballec
-    $newUser->setBirthday(new DateTimeImmutable($_POST["01/01/1970"]));//ballec
+    $newUser->setFirstname("Nicolas");//ballec
+    $newUser->setLastname("Charlon");//ballec
+    $newUser->setBirthday(new DateTimeImmutable("01/01/1970"));//ballec
     $newUser->setPseudo($_POST["pseudo"]);
-    $newUser->setMail($_POST["rayan.erisium@gmail.com"]);//ballec
+    $newUser->setMail("rayan.erisium@gmail.com");//ballec
     $newUser->setPassword($_POST["password"]);
 
     $userService->createUser($newUser);
