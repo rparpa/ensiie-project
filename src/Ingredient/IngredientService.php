@@ -70,6 +70,7 @@ class IngredientService
 
     public function deleteIngredient(Ingredient $ingredient) {
         $this->resetErrors();
+        $result = false;
         if($ingredient->getId() == null)
             $this->errors['id'] = 'Ingredient id shouldn\'t be null.';
         else

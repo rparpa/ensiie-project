@@ -2,6 +2,7 @@
 namespace Order;
 
 use Sandwich\Sandwich;
+use Sandwich\SandwichRepository;
 
 /**
  * Class OrderService
@@ -11,12 +12,14 @@ class OrderService
 {
 
     private OrderRepository $orderRepository;
+    private SandwichRepository $sandwichRepository;
 
     private ?array $errors = [];
 
-    public function __construct(OrderRepository $orderRepository)
+    public function __construct(OrderRepository $orderRepository, SandwichRepository $sandwichRepository)
     {
         $this->orderRepository = $orderRepository;
+        $this->sandwichRepository = $sandwichRepository;
     }
 
     public function getErrors() {
@@ -51,14 +54,18 @@ class OrderService
         return $order;
     }
 
-    public function saveOrder(Order $order) {
+    public function createOrder(Order $order) {
         $this->resetErrors();
-        if($this->validateOrder($order))
-        {
+        $validation = $this->validateOrder($order);
+        if($validation) {
             if (null != $order->getId())
                 $this->errors['id'] = 'Order can\'t be updated. Please create a new order.';
             else {
-                //TODO pour chaque dwich sans id créer dwich et set id
+                foreach ($order->getSandwichs() as &$sandwich) {
+                    if($sandwich->getId() == null) {
+                        $sandwich = $this->sandwichRepository->createSandwich($sandwich);
+                    }
+                }
                 $order = $this->orderRepository->createOrder($order);
             }
         }
@@ -77,12 +84,34 @@ class OrderService
 
     private function validateOrder(Order $order) {
         $result = true;
-        //validate Sandwich
+        if( $order->getSandwichs() != null ) {
+            foreach ($order->getSandwichs() as $sandwich) {
+                if(! $this->validateSandwich($sandwich)) {
+                    $result = false;
+                }
+            }
+        } else {
+            $result = false;
+            $this->errors['sandwichs_empty'] = 'This order is empty.';
+        }
         return $result;
     }
 
     private function validateSandwich(Sandwich $sandwich) {
         $result = true;
+
+        if (null != $sandwich->getId()) {
+            $existingSandwich = $this->sandwichRepository->findOneById($sandwich->getId());
+            if (null == $existingSandwich) {
+                $result = false;
+                $this->errors['sandwich_id'] = 'This id doesn\'t exists for a sandwich.';
+            }
+        } else {
+            if (null == $sandwich->getLabel() || '' == $sandwich->getLabel() ) {
+                $result = false;
+                $this->errors['sandwich_label'] = 'Label is mandatory.';    
+            }
+        }
 
         return $result;
     }
