@@ -20,13 +20,12 @@ $userrepository =
     new UserRepository(Connection::get(), new UserHydrator());
 
 
-//TODO Faire bien mieux mais la je fatigue un peu
 $userorga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
 
 if(!$userorga){?>
-    <h1 align="center" style="margin: 2em">
+    <h2 align="center" style="margin: 2em">
         Vous n'etes pas membre d'une organisation.
-    </h1>
+    </h2>
     <h4 align="center" style="margin: 1em">
         Contactez votre administrateur
     </h4>
@@ -34,12 +33,12 @@ if(!$userorga){?>
 else{
     $myorga = (object)$userorga;
     ?>
-    <h1 align="center" style="margin: 1em">
+    <h2 align="center" style="margin: 1em">
         Vous etes sur la page de l'organisation <?php echo $myorga->organization->getName() ?>
-    </h1>
-    <h3>
+    </h2>
+    <h4>
         Salut <?php echo $myorga->role ?>
-    </h3>
+    </h4>
 
     <div class="row">
         <div class="formulaire" id="form-add-project-to-my-orga">
@@ -112,7 +111,7 @@ else{
 
     <!-- Modal HTML -->
     <div id="ModalAddresponsable" class="modal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <form id="form-modal-responsable">
                     <div class="modal-header">

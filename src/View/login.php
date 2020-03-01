@@ -23,7 +23,7 @@
             </div>
 
             <div class="form-group">
-                <input value="Valider" style="color: #3398FF" class="btn float-right" type="submit">
+                <input value="Sign in" class="btn btn-lg btn-primary btn-block" type="submit">
             </div>
             <div class="form-row">
                 <?php if (isset($data['failedAuthent'])): ?>

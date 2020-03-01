@@ -107,7 +107,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
 
 <!-- Modal HTML -->
 <div id="ModalAddtask" class="modal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <form id="form-modal-task">
             <div class="modal-header">
@@ -169,7 +169,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
 
 <!-- Modal HTML -->
 <div id="ModalAddmeeting" class="modal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <form id="form-modal-meeting">
                 <div class="modal-header">
@@ -234,7 +234,7 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
         var index = $("#select-user-add").prop("selectedIndex");
         if(index>=0){
             var iduser = $("#select-user-add").find(':selected').attr('data-id');
-            //TODO ajouter une saisie lors de la selection
+            // Forcement un Larbin
             var role = "Larbin";
             $.get({
                 url: 'addusertoproject.php',

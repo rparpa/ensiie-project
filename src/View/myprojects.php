@@ -11,12 +11,10 @@ $projrepository = new ProjectRepository(Connection::get(),$projhydrator);
 $authenticatorService = new AuthenticatorService($userRepository);
 
 
-//TODO Faire bien mieux mais la je fatigue un peu
-
 ?>
-<h1 align="center" style="margin: 1em">
+<h2 align="center" style="margin: 1em">
     Vous etes sur la page de mes projets
-</h1>
+</h2>
 
 
 <div class="container" style="margin-top: 5em">

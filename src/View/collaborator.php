@@ -29,9 +29,9 @@ else{
     $org = ((object)$oraofuser)->organization;
 
     ?>
-    <h1 align="center" style="margin: 1em">
+    <h2 align="center" style="margin: 1em">
         Collaborateurs de l'organisation <?php echo $org->getName() ?>
-    </h1>
+    </h2>
 
 
     <div class="container" style="margin-top: 5em">
@@ -71,7 +71,7 @@ else{
             var index = $("#select-user-add").prop("selectedIndex");
             if (index >= 0) {
                 var iduser = $("#select-user-add").find(':selected').attr('data-id');
-                //TODO ajouter une saisie lors de la selection
+                // un collaborateur sera forcement un larbin
                 var role = "Larbin";
                 $.get({
                     url: 'addusertoorga.php',
@@ -89,7 +89,6 @@ else{
         for (var i = 0; i < removebuttons.length; i++) {
             removebuttons[i].addEventListener('click', function() {
                 var iduser = this.value;
-                //TODO ajouter une saisie lors de la selection
                 $.get({
                     url: 'removefromorga.php',
                     data: {

@@ -64,7 +64,6 @@ class UserRepository
 
     public function fetchByOrganizationNotInProject(int $projId)
     {
-        //TODO Voir pour faire mieux
         $stmt = $this->connection->prepare('SELECT * FROM "user" 
                                 WHERE id NOT IN (
                                     SELECT id FROM "user" 
@@ -73,7 +72,7 @@ class UserRepository
                                 AND id IN (
                                     SELECT id from "user" 
                                     JOIN userorganization ON ("user".id = userorganization.iduser)
-                                    WHERE idorganization = (SELECT id FROM project WHERE id = :idprojb))
+                                    WHERE idorganization = (SELECT idorganization FROM project WHERE id = :idprojb))
                                 AND isadmin = FALSE');
 
         $stmt->bindValue(':idproj', $projId, PDO::PARAM_INT);
@@ -93,7 +92,6 @@ class UserRepository
 
     public function fetchByOrganizationNotInOrga()
     {
-        //TODO Voir pour faire mieux
         $stmt = $this->connection->prepare('SELECT * FROM "user" 
                                 WHERE id NOT IN (
                                 SELECT iduser FROM userorganization) AND isadmin = FALSE ');
