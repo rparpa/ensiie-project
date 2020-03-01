@@ -150,7 +150,7 @@
     
     </br>
 	<?php
-        if(!$modif=true)
+        if(!$modif)
             echo form_submit('ajout_annonce','Ajouter',array('type'=>'button','class'=>"float-right btn btn-success"));
         else 
             echo form_submit('modif_annonce','Mettre à jour',array('type'=>'button','class'=>"float-right btn btn-warning"));          
