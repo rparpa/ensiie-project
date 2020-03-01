@@ -11,6 +11,16 @@ use Sandwich\SandwichRepository;
 class OrderService
 {
 
+    //TODO
+    // get orders by client
+    // ajout du client à la creation
+    // ajout de l'admin à la validation (setApproval) 
+    
+    //TODO 
+    //fonction validate client & validate admin 
+    //          -> même shéma que pour le sandwich
+
+
     private OrderRepository $orderRepository;
     private SandwichRepository $sandwichRepository;
 
@@ -33,11 +43,30 @@ class OrderService
         return $orders;
     }
 
-    //TODO
-    // get validated
-    // get not-validated
-    // get by client 
+    public function getApprovedOrders() {
+        $this->resetErrors();
+        $filteredOrders = [];
+        $orders = $this->orderRepository->getAll();
+        foreach ($orders as $order) {
+            if($order->getApproval()) {
+                $filteredOrders[] = $order;
+            }
+        }
+        return $filteredOrders;
+    }
 
+    public function getPendingOrders() {
+        $this->resetErrors();
+        $filteredOrders = [];
+        $orders = $this->orderRepository->getAll();
+        foreach ($orders as $order) {
+            if(!$order->getApproval()) {
+                $filteredOrders[] = $order;
+            }
+        }
+        return $filteredOrders;
+    }
+    
     public function getOrderById($orderId) {
         $this->resetErrors();
         $order = null;
@@ -70,6 +99,15 @@ class OrderService
             }
         }
         return $order;
+    }
+
+    public function setApproval(Order $order) {
+        $this->resetErrors();
+        if (null == $order->getId()) {
+            $this->errors['id'] = 'Order id shouldn\'t be null for validation.';
+        } else {
+            $this->orderRepository->setApproval($order);
+        }
     }
 
     public function deleteOrder(Order $order) {
@@ -115,8 +153,6 @@ class OrderService
 
         return $result;
     }
-
-    //TODO validate client & admin
 
     private function resetErrors() {
         $this->errors = [];
