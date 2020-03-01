@@ -22,6 +22,11 @@
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
+	<!-- table utilisateurs -->
+	<link href="../../../assets/css/icon.css" rel="stylesheet">
+	<link href="../../../assets/css/tableUser.css" rel="stylesheet">
+	<link href="../../../assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../../assets/css/valera.css" rel="stylesheet">
 	<!-- JS Dropzone -->
 	<script src="../../../assets/js/dropzone.js" type="text/javascript" ></script>
 

@@ -40,17 +40,6 @@ class Utilisateur extends CI_Controller
     }
 
     /**
-     * Creates a new Utilisateur model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-
-    public function create()
-    {
-
-    }
-
-    /**
      * Updates an existing Utilisateur model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -58,9 +47,28 @@ class Utilisateur extends CI_Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
 
-    public function update($id)
+    public function update()
     {
-
+        if($this->input->post())
+        {
+            unset($_POST['submit']);
+            if($this->utilisateur->update($this->input->post()))
+            {
+                //echo "<script>alert(\"Modification réussie\")</script>";
+                redirect('utilisateur/update?id='.$this->input->post('id_user'));
+            } else
+            {
+                //echo "<script>alert(\"modification failed\")</script>";
+                redirect('utilisateur/update?id='.$this->input->post('id_user'));
+            }
+        } else
+        if(isset($_GET['id']))
+        {
+            $user=$this->utilisateur->getUser($_GET['id']);
+            $this->load->view('elements/header',$this->data);
+            $this->load->view('update_view',['user'=>$user]);
+            $this->load->view('elements/footer');
+        }
     }
 
     /**
@@ -71,27 +79,30 @@ class Utilisateur extends CI_Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
 
-    public function delete($id)
+    public function delete()
     {
-
+        echo "<script>alert(\"Radouane : NOT YET IMPLEMENTED\");</script>";
     }
     
-    public function login($data)
+    public function AllUsers()
     {
-        
+        $users=$this->utilisateur->getAllUser();
+        //print_r($users);
+        //die();
+        $this->load->view('elements/header',$this->data);
+        $this->load->view('userTable',['users'=>$users]);
+        $this->load->view('elements/footer');
     }
     public function profil()
     {
         if(isset($this->session->userdata['logged_in'])){
 
             $annonce=$infos=$this->annonce->getAnnonceByUser($this->session->userdata('logged_in')['id_user']);
-			$annonces_sig=$this->annonce->get_annonces_signalees();
             $infos=$this->utilisateur->getUser($this->session->userdata('logged_in')['id_user']);
             $promo=$infos[0]['promo'];
             $telephone=$infos[0]['telephone'];
             $pseudo=$infos[0]['pseudo'];
-            $admin=$infos[0]['admin'];
-            $data = ["nom"=>$infos[0]['nom'],"prenom"=>$infos[0]['prenom'],"nbAnnonces" => $this->annonce->totalAnnonces(),"promo"=>$promo,"pseudo"=>$pseudo,"telephone"=>$telephone,"annonces"=>$annonce, "admin"=>$admin, "annonces_sig"=>$annonces_sig];
+            $data = ["nom"=>$infos[0]['nom'],"prenom"=>$infos[0]['prenom'],"nbAnnonces" => $this->annonce->totalAnnonces(),"promo"=>$promo,"pseudo"=>$pseudo,"telephone"=>$telephone,"annonces"=>$annonce];
             $this->load->view('elements/header',$this->data);
             $this->load->view('profil',$data);
             $this->load->view('elements/footer');
