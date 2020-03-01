@@ -30,11 +30,6 @@
 
 	<script src="../../../assets/js//bootstrap.min.js"></script>
 
-	
-
-
-
-
 </head>
 
 <body>

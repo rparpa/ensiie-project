@@ -20,34 +20,30 @@
 						<a class="dropdown-item" href="<?php echo site_url('/Annonce/ajouter_annonce'); ?>">Ajouter une annonce...</a>
 					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Administration</a>
-				</li>
+				<?php
+					if($admin_user)
+					{
+						echo "<li class=\"nav-item\">
+						<a class=\"nav-link\" href=\"#\">Administration</a>
+					</li>	";
+					}
+
+				?>
 				<li class="nav-item">
 					<a class="nav-link" href="#">A propos</a>
 				</li>
-				<?php if(isset($email)) { // TODO : il faut qu'on teste l'existence des variables sessions
-					echo "<li class=\"nav-item\">
-					<a class=\"nav-link\" href=".base_url()."index.php/authentification/profil>Mon profil ($nom $prenom)</a>
-				</li>";
-					echo "<li class=\"nav-item\">
-					<a class=\"nav-link glyphicon glyphicon-log-in\" href=".base_url()."index.php/authentification/logout>Se déconnecter</a>
-				</li>";
-				}
-				?>
 
 			</ul>
 		</div>
 		
-		<button type="button" class="btn btn-success" onclick="window.location.replace('<?php echo site_url('/Annonce/ajouter_annonce'); ?>');">Nouvelle annonce ...</button>
+		<button type="button" class="btn btn-success" style="margin-right: 2%;" onclick="window.location.replace('<?php echo site_url('/Annonce/ajouter_annonce'); ?>');">Nouvelle annonce ...</button>
 		<div class="dropdown open">
 			<button class="btn btn-secondary dropdown-toggle"
 					type="button" id="dropdownMenu5" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">
-					<i class="fas fa-user-circle"></i>
+				<i class="fas fa-user-circle"><?= "  ".$nom_user." ".$prenom_user ?></i>
 					<!--https://www.w3schools.com/icons/fontawesome5_icons_users_people.asp-->
 			</button>
-			
 			<div class="dropdown-menu dropdown-menu-right">
 				<a class="dropdown-item" href="<?php echo site_url('/utilisateur/profil'); ?>">Mon profil</a>
 				<div class="dropdown-divider"></div>

@@ -89,8 +89,8 @@ class Utilisateur extends CI_Controller
             $promo=$infos[0]['promo'];
             $telephone=$infos[0]['telephone'];
             $pseudo=$infos[0]['pseudo'];
-            $data = ["nbAnnonces" => $this->annonce->totalAnnonces(),"promo"=>$promo,"pseudo"=>$pseudo,"telephone"=>$telephone,"annonces"=>$annonce];
-            $this->load->view('elements/header');
+            $data = ["nom"=>$infos[0]['nom'],"prenom"=>$infos[0]['prenom'],"nbAnnonces" => $this->annonce->totalAnnonces(),"promo"=>$promo,"pseudo"=>$pseudo,"telephone"=>$telephone,"annonces"=>$annonce];
+            $this->load->view('elements/header',$this->data);
             $this->load->view('profil',$data);
             $this->load->view('elements/footer');
         }

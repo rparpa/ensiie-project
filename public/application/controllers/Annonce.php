@@ -27,13 +27,12 @@ class Annonce extends CI_Controller {
 	}
 
 	public function liste_annonces(){
-
 		$min = $this->annonce->minPrice();
 		$max = $this->annonce->maxPrice();
 		$annonces = $this->annonce->getAllAnnonce();
-		$this->data = array('annonces'=>$annonces, 'min'=>$min, 'max'=>$max);
+		$this->data += array('annonces'=>$annonces, 'min'=>$min, 'max'=>$max);
 
-		$this->load->view('elements/header');
+		$this->load->view('elements/header',$this->data);
 		$this->load->view('annonces_view', $this->data);
 		//$this->load->view('ajout_annonce_view');
 		$this->load->view('elements/footer');
@@ -45,9 +44,9 @@ class Annonce extends CI_Controller {
 		$maxPrice = $this->input->post('max');
 		if($minPrice<=$maxPrice){
 			$annonces = $this->annonce->getFilteredAnnonce($minPrice, $maxPrice);
-			$this->data = array('annonces'=>$annonces, 'min'=>$minPrice, 'max'=>$maxPrice);
+			$this->data += array('annonces'=>$annonces, 'min'=>$minPrice, 'max'=>$maxPrice);
 
-			$this->load->view('elements/header');
+			$this->load->view('elements/header',$this->data);
 			$this->load->view('annonces_view', $this->data);
 			$this->load->view('elements/footer');
 		}
@@ -82,13 +81,13 @@ class Annonce extends CI_Controller {
 	
 			}else{
 				$this->session->set_flashdata('error', 'Annonce non ajoutée, veuillez réessayer');
-				$this->load->view('elements/header');
+				$this->load->view('elements/header',$this->data);
 				$this->load->view('ajout_annonce_view',$this->data);
 				$this->load->view('elements/footer');
 			}
 		}
 		else{
-			$this->load->view('elements/header');
+			$this->load->view('elements/header',$this->data);
 			$this->load->view('ajout_annonce_view',$this->data);
 			$this->load->view('elements/footer');			
 		}
@@ -112,7 +111,7 @@ class Annonce extends CI_Controller {
 		$this->data+=array('user_annonce'=>$user_annonce);
 		$this->data+=array('etat_annonce'=>$etat_annonce);
 
-		$this->load->view('elements/header');
+		$this->load->view('elements/header',$this->data);
 		$this->load->view('details_annonce_view.php',$this->data);
 		$this->load->view('elements/footer');	
 	}
