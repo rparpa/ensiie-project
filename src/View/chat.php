@@ -1,4 +1,8 @@
 <div id="chat">
+<?php
+    $org = $organizationRepository->fetchByUser($authenticatorService->getCurrentUserId());
+    if ($org != null) {
+    ?>
     <div class="chat">
         <table class="table" id="infos_chat" >
             <?php include_once 'refresh_chat.php' ?>
@@ -18,6 +22,7 @@
             <?php } ?>
         </form>
     </div>
+    <?php } ?>
 </div>
 
 <script>
