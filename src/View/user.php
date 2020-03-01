@@ -31,7 +31,7 @@ $authenticatorService = new AuthenticatorService($userRepository);
                    value="<?php echo $user?$user->getUsername():'' ?>"
                    name="username"
                    id="username"
-                   required="">
+                   required>
             <span class="error" aria-live="polite" id="errorusername"></span>
         </div>
         <div class="form-row">
@@ -39,7 +39,7 @@ $authenticatorService = new AuthenticatorService($userRepository);
             <input type="text"
                    value="<?php echo $user?$user->getSurname():'' ?>"
                    name="surname"
-                   id="surname"><br>
+                   id="surname" required><br>
             <span class="error" aria-live="polite" id="errorsurname"></span>
         </div>
         <div class="form-row">
@@ -47,7 +47,7 @@ $authenticatorService = new AuthenticatorService($userRepository);
             <input type="text"
                    value="<?php echo $user?$user->getName():'' ?>"
                    name="name"
-                   id="name"><br>
+                   id="name" required><br>
             <span class="error" aria-live="polite" id="errorname"></span>
         </div>
         <div class="form-row">
@@ -55,7 +55,7 @@ $authenticatorService = new AuthenticatorService($userRepository);
             <input type="email"
                    value="<?php echo $user?$user->getMail():'' ?>"
                    id="mail"
-                   name="mail"><br>
+                   name="mail" required><br>
             <span class="error" aria-live="polite" id="errormail"></span>
         </div>
         <?php if($authenticatorService->isAdministrateur()):?>
@@ -73,7 +73,7 @@ $authenticatorService = new AuthenticatorService($userRepository);
             <input type="password"
                    value="<?php echo $user?$user->getPassword():'' ?>"
                    id="password"
-                   name="password"><br>
+                   name="password" required><br>
             <span class="error" aria-live="polite" id="errorpassword"></span>
         </div>
         <div class="form-row">
@@ -81,7 +81,7 @@ $authenticatorService = new AuthenticatorService($userRepository);
             <input type="password"
                    value="<?php echo $user?$user->getPassword():'' ?>"
                    id="passwordcheck"
-                   name="passwordcheck"><br>
+                   name="passwordcheck" required><br>
             <span class="error" aria-live="polite" id="errorpasswordcheck"></span>
         </div>
         <div class="form-row">
