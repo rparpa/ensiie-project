@@ -104,5 +104,4 @@ class UserRepositoryTest extends TestCase
         $repository = new UserRepository($pdoMock, $hydrator);
         self::assertEquals(2,sizeof($repository->fetchAll()));
     }
-
 }
