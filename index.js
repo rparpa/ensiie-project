@@ -9,6 +9,7 @@ const httpClient = new HttpClient(appConfig.apiUrl);
 
 const offreService = new OffreService(httpClient);
 
+
 offreService.searchOffres(
     document.getElementById('exampleInputJobs').value,
     document.getElementById('exampleInputLocation').value,
