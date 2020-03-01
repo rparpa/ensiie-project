@@ -17,7 +17,7 @@ $org = ((object) $organizationRepository->fetchByUser($authenticatorService->get
 //TODO Faire bien mieux mais la je fatigue un peu
 
 ?>
-<h1>
+<h1 align="center" style="margin: 1em">
     Collaborateurs de l'organisation <?php echo $org->getName() ?>
 </h1>
 
