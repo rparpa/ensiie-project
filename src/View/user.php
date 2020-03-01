@@ -6,6 +6,7 @@ use User\User;
 use User\UserHydrator;
 use User\UserRepository;
 
+
 if (isset($data['user'])) {
     /** @var User $user */
     $user = $data["user"];
@@ -19,73 +20,152 @@ $authenticatorService = new AuthenticatorService($userRepository);
 
 ?>
 
-<form class="formulaire" method="post" action="addorupdateuser.php">
-    <div class="container-fluid" >
-        <div class="form-row" align="center">
-            <legend>Utilisateur</legend>
-        </div>
-        <input type="hidden" value="<?php echo $user?$user->getId():'' ?>" name="id">
-        <div class="form-row">
-            <label class="label-lenght-fix" for="username">Username : <em>*</em></label>
-            <input type="text"
-                   value="<?php echo $user?$user->getUsername():'' ?>"
-                   name="username"
-                   id="username"
-                   required>
-            <span class="error" aria-live="polite" id="errorusername"></span>
-        </div>
-        <div class="form-row">
-            <label class="label-lenght-fix" for="surname">Surname : <em>*</em></label>
-            <input type="text"
-                   value="<?php echo $user?$user->getSurname():'' ?>"
-                   name="surname"
-                   id="surname" required><br>
-            <span class="error" aria-live="polite" id="errorsurname"></span>
-        </div>
-        <div class="form-row">
-            <label class="label-lenght-fix" for="name">Name : <em>*</em></label>
-            <input type="text"
-                   value="<?php echo $user?$user->getName():'' ?>"
-                   name="name"
-                   id="name" required><br>
-            <span class="error" aria-live="polite" id="errorname"></span>
-        </div>
-        <div class="form-row">
-            <label class="label-lenght-fix" for="mail">Mail : <em>*</em></label>
-            <input type="email"
-                   value="<?php echo $user?$user->getMail():'' ?>"
-                   id="mail"
-                   name="mail" required><br>
-            <span class="error" aria-live="polite" id="errormail"></span>
-        </div>
-        <?php if($authenticatorService->isAdministrateur()):?>
-        <div class="form-row">
-            <label class="label-lenght-fix" for="admin">Admin : <em>*</em></label>
-            <input type="checkbox"
-                   checked
-                   id="admin"
-                   name="admin"
-                   value="admin"><br>
-        </div>
-        <?php endif;?>
-        <div class="form-row">
-            <label class="label-lenght-fix" for="password">Password : <em>*</em></label>
-            <input type="password"
-                   value="<?php echo $user?$user->getPassword():'' ?>"
-                   id="password"
-                   name="password" required><br>
-            <span class="error" aria-live="polite" id="errorpassword"></span>
-        </div>
-        <div class="form-row">
-            <label class="label-lenght-fix" for="passwordcheck">Password Verification : <em>*</em> </label>
-            <input type="password"
-                   value="<?php echo $user?$user->getPassword():'' ?>"
-                   id="passwordcheck"
-                   name="passwordcheck" required><br>
-            <span class="error" aria-live="polite" id="errorpasswordcheck"></span>
-        </div>
-        <div class="form-row">
-            <button>Envoyer</button>
-        </div>
+<div class="card mx-auto" align="center" style="margin: 5em;width: 30em">
+    <div class="card-header" >
+        <h2>Utilisateur</h2>
     </div>
-</form>
+    <form class="formulaire" method="post" action="addorupdateuser.php" id="formulaire">
+        <div class="card-body" >
+            <input type="hidden" value="<?php echo $user?$user->getId():'' ?>" name="id">
+            <div class="input-group form-group">
+                <div class="input-group-prepend" >
+                    <span class="input-group-text">
+                        <i class="fas fa-user" ></i>
+                    </span>
+                </div>
+                <input type="text"
+                       value="<?php echo $user?$user->getUsername():'' ?>"
+                       name="username"
+                       id="username"
+                       required
+                       placeholder="Username">
+            </div>
+            <div class="form-group">
+                <?php if (isset($data['userAlreadyExist'])): ?>
+                    <span id="userAlreadyExist" class="error-message"><?= $data['userAlreadyExist'] ?></span>
+                <?php endif; ?>
+            </div>
+            <div class="input-group form-group">
+                <div class="input-group-prepend" >
+                    <span class="input-group-text">
+                        <i class="fas fa-user" ></i>
+                    </span>
+                </div>
+                <input type="text"
+                       value="<?php echo $user?$user->getSurname():'' ?>"
+                       name="surname"
+                       id="surname"
+                       required
+                       placeholder="Surname">
+            </div>
+            <div class="form-group">
+                <?php if (isset($data['surnameAlreadyExist'])): ?>
+                    <span id="surnameAlreadyExist" class="error-message"><?= $data['surnameAlreadyExist'] ?></span>
+                <?php endif; ?>
+            </div>
+            <div class="input-group form-group">
+                <div class="input-group-prepend" >
+                    <span class="input-group-text">
+                        <i class="fas fa-user" ></i>
+                    </span>
+                </div>
+                <input type="text"
+                       value="<?php echo $user?$user->getName():'' ?>"
+                       name="name"
+                       id="name"
+                       required
+                       placeholder="Name">
+            </div>
+            <div class="input-group form-group">
+                <div class="input-group-prepend" >
+                    <span class="input-group-text">
+                        <i class="fas fa-user" ></i>
+                    </span>
+                </div>
+                <input type="email"
+                       value="<?php echo $user?$user->getMail():'' ?>"
+                       id="mail"
+                       name="mail"
+                       required
+                       placeholder="Mail">
+            </div>
+            <div class="form-group">
+                <?php if (isset($data['mailAlreadyExist'])): ?>
+                    <span id="mailAlreadyExist" class="error-message"><?= $data['mailAlreadyExist'] ?></span>
+                <?php endif; ?>
+            </div>
+            <?php if($authenticatorService->isAdministrateur()):?>
+                <div class="input-group form-group">
+                    <div class="input-group-prepend" >
+                    <span class="input-group-text">
+                        <i class="fas fa-user" ></i>
+                    </span>
+                    </div>
+                    <label class="label-lenght-fix" for="admin">Admin : <em>*</em></label>
+                    <input type="checkbox"
+                           checked
+                           id="admin"
+                           name="admin"
+                           value="admin">
+                </div>
+            <?php endif;?>
+            <div class="input-group form-group">
+                <div class="input-group-prepend" >
+                    <span class="input-group-text">
+                        <i class="fas fa-user" ></i>
+                    </span>
+                </div>
+                <input type="password"
+                       value="<?php echo $user?$user->getPassword():'' ?>"
+                       id="password"
+                       name="password"
+                       required
+                       placeholder="Password">
+            </div>
+            <div class="input-group form-group">
+                <div class="input-group-prepend" >
+                    <span class="input-group-text">
+                        <i class="fas fa-user" ></i>
+                    </span>
+                </div>
+                <input type="password"
+                       value="<?php echo $user?$user->getPassword():'' ?>"
+                       id="passwordcheck"
+                       name="passwordcheck"
+                       required
+                       placeholder="Password Verification">
+            </div>
+            <div class="form-group">
+                <?php if (isset($data['passwordDoesNotMatch'])): ?>
+                    <span id="passwordDoesNotMatch" class="error-message"><?= $data['passwordDoesNotMatch'] ?></span>
+                <?php endif; ?>
+            </div>
+            <div class="form-group">
+                <button class="btn float-right">Signup</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<script>
+
+    document.getElementById("username").addEventListener('keyup', function (event) {
+        document.getElementById('userAlreadyExist').innerHTML = "";
+    });
+
+    document.getElementById("surname").addEventListener('keyup', function (event) {
+        document.getElementById('surnameAlreadyExist').innerHTML = "";
+    });
+
+    document.getElementById("mail").addEventListener('keyup', function (event) {
+        document.getElementById('mailAlreadyExist').innerHTML = "";
+    });
+
+    document.getElementById("password").addEventListener('keyup', function (event) {
+        document.getElementById('passwordDoesNotMatch').innerHTML = "";
+    });
+
+
+</script>
