@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "unit.test": "jest",
-    "dev" : "nodemon ./bin/www"
+    "test": "jest",
+    "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -18,10 +19,15 @@
     "nodemon": "^2.0.2"
   },
   "devDependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "supertest": "^4.0.2"
   },
   "jest": {
     "verbose": true,
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 50,
