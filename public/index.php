@@ -25,7 +25,7 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#connexion">Se connecter</a></li>
+								<li><a href="#connexion">Connexion</a></li>
 								<li><a href="#commander">Commander</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<li><a href="#elements">Elements</a></li>
@@ -39,7 +39,7 @@
 						<!-- connexion -->
 							<article id="connexion">
 							<section>
-									<h3 class="major">Se connecter</h3>
+									<h3 class="major">Connexion</h3>
 									<form method="post" action="#">
 										<div class="fields">
 											<div class="field half">
@@ -53,6 +53,9 @@
 										</div>
 										<ul class="actions">
 											<li><input type="submit" value="Connexion" class="primary" /></li>
+										</ul>
+										<ul class="actions">
+											<li ><input type="submit" value="Créer un compte" class="primary" /></li>
 										</ul>
 									</form>
 								</section></article>

@@ -778,19 +778,16 @@ input, select, textarea {
 /* Actions */
 
 	ul.actions {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
 		cursor: default;
 		list-style: none;
-		margin-left: -1rem;
 		padding-left: 0;
+		text-align:center;
 	}
 
 		ul.actions li {
 			padding: 0 0 0 1rem;
 			vertical-align: middle;
+			align-items: center;
 		}
 
 		ul.actions.special {
@@ -1031,13 +1028,12 @@ input, select, textarea {
 		}
 		input{
 			height:34px;
-      width: 100px;
-      text-align: center;
-      font-size: 26px;
+      		text-align: center;
+     		 font-size: 26px;
 			border:1px solid #ddd;
 			border-radius:4px;
-      display: inline-block;
-      vertical-align: middle;
+      		display: inline-block;
+      		vertical-align: middle;
 		}
 
 	.validation {
@@ -1127,6 +1123,7 @@ input, select, textarea {
 			background-color: #ffffff;
 			color: #1b1f22 !important;
 			font-weight: 600;
+			min-width: 300px;
 		}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
@@ -1407,7 +1404,6 @@ input, select, textarea {
 					min-width: 7.5rem;
 					height: 2.75rem;
 					line-height: 2.75rem;
-					padding: 0 1.25rem 0 1.45rem;
 					text-transform: uppercase;
 					letter-spacing: 0.2rem;
 					font-size: 0.8rem;
