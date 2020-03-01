@@ -124,7 +124,7 @@
 									               	<span class="input-group-btn">
 									                  	<button class="btn btn-white btn-minuse" type="button">-</button>
 									               	</span>
-									               	<input type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
+									               	<input  type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
 									               	<span class="input-group-btn">
 									                  	<button class="btn btn-red btn-pluss" type="button">+</button>
 									               	</span>

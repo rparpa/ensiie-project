@@ -399,9 +399,7 @@ input, select, textarea {
 		border-radius: 4px;
 		border: solid 1px #ffffff;
 		color: inherit;
-		display: block;
 		outline: 0;
-		padding: 0 1rem;
 		text-decoration: none;
 		width: 100%;
 	}
@@ -955,6 +953,8 @@ input, select, textarea {
 
 		table td {
 			padding: 0.75em 0.75em;
+			align-items: center;
+			text-align: center;
 		}
 
 		table th {
