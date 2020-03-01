@@ -28,8 +28,18 @@ class Etat_model extends CI_Model
 			->get()
 			->result_array();
     }
-    public function getEtat($id_etat)
-    {
-		return $this->db->get_where('etat',array('id_etat' => $id_etat))->result_array();
+
+    /**
+     * Fonction permettant de recupérer un etat
+     * 
+     * @param $id_etat Id de l'état
+     * 
+     * @return
+     * etat sous forme d'un array
+     */
+    public function getEtat($id_etat){
+
+      return $this->db->get_where('etat',array('id_etat' => $id_etat))->result_array();
+      
     }
 }

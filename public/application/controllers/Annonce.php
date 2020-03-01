@@ -82,6 +82,28 @@ class Annonce extends CI_Controller {
 
 	}
 
+	/**
+	 * Fonction permettant d'afficher le détail d'une annonce
+	 * 
+	 * @param $id Id de l'annonce
+	 */
+	public function details_annonce($id){
+
+		$annonce = $this->annonce->getAnnonce($id);
+		$image = $this->image->getImage($id);
+		$user_annonce = $this->utilisateur->getUser($annonce[0]['id_user']);
+		$etat_annonce = $this->etat->getEtat($annonce[0]['id_etat']);
+
+		$this->data+=array('details_annonce'=>$annonce);
+		$this->data+=array('image'=>$image);
+		$this->data+=array('user_annonce'=>$user_annonce);
+		$this->data+=array('etat_annonce'=>$etat_annonce);
+
+		$this->load->view('elements/header');
+		$this->load->view('details_annonce_view.php',$this->data);
+		$this->load->view('elements/footer');	
+	}
+
 	function delete(){
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('annonces_view');

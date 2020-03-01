@@ -22,7 +22,7 @@
 
         <!--Structure de la rubrique description-->
         <div class="card ">
-                <h5 class="card-header text-white bg-primary">Nouvelle annonce</h5>
+                <h5 class="card-header text-white bg-success">Nouvelle annonce</h5>
             <div class="card-body">
 
                 <!-- //Ouverture de la balise row correspondant à la ligne titre -->
