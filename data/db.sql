@@ -75,3 +75,14 @@ INSERT INTO "order_sandwich" (order_id, sandwich_id)
 VALUES (1, 1);
 INSERT INTO "order_sandwich" (order_id, sandwich_id)
 VALUES (2, 2);
+
+DROP TABLE  "invoice";
+CREATE TABLE "invoice" (
+    id SERIAL PRIMARY KEY,
+    order_id BIGINT
+);
+
+INSERT INTO "invoice" (order_id)
+VALUES (1);
+INSERT INTO "invoice" (order_id)
+VALUES (2);
