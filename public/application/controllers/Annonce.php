@@ -174,12 +174,10 @@ class Annonce extends CI_Controller {
 	 * 
 	 * @param $id_annonce Id de l'annonce à supprimer
 	 */
-	public function supprimer_annonce($id_annonce){
-		/*$this->annonce->deleteAnnonce($id_annonce);
-		redirect('Annonce/mes_annonces');*/
+	public function supprimer_annonce(){
 		$id_annonce = $this->uri->segment('3');
 		$this->annonce->deleteAnnonce($id_annonce);
-		$this->liste_annonces();
+		redirect('Annonce/liste_annonces');
 	}
 	/**
 	 * Fonction permettant d'afficher le détail d'une annonce
