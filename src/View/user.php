@@ -95,18 +95,19 @@ $authenticatorService = new AuthenticatorService($userRepository);
                 <?php endif; ?>
             </div>
             <?php if($authenticatorService->isAdministrateur()):?>
-                <div class="input-group form-group">
+                <div class="input-group form-group" style="display: none">
                     <div class="input-group-prepend" >
                     <span class="input-group-text">
                         <i class="fas fa-user" ></i>
                     </span>
                     </div>
-                    <label class="label-lenght-fix" for="admin">Admin : <em>*</em></label>
+
                     <input type="checkbox"
                            checked
                            id="admin"
                            name="admin"
-                           value="admin">
+                           value="admin"
+                           placeholder="Admin">
                 </div>
             <?php endif;?>
             <div class="input-group form-group">
