@@ -13,22 +13,34 @@ $authenticatorService = new AuthenticatorService($userRepository);
 $organizationHydrator = new OrganizationHydrator();
 $organizationRepository = new OrganizationRepository(Connection::get(), $organizationHydrator);
 
-$org = ((object) $organizationRepository->fetchByUser($authenticatorService->getCurrentUserId()))->organization;
-//TODO Faire bien mieux mais la je fatigue un peu
 
-?>
-<h1 align="center" style="margin: 1em">
-    Collaborateurs de l'organisation <?php echo $org->getName() ?>
-</h1>
+$oraofuser = $organizationRepository->fetchByUser($authenticatorService->getCurrentUserId());
+
+if(!$oraofuser){ ?>
+    <h1 align="center" style="margin: 2em">
+        Vous n'etes pas membre d'une organisation.
+    </h1>
+    <h4 align="center" style="margin: 1em">
+        Contactez votre administrateur
+    </h4>
+    <?php
+}
+else{
+    $org = ((object)$oraofuser)->organization;
+
+    ?>
+    <h1 align="center" style="margin: 1em">
+        Collaborateurs de l'organisation <?php echo $org->getName() ?>
+    </h1>
 
 
-<div class="container" style="margin-top: 5em">
-    <div>
-        <h5>Collaborateurs</h5>
-    </div>
-    <div>
-        <table class="table">
-            <thead>
+    <div class="container" style="margin-top: 5em">
+        <div>
+            <h5>Collaborateurs</h5>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Pseudo</th>
@@ -38,42 +50,42 @@ $org = ((object) $organizationRepository->fetchByUser($authenticatorService->get
                     <th scope="col">Date d'inscription</th>
                     <th scope="col">Renvoyer</th>
                 </tr>
-            </thead>
-            <tbody id="tableusers">
+                </thead>
+                <tbody id="tableusers">
                 <?php include_once 'select_usersinorga.php' ?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+        <select id="select-user-add">
+            <?php include_once 'select_usersnotinorga.php' ?>
+        </select>
+        <button id="button-user-add">Ajouter</button>
     </div>
-    <select id="select-user-add">
-        <?php include_once 'select_usersnotinorga.php' ?>
-    </select>
-    <button id="button-user-add">Ajouter</button>
-</div>
 
-<script>
-    function ShowAlert() {
-        alert("Un truc cool a faire je pense!!")
-    }
-
-    document.getElementById("button-user-add").addEventListener('click', function() {
-        var index = $("#select-user-add").prop("selectedIndex");
-        if (index >= 0) {
-            var iduser = $("#select-user-add").find(':selected').attr('data-id');
-            //TODO ajouter une saisie lors de la selection
-            var role = "Larbin";
-            $.get({
-                url: 'addusertoorga.php',
-                data: {
-                    iduser: iduser,
-                    role: role,
-                    idorganization: <?php echo $org->getId(); ?>
-                },
-                success: refreshuser
-            });
+    <script>
+        function ShowAlert() {
+            alert("Un truc cool a faire je pense!!")
         }
-    });
-    
-    var removebuttons = document.getElementsByClassName("remove");
+
+        document.getElementById("button-user-add").addEventListener('click', function() {
+            var index = $("#select-user-add").prop("selectedIndex");
+            if (index >= 0) {
+                var iduser = $("#select-user-add").find(':selected').attr('data-id');
+                //TODO ajouter une saisie lors de la selection
+                var role = "Larbin";
+                $.get({
+                    url: 'addusertoorga.php',
+                    data: {
+                        iduser: iduser,
+                        role: role,
+                        idorganization: <?php echo $org->getId(); ?>
+                    },
+                    success: refreshuser
+                });
+            }
+        });
+
+        var removebuttons = document.getElementsByClassName("remove");
         for (var i = 0; i < removebuttons.length; i++) {
             removebuttons[i].addEventListener('click', function() {
                 var iduser = this.value;
@@ -89,8 +101,10 @@ $org = ((object) $organizationRepository->fetchByUser($authenticatorService->get
             });
         }
 
-    function refreshuser() {
-        $('#select-user-add').load('select_usersnotinorga.php');
-        $('#tableusers').load('select_usersinorga.php');
-    }
-</script>
+        function refreshuser() {
+            $('#select-user-add').load('select_usersnotinorga.php');
+            $('#tableusers').load('select_usersinorga.php');
+        }
+    </script>
+
+<?php }?>
