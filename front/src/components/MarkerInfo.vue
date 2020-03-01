@@ -14,7 +14,7 @@
                 <b-badge v-if="info._statut != '' || null || undefined" class="statut" variant="success">Disponible</b-badge>        
                 <b-badge v-else class="statut" variant="danger">Indisponible</b-badge>        
             </div>
-            <p>Tarif : {{info._tarif}} </p>
+            <p class="tarif">Tarif : {{info._tarif}} </p>
         </div>        
     </div>
 </template>

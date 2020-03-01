@@ -13,13 +13,13 @@
   </b-container>
   <b-container v-if="markerInfoStatus" class="map-container side-panel col-4">    
     <b-row>
-      <b-card
+      <b-card 
           header="Parking Informations"
           header-tag="header"
           footer="🅿️"
           footer-tag="footer"
           style="min-width: 100%;"
-          class="mb-2"
+          class="infocard mb-2"
         >
         <b-card-text>
           <MarkerInfo v-bind:info="markerInfo"/>
