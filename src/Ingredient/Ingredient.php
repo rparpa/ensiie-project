@@ -16,12 +16,12 @@ class Ingredient
     /**
      * @var bool
      */
-    private bool $available;
+    private ?bool $available = true;
 
     /**
      * @var float
      */
-    private float $price;
+    private ?float $price = 0;
 
     /**
      * @return int
