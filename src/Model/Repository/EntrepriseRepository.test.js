@@ -6,23 +6,14 @@ describe("Create tests", () => {
 
     test('Throw Entreprise object undefined exception', () => {
 
-        const repository = new EntrepriseRepository();
-
-        function create() {
-            repository.create();
-        }
-        expect(create).toThrow(new Error('Entreprise object is undefined'));
+        expect(() => EntrepriseRepository.create()).toThrow(new Error('Entreprise object is undefined'));
     });
 
     test('Throw Entreprise object is missing information (id Entreprise  and so on case) exception', () => {
         let entreprise = new Entreprise();
         entreprise.id = "1"
-        const repository = new EntrepriseRepository();
-
-        function create() {
-            repository.create(entreprise);
-        }
-        expect(create).toThrow(new Error('Entreprise object is missing information'));
+       
+        expect(() => EntrepriseRepository.create(entreprise)).toThrow(new Error('Entreprise object is missing information'));
     });
 
     describe ("Update tests", () => {

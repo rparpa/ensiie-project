@@ -24,24 +24,15 @@ describe("Create tests", () => {
 
     test('Throw Particulier object undefined exception', () => {
 
-        const repository = new ParticulierRepository();
-
-        function create() {
-            repository.create();
-        }
-        expect(create).toThrow(new Error('Particulier object is undefined'));
+        expect(() => ParticulierRepository.create()).toThrow(new Error('Particulier object is undefined'));
     });
 
     test('Throw Particulier object is missing information (id Offre case) exception', () => {
         let Part = new Particulier();
         Part.id = "1"
         Part.adresseMail = "adresse@mail.com"
-        const repository = new ParticulierRepository();
-
-        function create() {
-            repository.create(Part);
-        }
-        expect(create).toThrow(new Error('Particulier object is missing information'));
+       
+        expect(() => ParticulierRepository.create(Part)).toThrow(new Error('Particulier object is missing information'));
     });
 
     describe ("Update tests", () => {
