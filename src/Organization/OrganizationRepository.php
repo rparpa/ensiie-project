@@ -108,7 +108,9 @@ class OrganizationRepository
             'DELETE FROM organization WHERE id = :id'
         );
         $stmt->bindValue(':id',$organizationId,PDO::PARAM_INT);
-        $stmt->execute();
+        $res = $stmt->execute();
+        if(!$res)
+            var_dump($stmt->errorInfo());
     }
 
     /**
@@ -122,7 +124,9 @@ class OrganizationRepository
         );
         $stmt->bindValue(':iduser', $iduser,PDO::PARAM_INT);
         $stmt->bindValue(':idorganization',$organizationId,PDO::PARAM_INT);
-        $stmt->execute();
+        $res = $stmt->execute();
+        if(!$res)
+            var_dump($stmt->errorInfo());
     }
 
     /**

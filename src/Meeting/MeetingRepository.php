@@ -117,7 +117,9 @@ class MeetingRepository
             'DELETE FROM meeting WHERE id = :id'
         );
         $stmt->bindValue(':id', $meetingId, PDO::PARAM_INT);
-        $stmt->execute();
+        $res = $stmt->execute();
+        if(!$res)
+            var_dump($stmt->errorInfo());
     }
 
     /**
@@ -131,7 +133,9 @@ class MeetingRepository
         );
         $stmt->bindValue(':idmeeting', $meetingId, PDO::PARAM_INT);
         $stmt->bindValue(':iduser', $userid, PDO::PARAM_INT);
-        $stmt->execute();
+        $res = $stmt->execute();
+        if(!$res)
+            var_dump($stmt->errorInfo());
     }
 
     /**
