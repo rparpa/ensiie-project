@@ -37,10 +37,10 @@ $idproject =  !empty($data['idproject']) ? $data['idproject'] : null;
 
 ?>
 
-<div class="container">
-    <h4 align="center">Bienvenue sur la page de consulation du <br/>
-        project : <? echo $projectrepository->findOneById($idproject)->getName()?></h4>
-    <div class="container">
+<div class="container" style="margin: 2em;">
+    <h2 align="center">Bienvenue sur la page de consulation du <br/>
+        project : <? echo $projectrepository->findOneById($idproject)->getName()?></h2>
+    <div class="container" style="margin: 2em;">
         <div class="row">
             <div class="col">
                 <div class="row">

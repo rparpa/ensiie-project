@@ -23,9 +23,9 @@ $userrepository =
 $userorga = $orgarepository->fetchByUser($authenticatorService->getCurrentUserId());
 
 if(!$userorga){?>
-    <h1 align="center" style="margin: 2em">
+    <h2 align="center" style="margin: 2em">
         Vous n'etes pas membre d'une organisation.
-    </h1>
+    </h2>
     <h4 align="center" style="margin: 1em">
         Contactez votre administrateur
     </h4>
@@ -33,12 +33,12 @@ if(!$userorga){?>
 else{
     $myorga = (object)$userorga;
     ?>
-    <h1 align="center" style="margin: 1em">
+    <h2 align="center" style="margin: 1em">
         Vous etes sur la page de l'organisation <?php echo $myorga->organization->getName() ?>
-    </h1>
-    <h3>
+    </h2>
+    <h4>
         Salut <?php echo $myorga->role ?>
-    </h3>
+    </h4>
 
     <div class="row">
         <div class="formulaire" id="form-add-project-to-my-orga">

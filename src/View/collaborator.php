@@ -29,9 +29,9 @@ else{
     $org = ((object)$oraofuser)->organization;
 
     ?>
-    <h1 align="center" style="margin: 1em">
+    <h2 align="center" style="margin: 1em">
         Collaborateurs de l'organisation <?php echo $org->getName() ?>
-    </h1>
+    </h2>
 
 
     <div class="container" style="margin-top: 5em">

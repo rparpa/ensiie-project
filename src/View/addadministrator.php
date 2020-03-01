@@ -11,8 +11,8 @@ $userrepository =
     new UserRepository(Connection::get(), new UserHydrator());
 
 ?>
-<div class="mx-auto">
-    <div align="center" class="row">
+<div class="mx-auto" style="margin: 2em;">
+    <div align="center" class="row" style="margin: 2em;">
         <div class="col">
             <label for="select-user-add">Selectionner un utilisateur</label>
             <select id="select-user-add" onchange="LoadFormualire()">

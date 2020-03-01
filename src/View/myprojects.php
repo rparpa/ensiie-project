@@ -12,9 +12,9 @@ $authenticatorService = new AuthenticatorService($userRepository);
 
 
 ?>
-<h1 align="center" style="margin: 1em">
+<h2 align="center" style="margin: 1em">
     Vous etes sur la page de mes projets
-</h1>
+</h2>
 
 
 <div class="container" style="margin-top: 5em">
