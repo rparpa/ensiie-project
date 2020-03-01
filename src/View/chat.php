@@ -1,3 +1,18 @@
+<?php
+use Db\Connection;
+use Service\AuthenticatorService;
+use User\UserHydrator;
+use User\UserRepository;
+use Organization\OrganizationHydrator;
+use Organization\OrganizationRepository;
+
+$userHydrator = new UserHydrator();
+$userRepository = new UserRepository(Connection::get(), $userHydrator);
+$authenticatorService = new AuthenticatorService($userRepository);
+$organizationHydrator = new OrganizationHydrator();
+$organizationRepository = new organizationRepository(Connection::get(), $organizationHydrator);
+$user = $authenticatorService->getCurrentUser();
+?>
 <div id="chat">
     <?php
     if ($authenticatorService->isAuthenticated()) {
