@@ -219,6 +219,16 @@
                             </div>
 
                             <p class="align-center"> Merci pour votre commande<br>Votre commande vous attendra au foyer.</p>
+
+                            <?
+
+                            $fi = new FilesystemIterator('assets/gif', FilesystemIterator::SKIP_DOTS);
+                            $r = rand(2, iterator_count($fi)+1);
+                            $file = scandir('assets/gif');
+
+                            echo "<img class=\"img-center gif\" src=\"assets/gif/" . $file[$r] . "\"/>";
+                            ?>
+
                             <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
                         </article>
 

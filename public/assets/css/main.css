@@ -714,6 +714,16 @@ input, select, textarea {
 
 		}
 
+		.img-center{
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		img.img-center.gif {
+			width: 50%;
+			padding-bottom: 2rem;
+		}
+
 /* List */
 
 	ol {
@@ -1718,7 +1728,7 @@ input, select, textarea {
 
 
 	.f-modal-alert {
-		padding: 25px;
+		padding: 0.1rem;
 	}
 
 	.f-modal-alert .f-modal-icon {

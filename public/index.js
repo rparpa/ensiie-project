@@ -31,6 +31,10 @@ $(document).ready(function(){
     /*Payment*/
 
     $('.f-modal-alert').hide();
+    $('img.img-center.gif').hide();
+
     $('.f-modal-alert').fadeIn();
+
+    $('img.img-center.gif').fadeIn(2000);
 
 });
