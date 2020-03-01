@@ -1,6 +1,6 @@
 const http = require('http');
 const url = require('url');
-const OffreWebService = require('./src/Model/Controller/OffreWebService');  
+const ParticulierWebService = require('./src/Model/Controller/ParticulierWebService');  
 var fs = require('fs');
 
 module.exports = http.createServer((req, res) => {
@@ -75,9 +75,9 @@ module.exports = http.createServer((req, res) => {
             res.end(data, 'utf-8');
         });
     }
-    else if(pathname == "/offre/request") {
+    else if(pathname == "/particulier/request") {
         if(req.method == 'POST') {
-            OffreWebService.create(req, res);
+            ParticulierWebService.create(req, res);
         }
     }
 

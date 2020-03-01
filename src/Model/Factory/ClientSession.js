@@ -1,5 +1,5 @@
 module.exports = class ClientSession {
-    static session;
+    static session = null;
     
     static getSession() {
         if(ClientSession.session == null) {

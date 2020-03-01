@@ -1,16 +1,30 @@
-module.exports = class {
-    constructor(db) {
-        this.db = db;
-    }
+const ClientSession = require('../Factory/ClientSession');
+const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom) VALUES($1, $2, $3, $4, $5) RETURNING *";
 
-    create(Particulier) {
+module.exports = class {
+    static create(Particulier) {
         if (!Particulier) {
             throw 'Particulier object is undefined';
         }
 
-        if (!Particulier.id || !Particulier.nom || !Particulier.prenom || !Particulier.motdepasse || !Particulier.cv || !Particulier.adresseMail) {
+        if (!Particulier.nom || !Particulier.prenom || !Particulier.motdepasse || !Particulier.cv || !Particulier.adressemail) {
             throw 'Particulier object is missing information';
         }
+
+        let values = [Particulier.adressemail, Particulier.motdepasse, Particulier.cv, Particulier.nom, Particulier.prenom];
+        
+        let result;
+
+        ClientSession.getSession().query(insert, values, (err, res) => {
+            if(err) {
+                throw 'Error in the database'
+            }
+            else {
+                result =  res.rows[0];
+            }
+        });
+
+        return result;
     }
     
     updateOne({id, nom, prenom, motdepasse,cv,adresseMail}) {
