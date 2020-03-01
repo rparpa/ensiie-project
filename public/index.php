@@ -60,7 +60,7 @@
 						<!-- commander -->
 							<article id="commander">
 								<h1 class="major">Commander</h1>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+
 								<section>
 									<h3 class="major">Pimp my sandwich</h3>
 									<div class="table-wrapper">
@@ -104,6 +104,7 @@
 											</tbody>
 										</table>
 									</div>
+									<span class="image main"><img src="assets/gif/3.gif" alt="" /></span>
 								</section>
 								</article>
 						<!-- Contact -->
