@@ -4,7 +4,6 @@ require_once '../src/Bootstrap.php';
 
 use Sandwich\Sandwich;
 use Sandwich\SandwichRepository;
-use Ingredient\Ingredient;
 use Ingredient\IngredientRepository;
 use Order\Order;
 use Order\OrderRepository;
