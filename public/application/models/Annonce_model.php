@@ -28,6 +28,14 @@ class Annonce_model extends CI_Model
 	  return $this->db->get()->result_array();
   }
 
+	public function totalAnnonces()
+	{
+		$id= $this->session->userdata('logged_in')['id'];
+		$this->db->where(['id_user'=> $id ]);
+		$this->db->from('annonce');
+		return $this->db->count_all_results();
+	}
+
   public function getAnnonce($idAnnonce){
 		  return $this->db->get_where('annonce',array('id_annonce' => $idAnnonce))->result_array();
   }
@@ -70,4 +78,8 @@ class Annonce_model extends CI_Model
 
 		$this->db->insert('annonce', $data);
   }
+	public function getAnnonceByUser($id)
+	{
+		return $this->db->get_where('annonce',array('id_user' => $id))->result_array();
+	}
 }

@@ -16,7 +16,7 @@
 
 	<!-- CSS customisé -->
 	<link href="../../../assets/css/annonce.css" rel="stylesheet">
-
+	<link href="../../../assets/css/profil.css" rel="stylesheet">
 	<!-- CSS Dropzone -->
 	<link href="../../../assets/css/dropzone.css" rel="stylesheet">
 
@@ -27,6 +27,8 @@
 
 	<!-- JS Dropzone -->
 	<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" ></script>
+
+	<script src="../../../assets/js//bootstrap.min.js"></script>
 
 
 
