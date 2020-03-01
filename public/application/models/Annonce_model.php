@@ -30,7 +30,7 @@ class Annonce_model extends CI_Model
 
 	public function totalAnnonces()
 	{
-		$id= $this->session->userdata('logged_in')['id'];
+		$id= $this->session->userdata('logged_in')['id_user'];
 		$this->db->where(['id_user'=> $id ]);
 		$this->db->from('annonce');
 		return $this->db->count_all_results();

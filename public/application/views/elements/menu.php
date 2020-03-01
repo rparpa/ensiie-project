@@ -34,10 +34,7 @@
 					<a class=\"nav-link glyphicon glyphicon-log-in\" href=".base_url()."index.php/authentification/logout>Se déconnecter</a>
 				</li>";
 				}
-				else echo "<li class=\"nav-item\">
-					<a class=\"nav-link glyphicon glyphicon-log-in\" href=".base_url()."index.php/authentification/login>Se connecter</a>
-				</li>";
-						?>
+				?>
 
 			</ul>
 		</div>
@@ -52,7 +49,7 @@
 			</button>
 			
 			<div class="dropdown-menu dropdown-menu-right">
-				<a class="dropdown-item" href="#!">Mon profil</a>
+				<a class="dropdown-item" href="<?php echo site_url('/utilisateur/profil'); ?>">Mon profil</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="<?php echo site_url('/authentification/logout'); ?>">Se déconnecter</a>
 			</div>
