@@ -22,24 +22,42 @@ class IngredientService
     }
 
     public function getAllIngredients() {
+        $this->resetErrors();
         $ingredients = [];
         $ingredients = $this->ingredientRepository->fetchAll();
         return $ingredients;
     }
 
+    public function getAvailableIngredients() {
+        $this->resetErrors();
+        $filteredIngredients = [];
+        $ingredients = $this->ingredientRepository->fetchAll();
+        foreach ($ingredients as $ingredient) {
+            if($ingredient->getAvailable() == true) {
+                    $filteredIngredients[] = $ingredient;
+            }
+        }
+
+        return $filteredIngredients;
+    }
+
     public function getIngredientById($ingredientId) {
+        $this->resetErrors();
         $ingredient = null;
         if($ingredientId == null)
             $this->errors['id'] = 'Ingredient id shouldn\'t be null.';
         else if($ingredientId < 0)
             $this->errors['id'] = 'Ingredient id can\'t be inferior to zero.';
-        else 
+        else {
             $ingredient = $this->ingredientRepository->findOneById($ingredientId);
-        
-            return $ingredient;
+            if ($ingredient == null)
+                $this->errors['id'] = 'Ingredient id ' . $ingredientId . ' doesn\'t exists.';
+        }
+        return $ingredient;
     }
 
     public function saveIngredient(Ingredient $ingredient) {
+        $this->resetErrors();
         if($this->validateIngredient($ingredient))
         {
             if (null != $ingredient->getId())
@@ -51,7 +69,12 @@ class IngredientService
     }
 
     public function deleteIngredient(Ingredient $ingredient) {
-        $result = $this->ingredientRepository->deleteIngredient($ingredient);
+        $this->resetErrors();
+        $result = false;
+        if($ingredient->getId() == null)
+            $this->errors['id'] = 'Ingredient id shouldn\'t be null.';
+        else
+            $result = $this->ingredientRepository->deleteIngredient($ingredient);
         return $result;
     }
 
@@ -69,12 +92,16 @@ class IngredientService
                 $this->errors['label'] = 'This label already exists for an ingredient.';
             } 
         }
-        
+
         if (null == $ingredient->getPrice() || 0 > $ingredient->getLabel() ) {
             $result = false;
             $this->errors['price'] = 'Price is mandatory and should be superior to zero..';
         }
 
         return $result;
+    }
+
+    private function resetErrors() {
+        $this->errors = [];
     }
 }
