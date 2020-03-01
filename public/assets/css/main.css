@@ -377,6 +377,8 @@ input, select, textarea {
 		line-height: 1.5;
 		margin: 0 0 1rem 0;
 		text-transform: uppercase;
+		word-break: keep-all;
+		white-space: nowrap;
 	}
 
 	input[type="text"],
@@ -778,19 +780,16 @@ input, select, textarea {
 /* Actions */
 
 	ul.actions {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
 		cursor: default;
 		list-style: none;
-		margin-left: -1rem;
 		padding-left: 0;
+		text-align:center;
 	}
 
-		ul.actions li {
+		ul.actions li a{
 			padding: 0 0 0 1rem;
 			vertical-align: middle;
+			align-items: center;
 		}
 
 		ul.actions.special {
@@ -879,7 +878,7 @@ input, select, textarea {
 						padding-top: 0;
 					}
 
-					ul.actions:not(.fixed) li input[type="submit"],
+					ul.actions:not(.fixed) li a input[type="submit"],				
 					ul.actions:not(.fixed) li input[type="reset"],
 					ul.actions:not(.fixed) li input[type="button"],
 					ul.actions:not(.fixed) li button,
@@ -1031,13 +1030,12 @@ input, select, textarea {
 		}
 		input{
 			height:34px;
-      width: 100px;
-      text-align: center;
-      font-size: 26px;
+      		text-align: center;
+     		 font-size: 26px;
 			border:1px solid #ddd;
 			border-radius:4px;
-      display: inline-block;
-      vertical-align: middle;
+      		display: inline-block;
+      		vertical-align: middle;
 		}
 
 	.validation {
@@ -1047,6 +1045,7 @@ input, select, textarea {
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
+	a.primary,
 	button,
 	.button {
 		-moz-appearance: none;
@@ -1120,6 +1119,7 @@ input, select, textarea {
 		}
 
 		input[type="submit"].primary,
+		a.primary,
 		input[type="reset"].primary,
 		input[type="button"].primary,
 		button.primary,
@@ -1127,6 +1127,7 @@ input, select, textarea {
 			background-color: #ffffff;
 			color: #1b1f22 !important;
 			font-weight: 600;
+			width: 100%;
 		}
 
 		input[type="submit"].disabled, input[type="submit"]:disabled,
@@ -1146,6 +1147,7 @@ input, select, textarea {
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
+	a.primary,
 	button {
 		line-height: calc(2.75rem - 2px);
 	}
@@ -1407,7 +1409,6 @@ input, select, textarea {
 					min-width: 7.5rem;
 					height: 2.75rem;
 					line-height: 2.75rem;
-					padding: 0 1.25rem 0 1.45rem;
 					text-transform: uppercase;
 					letter-spacing: 0.2rem;
 					font-size: 0.8rem;
