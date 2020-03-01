@@ -1,8 +1,9 @@
 const ClientSession = require('../Factory/ClientSession');
-const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom) VALUES($1, $2, $3, $4, $5) RETURNING *";
+const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom) VALUES($1, $2, $3, $4, $5) RETURNING id, adressemail, cv, nom, prenom";
+const selectAll = "SELECT * from particulier";
 
 module.exports = class {
-    static create(Particulier) {
+    static async create(Particulier) {
         if (!Particulier) {
             throw 'Particulier object is undefined';
         }
@@ -13,18 +14,18 @@ module.exports = class {
 
         let values = [Particulier.adressemail, Particulier.motdepasse, Particulier.cv, Particulier.nom, Particulier.prenom];
         
-        let result;
+        var result = await ClientSession.getSession().query(insert, values)
+                      .catch(e => {throw 'Error in the database'});
 
-        ClientSession.getSession().query(insert, values, (err, res) => {
-            if(err) {
-                throw 'Error in the database'
-            }
-            else {
-                result =  res.rows[0];
-            }
-        });
+        return result.rows[0];
+    }
 
-        return result;
+    static async getAll() {
+
+        var result = await ClientSession.getSession().query(selectAll)
+        .catch(e => {throw  'Error in the database'});
+
+        return result.rows;
     }
     
     updateOne({id, nom, prenom, motdepasse,cv,adresseMail}) {
