@@ -7,8 +7,6 @@ use User\UserRepository;
 require_once '../src/Bootstrap.php';
 include_once '../src/View/template.php';
 
-if(!isset($_SESSION["user_id"]))
-    header('Location: index.php');
 
 $userRepository =
     new UserRepository(Connection::get(), new UserHydrator());
@@ -22,7 +20,6 @@ $password =  !empty($_POST['password']) ? $_POST['password'] : null;
 $passwordcheck =  !empty($_POST['passwordcheck']) ? $_POST['passwordcheck'] : null;
 
 $viewData = [];
-
 
 function checkFormData(UserRepository $userRepository, $id, $username, $surname, $name ,$mail, $password, $passwordcheck)
 {

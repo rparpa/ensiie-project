@@ -247,5 +247,7 @@ class ProjectRepository
         $stmt->bindValue(':iduser', $iduser,PDO::PARAM_INT);
         $stmt->bindValue(':idproject', $idproject,PDO::PARAM_INT);
         $res = $stmt->execute();
+        if(!$res)
+            var_dump($stmt->errorInfo());
     }
 }

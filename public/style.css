@@ -108,3 +108,7 @@ em {
   color: #f00;
 }
 
+.error-message{
+  color: red;
+}
+

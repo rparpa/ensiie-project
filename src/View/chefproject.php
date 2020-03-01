@@ -23,7 +23,7 @@ $userRepository = new UserRepository(Connection::get(), new UserHydrator());
 
 
 ?>
-<h2>
+<h2 align="center" style="margin: 1em">
     Vous etes sur la page des projets en gestion
 </h2>
 

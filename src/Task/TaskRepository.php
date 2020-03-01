@@ -71,7 +71,9 @@ class TaskRepository
             'DELETE FROM task WHERE id = :id'
         );
         $stmt->bindValue(':id',$taskId,PDO::PARAM_INT);
-        $stmt->execute();
+        $res = $stmt->execute();
+        if(!$res)
+            var_dump($stmt->errorInfo());
     }
 
     /**
