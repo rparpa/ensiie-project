@@ -24,7 +24,7 @@ class Annonce_model extends CI_Model
 
 	  $this->db->select('*');
 	  $this->db->from("annonce");
-	  $this->db->order_by("date_publication", "ASC");
+	  $this->db->order_by("date_publication", "DESC");
 	  return $this->db->get()->result_array();
   }
 
@@ -45,7 +45,7 @@ class Annonce_model extends CI_Model
 		$this->db->from("annonce");
 		$this->db->where('prix >=', $min);
 		$this->db->where('prix <=', $max);
-		$this->db->order_by("date_publication", "ASC");
+		$this->db->order_by("date_publication", "DESC");
 		return $this->db->get()->result_array();
   }
 
