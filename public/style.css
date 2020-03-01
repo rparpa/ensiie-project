@@ -28,6 +28,7 @@ body {
 .main {
   width: 100%;
   overflow: hidden;
+  margin: 0;
 }
 
 .main-container {
@@ -37,14 +38,14 @@ body {
 }
 
 .main-chat {
-  max-width: 20em;
+  max-width: 30vh;
   min-height: 85vh;
   max-height: 85vh;
   background-color: #0f6674;
 }
 
 .main-info {
-  max-width: 20em;
+  max-width: 30vh;
   min-height: 85vh;
   max-height: 85vh;
   background-color: #0f6674;
