@@ -170,6 +170,10 @@ class OrderRepository
         }
     }
 
+    /**
+     * @param $orderId
+     * @return array
+     */
     private function fetchSandwichs($orderId)
     {
         $query = $this->connection->prepare(
@@ -192,4 +196,5 @@ class OrderRepository
 
         return $sandwichs;
     }
+
 }

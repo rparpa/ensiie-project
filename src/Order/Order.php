@@ -100,4 +100,25 @@ class Order
         $this->sandwichs = $sandwichs;
         return $this;
     }
+
+    public function getTotalPrice()
+    {
+        $sum = 0;
+        $sandwiches = $this->getSandwichs();
+        if ($sandwiches != null)
+        {
+            foreach ($sandwiches as $sandwich)
+            {
+                $ingredients = $sandwich->getIngredients();
+                if ($ingredients != null)
+                {
+                    foreach ($ingredients as $ingredient)
+                    {
+                        $sum += $ingredient->getPrice();
+                    }
+                }
+            }
+        }
+        return $sum;
+    }
 }

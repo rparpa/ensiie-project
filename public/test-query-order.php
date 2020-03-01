@@ -67,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ->setSandwichs($newSandwichs);
     
     $orderService->createOrder($newOrder);
+    $orderService->getTotalPrice($newOrder);
 
     $orders = $orderService->getAllOrders();
 }
