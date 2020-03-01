@@ -52,6 +52,24 @@ module.exports = class ParticulierWebService {
         res.end(JSON.stringify(response));
     }
 
+    static async getById(req, res, id) {
+        let response;
+        let codestatus;
+        try {
+            response = await ParticulierRepository.getById(id);
+            codestatus = 200;
+        }
+        catch(e) {
+            if (e == 'Error in the database') {
+                codestatus = 500;
+                response = 'Error in the database';
+            }
+        }
+        
+        res.writeHead(codestatus, {'Content-Type': 'application/json'});
+        res.end(JSON.stringify(response));
+    }
+
     static async updateOne(req, res) {
         var body = '';
 
@@ -67,7 +85,7 @@ module.exports = class ParticulierWebService {
                 codestatus = 200;
             }
             catch(e) {
-                
+                throw e;
             }
             
             res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -79,7 +97,7 @@ module.exports = class ParticulierWebService {
         let response;
         let codestatus;
         try {
-            response = await ParticulierRepository.delete(id);
+            response = await ParticulierRepository.deleteById(id);
             codestatus = 200;
         }
         catch(e) {

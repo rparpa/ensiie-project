@@ -7,6 +7,9 @@ module.exports = http.createServer((req, res) => {
     const reqUrl = url.parse(req.url, true);
     var pathname = reqUrl.pathname;
     var params = new URL("http://" + req.url).searchParams;
+
+    console.log(params);
+ 
     
     if(pathname == "/accueil") {
         fs.readFile('./public/index.html',function (err, data){
@@ -79,7 +82,12 @@ module.exports = http.createServer((req, res) => {
             ParticulierWebService.create(req, res);
         }
         else if(req.method == 'GET') {
-            ParticulierWebService.getAll(req, res);
+            if(params.has('id')) {
+                ParticulierWebService.getById(req, res, params.get('id'));
+            }
+            else {
+                ParticulierWebService.getAll(req, res);
+            }
         }
         else if(req.method == 'PUT') {
             ParticulierWebService.updateOne(req, res);
@@ -90,13 +98,4 @@ module.exports = http.createServer((req, res) => {
             }
         }
     }
-
-    // GET Endpoint
-    // if (reqUrl.pathname == '/sample' && req.method === 'GET') {
-    //     console.log('Request Type:' +
-    //         req.method + ' Endpoint: ' +
-    //         reqUrl.pathname);
-
-    //     // service.sampleRequest(req, res);
-    // } 
 });
