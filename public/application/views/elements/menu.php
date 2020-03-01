@@ -16,7 +16,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown01">
 						<a class="dropdown-item" href="<?php echo site_url('/Annonce/liste_annonces'); ?>">Lister les annonces</a>
-						<a class="dropdown-item" href="#">Mes annonces...</a>
+						<a class="dropdown-item" href="<?php echo site_url('/Annonce/mes_annonces'); ?>">Mes annonces...</a>
 						<a class="dropdown-item" href="<?php echo site_url('/Annonce/ajouter_annonce'); ?>">Ajouter une annonce...</a>
 					</div>
 				</li>
