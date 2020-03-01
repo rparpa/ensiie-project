@@ -5,9 +5,11 @@ require_once '../src/Bootstrap.php';
 use Sandwich\Sandwich;
 use Sandwich\SandwichRepository;
 use Ingredient\IngredientRepository;
+use Ingredient\IngredientService;
 
-$sandwichRepository = new SandwichRepository(\Db\Connection::get());
-$ingredientRepository = new IngredientRepository(\Db\Connection::get());
+$my_connection = \Db\Connection::get();
+$sandwichRepository = new SandwichRepository($my_connection);
+$ingredientService = new IngredientService(new IngredientRepository($my_connection));
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
@@ -26,21 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $sandwichRepository->deleteSandwich($newSandwich);
 
     $sandwichs = $sandwichRepository->getAll();
-    $ingredients = $ingredientRepository->fetchAll();
+    $ingredients = $ingredientService->getAvailableIngredients();
 }
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $ingredients = $ingredientRepository->fetchAll();
+    $ingredients = $ingredientService->getAvailableIngredients();
     $newSandwich = new Sandwich();
 
     $filterIngredients = [];
     foreach ($ingredients as $ingredient) {
-        
-        if($ingredient->getAvailable() == true) {
-            if(isset($_POST[$ingredient->getLabel()])) {
-                $filterIngredients[] = $ingredient;
-            }
+        if(isset($_POST[$ingredient->getLabel()])) {
+            $filterIngredients[] = $ingredient;
         }
     }
 
@@ -50,10 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $sandwichRepository->createSandwich($newSandwich);
 
-
-
     $sandwichs = $sandwichRepository->getAll();
-    $ingredients = $ingredientRepository->fetchAll();
+    $ingredients = $ingredientService->getAvailableIngredients();
 }
 
 ?>
