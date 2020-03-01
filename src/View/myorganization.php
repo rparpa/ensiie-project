@@ -111,7 +111,7 @@ else{
 
     <!-- Modal HTML -->
     <div id="ModalAddresponsable" class="modal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <form id="form-modal-responsable">
                     <div class="modal-header">

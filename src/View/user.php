@@ -142,7 +142,7 @@ $authenticatorService = new AuthenticatorService($userRepository);
                 <?php endif; ?>
             </div>
             <div class="form-group">
-                <button class="btn float-right">Signup</button>
+                <button class="btn btn-lg btn-primary btn-block">Signup</button>
             </div>
         </div>
     </form>
