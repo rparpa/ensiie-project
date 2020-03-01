@@ -1,6 +1,7 @@
 const ClientSession = require('../Factory/ClientSession');
-const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom) VALUES($1, $2, $3, $4, $5) RETURNING id, adressemail, cv, nom, prenom";
+const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom) VALUES($1, $2, $3, $4, $5) RETURNING adressemail, cv, nom, prenom";
 const selectAll = "SELECT * from particulier";
+const updateOne = "UPDATE particulier SET adressemail = $1, motdepasse = $2, cv = $3, nom = $4, prenom = $5 WHERE id = $6 RETURNING adressemail, motdepasse, cv, nom, prenom";
 
 module.exports = class {
     static async create(Particulier) {
@@ -28,7 +29,7 @@ module.exports = class {
         return result.rows;
     }
     
-    updateOne({id, nom, prenom, motdepasse,cv,adresseMail}) {
+    static async updateOne({id, nom, prenom, motdepasse,cv,adressemail}) {
         if(!id){
             throw 'no id specified';
         }
@@ -44,15 +45,15 @@ module.exports = class {
         if (!cv){
             throw 'no cv specified';
         }
-        if(!adresseMail){
+        if(!adressemail){
             throw 'no email specified';
         }
-        // this.db
-        //   .get('Particuliers')
-        //   .find({id})
-        //   .assign({ nom, prenom,motdepasse,cv,adresseMail})
-        //   .write();
-    
-        // return { id, nom, prenom,motdepasse,cv,adresseMail };
-      }
+
+        var values = [adressemail, motdepasse, cv, nom, prenom, id];
+        
+        var result = await ClientSession.getSession().query(updateOne, values)
+        .catch(e => {throw 'Error in the database'});
+
+        return result.rows[0];
+    }
 };

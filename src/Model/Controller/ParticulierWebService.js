@@ -35,22 +35,43 @@ module.exports = class ParticulierWebService {
     }
 
     static async getAll(req, res) {
-        // req.on('end', () => {
-            let response = "test";
+        let response;
+        let codestatus;
+        try {
+            response = await ParticulierRepository.getAll();
+            codestatus = 200;
+        }
+        catch(e) {
+            if (e == 'Error in the database') {
+                codestatus = 500;
+                response = 'Error in the database';
+            }
+        }
+        
+        res.writeHead(codestatus, {'Content-Type': 'application/json'});
+        res.end(JSON.stringify(response));
+    }
+
+    static async updateOne(req, res) {
+        var body = '';
+
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+
+        req.on('end', async () => {
+            let response;
             let codestatus;
             try {
-                response = await ParticulierRepository.getAll();
+                response = await ParticulierRepository.updateOne(JSON.parse(body));
                 codestatus = 200;
             }
             catch(e) {
-                if (e == 'Error in the database') {
-                    codestatus = 500;
-                    response = 'Error in the database';
-                }
+                
             }
             
             res.writeHead(codestatus, {'Content-Type': 'application/json'});
             res.end(JSON.stringify(response));
-        // })
+        })
     }
 }

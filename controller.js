@@ -79,9 +79,15 @@ module.exports = http.createServer((req, res) => {
         if(req.method == 'POST') {
             ParticulierWebService.create(req, res);
         }
-        if(req.method == 'GET') {
+        else if(req.method == 'GET') {
             ParticulierWebService.getAll(req, res);
         }
+        else if(req.method == 'PUT') {
+            ParticulierWebService.updateOne(req, res);
+        }
+        // else if(req.method == 'DELETE') {
+
+        // }
     }
 
     // GET Endpoint
