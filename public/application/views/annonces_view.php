@@ -30,7 +30,7 @@
 
 						echo '<div class="card-body">';
 								echo '<p class="card-title">';
-									echo '<a href="#">'.$annonce["titre"].'</a>';
+									echo '<a href="'.site_url('/Annonce/details_annonce/'.$annonce["id_annonce"]).'">'.$annonce["titre"].'</a>';
 								echo '</p>';									
 								echo '<div class="d-flex justify-content-between align-items-center">';
 										echo '<div class="btn-group">';

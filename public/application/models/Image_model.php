@@ -2,9 +2,7 @@
 
 class Image_model extends CI_Model
 {
-    public $idImage;
-    public $url;
-    
+   
     public function insert()
     {
 
@@ -25,9 +23,18 @@ class Image_model extends CI_Model
 
 
     }
-    public function getImage($id_annonce)
-    {
-		return $this->db->get_where('image',array('id_annonce' => $id_annonce))->result_array();
+
+    /**
+     * Fonction permettant de récupérer le lien de l'image
+     * 
+     * @param $id_annonce Id de l'annonce de l'image
+     * @return 
+     * lien de l'image de l'annonce sous forme d'un array
+     */
+    public function getImage($id_annonce){
+
+      return $this->db->get_where('image',array('id_annonce' => $id_annonce))->result_array();
+      
     }
 
 }

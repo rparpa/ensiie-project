@@ -39,8 +39,16 @@ class Utilisateur_model extends CI_Model
             ->get()
             ->result_array();
     }
-    public function getUser($id)
-    {
+
+    /**
+     * Fonction permettant de récupérer un utilisateur
+     * 
+     * @param $id Id de l'utilisateur
+     * 
+     * @return
+     * utilisation sous forme d'un array
+     */
+    public function getUser($id){
         return $this->db->get_where('utilisateur',array('id_user' => $id))->result_array();
     }
 
