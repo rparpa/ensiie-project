@@ -154,6 +154,24 @@ class OrderService
         return $result;
     }
 
+    public function getTotalPrice(Order $order)
+    {
+        $result = -1;
+        if (null != $order)
+        {
+            if ($order->getSandwichs() == null)
+            {
+                $this->errors['sandwichs_empty'] = 'This order is empty.';
+            }
+            $result =  $order->getTotalPrice();
+        }
+        else
+        {
+            $this->errors['id'] = 'Order id ' . $order->getId() . ' doesn\'t exists.';
+        }
+        return $result;
+    }
+
     private function resetErrors() {
         $this->errors = [];
     }
