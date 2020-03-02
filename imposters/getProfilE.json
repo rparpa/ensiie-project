@@ -3,7 +3,7 @@
       {
         "equals": {
           "method": "GET",
-          "path": "/profil"
+          "path": "/profilentreprise"
         }
       },
       {
@@ -17,13 +17,12 @@
           "headers": { "Access-Control-Allow-Origin": "*" },
           "body": [
             {
-              "prenom": "Corentin",
-              "adresseMail": "coco.simon@gmail.com",
-              "adresseDomicile": "massy somewhere",
-              "motDePasse": "son password",
-              "telephone": "son numero",
-              "cv": "CV.pdf",
-              "nom": "Simon"
+                "nom": "PSA",
+                "adresseMail": "coco.simon@psa.com",
+                "adresseSiege": "chez coco",
+                "motDePasse": "cocopassword",
+                "logo": "psa-logo.png",
+                "telephone": "numero coco"
             }
           ]
         }

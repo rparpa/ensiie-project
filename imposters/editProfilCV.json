@@ -17,10 +17,13 @@
           "headers": { "Access-Control-Allow-Origin": "*" },
           "body": [
             {
-              "adresseMail": "corentin.simon@gmail.com",
-              "telephone": "corentinsimon",
-              "motDePasse" : "niquecoco",
-              "cv": "corentinsimon-CV2.pdf"
+              "adresseMail": "coco.simon@gmail.com",
+              "adresseDomicile": "massy somewhere",
+              "motDePasse": "son password",
+              "telephone": "son numero",
+              "cv": "CV-modifie.pdf",
+              "nom": "Simon Modifie",
+              "prenom": "Corentin"
             }
           ]
         }
