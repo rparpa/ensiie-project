@@ -85,9 +85,9 @@ export default {
   methods: {
     onLogIn(evt) {
       evt.preventDefault();
-      
+
       HTTP.post('authentication'
-      , JSON.stringify(this.login)
+      , this.logIn
       )
       .then(response => {
         console.log(response);
