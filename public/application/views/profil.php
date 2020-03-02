@@ -81,11 +81,6 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Mes annonces</a>
                                 </li>
-								<?php if ($admin==TRUE) {
-								echo "<li class='nav-item'>";
-									echo "<a class='nav-link' id='connectedService-tab' data-toggle='tab' href='#connectedService' role='tab' aria-controls='connectedService' aria-selected='false'>Annonces signalées</a>";
-								echo "</li>";
-								}?>
                             </ul>
                             <div class="tab-content ml-1" id="myTabContent">
                                 <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
@@ -159,17 +154,6 @@
                                         ?>
                                     </ul>
                                 </div>
-								<div class="tab-pane fade" id="connectedService" role="tabpanel" aria-labelledby="ConnectedService-tab">
-									<ul class="list-group">
-										<?php
-										foreach($annonces_sig as $ann_sig)
-										{
-											echo "<li class=\"list-group-item\"> ** [".$ann_sig['id_annonce']."] ".$ann_sig['titre']."<br>Prix : ".$ann_sig['prix']."€<br>"."Signalée : ".$ann_sig['nb_signal']." fois"."</li>";?>
-											<button type="button" id="Supprimer" name="Supprimer" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/supprimer_annonce/'.$ann_sig['id_annonce']); ?>');">Supprimer</button>
-										<?php }
-										?>
-									</ul>
-								</div>
                             </div>
                         </div>
                     </div>

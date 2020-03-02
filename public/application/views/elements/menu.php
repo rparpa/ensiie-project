@@ -29,7 +29,7 @@
 					</a>
 					<div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
 						<a class=\"dropdown-item\" href=\"".site_url('/Utilisateur/AllUsers')."\">Gérer les utilisateurs</a>
-						<a class=\"dropdown-item\" href=\"\">Gérer les annonces</a>
+						<a class=\"dropdown-item\" href=\"".site_url('/Annonce/getAnnoncesSignalees')."\">Gérer les annonces</a>
 						<a class=\"dropdown-item\" href=\"\">Gérer les catégories</a>
 					</div>
 				</li>";
