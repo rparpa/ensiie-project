@@ -1,3 +1,26 @@
+<?php
+
+require_once '../src/Bootstrap.php';
+
+$userRepository = new \User\UserRepository(\Db\Connection::get());
+$userService = new \User\UserService($userRepository);
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    $newUser = new \User\User();
+    $newUser->setFirstname("Nicolas");//ballec
+    $newUser->setLastname("Charlon");//ballec
+    $newUser->setBirthday(new DateTimeImmutable("01/01/1970"));//ballec
+    $newUser->setPseudo($_POST["pseudo"]);
+    $newUser->setMail("rayan.erisium@gmail.com");//ballec
+    $newUser->setPassword($_POST["password"]);
+
+    $userService->createUser($newUser);
+}
+
+$users = $userService->getAllUser();
+?>
+
 <!DOCTYPE HTML>
 
 <html>
@@ -47,8 +70,8 @@
 												<input type="text" name="pseudo" id="pseudo" value="" placeholder="Snitchy" />
 											</div>
 											<div class="field half">
-												<label for="mdp">Mot de passe</label>
-												<input type="password" name="mdp" id="mdp" value="" placeholder="**********" autocomplete="off" />
+												<label for="password">Mot de passe</label>
+												<input type="password" name="password" id="password" value="" placeholder="**********" autocomplete="off" />
 											</div>
 										</div>
 										<ul class="actions">
@@ -124,7 +147,7 @@
 									               	<span class="input-group-btn">
 									                  	<button class="btn btn-white btn-minuse" type="button">-</button>
 									               	</span>
-									               	<input type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
+									               	<input  type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
 									               	<span class="input-group-btn">
 									                  	<button class="btn btn-red btn-pluss" type="button">+</button>
 									               	</span>
