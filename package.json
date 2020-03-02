@@ -46,6 +46,7 @@
   "homepage": "https://github.com/JonahR1/ensiie-project#readme",
   "dependencies": {
     "mountebank-helper": "^1.2.1",
-    "node-dev": "^4.0.0"
+    "node-dev": "^4.0.0",
+    "places.js": "^1.18.1"
   }
 }
