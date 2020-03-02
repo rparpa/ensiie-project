@@ -1,0 +1,29 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "POST",
+          "path": "/profil/edittelephone"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+              "adresseMail": "corentin.simon@gmail.com",
+              "telephone": "07 88 64 37 79",
+              "motDePasse" : "niquecoco",
+              "cv": "corentinsimon-CV.pdf"
+            }
+          ]
+        }
+      }
+    ]
+  }

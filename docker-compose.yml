@@ -13,20 +13,24 @@ services:
        - "3000:3000"
     volumes: 
       - "./:/usr/src/app/"
+    networks:
+      - "ensiie"
     
   postgres:
     build:
       context: ./.docker/postgres
     ports:
-      - ${DB_PORT_EXTERNAL}
+      - "${DB_PORT_EXTERNAL}:${DB_PORT_EXTERNAL}"
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB="ensiie"
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
       - .:/var/www/html
     working_dir: /var/www/html
-
+    networks:
+      - "ensiie"
   mountebank:
     container_name: mountebank
     image: jkris/mountebank:latest
@@ -36,3 +40,6 @@ services:
     - 2525:2525
     - 8090:8090
     command: --configfile /imposters/imposters.ejs --allowInjection
+networks:
+  ensiie:
+    driver: bridge

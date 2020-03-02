@@ -4,6 +4,7 @@
   "description": "## Install your application This tutorial will guide you through the installation procedure of the Web Project Skeleton.",
   "main": "index.js",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@stryker-mutator/core": "^1.1.1",
     "@stryker-mutator/html-reporter": "^1.1.1",
     "@stryker-mutator/javascript-mutator": "^1.1.1",
@@ -45,8 +46,7 @@
   },
   "homepage": "https://github.com/JonahR1/ensiie-project#readme",
   "dependencies": {
-    "mountebank-helper": "^1.2.1",
     "node-dev": "^4.0.0",
-    "places.js": "^1.18.1"
+    "pg": "^7.18.2"
   }
 }
