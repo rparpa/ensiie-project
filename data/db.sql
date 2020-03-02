@@ -11,7 +11,8 @@ CREATE TABLE "entreprise" (
     adressesiege VARCHAR NOT NULL ,
     motdepasse VARCHAR NOT NULL ,
     logo VARCHAR NOT NULL ,
-    isvalid BOOLEAN NOT NULL
+    isvalid BOOLEAN NOT NULL,
+    telephone VARCHAR NOT NULL
 );
 
 CREATE TABLE "particulier" (
@@ -20,7 +21,8 @@ CREATE TABLE "particulier" (
     motdepasse VARCHAR NOT NULL ,
     cv VARCHAR NOT NULL ,
     nom VARCHAR NOT NULL ,
-    prenom VARCHAR NOT NULL
+    prenom VARCHAR NOT NULL,
+    telephone VARCHAR NOT NULL
 );
 
 CREATE TABLE "offre" (
@@ -33,7 +35,7 @@ CREATE TABLE "offre" (
     latitude NUMERIC NOT NULL ,
     longitude NUMERIC NOT NULL ,
     salaire NUMERIC NOT NULL ,
-    isvalid BOOLEAN NOT NULL
+    titre VARCHAR NOT NULL
 );
 
 CREATE TABLE "candidat" (
