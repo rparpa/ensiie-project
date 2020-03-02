@@ -36,6 +36,14 @@ class Annonce extends CI_Controller {
 		$this->load->view('elements/footer');
 	}
 
+	/*public function AllAnnonces()
+	{
+		$annonces=$this->annonce->getAllAnnonce();
+		$this->load->view('elements/header',$this->data);
+		$this->load->view('annonceTable',['annonces'=>$annonces]);
+		$this->load->view('elements/footer');
+	}*/ //A SUPPRIMER
+
 	/**
 	 * Fonction permettant d'afficher les annonces de l'utilisateur connecté
 	 */
@@ -168,6 +176,14 @@ class Annonce extends CI_Controller {
 		redirect('Annonce/liste_annonces');
 	}
 
+	public function getAnnoncesSignalees()
+	{
+		$annonces=$this->annonce->get_annonces_signalees();
+		$this->load->view('elements/header',$this->data);
+		$this->load->view('annonceTable',['annonces'=>$annonces]);
+		$this->load->view('elements/footer');
+	}
+
 	/**
 	 * Fonction permettant de supprimer une annonce
 	 * 
@@ -175,7 +191,7 @@ class Annonce extends CI_Controller {
 	 */
 	public function supprimer_annonce($id_annonce){
 		$this->annonce->deleteAnnonce($id_annonce);
-		redirect('Annonce/liste_annonces');
+		redirect('Annonce/getAnnoncesSignalees');
 	}
 	/**
 	 * Fonction permettant d'afficher le détail d'une annonce
