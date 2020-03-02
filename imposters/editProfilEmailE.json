@@ -3,7 +3,7 @@
       {
         "equals": {
           "method": "POST",
-          "path": "/profil/edittelephone"
+          "path": "/profilentreprise/editemail"
         }
       },
       {
@@ -17,16 +17,15 @@
           "headers": { "Access-Control-Allow-Origin": "*" },
           "body": [
             {
-              "adresseMail": "coco.simon@gmail.com",
-              "adresseDomicile": "massy somewhere",
-              "motDePasse": "son password",
-              "telephone": "son numero modifié",
-              "cv": "CV.pdf",
-              "nom": "Simon",
-              "prenom": "Corentin"
+                "nom": "PSA",
+                "adresseMail": "coco.simon-modifier@psa.com",
+                "adresseSiege": "chez coco",
+                "motDePasse": "cocopassword",
+                "logo": "psa-logo.png",
+                "telephone": "numero coco"
             }
           ]
         }
       }
     ]
-  }
+}

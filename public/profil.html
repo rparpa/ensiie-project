@@ -52,7 +52,79 @@
         <h3 class="modal-title">Mes informations</h3>
         
         <form>
-            <div class="list-Modification">
+            <div class="list-Modification" id="list-particulier">
+                <div class="pass-ViewPage-LeftFlexItems">
+                    <div><b>Nom&nbsp;:</b></div>
+                    <label for="nom" id="nom"></label>
+                </div>
+                <div class="pass-ViewPage-RightFlexItems">
+                    <a href="#NomModal" data-toggle="modal" data-target="#NomModal">Modifier le nom de famille</a>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="NomModal" tabindex="-1" role="dialog" aria-labelledby="NomModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="NomModalLabel">Modifier le nom de famille</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleInputNom">Nouveau nom de famille :</label>
+                                <input type="text" class="form-control" id="exampleInputNom">
+                            </div>     
+                            <div class="form-group">
+                                <label for="exampleInputNom2">Resaisir le nom de famille :</label>
+                                <input type="text" class="form-control" id="exampleInputNom2">
+                            </div>            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-nom">Sauvegarder le nom</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="pass-ViewPage-LeftFlexItems">
+                    <div><b>Prenom&nbsp;:</b></div>
+                    <label for="prenom" id="prenom"></label>
+                </div>
+                <div class="pass-ViewPage-RightFlexItems">
+                    <a href="#PrenomModal" data-toggle="modal" data-target="#PrenomModal">Modifier le prenom</a>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="PrenomModal" tabindex="-1" role="dialog" aria-labelledby="PrenomModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="PrenomModalLabel">Modifier le prenom</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleInputPrenom">Nouveau prenom :</label>
+                                <input type="text" class="form-control" id="exampleInputPrenom">
+                            </div>     
+                            <div class="form-group">
+                                <label for="exampleInputPrenom2">Resaisir le prenom :</label>
+                                <input type="text" class="form-control" id="exampleInputPrenom2">
+                            </div>            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-prenom">Sauvegarder le prenom</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Email&nbsp;:</b></div>
                     <label for="email" id="email"></label>
@@ -162,26 +234,276 @@
                     </div>
                     </div>
                 </div>
+
+                <div class="pass-ViewPage-LeftFlexItems">
+                    <div><b>Adresse domicile&nbsp;:</b></div>
+                    <label for="adresseDomi" id="adresseDomi"></label>
+                </div>
+                <div class="pass-ViewPage-RightFlexItems">
+                    <a href="#AdresseDomiModal" data-toggle="modal" data-target="#AdresseDomiModal">Modifier l'adresse email</a>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="AdresseDomiModal" tabindex="-1" role="dialog" aria-labelledby="AdresseDomiModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="AdresseDomiModalLabel">Modifier l'adresse domicile</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleInputAdresseDomi">Nouvelle adresse domicile :</label>
+                                <input type="text" class="form-control" id="exampleInputAdresseDomi">
+                            </div>     
+                            <div class="form-group">
+                                <label for="exampleInputAdresseDomi2">Resaisir la nouvelle adresse domicile :</label>
+                                <input type="text" class="form-control" id="exampleInputAdresseDomi2">
+                            </div>            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-adresseDomi">Sauvegarder l'adresse</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Information CV -->
+                <form class="center" id="MonCV">
+                    
+                    <h3 class="modal-title">Mon CV</h3>
+
+                    <form>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile" id="nomfichier">Selectionner un fichier</label>
+                            <button type="button" class="btn btn-primary" id="btn-edit-cv">Enregistrer le fichier</button>
+                        </div>
+                    </form>
+
+                </form>
             </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="list-Modification" id="list-entreprise">
+                <div class="pass-ViewPage-LeftFlexItems">
+                    <div><b>Nom de societe&nbsp;:</b></div>
+                    <label for="nomE" id="nomE"></label>
+                </div>
+                <div class="pass-ViewPage-RightFlexItems">
+                    <a href="#NomEModal" data-toggle="modal" data-target="#NomEModal">Modifier le nom de societe</a>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="NomEModal" tabindex="-1" role="dialog" aria-labelledby="NomEModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="NomEModalLabel">Modifier le nom de societe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleInputNomE">Nouveau nom de societe:</label>
+                                <input type="text" class="form-control" id="exampleInputNomE">
+                            </div>     
+                            <div class="form-group">
+                                <label for="exampleInputNomE2">Resaisir le nom de societe :</label>
+                                <input type="text" class="form-control" id="exampleInputNomE2">
+                            </div>            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-nomE">Sauvegarder le nom</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                <div class="pass-ViewPage-LeftFlexItems">
+                    <div><b>Email&nbsp;:</b></div>
+                    <label for="emailE" id="emailE"></label>
+                </div>
+                <div class="pass-ViewPage-RightFlexItems">
+                    <a href="#EmailEModal" data-toggle="modal" data-target="#EmailEModal">Modifier l'adresse email</a>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="EmailEModal" tabindex="-1" role="dialog" aria-labelledby="EmailEModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="EmailEModalLabel">Modifier l'adresse email</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmailE">Nouvelle adresse email:</label>
+                                <input type="text" class="form-control" id="exampleInputEmailE">
+                            </div>     
+                            <div class="form-group">
+                                <label for="exampleInputEmailE">Resaisir l'adresse email :</label>
+                                <input type="text" class="form-control" id="exampleInputEmailE">
+                            </div>            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-emailE">Sauvegarder l'email</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <div class="pass-ViewPage-LeftFlexItems">
+                    <div><b>Mot de passe&nbsp;:</b></div>
+                    <label for="mdpE" id="mdpE"></label>
+                </div>
+                <div class="pass-ViewPage-RightFlexItems">
+                    <a href="#MdpEModal" data-toggle="modal" data-target="#MdpEModal">Modifier le mot de passe</a>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="MdpEModal" tabindex="-1" role="dialog" aria-labelledby="MdpEModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="MdpEModalLabel">Modifier le mot de passe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleInputMdpE">Modifier le mot de passe:</label>
+                                <input type="password" class="form-control" id="exampleInputMdpE">
+                            </div>     
+                            <div class="form-group">
+                                <label for="exampleInputMdpE2">Resaisir le nom de societe :</label>
+                                <input type="password" class="form-control" id="exampleInputMdpE2">
+                            </div>            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-mdpE">Sauvegarder le nom</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="pass-ViewPage-LeftFlexItems">
+                    <div><b>Adresse du siege&nbsp;:</b></div>
+                    <label for="adresseE" id="adresseE"></label>
+                </div>
+                <div class="pass-ViewPage-RightFlexItems">
+                    <a href="#AdresseSiegeEModal" data-toggle="modal" data-target="#AdresseSiegeEModal">Modifier l''adresse du siege</a>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="AdresseSiegeEModal" tabindex="-1" role="dialog" aria-labelledby="AdresseSiegeEModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="AdresseSiegeEModalLabel">Modifier l'adresse du siege</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleInputAdresseE">Nouvelle adresse du siege:</label>
+                                <input type="text" class="form-control" id="exampleInputAdresseE">
+                            </div>     
+                            <div class="form-group">
+                                <label for="exampleInputAdresseE2">Resaisir l'adresse:</label>
+                                <input type="text" class="form-control" id="exampleInputAdresseE2">
+                            </div>            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-adresseE">Sauvegarder l'adresse</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="pass-ViewPage-LeftFlexItems">
+                    <div><b>Telephone&nbsp;:</b></div>
+                    <label for="telephoneE" id="telephoneE"></label>
+                </div>
+                <div class="pass-ViewPage-RightFlexItems">
+                    <a href="#TelephoneEModal" data-toggle="modal" data-target="#TelephoneEModal">Modifier le numero de telephone</a>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="TelephoneEModal" tabindex="-1" role="dialog" aria-labelledby="TelephoneEModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="TelephoneEModalLabel">Modifier le numero de telephone</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleInputTelephoneE">Nouveau numero de telephone:</label>
+                                <input type="text" class="form-control" id="exampleInputTelephoneE">
+                            </div>     
+                            <div class="form-group">
+                                <label for="exampleInputTelephoneE2">Resaisir le numero de telephone :</label>
+                                <input type="text" class="form-control" id="exampleInputTelephoneE2">
+                            </div>            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-telephoneE">Sauvegarder le numero</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Information logo -->
+                <form class="center" id="monLogo">
+                    
+                    <h3 class="modal-title">Mon CV</h3>
+
+                    <form>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFileE">
+                            <label class="custom-file-label" for="customFile" id="nomfichierLogo">Selectionner un fichier</label>
+                            <button type="button" class="btn btn-primary" id="btn-edit-logo">Enregistrer le fichier</button>
+                        </div>
+                    </form>
+
+                </form>
+                
+            </div>
         </form>
 
     </form>
 
-    <!-- Information CV -->
-    <form class="center" id="MonCV">
-        
-        <h3 class="modal-title">Mon CV</h3>
-
-        <form>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile">
-                <label class="custom-file-label" for="customFile" id="nomfichier">Selectionner un fichier</label>
-                <button type="button" class="btn btn-primary" id="btn-edit-cv">Enregistrer le fichier</button>
-            </div>
-        </form>
-
-    </form>
+    
 
 </body>
 <script src="/dist/profil.js" type="text/javascript"></script>

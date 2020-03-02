@@ -58,10 +58,19 @@ module.exports = class {
         this._prenom = value;
     }
 
+    get prenom() {
+        return this.adresseDomicile;
+    }
+
+    set prenom(value) {
+        this.adresseDomicile = value;
+    }
+
     toJson() {
         return {
             id: this.id,
             adresseMail: this.adresseMail,
+            adresseDomicile: this.adresseDomicile,
             motDePasse: this.motDePasse,
             telephone: this.telephone,
             cv: this.cv,

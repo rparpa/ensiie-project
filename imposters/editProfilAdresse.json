@@ -2,8 +2,8 @@
     "predicates": [
       {
         "equals": {
-          "method": "GET",
-          "path": "/profil"
+          "method": "POST",
+          "path": "/profil/editadresse"
         }
       },
       {
@@ -17,16 +17,16 @@
           "headers": { "Access-Control-Allow-Origin": "*" },
           "body": [
             {
-              "prenom": "Corentin",
               "adresseMail": "coco.simon@gmail.com",
-              "adresseDomicile": "massy somewhere",
+              "adresseDomicile": "massy somewhere over the rainbow",
               "motDePasse": "son password",
               "telephone": "son numero",
-              "cv": "CV.pdf",
-              "nom": "Simon"
+              "cv": "CV-modifie.pdf",
+              "nom": "Simon Modifie",
+              "prenom": "Corentin"
             }
           ]
         }
       }
     ]
-}
+  }
