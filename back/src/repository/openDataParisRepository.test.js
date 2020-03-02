@@ -11,7 +11,6 @@ describe('Get ParkingSpots', () => {
     expect(res.body).toBeInstanceOf(Array);
     expect(res.body[0]).toHaveProperty("_parkingSpotId");
     expect(res.body[0]["_parkingSpotId"]).toHaveLength(40);
-    expect(res.body[0]).toHaveProperty("_numVoie");
     expect(res.body[0]).toHaveProperty("_tarif");
     expect(res.body[0]).toHaveProperty("_latitude");
     expect(res.body[0]).toHaveProperty("_longitude");
