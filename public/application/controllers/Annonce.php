@@ -36,13 +36,10 @@ class Annonce extends CI_Controller {
 		$this->load->view('elements/footer');
 	}
 
-	/*public function AllAnnonces()
+	public function a_propos()
 	{
-		$annonces=$this->annonce->getAllAnnonce();
-		$this->load->view('elements/header',$this->data);
-		$this->load->view('annonceTable',['annonces'=>$annonces]);
-		$this->load->view('elements/footer');
-	}*/ //A SUPPRIMER
+		$this->load->view('aProposTable');
+	}
 
 	/**
 	 * Fonction permettant d'afficher les annonces de l'utilisateur connecté
