@@ -4,7 +4,7 @@ module.exports = class  {
         this.httpClient = httpClient;
     }
 
-    searchOffres(titre, localisation, typeContrat, salaire, dateParution) {
+    getOffres(titre, localisation, typeContrat, salaire, dateParution) {
 
         var d = new Date();
         if(dateParution==='Tout') {
@@ -21,7 +21,7 @@ module.exports = class  {
         }
         //alert(d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear())
 
-        return this.httpClient.fetch('/searchOffres', {}).then(rows => {
+        return this.httpClient.fetch('/getOffres', {}).then(rows => {
             return rows.map(row => {
                 let Offre = new OffreEntity();
                 Offre.id = row.id;
@@ -33,6 +33,14 @@ module.exports = class  {
                 Offre.salaire = row.salaire;
                 Offre.dateParution = row.dateParution;
                 return Offre;
+            });
+        });
+    }
+
+    createOffre(titre, description, typeContrat, salaire, dateParution, adresse, document) {
+        return this.httpClient.fetch('/createOffre', {}).then(rows => {
+            return rows.map(row => {
+                return(row.isSaved)
             });
         });
     }
