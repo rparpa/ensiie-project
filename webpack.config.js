@@ -16,4 +16,12 @@ module.exports = [{
         path: path.resolve(__dirname, 'public/dist'),
         filename: "profil.js"
     }
+},{
+    mode: 'development',
+    entry:"./public/Script/offre.js",
+    
+    output: {
+        path: path.resolve(__dirname, 'public/dist'),
+        filename: "offre.js"
+    }
 }];
