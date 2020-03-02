@@ -3,7 +3,7 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-5">
-                    <h2>Table <b> des utilisateurs</b></h2>
+                    <h2>Liste des utilisateurs</h2>
                 </div>
             </div>
         </div>

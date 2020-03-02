@@ -24,13 +24,13 @@
 					if($admin_user)
 					{
 						echo "<li class=\"nav-item dropdown\">
-					<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Gestion des utilisateurs
+					<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"dropdown01\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Administration
 						<span class=\"sr-only\">(current)</span>
 					</a>
 					<div class=\"dropdown-menu\" aria-labelledby=\"dropdown01\">
-						<a class=\"dropdown-item\" href=\"".site_url('/Utilisateur/AllUsers')."\">Liste des utilisateur</a>
-						<a class=\"dropdown-item\" href=\"".site_url('/Utilisateur/AllUsers')."\">modifier les comptes</a>
-						<a class=\"dropdown-item\" href=\"".site_url('/Utilisateur/delete')."\">Bannir un utilisateur</a>
+						<a class=\"dropdown-item\" href=\"".site_url('/Utilisateur/AllUsers')."\">Gérer les utilisateurs</a>
+						<a class=\"dropdown-item\" href=\"\">Gérer les annonces</a>
+						<a class=\"dropdown-item\" href=\"\">Gérer les catégories</a>
 					</div>
 				</li>";
 					}
