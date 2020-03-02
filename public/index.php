@@ -49,9 +49,10 @@ $users = $userService->getAllUser();
 						<nav>
 							<ul>
 								<li><a href="#connexion">Connexion</a></li>
-								<li><a href="#commander">Commander</a></li>
+								<?php if(isset($_POST['pseudo']))  echo
+								'<li><a href="#commander">Commander</a></li>
 								<li><a href="#contact">Contact</a></li>
-								<li><a href="#elements">Elements</a></li>
+								<li><a href="#elements">Elements</a></li>'?>
 							</ul>
 						</nav>
 					</header>
@@ -76,6 +77,7 @@ $users = $userService->getAllUser();
 										</div>
 										<ul class="actions">
 											<li><input type="submit" value="Connexion" class="primary" /></li>
+
 										</ul>
 										<ul class="actions">
 											<a class="primary" href="#CreerCompte">Créer un compte</a>
@@ -525,13 +527,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 										</ul>
 									</form>
 								</section>
-
 							</article>
 
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
+					<?php if(isset($_POST['pseudo'])) echo 'Connecté en tant que : ' . $_POST['pseudo']; ?>
 						<p class="copyright">&copy; SandwicherIIE <?php echo date("Y"); ?></p>
 					</footer>
 
