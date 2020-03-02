@@ -629,12 +629,12 @@ document.getElementById('btn-edit-logo').onclick = function(){
         
         entrepriseService.editProfilLogo(localStorage.getItem('id'),document.getElementById('nomfichierLogo').value).then(entreprises => {
             entreprises.forEach((entreprise) => {
-                document.getElementById('nomE').innerHTML = particulier.nom;
-                document.getElementById('adresseE').innerHTML = particulier.adresseDomicile;
-                document.getElementById('telephoneE').innerHTML = particulier.telephone;
-                document.getElementById('emailE').innerHTML = particulier.adresseMail;
-                document.getElementById('mdpE').innerHTML = particulier.motDePasse;
-                document.getElementById('nomfichierLogo').innerHTML = particulier.cv;
+                document.getElementById('nomE').innerHTML = entreprise.nom;
+                document.getElementById('adresseE').innerHTML = entreprise.adresseDomicile;
+                document.getElementById('telephoneE').innerHTML = entreprise.telephone;
+                document.getElementById('emailE').innerHTML = entreprise.adresseMail;
+                document.getElementById('mdpE').innerHTML = entreprise.motDePasse;
+                document.getElementById('nomfichierLogo').innerHTML = entreprise.logo;
             })
         });
 
