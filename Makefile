@@ -13,7 +13,6 @@ help:
 
 start:
 	sudo docker-compose up --build -d 
-	sleep 10
 
 stop:
 	docker-compose down -v
@@ -39,7 +38,7 @@ db.connect:
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER'
 
 db.install:
-	sleep 10
+	sleep 15
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER -h localhost -f src/data/db.sql'
 
 front.update.dependencies:

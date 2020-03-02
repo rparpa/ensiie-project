@@ -28,8 +28,6 @@ services:
   postgres:
     build:
       context: ./back/.docker/postgres/
-    ports:
-      - ${DB_PORT_EXTERNAL}
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
