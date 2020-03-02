@@ -47,5 +47,6 @@
   "homepage": "https://github.com/JonahR1/ensiie-project#readme",
   "dependencies": {
     "node-dev": "^4.0.0"
+    "pg": "^7.18.2"
   }
 }
