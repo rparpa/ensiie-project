@@ -1,122 +1,158 @@
 const ParticulierRepository = require('./ParticulierRepository');
 const Particulier = require('../Entity/Particulier');
+
+// jest.mock('pg');
+
+// import {Client} from 'pg';
+
 describe("Create tests", () => {
-    // test('Create a Particulier with a correct object', () => {
+    // test('teeest', async() => {
+    //     Client.mockReturnValue(new Error("coucouuuuu"));
 
-    //     let Part = new Particulier();
-    //     Part.idOffre = "1";
-    //     Part.idParticulier = "1";
-    //     Part.date = new Date(2020,2,25);
+    //     let particulier = { 
+    //         id:'1' ,
+    //         nom: 'nom',
+    //         prenom: 'prenom',
+    //         motdepasse: 'mdp',
+    //         cv: 'cv',
+    //         adressemail:'adresse'
+    //     }
 
-    //     const dbMock = {
-    //         get : jest.fn().mockReturnThis(),
-    //         push : jest.fn().mockReturnThis(),
-    //         write : jest.fn().mockReturnThis()
-    //     };
-    //     const repository = new PartRepository(dbMock);
-    //     repository.create(Part);
-
-    //     expect(dbMock.get).toHaveBeenCalledWith('Parts');
-    //     expect(dbMock.get.mock.calls.length).toBe(1);
-    //     expect(dbMock.push.mock.calls.length).toBe(1);
-    //     expect(dbMock.write.mock.calls.length).toBe(1);
+    //     try {
+    //         await ParticulierRepository.create(particulier);
+    //     }
+    //     catch(e) {
+    //         expect(e).toEqual('Particulier object is undefined');
+    //     }
     // });
 
-    test('Throw Particulier object undefined exception', () => {
-
-        expect(() => ParticulierRepository.create()).toThrow(new Error('Particulier object is undefined'));
+    test('Throw Particulier object undefined exception', async () => {
+        try {
+            await ParticulierRepository.create();
+        }
+        catch(e) {
+            expect(e).toEqual('Particulier object is undefined');
+        }
     });
 
-    test('Throw Particulier object is missing information (id Offre case) exception', () => {
+    test('Throw Particulier object is missing information (id Offre case) exception', async () => {
         let Part = new Particulier();
         Part.id = "1"
-        Part.adresseMail = "adresse@mail.com"
-       
-        expect(() => ParticulierRepository.create(Part)).toThrow(new Error('Particulier object is missing information'));
+        Part.adressemail = "adresse@mail.com"
+
+        try {
+            await ParticulierRepository.create(Part);
+        }
+        catch(e) {
+            expect(e).toEqual('Particulier object is missing information');
+        }
+    });
+});
+
+describe ("Update tests", () => {
+
+    test('should not update a particulier with no id', async () => {
+        let particulier = { 
+            // id:'1' ,
+            nom: 'nom',
+            prenom: 'prenom',
+            motdepasse: 'mdp',
+            cv: 'cv',
+            adressemail:'adresse'
+        }
+
+        try {
+            await ParticulierRepository.updateOne(particulier)
+        }
+        catch(e) {
+            expect(e).toEqual('no id specified');
+        }            
     });
 
-    describe ("Update tests", () => {
+    test('should not update a particulier with no mail', async () => {
+        let particulier = { 
+            id:'1' ,
+            nom: 'nom',
+            prenom: 'prenom',
+            motdepasse: 'mdp',
+            cv: 'cv'
+        }
+        
+        try {
+            await ParticulierRepository.updateOne(particulier)
+        }
+        catch(e) {
+            expect(e).toEqual('no email specified');
+        }            
+    });
 
-        test('should not update a particulier with no id',  () => {
-            const repository = new ParticulierRepository();
-            function update() {
-                repository.updateOne({ 
-                // id:'1' ,
+    test('should not update a particulier with no password', async () => {
+        let particulier = { 
+                id:'1' ,
                 nom: 'nom',
                 prenom: 'prenom',
-                motDePasse: 'mdp',
                 cv: 'cv',
-                adresseMail:'adresse'
-            })
-            }
-            expect(update).toThrow(new Error('no id specified'));
-          });
-          test('should not update a particulier with no mail',  () => {
-            const repository = new ParticulierRepository();
-            function update() {
-                repository.updateOne({ 
-                    id:'1' ,
-                    nom: 'nom',
-                    prenom: 'prenom',
-                    motdepasse: 'mdp',
-                    cv: 'cv'
-                })
-            }
-            expect(update).toThrow(new Error('no email specified'));
-          });
-          test('should not update a particulier with no password',  () => {
-            const repository = new ParticulierRepository();
-            function update() {
-                repository.updateOne({ 
-                    id:'1' ,
-                    nom: 'nom',
-                    prenom: 'prenom',
-                    cv: 'cv',
-                    adresseMail: 'adresse'
-                })
-            }
-            expect(update).toThrow(new Error('no password specified'));
-          });
-          test('should not update a particulier with no cv',  () => {
-            const repository = new ParticulierRepository();
-            function update() {
-                repository.updateOne({ 
-                    id:'1' ,
-                    nom: 'nom',
-                    prenom: 'prenom',
-                    motdepasse: 'mdp',
-                    adresseMail: 'adresse'
-                })
-            }
-            expect(update).toThrow(new Error('no cv specified'));
-          });
-          test('should not update a particulier with no name',  () => {
-            const repository = new ParticulierRepository();
-            function update() {
-                repository.updateOne({ 
-                    id:'1' ,
-                    // nom: 'nom',
-                    prenom: 'prenom',
-                    motdepasse: 'mdp',
-                    cv: 'cv',
-                    adresseMail:'adresse'
-                })
-            }
-            expect(update).toThrow(new Error('no name specified'));
-          });
-          test('should not update a particulier with no firstname',  () => {
-            const repository = new ParticulierRepository();
-            function update() {
-                repository.updateOne({ 
-                    id:'1' ,
-                    nom: 'nom',
-                    // prenom: 'prenom',
-                    motdepasse: 'mdp',
-                    cv: 'cv',
-                    adresseMail:'adresse'
-                })
-            }
-            expect(update).toThrow(new Error('no firstname specified'));
-          });
-});
+                adressemail: 'adresse'
+        }
+        
+        try {
+            await ParticulierRepository.updateOne(particulier)
+        }
+        catch(e) {
+            expect(e).toEqual('no password specified');
+        }
+    });
+    
+    test('should not update a particulier with no cv', async () => {
+        let particulier = { 
+            id:'1' ,
+            nom: 'nom',
+            prenom: 'prenom',
+            motdepasse: 'mdp',
+            adressemail: 'adresse'
+        }
+
+        try {
+            await ParticulierRepository.updateOne(particulier)
+        }
+        catch(e) {
+            expect(e).toEqual('no cv specified');
+        }            
+    });
+
+    test('should not update a particulier with no name', async () => {
+        let particulier = { 
+            id:'1' ,
+            // nom: 'nom',
+            prenom: 'prenom',
+            motdepasse: 'mdp',
+            cv: 'cv',
+            adressemail:'adresse'
+        }
+
+        try {
+            await ParticulierRepository.updateOne(particulier)
+        }
+        catch(e) {
+            expect(e).toEqual('no name specified');
+        }             
+    });
+
+    test('should not update a particulier with no firstname', async () => {
+        let particulier = { 
+            id:'1' ,
+            nom: 'nom',
+            // prenom: 'prenom',
+            motdepasse: 'mdp',
+            cv: 'cv',
+            adressemail:'adresse'
+        }
+
+        try {
+            await ParticulierRepository.updateOne(particulier)
+        }
+        catch(e) {
+            expect(e).toEqual('no firstname specified');
+        } 
+    });
 });
