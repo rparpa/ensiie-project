@@ -39,7 +39,7 @@ OffreHtml = function(id,titre, description, document, typeContrat, adresse, sala
     '<p class="text-sm-left">' + description + '</p>' +
     '<p class="font-weight-light text-sm-left"> Adresse : ' + adresse + '</p>' +
     '<p class="font-weight-light text-sm-left"> Document : ' + document + '</p>' +
-    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postulerModal" data-idJetpack='+ id + '> Postuler </button>' +
+    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postulerModal" data-idPersonne='+ id + '> Voir l avancement </button>' +
     '</div>' +
     '</div> <br>'
 
