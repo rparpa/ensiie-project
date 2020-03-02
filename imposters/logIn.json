@@ -1,0 +1,27 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "GET",
+        "path": "/logIn"
+      }
+    },
+    {
+      "matches": {
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "headers": { "Access-Control-Allow-Origin": "*" },
+        "body": [
+          {
+            "isParticulier" : "1",
+            "id" : "123435232"
+          }
+        ]
+      }
+    }
+  ]
+}
