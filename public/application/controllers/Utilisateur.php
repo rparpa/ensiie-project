@@ -88,10 +88,9 @@ class Utilisateur extends CI_Controller
     public function AllUsers()
     {
         $users=$this->utilisateur->getAllUser();
-        //print_r($users);
-        //die();
+		$data = ["users"=>$users];
         $this->load->view('elements/header',$this->data);
-        $this->load->view('userTable',['users'=>$users]);
+        $this->load->view('userTable',$data);
         $this->load->view('elements/footer');
     }
     public function profil()
@@ -100,13 +99,12 @@ class Utilisateur extends CI_Controller
 
             $annonce=$infos=$this->annonce->getAnnonceByUser($this->session->userdata('logged_in')['id_user']);
 			$annonces_sig=$this->annonce->get_annonces_signalees();
-			$delusers=$this->utilisateur->getAllUser();
             $infos=$this->utilisateur->getUser($this->session->userdata('logged_in')['id_user']);
             $promo=$infos[0]['promo'];
             $telephone=$infos[0]['telephone'];
             $pseudo=$infos[0]['pseudo'];
 			$admin=$infos[0]['admin'];
-			$data = ["nom"=>$infos[0]['nom'],"prenom"=>$infos[0]['prenom'],"nbAnnonces" => $this->annonce->totalAnnonces(),"promo"=>$promo,"pseudo"=>$pseudo,"telephone"=>$telephone,"annonces"=>$annonce, "admin"=>$admin, "annonces_sig"=>$annonces_sig, "delusers"=>$delusers];
+			$data = ["nom"=>$infos[0]['nom'],"prenom"=>$infos[0]['prenom'],"nbAnnonces" => $this->annonce->totalAnnonces(),"promo"=>$promo,"pseudo"=>$pseudo,"telephone"=>$telephone,"annonces"=>$annonce, "admin"=>$admin, "annonces_sig"=>$annonces_sig];
             $this->load->view('elements/header',$this->data);
             $this->load->view('profil',$data);
             $this->load->view('elements/footer');

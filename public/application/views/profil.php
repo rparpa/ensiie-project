@@ -85,9 +85,7 @@
 								echo "<li class='nav-item'>";
 									echo "<a class='nav-link' id='connectedService-tab' data-toggle='tab' href='#connectedService' role='tab' aria-controls='connectedService' aria-selected='false'>Annonces signalées</a>";
 								echo "</li>";
-								echo "<li class='nav-item'>";
-								echo "<a class='nav-link' id='delusers-tab' data-toggle='tab' href='#delusers' role='tab' aria-controls='delusers' aria-selected='false'>Gestion utilisateurs</a>";
-								echo "</li>";}?>
+								}?>
                             </ul>
                             <div class="tab-content ml-1" id="myTabContent">
                                 <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
@@ -168,17 +166,6 @@
 										{
 											echo "<li class=\"list-group-item\"> ** [".$ann_sig['id_annonce']."] ".$ann_sig['titre']."<br>Prix : ".$ann_sig['prix']."€<br>"."Signalée : ".$ann_sig['nb_signal']." fois"."</li>";?>
 											<button type="button" id="Supprimer" name="Supprimer" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/supprimer_annonce/'.$ann_sig['id_annonce']); ?>');">Supprimer</button>
-										<?php }
-										?>
-									</ul>
-								</div>
-								<div class="tab-pane fade" id="delusers" role="tabpanel" aria-labelledby="delusers-tab">
-									<ul class="list-group">
-										<?php
-										foreach($delusers as $deluser)
-										{
-											echo "<li class=\"list-group-item\"> Nom complet : ".$deluser['prenom']." ".$deluser['nom']."<br>Email : ".$deluser['email']."<br>"."Promo : ".$deluser['promo']."</li>";?>
-											<button type="button" id="delete_user" name="delete_user" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Utilisateur/delete/'.$deluser['id_user']); ?>');">Supprimer l'utilisateur</button>
 										<?php }
 										?>
 									</ul>
