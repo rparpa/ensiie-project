@@ -35,10 +35,51 @@ describe("Create tests", () => {
         }
     });
 
-    test('Throw Particulier object is missing information (id Offre case) exception', async () => {
+    test('Throw Particulier object is missing information (telephone case) exception', async () => {
         let Part = new Particulier();
-        Part.id = "1"
-        Part.adressemail = "adresse@mail.com"
+        Part.id = "1";
+        Part.adressemail = "adresse@mail.com";
+        Part.nom = 'nom';
+        Part.prenom = 'prenom';
+        Part.motdepasse = 'mdp';
+        Part.cv =  'cv';
+        // Part.telephone = '0000000'
+
+        try {
+            await ParticulierRepository.create(Part);
+        }
+        catch(e) {
+            expect(e).toEqual('Particulier object is missing information');
+        }
+    });
+
+    test('Throw Particulier object is missing information (adressemail case) exception', async () => {
+        let Part = new Particulier();
+        Part.id = "1";
+        // Part.adressemail = "adresse@mail.com";
+        Part.nom = 'nom';
+        Part.prenom = 'prenom';
+        Part.motdepasse = 'mdp';
+        Part.cv =  'cv';
+        Part.telephone = '0000000'
+
+        try {
+            await ParticulierRepository.create(Part);
+        }
+        catch(e) {
+            expect(e).toEqual('Particulier object is missing information');
+        }
+    });
+
+    test('Throw Particulier object is missing information (nom case) exception', async () => {
+        let Part = new Particulier();
+        // Part.id = "1";
+        Part.adressemail = "adresse@mail.com";
+        // Part.nom = 'nom';
+        Part.prenom = 'prenom';
+        Part.motdepasse = 'mdp';
+        Part.cv =  'cv';
+        Part.telephone = '0000000'
 
         try {
             await ParticulierRepository.create(Part);
@@ -154,5 +195,45 @@ describe ("Update tests", () => {
         catch(e) {
             expect(e).toEqual('no firstname specified');
         } 
+    });
+
+    test('should not update a particulier with no telephone', async () => {
+        let particulier = { 
+            id:'1' ,
+            nom: 'nom',
+            prenom: 'prenom',
+            motdepasse: 'mdp',
+            cv: 'cv',
+            adressemail:'adresse'
+        }
+
+        try {
+            await ParticulierRepository.updateOne(particulier)
+        }
+        catch(e) {
+            expect(e).toEqual('no telephone specified');
+        } 
+    });
+});
+
+describe("Get by Id tests", () => {
+    test('should not get a particulier with no id', async () => {
+        try {
+            await ParticulierRepository.getById();
+        }
+        catch(e) {
+            expect(e).toEqual('No id specified')
+        }
+    });
+});
+
+describe("Delete by Id tests", () => {
+    test('should not delete a particulier with no id', async () => {
+        try {
+            await ParticulierRepository.deleteById();
+        }
+        catch(e) {
+            expect(e).toEqual('No id specified')
+        }
     });
 });

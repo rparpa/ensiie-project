@@ -4,11 +4,11 @@ const begin = "BEGIN";
 const commit = "COMMIT";
 const rollback = "ROLLBACK";
 
-const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom) VALUES($1, $2, $3, $4, $5) RETURNING adressemail, cv, nom, prenom";
-const selectAll = "SELECT adressemail, cv, nom, prenom FROM particulier";
-const selectById = "SELECT adressemail, cv, nom, prenom FROM particulier WHERE id = $1";
-const updateOne = "UPDATE particulier SET adressemail = $1, motdepasse = $2, cv = $3, nom = $4, prenom = $5 WHERE id = $6 RETURNING adressemail, motdepasse, cv, nom, prenom";
-const deleteOne = "DELETE FROM particulier WHERE id = $1 RETURNING adressemail, motdepasse, cv, nom, prenom";
+const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom, telephone) VALUES($1, $2, $3, $4, $5, $6) RETURNING adressemail, cv, nom, prenom, telephone";
+const selectAll = "SELECT adressemail, cv, nom, prenom, telephone FROM particulier";
+const selectById = "SELECT adressemail, cv, nom, prenom, telephone FROM particulier WHERE id = $1";
+const updateOne = "UPDATE particulier SET adressemail = $1, motdepasse = $2, cv = $3, nom = $4, prenom = $5, telephone = $6 WHERE id = $7 RETURNING adressemail, motdepasse, cv, nom, prenom, telephone";
+const deleteOne = "DELETE FROM particulier WHERE id = $1 RETURNING adressemail, motdepasse, cv, nom, prenom, telephone";
 
 module.exports = class {
     static async create(Particulier) {
@@ -16,11 +16,11 @@ module.exports = class {
             throw 'Particulier object is undefined';
         }
 
-        if (!Particulier.nom || !Particulier.prenom || !Particulier.motdepasse || !Particulier.cv || !Particulier.adressemail) {
+        if (!Particulier.nom || !Particulier.prenom || !Particulier.motdepasse || !Particulier.cv || !Particulier.adressemail || !Particulier.telephone) {
             throw 'Particulier object is missing information';
         }
 
-        let values = [Particulier.adressemail, Particulier.motdepasse, Particulier.cv, Particulier.nom, Particulier.prenom];
+        let values = [Particulier.adressemail, Particulier.motdepasse, Particulier.cv, Particulier.nom, Particulier.prenom, Particulier.telephone];
         
         var result;
         
@@ -91,7 +91,7 @@ module.exports = class {
         return result.rows[0];
     }
     
-    static async updateOne({id, nom, prenom, motdepasse,cv,adressemail}) {
+    static async updateOne({id, nom, prenom, motdepasse,cv,adressemail,telephone}) {
         if(!id){
             throw 'no id specified';
         }
@@ -110,8 +110,11 @@ module.exports = class {
         if(!adressemail){
             throw 'no email specified';
         }
+        if(!telephone){
+            throw 'no telephone specified';
+        }
 
-        var values = [adressemail, motdepasse, cv, nom, prenom, id];
+        var values = [adressemail, motdepasse, cv, nom, prenom, telephone, id];
         
         var result;
         var client = ClientSession.getSession();
