@@ -63,7 +63,7 @@ CREATE TABLE Categorie_annonce (
     id_annonce INTEGER NOT NULL,
     id_categorie INTEGER NOT NULL,
     CONSTRAINT pk_categorie_annonce PRIMARY KEY(id_annonce,id_categorie),
-    CONSTRAINT fk1_categorie_annonce FOREIGN KEY(id_annonce) REFERENCES Annonce(id_annonce),
+    CONSTRAINT fk1_categorie_annonce FOREIGN KEY(id_annonce) REFERENCES Annonce(id_annonce) ON DELETE CASCADE,
     CONSTRAINT fk2_categorie_annonce FOREIGN KEY(id_categorie) REFERENCES Categorie(id_categorie)
 );
 
