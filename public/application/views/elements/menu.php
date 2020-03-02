@@ -37,7 +37,7 @@
 
 				?>
 				<li class="nav-item">
-					<a class="nav-link" href="#">A propos</a>
+					<a class="nav-link" href="<?php echo site_url('/Annonce/a_propos'); ?>">A propos</a>
 				</li>
 
 			</ul>
