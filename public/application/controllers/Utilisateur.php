@@ -79,9 +79,10 @@ class Utilisateur extends CI_Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
 
-    public function delete()
+    public function delete($id_user)
     {
-        echo "<script>alert(\"Radouane : NOT YET IMPLEMENTED\");</script>";
+		$this->utilisateur->delete($id_user);
+		redirect('Annonce/liste_annonces');
     }
     
     public function AllUsers()
@@ -99,12 +100,13 @@ class Utilisateur extends CI_Controller
 
             $annonce=$infos=$this->annonce->getAnnonceByUser($this->session->userdata('logged_in')['id_user']);
 			$annonces_sig=$this->annonce->get_annonces_signalees();
+			$delusers=$this->utilisateur->getAllUser();
             $infos=$this->utilisateur->getUser($this->session->userdata('logged_in')['id_user']);
             $promo=$infos[0]['promo'];
             $telephone=$infos[0]['telephone'];
             $pseudo=$infos[0]['pseudo'];
 			$admin=$infos[0]['admin'];
-			$data = ["nom"=>$infos[0]['nom'],"prenom"=>$infos[0]['prenom'],"nbAnnonces" => $this->annonce->totalAnnonces(),"promo"=>$promo,"pseudo"=>$pseudo,"telephone"=>$telephone,"annonces"=>$annonce, "admin"=>$admin, "annonces_sig"=>$annonces_sig];
+			$data = ["nom"=>$infos[0]['nom'],"prenom"=>$infos[0]['prenom'],"nbAnnonces" => $this->annonce->totalAnnonces(),"promo"=>$promo,"pseudo"=>$pseudo,"telephone"=>$telephone,"annonces"=>$annonce, "admin"=>$admin, "annonces_sig"=>$annonces_sig, "delusers"=>$delusers];
             $this->load->view('elements/header',$this->data);
             $this->load->view('profil',$data);
             $this->load->view('elements/footer');
