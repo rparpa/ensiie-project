@@ -1,4 +1,4 @@
-const OffreEntity = require('../src/Model/Entity/Offre');
+const OffreEntity = require('../../src/Model/Entity/Offre');
 module.exports = class  {
     constructor(httpClient) {
         this.httpClient = httpClient;

@@ -1,4 +1,4 @@
-const ParticulierEntity = require('../src/Model/Entity/Particulier');
+const ParticulierEntity = require('../../src/Model/Entity/Particulier');
 module.exports = class  {
     constructor(httpClient) {
         this.httpClient = httpClient;

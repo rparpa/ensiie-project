@@ -1,10 +1,10 @@
-const appConfig = require('./app.config');
-const OffreService = require('./public/OffreApi');
-const UserService = require('./public/UserApi');
-const HttpClient = require('./public/HttpClient');
+const appConfig = require('../../app.config');
+const OffreService = require('../Api/OffreApi');
+const UserService = require('../Api/UserApi');
+const HttpClient = require('./HttpClient');
 
 
-const Offre = require('./src/Model/Entity/Offre');
+const Offre = require('../../src/Model/Entity/Offre');
 
 const httpClient = new HttpClient(appConfig.apiUrl);
 

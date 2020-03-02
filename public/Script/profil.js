@@ -13,12 +13,12 @@ else if (localStorage.getItem('id') == "2") {
 
 $("input[type=file]").change(function (e){$(this).next('.custom-file-label').text(e.target.files[0].name);})
 
-const appConfig = require('../app.config');
-const ParticulierService = require('./ParticulierApi');
+const appConfig = require('../../app.config');
+const ParticulierService = require('../Api/ParticulierApi');
 const HttpClient = require('./HttpClient');
 
 
-const Particulier = require('../src/Model/Entity/Particulier');
+const Particulier = require('../../src/Model/Entity/Particulier');
 
 const httpClient = new HttpClient(appConfig.apiUrl);
 

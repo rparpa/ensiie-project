@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = [{
     mode: 'development',
-    entry:"./index.js",
+    entry:"./public/Script/index.js",
     
     output: {
         path: path.resolve(__dirname, 'public/dist'),
@@ -10,7 +10,7 @@ module.exports = [{
     }
 },{
     mode: 'development',
-    entry:"./public/profil.js",
+    entry:"./public/Script/profil.js",
     
     output: {
         path: path.resolve(__dirname, 'public/dist'),
