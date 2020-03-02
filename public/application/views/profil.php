@@ -142,6 +142,13 @@
                                             <?= $promo ?>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-6" style="margin-left: 15%">
+                                    <?php
+                                    echo "<center>".form_button('modifier', 'Modifier mes informations personnelles',['class'=>"btn btn-warning btn-blo ck",'onClick'=>"redirect(".$id_user.")"])."</center>";
+                                    ?>
+                                        </div>
+                                    </div>
 
                                 </div>
                                 <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
@@ -165,3 +172,8 @@
         </div>
     </div>
 </div>
+<script>
+    function redirect(id) {
+        window.location.href = "/utilisateur/update?id="+id;
+    }
+</script>
