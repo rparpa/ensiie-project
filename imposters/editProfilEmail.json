@@ -1,0 +1,29 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "POST",
+          "path": "/profil/editemail"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+              "adresseMail": "corentin.simon91@gmail.com",
+              "telephone": "corentinsimon",
+              "motDePasse" : "niquecoco",
+              "cv": "corentinsimon-CV.pdf"
+            }
+          ]
+        }
+      }
+    ]
+  }

@@ -34,6 +34,14 @@ module.exports = class {
         this._cv = value;
     }
 
+    get telephone() {
+        return this._telephone;
+    }
+
+    set telephone(value) {
+        this._telephone = value;
+    }
+
     get nom() {
         return this._nom;
     }
@@ -55,6 +63,7 @@ module.exports = class {
             id: this.id,
             adresseMail: this.adresseMail,
             motDePasse: this.motDePasse,
+            telephone: this.telephone,
             cv: this.cv,
             nom: this.nom,
             prenom: this.prenom
