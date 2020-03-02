@@ -162,11 +162,10 @@ class Annonce extends CI_Controller {
 	 *
 	 * @param $id_annonce Id de l'annonce à signaler
 	 */
-	public function signaler_annonce(){
+	public function signaler_annonce($id_annonce){
 
-		$id_annonce = $this->uri->segment('3');
 		$this->annonce->signaler($id_annonce);
-		$this->liste_annonces();
+		redirect('Annonce/liste_annonces');
 	}
 
 	/**
