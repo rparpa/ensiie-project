@@ -6,10 +6,12 @@ use Exception;
 class CarController {
 	private CarRepository $carRepository;
 	private CarView $carView;
+	private \Location\LocationRepository $locationRepository;
 
 	public function __construct(PDO $connection) {
 		$this->carRepository = new CarRepository($connection);
 		$this->carView = new CarView();
+		$this->locationRepository = new \Location\LocationRepository($connection, $this->carRepository);
 	}
 
 	public function afficheVoitures() {
@@ -41,6 +43,7 @@ class CarController {
     {
         try {
             $this->locationRepository->create($post);
+            $this->carView->afficheLocation($post);
         } catch (Exception $e) {
             //$this->userView->vueErreur($e->getMessage());
         }

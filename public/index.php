@@ -67,9 +67,17 @@ ob_start();
                 $controller = new \Car\CarController(\Db\Connection::get());
                 $controller->afficheVoiture($_GET['car_id']);
             }
+        } else if ($_GET['action'] == 'location') {
+            $controller = new \Car\CarController(\Db\Connection::get());
+            if(isset($_POST["date_debut"])) {
+                $controller->createLocation($_POST);
+            }
         } else if ($_GET['action'] == 'admin') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
             $controller->afficheVoitures();
+        } else if ($_GET['action'] == 'ajouter') {
+            $controller = new \Admin\AdminController(\Db\Connection::get());
+            $controller->afficheAjoutVoiture();
         }
     } else {
         ?><link href="style.css" rel="stylesheet" type="text/css" media="screen" />

@@ -780,3 +780,7 @@ input[type=text]:placeholder, input[type=email]:placeholder, input[type=password
 #btn_header {
   margin: 10px;
 }
+
+#accueil {
+	margin: 13px;
+}

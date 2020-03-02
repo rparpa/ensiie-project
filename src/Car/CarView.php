@@ -69,17 +69,16 @@ class CarView {
                   <dt>Puissance</dt>
                   <dd><?php echo $voiture->getPuissance() . " ch"; ?></dd>
                 </dl>
-                <dl class="param param-feature">
+                <form id="form_location" action="index.php?action=location" method="POST">
                   <dt>Début de location</dt>
-                  <input type="date" name="birthday" placeholder="Date de naissance">
-                </dl>
-                <dl class="param param-feature">
+                  <input type="date" id="debut" name="date_debut" placeholder="Start location">
                   <dt>Fin de location</dt>
-                  <input type="date" name="birthday" placeholder="Date de naissance">
-                </dl>
-
-                <a href="#" class="btn btn-lg btn-primary text-uppercase">Réserver maintenant</a>
-                <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i>Ajouter au panier</a>
+                  <input type="date" id="fin" name="date_fin" placeholder="End location">
+                  <dt>Distance parcourue estimée</dt>
+                  <input type="text" id="km_max" name="km_max" placeholder="km_max">
+                  <input type="hidden" name="id_voiture" value="<?php echo $voiture->getId(); ?>" />
+                  <input type="submit" name="location" value="Réserver maintenant !">
+                </form>
               </article>
             </aside>
           </div>
@@ -87,6 +86,20 @@ class CarView {
       </div>
       <?php
     }
+  }
+
+  public function afficheLocation($location) {
+    ?>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <form action="index.php">
+          <h3 class="fadeIn first title">Demande de location</h3>
+          <h7 class="fadeIn first">Votre demande de location de voiture du  <?php echo $location["date_debut"]; ?> au <?php echo $location["date_fin"]; ?> a été prise en compte.</h7>
+          <input id="accueil" type="submit" value="Retourner à l'accueil"/>
+        </form>
+      </div>
+    </div>
+    <?php
   }
 }
 ?>

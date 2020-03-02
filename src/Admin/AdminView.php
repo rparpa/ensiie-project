@@ -3,32 +3,29 @@ namespace Admin;
 use PDO;
 
 class AdminView {
-    public function __construct() {
-    }
+  public function __construct() {
+  }
 
-    public function afficheAjoutVoiture() {
-        ?>
-        <form action="index.php?action=connect" method="POST">
-              <div class="field">
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input is-large" type="text" placeholder="Email" name="email" autofocus="">
-                    <span class="icon is-small is-left">
-                      <i class="fa fa-envelope"></i>
-                    </span>
-                </div>
-              </div>
-              <div class="field">
-                <div class="control has-icons-left has-icons-right">
-                  <input class="input is-large" name="password" type="password" placeholder="Mot de passe">
-                    <span class="icon is-small is-left">
-                      <i class="fa fa-key" aria-hidden="true"></i>
-                    </span>
-                </div>
-              </div>
-              
-              <input class="button is-block is-info is-large" type="submit" value="Connexion" style="width: 100%;">
-            </form>
-        <?php
-    }
+  public function afficheAjoutVoiture() {
+    ?>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <h3 class="fadeIn first title">Formulaire d'ajout d'une voiture</h3>
+        <form id="form_ajout" class="fadeIn first" action="index.php?action=ajout" method="POST">
+          <input type="text" id="nom_modele" name="nom_modele" placeholder="Nom du modèle">
+          <input type="text" id="marque" name="marque" placeholder="Marque">
+          <input type="text" id="lien_img" name="lien_img" placeholder="Lien de l'image">
+          <input type="text" id="puissance_fisc" name="puissance_fisc" placeholder="Puissance fiscale">
+          <input type="text" id="" name="puissance_ch" placeholder="Puissance en chevaux">
+          <input type="text" id="nom_finition" name="nom_finition" placeholder="Nom de la finition">
+          <input type="text" id="immat" name="immat" placeholder="Numéro d'immatriculation">
+          <input type="date" id="date_immat" name="date_immat" placeholder="Date d'immatriculation">
+          <input type="text" id="prix" name="prix" placeholder="Prix à la journée">
+          <input type="submit" name="ajouter" value="Ajouter">
+        </form>
+      </div>
+    </div>
+    <?php
+  }
 }
 ?>
