@@ -1,3 +1,9 @@
+DROP TABLE IF EXISTS "offre" CASCADE;
+DROP TABLE IF EXISTS "candidat" CASCADE;
+DROP TABLE IF EXISTS "administrateur" CASCADE;
+DROP TABLE IF EXISTS "entreprise" CASCADE;
+DROP TABLE IF EXISTS "particulier" CASCADE;
+
 CREATE TABLE "administrateur" (
     id SERIAL PRIMARY KEY ,
     identifiant VARCHAR NOT NULL ,

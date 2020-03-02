@@ -1,15 +1,13 @@
 const http = require('http');
 const url = require('url');
-const ParticulierWebService = require('./src/Model/Controller/ParticulierWebService');  
+const ParticulierWebService = require('./src/Model/Controller/ParticulierWebService');
+const EntrepriseWebService = require('./src/Model/Controller/EntrepriseWebService');   
 var fs = require('fs');
 
 module.exports = http.createServer((req, res) => {
     const reqUrl = url.parse(req.url, true);
     var pathname = reqUrl.pathname;
-    var params = new URL("http://" + req.url).searchParams;
-
-    console.log(params);
- 
+    var params = new URL("http://" + req.url).searchParams; 
     
     if(pathname == "/accueil") {
         fs.readFile('./public/index.html',function (err, data){
@@ -96,6 +94,27 @@ module.exports = http.createServer((req, res) => {
             if(params.has('id')) {
                 ParticulierWebService.deleteById(req, res, params.get('id'));
             }
+        }
+    }
+    else if(pathname == "/entreprise/request") {
+        if(req.method == 'POST') {
+            EntrepriseWebService.create(req, res);
+        }
+        else if(req.method == 'GET') {
+            EntrepriseWebService.getAllValidated(req, res);
+        }
+        else if(req.method == 'PUT') {
+            EntrepriseWebService.updateOne(req, res);
+        }
+        else if(req.method == 'DELETE') {
+            if(params.has('id')) {
+                EntrepriseWebService.deleteById(req, res, params.get('id'));
+            }
+        }
+    }
+    else if(pathname == "/entreprise/request/novalidated") {
+        if(req.method == 'GET') {
+            EntrepriseWebService.getAllNoValidated(req, res);
         }
     }
 });
