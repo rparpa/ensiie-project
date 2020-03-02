@@ -1,6 +1,7 @@
 const appConfig = require('../../app.config');
 const OffreService = require('../Api/OffreApi');
 const UserService = require('../Api/UserApi');
+const PostulerService = require('../Api/PostulerApi');
 const HttpClient = require('./HttpClient');
 
 
@@ -10,6 +11,7 @@ const httpClient = new HttpClient(appConfig.apiUrl);
 
 const offreService = new OffreService(httpClient);
 const userService = new UserService(httpClient);
+const postulerService = new PostulerService(httpClient);
 
 document.getElementById('btnChercher').onclick = function() {
 
@@ -125,20 +127,33 @@ function sleep(ms) {
 
 $('#postulerModal').on('show.bs.modal', function (event) {
     
-    alert("yes la famille")
 
-    var button = $(event.relatedTarget).attr('data-idJetPack')
-    //var idOffreee = button.data('idJetpack')
+    var idOffre = $(event.relatedTarget).attr('data-idJetPack')
+    var idPersonne = localStorage.getItem('idPersonne');
 
-    alert(button)
+    document.getElementById('btnPostuler').onclick = async function() {
 
-    /* var modal = $(this)
-    modal.find('.modal-title').text('New message to ' + idOffreee) */
+        if(idPersonne === undefined || idPersonne === "0") {
+            alert("Vous devez vous connecter pour pouvoir postuler")
+            //Il faut aussi vérifier qu'il a bien renseigné son CV
+        }
+        else {
+            postulerService.postuler(idPersonne,idOffre).then( x => {
+                x.forEach((y) => {
+                    if(y==="yes"){
+                        alert("Votre candidature a bien été déposée")
+                    }
+                    else {
+                        ("Something went wrong")
+                    }
+                });
+        
+            });
 
-    /* document.getElementById('btnPostuler').onclick = function() {
-    
-        alert(idOffre)
-    }; */
+            await sleep(1000);
+            location.reload(); 
+        }
+    }
  
 })
 
@@ -150,9 +165,9 @@ OffreHtml = function(id,titre, description, document, typeContrat, adresse, sala
     '<div class="m-3 badge badge-primary text-wrap" style="width: 6rem;">' + salaire + '</div>' +
     '<div class="badge badge-primary text-wrap" style="width: 6rem;">' + dateParution + '</div> <br> ' +
     '<p class="text-sm-left">' + description + '</p>' +
-    '<p class="font-weight-light text-sm-left"> Adresse : ' + adresse + id +'</p>' +
+    '<p class="font-weight-light text-sm-left"> Adresse : ' + adresse + '</p>' +
     '<p class="font-weight-light text-sm-left"> Document : ' + document + '</p>' +
-    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postulerModal" data-idJetpack="'+ id + '"> Postuler </button>' +
+    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postulerModal" data-idJetpack='+ id + '> Postuler </button>' +
     '</div>' +
     '</div> <br>'
 

@@ -21,7 +21,7 @@ module.exports = class  {
         }
         //alert(d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear())
 
-        return this.httpClient.fetch('/searchOffres', {}).then(rows => {
+        return this.httpClient.fetch('/getOffres', {}).then(rows => {
             return rows.map(row => {
                 let Offre = new OffreEntity();
                 Offre.id = row.id;
