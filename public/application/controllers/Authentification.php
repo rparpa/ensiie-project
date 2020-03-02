@@ -75,7 +75,7 @@ class Authentification extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
 
             if(isset($this->session->userdata['logged_in'])){
-                redirect('Utilisateur/profil');
+                redirect('Annonce/liste_annonces');
             } else {
                 $this->load->view('login_form');
             }
@@ -93,7 +93,7 @@ class Authentification extends CI_Controller
 
                     unset($user[0]['password']);
                     $this->session->set_userdata('logged_in', $user[0]);
-                    redirect('Utilisateur/profil');
+                    redirect('Annonce/liste_annonces');
                 }
             } else{
                 $data = array('error_message' => 'Nom de compte/mot de passe incorrect');

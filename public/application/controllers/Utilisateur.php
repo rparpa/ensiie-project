@@ -65,9 +65,15 @@ class Utilisateur extends CI_Controller
         if(isset($_GET['id']))
         {
             $user=$this->utilisateur->getUser($_GET['id']);
-            $this->load->view('elements/header',$this->data);
-            $this->load->view('update_view',['user'=>$user]);
-            $this->load->view('elements/footer');
+            if($user[0]['admin']) {
+                $this->load->view('elements/header', $this->data);
+                $this->load->view('update_view', ['user' => $user]);
+                $this->load->view('elements/footer');
+            } else {
+                $this->load->view('elements/header', $this->data);
+                $this->load->view('update_view_user', ['user' => $user]);
+                $this->load->view('elements/footer');
+            }
         }
     }
 
