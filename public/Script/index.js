@@ -15,7 +15,7 @@ const postulerService = new PostulerService(httpClient);
 
 document.getElementById('btnChercher').onclick = function() {
 
-    offreService.searchOffres(
+    offreService.getOffres(
         document.getElementById('exampleInputJobs').value,
         document.getElementById('exampleInputLocation').value,
         document.getElementById('inputContrat').value,
