@@ -41,10 +41,111 @@
             </form>
         </div>
 
+        <!-- Modal postuler -->
+        <div class="modal" tabindex="-1" role="dialog" id="validerModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Validation de l'offre</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Etes vous sur de votre choix (valider) ? </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="btnValider">Valider</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- Modal postuler -->
+        <div class="modal" tabindex="-1" role="dialog" id="refuserModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Refus de l'Offre</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Etes vous sur de votre choix (refuser) ? </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="btnRefuser">Refuser</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+         <!-- Modal postuler -->
+         <div class="modal" tabindex="-1" role="dialog" id="validerEModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Validation Inscription Entreprise</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Etes vous sur de votre choix (valider) ? </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="btnEntrepriseValider">Valider</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- Modal postuler -->
+        <div class="modal" tabindex="-1" role="dialog" id="refuserEModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Refus Inscription Entreprise</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Etes vous sur de votre choix (refuser) ? </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="btnEntrepriseRefuser">Refuser</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+              </div>
+            </div>
+        </div>
     </nav>
 
     <body>
+        <!-- Les nouvelles entreprises inscrises -->
+        <form class="center" >
+            <h3 class="modal-title">Nouvelles inscriptions d'entreprise</h3>
+        </form>
 
+        <form class="center" id="inscription-entreprise">
+
+        </form>
+
+        
+
+
+        <!-- Les nouvelles offres d'entreprise -->
+        <form class="center" >
+            <h3 class="modal-title">Nouvelles offres d'entreprise</h3>
+        </form>
+        <form class="center" id="offre-entreprise">
+
+        </form>
 
     </body>
 
