@@ -38,8 +38,7 @@ OffreHtml = function(id,titre, description, document, typeContrat, adresse, sala
     '<p class="text-sm-left">' + description + '</p>' +
     '<p class="font-weight-light text-sm-left"> Adresse : ' + adresse + '</p>' +
     '<p class="font-weight-light text-sm-left"> Document : ' + document + '</p>' +
-    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#validerModal" data-idOffre='+ id + '> Valider </button>' +
-    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#refuserModal" data-idOffre='+ id + '> Refuser </button>' +
+    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#refuserModal" data-idOffre='+ id + '> Supprimer </button>' +
     '</div>' +
     '</div> <br>'
 
@@ -61,30 +60,6 @@ EntrepriseHtml = function(id,nom, adresseMail, telephone, adresseSiege, logo) {
 
     return html
 };
-
-
-$('#validerModal').on('show.bs.modal', function (event) {
-    
-
-    var idOffre = $(event.relatedTarget).attr('data-idOffre')
-
-    document.getElementById('btnValider').onclick = async function() {
-
-
-        adminService.validerOffreEntreprise(idOffre).then( x => {
-            x.forEach((y) => {
-                if(y==="ok"){
-                    alert("Offre valide")
-                }
-            });
-    
-        });
-
-        await sleep(1000);
-        location.reload(); 
-    }
- 
-})
 
 $('#validerEModal').on('show.bs.modal', function (event) {
     
@@ -117,10 +92,10 @@ $('#refuserModal').on('show.bs.modal', function (event) {
     document.getElementById('btnRefuser').onclick = async function() {
 
 
-        adminService.refuserOffreEntreprise(idOffre).then( x => {
+        adminService.supprimerOffreEntreprise(idOffre).then( x => {
             x.forEach((y) => {
                 if(y==="ok"){
-                    alert("Offre refuse")
+                    alert("Offre supprime")
                 }
             });
     
