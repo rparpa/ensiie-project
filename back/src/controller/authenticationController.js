@@ -6,6 +6,7 @@ class AuthenticationController {
   }
 
   async getUserFromCredentials(username, encryptedPassword) {
+
     const result = await this.service
     .read('User', '*', 'username=\''+username+'\' AND password=\''+encryptedPassword+'\'')
     .then(res => res)

@@ -65,7 +65,35 @@
         Bienvenue, {{currentUser.username}} !
       </p>
       <b-row>
-        <b-button class= "mr-2">Paramètres</b-button>
+        <b-button class= "mr-2" v-b-modal.settingsModel @submit="onUpdateSettings">Paramètres</b-button>
+        <b-modal id="settingsModel" title="Paramètres" hide-footer>
+            <b-form @submit="onUpdateSettings">
+            <label class="sr-only" for="settings-form-username">Username</label>
+            <b-input
+              id="settings-form-username"
+              class="mb-2"
+              placeholder="Username"
+              v-model= "settings.username"
+            ></b-input>    
+            <label class="sr-only" for="settings-form-email">Email</label>
+            <b-input
+              id="settings-form-email"
+              class="mb-2"
+              placeholder="Email"
+              v-model= "settings.email"
+            ></b-input>   
+            <label class="sr-only" for="settings-form-pwd">Password</label>
+            <b-input
+              id="settings-form-pwd"
+              class="mb-2"
+              placeholder="New Password"
+              v-model="clearSettingsPasswordHolder"
+            ></b-input>  
+            <b-button type="submit" variant="primary">Mettre a jour</b-button>
+          </b-form>
+        </b-modal>
+
+
         <b-button variant="danger" @click="currentUser = undefined">Déconnexion</b-button>
       </b-row>
     </div>
@@ -97,9 +125,15 @@ export default {
         email: '',
         password: ''
       },
+      settings: {
+        username: '',
+        email: '',
+        password: ''
+      },
       currentUser: undefined,
       clearLogInPasswordHolder: '',
       clearSignInPasswordHolder: '',
+      clearSettingsPasswordHolder: '',
       displayAuthenticationErrorAlert: false
     }
   },
@@ -117,6 +151,14 @@ export default {
       hash.update(value);
 
       this.signIn.password = hash.hex();
+    },
+    clearSettingsPasswordHolder: function(value) {
+      sha256(value);
+      let hash = sha256.create();
+      hash.update(value);
+
+      this.settings.password = hash.hex();
+      console.log(this.settings.password)
     }
   },
   methods: {
@@ -129,6 +171,8 @@ export default {
       .then(response => {
         this.displayAuthenticationErrorAlert = false
         this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email)
+        this.settings.username = this.currentUser.username
+        this.settings.email = this.currentUser.email
       })
       .catch(error => {      
         this.displayAuthenticationErrorAlert = true
@@ -143,11 +187,29 @@ export default {
       )
       .then(response => {
         this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email)
-        console.log(this.currentUser)
       })
       .catch(error => {      
         console.log(error);
       })
+    },
+    onUpdateSettings(evt) {
+      evt.preventDefault()
+
+      const postObject = {
+        currentUsername: this.currentUser.username,
+        newUsername: this.settings.username,
+        newEmail: this.settings.email,
+        newPassword: this.settings.password === '' ? this.currentUser.encryptedPassword : this.settings.password
+      }
+
+      HTTP.post('updateUser'
+      , postObject)
+      .then(this.currentUser = new User(postObject.newUsername, postObject.newPassword, postObject.newEmail))
+      .catch(error => {      
+        console.log(error);
+      })
+
+
     }
   }
 }
