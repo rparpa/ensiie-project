@@ -21,20 +21,41 @@ class databaseService {
     }
   }
 
-  create() {
+  create(table, valuesObject) {
+    this.connectToDatabase();
+    return new Promise(resolve => {
 
+      let keysString = '(';
+      let valuesString = '(';
+      for(const key in valuesObject) {
+        keysString += key+", "
+        valuesString += '\''+valuesObject[key]+'\', '
+      }
+      keysString = keysString.substring(0, keysString.length-2)
+      keysString += ')'
+      valuesString = valuesString.substring(0, valuesString.length-2)
+      valuesString += ')'
+
+
+      this.client
+      .query('INSERT INTO "'+table+'"' +keysString+ ' VALUES '+valuesString)
+      .then(result => resolve(true))
+      .catch(e => resolve(false))
+      .then(() => this.client.end())
+    })
   }
 
   read(table, select, where = '') {
-    this.connectToDatabase()
-
-    const whereClause = where === '' ? '' : 'WHERE '+where;
-
-    this.client.query('SELECT '+select+ ' FROM "' +table+ '" ' +whereClause, (err, res) => { 
-      if (err) throw err
-      console.log(res)
-      this.client.end()
-      return res;
+    return new Promise(resolve => {
+      this.connectToDatabase()
+      
+      const whereClause = where === '' ? '' : 'WHERE '+where;
+      
+      this.client
+      .query('SELECT '+select+ ' FROM "' +table+ '" ' +whereClause)
+      .then(result => resolve(result))
+      .catch(e => console.error(e.stack))
+      .then(() => this.client.end())
     })
   }
 

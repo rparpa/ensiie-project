@@ -11,14 +11,30 @@ router.get('/', function(req, res, next) {
 
 router.post('/authentication', function(req, res, next) {
   const controller = new AuthenticationController();
-  user = controller.getUserFromCredentials(req.body.username, req.body.password);
-  if (null ==! user) {
-    res.send(user.toJson());
-  } else {
-    return res.status(404).send({
-      message: 'Incorrect credentials'
-    });
-  }
+  (async () => {
+    const user = await controller.getUserFromCredentials(req.body.username, req.body.password);
+    if (undefined !== user) {
+      res.send(user.toJson());
+    } else {
+      return res.status(404).send({
+        message: 'Incorrect credentials'
+      });
+    }
+  })()
+})
+
+router.post('/registration', function(req, res, next) {
+  const controller = new AuthenticationController();
+  (async () => {
+    const user = await controller.createUser(req.body.username, req.body.email, req.body.password);
+    if (undefined !== user) {
+      res.send(user.toJson());
+    } else {
+      return res.status(409).send({
+        message: 'Cannot create user'
+      });
+    }
+  })()
 })
 
 module.exports = router;
