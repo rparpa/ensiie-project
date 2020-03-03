@@ -14,6 +14,9 @@
 	<!-- CSS Bootstrap -->
 	<link href="../../../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+
+
+
 	<!-- CSS customisé -->
 	<link href="../../../assets/css/annonce.css" rel="stylesheet">
 	<link href="../../../assets/css/profil.css" rel="stylesheet">
@@ -34,6 +37,10 @@
 	<script src="../../../assets/jquery/jquery.min.js" type="text/javascript" ></script>
 
 	<script src="../../../assets/js//bootstrap.min.js"></script>
+		<!-- Stylesheet -->
+
+	<link href="../../../assets/css/tagsinput.css" rel="stylesheet" type="text/css">
+	<script src="../../../assets/js/tagsinput.js" type="text/javascript" ></script>
 
 </head>
 

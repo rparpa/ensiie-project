@@ -52,7 +52,7 @@
 							
 							<!-- Modal footer -->
 							<div class="modal-footer">								
-								<button type="button" class="btn btn-danger" onclick="window.location.replace('<?php echo site_url('/Annonce/supprimer_annonce/'.$ann['id_annonce']); ?>');">Supprimer</button>
+								<button type="button" class="btn btn-danger" onclick="window.location.replace('<?php echo site_url('/Annonce/supprimer_annonceSignale/'.$ann['id_annonce']); ?>');">Supprimer</button>
 								<button type="button" class="btn btn-secondary " data-dismiss="modal" aria-hidden="true">Annuler</button>
 							</div>
 							

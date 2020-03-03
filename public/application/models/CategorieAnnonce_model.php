@@ -5,8 +5,19 @@ class CategorieAnnonce_model extends CI_Model
     public $idAnnonce;
     public $idCategorie;
 
-    public function insert()
-    {
+
+    /**
+     * Fonction permettant d'inserer plusieurs catégories associé à une annonce
+     * 
+     * @param $id_annonce id de l'annonce
+     * @param $categories ensemble de catégories sous forme d'un array
+     */
+    public function insert($id_annonce,$categories){
+
+        foreach($categories as $key=>$value){
+          
+           $this->db->insert('categorie_annonce',array('id_annonce'=>$id_annonce,'id_categorie'=>$value+1));
+        }
 
     }
 
