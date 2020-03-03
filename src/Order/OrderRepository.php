@@ -38,7 +38,7 @@ class OrderRepository
         $rows = $this->connection->query(
             'SELECT * FROM "order"')
             ->fetchAll(PDO::FETCH_OBJ);
-            
+
         $orders = [];
         foreach ($rows as $row) {
             $order = new Order();
@@ -136,11 +136,15 @@ class OrderRepository
     {
         $query = $this->connection->prepare(
             'UPDATE order
-            SET approval = :approval
+            SET
+            approval = :approval,
+            validator_id = :validator_id
             WHERE id = :id');
 
         $query->bindValue(':id', $order->getId());
         $query->bindValue(':approval', $order->getApproval());
+        $query->bindValue(':validator_id', $order->getValidator()->getId());
+
         $result = $query->execute();
         if ($result == false)
         {
