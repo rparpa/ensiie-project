@@ -777,10 +777,6 @@ input[type=text]:placeholder, input[type=email]:placeholder, input[type=password
 	margin: 70 8;
 }
 
-#btn_header {
-  margin: 10px;
-}
-
 #accueil {
-	margin: 13px;
+	margin: 15px;
 }

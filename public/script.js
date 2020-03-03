@@ -30,10 +30,6 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#car-img').on('click', function() {
-		
-	});
-
 	$('#form_location').submit(function() {
 		var debut = $("#debut").val();
 		var fin = $("#fin").val();
@@ -45,7 +41,6 @@ $(document).ready(function() {
 	});
 
 	$('#form_ajout').submit(function() {
-		alert("aaa");
 		var nom_modele = $("#nom_modele").val();
 		var marque = $("#marque").val();
 		var lien_img = $("#lien_img").val();
@@ -59,5 +54,9 @@ $(document).ready(function() {
 			alert("Merci de remplir tous les champs.");
 			return false;
 		}
+	});
+
+	$('#form_modif').submit(function() {
+		alert("aaa");
 	});
 });

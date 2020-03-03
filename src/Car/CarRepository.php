@@ -114,5 +114,16 @@ class CarRepository
 		session_destroy();
 	}
 
+    public function ajoutVoiture($post) {
+        // TODO
+    }
+
+    public function modifVoiture($post) {
+        // TODO
+    }
+
+    public function deleteVoiture($post) {
+        // TODO
+    }
 
 }
