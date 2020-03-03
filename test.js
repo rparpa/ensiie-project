@@ -1,7 +1,7 @@
-const OffreRepository = require('./src/Model/Repository/OffreRepository');
+const CandidatRepository = require('./src/Model/Repository/CandidatRepository');
 
 async function test() {
-    let res = await OffreRepository.getAllByArgs("t", null, null, null,null);
+    let res = await CandidatRepository.getAllOffreByCandidat(1);
 
     console.log(res);
 }

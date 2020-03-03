@@ -3,6 +3,7 @@ const url = require('url');
 const ParticulierWebService = require('./src/Model/Controller/ParticulierWebService');
 const EntrepriseWebService = require('./src/Model/Controller/EntrepriseWebService');  
 const OffreWebService = require('./src/Model/Controller/OffreWebService');  
+const CandidatWebService = require('./src/Model/Controller/CandidatWebService');  
 var fs = require('fs');
 
 module.exports = http.createServer((req, res) => {
@@ -125,7 +126,6 @@ module.exports = http.createServer((req, res) => {
         else if(req.method == 'GET') {
             if(params.has('titre') && params.has('adresse') && params.has('typecontrat') && params.has('salaire') && params.has('dateparution')) {
                 OffreWebService.getAllByArgs(req, res, params.get('titre'), params.get('adresse'), params.get('typecontrat'), params.get('salaire'), params.get('dateparution'));
-                // OffreWebService.getAllByArgs(req, res, null, null, null, null, null)
             }
             if(params.has('identreprise')) {
                 OffreWebService.getAllByIdentreprise(req, res, params.get('identreprise'));
@@ -138,6 +138,25 @@ module.exports = http.createServer((req, res) => {
             if(params.has('id')) {
                 OffreWebService.deleteById(req, res, params.get('id'));
             }
+        }
+    }
+    else if(pathname == "/candidat/request") {
+        if(req.method == 'POST') {
+            CandidatWebService.create(req, res);
+        }
+        else if(req.method == 'GET') {
+            if(params.has('idoffre')) {
+                CandidatWebService.getAllCandidatByOffre(req, res, params.get('idoffre'));
+            }
+            else if(params.has('idparticulier')) {
+                CandidatWebService.getAllOffreByCandidat(req, res, params.get('idparticulier'));
+            }
+        }
+        else if(req.method == 'PUT') {
+
+        }
+        else if(req.method == 'DELETE') {
+
         }
     }
 });
