@@ -18,6 +18,20 @@ else if (localStorage.getItem('id') == "2") {
     document.getElementById("AdrSiege").style.display = "none";
 }
 
+window.onload = function() {
+    
+    offreService.getCompanyOffre(localStorage.getItem('idPersonne')).then(offres => {
+        let html =''
+        offres.forEach((offre) => {
+            html += OffreHtml(offre.id,offre.titre,offre.description,offre.document,offre.typeContrat,offre.adresse, offre.salaire,offre.dateParution);
+        });
+
+        document.getElementById('mesOffres').innerHTML = '<h3 class="modal-title">Mes offres</h3><br>'
+            
+        document.getElementById('mesOffres').innerHTML += html;
+    });
+};
+
 document.getElementById('btnCreer').onclick = async function() {
 
     var error = "false"
@@ -35,7 +49,7 @@ document.getElementById('btnCreer').onclick = async function() {
         alert('Veuillez remplir tous les champs')
     }
     else {
-        offreService.createOffre(titre,description,typeContrat,salaire,dateParution,adresse,doc).then( x => {
+        offreService.createOffre(localStorage.getItem('idPersonne'),titre,description,typeContrat,salaire,dateParution,adresse,doc).then( x => {
             x.forEach((y) => {
                 if(y==="yes"){
                     alert("Votre offre a bien été prise en compte, elle sera traité sous peu")
@@ -53,6 +67,88 @@ document.getElementById('btnCreer').onclick = async function() {
     }
 }
 
+$('#modifierModal').on('show.bs.modal', function (event) {
+    
+
+    var idOffre = $(event.relatedTarget).attr('data-idOffre')
+    var idTitre = $(event.relatedTarget).attr('data-idTitre')
+    var idDescription = $(event.relatedTarget).attr('data-idDescription')
+    var idTypeContrat = $(event.relatedTarget).attr('data-idTypeContrat')
+    var idSalaire = $(event.relatedTarget).attr('data-idSalaire')
+    var idDateParution = $(event.relatedTarget).attr('data-idDateParution')
+    var idAdresse = $(event.relatedTarget).attr('data-idAdresse')
+
+    document.getElementById('inputTitre').value = idTitre
+    document.getElementById('inputDescription').value = idDescription
+    document.getElementById('inputContrat').value = idTypeContrat
+    document.getElementById('inputSalaire').value = idSalaire
+    //document.getElementById('inputDateParution').value = idDateParution
+    document.getElementById('inputAdresseSiege').value = idAdresse
+    //manque le document
+
+    //On sélectionne le type de contrat déjà renseigné
+    var selectElement = document.getElementById('inputContrat');
+    var selectOptions = selectElement.options;
+    
+    for (var opt, j = 0; opt = selectOptions[j]; j++){
+        if (opt.value == idTypeContrat) {
+            selectElement.selectedIndex = j;
+            break;
+        }
+    }
+
+    document.getElementById('btnModifier').onclick = async function() {
+        
+        var titre = document.getElementById('inputTitre').value
+        var description = document.getElementById('inputDescription').value
+        var typeContrat = document.getElementById('inputContrat').value
+        var salaire = document.getElementById('inputSalaire').value
+        var dateParution = document.getElementById('inputDateParution').value
+        var adresse = document.getElementById('inputAdresseSiege').value
+        var doc = document.getElementById('exampleFormControlFile1').files[1]
+
+        if (titre==='' || description==='' || typeContrat==='' || salaire==='' || dateParution==='' || adresse===''){
+            alert('Veuillez remplir tous les champs')
+        }
+        else {
+            offreService.modifyOffre(idOffre,titre,description,typeContrat,salaire,dateParution,adresse,doc).then( x => {
+                x.forEach((y) => {
+                    if(y==="yes"){
+                        alert("Votre offre a bien été modifiée")
+                    }
+                    else {
+                        ("Something went wrong")
+                    }
+                });
+        
+            });
+            
+            await sleep(1000);
+            location.reload(); 
+        }
+    }
+
+
+ 
+})
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 } 
+
+OffreHtml = function(id,titre, description, document, typeContrat, adresse, salaire, dateParution) {
+    let html =  '<div class="border border-primary rounded">' +
+    '<div class="m-3 pb-3">' +
+    '<h3 class="modal-title">' + titre + '</h3>' +
+    '<div class="badge badge-primary text-wrap" style="width: 6rem;">' + typeContrat + '</div>' +
+    '<div class="m-3 badge badge-primary text-wrap" style="width: 6rem;">' + salaire + '</div>' +
+    '<div class="badge badge-primary text-wrap" style="width: 6rem;">' + dateParution + '</div> <br> ' +
+    '<p class="text-sm-left">' + description + '</p>' +
+    '<p class="font-weight-light text-sm-left"> Adresse : ' + adresse + '</p>' +
+    '<p class="font-weight-light text-sm-left"> Document : ' + document + '</p>' +
+    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifierModal" data-idOffre='+ id + ' data-idTitre="'+ titre + '" data-idDescription="'+ description + '" data-idTypeContrat="'+ typeContrat + '" data-idSalaire='+ salaire + ' data-idDateParution="'+ dateParution + '" data-idAdresse="'+ adresse + '"> Modifier </button>' +
+    '</div>' +
+    '</div> <br>'
+
+    return html
+};
