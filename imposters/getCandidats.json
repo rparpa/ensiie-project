@@ -1,0 +1,37 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "GET",
+        "path": "/getCandidats"
+      }
+    },
+    {
+      "matches": {
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "headers": { "Access-Control-Allow-Origin": "*" },
+        "body": [
+          {
+            "id" : 123456789,
+            "adresseMail" : "emericbg@gmail.com",
+            "telephone" : "07 65 34 56 21",
+            "nom" : "Bui",
+            "prenom" : "Emeric"
+          },
+          {
+            "id" : 234567890,
+            "adresseMail" : "corentinlelutin@gmail.com",
+            "telephone" : "07 65 23 56 21",
+            "nom" : "Simon",
+            "prenom" : "Corentin"
+          }
+        ]
+      }
+    }
+  ]
+}

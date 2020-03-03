@@ -64,6 +64,47 @@
         </div>
     </div>
 
+    <!-- Modal suppression offre -->
+    <div class="modal" tabindex="-1" role="dialog" id="supprimerOffre">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Supprimer Offre</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Etes vous sur de vouloir supprimer cette offre ? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSupprimer">Supprimer</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal consulter candidature -->
+    <div class="modal" tabindex="-1" role="dialog" id="consulterCandidature">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Candidatures</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="Candidats">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal modifier -->
     <div class="modal" tabindex="-1" role="dialog" id="modifierModal">
         <div class="modal-dialog" role="document">
@@ -79,33 +120,33 @@
                 <form id="formNewOffre">
 
                     <div class="form-group">
-                        <label for="inputTitre">Titre</label>
-                        <input type="text" class="form-control" id="inputTitre">
+                        <label for="inputTitreM">Titre</label>
+                        <input type="text" class="form-control" id="inputTitreM">
                       </div>
         
                     <div class="form-group">
-                      <label for="inputDescription">Description</label>
-                      <textarea class="form-control" id="inputDescription" rows="4"></textarea>
+                      <label for="inputDescriptionM">Description</label>
+                      <textarea class="form-control" id="inputDescriptionM" rows="4"></textarea>
                     </div>
         
                     <div class="form-row">
         
                         <div class="form-group col-md-4">
-                            <label for="inputContrat">Type de contrat</label>
-                            <select id="inputContrat" class="form-control">
+                            <label for="inputContratM">Type de contrat</label>
+                            <select id="inputContratM" class="form-control">
                             <option selected>CDD</option>
                             <option>Alernance</option>
                             </select>
                         </div>
         
                         <div class="form-group col-md-4">
-                            <label for="inputSalaire">Salaire</label>
-                            <input type="text" class="form-control" id="inputSalaire">
+                            <label for="inputSalaireM">Salaire</label>
+                            <input type="text" class="form-control" id="inputSalaireM">
                         </div>
         
                         <div class="form-group col-md-4">
                             <label >Date de parution</label>
-                            <input id ="inputDateParution" type="date" name="bday" max="2020-12-31" 
+                            <input id ="inputDateParutionM" type="date" name="bday" max="2020-12-31" 
                                    min="2020-01-01" class="form-control">
                             </select>
                         </div>
@@ -113,13 +154,13 @@
                     </div>
         
                     <div class="form-group" id="AdrOffre">
-                        <label for="inputAdresse">Adresse de l'emploi</label>
-                        <input type="text" class="form-control" id="inputAdresseSiege">
+                        <label for="inputAdresseM">Adresse de l'emploi</label>
+                        <input type="text" class="form-control" id="inputAdresseSiegeM">
                     </div>
         
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Ajouter un document</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" accept=".pdf,.jpg,.jpeg,.png">
+                        <label for="exampleFormControlFile1M">Ajouter un document</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1M" accept=".pdf,.jpg,.jpeg,.png">
                     </div>
         
                 </form>
@@ -165,7 +206,7 @@
                 <div class="form-group col-md-4">
                     <label for="inputContrat">Type de contrat</label>
                     <select id="inputContrat" class="form-control">
-                    <option selected>CDI</option>
+                    <option selected>CDD</option>
                     <option>Alernance</option>
                     </select>
                 </div>
