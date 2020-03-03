@@ -128,7 +128,7 @@ function sleep(ms) {
 $('#postulerModal').on('show.bs.modal', function (event) {
     
 
-    var idOffre = $(event.relatedTarget).attr('data-idJetPack')
+    var idOffre = $(event.relatedTarget).attr('data-idOffre')
     var idPersonne = localStorage.getItem('idPersonne');
 
     document.getElementById('btnPostuler').onclick = async function() {
@@ -167,7 +167,7 @@ OffreHtml = function(id,titre, description, document, typeContrat, adresse, sala
     '<p class="text-sm-left">' + description + '</p>' +
     '<p class="font-weight-light text-sm-left"> Adresse : ' + adresse + '</p>' +
     '<p class="font-weight-light text-sm-left"> Document : ' + document + '</p>' +
-    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postulerModal" data-idJetpack='+ id + '> Postuler </button>' +
+    '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postulerModal" data-idOffre='+ id + '> Postuler </button>' +
     '</div>' +
     '</div> <br>'
 

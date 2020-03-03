@@ -64,15 +64,81 @@
         </div>
     </div>
 
+    <!-- Modal modifier -->
+    <div class="modal" tabindex="-1" role="dialog" id="modifierModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modifier offre</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+                <form id="formNewOffre">
+
+                    <div class="form-group">
+                        <label for="inputTitre">Titre</label>
+                        <input type="text" class="form-control" id="inputTitre">
+                      </div>
+        
+                    <div class="form-group">
+                      <label for="inputDescription">Description</label>
+                      <textarea class="form-control" id="inputDescription" rows="4"></textarea>
+                    </div>
+        
+                    <div class="form-row">
+        
+                        <div class="form-group col-md-4">
+                            <label for="inputContrat">Type de contrat</label>
+                            <select id="inputContrat" class="form-control">
+                            <option selected>CDD</option>
+                            <option>Alernance</option>
+                            </select>
+                        </div>
+        
+                        <div class="form-group col-md-4">
+                            <label for="inputSalaire">Salaire</label>
+                            <input type="text" class="form-control" id="inputSalaire">
+                        </div>
+        
+                        <div class="form-group col-md-4">
+                            <label >Date de parution</label>
+                            <input id ="inputDateParution" type="date" name="bday" max="2020-12-31" 
+                                   min="2020-01-01" class="form-control">
+                            </select>
+                        </div>
+        
+                    </div>
+        
+                    <div class="form-group" id="AdrOffre">
+                        <label for="inputAdresse">Adresse de l'emploi</label>
+                        <input type="text" class="form-control" id="inputAdresseSiege">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Ajouter un document</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" accept=".pdf,.jpg,.jpeg,.png">
+                    </div>
+        
+                </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="btnModifier">Modifier</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
 </nav>
 
 <body>
 
     <!-- Mes offres d'emploi -->
-    <form class="center">
-
-        <h3 class="modal-title">Mes offres</h3>
-        
+    <form class="center" id="mesOffres">
         
 
     </form>

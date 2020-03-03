@@ -1,0 +1,33 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "GET",
+        "path": "/getCompanyOffres"
+      }
+    },
+    {
+      "matches": {
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "headers": { "Access-Control-Allow-Origin": "*" },
+        "body": [
+          {
+            "id" : 23456,
+            "titre" : "Président de la république",
+            "description" : "Les voyages toussa toussa",
+            "document" : "yes",
+            "typeContrat" : "CDD",
+            "adresse" : "Paname",
+            "salaire": "200k",
+            "dateParution" : "20-20-2020"
+          }
+        ]
+      }
+    }
+  ]
+}
