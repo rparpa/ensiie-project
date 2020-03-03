@@ -46,18 +46,13 @@ class OrderRepository
                 ->setId($row->id)
                 ->setDate(new DateTimeImmutable($row->order_date))
                 ->setApproval($row->approval)
-                ->setClient($this->fetchUser($row->client_id));
-            $order->setValidator($this->fetchUser($row->validator_id));
+                ->setClient($this->fetchUser($row->client_id))
+                ->setValidator($this->fetchUser($row->validator_id));
+            
+            $order->setSandwichs($this->fetchSandwichs($order->getId()));
 
             $orders[] = $order;
         }
-
-        foreach ($orders as $order) {
-            $order->setSandwichs(
-                $this->fetchSandwichs($order->getId())
-            );
-        }
-
 
         return $orders;
     }
@@ -82,12 +77,10 @@ class OrderRepository
                 ->setId($row['id'])
                 ->setDate(new DateTimeImmutable($row['order_date']))
                 ->setApproval($row['approval'])
-                ->setClient($this->fetchUser($row['client_id']));
-            $order->setValidator($this->fetchUser($row['validator_id']));
+                ->setClient($this->fetchUser($row['client_id']))
+                ->setValidator($this->fetchUser($row['validator_id']));
 
-            $order->setSandwichs(
-                $this->fetchSandwichs($order->getId())
-            );
+            $order->setSandwichs($this->fetchSandwichs($order->getId()));
         } else {
             $order = null;
         }
@@ -102,12 +95,11 @@ class OrderRepository
     public function createOrder(Order $newOrder)
     {
         $query = $this->connection->prepare(
-            'INSERT INTO "order"(order_date, approval, client_id, validator_id) VALUES (:order_date, :approval, :client_id, :validator_id)');
+            'INSERT INTO "order"(order_date, approval, client_id) VALUES (:order_date, :approval, :client_id)');
         
         $query->bindValue(':order_date', $newOrder->getDate()->format("Y-m-d"));
         $query->bindValue(':approval', $newOrder->getApproval());
         $query->bindValue(':client_id', $newOrder->getClient()->getId());
-        $query->bindValue(':validator_id', $newOrder->getValidator()->getId());
 
         $result = $query->execute();
         if ($result == false)
