@@ -76,7 +76,7 @@ module.exports = class {
     }
 
     static async getAllByArgs(titre, adresse, typecontrat, salaire, dateparution) {
-        var request = "SELECT offre.id, entreprise.id, entreprise.nom, entreprise.adressemail, entreprise.adressesiege, entreprise.logo, entreprise.telephone, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution FROM offre, entreprise WHERE offre.identreprise = entreprise.id";
+        var request = "SELECT offre.id, offre.identreprise, entreprise.nom, entreprise.adressemail, entreprise.adressesiege, entreprise.logo, entreprise.telephone, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution FROM offre, entreprise WHERE offre.identreprise = entreprise.id";
         
         if(titre != null && titre != "''") {
             request += " AND titre ~ '" + titre + "'";
@@ -110,6 +110,31 @@ module.exports = class {
 
             result = await client.query(request)
             .catch(err => {throw 'Error in database'});
+
+            let length = result.rows.length;
+
+            for(let i = 0 ; i < length ; ++i) {
+                result.rows[i] = {
+                    "id": result.rows[i].id,
+                    "identreprise": {
+                        "id": result.rows[i].identreprise,
+                        "nom": result.rows[i].nom,
+                        "adressemail": result.rows[i].adressemail,
+                        "adressesiege": result.rows[i].adressesiege,
+                        "logo": result.rows[i].logo,
+                        "telephone": result.rows[i].telephone
+                    },
+                    "description": result.rows[i].description,
+                    "document": result.rows[i].document,
+                    "typecontrat": result.rows[i].typecontrat,
+                    "adresse": result.rows[i].adresse,
+                    "latitude": result.rows[i].latitude,
+                    "longitude": result.rows[i].longitude,
+                    "salaire": result.rows[i].salaire,
+                    "titre": result.rows[i].titre,
+                    "dateparution": result.rows[i].dateparution
+                }
+            }
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
