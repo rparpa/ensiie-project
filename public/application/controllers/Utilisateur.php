@@ -99,9 +99,9 @@ class Utilisateur extends CI_Controller
     public function AllUsers()
     {
         $users=$this->utilisateur->getAllUser();
-		$data = ["users"=>$users];
+		$this->data += array("users"=>$users);
         $this->load->view('elements/header',$this->data);
-        $this->load->view('userTable',$data);
+        $this->load->view('userTable',$this->data);
         $this->load->view('elements/footer');
     }
     public function profil()
