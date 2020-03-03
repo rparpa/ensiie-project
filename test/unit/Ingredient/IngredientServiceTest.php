@@ -15,13 +15,15 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(1)
                     ->setLabel('test')
                     ->setAvailable(true)
-                    ->setPrice(2.00);
+                    ->setPrice(2.00)
+                    ->setImageLink('./helloWorld.png');
         
         $ingredient2 = new Ingredient();
         $ingredient2->setId(2)
                     ->setLabel('test2')
                     ->setAvailable(false)
-                    ->setPrice(2.00);
+                    ->setPrice(2.00)
+                    ->setImageLink('./helloWorld.png');
 
         $ingredients = [];
         $ingredients[] = $ingredient;
@@ -52,7 +54,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(1)
                     ->setLabel('test')
                     ->setAvailable(true)
-                    ->setPrice(2.00);
+                    ->setPrice(2.00)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')
@@ -141,7 +144,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(null)
                     ->setLabel('test')
                     ->setAvailable(true)
-                    ->setPrice(2.00);
+                    ->setPrice(2.00)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')
@@ -153,7 +157,8 @@ class IngredientServiceTest extends TestCase
         $expectedIngredient->setId(1)
             ->setLabel('test')
             ->setAvailable(true)
-            ->setPrice(2.00);
+            ->setPrice(2.00)
+            ->setImageLink('./helloWorld.png');
 
         $mockedRepository
             ->method('createIngredient')
@@ -177,7 +182,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(1)
                     ->setLabel('test')
                     ->setAvailable(true)
-                    ->setPrice(2.00);
+                    ->setPrice(2.00)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')
@@ -187,9 +193,10 @@ class IngredientServiceTest extends TestCase
 
         $expectedIngredient = new Ingredient();
         $expectedIngredient->setId(1)
-            ->setLabel('test')
-            ->setAvailable(true)
-            ->setPrice(2.00);
+                        ->setLabel('test')
+                        ->setAvailable(true)
+                        ->setPrice(2.00)
+                        ->setImageLink('./helloWorld.png');
 
         $mockedRepository
             ->method('updateIngredient')
@@ -213,7 +220,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(1)
                     ->setLabel('')
                     ->setAvailable(true)
-                    ->setPrice(2.00);
+                    ->setPrice(2.00)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')
@@ -235,7 +243,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(null)
                     ->setLabel('my_label')
                     ->setAvailable(true)
-                    ->setPrice(2.00);
+                    ->setPrice(2.00)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')
@@ -247,7 +256,8 @@ class IngredientServiceTest extends TestCase
         $otherIngredientWithSameLabel->setId(2)
                                     ->setLabel('my_label')
                                     ->setAvailable(true)
-                                    ->setPrice(3.00);
+                                    ->setPrice(3.00)
+                                    ->setImageLink('./helloWorld.png');
 
         $mockedRepository
             ->method('findOneByLabel')
@@ -268,7 +278,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(1)
                     ->setLabel('my_label')
                     ->setAvailable(true)
-                    ->setPrice(2.00);
+                    ->setPrice(2.00)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')
@@ -280,7 +291,8 @@ class IngredientServiceTest extends TestCase
         $otherIngredientWithSameLabel->setId(2)
                                     ->setLabel('my_label')
                                     ->setAvailable(true)
-                                    ->setPrice(3.00);
+                                    ->setPrice(3.00)
+                                    ->setImageLink('./helloWorld.png');
 
         $mockedRepository
             ->method('findOneByLabel')
@@ -301,7 +313,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(1)
                     ->setLabel('my_label')
                     ->setAvailable(true)
-                    ->setPrice(null);
+                    ->setPrice(null)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')
@@ -328,7 +341,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(1)
                     ->setLabel('my_label')
                     ->setAvailable(true)
-                    ->setPrice(-1);
+                    ->setPrice(-1)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')
@@ -356,7 +370,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(null)
                     ->setLabel('my_label')
                     ->setAvailable(true)
-                    ->setPrice(-1);
+                    ->setPrice(1)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')
@@ -378,7 +393,8 @@ class IngredientServiceTest extends TestCase
         $ingredient->setId(1)
                     ->setLabel('my_label')
                     ->setAvailable(true)
-                    ->setPrice(-1);
+                    ->setPrice(1)
+                    ->setImageLink('./helloWorld.png');
 
         /** @var IngredientRepository&\PHPUnit\Framework\MockObject\MockObject $mockedRepository */
         $mockedRepository = $this->getMockBuilder('Ingredient\IngredientRepository')

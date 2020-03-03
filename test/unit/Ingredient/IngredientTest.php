@@ -14,12 +14,14 @@ class IngredientTest extends TestCase
         $ingredient->setId(1)
                     ->setLabel('test')
                     ->setAvailable(true)
-                    ->setPrice(2.00);
-                    
+                    ->setPrice(2.00)
+                    ->setImageLink('./helloWorld.png');
+
         self::assertSame(1, $ingredient->getId()); 
         self::assertSame('test', $ingredient->getLabel());
         self::assertSame(true, $ingredient->getAvailable());   
         self::assertSame(2.00, $ingredient->getPrice());
+        self::assertSame('./helloWorld.png', $ingredient->getImageLink());
     }
 
     /**
