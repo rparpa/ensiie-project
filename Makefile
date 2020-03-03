@@ -12,8 +12,7 @@ help:
 	@echo "${bold}db.connect${normal}\n\t Connects to the database.\n"
 
 start:
-	docker-compose up --build -d
-	sleep 10
+	docker-compose up -d
 
 stop:
 	docker-compose down -v
