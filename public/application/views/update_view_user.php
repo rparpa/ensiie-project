@@ -5,13 +5,13 @@
         echo "<div class='error_msg'>";
         echo validation_errors();
         echo "</div>";
-        echo form_open('utilisateur/update',['class'=>'text-center border border-light p-5']);
+        echo form_open('utilisateur/update');
         echo form_hidden('id_user',$user[0]['id_user']);
 
         
         echo '<div class="card">';
-            
-            echo '<h5 class="card-header float-left text-black bg-warning">Modifier informations personnels</h5>';
+
+            echo '<h5 class="card-header float-left text-black bg-warning">Modifier mes informations personnels</h5>';
                 
             echo '<div class="card-body">';
                 echo '<div class="row">';
@@ -123,7 +123,7 @@
             echo '</div>';
         echo '</div>';
             echo"<br/>";
-            echo form_submit('submit', 'Modifier',array('type'=>'button','class'=>"float-right btn btn-warning"));
+            echo form_submit('submit', 'Mettre à jour',array('type'=>'button','class'=>"float-right btn btn-warning"));
         echo form_close();
         ?>
         </div>
