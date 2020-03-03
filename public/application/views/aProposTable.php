@@ -10,11 +10,11 @@
 		<table class="table table-striped table-hover">
 			<thead>
 			<tr>
-				<th>Contenu</th>
+				<th style="font-size: medium">Qui sommes-nous?</th>
 			</tr>
 			</thead>
 			<tbody>
-			<td>Le bonheur des uns fait le bonheur des autres.<br>
+			<td>Le bonheur des uns fait le bonheur des autres.<br><br>
 
 				Nous sommes de ceux qui pensent que le bonheur se partage et se transmet. Nous sommes convaincus que la proximité est génératrice d’opportunités. L’idée est toute simple, mais elle participe à changer le monde !
 
