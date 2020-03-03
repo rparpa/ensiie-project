@@ -20,7 +20,7 @@
 			foreach ($categories as $categ) {
 				echo "<tr><td>".$categ['categorie']."</td>
                 <td>
-                    <a href=".site_url('/Categorie/update/'.$categ['id_categorie'])." class=\"glyphicon glyphicon-flag\" title=\"Modifier\" data-toggle=\"tooltip\">Modifier</i></a>
+                    <a href=".site_url('/Categorie/modifier_categorie/'.$categ['id_categorie'])." class=\"glyphicon glyphicon-flag\" title=\"Modifier\" data-toggle=\"tooltip\">Modifier</i></a>
                     <a href=".site_url('/Categorie/delete/'.$categ['id_categorie'])." class=\"glyphicon glyphicon-flag\" title=\"Supprimer\" data-toggle=\"tooltip\">Supprimer</i></a>
                 </td></tr>";
 			}

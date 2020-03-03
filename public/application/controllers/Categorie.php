@@ -57,22 +57,29 @@ class Categorie extends CI_Controller
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		$this->form_validation->set_rules('categ', 'categ', 'required');
 
-		if ($this->input->post('categ')) {
+		if($this->input->post('categ')){
 			if ($this->form_validation->run() == TRUE) {
 
 				$this->categorie->insert($this->input->post('categ'));
 				redirect('Categorie/getAllCategories');
-				$this->session->set_flashdata('message', 'Catégorie créée avec succès');
+				$this->session->set_flashdata('message', 'Catégorie ajoutée');
 
-			} else {
+			}else{
 				$this->session->set_flashdata('error', 'Catégorie non ajoutée, veuillez réessayer');
-				$this->load->view('elements/header', $this->data);
-				$this->load->view('ajout_categorie_view', $this->data);
+				$this->load->view('elements/header',$this->data);
+				$this->load->view('gestion_categorie_view',$this->data);
 				$this->load->view('elements/footer');
 			}
-		} else {
-			$this->load->view('elements/header', $this->data);
-			$this->load->view('ajout_categorie_view', $this->data);
+		}
+		else{
+			$this->load->view('elements/header',$this->data);
+			if(!$this->session->userdata('logged_in')['droit_publication'])
+			{
+				$this->load->view('error_page');
+			} else
+			{
+				$this->load->view('gestion_categorie_view',$this->data);
+			}
 			$this->load->view('elements/footer');
 		}
 	}
@@ -85,22 +92,26 @@ class Categorie extends CI_Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
 
-	public function update()
+	public function modifier_categorie($id_categ)
 	{
-		if($this->input->method()=="post")
-		{
-			if($this->categorie->update($this->input->post(NULL, TRUE))) // returns all POST items with XSS filter
-			{
-				die("Catégorie mise-à-jour!");
-			}
-			else
-			{
-				die ("La mise-à-jour de la catégorie a échoué!");
-			}
-		}
+		$this->form_validation->set_error_delimiters('<p class="form_erreur">', '</p>');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+		$this->form_validation->set_rules('categ', 'categ', 'required');
 
-		$model = $this->categorie->getCategorie($_GET['id']);
-		$this->load->view('categorie',['model'=>$model]);
+		if($this->form_validation->run()){
+
+			$value = $this->input->post('categ');
+			$this->categorie->updateCategorie($id_categ, $value);
+			redirect('Categorie/getAllCategories');
+			$this->session->set_flashdata('message', 'Catégorie modifiée');
+		}
+		else{
+			$categories=$this->categorie->getCategorie($id_categ);
+			$this->data+=array("categories"=>$categories[0]);
+			$this->load->view("elements/header",$this->data);
+			$this->load->view('gestion_categorie_view',$this->data);
+			$this->load->view("elements/footer");
+		}
 	}
 
     /**
