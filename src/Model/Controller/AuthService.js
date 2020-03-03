@@ -15,17 +15,25 @@ module.exports = class AuthService {
             let codestatus;
             let obj = JSON.parse(body);
 
+            let result;
             try {
-                if(await ParticulierRepository.login(obj)) {
-                    response = 1;
+                result = await ParticulierRepository.login(obj);
+                if(result.length > 0) {
+                    response = {id: result[0].id, type: 1};
                 }
-                else if(await EntrepriseRepository.login(obj)){
-                    response = 2;
+                else {
+                    result = await EntrepriseRepository.login(obj)
+                    if(result.length > 0){
+                        response = {id: result[0].id, type: 2};
+                    }
+                    else {
+                        result = await AdministrateurRepository.login(obj);
+                        if(result.length > 0) {
+                            response = {id: result[0].id, type: 3};
+                        }
+                        else response = {type:-1};
+                    }
                 }
-                else if(await AdministrateurRepository.login(obj)) {
-                    response = 3;
-                }
-                else response = -1;
 
                 codestatus = 200;
             }

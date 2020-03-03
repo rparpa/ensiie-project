@@ -36,11 +36,6 @@ module.exports = class {
             result = await client.query(login, [identifiant, mdp])
             .catch(err => {throw 'Error in database'});
 
-            if(result.rows.length > 0){
-                result = true;
-            }
-            else result = false
-
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
         }
@@ -49,7 +44,7 @@ module.exports = class {
             throw e;
         }
 
-        return result;
+        return result.rows;
     }
 
     static async create(Particulier) {
