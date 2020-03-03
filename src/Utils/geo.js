@@ -3,27 +3,29 @@ module.export = class {
     constructor() {
     }
 
-    async getAdrrByCoords(latitude,longitude) { // fonction async necessite async contexte lors de l'appel
-        if(!latitude || !longitude){
-            throw 'Parameter missing'
-        }
-        if(isNaN(latitude) || isNaN(longitude)){
-            throw 'Parameters must be numbers';
-        }
-        var url = "https://nominatim.openstreetmap.org/reverse?format=json&"
-        var encodedURL = url + "lat=" + latitude + "&lon=" + longitude;
-        try {
+    async  getCoordsByAddr(input) { // fonction async necessite async contexte lors de l'appel
+    if (!input) {
+        throw 'Parameter missing'
+    }
+    var encodedInput = input.split(' ').join('+');
+    var url = "https://nominatim.openstreetmap.org/search?q="
+
+    encodedURL = url + encodedInput + "&format=json"
+    console.log(encodedURL);
+    try {
         const response = await fetch(encodedURL);
         const json = await response.json();
-        // console.log(json);
-        // const res = JSON.parse(json);
-        
-        return json.display_name;
-        
-        } catch (error){
+        // console.log(json[0].display_name);
+        return {
+            'lat': json[0].lat,
+            'lon': json[0].lon
+        };
+
+    } catch (error) {
         console.log(error);
-        }
-        }
+    }
+}
+
 
         
         ComputeDistance(lat1,lat2,lon1,lon2){ // Formule de Haversine pour la distance à vol d'oiseau

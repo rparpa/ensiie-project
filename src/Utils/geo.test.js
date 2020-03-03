@@ -4,7 +4,7 @@ describe("Test of GetAddress", () => {
     test('Test of Computing Distance',() => {
         let Geo = new geo();
         
-        function Compute(){
+        function getAddr(){
             Geo.Compute(52.5487429714954,-1.81602098644987);
         }
         expect(getAddr).toHaveReturnedWith("137, Pilkington Avenue, Sutton Coldfield, Birmingham, West Midlands Combined Authority, West Midlands, Angleterre, B72 1LH, Royaume-Uni");
