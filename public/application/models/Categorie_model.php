@@ -16,10 +16,11 @@ class Categorie_model extends CI_Model
 		return $this->db->delete('categorie',array('id_categorie'=>$id));
     }
 
-	public function update($model)
+	public function updateCategorie($id_categ, $value)
 	{
-		$this->db->where('id_categorie', $model['id_categorie']);
-		return $this->db->update('categorie',$model);
+		$data = array('categorie' => $value);
+		$this->db->where('id_categorie', $id_categ);
+		$this->db->update('categorie',$data);
 	}
 
     public function getAllCategorie()
