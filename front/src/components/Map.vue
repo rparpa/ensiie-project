@@ -3,17 +3,21 @@
     <b-container class="map-container col">
       <b-jumbotron>
         <b-row>
+          <b-col><MapOptions/></b-col>
+        </b-row>
+        <br>
+        <b-row>
           <MapSettings/>
         </b-row>
         <br>
         <b-row>
           <MapBox/>
-        </b-row>      
+        </b-row>
       </b-jumbotron>
   </b-container>
-  <b-container v-if="markerInfoStatus" class="map-container side-panel col-4">    
+  <b-container v-if="markerInfoStatus" class="map-container side-panel col-4">
     <b-row>
-      <b-card 
+      <b-card
           header="Parking Informations"
           header-tag="header"
           footer="🅿️"
@@ -34,6 +38,7 @@
 import MapSettings from './MapSettings.vue'
 import MarkerInfo from './MarkerInfo.vue'
 import MapBox from './MapBox.vue'
+import MapOptions from "./MapOptions";
 import {EventBus} from "./event-bus";
 
 export default {
@@ -41,11 +46,12 @@ export default {
   components: {
     MapSettings,
     MapBox,
-    MarkerInfo
+    MarkerInfo,
+    MapOptions
   },
 
   mounted() {
-    EventBus.$on('setMarkerInfo', markerInfo => {    
+    EventBus.$on('setMarkerInfo', markerInfo => {
       this.markerInfoStatus = true;
       this.markerInfo = markerInfo;
     });
@@ -59,7 +65,7 @@ export default {
      return {
        markerInfoStatus : false,
        markerInfo : null
-     }     
+     }
   }
 }
 </script>
