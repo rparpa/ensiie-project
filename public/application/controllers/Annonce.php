@@ -64,7 +64,6 @@ class Annonce extends CI_Controller {
 		$this->form_validation->set_rules('titre', 'Titre', 'required');
 		$this->form_validation->set_rules('description', 'Description', 'required');
 		$this->form_validation->set_rules('prix', 'Prix', 'required|numeric');
-		
 
 		$etats=array_column($this->etat->getAllEtat(), 'etat');
 		$this->data+=array("etats"=>$etats);
@@ -98,7 +97,13 @@ class Annonce extends CI_Controller {
 		}
 		else{
 			$this->load->view('elements/header',$this->data);
-			$this->load->view('gestion_annonce_view',$this->data);
+			if(!$this->session->userdata('logged_in')['droit_publication'])
+			{
+				$this->load->view('error_page');
+			} else
+			{
+				$this->load->view('gestion_annonce_view',$this->data);
+			}
 			$this->load->view('elements/footer');			
 		}
 
