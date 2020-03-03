@@ -1,38 +1,150 @@
 <?php
 
 require_once '../src/Bootstrap.php';
+session_start();
+ob_start();
 
-$userRepository = new \User\UserRepository(\Db\Connection::get());
-$users = $userRepository->fetchAll();
+if (isset($_GET['api'])) {
+    if ($_GET['api'] == 'search' && isset($_POST['string'])) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->searchCars($_POST['string']);
+    }
+}
 ?>
 
 <html>
 <head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="index.php">
+      <img src="https://img.icons8.com/android/24/000000/kitchen.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Cook Rental
+  </a>
+  <form class="form-inline my-2 my-lg-0">
+    <?php if(!isset($_SESSION["name_firstname"])) { ?>
+      <a class="btn btn-outline-primary" id="btn_header" href='index.php?action=connect'>Se connecter</a>
+      <a class="btn btn-outline-primary" href='index.php?action=register'>S'inscrire</a>
+  <?php } else {?>
+    Bienvenue, <?php echo $_SESSION["name_firstname"]; ?>.
+    <?php if($_SESSION["role"] == 1) {?>
+        <a href="index.php?action=admin">Panel admin</a> | 
+    <?php } ?>
+    <a href="index.php?action=logout">Se déconnecter</a>
+<?php } ?>
+</form>
+</nav>
 
-<div class="container">
-    <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
-
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-            <td>Age</td>
-        </thead>
-        <?php /** @var \User\User $user */
-        foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $user->getId() ?></td>
-                <td><?php echo $user->getFirstname() ?></td>
-                <td><?php echo $user->getLastname() ?></td>
-                <td><?php echo $user->getAge() ?> years</td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+<div id="wrapper">
+    <?php
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] == 'listUsers') {
+            $controller = new \User\UserController(\Db\Connection::get());
+            $users = $controller->listUsers();
+        } else if ($_GET['action'] == 'connect') {
+            $controller = new \User\UserController(\Db\Connection::get());
+            if(isset($_POST["email"])) {
+                $controller->identification($_POST);
+            } else {
+                $controller->afficheFormulaireConnexion();
+            }
+        } else if ($_GET['action'] == 'logout') {
+            $controller = new \User\UserController(\Db\Connection::get());
+            $controller->deconnexion();
+        } else if ($_GET['action'] == 'register') {
+            $controller = new \User\UserController(\Db\Connection::get());
+            if(isset($_POST["email"])) {
+                $controller->enregistrement($_POST);
+            } else {
+                $controller->afficheFormulaireInscription();
+            }
+        } else if ($_GET['action'] == 'reset') {
+            $controller = new \User\UserController(\Db\Connection::get());
+            if(isset($_POST["email"])) {
+                $controller->reset($_POST);
+            } else {
+                $controller->afficheFormulaireReset();
+            }
+        } else if ($_GET['action'] == 'showCar') {
+            if(isset($_GET['car_id'])) {
+                $controller = new \Car\CarController(\Db\Connection::get());
+                $controller->afficheVoiture($_GET['car_id']);
+            }
+        } else if ($_GET['action'] == 'location') {
+            $controller = new \Car\CarController(\Db\Connection::get());
+            if(isset($_POST["date_debut"])) {
+                $controller->createLocation($_POST);
+            }
+        } else if ($_GET['action'] == 'admin') {
+            $controller = new \Admin\AdminController(\Db\Connection::get());
+            //$controller->afficheLocations(); A CORRIGER
+            $controller->afficheVoitures();
+        } else if ($_GET['action'] == 'ajouter') {
+            $controller = new \Admin\AdminController(\Db\Connection::get());
+            $controller->afficheAjoutVoiture();
+            // TODO (POST)
+        } else if ($_GET['action'] == 'modifVoiture') {
+            $controller = new \Admin\AdminController(\Db\Connection::get());
+            // TODO car_id
+        }  else if ($_GET['action'] == 'deleteVoiture') {
+            $controller = new \Admin\AdminController(\Db\Connection::get());
+            // TODO car_id
+        }   else if ($_GET['action'] == 'deleteLocation') {
+            $controller = new \Admin\AdminController(\Db\Connection::get());
+            // TODO id_location
+        }
+    } else {
+        ?><link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+        <div id="logo" class="container">
+          <h1><a href="#">CookRental</a></h1>
+          <p>You are cooked and looking for a car quickly, we are the solution.</p>
+      </div>
+      <div id="page" class="container">
+          <div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <dl class="param param-feature">
+                        <dt>Début de location</dt>
+                        <input type="date" name="datedeb" placeholder="Début de location">
+                    </dl>
+                </div>
+                <div class="col-lg-4">
+                    <dl class="param param-feature">
+                        <dt>Fin de location</dt>
+                        <input type="date" name="datefin" placeholder="Fin de location">
+                    </dl>
+                </div>
+                <div class="col-lg-4">
+                    <dl class="param param-feature">
+                        <dt>Marque, modèle ...</dt>
+                        <input type="text" id="voiture" name="voiture" placeholder="Marque, modele, ...">
+                    </dl>
+                </div>
+                <div class="col-lg-4">
+                    <dl class="param param-feature">
+                        <dt>Budget</dt>
+                        <input type="text" name="budget" placeholder="Budget">
+                    </dl>
+                </div>
+                <div class="col-lg-8">
+                    <a style="color:white;" id="sendRq" type="button" class="btn btn-danger">Trouver la voiture de mes rêves</a>
+                </div>
+            </div>
+            <div class="entry">
+                <p>Below is our list of cars available for hire.<br>
+                You will find all the details by clicking on "More details".</p>
+            </div>
+        </div>
+        </div><?php
+        $carController = new \Car\CarController(\Db\Connection::get());
+        $carController->afficheVoituresIndex();
+    }
+    ob_end_flush();
+    ?>
 </div>
 </body>
 </html>
