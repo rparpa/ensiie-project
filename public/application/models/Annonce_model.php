@@ -75,7 +75,7 @@ class Annonce_model extends CI_Model
    * @param $description Description de l'annonce
    * @param @prix Prix de l'annonce
    */
-  public function insertAnnonce($user,$titre,$description,$prix,$etat){
+  public function insertAnnonce($user,$titre,$description,$prix,$etat,$categories){
 
     $data = array('id_user' => $user,
             'id_etat'=>$etat,
@@ -84,7 +84,14 @@ class Annonce_model extends CI_Model
 					  'prix'=>$prix,
 					  );
 
+		
+
 		$this->db->insert('annonce', $data);
+		$id_annonce = $this->db->insert_id();
+		
+		if($categories!=null){
+			$this->categorieAnnonce->insert($id_annonce,$categories);
+		}
   }
 
 
