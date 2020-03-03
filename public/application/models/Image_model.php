@@ -2,10 +2,16 @@
 
 class Image_model extends CI_Model
 {
-   
-    public function insert()
-    {
 
+    /**
+     * Fonction permettant d'inserer le lien d'une image dans la base de données
+     * 
+     * @param $id_annonce Id de l'annonce
+     * @param $lien_image Lien de l'image string
+     *
+     */
+    public function insert($id_annonce,$lien_image){
+      $this->db->insert('image', array('id_annonce'=>$id_annonce,'url'=>$lien_image));
     }
 
     public function delete()
