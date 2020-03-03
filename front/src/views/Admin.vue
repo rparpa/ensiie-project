@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div class="about">
     <Header/>
     <Nav class="navButtons"/>
-    <Map/>
+    <h1>This the admin page</h1>
   </div>
 </template>
-
 
 <style>
   .navButtons{
@@ -18,16 +17,14 @@
 
 <script>
 // @ is an alias to /src
-import Map from '@/components/Map.vue'
-import Nav from '@/components/Navigation.vue'
 import Header from '@/components/Header.vue'
+import Nav from '@/components/Navigation.vue'
 
 export default {
-  name: 'Home',
+  name: 'Admin',
   components: {
-    Map,
-    Nav,
-    Header
+    Header,
+    Nav
   }
 }
 </script>
