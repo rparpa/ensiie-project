@@ -9,3 +9,6 @@ front/logs/
 front/tests/e2e/videos/
 front/tests/e2e/screenshots/
 .env
+npm-debug.log
+.DS_Store
+back/.DS_Store
