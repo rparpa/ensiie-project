@@ -7,7 +7,7 @@ const rollback = "ROLLBACK";
 const login = "SELECT id FROM particulier WHERE adressemail = $1 AND motdepasse = $2";
 
 
-const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom, telephone) VALUES($1, $2, $3, $4, $5, $6) RETURNING adressemail, cv, nom, prenom, telephone";
+const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom, telephone) VALUES($1, $2, $3, $4, $5, $6) RETURNING id";
 const selectAll = "SELECT id , adressemail, cv, nom, prenom, telephone FROM particulier";
 const selectById = "SELECT adressemail, cv, nom, prenom, telephone FROM particulier WHERE id = $1";
 

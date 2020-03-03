@@ -4,7 +4,7 @@ const begin = "BEGIN";
 const commit = "COMMIT";
 const rollback = "ROLLBACK";
 
-const insert = "INSERT INTO offre(identreprise, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution";
+const insert = "INSERT INTO offre(identreprise, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution";
 const selectAllByIdentreprise = "SELECT id, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution FROM offre WHERE identreprise = $1";
 
 const updateDateparution = "UPDATE offre SET dateparution = $1 WHERE id = $2 RETURNING id, identreprise, description, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution";
