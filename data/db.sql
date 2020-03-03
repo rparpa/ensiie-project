@@ -41,7 +41,8 @@ CREATE TABLE "offre" (
     latitude NUMERIC NOT NULL ,
     longitude NUMERIC NOT NULL ,
     salaire NUMERIC NOT NULL ,
-    titre VARCHAR NOT NULL
+    titre VARCHAR NOT NULL ,
+    dateparution NUMERIC NOT NULL
 );
 
 CREATE TABLE "candidat" (
