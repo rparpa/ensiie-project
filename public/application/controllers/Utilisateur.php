@@ -55,7 +55,7 @@ class Utilisateur extends CI_Controller
             if($this->utilisateur->update($this->input->post()))
             {
                 //echo "<script>alert(\"Modification réussie\")</script>";
-                redirect('utilisateur/update?id='.$this->input->post('id_user'));
+                redirect('utilisateur/profil');
             } else
             {
                 //echo "<script>alert(\"modification failed\")</script>";
