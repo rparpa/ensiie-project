@@ -2,6 +2,7 @@
 namespace Order;
 
 use DateTimeInterface;
+use User\User;
 
 class Order
 {
@@ -18,16 +19,58 @@ class Order
     /**
      * @var bool
      */
-    private bool $approval;
+    private ?bool $approval = false;
 
     /**
      * @var array
      */
     private ?array $sandwichs = null;
 
-    //TODO ADD CLIENT
-    //TODO ADD VALIDATOR
-    //TODO ADD BILL HAVING CALCULATE PRICE
+    /**
+     * @var User
+     */
+    private ?User $client = null;
+
+    /**
+     * @var User
+     */
+    private ?User $validator = null;
+
+    /**
+     * @return User
+     */
+    public function getClient(): User
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param User $client
+     * @return Order
+     */
+    public function setClient(User $client)
+    {
+        $this->client = $client;
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getValidator()
+    {
+        return $this->validator;
+    }
+
+    /**
+     * @param User $validator
+     * @return Order
+     */
+    public function setValidator(User $validator)
+    {
+        $this->validator = $validator;
+        return $this;
+    }
 
     /**
      * @return int
