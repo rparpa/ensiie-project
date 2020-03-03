@@ -37,6 +37,7 @@ class UserRepository
                 ->setPseudo($row->pseudo)
                 ->setMail($row->mail)
                 ->setPassword($row->password);
+                $user->setIsValidator($row->isvalidator);
 
             $users[] = $user;
         }
@@ -46,13 +47,14 @@ class UserRepository
 
     public function createUser(User $newUser)
     {
-        $query = $this->connection->prepare('INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password) VALUES (:firstname , :lastname, :birthday, :pseudo, :mail, :password)');
+        $query = $this->connection->prepare('INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES (:firstname , :lastname, :birthday, :pseudo, :mail, :password, :isValidator)');
         $query->bindValue(':firstname', $newUser->getFirstname());
         $query->bindValue(':lastname', $newUser->getLastname());
         $query->bindValue(':birthday', $newUser->getBirthday()->format("Y-m-d"));
         $query->bindValue(':pseudo', $newUser->getPseudo());
         $query->bindValue(':mail', $newUser->getMail());
         $query->bindValue(':password', crypt($newUser->getPassword(), 'st'));
+        $query->bindValue(':isValidator', $newUser->isValidator(), PDO::PARAM_BOOL);
 
         if ($this->pseudoAlreadyExist($newUser->getPseudo()))
         {
@@ -127,6 +129,7 @@ class UserRepository
             $user
                 ->setId($rows[0]->id)
                 ->setFirstname($rows[0]->firstname)
+                ->setIsValidator($rows[0]->isvalidator)
                 ->setLastname($rows[0]->lastname)
                 ->setBirthday(new DateTimeImmutable($rows[0]->birthday))
                 ->setPseudo($rows[0]->pseudo)
@@ -151,6 +154,7 @@ class UserRepository
             ->setId($row->id)
             ->setFirstname($row->firstname)
             ->setLastname($row->lastname)
+            ->setIsValidator($row->isvalidator)
             ->setBirthday(new DateTimeImmutable($row->birthday))
             ->setPseudo($row->pseudo)
             ->setMail($row->mail)
@@ -181,7 +185,8 @@ class UserRepository
                 birthday = :birthday,
                 pseudo = :pseudo,
                 mail = :mail,
-                password = :password
+                password = :password,
+                isvalidator = :isValidator
             WHERE id = :id');
 
         $query->bindValue(':id', $user->getId());
@@ -192,6 +197,7 @@ class UserRepository
         $query->bindValue(':pseudo', $user->getPseudo());
         $query->bindValue(':mail', $user->getMail());
         $query->bindValue(':password', crypt($user->getPassword(), 'st'));
+        $query->bindValue(':isValidator', $user->isValidator(), PDO::PARAM_BOOL);
 
         $result = $query->execute();
         if ($result == false)

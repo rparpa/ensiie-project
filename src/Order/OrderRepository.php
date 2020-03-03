@@ -5,17 +5,34 @@ use DateTimeImmutable;
 use Sandwich\Sandwich;
 use PDO;
 use Sandwich\SandwichRepository;
+use User\User;
+use User\UserRepository;
 
+/**
+ * Class OrderRepository
+ * @package Order
+ */
 class OrderRepository
 {
 
+    /**
+     * @var PDO
+     */
     private PDO $connection;
 
+    /**
+     * OrderRepository constructor.
+     * @param PDO $connection
+     */
     public function __construct(PDO $connection)
     {
         $this->connection = $connection;
     }
 
+    /**
+     * @return array
+     * @throws \Exception
+     */
     public function getAll()
     {
         $rows = $this->connection->query(
@@ -28,7 +45,10 @@ class OrderRepository
             $order
                 ->setId($row->id)
                 ->setDate(new DateTimeImmutable($row->order_date))
-                ->setApproval($row->approval);
+                ->setApproval($row->approval)
+                ->setClient($this->fetchUser($row->client_id));
+            $order->setValidator($this->fetchUser($row->validator_id));
+
             $orders[] = $order;
         }
 
@@ -42,6 +62,11 @@ class OrderRepository
         return $orders;
     }
 
+    /**
+     * @param $orderId
+     * @return Order|null
+     * @throws \Exception
+     */
     public function findOneById($orderId)
     {        
         $query = $this->connection->prepare(
@@ -56,7 +81,10 @@ class OrderRepository
             $order
                 ->setId($row['id'])
                 ->setDate(new DateTimeImmutable($row['order_date']))
-                ->setApproval($row['approval']);
+                ->setApproval($row['approval'])
+                ->setClient($this->fetchUser($row['client_id']));
+            $order->setValidator($this->fetchUser($row['validator_id']));
+
             $order->setSandwichs(
                 $this->fetchSandwichs($order->getId())
             );
@@ -67,13 +95,19 @@ class OrderRepository
         return $order;
     }
 
+    /**
+     * @param Order $newOrder
+     * @return Order
+     */
     public function createOrder(Order $newOrder)
     {
         $query = $this->connection->prepare(
-            'INSERT INTO "order"(order_date, approval) VALUES (:order_date, :approval)');
+            'INSERT INTO "order"(order_date, approval, client_id, validator_id) VALUES (:order_date, :approval, :client_id, :validator_id)');
         
         $query->bindValue(':order_date', $newOrder->getDate()->format("Y-m-d"));
         $query->bindValue(':approval', $newOrder->getApproval());
+        $query->bindValue(':client_id', $newOrder->getClient()->getId());
+        $query->bindValue(':validator_id', $newOrder->getValidator()->getId());
 
         $result = $query->execute();
         if ($result == false)
@@ -94,6 +128,10 @@ class OrderRepository
         return $newOrder;
     }
 
+    /**
+     * @param Order $order
+     * @return bool
+     */
     public function setApproval(Order $order)
     {
         $query = $this->connection->prepare(
@@ -111,6 +149,10 @@ class OrderRepository
         return $result;
     }
 
+    /**
+     * @param Order $orderToDelete
+     * @return bool
+     */
     public function deleteOrder(Order $orderToDelete)
     {
         $query = $this->connection->prepare('DELETE FROM "order" WHERE id = :id');
@@ -136,6 +178,10 @@ class OrderRepository
         return $result;
     }
 
+    /**
+     * @param $orderId
+     * @param $sandwichId
+     */
     private function addSandwich($orderId, $sandwichId)
     {
         $query = $this->connection->prepare(
@@ -152,6 +198,10 @@ class OrderRepository
         }
     }
 
+    /**
+     * @param $orderId
+     * @param $sandwichId
+     */
     private function removeSandwich($orderId, $sandwichId)
     {
         $query = $this->connection->prepare(
@@ -195,6 +245,29 @@ class OrderRepository
         }
 
         return $sandwichs;
+    }
+
+    /**
+     * @param $orderId
+     * @return User
+     */
+    private function fetchUser($orderId)
+    {
+        $query = $this->connection->prepare(
+            'SELECT id AS id
+            FROM "user"
+            WHERE id = :orderId');
+
+        $query->bindValue(':orderId', $orderId, PDO::PARAM_INT);
+        $query->execute();
+        $row = $query->fetch(PDO::FETCH_OBJ);
+
+
+        $userRepository = new UserRepository($this->connection);
+        $user = new User();
+        $user = $userRepository->findOneById($row->id);
+
+        return $user;
     }
 
 }

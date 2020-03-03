@@ -3,6 +3,8 @@ namespace Order;
 
 use Sandwich\Sandwich;
 use Sandwich\SandwichRepository;
+use User\User;
+use User\UserRepository;
 
 /**
  * Class OrderService
@@ -15,21 +17,19 @@ class OrderService
     // get orders by client
     // ajout du client à la creation
     // ajout de l'admin à la validation (setApproval) 
-    
-    //TODO 
-    //fonction validate client & validate admin 
-    //          -> même shéma que pour le sandwich
 
 
     private OrderRepository $orderRepository;
     private SandwichRepository $sandwichRepository;
+    private UserRepository $userRepository;
 
     private ?array $errors = [];
 
-    public function __construct(OrderRepository $orderRepository, SandwichRepository $sandwichRepository)
+    public function __construct(OrderRepository $orderRepository, SandwichRepository $sandwichRepository, UserRepository $userRepository)
     {
         $this->orderRepository = $orderRepository;
         $this->sandwichRepository = $sandwichRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function getErrors() {
@@ -102,6 +102,7 @@ class OrderService
     }
 
     public function setApproval(Order $order) {
+        //TODO créer une facture si renvoie vraie
         $this->resetErrors();
         if (null == $order->getId()) {
             $this->errors['id'] = 'Order id shouldn\'t be null for validation.';
@@ -132,6 +133,84 @@ class OrderService
             $result = false;
             $this->errors['sandwichs_empty'] = 'This order is empty.';
         }
+        if ($order->getClient() != null)
+        {
+            if (! $this->validateClient($order->getClient()))
+            {
+                $result = false;
+            }
+        }
+        else
+        {
+            $result = false;
+            $this->errors['client_empty'] = 'There is no Client.';
+        }
+
+        if ($order->getValidator() != null)
+        {
+            if (! $this->validateAdmin($order->getValidator()))
+            {
+                $result = false;
+            }
+        }
+        else
+        {
+            $result = false;
+            $this->errors['validator_empty'] = 'There is no Validator.';
+        }
+        return $result;
+    }
+
+private function validateClient(User $userClient)
+{
+    $result = true;
+
+    if(null != $userClient->getId())
+    {
+        $existingClient = $this->userRepository->findOneById($userClient->getId());
+        if (null == $userClient)
+        {
+            $result = false;
+            $this->errors['user_id'] = 'This id doesn\'t exists for a user.';
+        }
+    }
+    else
+    {
+        if (null == $userClient->getPseudo() || '' == $userClient->getPseudo() )
+        {
+            $result = false;
+            $this->errors['user_pseudo'] = 'Pseudo is mandatory.';
+        }
+    }
+    return $result;
+}
+
+    private function validateAdmin(User $userAdmin)
+    {
+        $result = true;
+
+        if(null != $userAdmin->getId())
+        {
+            $existingClient = $this->userRepository->findOneById($userAdmin->getId());
+            if (null == $userAdmin)
+            {
+                $result = false;
+                $this->errors['user_id'] = 'This id doesn\'t exists for a user.';
+            }
+            if (!$userAdmin->isValidator())
+            {
+                $result = false;
+                $this->errors['user_validator'] = 'User isn\'t validator.';
+            }
+        }
+        else
+        {
+            if (null == $userAdmin->getPseudo() || '' == $userAdmin->getPseudo() )
+            {
+                $result = false;
+                $this->errors['user_pseudo'] = 'Pseudo is mandatory.';
+            }
+        }
         return $result;
     }
 
@@ -154,25 +233,8 @@ class OrderService
         return $result;
     }
 
-    public function getTotalPrice(Order $order)
-    {
-        $result = -1;
-        if (null != $order)
-        {
-            if ($order->getSandwichs() == null)
-            {
-                $this->errors['sandwichs_empty'] = 'This order is empty.';
-            }
-            $result =  $order->getTotalPrice();
-        }
-        else
-        {
-            $this->errors['id'] = 'Order id ' . $order->getId() . ' doesn\'t exists.';
-        }
-        return $result;
-    }
-
     private function resetErrors() {
         $this->errors = [];
     }
+
 }

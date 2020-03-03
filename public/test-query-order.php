@@ -9,11 +9,13 @@ use Ingredient\IngredientService;
 use Order\Order;
 use Order\OrderRepository;
 use Order\OrderService;
+use User\UserRepository;
 
 $my_connection = \Db\Connection::get();
 $orderService = new OrderService(
                     new OrderRepository($my_connection),
-                    new SandwichRepository($my_connection)
+                    new SandwichRepository($my_connection),
+                    new UserRepository($my_connection)
                 );
 $ingredientService = new IngredientService(new IngredientRepository($my_connection));
 
@@ -26,10 +28,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $newSandwichs = [];
     $newSandwichs[] = $newSandwich;
 
+    $userClient = new \User\User();
+    $userValidator = new \User\User();
+
+    $userRepository = new \User\UserRepository($my_connection);
+    $userClient = $userRepository->findOneById(1);
+    $userValidator = $userRepository->findOneById(2);
+
     $newOrder
             ->setApproval(true)
             ->setDate(new DateTimeImmutable('2020-02-01'))
-            ->setSandwichs($newSandwichs);
+            ->setSandwichs($newSandwichs)
+            ->setClient($userClient);
+    $newOrder->setValidator($userValidator);
 
     #create example
     $newOrder = $orderService->createOrder($newOrder);
