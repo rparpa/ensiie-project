@@ -1,5 +1,7 @@
 const EntrepriseRepository = require('./EntrepriseRepository');
 const Offre = require('../Entity/Offre')
+
+
 module.exports = class {
     constructor(db) {
         this.db = db;
@@ -92,25 +94,7 @@ module.exports = class {
     //     return Offres;
     // }
     
-        // getOffresByRadius(adresse,rayon) {
-        //     let Offres = this.db
-        //                     .get('Offres')
-        //                     .value();
+    
 
-        // if (Offres != null) {
-        //     let OffresFiltered = [];
-        //     let len = Offres.length
-
-        //     for(let i = 0 ; i < len ; ++i) {
-        //         // if(condition très compliquée)  {
-        //             OffresFiltered.push(Offres[i]);
-        //         }
-        //     }
-
-        //     return OffresFiltered;
-        
-
-        // return Offres;
-        // }
       
 };

@@ -41,6 +41,7 @@
   },
   "homepage": "https://github.com/JonahR1/ensiie-project#readme",
   "dependencies": {
-    "node-dev": "^4.0.0"
+    "node-dev": "^4.0.0",
+    "node-fetch": "^2.6.0"
   }
 }
