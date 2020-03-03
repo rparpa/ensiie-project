@@ -142,8 +142,9 @@
                 <?php
                 //Si l'utilisation créé une nouvelle annonce
                     if(1==1){
-                        echo '<div class="col-md ">';
+                        echo '<div class="col-md image_upload">';
                             echo form_label('Image(s) de l\'objet :&nbsp;', 'image','class="control-label"');
+                            echo form_hidden('image', '');
                             echo '<div id="dropzone" class="dropzone" ></div>';
                         echo '</div>';
                         
@@ -191,10 +192,18 @@ $(document).ready(function(){
         var cat = $(".categorie .list_categorie")[0][index_categorie]['label']
         elt.tagsinput('add',{ id: index_categorie, text: cat });
     });
-});
 
+
+});
+    //Gestion de l'importation de l'image
     var myDropzone = new Dropzone("#dropzone", { 
-        url: "<?php echo (base_url('index.php/Annonce/fileUpload'));?>"
+        url: "<?php echo (base_url('index.php/Annonce/fileUpload'));?>",
+        success: function(file, response){
+            var args = Array.prototype.slice.call(arguments);
+            var nom_image=args[0]['name']
+            $('.image_upload input').val($('.image_upload input').val()+nom_image);
+            console.log($('.image_upload input'))
+        }
     });
 
     // Add restrictions
