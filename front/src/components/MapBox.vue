@@ -1,5 +1,9 @@
 <template>
-  <div class="test">
+  <div class="test">    
+      <div v-if="retrieving" class="clearfix">
+        <b-spinner class="float-right" label="Floated Right"></b-spinner>
+      </div>
+      <br/>
       <MglMap
         :accessToken="accessToken"
         :mapStyle.sync="mapStyle"
@@ -56,7 +60,8 @@ export default {
       subRoute : 'getAllParkingSpots',
       apiAdr : "http://localhost:3000/openDataParis/",
       center: latLngCenterParis,
-      zoom: 11
+      zoom: 11,
+      retrieving : false
     };
   },
 
@@ -116,7 +121,8 @@ export default {
 
     getAllMarkers(){
       this.listCoordinates = [];
-      axios.get(this.apiAdr + this.subRoute).then(response => ( this.listCoordinates = response.data))
+      this.retrieving = true;
+      axios.get(this.apiAdr + this.subRoute).then(response => {( this.listCoordinates = response.data); this.retrieving = false;})
     },
 
     getCoordinatesFromAddress(address) {
