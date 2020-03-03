@@ -3,25 +3,19 @@ const User = require('./User');
 describe('User toJson', function () {
 
     test('Test toJson', () => {
-        let user = new User();
-        user.id = "1";
-        user.firstName = "Sam";
-        user.lastName = "Becket";
-        user.numVoie = 7;
-        user.typeVoie = "rue";
-        user.nomVoie = "Code Quantum",
-        user.arrond = 5;
-        user.vehiculeId = 324543
+        let user = new User(
+            'johnDoe'
+            , '9834876dcfb05cb167a5c24953eba58c4ac89b1adf57f28f2f9d09af107ee8f0'
+            , 'johndoe@email.com'
+            , 2
+            , 15)
 
         expect(user.toJson()).toMatchObject({
-            id: "1",
-            firstName: "Sam",
-            lastName: "Becket",
-            numVoie: 7,
-            typeVoie: "rue",
-            nomVoie: "Code Quantum",
-            arrond : 5,
-            vehiculeId : 324543
+            username: "johnDoe",
+            encryptedPassword: "9834876dcfb05cb167a5c24953eba58c4ac89b1adf57f28f2f9d09af107ee8f0",
+            email: "johndoe@email.com",
+            vehiculeId: 2,
+            addressId: 15
         })
     });
 

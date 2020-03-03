@@ -1,15 +1,15 @@
-const DatabaseService = require('../services/databaseService')
 const User = require('../entity/User')
 
 class AuthenticationController {
-  constructor() {
-    this.service = new DatabaseService()
+  constructor(databaseService) {
+    this.service = databaseService
   }
 
   async getUserFromCredentials(username, encryptedPassword) {
     const result = await this.service
     .read('User', '*', 'username=\''+username+'\' AND password=\''+encryptedPassword+'\'')
     .then(res => res)
+    
     if (result.rows.length !== 0) {
       const user = new User(
         result.rows[0].username
