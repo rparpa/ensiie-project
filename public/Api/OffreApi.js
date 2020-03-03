@@ -8,10 +8,10 @@ module.exports = class  {
 
         var d = new Date();
         if(dateParution==='Tout') {
-
+            d.setFullYear(d.getFullYear() - 20);
         }
         else if (dateParution==='< 1 mois') {
-            d.setDate(d.getDate() - 30);
+            d.setMonth(d.getMonth() - 1);
         }
         else if (dateParution==='< 2 semaines') {
             d.setDate(d.getDate() - 14);
@@ -20,7 +20,7 @@ module.exports = class  {
             d.setDate(d.getDate() - 7);
         }
         //alert(d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear())
-        //alert(typeof d.getDate())
+        //alert(d.getTime())
         return this.httpClient.fetch('/getOffres', {}).then(rows => {
             return rows.map(row => {
                 let Offre = new OffreEntity();
