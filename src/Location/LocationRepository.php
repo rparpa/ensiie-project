@@ -63,7 +63,7 @@ class LocationRepository
     {
         $rows = $this->connection->query('SELECT * FROM "location"
         inner join voiture USING(id_voiture)
-        inner join user USING(id_user)')
+        inner join user on location.id_user = user.id')
             ->fetchAll(PDO::FETCH_OBJ);
 
         $locations = [];
