@@ -12,6 +12,10 @@ $ingredientService = new IngredientService(
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
+    $errorId = '';
+    $errorLabel = '';
+    $errorPrice = '';
+
     $newIngredient = new Ingredient();
     $newIngredient
             ->setLabel('test')
@@ -41,10 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $newIngredient
         ->setLabel($_POST["label"])
-        ->setAvailable(!empty($_POST["available"]))
+        ->setAvailable(isset($_POST["available"]))
         ->setPrice(($_POST["price"]));
 
     $ingredientService->saveIngredient($newIngredient);
+
+    $errorId = isset($ingredientService->getErrors()['id']) ? $ingredientService->getErrors()['id'] : '';
+    $errorLabel = isset($ingredientService->getErrors()['label']) ? $ingredientService->getErrors()['label'] : '';
+    $errorPrice = isset($ingredientService->getErrors()['price']) ? $ingredientService->getErrors()['price'] : '';
+
     $ingredients = $ingredientService->getAllIngredients();
 
 }
@@ -76,6 +85,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <td><?php echo $ingredient->getPrice() ?> $ </td>
         </tr>
     <?php endforeach; ?>
+
+    <?php echo $errorId ?>
+    <?php echo $errorLabel ?>
+    <?php echo $errorPrice ?>
+
     </table>
 
     <form action="" method="POST">

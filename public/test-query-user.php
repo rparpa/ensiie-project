@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $newUser->setPseudo($_POST["pseudo"]);
     $newUser->setMail($_POST["mail"]);
     $newUser->setPassword($_POST["password"]);
+    $newUser->setIsValidator(false);
 
     $userService->createUser($newUser);
 }

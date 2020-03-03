@@ -25,7 +25,8 @@ class IngredientRepository
                 ->setId($row->id)
                 ->setLabel($row->label)
                 ->setAvailable($row->available)
-                ->setPrice($row->price);
+                ->setPrice($row->price)
+                ->setImageLink($row->image_link);
 
             $ingredients[] = $ingredient;
         }
@@ -48,6 +49,7 @@ class IngredientRepository
             ->setLabel($row['label'])
             ->setAvailable($row['available'])
             ->setPrice($row['price'])
+            ->setImageLink($row['image_link'])
             : null;
 
         return $ingredient;
@@ -68,6 +70,7 @@ class IngredientRepository
             ->setLabel($row['label'])
             ->setAvailable($row['available'])
             ->setPrice($row['price'])
+            ->setImageLink($row['image_link'])
             : null;
 
         return $ingredient;
@@ -79,13 +82,15 @@ class IngredientRepository
             'UPDATE ingredient
             SET label = :label,
                 available = :available,
-                price = :price
+                price = :price,
+                image_link = :image_link
             WHERE id = :id');
 
         $query->bindValue(':id', $ingredient->getId());
         $query->bindValue(':label', $ingredient->getLabel());
         $query->bindValue(':available', $ingredient->getAvailable());
         $query->bindValue(':price', $ingredient->getPrice());
+        $query->bindValue(':image_link', $ingredient->getImageLink());
         $result = $query->execute();
         if ($result == false)
         {
@@ -97,11 +102,14 @@ class IngredientRepository
     public function createIngredient(Ingredient $newIngredient)
     {
         $query = $this->connection->prepare(
-            'INSERT INTO "ingredient"(label, available, price) VALUES (:label , :available, :price)');
+            'INSERT INTO "ingredient"(label, available, price, image_link) 
+            VALUES (:label , :available, :price, :image_link)');
         
         $query->bindValue(':label', $newIngredient->getLabel());
         $query->bindValue(':available', $newIngredient->getAvailable());
         $query->bindValue(':price', $newIngredient->getPrice());
+        $query->bindValue(':image_link', $newIngredient->getImageLink());
+
         $result = $query->execute();
         if ($result == false)
         {

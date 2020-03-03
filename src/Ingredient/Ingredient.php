@@ -24,6 +24,11 @@ class Ingredient
     private ?float $price = 0;
 
     /**
+     * @var string
+     */
+    private ?string $imageLink = '';
+
+    /**
      * @return int
      */
     public function getId()
@@ -97,6 +102,24 @@ class Ingredient
     public function setPrice($price)
     {
         $this->price = $price;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageLink()
+    {
+        return $this->imageLink;
+    }
+
+    /**
+     * @param string $imageLink
+     * @return Ingredient
+     */
+    public function setImageLink($imageLink)
+    {
+        $this->imageLink = $imageLink;
         return $this;
     }
 }

@@ -4,6 +4,10 @@ namespace User;
 use DateTimeInterface;
 use Exception;
 
+/**
+ * Class User
+ * @package User
+ */
 class User
 {
     /**
@@ -42,6 +46,32 @@ class User
     private string $mail;
 
     /**
+     * @var bool
+     */
+    private ?bool $isValidator = true;
+
+    /**
+     * @return bool
+     */
+    public function isValidator()
+    {
+        return $this->isValidator;
+    }
+
+
+    /**
+     * @param bool $isValidator
+     * @return $this
+     */
+    public function setIsValidator($isValidator)
+    {
+        $this->isValidator = $isValidator;
+        return $this;
+    }
+
+
+
+    /**
      * @return string
      */
     public function getPseudo()
@@ -49,6 +79,10 @@ class User
         return $this->pseudo;
     }
 
+    /**
+     * @param $pseudo
+     * @return $this
+     */
     public function setPseudo($pseudo)
     {
         $this->pseudo = $pseudo;
