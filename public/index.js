@@ -8,6 +8,23 @@ $(document).ready(function(){
     $('.btn-pluss').on('click', function(){            $(this).parent().siblings('input').val(parseInt($(this).parent().siblings('input').val()) + 1)
     })
 
+    $('.addSandwich').on('click', function () {
+
+        var form = "<form id=\"target\" action=\"#recap\" name=\"submit\" method=\"post\">";
+
+        $(".customSandwich>tbody>tr.item").each(function() {
+            $this = $(this);
+            var value = $this.find(".ingredLabel").text();
+            var quantity = $this.find("input.form-control.no-padding.add-color.text-center.height-25").val();
+
+            form+= "<input type=\""+value+"\" value=\""+quantity+"\">";
+        });
+
+        form+="</form>";
+
+        $('.customSandwich').html(form);
+        document.forms['submit'].submit();
+    });
 
     /* Table validation */
 
