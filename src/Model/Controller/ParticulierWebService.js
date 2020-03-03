@@ -78,8 +78,36 @@ module.exports = class ParticulierWebService {
         req.on('end', async () => {
             let response;
             let codestatus;
+
+            let obj = JSON.parse(body);
             try {
-                response = await ParticulierRepository.updateOne(JSON.parse(body));
+
+                if(!obj.id) {
+                    throw 'No id specified'
+                }
+
+                if(obj.nom) {
+                    response = await ParticulierRepository.updateNom(obj.id, obj.nom);
+                }
+                else if(obj.prenom) {
+                    response = await ParticulierRepository.updatePrenom(obj.id, obj.prenom);
+                }
+                else if(obj.adressemail) {
+                    response = await ParticulierRepository.updateAdressemail(obj.id, obj.adressemail);
+                }
+                else if(obj.cv) {
+                    response = await ParticulierRepository.updateCv(obj.id, obj.cv);
+                }
+                else if(obj.motdepasse) {
+                    response = await ParticulierRepository.updateMotdepasse(obj.id, obj.motdepasse);
+                }
+                else if(obj.telephone) {
+                    response = await ParticulierRepository.updateTelephone(obj.id, obj.telephone);
+                }
+                else {
+                    throw 'Parameter no valid';
+                }
+
                 codestatus = 200;
             }
             catch(e) {
