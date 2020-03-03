@@ -18,6 +18,12 @@ module.exports = http.createServer((req, res) => {
             res.end(data, 'utf-8');
         });
     }
+    else if(pathname == "/admin") {
+        fs.readFile('./public/admin.html',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end(data, 'utf-8');
+        });
+    }
     else if(pathname == "/profil") {
         fs.readFile('./public/profil.html',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/html'});
@@ -43,31 +49,67 @@ module.exports = http.createServer((req, res) => {
         });
     }
     else if(pathname == "/index.js") {
-        fs.readFile('./public/index.js',function (err, data){
+        fs.readFile('./public/Script/index.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/admin.js") {
+        fs.readFile('./public/Script/admin.js',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/javascript'});
             res.end(data, 'utf-8');
         });
     }
     else if(pathname == "/contribution.js") {
-        fs.readFile('./public/contribution.js',function (err, data){
+        fs.readFile('./public/Script/contribution.js',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/javascript'});
             res.end(data, 'utf-8');
         });
     }
     else if(pathname == "/offre.js") {
-        fs.readFile('./public/offre.js',function (err, data){
+        fs.readFile('./public/Script/offre.js',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/javascript'});
             res.end(data, 'utf-8');
         });
     }
     else if(pathname == "/profil.js") {
-        fs.readFile('./public/profil.js',function (err, data){
+        fs.readFile('./public/Script/profil.js',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/javascript'});
             res.end(data, 'utf-8');
         });
     }
     else if(pathname == "/dist/bundle.js") {
         fs.readFile('./public/dist/bundle.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/dist/index.js") {
+        fs.readFile('./public/dist/index.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/dist/admin.js") {
+        fs.readFile('./public/dist/admin.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/dist/profil.js") {
+        fs.readFile('./public/dist/profil.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/dist/offre.js") {
+        fs.readFile('./public/dist/offre.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/dist/contribution.js") {
+        fs.readFile('./public/dist/contribution.js',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/javascript'});
             res.end(data, 'utf-8');
         });

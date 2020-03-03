@@ -1,0 +1,26 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "GET",
+          "path": "/supprimerOffreEntreprise"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+              "message" : "OK"
+            }
+          ]
+        }
+      }
+    ]
+  }

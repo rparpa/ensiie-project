@@ -1,16 +1,18 @@
-const OffreApi = require('../src/Model/Entity/Offre');
+const OffreEntity = require('../../src/Model/Entity/Offre');
 module.exports = class  {
     constructor(httpClient) {
         this.httpClient = httpClient;
     }
 
-    searchOffres(titre, localisation, typeContrat, salaire, dateParution) {
-        return this.httpClient.fetch('/searchOffres', {}).then(rows => {
+    afficherContributions(idPersonne) {
+
+        return this.httpClient.fetch('/afficherContributions', {}).then(rows => {
             return rows.map(row => {
-                let Offre = new OffreApi();
+                let Offre = new OffreEntity();
+                Offre.id = row.id;
                 Offre.titre = row.titre;
                 Offre.description = row.description;
-                Offre.document = row.description;
+                Offre.document = row.document;
                 Offre.typeContrat = row.typeContrat;
                 Offre.adresse = row.adresse;
                 Offre.salaire = row.salaire;
@@ -19,5 +21,4 @@ module.exports = class  {
             });
         });
     }
-
 }

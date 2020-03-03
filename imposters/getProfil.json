@@ -1,0 +1,32 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "GET",
+          "path": "/profil"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+              "prenom": "Corentin",
+              "adresseMail": "coco.simon@gmail.com",
+              "adresseDomicile": "massy somewhere",
+              "motDePasse": "son password",
+              "telephone": "son numero",
+              "cv": "CV.pdf",
+              "nom": "Simon"
+            }
+          ]
+        }
+      }
+    ]
+}

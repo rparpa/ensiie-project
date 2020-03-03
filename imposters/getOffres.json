@@ -3,7 +3,7 @@
     {
       "equals": {
         "method": "GET",
-        "path": "/searchOffres"
+        "path": "/getOffres"
       }
     },
     {
@@ -17,6 +17,7 @@
         "headers": { "Access-Control-Allow-Origin": "*" },
         "body": [
           {
+            "id" : 12345,
             "titre" : "Alternance datascience",
             "description" : "Ca va être ouf tu vas voir",
             "document" : "none",
@@ -26,6 +27,7 @@
             "dateParution" : "02-20-2020"
           },
           {
+            "id" : 23456,
             "titre" : "Président de la république",
             "description" : "Les voyages toussa toussa",
             "document" : "yes",
