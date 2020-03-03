@@ -58,6 +58,7 @@ export default {
       mapStyle: "mapbox://styles/mapbox/light-v10",
       listCoordinates: [],
       subRoute : 'getAllParkingSpots',
+      routeOption : '',
       apiAdr : "http://localhost:3000/openDataParis/",
       center: latLngCenterParis,
       zoom: 11,
@@ -107,6 +108,33 @@ export default {
           break;
       }
     });
+
+
+     EventBus.$on('staChanged', vehicle => {
+      switch (vehicle) {
+        case 'longitudinal':
+          this.routeOption = '&refine.typsta=Longitudinal';
+          this.getAllMarkers();
+          break;        
+        case 'epi':
+         this.routeOption = '&refine.typsta=Epi';
+          this.getAllMarkers();
+          break;
+        case 'bataille':
+          this.routeOption = '&refine.typsta=Bataille';
+          this.getAllMarkers();
+          break;            
+        default:
+          this.routeOption = '&refine.typsta=Bataille';
+          this.getAllMarkers();
+          break;
+      }
+    });
+    /* 
+       
+     
+      &refine.typsta=Longitudinal
+    */ 
   },
 
   mounted() {
@@ -122,7 +150,8 @@ export default {
     getAllMarkers(){
       this.listCoordinates = [];
       this.retrieving = true;
-      axios.get(this.apiAdr + this.subRoute).then(response => {( this.listCoordinates = response.data); this.retrieving = false;})
+      console.log(this.apiAdr + this.subRoute + this.routeOption)
+      axios.get(this.apiAdr + this.subRoute + this.routeOption).then(response => {( this.listCoordinates = response.data); this.retrieving = false;})
     },
 
     getCoordinatesFromAddress(address) {

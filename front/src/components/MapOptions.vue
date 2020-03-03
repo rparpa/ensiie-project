@@ -5,7 +5,7 @@
         <b-form-select v-model="typVehicSelected" :options="optionsTypeVehicule" @change="emitVehicleChanged" ></b-form-select>
       </b-col>
       <b-col>
-        <b-form-select v-model="typStaSelected" :options="optionsTypsta"></b-form-select>
+        <b-form-select v-model="typStaSelected" :options="optionsTypsta" @change="emitStaChanged"></b-form-select>
       </b-col>
     </b-row>
   </div>
@@ -38,8 +38,11 @@
     },
     methods: {
       emitVehicleChanged(){
-        console.log('changed')
         EventBus.$emit('vehicleChanged', this.typVehicSelected);
+      },
+
+      emitStaChanged(){
+        EventBus.$emit('staChanged', this.typStaSelected);
       }
     }
   }
