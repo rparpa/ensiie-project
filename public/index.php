@@ -1,7 +1,13 @@
 <?php
 
+use Sandwich\Sandwich;
+use Sandwich\SandwichRepository;
 use Ingredient\IngredientRepository;
 use Ingredient\IngredientService;
+use Order\Order;
+use Order\OrderRepository;
+use Order\OrderService;
+
 
 require_once '../src/Bootstrap.php';
 
@@ -10,48 +16,21 @@ $my_connection = \Db\Connection::get();
 $userRepository = new \User\UserRepository(\Db\Connection::get());
 $userService = new \User\UserService($userRepository);
 
-
 $ingredientService = new IngredientService(new IngredientRepository($my_connection));
-$ingredients = $ingredientService->getAvailableIngredients();
+$sandwichRepository = new SandwichRepository($my_connection);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    /*if(){
-        $newUser = new \User\User();
-        $newUser->setFirstname("Nicolas");//ballec
-        $newUser->setLastname("Charlon");//ballec
-        $newUser->setBirthday(new DateTimeImmutable("01/01/1970"));//ballec
-        $newUser->setPseudo($_POST["pseudo"]);
-        $newUser->setMail("rayan.erisium@gmail.com");//ballec
-        $newUser->setPassword($_POST["password"]);
-
-        $userService->createUser($newUser);
-    }
-    elseif(){
-
-        $newOrder = new Order();
+$orderService = new OrderService(
+    new OrderRepository($my_connection),
+    new SandwichRepository($my_connection)
+);
 
 
-        $newSandwich = new Sandwich();
-        $newSandwich->setLabel('Custom');
-        $newSandwichs = [];
-        $newSandwichs[] = $newSandwich;
+$sandwichList = [];/*
+if(isset($_SESSION['sandwichList'])){
+    //$sandwichList = 0;
+}*/
 
-        $newOrder
-            ->setApproval(true)
-            ->setDate(new DateTimeImmutable('2020-02-01'))
-            ->setSandwichs($newSandwichs);
-
-        #create example
-        $newOrder = $orderService->createOrder($newOrder);
-
-        #delete example
-        $orderService->deleteOrder($newOrder);
-
-        #get all example
-        $orders = $orderService->getAllOrders();
-        $ingredients = $ingredientService->getAvailableIngredients();
-    }  */
-}
+$availableIngredients = $ingredientService->getAvailableIngredients();
 
 $users = $userService->getAllUser();
 ?>
@@ -159,39 +138,35 @@ $users = $userService->getAllUser();
 												<tr>
 													<th>Ingrédient</th>
 													<th>Description</th>
-													<th>Quantité</th>
+													<th>Ajouter</th>
 												</tr>
 											</thead>
 											<tbody>
+                                                <form action="#recap" id="sandwichForm" method="POST">
 
+                                                    <?
 
-                                            <?
-                                            foreach ($ingredients as $ingredient) {
+                                                    foreach ($availableIngredients as $ingredient) {
 
-                                                echo "<tr class=\"item\">
-                                                            <td>
-                                                                <img src=\"images/Salade.jpg\" width=\"50%\" alt=\"\" style=\"vertical-align: middle\"/>
-                                                            </td>
-                                                            
-                                                            <td class=\"ingredLabel\">" . $ingredient->getLabel() . "</td>
-                                                            
-                                                            <td>
-                                                                <div class=\"input-group\" style=\"width:50%\"> <!--TRES DEGEU @kozak-->
-                                                                    <span class=\"input-group-btn\">
-                                                                        <button class=\"btn btn-white btn-minuse\" type=\"button\">-</button>
-                                                                    </span>
-                                                                        <input  type=\"text\" class=\"form-control no-padding add-color text-center height-25\" maxlength=\"3\" value=\"0\">
-                                                                    <span class=\"input-group-btn\">
-                                                                        <button class=\"btn btn-red btn-pluss\" type=\"button\">+</button>
-                                                                    </span>
-                                                                </div><!-- /input-group -->
-                                                            </td>
-												      </tr>";
-                                            }
-                                            ?>
+                                                        echo "<tr class=\"item\">
+                                                                    <td>
+                                                                        <img src=\"images/Salade.jpg\" width=\"50%\" alt=\"\" style=\"vertical-align: middle\"/>
+                                                                    </td>
+                                                                    
+                                                                    <td class=\"ingredLabel\">" . $ingredient->getLabel() . "</td>
+                                                                    
+                                                                    <td>
+                                                                       <input type=\"checkbox\" id=\"" . $ingredient->getLabel() . "\" name=\"" . $ingredient->getLabel() . "\">
+                                                                       <label for=\"" . $ingredient->getLabel() . "\">
+                                                                    </td>
+                                                              </tr>";
+                                                    }
+                                                    ?>
+                                                </form>
 											</tbody>
 										</table>
-                                        <button href="#recap" class="btn btn-white addSandwich" type="button">Valider</button>
+                                        <div class="postform"></div>
+                                        <button class="btn btn-white addSandwich" type="submit" form="sandwichForm">Valider</button>
 									</div>
 									<span class="image main"><img src="assets/gif/3.gif" alt="" /></span>
 								</section>
@@ -232,9 +207,40 @@ $users = $userService->getAllUser();
                         <!-- Recap -->
                         <article id="recap">
 
-                            <?var_dump($_POST);?>
+                            <?
+                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+                                $newSandwich = new Sandwich();
+                                $newSandwich->setLabel('Custom');
+
+                                $filterIngredients = [];
+                                foreach ($availableIngredients as $ingredient) {
+                                    if(isset($_POST[$ingredient->getLabel()])) {
+                                        $filterIngredients[] = $ingredient;
+                                    }
+                                }
+
+                                $newSandwich->setIngredients($filterIngredients);
+                                $sandwichRepository->createSandwich($newSandwich);
+
+                                $sandwichList[] = $newSandwich;
+
+
+                                $newOrder = new Order();
+                                $newOrder
+                                    ->setApproval(false)
+                                    ->setDate(new DateTimeImmutable(date('d-m-Y')))
+                                    ->setSandwichs($sandwichList);
+
+                                $orderService->createOrder($newOrder);
+                                //$_SESSION['sandwichList'] = $sandwichList;
+                                echo $newOrder->getId();
+                            }
+                            ?>
+
+
+
                             <h2 class="major">Validation</h2>
-                            <form method="post" action="#">
                                 <div class="table-wrapper">
                                     <table>
                                         <thead>
@@ -246,54 +252,59 @@ $users = $userService->getAllUser();
                                         </tr>
                                         </thead>
                                         <tbody id="tabvalidation">
-                                        <tr>
-                                            <td>
-                                                <div class="sandwich">Le Kozak
-                                                    <div id="tooltip">- Janbon<br>- Fromage<br>- Cornichon</div>
-                                                </div>
-                                            </td>
-                                            <td>Comté</td>
-                                            <td>3.52 €</td>
-                                            <td class="min"><i class="fas fa-times"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="sandwich">Le Traitre
-                                                    <div id="tooltip">- Thon<br>- Mayonnaise<br>- Olives</div>
-                                                </div>
-                                            </td>
-                                            <td>Pas d'extra</td>
-                                            <td>4.83 €</td>
-                                            <td class="min"><i class="fas fa-times"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Le Sauerkraut</td>
-                                            <td>Pas d'extra</td>
-                                            <td>3.12 €</td>
-                                            <td class="min"><i class="fas fa-times"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Le Sarrasin</td>
-                                            <td>Mozzarella di Bufala</td>
-                                            <td>2.42 €</td>
-                                            <td class="min"><i class="fas fa-times"></i></td>
-                                        </tr>
+                                        <?
+                                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                            foreach ($sandwichList as $sandwich) {
+                                                $price = 0;
+                                                $description = "";
+                                                $ingredients = $sandwich->getIngredients();
+                                                if ($ingredients != null) {
+                                                    foreach ($ingredients as $ingredient) {
+                                                        $price += $ingredient->getPrice();
+                                                        $description .= $ingredient->getLabel() . "<br>";
+                                                    }
+                                                }
+
+                                                echo "<tr>
+                                                        <td>
+                                                            <div class=\"sandwich\">" . $sandwich->getLabel() . "
+                                                                <div id=\"tooltip\">" . $description . "</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>Pas d'extra</td>
+                                                        <td>" . $price . " €</td>
+                                                        <td class=\"min\"><i class=\"fas fa-times\"></i></td>
+                                                    </tr>
+                                                    ";
+
+                                            }
+                                        }
+                                        ?>
                                         </tbody>
                                         <tfoot>
                                         <tr>
                                             <td colspan="2">
                                                 <a id="add" href="#commander" class="fas fa-plus"></a>
                                             </td>
-                                            <td>13,89 €</td>
+                                            <td><? if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                                    echo $orderService->getTotalPrice($newOrder);
+                                                } ?> €</td>
                                         </tr>
                                         </tfoot>
                                     </table>
                                 </div>
-                                <div class="validation">
-                                        <a href="#recap" class="button primary">Payer</a>
-                                    <!-- @TODO creation order avec tmplist sandwich -->
-                                </div>
-                            </form>
+
+                                    <form action="#pay" id="sandwichListForm" method="POST">
+                                        <?
+                                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                            $id = $newOrder->getId();
+                                            $id = 1; //Wait until debug
+                                            echo "<input type=\"text\" name=\"id\" style=\"display: none;\" value=\"" . $id . "\" \">";
+                                        }
+                                        ?>
+                                    </form>
+                                    <button type="submit" class="button primary validation" form="sandwichListForm">Payer</button>
+
                             <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
                         </article>
 
@@ -310,11 +321,14 @@ $users = $userService->getAllUser();
                                     <div class="f-modal-fix"></div>
                                 </div>
                             </div>
-
-                            <p class="align-center"> Merci pour votre commande<br>Votre commande vous attendra au foyer.</p>
-
                             <?
+                            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
+                                $newOrder = $orderService->getOrderById($_POST['id']);
 
+                               echo "
+                                <p class=\"align-center\"> Merci pour votre commande #" . $newOrder->getId() . "<br>Etat de la commande : " . $newOrder->getApproval() . "<br>" . $newOrder->getDate()->format("Y-m-d") . "</p>
+                                ";
+                            }
                             $fi = new FilesystemIterator('assets/gif', FilesystemIterator::SKIP_DOTS);
                             $r = rand(2, iterator_count($fi)+1);
                             $file = scandir('assets/gif');
