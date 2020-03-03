@@ -20,6 +20,7 @@ class Utilisateur extends CI_Controller
 			$this->data+=array('promo' => $this->session->userdata('logged_in')['promo']);
 			$this->data+=array('nb_signal_user' => $this->session->userdata('logged_in')['nb_signal_user']);
 			$this->data+=array('admin_user' => $this->session->userdata('logged_in')['admin']);
+            $this->data+=array('droit_publication' => $this->session->userdata('logged_in')['droit_publication']);
 		}
     }
 
@@ -55,7 +56,10 @@ class Utilisateur extends CI_Controller
             if($this->utilisateur->update($this->input->post()))
             {
                 //echo "<script>alert(\"Modification réussie\")</script>";
-                redirect('utilisateur/profil');
+                if(!$this->input->post('admin'))
+                {
+                    redirect('utilisateur/profil');
+                } else redirect('utilisateur/AllUsers');
             } else
             {
                 //echo "<script>alert(\"modification failed\")</script>";
