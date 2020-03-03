@@ -10,12 +10,14 @@ use Order\Order;
 use Order\OrderRepository;
 use Order\OrderService;
 use User\UserRepository;
+use Invoice\InvoiceRepository;
 
 $my_connection = \Db\Connection::get();
 $orderService = new OrderService(
                     new OrderRepository($my_connection),
                     new SandwichRepository($my_connection),
-                    new UserRepository($my_connection)
+                    new UserRepository($my_connection),
+                    new InvoiceRepository($my_connection)
                 );
 $ingredientService = new IngredientService(new IngredientRepository($my_connection));
 
