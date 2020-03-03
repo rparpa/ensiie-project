@@ -65,10 +65,15 @@ class Utilisateur extends CI_Controller
         if(isset($_GET['id']))
         {
             $user=$this->utilisateur->getUser($_GET['id']);
-            if($user[0]['admin']) {
-                $this->load->view('elements/header', $this->data);
-                $this->load->view('update_view', ['user' => $user]);
-                $this->load->view('elements/footer');
+            if($this->session->userdata('logged_in')['admin']) {
+                if($user[0]['admin'])
+                {
+                    redirect('Utilisateur/AllUsers');
+                } else {
+                    $this->load->view('elements/header', $this->data);
+                    $this->load->view('update_view', ['user' => $user]);
+                    $this->load->view('elements/footer');
+                }
             } else {
                 $this->load->view('elements/header', $this->data);
                 $this->load->view('update_view_user', ['user' => $user]);
