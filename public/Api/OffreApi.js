@@ -1,4 +1,5 @@
 const OffreEntity = require('../../src/Model/Entity/Offre');
+const ParticulierEntity = require('../../src/Model/Entity/Particulier');
 module.exports = class  {
     constructor(httpClient) {
         this.httpClient = httpClient;
@@ -49,6 +50,29 @@ module.exports = class  {
         return this.httpClient.fetch('/modifyOffre', {}).then(rows => {
             return rows.map(row => {
                 return(row.isSaved)
+            });
+        });
+    }
+
+    removeOffre(idOffre) {
+        return this.httpClient.fetch('/removeOffre', {}).then(rows => {
+            return rows.map(row => {
+                return(row.isRemoved)
+            });
+        });
+
+    }
+
+    getCandidats(idOffre) {
+        return this.httpClient.fetch('/getCandidats', {}).then(rows => {
+            return rows.map(row => {
+                let Particulier = new ParticulierEntity();
+                Particulier.id = row.id;
+                Particulier.adresseMail = row.adresseMail;
+                Particulier.telephone = row.telephone;
+                Particulier.nom = row.nom;
+                Particulier.prenom = row.prenom;
+                return Particulier;
             });
         });
     }

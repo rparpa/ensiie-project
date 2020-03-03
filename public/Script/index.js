@@ -159,7 +159,7 @@ $('#postulerModal').on('show.bs.modal', function (event) {
 
 OffreHtml = function(id,titre, description, document, typeContrat, adresse, salaire, dateParution) {
     let html =  '<div class="border border-primary rounded">' +
-    '<div class="m-3 pb-3">' +
+    '<div class="m-3">' +
     '<h3 class="modal-title">' + titre + '</h3>' +
     '<div class="badge badge-primary text-wrap" style="width: 6rem;">' + typeContrat + '</div>' +
     '<div class="m-3 badge badge-primary text-wrap" style="width: 6rem;">' + salaire + '</div>' +
