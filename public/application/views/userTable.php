@@ -18,6 +18,8 @@
                 <!-- PROMO -->
                 <th>Promo</th>
                 <th>Signals</th>
+                <th>droit de publier</th>
+                <th>Administrateur</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -31,8 +33,17 @@
                 <td>".$user['email']."</td>
                 <td>".$user['telephone']."</td>
                 <td>".$user['promo']."</td>
-                <td>".$user['nb_signal_user']."</td>
-                <td>
+                <td>".$user['nb_signal_user']."</td>";
+
+                if($user['droit_publication'])
+                            {
+                                echo "<td>Oui</td>";
+                            } else echo "<td>Non</td>";
+                if($user['admin'])
+                        {
+                            echo "<td>Oui</td>";
+                        } else echo "<td>Non</td>";
+                echo "<td>
                     <a href=".site_url('/Utilisateur/update?id='.$user['id_user'])." class=\"settings\" title=\"modifier\" data-toggle=\"tooltip\"><i class=\"material-icons\">&#xE8B8;</i></a>";
                     
                     if($admin_user==true && $user['id_user']!=$id_user)

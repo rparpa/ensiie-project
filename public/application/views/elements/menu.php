@@ -42,8 +42,9 @@
 
 			</ul>
 		</div>
-		
-		<button type="button" class="btn btn-success" style="margin-right: 2%;" onclick="window.location.replace('<?php echo site_url('/Annonce/ajouter_annonce'); ?>');">Nouvelle annonce ...</button>
+		<?php
+			if($this->session->userdata['logged_in']['droit_publication'])echo "<button type=\"button\" class=\"btn btn-success\" style=\"margin-right: 2%;\" onclick=\"window.location.replace('<?php echo site_url('/Annonce/ajouter_annonce'); ?>');\">Nouvelle annonce ...</button>";
+		?>
 		<div class="dropdown open">
 			<button class="btn btn-secondary dropdown-toggle"
 					type="button" id="dropdownMenu5" data-toggle="dropdown"
