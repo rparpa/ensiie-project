@@ -4,6 +4,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -46,7 +47,7 @@
 
 <body>
 
-    <!-- Informations du compte -->
+    <!-- Informations compte particulier -->
     <form class="center">
 
         <h3 class="modal-title">Mes informations</h3>
@@ -56,9 +57,7 @@
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Nom&nbsp;:</b></div>
                     <label for="nom" id="nom"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#NomModal" data-toggle="modal" data-target="#NomModal">Modifier le nom de famille</a>
+                    <a href="#NomModal" data-toggle="modal" data-target="#NomModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -73,17 +72,17 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exampleInputNom">Nouveau nom de famille :</label>
+                                <label for="exampleInputNom">Nouveau nom :</label>
                                 <input type="text" class="form-control" id="exampleInputNom">
                             </div>     
                             <div class="form-group">
-                                <label for="exampleInputNom2">Resaisir le nom de famille :</label>
+                                <label for="exampleInputNom2">Resaisir le nom :</label>
                                 <input type="text" class="form-control" id="exampleInputNom2">
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-nom">Sauvegarder le nom</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-nom">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
@@ -92,9 +91,7 @@
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Prenom&nbsp;:</b></div>
                     <label for="prenom" id="prenom"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#PrenomModal" data-toggle="modal" data-target="#PrenomModal">Modifier le prenom</a>
+                    <a href="#PrenomModal" data-toggle="modal" data-target="#PrenomModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -118,8 +115,8 @@
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-prenom">Sauvegarder le prenom</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-prenom">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
@@ -128,9 +125,7 @@
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Email&nbsp;:</b></div>
                     <label for="email" id="email"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#EmailModal" data-toggle="modal" data-target="#EmailModal">Modifier l'adresse email</a>
+                    <a href="#EmailModal" data-toggle="modal" data-target="#EmailModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -149,13 +144,13 @@
                                 <input type="text" class="form-control" id="exampleInputEmail">
                             </div>     
                             <div class="form-group">
-                                <label for="exampleInputEmail2">Resaisir la nouvelle adresse mail :</label>
+                                <label for="exampleInputEmail2">Resaisir l'adresse mail :</label>
                                 <input type="text" class="form-control" id="exampleInputEmail2">
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-email">Sauvegarder l'email</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-email">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
@@ -164,9 +159,7 @@
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Mot de passe&nbsp;:</b></div>
                     <label for="mdp" id="mdp"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#MdpModal" data-toggle="modal" data-target="#MdpModal">Modifier mot de passe</a>
+                    <a href="#MdpModal" data-toggle="modal" data-target="#MdpModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -181,17 +174,17 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exampleInputMdp">Nouveau Mot de passe :</label>
+                                <label for="exampleInputMdp">Nouveau mot de passe :</label>
                                 <input type="password" class="form-control" id="exampleInputMdp">
                             </div>     
                             <div class="form-group">
-                                <label for="exampleInputMdp2">Resaisir le Mot de passe :</label>
+                                <label for="exampleInputMdp2">Resaisir le mot de passe :</label>
                                 <input type="password" class="form-control" id="exampleInputMdp2">
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-mdp">Sauvegarder le mot de passe</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-mdp">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
@@ -200,9 +193,7 @@
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Telephone&nbsp;:</b></div>
                     <label for="telephone" id="telephone"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#TelephoneModal" data-toggle="modal" data-target="#TelephoneModal">Modifier le numero de telephone</a>
+                    <a href="#TelephoneModal" data-toggle="modal" data-target="#TelephoneModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -217,19 +208,19 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exampleInputTelephone">Nouveau numero de telephone :</label>
+                                <label for="exampleInputTelephone">Nouveau numero :</label>
                                 <input type="tel" class="form-control" id="exampleInputTelephone" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
                                 required>
                             </div>     
                             <div class="form-group">
-                                <label for="exampleInputTelephone2">Resaisir le numero de telephone :</label>
+                                <label for="exampleInputTelephone2">Resaisir le numero :</label>
                                 <input type="tel" class="form-control" id="exampleInputTelephone2" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}"
                                 required>
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-telephone">Sauvegarder le numero</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-telephone">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
@@ -238,9 +229,7 @@
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Adresse domicile&nbsp;:</b></div>
                     <label for="adresseDomi" id="adresseDomi"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#AdresseDomiModal" data-toggle="modal" data-target="#AdresseDomiModal">Modifier l'adresse email</a>
+                    <a href="#AdresseDomiModal" data-toggle="modal" data-target="#AdresseDomiModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -255,17 +244,17 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exampleInputAdresseDomi">Nouvelle adresse domicile :</label>
+                                <label for="exampleInputAdresseDomi">Nouvelle adresse :</label>
                                 <input type="text" class="form-control" id="exampleInputAdresseDomi">
                             </div>     
                             <div class="form-group">
-                                <label for="exampleInputAdresseDomi2">Resaisir la nouvelle adresse domicile :</label>
+                                <label for="exampleInputAdresseDomi2">Resaisir l'adresse :</label>
                                 <input type="text" class="form-control" id="exampleInputAdresseDomi2">
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-adresseDomi">Sauvegarder l'adresse</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-adresseDomi">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
@@ -277,9 +266,14 @@
                     <h3 class="modal-title">Mon CV</h3>
 
                     <form>
-                        <div class="custom-file">
+                        <!-- <div class="custom-file">
                             <input type="file" class="custom-file-input" id="customFile">
                             <label class="custom-file-label" for="customFile" id="nomfichier">Selectionner un fichier</label>
+                            <button type="button" class="btn btn-primary" id="btn-edit-cv">Enregistrer le fichier</button>
+                        </div> -->
+                        <div>
+                            <label for="customFile" id="nomfichier">Selectionner un fichier</label>
+                            <input type="file" class="form-control-file" id="customFile" accept=".pdf,.jpg,.jpeg,.png"> <br>
                             <button type="button" class="btn btn-primary" id="btn-edit-cv">Enregistrer le fichier</button>
                         </div>
                     </form>
@@ -289,25 +283,14 @@
         </form>
     </form>
 
-
-
-
-
-
-
-
-
-
-
+    <!-- Informations compte entreprise -->
     <form class="center">
         <form>
             <div class="list-Modification" id="list-entreprise">
                 <div class="pass-ViewPage-LeftFlexItems">
-                    <div><b>Nom de societe&nbsp;:</b></div>
+                    <div><b>Nom de la société&nbsp; :</b></div>
                     <label for="nomE" id="nomE"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#NomEModal" data-toggle="modal" data-target="#NomEModal">Modifier le nom de societe</a>
+                    <a href="#NomEModal" data-toggle="modal" data-target="#NomEModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -322,17 +305,17 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exampleInputNomE">Nouveau nom de societe:</label>
+                                <label for="exampleInputNomE">Nouveau nom :</label>
                                 <input type="text" class="form-control" id="exampleInputNomE">
                             </div>     
                             <div class="form-group">
-                                <label for="exampleInputNomE2">Resaisir le nom de societe :</label>
+                                <label for="exampleInputNomE2">Resaisir le nom :</label>
                                 <input type="text" class="form-control" id="exampleInputNomE2">
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-nomE">Sauvegarder le nom</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-nomE">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
@@ -341,9 +324,7 @@
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Email&nbsp;:</b></div>
                     <label for="emailE" id="emailE"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#EmailEModal" data-toggle="modal" data-target="#EmailEModal">Modifier l'adresse email</a>
+                    <a href="#EmailEModal" data-toggle="modal" data-target="#EmailEModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -358,17 +339,17 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exampleInputEmailE">Nouvelle adresse email:</label>
+                                <label for="exampleInputEmailE">Nouvelle adresse :</label>
                                 <input type="text" class="form-control" id="exampleInputEmailE">
                             </div>     
                             <div class="form-group">
-                                <label for="exampleInputEmailE">Resaisir l'adresse email :</label>
+                                <label for="exampleInputEmailE">Resaisir l'adresse :</label>
                                 <input type="text" class="form-control" id="exampleInputEmailE">
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-emailE">Sauvegarder l'email</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-emailE">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
@@ -378,9 +359,7 @@
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Mot de passe&nbsp;:</b></div>
                     <label for="mdpE" id="mdpE"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#MdpEModal" data-toggle="modal" data-target="#MdpEModal">Modifier le mot de passe</a>
+                    <a href="#MdpEModal" data-toggle="modal" data-target="#MdpEModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -395,28 +374,26 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exampleInputMdpE">Modifier le mot de passe:</label>
+                                <label for="exampleInputMdpE">Nouveau mot de passe:</label>
                                 <input type="password" class="form-control" id="exampleInputMdpE">
                             </div>     
                             <div class="form-group">
-                                <label for="exampleInputMdpE2">Resaisir le nom de societe :</label>
+                                <label for="exampleInputMdpE2">Resaisir le mot de passe :</label>
                                 <input type="password" class="form-control" id="exampleInputMdpE2">
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-mdpE">Sauvegarder le nom</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-mdpE">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
                 </div>
 
                 <div class="pass-ViewPage-LeftFlexItems">
-                    <div><b>Adresse du siege&nbsp;:</b></div>
+                    <div><b>Adresse du siège&nbsp;:</b></div>
                     <label for="adresseE" id="adresseE"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#AdresseSiegeEModal" data-toggle="modal" data-target="#AdresseSiegeEModal">Modifier l''adresse du siege</a>
+                    <a href="#AdresseSiegeEModal" data-toggle="modal" data-target="#AdresseSiegeEModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -431,7 +408,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exampleInputAdresseE">Nouvelle adresse du siege:</label>
+                                <label for="exampleInputAdresseE">Nouvelle adresse :</label>
                                 <input type="text" class="form-control" id="exampleInputAdresseE">
                             </div>     
                             <div class="form-group">
@@ -440,8 +417,8 @@
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-adresseE">Sauvegarder l'adresse</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-adresseE">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
@@ -450,9 +427,7 @@
                 <div class="pass-ViewPage-LeftFlexItems">
                     <div><b>Telephone&nbsp;:</b></div>
                     <label for="telephoneE" id="telephoneE"></label>
-                </div>
-                <div class="pass-ViewPage-RightFlexItems">
-                    <a href="#TelephoneEModal" data-toggle="modal" data-target="#TelephoneEModal">Modifier le numero de telephone</a>
+                    <a href="#TelephoneEModal" data-toggle="modal" data-target="#TelephoneEModal" class="badge badge-primary p-1">Modifier</a>
                 </div>
                 
                 <!-- Modal -->
@@ -460,38 +435,43 @@
                     <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="TelephoneEModalLabel">Modifier le numero de telephone</h5>
+                        <h5 class="modal-title" id="TelephoneEModalLabel">Modifier le numero de téléphone</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="exampleInputTelephoneE">Nouveau numero de telephone:</label>
+                                <label for="exampleInputTelephoneE">Nouveau numero :</label>
                                 <input type="text" class="form-control" id="exampleInputTelephoneE">
                             </div>     
                             <div class="form-group">
-                                <label for="exampleInputTelephoneE2">Resaisir le numero de telephone :</label>
+                                <label for="exampleInputTelephoneE2">Resaisir le numero :</label>
                                 <input type="text" class="form-control" id="exampleInputTelephoneE2">
                             </div>            
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler le changement</button>
-                        <button type="button" class="btn btn-primary" id="btn-edit-telephoneE">Sauvegarder le numero</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="btn-edit-telephoneE">Sauvegarder</button>
                         </div>
                     </div>
                     </div>
                 </div>
 
                 <!-- Information logo -->
-                <form class="center" id="monLogo">
+                <form id="monLogo">
                     
                     <h3 class="modal-title">Logo de l'entreprise</h3>
 
                     <form>
-                        <div class="custom-file">
+                        <!-- <div class="custom-file">
                             <input type="file" class="custom-file-input" id="customFileE">
                             <label class="custom-file-label" for="customFile" id="nomfichierLogo">Selectionner un fichier</label>
+                            <button type="button" class="btn btn-primary" id="btn-edit-logo">Enregistrer le fichier</button>
+                        </div> -->
+                        <div>
+                            <label for="customFileE" id="nomfichierLogo">Ajouter un document</label>
+                            <input type="file" class="form-control-file" id="customFileE" accept=".pdf,.jpg,.jpeg,.png"> <br>
                             <button type="button" class="btn btn-primary" id="btn-edit-logo">Enregistrer le fichier</button>
                         </div>
                     </form>
