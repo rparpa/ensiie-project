@@ -46,14 +46,15 @@ export default {
   components: {
     MglMap,
     MglMarker
-  },
+  },  
   props: ['address'],
   data: function() {
     return {
       accessToken: "pk.eyJ1IjoiZGV2c3Bpbm96YSIsImEiOiJjazZ2enV4aW0wNnd2M2ZwNzU3NXFvc2c5In0.c4mfJ5n3hsVYXURtgRPUyQ", // your access token. Needed if you using Mapbox maps
       mapStyle: "mapbox://styles/mapbox/light-v10",
       listCoordinates: [],
-      apiAdr : "http://localhost:3000/openDataParis/getAllParkingSpots",
+      subRoute : 'getAllParkingSpots',
+      apiAdr : "http://localhost:3000/openDataParis/",
       center: latLngCenterParis,
       zoom: 11
     };
@@ -61,16 +62,46 @@ export default {
 
   created() {
     //this.mapbox = Mapbox;
-
     EventBus.$on('addressFilled', address => {
       if(address.latlng !== undefined){
         //console.log("MapBox: Evenement bien recu!", address);
         this.onAddressFilled(address);
       }
     });
+
     EventBus.$on('addressEmpty', handleOnClear => {
       this.onEmptyAddress();
-    })
+    });
+
+    this.subRoute = 'getAllParkingSpots';
+    EventBus.$on('vehicleChanged', vehicle => {
+      switch (vehicle) {
+        case 'voiture':
+          this.subRoute = 'getAllParkingSpotsVoitures';
+          this.getAllMarkers();
+          break;        
+        case 'deux-roues':
+          this.subRoute = 'getAllParkingSpotsMotos';
+          this.getAllMarkers();
+          break;
+        case 'bus':
+          this.subRoute = 'getAllParkingSpotsAutocar';
+          this.getAllMarkers();
+          break;  
+        case 'electrique':
+          this.subRoute = 'getAllParkingSpotsElectrique';
+          this.getAllMarkers();
+          break; 
+        case 'velo':
+          this.subRoute = 'getAllParkingSpotsVelos';
+          this.getAllMarkers();
+          break;     
+        default:
+          this.subRoute = 'getAllParkingSpots';
+          this.getAllMarkers();
+          break;
+      }
+    });
   },
 
   mounted() {
@@ -84,7 +115,8 @@ export default {
     },
 
     getAllMarkers(){
-      axios.get(this.apiAdr).then(response => ( this.listCoordinates = response.data))
+      this.listCoordinates = [];
+      axios.get(this.apiAdr + this.subRoute).then(response => ( this.listCoordinates = response.data))
     },
 
     getCoordinatesFromAddress(address) {
