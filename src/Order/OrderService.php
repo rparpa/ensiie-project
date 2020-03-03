@@ -1,10 +1,12 @@
 <?php
 namespace Order;
 
+use Invoice\Invoice;
 use Sandwich\Sandwich;
 use Sandwich\SandwichRepository;
 use User\User;
 use User\UserRepository;
+use Invoice\InvoiceRepository;
 
 /**
  * Class OrderService
@@ -22,14 +24,16 @@ class OrderService
     private OrderRepository $orderRepository;
     private SandwichRepository $sandwichRepository;
     private UserRepository $userRepository;
+    private InvoiceRepository $invoiceRepository;
 
     private ?array $errors = [];
 
-    public function __construct(OrderRepository $orderRepository, SandwichRepository $sandwichRepository, UserRepository $userRepository)
+    public function __construct(OrderRepository $orderRepository, SandwichRepository $sandwichRepository, UserRepository $userRepository, InvoiceRepository $invoiceRepository)
     {
         $this->orderRepository = $orderRepository;
         $this->sandwichRepository = $sandwichRepository;
         $this->userRepository = $userRepository;
+        $this->invoiceRepository = $invoiceRepository;
     }
 
     public function getErrors() {
@@ -102,12 +106,17 @@ class OrderService
     }
 
     public function setApproval(Order $order) {
-        //TODO créer une facture si renvoie vraie
+        $order->setApproval(true);
         $this->resetErrors();
         if (null == $order->getId()) {
             $this->errors['id'] = 'Order id shouldn\'t be null for validation.';
         } else {
-            $this->orderRepository->setApproval($order);
+            if($this->orderRepository->setApproval($order))
+            {
+                $newInvoice = new Invoice();
+                $newInvoice->setOrder($order);
+                $this->invoiceRepository->createInvoice($newInvoice);
+            }
         }
     }
 

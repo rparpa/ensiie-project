@@ -4,6 +4,7 @@ namespace Invoice;
 use FPDF;
 use Order\Order;
 use Order\OrderRepository;
+use DateTimeImmutable;
 use PDO;
 require ("../src/Fpdf/fpdf.php");
 
@@ -28,33 +29,35 @@ class InvoiceRepository
         // Décalage à droite
         $pdf->Cell(80);
         // Titre
-        $pdf->Cell(30,10,'SandwicherIIE - Commande #'. $invoice->getOrder()->getId(),0,0,'C');
+        $pdf->Cell(30,10,'SandwicherIIE - Commande #'. $invoice->getOrderNumber(),0,0,'C');
         // Saut de ligne
         $pdf->Ln(20);
         // Décalage à droite
         $pdf->Cell(80);
-        $pdf->Cell(30,10,'Date de la commande : '. $invoice->getOrder()->getDate()->format("d/m/Y"),0,0,'C');
+        $pdf->Cell(30,10,'Date de la commande : '. $invoice->getDate()->format("d/m/Y"),0,0,'C');
         $pdf->Ln(20);
+
+        $pdf->Cell(80);
+        $pdf->Cell(30,10,'Client : '. $invoice->getClient(),0,0,'C');
+        $pdf->Ln(20);
+
+        $pdf->Cell(80);
+        $pdf->Cell(30,10,'Validee par : '. $invoice->getValidator(),0,0,'C');
+        $pdf->Ln(20);
+
         $pdf->Cell(80);
         $pdf->Cell(30,10,'Liste des sandwichs',0,0,'C');
         $pdf->Ln(20);
         $pdf->SetFont('Arial','',10);
-        foreach ($invoice->getOrder()->getSandwichs() as $sandwich)
-        {
-            $pdf->Cell(10);
-            $pdf->Cell(30,10, '- '. $sandwich->getLabel(),0,0,'C');
-            $pdf->Ln(5);
-            foreach ($sandwich->getIngredients() as $ingredient)
-            {
-                $pdf->Cell(20);
-                $pdf->Cell(30,10, '- '. $ingredient->getLabel(),0,0,'C');
-                $pdf->Ln(5);
-            }
-        }
+
+        $pdf->Cell(5);
+        $pdf->Cell(30,10, $invoice->getOrderDetail(),0,0,'C');
+        $pdf->Ln(5);
+
         $pdf->SetFont('Arial','B',15);
         $pdf->Ln(20);
         $pdf->Cell(80);
-        $pdf->Cell(30,10,'Prix total de la commande : '. $invoice->getOrder()->getTotalPrice(). ' euros',0,0,'C');
+        $pdf->Cell(30,10,'Prix total de la commande : '. $invoice->getOrderPrice(). ' euros',0,0,'C');
         $pdf->Ln(20);
         $pdf->Cell(50);
 
@@ -72,6 +75,12 @@ class InvoiceRepository
             $invoice = new Invoice();
             $invoice
                 ->setId($row->id);
+            $invoice->setOrderDetail($row->order_detail);
+            $invoice->setOrderPrice($row->total_price);
+            $invoice->setOrderNumber($row->order_number);
+            $invoice->setDate(new DateTimeImmutable($row->order_date));
+            $invoice->setClient($row->client_name);
+            $invoice->setValidator($row->validator_name);
 
             $invoices[] = $invoice;
         }
@@ -98,6 +107,12 @@ class InvoiceRepository
         if($row) {
             $invoice->setId($row['id']);
             $invoice->setOrder($this->fetchOrder($row['order_id']));
+            $invoice->setOrderDetail($row['order_detail']);
+            $invoice->setOrderPrice($row['total_price']);
+            $invoice->setOrderNumber($row['order_number']);
+            $invoice->setDate(new DateTimeImmutable($row['order_date']));
+            $invoice->setClient($row['client_name']);
+            $invoice->setValidator($row['validator_name']);
         } else {
             $order = null;
         }
@@ -107,10 +122,25 @@ class InvoiceRepository
 
     public function createInvoice(Invoice $invoice)
     {
+       $invoice->setDate($invoice->getOrder()->getDate());
+       $invoice->setClient($invoice->getOrder()->getClient()->getPseudo());
+       $invoice->setValidator($invoice->getOrder()->getValidator()->getPseudo());
+       $invoice->setOrderNumber($invoice->getOrder()->getId());
+       $invoice->setOrderPrice($invoice->getOrder()->getTotalPrice());
+       $invoice->setOrderDetail($this->writeOrderDetail($invoice->getOrder()));
+
         $query = $this->connection->prepare(
-            'INSERT INTO "invoice"(order_id) VALUES (:order_id)');
+            'INSERT INTO "invoice"(order_id, order_date, order_number, client_name, validator_name, order_detail, total_price) 
+            VALUES (:order_id, :order_date, :order_number, :client_name, :validator_name, :order_detail, :total_price)');
 
         $query->bindValue(':order_id', $invoice->getOrder()->getId());
+
+        $query->bindValue(':order_date', $invoice->getDate()->format("Y-m-d"));
+        $query->bindValue(':order_number', $invoice->getOrderNumber());
+        $query->bindValue(':client_name', $invoice->getClient());
+        $query->bindValue(':validator_name', $invoice->getValidator());
+        $query->bindValue(':order_detail', $invoice->getOrderDetail());
+        $query->bindValue(':total_price', $invoice->getOrderPrice());
 
         $result = $query->execute();
         if ($result == false)
@@ -122,6 +152,24 @@ class InvoiceRepository
             $invoice->setId($this->connection->lastInsertId());
         }
         return $invoice;
+    }
+
+    private function writeOrderDetail(Order $order)
+    {
+        $result = "";
+        foreach ($order->getSandwichs() as $sandwich)
+        {
+            $result .= 'Sandwich : '. $sandwich->getLabel(). ' (';
+            if ($sandwich->getIngredients() != null)
+            {
+                foreach ($sandwich->getIngredients() as $ingredient)
+                {
+                   $result .= $ingredient.getLabel(). ' ';
+                }
+            }
+            $result .= ') ';
+        }
+        return $result;
     }
 
     public function deleteInvoice(Invoice $invoice)

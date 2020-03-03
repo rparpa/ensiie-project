@@ -82,10 +82,16 @@ VALUES (2, 2);
 DROP TABLE  "invoice";
 CREATE TABLE "invoice" (
     id SERIAL PRIMARY KEY,
-    order_id BIGINT
+    order_id BIGINT,
+    order_date date,
+    order_number BIGINT,
+    client_name VARCHAR,
+    validator_name VARCHAR,
+    order_detail VARCHAR,
+    total_price REAL
 );
 
-INSERT INTO "invoice" (order_id)
-VALUES (1);
-INSERT INTO "invoice" (order_id)
-VALUES (2);
+INSERT INTO "invoice" (order_id, order_date, order_number, client_name, validator_name, order_detail, total_price)
+VALUES (1, '2020-02-01', 1, 'Jeanne', 'Marwan', 'test', 36.4);
+INSERT INTO "invoice" (order_id, order_date, order_number, client_name, validator_name, order_detail, total_price)
+VALUES (2, '2020-02-01', 2, 'Simon', 'Marwan', 'test2', 16.4);
