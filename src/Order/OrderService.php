@@ -17,9 +17,6 @@ class OrderService
 
     //TODO
     // get orders by client
-    // ajout du client à la creation
-    // ajout de l'admin à la validation (setApproval) 
-
 
     private OrderRepository $orderRepository;
     private SandwichRepository $sandwichRepository;
@@ -145,8 +142,8 @@ class OrderService
         $result = true;
 
         #Sandwichs control
-        if( $order->getSandwichs() != null ) {
-            foreach ($order->getSandwichs() as $sandwich) {
+        if($order->getSandwichs() != null) {
+            foreach($order->getSandwichs() as $sandwich) {
                 if(! $this->validateSandwich($sandwich)) {
                     $result = false;
                 }
@@ -157,13 +154,19 @@ class OrderService
         }
 
         #Client control
-        if ($order->getClient() != null) {
-            if (! $this->validateClient($order->getClient())) {
+        if($order->getClient() != null) {
+            if(! $this->validateClient($order->getClient())) {
                 $result = false;
             }
         } else {
             $result = false;
             $this->errors['client_empty'] = 'There is no Client.';
+        }
+
+        #Admin control
+        if($order->getValidator() != null) {
+            $result = false;
+            $this->errors['admin_filled'] = 'Validator must be empty on order creation.';
         }
 
         return $result;

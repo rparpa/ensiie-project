@@ -46,26 +46,30 @@ class Order
 
     /**
      * @param User $client
+     * @return Order
      */
-    public function setClient(User $client): void
+    public function setClient(User $client)
     {
         $this->client = $client;
+        return $this;
     }
 
     /**
      * @return User
      */
-    public function getValidator(): User
+    public function getValidator()
     {
         return $this->validator;
     }
 
     /**
      * @param User $validator
+     * @return Order
      */
-    public function setValidator(User $validator): void
+    public function setValidator(User $validator)
     {
         $this->validator = $validator;
+        return $this;
     }
 
     /**
