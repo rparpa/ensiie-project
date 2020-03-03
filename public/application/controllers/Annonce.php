@@ -38,7 +38,9 @@ class Annonce extends CI_Controller {
 
 	public function a_propos()
 	{
+		$this->load->view('elements/header',$this->data);
 		$this->load->view('aProposTable');
+		$this->load->view('elements/footer');
 	}
 
 	/**
