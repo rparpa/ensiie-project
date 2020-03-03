@@ -14,6 +14,12 @@ module.exports = http.createServer((req, res) => {
             res.end(data, 'utf-8');
         });
     }
+    else if(pathname == "/admin") {
+        fs.readFile('./public/admin.html',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end(data, 'utf-8');
+        });
+    }
     else if(pathname == "/profil") {
         fs.readFile('./public/profil.html',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/html'});
@@ -44,6 +50,12 @@ module.exports = http.createServer((req, res) => {
             res.end(data, 'utf-8');
         });
     }
+    else if(pathname == "/admin.js") {
+        fs.readFile('./public/Script/admin.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
     else if(pathname == "/contribution.js") {
         fs.readFile('./public/Script/contribution.js',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/javascript'});
@@ -70,6 +82,12 @@ module.exports = http.createServer((req, res) => {
     }
     else if(pathname == "/dist/index.js") {
         fs.readFile('./public/dist/index.js',function (err, data){
+            res.writeHead(200, {'Content-Type': 'text/javascript'});
+            res.end(data, 'utf-8');
+        });
+    }
+    else if(pathname == "/dist/admin.js") {
+        fs.readFile('./public/dist/admin.js',function (err, data){
             res.writeHead(200, {'Content-Type': 'text/javascript'});
             res.end(data, 'utf-8');
         });

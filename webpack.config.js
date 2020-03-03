@@ -32,4 +32,12 @@ module.exports = [{
         path: path.resolve(__dirname, 'public/dist'),
         filename: "contribution.js"
     }
+},{
+    mode: 'development',
+    entry:"./public/Script/admin.js",
+    
+    output: {
+        path: path.resolve(__dirname, 'public/dist'),
+        filename: "admin.js"
+    }
 }];
