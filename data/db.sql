@@ -111,6 +111,7 @@ INSERT INTO Categorie(categorie) VALUES ('Cours particuliers');
 INSERT INTO Categorie(categorie) VALUES ('Sport');
 
 INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('1', '1');
+INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('1', '5');
 INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('2', '1');
 INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('3', '8');
 INSERT INTO Categorie_annonce(id_annonce, id_categorie) VALUES ('4', '8');

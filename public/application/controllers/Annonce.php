@@ -173,11 +173,13 @@ class Annonce extends CI_Controller {
 		$image = $this->image->getImage($id);
 		$user_annonce = $this->utilisateur->getUser($annonce[0]['id_user']);
 		$etat_annonce = $this->etat->getEtat($annonce[0]['id_etat']);
+		$categorie_annonce = $this->categorieAnnonce->getAllCategorieAnnonce($id);
 
 		$this->data+=array('details_annonce'=>$annonce);
 		$this->data+=array('image'=>$image);
 		$this->data+=array('user_annonce'=>$user_annonce);
 		$this->data+=array('etat_annonce'=>$etat_annonce);
+		$this->data+=array('categorie_annonce'=>$categorie_annonce);
 
 		$this->load->view('elements/header',$this->data);
 		$this->load->view('details_annonce_view.php',$this->data);
