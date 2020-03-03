@@ -102,11 +102,11 @@ $users = $userService->getAllUser();
 							<article id="CreerCompte">
 							<section>
 									<h3 class="major">Création de compte</h3>
-									<form method="post" action="#">
+									<form name="CreateAccount" method="post" action="#">
 										<div class="fields">
 											<div class="field thrid">
-												<label for="newpseudo">Pseudo</label>
-												<input type="text" name="newpseudo" id="newpseudo" value="" placeholder="Snitchy" />
+												<label for="pseudo">Pseudo</label>
+												<input type="text" name="pseudo" id="pseudo" value="" placeholder="Snitchy" />
 											</div>
 											<div class="field half">
 												<label for="newmdp">Mot de passe</label>
@@ -120,7 +120,7 @@ $users = $userService->getAllUser();
 										</div>
 										<div>
 											<ul class="actions">
-											<li><input type="submit" value="Créer un compte" class="primary" /></li>
+											<li><button name ="btnSignUp" id="btnSignUp" type="submit" value="Créer un compte" class="primary">Créer un compte</button></li>
 											</ul>
 										</div>
 									</form>
@@ -599,6 +599,21 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<SCRIPT TYPE="text/javascript">
+
+
+            verify = new verifynotify();
+            verify.field1 = document.CreateAccount.newmdp;
+            verify.field2 = document.CreateAccount.newmdp2;
+            verify.result_id = "password_result";
+            verify.match_html = "Passwords match.";
+            verify.nomatch_html = "Please make sure your passwords match.";
+
+            // Update the result message
+            verify.check();
+
+            //
+            </SCRIPT>
 
 	</body>
 </html>
