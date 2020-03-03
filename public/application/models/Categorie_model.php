@@ -5,10 +5,10 @@ class Categorie_model extends CI_Model
     public $idCategorie;
     public $nom;
 
-	public function insert($categ)
+	public function insert($categ_titre)
 	{
-		$arr=array('categorie'=>$categ);
-		return $this->db->insert('categorie',$arr);
+		$data=array('categorie'=>$categ_titre);
+		$this->db->insert('categorie', $data);
 	}
 
     public function delete($id)

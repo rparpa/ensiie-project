@@ -52,17 +52,30 @@ class Categorie extends CI_Controller
      * @return mixed
      */
 
-    public function create($categ)
-    {
-		if($this->categorie->insert($categ))
-		{
-			die("Categorie créée");
+    public function ajouter_categorie()
+	{
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+		$this->form_validation->set_rules('categ', 'categ', 'required');
+
+		if ($this->input->post('categ')) {
+			if ($this->form_validation->run() == TRUE) {
+
+				$this->categorie->insert($this->input->post('categ'));
+				redirect('Categorie/getAllCategories');
+				$this->session->set_flashdata('message', 'Catégorie créée avec succès');
+
+			} else {
+				$this->session->set_flashdata('error', 'Catégorie non ajoutée, veuillez réessayer');
+				$this->load->view('elements/header', $this->data);
+				$this->load->view('ajout_categorie_view', $this->data);
+				$this->load->view('elements/footer');
+			}
+		} else {
+			$this->load->view('elements/header', $this->data);
+			$this->load->view('ajout_categorie_view', $this->data);
+			$this->load->view('elements/footer');
 		}
-		else
-		{
-			die("La création de la catégorie a échoué!");
-		}
-    }
+	}
 
     /**
      * Updates an existing Categorie model.

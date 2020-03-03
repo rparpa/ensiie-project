@@ -11,6 +11,7 @@
 			<thead>
 			<tr>
 				<th>Catégories</th>
+				<th><?php echo "<a href=".site_url('/Categorie/ajouter_categorie/')." class=\"glyphicon glyphicon-flag\" title=\"Ajouter\" data-toggle=\"tooltip\">Ajouter</i></a></th>"?>
 			</tr>
 			</thead>
 			<tbody>
@@ -19,8 +20,8 @@
 			foreach ($categories as $categ) {
 				echo "<tr><td>".$categ['categorie']."</td>
                 <td>
-                    <a href=".site_url('/Categorie/delete/'.$categ['id_categorie'])." class=\"glyphicon glyphicon-flag\" title=\"Signaler\" data-toggle=\"tooltip\">Supprimer</i></a>
-                    <a href=".site_url('/Categorie/update/'.$categ['id_categorie'])." class=\"glyphicon glyphicon-flag\" title=\"Signaler\" data-toggle=\"tooltip\">Modifier</i></a>
+                    <a href=".site_url('/Categorie/update/'.$categ['id_categorie'])." class=\"glyphicon glyphicon-flag\" title=\"Modifier\" data-toggle=\"tooltip\">Modifier</i></a>
+                    <a href=".site_url('/Categorie/delete/'.$categ['id_categorie'])." class=\"glyphicon glyphicon-flag\" title=\"Supprimer\" data-toggle=\"tooltip\">Supprimer</i></a>
                 </td></tr>";
 			}
 			?>
