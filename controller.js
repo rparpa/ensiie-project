@@ -4,6 +4,7 @@ const ParticulierWebService = require('./src/Model/Controller/ParticulierWebServ
 const EntrepriseWebService = require('./src/Model/Controller/EntrepriseWebService');  
 const OffreWebService = require('./src/Model/Controller/OffreWebService');  
 const CandidatWebService = require('./src/Model/Controller/CandidatWebService');  
+const AuthService = require('./src/Model/Controller/AuthService');  
 var fs = require('fs');
 
 module.exports = http.createServer((req, res) => {
@@ -158,5 +159,8 @@ module.exports = http.createServer((req, res) => {
         else if(req.method == 'DELETE') {
 
         }
+    }
+    else if(pathname == "/login/request" && req.method == 'POST') {
+        AuthService.login(req, res);
     }
 });

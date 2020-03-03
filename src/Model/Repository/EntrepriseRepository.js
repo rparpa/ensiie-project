@@ -4,6 +4,8 @@ const begin = "BEGIN";
 const commit = "COMMIT";
 const rollback = "ROLLBACK";
 
+const login = "SELECT id FROM entreprise WHERE adressemail = $1 AND motdepasse = $2";
+
 const insert = "INSERT INTO entreprise(nom, adressemail, adressesiege, motdepasse, logo, isvalid, telephone) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING nom, adressemail, adressesiege, logo, telephone";
 const selectAllValidated = "SELECT id, nom, adressemail, adressesiege, logo, isvalid, telephone FROM entreprise WHERE isvalid = TRUE";
 const selectAllNoValidated = "SELECT id, nom, adressemail, adressesiege, logo, isvalid, telephone FROM entreprise WHERE isvalid = FALSE";
@@ -17,6 +19,37 @@ const updateTelephone = "UPDATE entreprise SET telephone = $1 WHERE id = $2 RETU
 const deleteOne = "DELETE FROM entreprise WHERE id = $1 RETURNING nom, adressemail, adressesiege, motdepasse, logo, isvalid, telephone";
 
 module.exports = class {
+    static async login({identifiant, mdp}) {
+        if(!identifiant || !mdp) {
+            throw 'Missing Information'
+        }
+
+        let result;
+
+        var client = ClientSession.getSession();
+        try {
+            await client.query(begin)
+            .catch(err => {throw 'Error in transaction'});
+
+            result = await client.query(login, [identifiant, mdp])
+            .catch(err => {throw 'Error in database'});
+
+            if(result.rows.length > 0){
+                result = true;
+            }
+            else result = false
+
+            await client.query(commit)
+            .catch(err => {throw 'Error in transaction'});
+        }
+        catch(e) {
+            await client.query(rollback);
+            throw e;
+        }
+
+        return result;
+    }
+
     static async create(Entreprise) {
         if (!Entreprise) {
             throw 'Entreprise object is undefined';

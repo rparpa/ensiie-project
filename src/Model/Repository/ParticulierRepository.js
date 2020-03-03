@@ -4,6 +4,9 @@ const begin = "BEGIN";
 const commit = "COMMIT";
 const rollback = "ROLLBACK";
 
+const login = "SELECT id FROM particulier WHERE adressemail = $1 AND motdepasse = $2";
+
+
 const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom, telephone) VALUES($1, $2, $3, $4, $5, $6) RETURNING adressemail, cv, nom, prenom, telephone";
 const selectAll = "SELECT adressemail, cv, nom, prenom, telephone FROM particulier";
 const selectById = "SELECT adressemail, cv, nom, prenom, telephone FROM particulier WHERE id = $1";
@@ -11,6 +14,37 @@ const updateOne = "UPDATE particulier SET adressemail = $1, motdepasse = $2, cv 
 const deleteOne = "DELETE FROM particulier WHERE id = $1 RETURNING adressemail, motdepasse, cv, nom, prenom, telephone";
 
 module.exports = class {
+    static async login({identifiant, mdp}) {
+        if(!identifiant || !mdp) {
+            throw 'Missing Information'
+        }
+
+        let result;
+
+        var client = ClientSession.getSession();
+        try {
+            await client.query(begin)
+            .catch(err => {throw 'Error in transaction'});
+
+            result = await client.query(login, [identifiant, mdp])
+            .catch(err => {throw 'Error in database'});
+
+            if(result.rows.length > 0){
+                result = true;
+            }
+            else result = false
+
+            await client.query(commit)
+            .catch(err => {throw 'Error in transaction'});
+        }
+        catch(e) {
+            await client.query(rollback);
+            throw e;
+        }
+
+        return result;
+    }
+
     static async create(Particulier) {
         if (!Particulier) {
             throw 'Particulier object is undefined';
