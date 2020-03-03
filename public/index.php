@@ -1,21 +1,56 @@
 <?php
 
+use Ingredient\IngredientRepository;
+use Ingredient\IngredientService;
+
 require_once '../src/Bootstrap.php';
 
+
+$my_connection = \Db\Connection::get();
 $userRepository = new \User\UserRepository(\Db\Connection::get());
 $userService = new \User\UserService($userRepository);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-    $newUser = new \User\User();
-    $newUser->setFirstname("Nicolas");//ballec
-    $newUser->setLastname("Charlon");//ballec
-    $newUser->setBirthday(new DateTimeImmutable("01/01/1970"));//ballec
-    $newUser->setPseudo($_POST["pseudo"]);
-    $newUser->setMail("rayan.erisium@gmail.com");//ballec
-    $newUser->setPassword($_POST["password"]);
 
-    $userService->createUser($newUser);
+$ingredientService = new IngredientService(new IngredientRepository($my_connection));
+$ingredients = $ingredientService->getAvailableIngredients();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    /*if(){
+        $newUser = new \User\User();
+        $newUser->setFirstname("Nicolas");//ballec
+        $newUser->setLastname("Charlon");//ballec
+        $newUser->setBirthday(new DateTimeImmutable("01/01/1970"));//ballec
+        $newUser->setPseudo($_POST["pseudo"]);
+        $newUser->setMail("rayan.erisium@gmail.com");//ballec
+        $newUser->setPassword($_POST["password"]);
+
+        $userService->createUser($newUser);
+    }
+    elseif(){
+
+        $newOrder = new Order();
+
+
+        $newSandwich = new Sandwich();
+        $newSandwich->setLabel('Custom');
+        $newSandwichs = [];
+        $newSandwichs[] = $newSandwich;
+
+        $newOrder
+            ->setApproval(true)
+            ->setDate(new DateTimeImmutable('2020-02-01'))
+            ->setSandwichs($newSandwichs);
+
+        #create example
+        $newOrder = $orderService->createOrder($newOrder);
+
+        #delete example
+        $orderService->deleteOrder($newOrder);
+
+        #get all example
+        $orders = $orderService->getAllOrders();
+        $ingredients = $ingredientService->getAvailableIngredients();
+    }  */
 }
 
 $users = $userService->getAllUser();
@@ -117,7 +152,7 @@ $users = $userService->getAllUser();
 								<section>
 									<h3 class="major">Pimp my sandwich</h3>
 									<div class="table-wrapper">
-										<table class="alt">
+										<table class="alt customSandwich">
 											<thead>
 												<tr>
 													<th>Ingrédient</th>
@@ -126,40 +161,40 @@ $users = $userService->getAllUser();
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td><img src="images/Salade.jpg" width="100%" alt="" style="vertical-align: middle"/></td>
-													<td>													<div class="input-group" style="width:50%">
-									               	<span class="input-group-btn">
-									                  	<button class="btn btn-white btn-minuse" type="button">-</button>
-									               	</span>
-									               	<input type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
-									               	<span class="input-group-btn">
-									                  	<button class="btn btn-red btn-pluss" type="button">+</button>
-									               	</span>
-												</div><!-- /input-group --></td>
-													<td>2 tranches</td>
-												</tr>
-												<tr>
-													<td><img src="images/bacon.jpeg" width="100%" alt="" style="vertical-align: middle"/></td>
-													<td>Des tranches de bacons fraichement achetée chez le boucher (c'est faux, c'est sans doute du Carrefour discount)</td>
-													<td>
-													<div class="input-group" style="width:50%">
-									               	<span class="input-group-btn">
-									                  	<button class="btn btn-white btn-minuse" type="button">-</button>
-									               	</span>
-									               	<input  type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
-									               	<span class="input-group-btn">
-									                  	<button class="btn btn-red btn-pluss" type="button">+</button>
-									               	</span>
-												</div><!-- /input-group -->
-													</td>
-												</tr>
+
+
+                                            <?
+                                            foreach ($ingredients as $ingredient) {
+
+                                                echo "<tr class=\"item\">
+                                                            <td>
+                                                                <img src=\"images/Salade.jpg\" width=\"50%\" alt=\"\" style=\"vertical-align: middle\"/>
+                                                            </td>
+                                                            
+                                                            <td class=\"ingredLabel\">" . $ingredient->getLabel() . "</td>
+                                                            
+                                                            <td>
+                                                                <div class=\"input-group\" style=\"width:50%\"> <!--TRES DEGEU @kozak-->
+                                                                    <span class=\"input-group-btn\">
+                                                                        <button class=\"btn btn-white btn-minuse\" type=\"button\">-</button>
+                                                                    </span>
+                                                                        <input  type=\"text\" class=\"form-control no-padding add-color text-center height-25\" maxlength=\"3\" value=\"0\">
+                                                                    <span class=\"input-group-btn\">
+                                                                        <button class=\"btn btn-red btn-pluss\" type=\"button\">+</button>
+                                                                    </span>
+                                                                </div><!-- /input-group -->
+                                                            </td>
+												      </tr>";
+                                            }
+                                            ?>
 											</tbody>
 										</table>
+                                        <button href="#recap" class="btn btn-white addSandwich" type="button">Valider</button>
 									</div>
 									<span class="image main"><img src="assets/gif/3.gif" alt="" /></span>
 								</section>
 								</article>
+
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact</h2>
@@ -194,6 +229,8 @@ $users = $userService->getAllUser();
 
                         <!-- Recap -->
                         <article id="recap">
+
+                            <?var_dump($_POST);?>
                             <h2 class="major">Validation</h2>
                             <form method="post" action="#">
                                 <div class="table-wrapper">
@@ -251,8 +288,8 @@ $users = $userService->getAllUser();
                                     </table>
                                 </div>
                                 <div class="validation">
-                                        <a href="#" class="button primary">Payer</a>
-
+                                        <a href="#recap" class="button primary">Payer</a>
+                                    <!-- @TODO creation order avec tmplist sandwich -->
                                 </div>
                             </form>
                             <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
