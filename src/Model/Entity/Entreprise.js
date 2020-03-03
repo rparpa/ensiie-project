@@ -58,12 +58,12 @@ module.exports = class {
         this._isValid = value;
     }
 
-    set telephone(value) {
-        this._telephone = value;
-    }
-
     get telephone() {
         return this._telephone;
+    }
+
+    set telephone(value) {
+        this._telephone = value;
     }
 
     toJson() {
@@ -74,8 +74,8 @@ module.exports = class {
             adresseSiege: this.adresseSiege,
             motDePasse: this.motDePasse,
             logo: this.logo,
-            telephone: this.telephone,
-            isValid: this.isValid
+            isValid: this.isValid,
+            telephone: this.telephone
         }
     }
 };
