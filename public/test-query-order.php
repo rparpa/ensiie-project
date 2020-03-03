@@ -11,6 +11,8 @@ use Order\OrderRepository;
 use Order\OrderService;
 use User\UserRepository;
 use Invoice\InvoiceRepository;
+use User\User;
+use User\UserService;
 
 $my_connection = \Db\Connection::get();
 $orderService = new OrderService(
@@ -20,6 +22,7 @@ $orderService = new OrderService(
                     new InvoiceRepository($my_connection)
                 );
 $ingredientService = new IngredientService(new IngredientRepository($my_connection));
+$userService = new UserService(new \User\UserRepository($my_connection));
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
@@ -30,22 +33,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $newSandwichs = [];
     $newSandwichs[] = $newSandwich;
 
-    $userClient = new \User\User();
-    $userValidator = new \User\User();
+    $userClient = new User();
+    $userValidator = new User();
 
-    $userRepository = new \User\UserRepository($my_connection);
-    $userClient = $userRepository->findOneById(1);
-    $userValidator = $userRepository->findOneById(2);
+    $userClient = $userService->getUserById(1);
+    $userValidator = $userService->getUserById(2);
 
     $newOrder
             ->setApproval(true)
             ->setDate(new DateTimeImmutable('2020-02-01'))
             ->setSandwichs($newSandwichs)
             ->setClient($userClient);
-    $newOrder->setValidator($userValidator);
 
     #create example
     $newOrder = $orderService->createOrder($newOrder);
+
+    #validate order
+    $newOrder->setValidator($userValidator);
+    $orderService->approveOrder($newOrder);
 
     #delete example
     $orderService->deleteOrder($newOrder);
@@ -53,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     #get all example
     $orders = $orderService->getAllOrders();
     $ingredients = $ingredientService->getAvailableIngredients();
+    $users = $userService->getAllUser();
 }
 
 
@@ -73,15 +79,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $newSandwichs = [];
     $newSandwichs[] = $newSandwich;
 
+    $newClient = new User();
+    $newClient = $userService->getUserById($_POST["user"]);
+
     $newOrder = new Order();
     $newOrder
             ->setApproval(true)
             ->setDate(new DateTimeImmutable('2020-02-05'))
-            ->setSandwichs($newSandwichs);
+            ->setSandwichs($newSandwichs)
+            ->setClient($newClient);
     
     $orderService->createOrder($newOrder);
     
     $orders = $orderService->getAllOrders();
+    $users = $userService->getAllUser();
 }
 
 ?>
@@ -100,6 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <td>Date</td>
     <td>Approval</td>
     <td>Sandwichs</td>
+    <td>Client</td>
     </thead>
     <?php
     foreach ($orders as $order) : ?>
@@ -121,6 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     echo '<br>';
                 }
             ?></td>
+            <td><?php echo $order->getClient()->getPseudo() ?></td>
         </tr>
     <?php endforeach; ?>
     </table>
@@ -134,6 +147,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="<?php echo $ingredient->getLabel() ?>"><?php echo $ingredient->getLabel() ?> :</label>
                 <input type="checkbox" id="<?php echo $ingredient->getLabel() ?>" name="<?php echo $ingredient->getLabel() ?>" value="<?php echo $ingredient->getId() ?>"><br>
         <?php endforeach; ?>
+        <select name="user" id="user">
+            <?php
+            foreach ($users as $user) : ?>
+                <option value="<?php echo $user->getId() ?>"> user : <?php echo $user->getPseudo() ?></option>
+            <?php endforeach; ?>
+        </select>
         <input id="saveButton" type="submit" value="Sauvegarder"><br>
     </form>
 

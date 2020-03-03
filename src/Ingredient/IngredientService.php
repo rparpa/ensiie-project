@@ -86,8 +86,9 @@ class IngredientService
             $this->errors['label'] = 'Label is mandatory.';
 
         } else {
+            $existingIngredient = null;
             $existingIngredient = $this->ingredientRepository->findOneByLabel($ingredient->getLabel());
-            if (null != $existingIngredient) {
+            if (null != $existingIngredient->getId()) {
                 if (null == $ingredient->getId() || $existingIngredient->getId() != $ingredient->getId()) {
                     $result = false;
                     $this->errors['label'] = 'This label already exists for an ingredient.';

@@ -247,23 +247,22 @@ class OrderRepository
      * @param $orderId
      * @return User
      */
-    private function fetchUser($orderId)
+    private function fetchUser($userId)
     {
         $query = $this->connection->prepare(
-            'SELECT id AS id
+            'SELECT id
             FROM "user"
-            WHERE id = :orderId');
+            WHERE id = :userId');
 
-        $query->bindValue(':orderId', $orderId, PDO::PARAM_INT);
-        $query->execute();
-        $row = $query->fetch(PDO::FETCH_OBJ);
-
+        $query->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $result = $query->execute();
+        $row = $query->fetch();
 
         $userRepository = new UserRepository($this->connection);
         $user = new User();
-        $user = $userRepository->findOneById($row->id);
+
+        $user = $userRepository->findOneById($row['id']);
 
         return $user;
     }
-
 }

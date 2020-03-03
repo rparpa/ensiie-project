@@ -166,7 +166,7 @@ class IngredientServiceTest extends TestCase
 
         $mockedRepository
             ->method('findOneByLabel')
-            ->willReturn(null);
+            ->willReturn(new Ingredient());
 
         $service = new IngredientService($mockedRepository);
 
@@ -204,7 +204,7 @@ class IngredientServiceTest extends TestCase
 
         $mockedRepository
             ->method('findOneByLabel')
-            ->willReturn(null);
+            ->willReturn(new Ingredient());
 
         $service = new IngredientService($mockedRepository);
 
@@ -324,7 +324,7 @@ class IngredientServiceTest extends TestCase
 
         $mockedRepository
             ->method('findOneByLabel')
-            ->willReturn(null);
+            ->willReturn(new Ingredient());
 
         $service = new IngredientService($mockedRepository);
 
@@ -352,7 +352,7 @@ class IngredientServiceTest extends TestCase
 
         $mockedRepository
             ->method('findOneByLabel')
-            ->willReturn(null);
+            ->willReturn(new Ingredient());
 
         $service = new IngredientService($mockedRepository);
 
