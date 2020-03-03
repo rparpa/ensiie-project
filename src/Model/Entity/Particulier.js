@@ -50,6 +50,14 @@ module.exports = class {
         this._prenom = value;
     }
 
+    get telephone() {
+        return this._telephone;
+    }
+
+    set telephone(value) {
+        this._telephone = value;
+    }
+
     toJson() {
         return {
             id: this.id,
@@ -57,7 +65,8 @@ module.exports = class {
             motDePasse: this.motDePasse,
             cv: this.cv,
             nom: this.nom,
-            prenom: this.prenom
+            prenom: this.prenom,
+            telephone: this.telephone
         }
     }
 };

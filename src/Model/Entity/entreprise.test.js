@@ -10,6 +10,7 @@ describe('Entreprise toJson', function () {
         entreprise.motDePasse = "coucou";
         entreprise.logo = "ici";
         entreprise.isValid = true;
+        entreprise.telephone = "0000000";
 
         expect(entreprise.toJson()).toMatchObject({
             id: "1",
@@ -18,7 +19,8 @@ describe('Entreprise toJson', function () {
             adresseSiege: "2 rue ensiie",
             motDePasse: "coucou",
             logo: "ici",
-            isValid: true
+            isValid: true,
+            telephone: "0000000"
         })
     });
 });

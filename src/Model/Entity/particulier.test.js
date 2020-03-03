@@ -9,6 +9,7 @@ describe('Particulier toJson', function () {
         particulier.cv = "2 rue ensiie";
         particulier.motDePasse = "coucou";
         particulier.prenom = "ici";
+        particulier.telephone = "0000000";
 
         expect(particulier.toJson()).toMatchObject({
             id: "1",
@@ -16,7 +17,8 @@ describe('Particulier toJson', function () {
             adresseMail: "toto@gmail.com",
             cv: "2 rue ensiie",
             motDePasse: "coucou",
-            prenom: "ici"
+            prenom: "ici",
+            telephone: "0000000"
         })
     });
 });

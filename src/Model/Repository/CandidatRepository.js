@@ -1,74 +1,111 @@
+const ClientSession = require('../Factory/ClientSession');
+
+const begin = "BEGIN";
+const commit = "COMMIT";
+const rollback = "ROLLBACK";
+
+const insert = "INSERT INTO candidat(idoffre, idparticulier) VALUES($1, $2) RETURNING *";
+
+const selectAllCandidatByOffre = "SELECT p.id, adressemail, cv, nom, prenom, telephone FROM candidat c, particulier p WHERE c.idparticulier = p.id AND c.idoffre = $1";
+const selectAllOffreByCandidat = "SELECT o.id, o.identreprise, e.nom, e.adressemail, e.adressesiege, e.logo, e.telephone, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution FROM candidat c, offre o, entreprise e WHERE c.idoffre = o.id AND o.identreprise = e.id AND c.idparticulier = $1";
 
 module.exports = class {
-    constructor(db) {
-        this.db = db;
-    }
-
-    create(Candidat){
+    static async create(Candidat){
         if (!Candidat) {
             throw 'Candidat object is undefined';
         }
 
-        if (!Candidat.idOffre || !Candidat.idParticulier || !Candidat.date) {
+        if (!Candidat.idoffre || !Candidat.idparticulier) {
             throw 'Candidat object is missing information';
         }
 
-        if (Object.prototype.toString.call(Candidat.date) !== "[object Date]") {
-            throw 'Invalid date in candidat object';
+        let result;
+        let values = [Candidat.idoffre, Candidat.idparticulier];
+
+        var client = ClientSession.getSession();
+
+        try {
+            await client.query(begin)
+            .catch(err => {throw 'Error in transaction'});
+
+            result = await client.query(insert, values)
+            .catch(e => {throw 'Error in the database'}); 
+            
+            await client.query(commit)
+            .catch(err => {throw 'Error in transaction'});
+        }
+        catch(e) {
+            await client.query(rollback);
+            throw e;
         }
 
-        // this.db
-        //     .get('candidats')
-        //     .push(Candidat.toJson())
-        //     .write()
+        return result.rows[0];
     }
 
-    // getAllByOffre(idOffre) {
-    //     if(Object.prototype.toString.call(start_date) !== "[object Date]" || Object.prototype.toString.call(end_date) !== "[object Date]" || start_date =="Invalid Date" || end_date == "Invalid Date") {
-    //         throw 'Invalid date in argument';
-    //     }
-    //     let candidats = this.db
-    //                         .get('candidats')
-    //                         .value();
+    static async getAllCandidatByOffre(idoffre) {
+        var result;
+        var client = ClientSession.getSession();
+        try {
+            await client.query(begin)
+            .catch(err => {throw 'Error in transaction'});
 
-    //     if (candidats != null) {
-    //         let candidatsFiltered = [];
-    //         let len = candidats.length
+            result = await client.query(selectAllCandidatByOffre, [idoffre])
+            .catch(err => {throw 'Error in database'});
 
-    //         for(let i = 0 ; i < len ; ++i) {
-    //             if(candidats[i].idOffre == idOffre)  {
-    //                 candidatsFiltered.push(candidats[i]);
-    //             }
-    //         }
+            await client.query(commit)
+            .catch(err => {throw 'Error in transaction'});
+        }
+        catch(e) {
+            await client.query(rollback);
+            throw e;
+        }
 
-    //         return candidatsFiltered;
-    //     }
+        return result.rows;
+    }
 
-    //     return candidats;
-    // }
-    // getAllByParticulier(idParticulier){
-    //     if(Object.prototype.toString.call(start_date) !== "[object Date]" || Object.prototype.toString.call(end_date) !== "[object Date]" || start_date =="Invalid Date" || end_date == "Invalid Date") {
-    //         throw 'Invalid date in argument';
-    //     }
-    //     let candidats = this.db
-    //                         .get('candidats')
-    //                         .value();
+    static async getAllOffreByCandidat(idparticulier) {
+        var result;
+        var client = ClientSession.getSession();
+        try {
+            await client.query(begin)
+            .catch(err => {throw 'Error in transaction'});
 
-    //     if (candidats != null) {
-    //         let candidatsFiltered = [];
-    //         let len = candidats.length
+            result = await client.query(selectAllOffreByCandidat, [idparticulier])
+            .catch(err => {throw 'Error in database'});
 
-    //         for(let i = 0 ; i < len ; ++i) {
-    //             if(candidats[i].idParticulier == idParticulier)  {
-    //                 candidatsFiltered.push(candidats[i]);
-    //             }
-    //         }
+            let length = result.rows.length;
 
-    //         return candidatsFiltered;
-    //     }
+            for(let i = 0 ; i < length ; ++i) {
+                result.rows[i] = {
+                    "id": result.rows[i].id,
+                    "identreprise": {
+                        "id": result.rows[i].identreprise,
+                        "nom": result.rows[i].nom,
+                        "adressemail": result.rows[i].adressemail,
+                        "adressesiege": result.rows[i].adressesiege,
+                        "logo": result.rows[i].logo,
+                        "telephone": result.rows[i].telephone
+                    },
+                    "description": result.rows[i].description,
+                    "document": result.rows[i].document,
+                    "typecontrat": result.rows[i].typecontrat,
+                    "adresse": result.rows[i].adresse,
+                    "latitude": result.rows[i].latitude,
+                    "longitude": result.rows[i].longitude,
+                    "salaire": result.rows[i].salaire,
+                    "titre": result.rows[i].titre,
+                    "dateparution": result.rows[i].dateparution
+                }
+            }
 
-    //     return candidats;
-    
+            await client.query(commit)
+            .catch(err => {throw 'Error in transaction'});
+        }
+        catch(e) {
+            await client.query(rollback);
+            throw e;
+        }
 
-    // }
+        return result.rows;
+    }
 };
