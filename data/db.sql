@@ -20,7 +20,8 @@ CREATE TABLE "ingredient" (
     id SERIAL PRIMARY KEY,
     label VARCHAR,
     available BOOLEAN,
-    price REAL
+    price REAL,
+    image_link VARCHAR
 );
 
 INSERT INTO "ingredient" (label, available, price)
