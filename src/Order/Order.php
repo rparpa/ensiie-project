@@ -19,7 +19,7 @@ class Order
     /**
      * @var bool
      */
-    private bool $approval;
+    private ?bool $approval = false;
 
     /**
      * @var array
@@ -29,12 +29,12 @@ class Order
     /**
      * @var User
      */
-    private User $client;
+    private ?User $client = null;
 
     /**
      * @var User
      */
-    private User $validator;
+    private ?User $validator = null;
 
     /**
      * @return User

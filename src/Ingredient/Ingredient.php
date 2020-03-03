@@ -26,7 +26,7 @@ class Ingredient
     /**
      * @var string
      */
-    private string $imageLink;
+    private ?string $imageLink = '';
 
     /**
      * @return int
