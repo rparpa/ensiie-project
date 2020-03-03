@@ -38,7 +38,7 @@ class AdminController {
 
 	public function afficheVoitures() {
 		try {
-			$this->carView->afficheVoitures($this->carRepository->fetchAll());
+			$this->adminView->afficheVoitures($this->carRepository->fetchAll());
 		} catch(Exception $e) {
 			//$this->connexionView->vue_erreur($e->getMessage());
 		}
@@ -67,7 +67,14 @@ class AdminController {
 			echo "pasok";
 		}
 	}
-
+	
+	public function afficheLocations(){
+		try {
+			$this->adminView->afficheLocations($this->locationRepository->fetchAll());
+		} catch (Exception $e) {
+			//$this->userView->vueErreur($e->getMessage());
+		}
+	}
 	public function deleteLocation($post)
     {
         try {

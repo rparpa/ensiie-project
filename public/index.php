@@ -81,10 +81,21 @@ if (isset($_GET['api'])) {
             }
         } else if ($_GET['action'] == 'admin') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
+            //$controller->afficheLocations(); A CORRIGER
             $controller->afficheVoitures();
         } else if ($_GET['action'] == 'ajouter') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
             $controller->afficheAjoutVoiture();
+            // TODO (POST)
+        } else if ($_GET['action'] == 'modifVoiture') {
+            $controller = new \Admin\AdminController(\Db\Connection::get());
+            // TODO car_id
+        }  else if ($_GET['action'] == 'deleteVoiture') {
+            $controller = new \Admin\AdminController(\Db\Connection::get());
+            // TODO car_id
+        }   else if ($_GET['action'] == 'deleteLocation') {
+            $controller = new \Admin\AdminController(\Db\Connection::get());
+            // TODO id_location
         }
     } else {
         ?><link href="style.css" rel="stylesheet" type="text/css" media="screen" />
