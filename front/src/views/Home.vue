@@ -12,7 +12,7 @@
     position: fixed;
     left: 0px;
     top: 20vw;
-    z-index: 99999;
+    z-index: 99;
   }
 </style>
 
