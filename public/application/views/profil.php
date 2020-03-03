@@ -59,7 +59,7 @@
                             </div>
                             <div class="userData ml-3">
                                 <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">
-                                        <?= $this->session->userdata('logged_in')['nom']." ".$this->session->userdata('logged_in')['prenom'] ?>
+                                        <?= $nom." ".$prenom ?>
                                     </a><?php if($admin_user){
                         echo "<h6>Administrateur</h6>";
                                     } else echo "<h6>Utilisateur</h6>";?>
@@ -91,7 +91,7 @@
                                             <label style="font-weight:bold;">Nom</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                            <?= $this->session->userdata('logged_in')['nom'] ?>
+                                            <?= $nom ?>
                                         </div>
                                     </div>
                                     <hr />
@@ -101,7 +101,7 @@
                                             <label style="font-weight:bold;">prénom</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                            <?= $this->session->userdata('logged_in')['prenom'] ?>
+                                            <?= $prenom ?>
                                         </div>
                                     </div>
                                     <hr />

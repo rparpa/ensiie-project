@@ -55,7 +55,7 @@ class Utilisateur extends CI_Controller
             if($this->utilisateur->update($this->input->post()))
             {
                 //echo "<script>alert(\"Modification réussie\")</script>";
-                redirect('utilisateur/update?id='.$this->input->post('id_user'));
+                redirect('utilisateur/profil');
             } else
             {
                 //echo "<script>alert(\"modification failed\")</script>";
@@ -68,7 +68,9 @@ class Utilisateur extends CI_Controller
             if($this->session->userdata('logged_in')['admin']) {
                 if($user[0]['admin'])
                 {
-                    redirect('Utilisateur/AllUsers');
+                    $this->load->view('elements/header', $this->data);
+                    $this->load->view('update_view_user', ['user' => $user]);
+                    $this->load->view('elements/footer');
                 } else {
                     $this->load->view('elements/header', $this->data);
                     $this->load->view('update_view', ['user' => $user]);
