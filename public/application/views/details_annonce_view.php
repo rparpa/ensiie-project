@@ -15,10 +15,12 @@
                 </div>
                 <div class="col-md ">
                 <?php
-                	echo '<div class="float-right btn-group">';
-                    ?>
-                        <button type="button" id="Signaler" name="Signaler" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/signaler_annonce/'.$details_annonce[0]['id_annonce']); ?>');">Signaler</button>
-                    <?php
+                    echo '<div class="float-right btn-group">';
+                    if($details_annonce[0]['id_user']!=$id_user){
+                        ?>
+                            <button type="button" id="Signaler" name="Signaler" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/signaler_annonce/'.$details_annonce[0]['id_annonce']); ?>');">Signaler</button>
+                        <?php
+                    }
                     echo '</div>';
                     if(!isset($image[0]['url']))
                         echo '<a><img class="rounded float-right img-fluid" src="'.base_url().'/assets/images/default.jpg" alt=""></a>';
