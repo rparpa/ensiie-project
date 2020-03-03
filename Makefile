@@ -34,6 +34,9 @@ mountebank:
 watch :
 	docker-compose run nodejs npm run watch
 
+test :
+	docker-compose run nodejs npm run unit.test
+
 #Connects to the databatase
 db.connect:
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER'

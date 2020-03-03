@@ -56,17 +56,9 @@ module.exports = class  {
         });
     }
 
-    //ValiderOffreEntreprise : prend id de l'offre. Renvoie si c'est bon ou non
-    validerOffreEntreprise(idOffre){
-        return this.httpClient.fetch('/validerOffreEntreprise', {}).then(rows => {
-            return rows.map(row => {
-                alert(row.message)
-            });
-        });
-    }
 
-    refuserOffreEntreprise(idOffre){
-        return this.httpClient.fetch('/refuserOffreEntreprise', {}).then(rows => {
+    supprimerOffreEntreprise(idOffre){
+        return this.httpClient.fetch('/supprimerOffreEntreprise', {}).then(rows => {
             return rows.map(row => {
                 alert(row.message)
             });
