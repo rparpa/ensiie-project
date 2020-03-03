@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+	$("#voiture").change(function() {
+		searchCar();
+	  });
+
 	$('#form_connexion').submit(function() {
 		var email = $("#email").val();
 		var password = $("#password").val();
@@ -55,9 +59,28 @@ $(document).ready(function() {
 		var immat = $("#immat").val();
 		var date_immat = $("#date_immat").val();
 		var prix = $("#prix").val();
-		if(nom_modele=='' || marque='' || lien_img='' || puissance_fisc='' || puissance_ch='' || nom_finition='' || immat='' || date_immat='' || prix='') {
+		if(nom_modele=='' || marque=='' || lien_img=='' || puissance_fisc=='' || puissance_ch=='' || nom_finition=='' || immat=='' || date_immat=='' || prix=='') {
 			alert("Merci de remplir tous les champs.");
 			return false;
 		}
 	});
 });
+
+function searchCar() {
+	$.ajax({
+		url:"index.php?api=search",
+		type:"POST",
+		data: {
+			string: $("#voiture").val()
+		},
+		dataType:"json",
+		success: function(data){
+			if(data["status"]!="-1") {
+				$("#sendRq").html(JSON.stringify(data));
+				console.log(data["marque"][0]);
+			} else {
+				alert("ERREUR");
+			}
+		}
+	  });
+}

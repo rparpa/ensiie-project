@@ -40,14 +40,14 @@ class UserRepository
         return $users;
     }
 
-    public function identification($post) {
+    public function identification($email, $password) {
 		$statement = $this->connection->prepare("SELECT * FROM \"user\" where email=:email");
-		$statement->bindParam(":email",$post["email"]);
+		$statement->bindParam(":email",$email);
 
 		try {
 			$statement->execute();
 			$result=$statement->fetch(PDO::FETCH_ASSOC);
-			if(password_verify($post["password"],$result["password"])) {
+			if(password_verify($password,$result["password"])) {
 				$_SESSION["id_user"] = $result["id"];
                 $_SESSION["name_firstname"] = $result["lastname"] . " " . $result["firstname"];
                 $_SESSION["role"] = $result["role"];
@@ -60,14 +60,14 @@ class UserRepository
 		}
     }
     
-    public function enregistrement($post) {
+    public function enregistrement($name,$firstname,$email,$birthday,$password) {
 		$statement = $this->connection->prepare("INSERT INTO \"user\" (firstname,lastname,email,password,birthday,role) values(:firstname,:lastname,:email,:password,:birthday,:role)");	
 
-		$statement->bindParam(":firstname",$post["firstname"]);
-		$statement->bindParam(":lastname",$post["name"]);
-		$statement->bindParam(":email",$post["email"]);
-		$statement->bindParam(":birthday",$post["birthday"]);
-		$mdp = password_hash($post["password"],PASSWORD_DEFAULT);
+		$statement->bindParam(":firstname",$firstname);
+		$statement->bindParam(":lastname",$name);
+		$statement->bindParam(":email",$email);
+		$statement->bindParam(":birthday",$birthday);
+		$mdp = password_hash($password,PASSWORD_DEFAULT);
         $statement->bindParam(":password",$mdp);
         $role = 0;
         $statement->bindParam(":role", $role);

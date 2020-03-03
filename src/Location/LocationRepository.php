@@ -26,10 +26,8 @@ class LocationRepository
         $this->carRepository = $carRepository;
     }
 
-    public function create($post)
+    public function create($date_debut,$date_fin,$id_voiture,$km_max)
     {
-        $date_debut = new \DateTimeImmutable($post["date_debut"]);
-        $date_fin = new \DateTimeImmutable($post["date_fin"]);
         $date_diff = $date_debut->diff($date_fin)->format("%d");
 
         if ($date_diff < 0) {
@@ -38,6 +36,7 @@ class LocationRepository
         if ($date_diff > 30) {
             throw new OutOfRangeException("La location dure plus de 30 jours");
         }
+
         if (!$this->isAvailable($post["id_voiture"], $date_debut, $date_fin))
         {
             throw new Exception("La voiture n'est pas disponible");
@@ -45,13 +44,13 @@ class LocationRepository
 
         $statement = $this->connection->prepare("INSERT INTO \"location\" (id_voiture,id_user,date_debut,date_fin,prix,km_max) values(:id_voiture,:id_user,:date_debut,:date_fin,:prix,:km_max)");
 
-        $statement->bindParam(":id_voiture", $post["id_voiture"]);
+        $statement->bindParam(":id_voiture", $id_voiture);
         $statement->bindParam(":id_user", $_SESSION["id_user"]);
-        $statement->bindParam(":date_debut", $post["date_debut"]);
-        $statement->bindParam(":date_fin", $post["date_fin"]);
-        $statement->bindParam(":km_max", $post["km_max"]);
+        $statement->bindParam(":date_debut", $date_debut);
+        $statement->bindParam(":date_fin", $date_fin);
+        $statement->bindParam(":km_max", $km_max);
 
-        $car = $this->carRepository->fetch($post["id_voiture"]);
+        $car = $this->carRepository->fetch($id_voiture);
 
         $prix = $car->getPrix() * $date_diff;
         $statement->bindParam(":prix", $prix);
@@ -170,6 +169,18 @@ class LocationRepository
     {
         $statement = $this->connection->prepare("DELETE FROM \"location\" WHERE id_location = :id_location");
         $statement->bindParam(":id_location", $post["id_location"]);
+        $statement->execute();
+    }
+
+    public function update($id_location,$modifications) {
+        foreach($modifications as $titre => $modif) {
+            $modifsPrepared = $modifsPrepared . $titre . " = :" . $titre . " ";
+        }
+        $statement = $this->connection->prepare("UPDATE FROM \"location\" SET " . $modifsPrepared . "WHERE id_location = :id_location");
+        foreach($modifications as $titre => $modif) {
+            $statement->bindParam(":" . $titre, $modif);
+        }
+        
         $statement->execute();
     }
 
