@@ -101,18 +101,36 @@
 
                 //Si l'utilisation créé une nouvelle annonce
                     if(!$modif){
-                        echo '<div class="col-md-2 mb-3">';
+                        echo '<div class="col-md-">';
                             echo form_label('Etat de l\'objet :&nbsp;', 'etat','class="control-label"');
                             echo form_dropdown('etat',$etats,5,'class="form-control"');
                         echo '</div>';
                     
                     //Sinon
                     }else{
-                        echo '<div class="col-md-2 mb-3">';
+                        echo '<div class="col-md">';
                             echo form_label('Etat de l\'objet :&nbsp;', 'etat','class="control-label"');
                             echo form_dropdown('etat',$etats,$annonce_modif['id_etat'],'class="form-control"');
                         echo '</div>';
                     }
+
+                    //Si l'utilisation créé une nouvelle annonce
+                    if(!$modif){
+                        echo '<div class="col-md categorie">';  
+                        echo form_label('Categorie de l\'objet :&nbsp;', 'objet','class="control-label"');
+                        echo form_dropdown('test',$categories,5,'class="form-control list_categorie"');
+                        echo form_input('categorie', '', array('type'=>'text','data-role'=>'tagsinput fqsfqs' ,'value'=>'jQuery,Script,Net', 'class'=>'input_categorie form-control'));               
+                        echo '</div>';
+                    
+                    //Sinon
+                    /*}else{
+                        echo '<div class="col-md categorie">';  
+                        echo form_label('Categorie de l\'objet :&nbsp;', 'objet','class="control-label"');
+                        echo form_dropdown('test',$categories,5,'class="form-control list_categorie"');
+                        echo form_input('categorie','', array('type'=>'text','data-role'=>'tagsinput fqsfqs' ,'value'=>'jQuery,Script,Net', 'class'=>'input_categorie form-control'));               
+                        echo '</div>';*/
+                    }                    
+
                 ?>
                 <!-- Fermeture de la balise row correspondant à la ligne prix-->
                 </div>   
@@ -137,6 +155,7 @@
                         echo '</div>';
                     echo '</br>';
                     }
+
                 ?>
                 <!-- Fermeture de la balise row correspondant à l'upload de l'image-->
                 </div>           
@@ -161,6 +180,19 @@
 
 <script>
 
+$(document).ready(function(){
+      $(".categorie").change(function(){
+        var elt = $(".categorie .input_categorie");
+        elt.tagsinput({
+            itemValue: 'id',
+            itemText: 'text'
+        });
+        var index_categorie = parseInt($(".categorie .list_categorie").val())
+        var cat = $(".categorie .list_categorie")[0][index_categorie]['label']
+        elt.tagsinput('add',{ id: index_categorie, text: cat });
+    });
+});
+
     var myDropzone = new Dropzone("#dropzone", { 
         url: "<?php echo (base_url('index.php/Annonce/fileUpload'));?>"
     });
@@ -171,7 +203,7 @@
       maxFilesize: 10 // MB
     };
 
-/*      window.setTimeout(function() {
+    /*window.setTimeout(function() {
         $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
           $(this).remove();
         });
@@ -180,6 +212,11 @@
       $(".alert").on("close.bs.alert", function () {
       $alertMsg.hide();
       return false;
+
+
+   
+      
 });
+
 
 </script>

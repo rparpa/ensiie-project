@@ -64,21 +64,28 @@ class Annonce extends CI_Controller {
 		$this->form_validation->set_rules('titre', 'Titre', 'required');
 		$this->form_validation->set_rules('description', 'Description', 'required');
 		$this->form_validation->set_rules('prix', 'Prix', 'required|numeric');
+		
 
 		$etats=array_column($this->etat->getAllEtat(), 'etat');
 		$this->data+=array("etats"=>$etats);
+		$categories=array_column($this->categorie->getAllCategorie(),'categorie');
+		//$categories=array_combine(range(1, count($categories)), array_values($categories));
+
+		$this->data+=array("categories"=>$categories);
 
 		if($this->input->post('titre')){
 			if ($this->form_validation->run() == TRUE) {
 
-				//TODO : mettre l'id de l'utilisation
+				$cat_annonce = explode(",",$this->input->post('categorie'));
+
 				$this->annonce->insertAnnonce(
 								$this->data['id_user'],
 								$this->input->post('titre'),
 								$this->input->post('description'),
 								$this->input->post('prix'),
-								$this->input->post('etat'));
-
+								$this->input->post('etat'),
+								$cat_annonce);
+				
 				redirect('Annonce/liste_annonces');
 				$this->session->set_flashdata('message', 'Annonce ajoutée');
 	
@@ -114,7 +121,14 @@ class Annonce extends CI_Controller {
 		$etats=array_combine(range(1, count($etats)), array_values($etats));
 		$this->data+=array("etats"=>$etats);
 
+		$categories=array_column($this->categorie->getAllCategorie(),'categorie');
+		$categories=array_combine(range(1, count($categories)), array_values($categories));
+
+		$this->data+=array("categories"=>$categories);
+
 		if($this->form_validation->run()){
+
+			$cat_annonce = explode(",",$this->input->post('categorie'));
 			
 			$this->annonce->updateAnnonce($id_annonce,
 				$this->data['id_user'],
@@ -128,7 +142,9 @@ class Annonce extends CI_Controller {
 		}
 		else{
 		 $annonce=$this->annonce->getAnnonce($id_annonce);
+		 $mes_categories = $this->categorieAnnonce->getAllCategorieAnnonce($id_annonce);
 		 $this->data+=array("annonce_modif"=>$annonce[0]);
+		 $this->data+=array("categorie_modif"=>$mes_categories);
 		 $this->load->view("elements/header",$this->data);
 		 $this->load->view('gestion_annonce_view',$this->data);
 		 $this->load->view("elements/footer");
@@ -162,8 +178,19 @@ class Annonce extends CI_Controller {
 	 */
 	public function supprimer_annonce($id_annonce){
 		$this->annonce->deleteAnnonce($id_annonce);
+		redirect('Annonce/mes_annonces');
+	}
+
+	/**
+	 * Fonction permettant de supprimer une annonce
+	 * 
+	 * @param $id_annonce Id de l'annonce à supprimer
+	 */
+	public function supprimer_annonceSignale($id_annonce){
+		$this->annonce->deleteAnnonce($id_annonce);
 		redirect('Annonce/getAnnoncesSignalees');
 	}
+
 	/**
 	 * Fonction permettant d'afficher le détail d'une annonce
 	 * 
