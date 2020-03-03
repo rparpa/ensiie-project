@@ -8,5 +8,4 @@ before_install:
   - npm install
 
 script: 
-  - npm run unit.test.coverage
-  - npm run unit.test.mutation
+  - npm run unit.test
