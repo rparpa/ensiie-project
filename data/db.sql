@@ -49,7 +49,7 @@ CREATE TABLE Annonce (
     prix DECIMAL,
     vendu BOOLEAN NOT NULL DEFAULT false,
     nb_signal INTEGER DEFAULT 0,
-    date_publication TIMESTAMP not null DEFAULT CURRENT_DATE,
+    date_publication TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk1_user_annonce FOREIGN KEY(id_user) REFERENCES Utilisateur(id_user) ON DELETE CASCADE,
     CONSTRAINT fk2_etat_annonce FOREIGN KEY(id_etat) REFERENCES Etat(id_etat)
 );
