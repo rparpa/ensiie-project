@@ -52,9 +52,11 @@ class Utilisateur_model extends CI_Model
         return $this->db->get_where('utilisateur',array('id_user' => $id))->result_array();
     }
 
-    public function login($data)
+    public function login($data,$passvalid)
     {
-        return !empty($this->db->get_where('utilisateur',array('email'=>$data['mail'],'password'=>$data['password']))->result_array());
+        if($passvalid) {
+            return !empty($this->db->get_where('utilisateur', array('email' => $data['mail']))->result_array());
+        } else return false;
     }
 
     public function userByEmail($email) {
