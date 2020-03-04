@@ -8,8 +8,6 @@ WORKDIR /app
 #RUN npm install --production --silent && mv node_modules ../
 #RUN npm install
 
-#COPY . ./
-
 EXPOSE 3000
 
 #RUN npm install -g nodemon

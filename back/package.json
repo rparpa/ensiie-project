@@ -17,6 +17,7 @@
     "morgan": "~1.9.1",
     "newman": "^4.5.7",
     "nodemon": "^2.0.2",
+    "pg": "^7.18.2",
     "apicache": "1.5.3"
   },
   "devDependencies": {
