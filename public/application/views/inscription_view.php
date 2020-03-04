@@ -51,7 +51,9 @@ if (isset($this->session->userdata['logged_in'])) {
         echo"<br/>";
         echo form_label('Telephone: ');
         echo"<br/>";
-        echo form_input('telephone');
+        echo form_input(['name'          => 'telephone',
+        'id'            => 'telephone',
+        'maxlength'     => '10']);
         echo"<br/>";
         echo"<br/>";
         echo form_label('promo: ');

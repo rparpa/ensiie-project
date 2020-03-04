@@ -74,10 +74,10 @@ CREATE TABLE Image (
     CONSTRAINT fk_annonce_image FOREIGN KEY (id_annonce) REFERENCES Annonce(id_annonce) ON DELETE CASCADE
 );
 
-INSERT INTO Utilisateur (nom, prenom, pseudo, password, email, telephone, promo, droit_publication, nb_signal_user, admin) VALUES ('Admin', 'Mehdi', 'Admin_pseudo', '123456', 'admin@test.fr', '0600000000', '2A', 'true', 0, 'true');
-INSERT INTO Utilisateur (nom, prenom, pseudo, password, email, telephone, promo, droit_publication, nb_signal_user, admin) VALUES ('Mehdi', 'Abd', 'DrMehdi', '123456', 'mehdi@test.fr', '0600000000', '2A', 'true', 0, 'false');
-INSERT INTO Utilisateur (nom, prenom, pseudo, password, email, telephone, promo, droit_publication, nb_signal_user, admin) VALUES ('Frescinel', 'Bart', 'fbart', '123456', 'fbart@test.fr', '0600000000', '2A', 'true', 0, 'false');
-INSERT INTO Utilisateur (nom, prenom, pseudo, password, email, telephone, promo, droit_publication, nb_signal_user, admin) VALUES ('Redwan', 'b6', 'redwan', '123456', 'redwan@test.fr', '0600000000', '2A', 'true', 0, 'false');
+INSERT INTO Utilisateur (nom, prenom, pseudo, password, email, telephone, promo, droit_publication, nb_signal_user, admin) VALUES ('Admin', 'Mehdi', 'Admin_pseudo', 'root', 'admin@test.fr', '0600000000', '2A', 'true', 0, 'true');
+INSERT INTO Utilisateur (nom, prenom, pseudo, password, email, telephone, promo, droit_publication, nb_signal_user, admin) VALUES ('Mehdi', 'Abd', 'DrMehdi', 'root', 'mehdi@test.fr', '0600000000', '2A', 'true', 0, 'false');
+INSERT INTO Utilisateur (nom, prenom, pseudo, password, email, telephone, promo, droit_publication, nb_signal_user, admin) VALUES ('Frescinel', 'Bart', 'fbart', 'root', 'fbart@test.fr', '0600000000', '2A', 'true', 0, 'false');
+INSERT INTO Utilisateur (nom, prenom, pseudo, password, email, telephone, promo, droit_publication, nb_signal_user, admin) VALUES ('Redwan', 'b6', 'redwan', 'root', 'redwan@test.fr', '0600000000', '2A', 'true', 0, 'false');
 
 INSERT INTO Etat(etat) VALUES ('Occasion');
 INSERT INTO Etat(etat) VALUES ('Etat correct');
