@@ -1,26 +1,41 @@
 <?php
 
+use Sandwich\Sandwich;
+use Sandwich\SandwichRepository;
+use Ingredient\IngredientRepository;
+use Ingredient\IngredientService;
+use Order\Order;
+use Order\OrderRepository;
+use Order\OrderService;
+
+
 require_once '../src/Bootstrap.php';
 
+
+$my_connection = \Db\Connection::get();
 $userRepository = new \User\UserRepository(\Db\Connection::get());
 $userService = new \User\UserService($userRepository);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-    $newUser = new \User\User();
-    $newUser->setFirstname("Nicolas");//ballec
-    $newUser->setLastname("Charlon");//ballec
-    $newUser->setBirthday(new DateTimeImmutable("01/01/1970"));//ballec
-    $newUser->setPseudo($_POST["pseudo"]);
-    $newUser->setMail("rayan.erisium@gmail.com");//ballec
-    $newUser->setPassword($_POST["password"]);
+$ingredientService = new IngredientService(new IngredientRepository($my_connection));
+$sandwichRepository = new SandwichRepository($my_connection);
 
-    $userService->createUser($newUser);
-}
+$orderService = new OrderService(
+    new OrderRepository($my_connection),
+    new SandwichRepository($my_connection)
+);
+
+
+$sandwichList = [];/*
+if(isset($_SESSION['sandwichList'])){
+    //$sandwichList = 0;
+}*/
+
+$availableIngredients = $ingredientService->getAvailableIngredients();
 
 $users = $userService->getAllUser();
 ?>
 
+<?php require_once '../src/User/UserRepository.php'; ?>
 <!DOCTYPE HTML>
 
 <html>
@@ -49,9 +64,10 @@ $users = $userService->getAllUser();
 						<nav>
 							<ul>
 								<li><a href="#connexion">Connexion</a></li>
-								<li><a href="#commander">Commander</a></li>
+								<?php if(isset($_POST['pseudo']))  echo
+								'<li><a href="#commander">Commander</a></li>
 								<li><a href="#contact">Contact</a></li>
-								<li><a href="#elements">Elements</a></li>
+								<li><a href="#elements">Elements</a></li>'?>
 							</ul>
 						</nav>
 					</header>
@@ -76,38 +92,56 @@ $users = $userService->getAllUser();
 										</div>
 										<ul class="actions">
 											<li><input type="submit" value="Connexion" class="primary" /></li>
+
 										</ul>
 										<ul class="actions">
 											<a class="primary" href="#CreerCompte">Créer un compte</a>
 										</ul>
+										
 									</form>
 								</section></article>
 
 							<article id="CreerCompte">
 							<section>
 									<h3 class="major">Création de compte</h3>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field thrid">
-												<label for="newpseudo">Pseudo</label>
-												<input type="text" name="newpseudo" id="newpseudo" value="" placeholder="Snitchy" />
+									<? 
+									$userRepository = new \User\UserRepository(\Db\Connection::get());
+									$userService = new \User\UserService($userRepository);
+									$newUser = new \User\User();
+									$newUser->setFirstname("Noel");
+									$newUser->setLastname("Flantier");
+									$newUser->setBirthday(new DateTimeImmutable("01/01/1965"));
+									$newUser->setMail("bla@bla.fr");
+									$pseudo="";
+									$password="";
+									 echo
+									"<form name=\"CreateAccount\" method=\"post\" action=\"#\">
+										<div class=\"fields\">
+											<div class=\"field thrid\">
+												<label for=\"pseudo\">Pseudo</label>
+												<input type=\"text\" name=\"pseudo\" id=\"pseudo\" value=\"\" placeholder=\"Snitchy\" />
 											</div>
-											<div class="field half">
-												<label for="newmdp">Mot de passe</label>
-												<input type="password" name="newmdp" id="newmdp" value="" placeholder="**********" autocomplete="off" />
+											<div class=\"field half\">
+												<label for=\"password\">Mot de passe</label>
+												<input type=\"password\" name=\"password\" id=\"password\" value=\"\" placeholder=\"**********\" autocomplete=\"off\" />
 											</div>
-											<div class="field half">
-												<label for="newmdp2">Confirmation mot de passe</label>
-												<input type="password" name="newmdp2" id="newmdp2" value="" placeholder="**********" autocomplete="off" />
+											<div class=\"field half\">
+												<label for=\"newmdp2\">Confirmation mot de passe</label>
+												<input type=\"password\" name=\"newmdp2\" id=\"newmdp2\" value=\"\" placeholder=\"**********\" autocomplete=\"off\" />
 											</div>
 
 										</div>
 										<div>
-											<ul class="actions">
-											<li><input type="submit" value="Créer un compte" class="primary" /></li>
+											<ul class=\"actions\">
+											<li><button name =\"btnSignUp\" id=\"btnSignUp\" type=\"submit\" value=\"Créer un compte\" class=\"primary\">Créer un compte</button></li>
 											</ul>
 										</div>
-									</form>
+									</form>";
+									echo ("<script>console.log('PHP: " . $pseudo . "');</script>");
+									if(isset($_POST['pseudo'])){$newUser->setPseudo($_POST["pseudo"]);
+									$newUser->setPassword($_POST["password"]);
+									$userService->createUser($newUser);}
+									?>
 								</section></article>
 
 						<!-- commander -->
@@ -117,49 +151,45 @@ $users = $userService->getAllUser();
 								<section>
 									<h3 class="major">Pimp my sandwich</h3>
 									<div class="table-wrapper">
-										<table class="alt">
+										<table class="alt customSandwich">
 											<thead>
 												<tr>
 													<th>Ingrédient</th>
 													<th>Description</th>
-													<th>Quantité</th>
+													<th>Ajouter</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td><img src="images/Salade.jpg" width="100%" alt="" style="vertical-align: middle"/></td>
-													<td>													<div class="input-group" style="width:50%">
-									               	<span class="input-group-btn">
-									                  	<button class="btn btn-white btn-minuse" type="button">-</button>
-									               	</span>
-									               	<input type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
-									               	<span class="input-group-btn">
-									                  	<button class="btn btn-red btn-pluss" type="button">+</button>
-									               	</span>
-												</div><!-- /input-group --></td>
-													<td>2 tranches</td>
-												</tr>
-												<tr>
-													<td><img src="images/bacon.jpeg" width="100%" alt="" style="vertical-align: middle"/></td>
-													<td>Des tranches de bacons fraichement achetée chez le boucher (c'est faux, c'est sans doute du Carrefour discount)</td>
-													<td>
-													<div class="input-group" style="width:50%">
-									               	<span class="input-group-btn">
-									                  	<button class="btn btn-white btn-minuse" type="button">-</button>
-									               	</span>
-									               	<input  type="text" class="form-control no-padding add-color text-center height-25" maxlength="3" value="0">
-									               	<span class="input-group-btn">
-									                  	<button class="btn btn-red btn-pluss" type="button">+</button>
-									               	</span>
-												</div><!-- /input-group -->
-													</td>
-												</tr>
+                                                <form action="#recap" id="sandwichForm" method="POST">
+
+                                                    <?
+
+                                                    foreach ($availableIngredients as $ingredient) {
+
+                                                        echo "<tr class=\"item\">
+                                                                    <td>
+                                                                        <img src=\"images/Salade.jpg\" width=\"50%\" alt=\"\" style=\"vertical-align: middle\"/>
+                                                                    </td>
+                                                                    
+                                                                    <td class=\"ingredLabel\">" . $ingredient->getLabel() . "</td>
+                                                                    
+                                                                    <td>
+                                                                       <input type=\"checkbox\" id=\"" . $ingredient->getLabel() . "\" name=\"" . $ingredient->getLabel() . "\">
+                                                                       <label for=\"" . $ingredient->getLabel() . "\">
+                                                                    </td>
+                                                              </tr>";
+                                                    }
+                                                    ?>
+                                                </form>
 											</tbody>
 										</table>
+                                        <div class="postform"></div>
+                                        <button class="btn btn-white addSandwich" type="submit" form="sandwichForm">Valider</button>
 									</div>
 									<span class="image main"><img src="assets/gif/3.gif" alt="" /></span>
 								</section>
 								</article>
+
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact</h2>
@@ -194,8 +224,41 @@ $users = $userService->getAllUser();
 
                         <!-- Recap -->
                         <article id="recap">
+
+                            <?
+                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+                                $newSandwich = new Sandwich();
+                                $newSandwich->setLabel('Custom');
+
+                                $filterIngredients = [];
+                                foreach ($availableIngredients as $ingredient) {
+                                    if(isset($_POST[$ingredient->getLabel()])) {
+                                        $filterIngredients[] = $ingredient;
+                                    }
+                                }
+
+                                $newSandwich->setIngredients($filterIngredients);
+                                $sandwichRepository->createSandwich($newSandwich);
+
+                                $sandwichList[] = $newSandwich;
+
+
+                                $newOrder = new Order();
+                                $newOrder
+                                    ->setApproval(false)
+                                    ->setDate(new DateTimeImmutable(date('d-m-Y')))
+                                    ->setSandwichs($sandwichList);
+
+                                $orderService->createOrder($newOrder);
+                                //$_SESSION['sandwichList'] = $sandwichList;
+                                echo $newOrder->getId();
+                            }
+                            ?>
+
+
+
                             <h2 class="major">Validation</h2>
-                            <form method="post" action="#">
                                 <div class="table-wrapper">
                                     <table>
                                         <thead>
@@ -207,54 +270,59 @@ $users = $userService->getAllUser();
                                         </tr>
                                         </thead>
                                         <tbody id="tabvalidation">
-                                        <tr>
-                                            <td>
-                                                <div class="sandwich">Le Kozak
-                                                    <div id="tooltip">- Janbon<br>- Fromage<br>- Cornichon</div>
-                                                </div>
-                                            </td>
-                                            <td>Comté</td>
-                                            <td>3.52 €</td>
-                                            <td class="min"><i class="fas fa-times"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="sandwich">Le Traitre
-                                                    <div id="tooltip">- Thon<br>- Mayonnaise<br>- Olives</div>
-                                                </div>
-                                            </td>
-                                            <td>Pas d'extra</td>
-                                            <td>4.83 €</td>
-                                            <td class="min"><i class="fas fa-times"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Le Sauerkraut</td>
-                                            <td>Pas d'extra</td>
-                                            <td>3.12 €</td>
-                                            <td class="min"><i class="fas fa-times"></i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Le Sarrasin</td>
-                                            <td>Mozzarella di Bufala</td>
-                                            <td>2.42 €</td>
-                                            <td class="min"><i class="fas fa-times"></i></td>
-                                        </tr>
+                                        <?
+                                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                            foreach ($sandwichList as $sandwich) {
+                                                $price = 0;
+                                                $description = "";
+                                                $ingredients = $sandwich->getIngredients();
+                                                if ($ingredients != null) {
+                                                    foreach ($ingredients as $ingredient) {
+                                                        $price += $ingredient->getPrice();
+                                                        $description .= $ingredient->getLabel() . "<br>";
+                                                    }
+                                                }
+
+                                                echo "<tr>
+                                                        <td>
+                                                            <div class=\"sandwich\">" . $sandwich->getLabel() . "
+                                                                <div id=\"tooltip\">" . $description . "</div>
+                                                            </div>
+                                                        </td>
+                                                        <td>Pas d'extra</td>
+                                                        <td>" . $price . " €</td>
+                                                        <td class=\"min\"><i class=\"fas fa-times\"></i></td>
+                                                    </tr>
+                                                    ";
+
+                                            }
+                                        }
+                                        ?>
                                         </tbody>
                                         <tfoot>
                                         <tr>
                                             <td colspan="2">
                                                 <a id="add" href="#commander" class="fas fa-plus"></a>
                                             </td>
-                                            <td>13,89 €</td>
+                                            <td><? if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                                    echo $orderService->getTotalPrice($newOrder);
+                                                } ?> €</td>
                                         </tr>
                                         </tfoot>
                                     </table>
                                 </div>
-                                <div class="validation">
-                                        <a href="#" class="button primary">Payer</a>
 
-                                </div>
-                            </form>
+                                    <form action="#pay" id="sandwichListForm" method="POST">
+                                        <?
+                                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                            $id = $newOrder->getId();
+                                            $id = 1; //Wait until debug
+                                            echo "<input type=\"text\" name=\"id\" style=\"display: none;\" value=\"" . $id . "\" \">";
+                                        }
+                                        ?>
+                                    </form>
+                                    <button type="submit" class="button primary validation" form="sandwichListForm">Payer</button>
+
                             <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
                         </article>
 
@@ -271,11 +339,14 @@ $users = $userService->getAllUser();
                                     <div class="f-modal-fix"></div>
                                 </div>
                             </div>
-
-                            <p class="align-center"> Merci pour votre commande<br>Votre commande vous attendra au foyer.</p>
-
                             <?
+                            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
+                                $newOrder = $orderService->getOrderById($_POST['id']);
 
+                               echo "
+                                <p class=\"align-center\"> Merci pour votre commande #" . $newOrder->getId() . "<br>Etat de la commande : " . $newOrder->getApproval() . "<br>" . $newOrder->getDate()->format("Y-m-d") . "</p>
+                                ";
+                            }
                             $fi = new FilesystemIterator('assets/gif', FilesystemIterator::SKIP_DOTS);
                             $r = rand(2, iterator_count($fi)+1);
                             $file = scandir('assets/gif');
@@ -525,13 +596,15 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 										</ul>
 									</form>
 								</section>
-
 							</article>
 
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
+					<?php if(isset($_POST['pseudo'])) echo 'Connecté en tant que : ' . $_POST['pseudo']; ?>
+					<? foreach ($users as $user)
+					echo $user->getPseudo()  ?>
 						<p class="copyright">&copy; SandwicherIIE <?php echo date("Y"); ?></p>
 					</footer>
 
@@ -546,6 +619,21 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<SCRIPT TYPE="text/javascript">
+
+
+            verify = new verifynotify();
+            verify.field1 = document.CreateAccount.newmdp;
+            verify.field2 = document.CreateAccount.newmdp2;
+            verify.result_id = "password_result";
+            verify.match_html = "Passwords match.";
+            verify.nomatch_html = "Please make sure your passwords match.";
+
+            // Update the result message
+            verify.check();
+
+            //
+            </SCRIPT>
 
 	</body>
 </html>
