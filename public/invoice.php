@@ -31,8 +31,11 @@ $availableIngredients = $ingredientService->getAvailableIngredients();
 
 if(isset($_SESSION['order_id']) && $_SESSION['order_id'] != null){
     $order = $orderService->getOrderById($_SESSION['order_id']);
-    if(count($order->getSandwichs()) < 1){
-        $orderService->deleteOrder($order);
+    if($order == null || count($order->getSandwichs()) < 1){
+
+        if($order != null)
+            $orderService->deleteOrder($order);
+
         unset($_SESSION['order_id']);
     }
 }
