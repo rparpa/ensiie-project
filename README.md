@@ -31,6 +31,8 @@ Application web réalisé en php + framework bootstrap.
 ## Backend
 Le projet est composé de 5 entités, 5 repositories, et 4 services.
 
+![Create user in db](public/assets/documentation_images/Diagramme_de_classe_Sandwicheriie.png)
+
 Les entités sont soumises aux contraintes du schéma de classe ci-dessous :
 * La classe ingrédient est portée par la classe sandwich.
 * La classe sandwich est portée par la classe commande (order).
@@ -64,9 +66,6 @@ Ce pattern nous permet de structurer à la fois la requête de l’utilisateur m
 * Repository : un ensemble de classes se charge de persister les données en base. Cette couche s’assure uniquement du bon fonctionnement des appels en base mais pas du contrôle des données utilisateurs. Cette couche nous permet de charger en cascade des objets. Chaque objet du type A  portant une relation avec un objet du type B peut alors charger l’objet couplé B avec le repository de l’objet B dans le repository de l’objet A. (e.g.: chargement de l’objet commande)
 
 * Pattern builder pour instancier nos objets en un seul appel pour faciliter la lecture de code.
-
-## Diagramme de classe
-![Create user in db](public/assets/documentation_images/Diagramme_de_classe_Sandwicheriie.png)
 
 ## Methode pour lancer le projet
 This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
