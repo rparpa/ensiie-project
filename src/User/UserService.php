@@ -14,6 +14,12 @@ class UserService
      */
     private UserRepository $userRepository;
 
+    private ?array $errors = [];
+
+    public function getErrors() {
+        return $this->errors;
+    }
+
     /**
      * UserService constructor.
      * @param UserRepository $userRepository
@@ -29,8 +35,20 @@ class UserService
      */
     public function createUser(User $newUser)
     {
-        $result = $this->userRepository->createUser($newUser);
-
+        $this->resetErrors();
+        $result = false;
+        if ($newUser != null)
+        {
+            $result = $this->userRepository->createUser($newUser);
+            if ($result == false)
+            {
+                $this->errors['user_creation'] = 'User cannot be created.';
+            }
+        }
+        else
+        {
+            $this->errors['user_null'] = 'Sent user is null.';
+        }
         return $result;
     }
 
@@ -40,9 +58,8 @@ class UserService
      */
     public function getAllUser()
     {
-        $result = $this->userRepository->fetchAll();
-
-        return $result;
+        $this->resetErrors();
+        return $this->userRepository->fetchAll();
     }
 
     /**
@@ -51,7 +68,10 @@ class UserService
      */
     public function deleteUser(User $userToDelete)
     {
+        $this->resetErrors();
         $result = $this->userRepository->deleteUser($userToDelete);
+        if ($result == false)
+            $this->errors['user_delete'] = 'User cannot be deleted.';
         return $result;
     }
 
@@ -62,7 +82,10 @@ class UserService
      */
     public function userLoginCheck(string $pseudo, string $password)
     {
+        $this->resetErrors();
         $result = $this->userRepository->checkLogin($pseudo, $password);
+        if ($result == false)
+            $this->errors['user_login'] = 'Wrong login and password combination.';
         return $result;
     }
 
@@ -73,7 +96,11 @@ class UserService
      */
     public function rememberUser(int $id, string $pseudo)
     {
-        return $this->userRepository->rememberUser($id, $pseudo);
+        $this->resetErrors();
+        $result = $this->userRepository->rememberUser($id, $pseudo);
+        if ($result == false)
+            $this->errors['user_login'] = 'A user is already connected.';
+        return $result;
     }
 
     /**
@@ -81,6 +108,7 @@ class UserService
      */
     public function isLogged()
     {
+        $this->resetErrors();
         return $this->userRepository->isLogged();
     }
 
@@ -88,14 +116,14 @@ class UserService
      * @param string $pseudo
      * @param string $password
      * @return User
-     * @throws Exception
      */
     public function getUser(string $pseudo, string $password)
     {
+        $this->resetErrors();
         $result = $this->userRepository->getUser($pseudo, $password);
         if($result == null)
         {
-            throw new Exception("User not found.");
+            $this->errors['user_fetch'] = 'User was not found.';
         }
         return $result;
     }
@@ -103,29 +131,38 @@ class UserService
     /**
      * @param string $userId
      * @return User
-     * @throws Exception
      */
     public function getUserById(string $userId)
     {
+        $this->resetErrors();
         $result = $this->userRepository->findOneById($userId);
         if ($result == null)
         {
-            throw new Exception("User not found.");
+            $this->errors['user_fetch'] = 'User was not found.';
         }
         return $result;
     }
 
     public function updateUser(User $userToUpdate)
     {
-        try
+        $this->resetErrors();
+        $result = false;
+        if ($this->getUserById($userToUpdate->getId()) != null)
         {
-            if ($this->getUserById($userToUpdate->getId()))
+            $result = $this->userRepository->updateUser($userToUpdate);
+            if ($result == false)
             {
-                $this->userRepository->updateUser($userToUpdate);
+                $this->errors['user_update'] = 'User cannot be updated.';
             }
-        } catch (Exception $e)
-        {
-            throw new Exception("User not found.");
         }
+        else
+        {
+            $this->errors['user_fetch'] = 'User was not found.';
+        }
+    }
+
+    private function resetErrors()
+    {
+        $this->errors = [];
     }
 }
