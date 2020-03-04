@@ -18,7 +18,7 @@ const updateCv = "UPDATE particulier SET cv = $1 WHERE id = $2 RETURNING adresse
 const updateMotdepasse = "UPDATE particulier SET motdepasse = $1 WHERE id = $2 RETURNING adressemail, cv, nom, prenom, telephone";
 const updateTelephone = "UPDATE particulier SET telephone = $1 WHERE id = $2 RETURNING adressemail, cv, nom, prenom, telephone";
 
-const deleteOne = "DELETE FROM particulier WHERE id = $1 RETURNING ";
+const deleteOne = "DELETE FROM particulier WHERE id = $1 RETURNING id, adressemail, cv, nom, prenom, telephone";
 
 module.exports = class {
     static async login({identifiant, mdp}) {

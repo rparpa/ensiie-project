@@ -1,0 +1,1587 @@
+{
+	"info": {
+		"_postman_id": "539649c7-0a52-4189-bea6-64bad7fbbfea",
+		"name": "ensiie-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Particulier",
+			"item": [
+				{
+					"name": "Create Requests",
+					"item": [
+						{
+							"name": "Create Particulier with a correct particulier",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a1d1303b-5261-4a02-8057-8ed9a851c566",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "eae24901-8927-453b-a63c-8dd222a64c42",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData.id).to.eql(2)",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"adressemail\": \"cocorico@gmail.com\",\n\t\"motdepasse\": \"project\",\n\t\"cv\": \"./cv/fkdofj.pdf\",\n\t\"nom\": \"Sisi\",\n\t\"prenom\": \"test\",\n\t\"telephone\": \"090000000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/particulier/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Requests",
+					"item": [
+						{
+							"name": "Get All Particulier",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8aa39576-131d-442d-a289-09cd0733ef91",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "b64620c8-1ed1-49ae-be1e-c268acb7cdf5",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([",
+											"    {",
+											"        \"id\": 1,",
+											"        \"adressemail\": \"test@gmail.com\",",
+											"        \"cv\": \"nomCV.pdf\",",
+											"        \"nom\": \"LENOM\",",
+											"        \"prenom\": \"LEPRENOM\",",
+											"        \"telephone\": \"0600000000\"",
+											"    },",
+											"    {",
+											"        \"id\": 2,",
+											"        \"adressemail\": \"cocorico@gmail.com\",",
+											"        \"cv\": \"./cv/fkdofj.pdf\",",
+											"        \"nom\": \"Sisi\",",
+											"        \"prenom\": \"test\",",
+											"        \"telephone\": \"090000000\"",
+											"    }",
+											"])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/particulier/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Particulier By Id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "8aa39576-131d-442d-a289-09cd0733ef91",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d43fa980-3a55-4d63-a8fd-8e842ab98336",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql(",
+											"   {",
+											"        \"adressemail\": \"cocorico@gmail.com\",",
+											"        \"cv\": \"./cv/fkdofj.pdf\",",
+											"        \"nom\": \"Sisi\",",
+											"        \"prenom\": \"test\",",
+											"        \"telephone\": \"090000000\"",
+											"    }",
+											")",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/particulier/request?id=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update requests",
+					"item": [
+						{
+							"name": "Update Particulier",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "be0ec4f7-70ff-4da6-99f8-54726a6781a0",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f6611fc5-83e0-40af-8bbe-7b553a67cc2b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql(",
+											"    {",
+											"        \"adressemail\": \"coco@gmail.com\",",
+											"        \"cv\": \"./cv/fkdofj.pdf\",",
+											"        \"nom\": \"Sisi\",",
+											"        \"prenom\": \"test\",",
+											"        \"telephone\": \"090000000\"",
+											"    }",
+											")",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"2\",\n\t\"adressemail\": \"coco@gmail.com\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/particulier/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete requests",
+					"item": [
+						{
+							"name": "Delete Particulier",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "5136c025-77a6-4693-8721-0d4b858ab641",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "955ccee5-8617-4c6e-90e7-ef1b630f596a",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql(",
+											"    {",
+											"    \"id\": 2,",
+											"    \"adressemail\": \"coco@gmail.com\",",
+											"    \"cv\": \"./cv/fkdofj.pdf\",",
+											"    \"nom\": \"Sisi\",",
+											"    \"prenom\": \"test\",",
+											"    \"telephone\": \"090000000\"",
+											"}",
+											")",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/particulier/request?id=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Entreprise",
+			"item": [
+				{
+					"name": "Create Requests",
+					"item": [
+						{
+							"name": "Create Entreprise",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a7cd1977-0f9b-4a4e-9c34-8c5b644f0b2d",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c3ac312a-ba55-4622-9b01-ebee9df6ae39",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData.id).to.eql(2)",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nom\": \"toto\",\n    \"adressemail\": \"toto@gmail.com\",\n    \"adressesiege\": \"2 rue ensiie\",\n    \"motdepasse\": \"coucou\",\n    \"logo\": \"ici\",\n    \"telephone\": \"0000000\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/entreprise/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9b19f3fa-30c9-46d7-af29-f6b3a3d0145d",
+								"type": "text/javascript",
+								"exec": [
+									"pm.globals.set('url', 'http://0.0.0.0:3000')"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get requests",
+					"item": [
+						{
+							"name": "Get All no validated",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7c9992e9-1168-49e8-a42d-d7c89043416a",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ea16496-600f-4ab9-a979-7a8a7206cc40",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([",
+											"    {",
+											"        \"id\": 1,",
+											"        \"nom\": \"ENSIIE CORPO\",",
+											"        \"adressemail\": \"ensiie@ensiie.fr\",",
+											"        \"adressesiege\": \"rue ensiie\",",
+											"        \"logo\": \"nomLogo.png\",",
+											"        \"isvalid\": false,",
+											"        \"telephone\": \"0700000000\"",
+											"    },",
+											"    {",
+											"        \"id\": 2,",
+											"        \"nom\": \"toto\",",
+											"        \"adressemail\": \"toto@gmail.com\",",
+											"        \"adressesiege\": \"2 rue ensiie\",",
+											"        \"logo\": \"ici\",",
+											"        \"isvalid\": false,",
+											"        \"telephone\": \"0000000\"",
+											"    }",
+											"])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/entreprise/request/novalidated",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request",
+										"novalidated"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All validated",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7c9992e9-1168-49e8-a42d-d7c89043416a",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ea16496-600f-4ab9-a979-7a8a7206cc40",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/entreprise/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update requests",
+					"item": [
+						{
+							"name": "Update Entreprise",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "75860cad-4ab7-462f-a03b-d907ef02eac7",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f43c0789-5afd-4aec-829d-5294b1388b7d",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql({",
+											"    \"nom\": \"toto\",",
+											"    \"adressemail\": \"toto@gmail.com\",",
+											"    \"adressesiege\": \"2 rue ensiie\",",
+											"    \"logo\": \"logo.pdf\",",
+											"    \"telephone\": \"0000000\",",
+											"    \"isvalid\": false",
+											"})",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"2\",\n    \"logo\": \"logo.pdf\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/entreprise/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete requests",
+					"item": [
+						{
+							"name": "Delete Entreprise",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "94df4e03-301f-43aa-b8d0-3c6fb1e60c21",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "01b83ca6-551b-4009-a2f2-49dd45c444b6",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql(",
+											"  {",
+											"    \"nom\": \"toto\",",
+											"    \"adressemail\": \"toto@gmail.com\",",
+											"    \"adressesiege\": \"2 rue ensiie\",",
+											"    \"motdepasse\": \"coucou\",",
+											"    \"logo\": \"logo.pdf\",",
+											"    \"isvalid\": false,",
+											"    \"telephone\": \"0000000\"",
+											"}",
+											")",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/entreprise/request?id=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b5dc9d7e-1a17-42da-ad43-08369b9591dc",
+						"type": "text/javascript",
+						"exec": [
+							"pm.globals.set('url', 'http://0.0.0.0:3000')"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Offre",
+			"item": [
+				{
+					"name": "Create Requests",
+					"item": [
+						{
+							"name": "Create Offre",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "14ab1be8-7762-4354-8f4a-6f09cd7f7c33",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "986cbd4b-7b02-46cb-84f2-24d3a6ee8143",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData.id).to.eql(2)",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identreprise\": \"1\",\n    \"description\": \"cool\",\n    \"document\": \"C...\",\n    \"typecontrat\": \"CDI\",\n    \"adresse\": \"ici\",\n    \"latitude\": 90.090,\n    \"longitude\": 90.090,\n    \"salaire\": 50000,\n    \"titre\": \"titre\",\n    \"dateparution\": 819167040000\n}"
+								},
+								"url": {
+									"raw": "{{url}}/offre/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"offre",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Requests",
+					"item": [
+						{
+							"name": "Get Offre by Identreprise",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "399f07bd-172f-4bfa-9eae-0713deaafca7",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "726c43b0-1d41-464d-a910-f17b1d600d94",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([",
+											"    {",
+											"        \"id\": 1,",
+											"        \"description\": \"Mission incroyable\",",
+											"        \"document\": \"document.pdf\",",
+											"        \"typecontrat\": \"CDI\",",
+											"        \"adresse\": \"rue ensiie\",",
+											"        \"latitude\": \"90\",",
+											"        \"longitude\": \"90\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"Poste incroyable\",",
+											"        \"dateparution\": \"0\"",
+											"    },",
+											"    {",
+											"        \"id\": 3,",
+											"        \"description\": \"Mission tranquille\",",
+											"        \"document\": \"document.pdf\",",
+											"        \"typecontrat\": \"CDD\",",
+											"        \"adresse\": \"rue ensiie\",",
+											"        \"latitude\": \"90\",",
+											"        \"longitude\": \"90\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"Poste tranquille\",",
+											"        \"dateparution\": \"0\"",
+											"    },",
+											"    {",
+											"        \"id\": 2,",
+											"        \"description\": \"cool\",",
+											"        \"document\": \"C...\",",
+											"        \"typecontrat\": \"CDI\",",
+											"        \"adresse\": \"ici\",",
+											"        \"latitude\": \"90.09\",",
+											"        \"longitude\": \"90.09\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"titre\",",
+											"        \"dateparution\": \"819167040000\"",
+											"    }",
+											"])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/offre/request?identreprise=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"offre",
+										"request"
+									],
+									"query": [
+										{
+											"key": "identreprise",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Offre by args",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "399f07bd-172f-4bfa-9eae-0713deaafca7",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/offre/request?titre=t&adresse=EN&typecontrat=CDI&salaire=5&dateparution=8191670400",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"offre",
+										"request"
+									],
+									"query": [
+										{
+											"key": "titre",
+											"value": "t"
+										},
+										{
+											"key": "adresse",
+											"value": "EN"
+										},
+										{
+											"key": "typecontrat",
+											"value": "CDI"
+										},
+										{
+											"key": "salaire",
+											"value": "5"
+										},
+										{
+											"key": "dateparution",
+											"value": "8191670400"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Update requests",
+					"item": [
+						{
+							"name": "Update offre",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "570e52d4-6c35-408d-963c-7f53562b2691",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "ffbe5671-f671-4a66-b717-b9ccf3e7b33c",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql({",
+											"    \"id\": 2,",
+											"    \"identreprise\": 1,",
+											"    \"description\": \"ensiiiiiie\",",
+											"    \"typecontrat\": \"CDI\",",
+											"    \"adresse\": \"ici\",",
+											"    \"latitude\": \"90.09\",",
+											"    \"longitude\": \"90.09\",",
+											"    \"salaire\": \"50000\",",
+											"    \"titre\": \"titre\",",
+											"    \"dateparution\": \"819167040000\"",
+											"})",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 2,\n    \"description\": \"ensiiiiiie\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/offre/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"offre",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Delete Requests",
+					"item": [
+						{
+							"name": "Delete offre by Id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "399f07bd-172f-4bfa-9eae-0713deaafca7",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d670adef-59b0-4dac-bb35-b30853032c9e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql({",
+											"    \"id\": 2,",
+											"    \"identreprise\": 1,",
+											"    \"description\": \"ensiiiiiie\",",
+											"    \"typecontrat\": \"CDI\",",
+											"    \"adresse\": \"ici\",",
+											"    \"latitude\": \"90.09\",",
+											"    \"longitude\": \"90.09\",",
+											"    \"salaire\": \"50000\",",
+											"    \"titre\": \"titre\",",
+											"    \"dateparution\": \"819167040000\"",
+											"})",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/offre/request?id=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"offre",
+										"request"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Candidat",
+			"item": [
+				{
+					"name": "Create Request",
+					"item": [
+						{
+							"name": "Create Candidat",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4222c489-fb66-4742-8ce1-e53c90ec8341",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "7eaa95e7-20fa-4c6b-affd-cb754bb54318",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql({",
+											"\t\"idparticulier\": 1,",
+											"\t\"idoffre\": 3",
+											"})",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idparticulier\": 1,\n\t\"idoffre\": 3\n}"
+								},
+								"url": {
+									"raw": "{{url}}/candidat/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"candidat",
+										"request"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Requests",
+					"item": [
+						{
+							"name": "Get Candidat By Offre",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4911c0e9-6fb8-4ad0-9d32-726f0acea942",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c5ad4fa5-a85b-4e76-9435-9307dac7efa0",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([",
+											"    {",
+											"        \"id\": 1,",
+											"        \"adressemail\": \"test@gmail.com\",",
+											"        \"cv\": \"nomCV.pdf\",",
+											"        \"nom\": \"LENOM\",",
+											"        \"prenom\": \"LEPRENOM\",",
+											"        \"telephone\": \"0600000000\"",
+											"    }",
+											"])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/candidat/request?idoffre=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"candidat",
+										"request"
+									],
+									"query": [
+										{
+											"key": "idoffre",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Offre By Candidat",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4911c0e9-6fb8-4ad0-9d32-726f0acea942",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f2be34e0-9b76-4d1d-b7f0-1f143c1da7e9",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([",
+											"    {",
+											"        \"id\": 1,",
+											"        \"identreprise\": {",
+											"            \"id\": 1,",
+											"            \"nom\": \"ENSIIE CORPO\",",
+											"            \"adressemail\": \"ensiie@ensiie.fr\",",
+											"            \"adressesiege\": \"rue ensiie\",",
+											"            \"logo\": \"nomLogo.png\",",
+											"            \"telephone\": \"0700000000\"",
+											"        },",
+											"        \"description\": \"Mission incroyable\",",
+											"        \"document\": \"document.pdf\",",
+											"        \"typecontrat\": \"CDI\",",
+											"        \"adresse\": \"rue ensiie\",",
+											"        \"latitude\": \"90\",",
+											"        \"longitude\": \"90\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"Poste incroyable\",",
+											"        \"dateparution\": \"0\"",
+											"    },",
+											"    {",
+											"        \"id\": 3,",
+											"        \"identreprise\": {",
+											"            \"id\": 1,",
+											"            \"nom\": \"ENSIIE CORPO\",",
+											"            \"adressemail\": \"ensiie@ensiie.fr\",",
+											"            \"adressesiege\": \"rue ensiie\",",
+											"            \"logo\": \"nomLogo.png\",",
+											"            \"telephone\": \"0700000000\"",
+											"        },",
+											"        \"description\": \"Mission tranquille\",",
+											"        \"document\": \"document.pdf\",",
+											"        \"typecontrat\": \"CDD\",",
+											"        \"adresse\": \"rue ensiie\",",
+											"        \"latitude\": \"90\",",
+											"        \"longitude\": \"90\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"Poste tranquille\",",
+											"        \"dateparution\": \"0\"",
+											"    }",
+											"])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/candidat/request?idparticulier=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"candidat",
+										"request"
+									],
+									"query": [
+										{
+											"key": "idparticulier",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login Particulier",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "06ddd133-6f24-4075-8d0d-6547ba4a73f5",
+								"exec": [
+									"pm.globals.set('url', 'http://0.0.0.0:3000')"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cf0536e-b434-49c7-8c50-1d27e44df071",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Json bdy has information\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 1,",
+									"    \"type\": 1",
+									"})",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"identifiant\":\"test@gmail.com\", \"mdp\":\"mdp\" }"
+						},
+						"url": {
+							"raw": "{{url}}/login/request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Entreprise",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "06ddd133-6f24-4075-8d0d-6547ba4a73f5",
+								"exec": [
+									"pm.globals.set('url', 'http://0.0.0.0:3000')"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cf0536e-b434-49c7-8c50-1d27e44df071",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Json bdy has information\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 1,",
+									"    \"type\": 2",
+									"})",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"identifiant\":\"ensiie@ensiie.fr\", \"mdp\":\"mdp\" }"
+						},
+						"url": {
+							"raw": "{{url}}/login/request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Administrateur",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "06ddd133-6f24-4075-8d0d-6547ba4a73f5",
+								"exec": [
+									"pm.globals.set('url', 'http://0.0.0.0:3000')"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cf0536e-b434-49c7-8c50-1d27e44df071",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Json bdy has information\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"id\": 1,",
+									"    \"type\": 3",
+									"})",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"identifiant\":\"admin\", \"mdp\":\"admin\" }"
+						},
+						"url": {
+							"raw": "{{url}}/login/request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login",
+								"request"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
