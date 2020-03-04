@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 const AuthenticationController = require('./src/controller/authenticationController');
-const SettingsController = require('./src/controller/settingsController')
-const DatabaseService = require('./src/services/databaseService')
+const SettingsController = require('./src/controller/settingsController');
+const UsersController = require('./src/controller/usersController');
+const DatabaseService = require('./src/services/databaseService');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,7 +24,7 @@ router.post('/authentication', function(req, res, next) {
       });
     }
   })()
-})
+});
 
 router.post('/registration', function(req, res, next) {
   const controller = new AuthenticationController(new DatabaseService());
@@ -37,7 +38,21 @@ router.post('/registration', function(req, res, next) {
       });
     }
   })()
-})
+});
+
+router.get('/users', function(req, res, next) {
+  const controller = new UsersController(new DatabaseService());
+  (async () => {
+    const users = await controller.getAllUser();
+    if (undefined !== users) {
+      res.send(JSON.stringify(users));
+    } else {
+      return res.status(500).send({
+        message: 'Error append sometimes you know'
+      });
+    }
+  })()
+});
 
 router.post('/updateUser', function(req, res, next) {
   console.log('REQ BODYYY')
@@ -47,6 +62,6 @@ router.post('/updateUser', function(req, res, next) {
     await controller.updateUser(req.body.currentUsername, req.body.newUsername, req.body.newEmail, req.body.newPassword);
     res.end();
   })()
-})
+});
 
 module.exports = router;

@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cors = require('cors');
 
 var indexRouter = require('./router');
-var usersRouter = require('./src/controller/users');
 var openDataParisRouter = require('./src/controller/openDataParisController') ;
 
 var app = express();
@@ -35,7 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/openDataParis', openDataParisRouter);
 
 module.exports = app;

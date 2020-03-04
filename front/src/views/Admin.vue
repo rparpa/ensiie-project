@@ -111,6 +111,7 @@
 import Header from '@/components/Header.vue'
 import Nav from '@/components/Navigation.vue'
 import Router from '../router/index';
+import axios from "axios";
 import {EventBus} from '../event-bus';
 
 export default {
@@ -121,6 +122,7 @@ export default {
   },
 
   mounted() {
+    axios.get('http://localhost:3000/users').then(response => {( this.items = response.data);})
     EventBus.$on('deconected', () => {
       Router.push('/')
     });
@@ -129,22 +131,17 @@ export default {
   data() {
       return {
         fields: [
-          'age',
+          '_username',
 
-          'first_name',
+          '_email',
 
-          'last_name',
+          '_role',
           // A regular column
           'edit',
           // A regular column
           'delete',
         ],
-        items: [
-          { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-          { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-          { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-          { age: 38, first_name: 'Jami', last_name: 'Carney' }
-        ]
+        items: []
       }
     }
 }
