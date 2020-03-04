@@ -1,8 +1,11 @@
 # La Sandwicheriie : présentation générale du projet
 
-## Problématique
-L’association SandwicherIIE de l’ENSIIE propose des sandwichs tous les midis. Cependant, il n’y avait pas de plateforme pour commander en ligne. Un sandwich unique tous les midis : l’association ne proposait qu’un seul et unique sandwich par jour. 
-Cela limitait le choix pour celui voulant profiter du repas. La communication sur les commandes était approximative. Il fallait envoyer un message pour détailler la commande avec les ingrédients. Pas de barman = pas de repas. Il fallait avoir obligatoirement un barman pour préparer et stocker les ingrédients. En cas d’absence, impossible de faire un sandwich digne de ce nom. 
+## Problématiques
+L’association SandwicherIIE de l’ENSIIE propose des sandwichs tous les midis. Cependant, il n’y avait pas de plateforme pour commander en ligne. Un sandwich unique tous les midis : l’association ne proposait qu’un seul et unique sandwich par jour. Cela limitait le choix de nos clients.
+
+La communication sur les commandes était approximative, il fallait envoyer un message pour détailler la commande avec les ingrédients.
+
+Pas de barman = pas de repas. Il fallait avoir obligatoirement un barman pour préparer et stocker les ingrédients. En cas d’absence, impossible de faire un sandwich digne de ce nom. 
 
 ## Objectif du projet
 Répondre aux problématiques évoquées et proposer une application pour simplifier et ouvrir la SandwicherIIE à tous.
