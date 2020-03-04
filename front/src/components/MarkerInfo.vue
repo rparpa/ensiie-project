@@ -15,6 +15,7 @@
                 <b-badge v-else class="statut" variant="danger">Indisponible</b-badge>
             </div>
             <p class="tarif">Tarif : {{info._tarif}} </p>
+            <b-button variant="success" @click="onAlert">Je réserve</b-button>
         </div>
     </div>
 </template>
@@ -45,7 +46,7 @@
 </style>
 
 <script>
-import { EventBus } from "./event-bus.js";
+import { EventBus } from "../event-bus.js";
 
 export default {
   name: 'MarkerInfo',
@@ -60,6 +61,10 @@ export default {
     },
     emitOpen() {
         EventBus.$emit('openMarkerInfo');
+    },
+
+    onAlert() {
+        alert('Feature à venir ! ');
     }
   },
 

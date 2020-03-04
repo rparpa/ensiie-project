@@ -5,6 +5,7 @@ CREATE TABLE "User" (
 	"email" varchar(254) NOT NULL UNIQUE,
 	"address_id" int,
 	"vehicule_id" int,
+	"role" int,
 	CONSTRAINT "User_pk" PRIMARY KEY ("id")
 );
 
@@ -41,8 +42,9 @@ INSERT INTO "Address"(city, street_name, street_number, type)
 INSERT INTO "Address"(city, street_name, street_number, type) 
     VALUES ('paris', 'mogador', 20, 1);
 
-INSERT INTO "User"(username, password, email, address_id) VALUES ('JohnDoe', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'johndoe@gmail.com', 1);
-INSERT INTO "User"(username, password, email) VALUES ('JaneDoe', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'janedoe@gmail.com');
+INSERT INTO "User"(username, password, email, address_id,role) VALUES ('JohnDoe', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'johndoe@gmail.com', 1,1);
+
+INSERT INTO "User"(username, password, email,role) VALUES ('JaneDoe', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 'janedoe@gmail.com',0);
 
 
 

@@ -7,7 +7,6 @@
       <UserLog class="ml-auto"/>
     </b-nav>
   </div>
-
 </template>
 
 <style>

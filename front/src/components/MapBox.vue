@@ -38,7 +38,8 @@
 import Mapbox from "mapbox-gl";
 import { MglMap,MglMarker } from "vue-mapbox";
 import  axios from "axios";
-import { EventBus } from "./event-bus.js";
+import App from "../App";
+import { EventBus } from "../event-bus.js";
 
 let latLngCenterParis = {
   lat: 48.864716,
@@ -49,7 +50,8 @@ export default {
   name: 'MapBox',
   components: {
     MglMap,
-    MglMarker
+    MglMarker,
+    App
   },  
   props: ['address'],
   data: function() {
@@ -62,19 +64,19 @@ export default {
       apiAdr : "http://localhost:3000/openDataParis/",
       center: latLngCenterParis,
       zoom: 11,
+      user: 'undefined',
       retrieving : false
     };
   },
 
   created() {
     //this.mapbox = Mapbox;
-    EventBus.$on('addressFilled', address => {
+     EventBus.$on('addressFilled', address => {
       if(address.latlng !== undefined){
         //console.log("MapBox: Evenement bien recu!", address);
         this.onAddressFilled(address);
       }
-    });
-
+    });         
     EventBus.$on('addressEmpty', handleOnClear => {
       this.onEmptyAddress();
     });
@@ -130,14 +132,10 @@ export default {
           break;
       }
     });
-    /* 
-       
-     
-      &refine.typsta=Longitudinal
-    */ 
   },
 
   mounted() {
+    console.log(this.user);
     this.getAllMarkers();
   },
 
