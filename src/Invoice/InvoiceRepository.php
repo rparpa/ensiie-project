@@ -1,12 +1,20 @@
 <?php
 namespace Invoice;
 
+use Exception;
 use FPDF;
 use Order\Order;
 use Order\OrderRepository;
 use DateTimeImmutable;
 use PDO;
-require ("../src/Fpdf/fpdf.php");
+
+try
+{
+    require ("../src/Fpdf/fpdf.php");
+}
+catch(Exception $e) {
+}
+
 
 class InvoiceRepository
 {
