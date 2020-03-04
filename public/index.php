@@ -27,7 +27,7 @@ if (isset($_GET['api'])) {
   </a>
   <form class="form-inline my-2 my-lg-0">
     <?php if(!isset($_SESSION["name_firstname"])) { ?>
-      <a class="btn btn-outline-primary" id="btn_header" href='index.php?action=connect'>Se connecter</a>
+      <a class="btn btn-outline-primary" id="accueil" href='index.php?action=connect'>Se connecter</a>
       <a class="btn btn-outline-primary" href='index.php?action=register'>S'inscrire</a>
   <?php } else {?>
     Bienvenue, <?php echo $_SESSION["name_firstname"]; ?>.
@@ -70,7 +70,7 @@ if (isset($_GET['api'])) {
                 $controller->afficheFormulaireReset();
             }
         } else if ($_GET['action'] == 'showCar') {
-            if(isset($_GET['car_id'])) {
+            if(isset($_GET["car_id"])) {
                 $controller = new \Car\CarController(\Db\Connection::get());
                 $controller->afficheVoiture($_GET['car_id']);
             }
@@ -85,17 +85,24 @@ if (isset($_GET['api'])) {
             $controller->afficheVoitures();
         } else if ($_GET['action'] == 'ajouter') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
-            $controller->afficheAjoutVoiture();
-            // TODO (POST)
+            if(isset($_POST["nom_modele"])) {
+                $controller->ajoutVoiture($_POST);
+            } else {
+                $controller->afficheAjoutVoiture();
+            }
         } else if ($_GET['action'] == 'modifVoiture') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
-            // TODO car_id
+            if(isset($_POST["nom_modele"])) {
+                $controller->modifVoiture($_POST);
+            } else {
+                $controller->afficheModifVoiture($_GET['car_id']);
+            }
         }  else if ($_GET['action'] == 'deleteVoiture') {
-            $controller = new \Admin\AdminController(\Db\Connection::get());
-            // TODO car_id
+                $controller = new \Admin\AdminController(\Db\Connection::get());
+                $controller->deleteVoiture($_GET['car_id']);
         }   else if ($_GET['action'] == 'deleteLocation') {
-            $controller = new \Admin\AdminController(\Db\Connection::get());
-            // TODO id_location
+                $controller = new \Admin\AdminController(\Db\Connection::get());
+                $controller->deleteLocation($_GET['id_location']);
         }
     } else {
         ?><link href="style.css" rel="stylesheet" type="text/css" media="screen" />

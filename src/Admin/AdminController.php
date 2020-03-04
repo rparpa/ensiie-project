@@ -45,26 +45,37 @@ class AdminController {
 	}
 
 	public function ajoutVoiture($post) {
-		if($this->carRepository->ajoutVoiture($post)!==false) {
-			echo "ok";
-		} else {
-			echo "pasok";
+		try {
+			$this->carRepository->ajoutVoiture($post);
+			$this->adminView->afficheAjout($post);
+		} catch(Exception $e) {
+			//$this->connexionView->vue_erreur($e->getMessage());
+		}
+	}
+
+	public function afficheModifVoiture($post) {
+		try {
+			$this->adminView->afficheModifVoiture($post);
+		} catch(Exception $e) {
+			//$this->connexionView->vue_erreur($e->getMessage());
 		}
 	}
 
 	public function modifVoiture($post) {
-		if($this->carRepository->modifVoiture($post)!==false) {
-			echo "ok";
-		} else {
-			echo "pasok";
+		try {
+			$this->carRepository->modifVoiture($post);
+			$this->adminView->afficheModif($post);
+		} catch(Exception $e) {
+			//$this->connexionView->vue_erreur($e->getMessage());
 		}
 	}
 
 	public function deleteVoiture($post) {
-		if($this->carRepository->deleteVoiture($post)!==false) {
-			echo "ok";
-		} else {
-			echo "pasok";
+		try {
+			$this->carRepository->deleteVoiture($post);
+			$this->adminView->afficheDelete($post);
+		} catch(Exception $e) {
+			//$this->connexionView->vue_erreur($e->getMessage());
 		}
 	}
 	
@@ -79,6 +90,7 @@ class AdminController {
     {
         try {
             $this->locationRepository->delete($post);
+            $this->adminView->afficheDeleteLocation($post);
         } catch (Exception $e) {
             //$this->userView->vueErreur($e->getMessage());
         }
