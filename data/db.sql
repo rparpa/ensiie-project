@@ -199,6 +199,9 @@ INSERT INTO organization(name, creationdate)
 VALUES ('Ile Mysterieuse', '2019-12-20');
 
 INSERT INTO organization(name, creationdate)
+VALUES ('Voyage au centre de la Terre', '1864-11-25');
+
+INSERT INTO organization(name, creationdate)
 VALUES ('Le conseil des 4', '2019-12-23');
 
 INSERT INTO project
@@ -209,6 +212,9 @@ VALUES(1, 'Projet 1', 1, '2020-02-20');
 
 INSERT INTO project
 VALUES(2, 'Notre projeeet', 1, '2020-02-20');
+
+INSERT INTO project
+VALUES(4, 'Nettoyer les toilettes', 1, '2020-02-20');
 
 INSERT INTO message( iduser, source, message, creationdate, idsource)
 VALUES (1, 'organization', 'Le premier message.', '2020-02-16', 1);
@@ -223,7 +229,13 @@ INSERT INTO info(source, idsource, idcreator, title, content, creationdate)
 VALUES ('organization',1,1,'Les pingouins','ont trahi la horde','2020-02-19');
 
 INSERT INTO meeting(source, idsource, name, place, creationdate, description)
-VALUES ('organization', 1, 'Coucou cest nous', 'chez ta maman', '2020-02-17', 'Un peu de mousse ?');
+VALUES ('project', 1, 'Coucou cest nous', 'chez ta maman', '2020-02-17', 'Un peu de mousse ?');
+
+INSERT INTO meeting(source, idsource, name, place, creationdate, description)
+VALUES ('project', 4, 'Choisir un responsable', 'Local poubelle', '2020-02-17', 'Qui veut des gants');
+
+INSERT INTO task(title, content, creationdate, state, idcreator, idassignee, idproject)
+VALUES('Nettoyage', 'Avec des gants et une brosse à dents', '2020-03-04', 'En cours', 1, 1, 4);
 
 INSERT INTO userorganization
 VALUES(1, 1,'Big Boss','2000-04-01');
