@@ -36,7 +36,7 @@
 					echo '<input type="hidden" value="'.$annonce["prix"].'">';
 
 						echo '<div class="card mb-4 box-shadow">';
-						if(!isset($images[0]['url']))
+						if(!(isset($images[0]['url']))||$images[0]['url']=="")
 							echo '<a href="#"><img class="card-img-top" src="'.base_url().'/assets/images/default.jpg" width="600" height="200" alt=""></a>';
 						else
 							echo '<a href="#"><img class="card-img-top" src="'.base_url().'/assets/images/'.$images[0]['url'].'" width="600" height="200" alt=""></a>';
