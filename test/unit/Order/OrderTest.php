@@ -12,8 +12,9 @@ class OrderTest extends TestCase
     /**
      * @test
      */
-    public function propertiesWhenFilled()
+    public function filterWhenApproved()
     {
+        //data
         $ingredients = [];
 
         $ingredient1 = new Ingredient();
@@ -55,6 +56,7 @@ class OrderTest extends TestCase
         $user->setPassword('pass');
         $user->setIsValidator(false);
 
+        //test
         $validator = new User();
         $validator->setFirstname('firstname2');
         $validator->setLastname('lastname2');
@@ -86,6 +88,7 @@ class OrderTest extends TestCase
      */
     public function getTotalPriceWhenFilled()
     {
+        //data
         $ingredients = [];
 
         $ingredient1 = new Ingredient();
@@ -136,6 +139,8 @@ class OrderTest extends TestCase
         $validator->setPassword('pass2');
         $validator->setIsValidator(true);
 
+        //repository
+
         $order = new Order();
         $order
             ->setApproval(true)
@@ -152,7 +157,6 @@ class OrderTest extends TestCase
      */
     public function getTotalPriceWhenEmpty()
     {
-        $ingredients = [];
         $sandwichs =  [];
 
         $user = new User();

@@ -131,6 +131,7 @@ class OrderService
 
     public function deleteOrder(Order $order) {
         $this->resetErrors();
+        $result = false;
         if($order->getId() == null)
             $this->errors['id'] = 'Order id shouldn\'t be null.';
         else
