@@ -25,10 +25,10 @@ class Categorie_model extends CI_Model
 
     public function getAllCategorie()
     {
-		return $this->db->select('*')
-			->from('categorie')
-			->get()
-			->result_array();
+		$this->db->select('*');
+		$this->db->from('categorie');
+		$this->db->order_by('categorie', 'ASC');
+		return $this->db->get()->result_array();
     }
     public function getCategorie($id_categ)
     {
