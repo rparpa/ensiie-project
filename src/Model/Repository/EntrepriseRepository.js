@@ -1,4 +1,5 @@
 const ClientSession = require('../Factory/ClientSession');
+const Hash = require('../../Utils/hash');
 
 const begin = "BEGIN";
 const commit = "COMMIT";
@@ -18,7 +19,7 @@ const updateMotdepasse = "UPDATE entreprise SET motdepasse = $1 WHERE id = $2 RE
 const updateLogo = "UPDATE entreprise SET logo = $1 WHERE id = $2 RETURNING nom, adressemail, adressesiege, logo, telephone, isvalid";
 const updateIsvalid = "UPDATE entreprise SET isvalid = $1 WHERE id = $2 RETURNING nom, adressemail, adressesiege, logo, telephone, isvalid";
 const updateTelephone = "UPDATE entreprise SET telephone = $1 WHERE id = $2 RETURNING nom, adressemail, adressesiege, logo, telephone, isvalid";
-const deleteOne = "DELETE FROM entreprise WHERE id = $1 RETURNING nom, adressemail, adressesiege, motdepasse, logo, isvalid, telephone";
+const deleteOne = "DELETE FROM entreprise WHERE id = $1 RETURNING id, nom, adressemail, adressesiege, logo, isvalid, telephone";
 
 module.exports = class {
     static async login({identifiant, mdp}) {
@@ -33,7 +34,7 @@ module.exports = class {
             await client.query(begin)
             .catch(err => {throw 'Error in transaction'});
 
-            result = await client.query(login, [identifiant, mdp])
+            result = await client.query(login, [identifiant, Hash.getHash(mdp)])
             .catch(err => {throw 'Error in database'});
 
             await client.query(commit)
@@ -56,7 +57,7 @@ module.exports = class {
             throw 'Entreprise object is missing information';
         }
         let result;
-        let values = [Entreprise.nom, Entreprise.adressemail, Entreprise.adressesiege, Entreprise.motdepasse, Entreprise.logo, false, Entreprise.telephone];
+        let values = [Entreprise.nom, Entreprise.adressemail, Entreprise.adressesiege, Hash.getHash(Entreprise.motdepasse), Entreprise.logo, false, Entreprise.telephone];
 
         var client = ClientSession.getSession();
 
@@ -246,7 +247,7 @@ module.exports = class {
             await client.query(begin)
             .catch(err => {throw 'Error in transaction'});
 
-            result = await client.query(updateMotdepasse, [motdepasse, id])
+            result = await client.query(updateMotdepasse, [Hash.getHash(motdepasse), id])
             .catch(e => {throw 'Error in the database'});
 
             if(result.rows.length == 0) {

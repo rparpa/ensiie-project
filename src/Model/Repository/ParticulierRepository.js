@@ -1,4 +1,5 @@
 const ClientSession = require('../Factory/ClientSession');
+const Hash = require('../../Utils/hash');
 
 const begin = "BEGIN";
 const commit = "COMMIT";
@@ -34,7 +35,7 @@ module.exports = class {
             await client.query(begin)
             .catch(err => {throw 'Error in transaction'});
 
-            result = await client.query(login, [identifiant, mdp])
+            result = await client.query(login, [identifiant, Hash.getHash(mdp)])
             .catch(err => {throw 'Error in database'});
 
             await client.query(commit)
@@ -57,7 +58,7 @@ module.exports = class {
             throw 'Particulier object is missing information';
         }
 
-        let values = [Particulier.adressemail, Particulier.motdepasse, Particulier.cv, Particulier.nom, Particulier.prenom, Particulier.telephone];
+        let values = [Particulier.adressemail, Hash.getHash(Particulier.motdepasse), Particulier.cv, Particulier.nom, Particulier.prenom, Particulier.telephone];
         
         var result;
         
@@ -219,7 +220,7 @@ module.exports = class {
             await client.query(begin)
             .catch(err => {throw 'Error in transaction'});
 
-            result = await client.query(updateMotdepasse, [motdepasse, id])
+            result = await client.query(updateMotdepasse, [Hash.getHash(motdepasse), id])
             .catch(e => {throw 'Error in the database'});
 
             if(result.rows.length == 0) {

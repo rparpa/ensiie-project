@@ -1,9 +1,9 @@
 var Crypto = require('crypto-js')
 
-module.export = class {
+module.exports = class {
     constructor() {
     }
-    getHash(input){
+    static getHash(input){
         return Crypto.SHA256(input).toString();
         
     }
