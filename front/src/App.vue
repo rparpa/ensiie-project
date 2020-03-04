@@ -7,15 +7,10 @@
 </template>
 
 <script>
-
+import {EventBus} from './event-bus';
 export default {
   name: 'App',
   components: {    
-  },
-  data(){
-    return {
-      user: undefined
-    }
   }
 }
 

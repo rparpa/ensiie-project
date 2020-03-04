@@ -9,12 +9,14 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import App from './App.vue'
 import router from './router'
 
+
 Vue.use(BootstrapVue)
 Vue.use(VueAxios, Axios)
-
+const state = {user:undefined};
 Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: function (h) { return h(App) }
+  render: function (h) { return h(App) },
+  data: state
 }).$mount('#app')

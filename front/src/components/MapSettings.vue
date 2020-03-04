@@ -8,8 +8,7 @@
     }"
     :options="{ countries: ['fr'], language: 'fr' }"
   >
-  </places>
-
+  </places>  
 </template>
 
 <script>

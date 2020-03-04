@@ -3,6 +3,7 @@
       <div v-if="retrieving" class="clearfix">
         <b-spinner class="float-right" label="Floated Right"></b-spinner>
       </div>
+      <h1 v-if="this.$root.$data.user != undefined">{{this.$root.$data.user._username}}</h1>
       <br/>
       <MglMap
         :accessToken="accessToken"
@@ -38,6 +39,7 @@
 import Mapbox from "mapbox-gl";
 import { MglMap,MglMarker } from "vue-mapbox";
 import  axios from "axios";
+import App from "../App";
 import { EventBus } from "../event-bus.js";
 
 let latLngCenterParis = {
@@ -49,7 +51,8 @@ export default {
   name: 'MapBox',
   components: {
     MglMap,
-    MglMarker
+    MglMarker,
+    App
   },  
   props: ['address'],
   data: function() {
@@ -62,19 +65,19 @@ export default {
       apiAdr : "http://localhost:3000/openDataParis/",
       center: latLngCenterParis,
       zoom: 11,
+      user: 'undefined',
       retrieving : false
     };
   },
 
   created() {
     //this.mapbox = Mapbox;
-    EventBus.$on('addressFilled', address => {
+     EventBus.$on('addressFilled', address => {
       if(address.latlng !== undefined){
         //console.log("MapBox: Evenement bien recu!", address);
         this.onAddressFilled(address);
       }
-    });
-
+    });         
     EventBus.$on('addressEmpty', handleOnClear => {
       this.onEmptyAddress();
     });
@@ -130,14 +133,10 @@ export default {
           break;
       }
     });
-    /* 
-       
-     
-      &refine.typsta=Longitudinal
-    */ 
   },
 
   mounted() {
+    console.log(this.user);
     this.getAllMarkers();
   },
 

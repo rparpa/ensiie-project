@@ -1,6 +1,6 @@
 <template>
   <div class="logvue">
-    <b-form class= "my-3" inline @submit="onLogIn" v-if="currentUser===undefined">
+    <b-form class= "my-3" inline @submit="onLogIn" v-if="this.$root.$data.user === undefined">
       <label class="sr-only" for="login-form-username">Username</label>
       <b-input
         id="login-form-username"
@@ -60,9 +60,9 @@
         Username or password incorrect!
       </b-alert>
     </b-collapse>
-    <div class= "my-1" id="userLoggedInContainer" v-if="currentUser">
+    <div class= "my-1" id="userLoggedInContainer" v-if="this.$root.$data.user != undefined">
       <p>
-        Bienvenue, {{currentUser.username}} !
+        Bienvenue, {{this.$root.$data.user._username}} !
       </p>
       <b-row>
         <b-button class= "mr-2" v-b-modal.settingsModel @submit="onUpdateSettings">Paramètres</b-button>
@@ -92,7 +92,7 @@
             <b-button type="submit" variant="primary">Mettre a jour</b-button>
           </b-form>
         </b-modal>
-        <b-button variant="danger" @click="currentUser = undefined">Déconnexion</b-button>
+        <b-button variant="danger" @click="onDeconnection">Déconnexion</b-button>
       </b-row>
     </div>
   </div>
@@ -108,7 +108,7 @@
 <script>
 import {HTTP} from '../http-constants'
 import User from '../entity/User'
-
+import { EventBus } from '../event-bus';
 const sha256 = require('js-sha256');
 
 export default {
@@ -170,6 +170,7 @@ export default {
         this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email)
         this.settings.username = this.currentUser.username
         this.settings.email = this.currentUser.email
+        this.$root.$data.user = this.currentUser;
       })
       .catch(error => {      
         this.displayAuthenticationErrorAlert = true
@@ -182,7 +183,8 @@ export default {
       , this.signIn
       )
       .then(response => {
-        this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email)
+        this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email);
+        this.$root.$data.user = this.currentUser;
       })
       .catch(error => {      
         console.log(error);
@@ -204,6 +206,12 @@ export default {
       .catch(error => {      
         console.log(error);
       })
+    },
+
+    onDeconnection(){
+      this.currentUser =undefined;
+      this.$root.$data.user = undefined;
+      EventBus.$emit('deconected');
     }
   }
 }

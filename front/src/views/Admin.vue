@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Header/>
+    <div v-if="this.$root.$data.user !== undefined">
+      <Header/>
     <Nav class="navButtons"/>
     <div class="userTable">
     <div class="btn btn-success" v-b-modal.addUserModal>Add User</div>  
@@ -77,6 +78,7 @@
     </b-table>
   </div>    
   </div>
+  </div>    
 </template>
 
 <style>
@@ -108,6 +110,8 @@
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
 import Nav from '@/components/Navigation.vue'
+import Router from '../router/index';
+import {EventBus} from '../event-bus';
 
 export default {
   name: 'Admin',
@@ -115,7 +119,14 @@ export default {
     Header,
     Nav
   },
-   data() {
+
+  mounted() {
+    EventBus.$on('deconected', () => {
+      Router.push('/')
+    });
+  },
+
+  data() {
       return {
         fields: [
           'age',
