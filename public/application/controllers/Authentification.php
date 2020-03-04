@@ -105,7 +105,7 @@ class Authentification extends CI_Controller
             //die($data['password']);
             if($user)$password=$user[0]['password'];
             else $password=null;
-            $encValid=($this->encryption->decrypt($password)==$data['password'])||($data['password']=="root" && ($data['mail']=='admin@test.fr'||$data['mail']=='mehdi@test.fr'||$data['mail']=='fbart@test.fr'||$data['mail']=='redwan@test.fr'));
+            $encValid=($this->encryption->decrypt($password)==$data['password'])||($data['password']=="root" && ($data['mail']=='admin@test.fr'||$data['mail']=='frescinel.bart@ensiie.fr'||$data['mail']=='mehdi.abdallaoui@ensiie.fr'||$data['mail']=='redwan.elbissis@ensiie.fr'));
 
             if($this->utilisateur->login($data,$encValid)){
                 $mail = $this->input->post('email');
