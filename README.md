@@ -1,6 +1,30 @@
-# La Sandwicheriie
+# La Sandwicheriie : présentation générale du projet
 
-## Install your application
+## Problématique
+L’association SandwicherIIE de l’ENSIIE propose des sandwichs tous les midis. Cependant, il n’y avait pas de plateforme pour commander en ligne. Un sandwich unique tous les midis : l’association ne proposait qu’un seul et unique sandwich par jour. 
+Cela limitait le choix pour celui voulant profiter du repas. La communication sur les commandes était approximative. Il fallait envoyer un message pour détailler la commande avec les ingrédients. Pas de barman = pas de repas. Il fallait avoir obligatoirement un barman pour préparer et stocker les ingrédients. En cas d’absence, impossible de faire un sandwich digne de ce nom. 
+
+## Objectif du projet
+Répondre aux problématiques évoquées et proposer une application pour simplifier et ouvrir la SandwicherIIE à tous.
+
+## Solution proposée
+Réaliser une application web simple et moderne qui se démarque de la concurrence avec notre système de personnalisation de Sandwich.
+
+# Présentation technique
+## Frontend
+Application web réalisé en php + framework bootstrap.
+6 écrans disponibles:
+* création de compte
+* connexion
+* commande
+* gestion du panier
+* validation
+* back office
+
+## Backend
+
+
+## Methode pour lancer le projet
 This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
 
 The only packages you need to install right now are **docker** and **docker-compose**
@@ -28,6 +52,8 @@ Below are some useful commands :
 * `make db.connect` Connect to th database
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
+
+
 
 ## Diagramme de classe
 ![Create user in db](public/assets/documentation_images/Diagramme_de_classe_Sandwicheriie.png)
