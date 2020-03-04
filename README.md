@@ -22,7 +22,42 @@ Application web réalisé en php + framework bootstrap.
 * back office
 
 ## Backend
+Le projet est composé de 5 entités, 5 repositories, et 4 services.
 
+Les entités sont soumises aux contraintes du schéma de classe ci-dessous :
+* La classe ingrédient est portée par la classe sandwich.
+* La classe sandwich est portée par la classe commande (order).
+* La classe facture (invoice) est portée par la classe commande.
+* La classe user est portée par la classe commande.
+
+Les points d’accès à la base de données se situe dans les repository correspondant à chaque entité :
+* Ingrédient : CRUD
+* Sandwich : CRD
+* Facture : CR
+* Commande : CRD (+validation de commande mais pas d’update)
+* User : CRUD
+
+Les points d’entrés de ses objets sont situés dans les services suivants avec les contrôles rattachés :
+* Le service d’ingrédient responsable de créer, supprimer, mettre à jour, récupérer les ingrédients.
+* Le service de commande responsable de créer, supprimer, valider, récupérer les commandes. La récupération et la création se font en cascade avec les objets portés (e.g.: création de sandwich dynamique en fonction des ingrédients portés)
+* Le service de facture responsable de récupérer une ou plusieurs  factures.
+* Le service d’utilisateur responsable de créer, supprimer, mettre à jour, récupérer les utilisateurs.
+
+## Patterns
+
+Nous avons utilisé plusieurs patterns pour venir à bout de nos challenges techniques.
+
+Deux patterns d’architectures notables :
+
+* Architecture orientée service : un ensemble de services nous permet d’assurer la résilience de l’application aux appels utilisateur. Cet ensemble de services regroupe les besoins structurels du projet (couche business & contrôle des entrées utilisateurs). 
+Ce pattern nous permet de structurer à la fois la requête de l’utilisateur mais aussi les erreurs ou les appels à la couche de persistance en fonction de règles business (e.g.: création de la facture à la validation de la commande)
+
+* Repository : un ensemble de classes se charge de persister les données en base. Cette couche s’assure uniquement du bon fonctionnement des appels en base mais pas du contrôle des données utilisateurs. Cette couche nous permet de charger en cascade des objets. Chaque objet du type A  portant une relation avec un objet du type B peut alors charger l’objet couplé B avec le repository de l’objet B dans le repository de l’objet A. (e.g.: chargement de l’objet commande)
+
+* Pattern builder pour instancier nos objets en un seul appel pour faciliter la lecture de code.
+
+## Diagramme de classe
+![Create user in db](public/assets/documentation_images/Diagramme_de_classe_Sandwicheriie.png)
 
 ## Methode pour lancer le projet
 This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
@@ -55,7 +90,4 @@ Below are some useful commands :
 
 
 
-## Diagramme de classe
-![Create user in db](public/assets/documentation_images/Diagramme_de_classe_Sandwicheriie.png)
 
-* ``
