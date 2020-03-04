@@ -41,6 +41,7 @@
   "dependencies": {
     "newman": "^4.6.0",
     "node-dev": "^4.0.0",
+    "node-fetch": "^2.6.0",
     "pg": "^7.18.2"
   }
 }
