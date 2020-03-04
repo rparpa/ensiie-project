@@ -1,17 +1,16 @@
 const fetch = require("node-fetch");
-module.export = class geo{
-    constructor() {
+module.exports = class {
+    constructor(){
     }
 
-    static async  getCoordsByAddr(input) { // fonction async necessite async contexte lors de l'appel
+    static async getCoordsByAddr(input) { // fonction async necessite async contexte lors de l'appel
     if (!input) {
         throw 'Parameter missing'
     }
     var encodedInput = input.split(' ').join('+');
     var url = "https://nominatim.openstreetmap.org/search?q="
 
-    encodedURL = url + encodedInput + "&format=json"
-    console.log(encodedURL);
+    var encodedURL = url + encodedInput + "&format=json"
     try {
         const response = await fetch(encodedURL);
         const json = await response.json();
@@ -26,13 +25,13 @@ module.export = class geo{
     }
 }
        
-        static ComputeDistance(lat1,lat2,lon1,lon2){ // Formule de Haversine pour la distance à vol d'oiseau
+    static ComputeDistance(lat1,lat2,lon1,lon2){ // Formule de Haversine pour la distance à vol d'oiseau
         // On travaille avec des radians donc tout nos angles sont convertis en radians en multipliant par pi / 180 
        if(!lat1 ||!lat2 || !lon1||!lon2){
            throw 'Parameter missing';
        }
        if(isNaN(lat1) ||isNaN(lat2) || isNaN(lon1)|| isNaN(lon2)){
-        throw 'Parameter must be number';
+        throw 'Parameter must be a number';
     }
         var R = 6371; // km
         var dLat = (lat2-lat1)*Math.PI / 180;

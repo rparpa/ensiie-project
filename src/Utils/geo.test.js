@@ -2,14 +2,11 @@ const geograph = require('./geo');
 describe("Test of GetAddress", () => {
 
     test('Test of getting Address', async () => {
-        
-           data = await geograph.getCoordsByAddr("137, Pilkington Avenue, Sutton Coldfield, Birmingham, West Midlands Combined Authority, West Midlands, Angleterre, B72 1LH, Royaume-Uni");
-           
-        expect(data).toBe({lat:52.5487429714954,lon:-1.81602098644987});
+        const data = await geograph.getCoordsByAddr("137, Pilkington Avenue, Sutton Coldfield, Birmingham, West Midlands Combined Authority, West Midlands, Angleterre, B72 1LH, Royaume-Uni");
+        expect(data).toBe({lat:52.54877605,lon:-1.8162703328316416});
         
     });
     test('Missing addr',async ()=> {
-
         try {
             data = await geograph.getCoordsByAddr();
         }
@@ -22,11 +19,8 @@ describe("Test of GetAddress", () => {
    describe('test of Compute Distance',  () => {
 
     test('Test Getting a distance', () => {
-       
-        function Compute(){
-            geograph.ComputeDistance(48.859315,48.859675,2.293957,2.292365);
-        }
-        expect(Compute).toHaveReturnedWith(0.12315179265289337);
+           
+        expect(geograph.ComputeDistance(48.859315,48.859675,2.293957,2.292365)).toBe(0.12315179265289337);
         
     });
     test('Missing Lat1',()=> {
