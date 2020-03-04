@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ->setSandwichs($sandwichList)
                 ->setClient($userClient);
 
-            $orderService->createOrder($newOrder);
+            $newOrder = $orderService->createOrder($newOrder);
 
             $_SESSION["order_id"] = $newOrder->getId(); //save
         } else {
