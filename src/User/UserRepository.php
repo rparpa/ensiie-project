@@ -66,7 +66,7 @@ class UserRepository
         {
             $query->errorInfo();
         }
-        return true;
+        return $newUser;
     }
 
     public function pseudoAlreadyExist(string $pseudo)
