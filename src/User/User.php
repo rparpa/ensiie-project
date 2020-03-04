@@ -13,7 +13,7 @@ class User
     /**
      * @var int
      */
-    private int $id;
+    private ?int $id = null;
 
     /**
      * @var string
@@ -190,7 +190,7 @@ class User
     /**
      * @param string $password
      */
-    public function setPassword(string $password): void
+    public function setPassword($password)
     {
         $this->password = $password;
     }
