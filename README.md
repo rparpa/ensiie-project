@@ -29,7 +29,7 @@ Below are some useful commands :
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
 
-## User creation
+## Diagramme de classe
 ![Create user in db](public/assets/documentation_images/Diagramme_de_classe_Sandwicheriie.png)
 
 * ``
