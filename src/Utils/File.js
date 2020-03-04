@@ -11,4 +11,9 @@ module.export = class {
             }
         }); 
     }
-}
+
+    readFromFile(path){
+        var content = fs.readFileSync(path, 'utf8') 
+        return content;
+    }
+} 
