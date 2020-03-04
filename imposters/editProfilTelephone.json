@@ -1,0 +1,32 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "POST",
+          "path": "/profil/edittelephone"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+              "adresseMail": "coco.simon@gmail.com",
+              "adresseDomicile": "massy somewhere",
+              "motDePasse": "son password",
+              "telephone": "son numero modifié",
+              "cv": "CV.pdf",
+              "nom": "Simon",
+              "prenom": "Corentin"
+            }
+          ]
+        }
+      }
+    ]
+  }

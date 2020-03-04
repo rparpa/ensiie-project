@@ -34,6 +34,14 @@ module.exports = class {
         this._cv = value;
     }
 
+    get telephone() {
+        return this._telephone;
+    }
+
+    set telephone(value) {
+        this._telephone = value;
+    }
+
     get nom() {
         return this._nom;
     }
@@ -50,14 +58,25 @@ module.exports = class {
         this._prenom = value;
     }
 
+    get telephone() {
+        return this._telephone;
+    }
+
+    set telephone(value) {
+        this._telephone = value;
+    }
+
     toJson() {
         return {
             id: this.id,
             adresseMail: this.adresseMail,
+            adresseDomicile: this.adresseDomicile,
             motDePasse: this.motDePasse,
+            telephone: this.telephone,
             cv: this.cv,
             nom: this.nom,
-            prenom: this.prenom
+            prenom: this.prenom,
+            telephone: this.telephone
         }
     }
 };

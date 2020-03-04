@@ -1,0 +1,31 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "POST",
+          "path": "/profilentreprise/editadresse"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+                "nom": "PSA ft Safran",
+                "adresseMail": "coco.simon@psa.com",
+                "adresseSiege": "chez coco ft jul",
+                "motDePasse": "cocopassword",
+                "logo": "psa-logo.png",
+                "telephone": "numero coco"
+            }
+          ]
+        }
+      }
+    ]
+}

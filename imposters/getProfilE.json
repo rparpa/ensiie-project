@@ -1,0 +1,31 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "GET",
+          "path": "/profilentreprise"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+                "nom": "PSA",
+                "adresseMail": "coco.simon@psa.com",
+                "adresseSiege": "chez coco",
+                "motDePasse": "cocopassword",
+                "logo": "psa-logo.png",
+                "telephone": "numero coco"
+            }
+          ]
+        }
+      }
+    ]
+}

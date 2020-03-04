@@ -1,19 +1,58 @@
-CREATE TABLE "user" (
+DROP TABLE IF EXISTS "offre" CASCADE;
+DROP TABLE IF EXISTS "candidat" CASCADE;
+DROP TABLE IF EXISTS "administrateur" CASCADE;
+DROP TABLE IF EXISTS "entreprise" CASCADE;
+DROP TABLE IF EXISTS "particulier" CASCADE;
+
+CREATE TABLE "administrateur" (
     id SERIAL PRIMARY KEY ,
-    firstname VARCHAR NOT NULL ,
-    lastname VARCHAR NOT NULL ,
-    birthday date
+    identifiant VARCHAR NOT NULL ,
+    motdepasse VARCHAR NOT NULL
 );
 
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+CREATE TABLE "entreprise" (
+    id SERIAL PRIMARY KEY ,
+    nom VARCHAR NOT NULL ,
+    adressemail VARCHAR NOT NULL ,
+    adressesiege VARCHAR NOT NULL ,
+    motdepasse VARCHAR NOT NULL ,
+    logo VARCHAR NOT NULL ,
+    isvalid BOOLEAN NOT NULL,
+    telephone VARCHAR NOT NULL
+);
+
+CREATE TABLE "particulier" (
+    id SERIAL PRIMARY KEY ,
+    adressemail VARCHAR NOT NULL ,
+    motdepasse VARCHAR NOT NULL ,
+    cv VARCHAR NOT NULL ,
+    nom VARCHAR NOT NULL ,
+    prenom VARCHAR NOT NULL,
+    telephone VARCHAR NOT NULL
+);
+
+CREATE TABLE "offre" (
+    id SERIAL PRIMARY KEY ,
+    identreprise INTEGER REFERENCES entreprise(id) ,
+    description VARCHAR NOT NULL ,
+    document VARCHAR NOT NULL ,
+    typecontrat VARCHAR NOT NULL ,
+    adresse VARCHAR NOT NULL ,
+    latitude NUMERIC NOT NULL ,
+    longitude NUMERIC NOT NULL ,
+    salaire NUMERIC NOT NULL ,
+    titre VARCHAR NOT NULL ,
+    dateparution NUMERIC NOT NULL
+);
+
+CREATE TABLE "candidat" (
+    idoffre INTEGER REFERENCES offre(id) ,
+    idparticulier INTEGER REFERENCES particulier(id) ,
+    PRIMARY KEY (idoffre, idparticulier)
+);
+
+INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom, telephone) VALUES('test@gmail.com', 'mdp', 'nomCV.pdf', 'LENOM', 'LEPRENOM', '0600000000');
+INSERT INTO entreprise(nom, adressemail, adressesiege, motdepasse, logo, isvalid, telephone) VALUES('ENSIIE CORPO', 'ensiie@ensiie.fr', 'rue ensiie', 'mdp', 'nomLogo.png', FALSE, '0700000000');
+INSERT INTO offre(identreprise, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution) VALUES(1, 'Mission incroyable', 'document.pdf', 'CDI', 'rue ensiie', 90, 90, 50000, 'Poste incroyable', 0);
+INSERT INTO candidat(idoffre, idparticulier) VALUES(1, 1);
+INSERT INTO administrateur(identifiant, motdepasse) VALUES('admin', 'admin');

@@ -1,0 +1,27 @@
+{
+  "predicates": [
+    {
+      "equals": {
+        "method": "GET",
+        "path": "/signUp"
+      }
+    },
+    {
+      "matches": {
+      }
+    }
+  ],
+  "responses": [
+    {
+      "is": {
+        "headers": { "Access-Control-Allow-Origin": "*" },
+        "body": [
+          {
+            "isParticulier" : "2",
+            "id" : "123489032"
+          }
+        ]
+      }
+    }
+  ]
+}

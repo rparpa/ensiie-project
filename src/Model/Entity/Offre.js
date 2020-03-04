@@ -10,12 +10,12 @@ module.exports = class {
         this._id = value;
     }
 
-    get idEntreprise() {
-        return this._idEntreprise;
+    get identreprise() {
+        return this._identreprise;
     }
 
-    set idEntreprise(value) {
-        this._idEntreprise = value;
+    set identreprise(value) {
+        this._identreprise = value;
     }
 
     get description() {
@@ -34,12 +34,12 @@ module.exports = class {
         this._document = value;
     }
 
-    get typeContrat() {
-        return this._typeContrat;
+    get typecontrat() {
+        return this._typecontrat;
     }
     
-    set typeContrat(value) {
-        this._typeContrat = value;
+    set typecontrat(value) {
+        this._typecontrat = value;
     }
 
     get adresse() {
@@ -74,26 +74,35 @@ module.exports = class {
         this._salaire = value;
     }
 
-    get isValid() {
-        return this._isValid;
+    get titre() {
+        return this._titre;
     }
 
-    set isValid(value) {
-        this._isValid = value;
+    set titre(value) {
+        this._titre = value;
+    }
+
+    get dateparution() {
+        return this._dateparution;
+    }
+
+    set dateparution(value) {
+        this._dateparution = value;
     }
 
     toJson() {
         return {
             id: this.id,
-            idEntreprise: this.idEntreprise,
+            identreprise: this.identreprise,
             description: this.description,
             document: this.document,
-            typeContrat: this.typeContrat,
+            typecontrat: this.typecontrat,
             adresse: this.adresse,
             latitude: this.latitude,
             longitude: this.longitude,
             salaire: this.salaire,
-            isValid: this.isValid
+            titre: this.titre,
+            dateparution: this.dateparution
         }
     }
 };

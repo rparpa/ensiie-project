@@ -1,0 +1,39 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "GET",
+          "path": "/getInscriptionEntrepriseAttente"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+                "id": 50,
+                "nom": "PSA",
+                "adresseMail": "rh@psa.com",
+                "adresseSiege": "chez psa",
+                "logo": "psa-logo.png",
+                "telephone": "numero psa"
+            },
+            {
+                "id": 55,
+                "nom": "Safran",
+                "adresseMail": "Safran@psa.com",
+                "adresseSiege": "chez Safran",
+                "logo": "Safran-logo.png",
+                "telephone": "numero Safran"
+            }
+          ]
+        }
+      }
+    ]
+  }

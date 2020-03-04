@@ -1,0 +1,43 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "GET",
+          "path": "/getOffreEntrepriseAttente"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+              "id" : 45,
+              "titre" : "Alternance Coco",
+              "description" : "alternant 1 avec moi",
+              "document" : "none",
+              "typeContrat" : "Alternance",
+              "adresse" : "Quelque part",
+              "salaire": "1k",
+              "dateParution" : "20-20-2020"
+            },
+            {
+              "id" : 46,
+              "titre" : "Alternance Coco partenaire",
+              "description" : "alternant 2 avec moi",
+              "document" : "none",
+              "typeContrat" : "Alternance",
+              "adresse" : "Quelque part 2",
+              "salaire": "5k",
+              "dateParution" : "20-20-2020"
+            }
+          ]
+        }
+      }
+    ]
+  }

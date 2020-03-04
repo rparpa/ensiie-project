@@ -4,12 +4,15 @@
   "description": "## Install your application This tutorial will guide you through the installation procedure of the Web Project Skeleton.",
   "main": "index.js",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@stryker-mutator/core": "^1.1.1",
     "@stryker-mutator/html-reporter": "^1.1.1",
     "@stryker-mutator/javascript-mutator": "^1.1.1",
     "@stryker-mutator/jest-runner": "^1.1.1",
-    "jest": "^24.9.0",
-    "stryker-cli": "^1.0.0"
+    "jest": "^24.1.0",
+    "stryker-cli": "^1.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   },
   "directories": {
     "test": "test"
@@ -17,22 +20,16 @@
   "scripts": {
     "unit.test": "jest",
     "unit.test.coverage": "jest --coverage",
-    "unit.test.mutation": "stryker run"
+    "unit.test.mutation": "stryker run",
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JonahR1/ensiie-project.git"
   },
   "jest": {
-    "verbose": true,
-    "coverageThreshold": {
-      "global": {
-        "branches": 50,
-        "functions": 50,
-        "lines": 50,
-        "statements": 50
-      }
-    }
+    "verbose": true
   },
   "author": "",
   "license": "ISC",
@@ -41,9 +38,7 @@
   },
   "homepage": "https://github.com/JonahR1/ensiie-project#readme",
   "dependencies": {
-    "crypto-js": "^4.0.0",
-    "jest-cli": "^25.1.0",
     "node-dev": "^4.0.0",
-    "node-fetch": "^2.6.0"
+    "pg": "^7.18.2"
   }
 }

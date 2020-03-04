@@ -1,0 +1,31 @@
+{
+    "predicates": [
+      {
+        "equals": {
+          "method": "POST",
+          "path": "/profilentreprise/edittelephone"
+        }
+      },
+      {
+        "matches": {
+        }
+      }
+    ],
+    "responses": [
+      {
+        "is": {
+          "headers": { "Access-Control-Allow-Origin": "*" },
+          "body": [
+            {
+                "nom": "PSA",
+                "adresseMail": "coco.simon@psa.com",
+                "adresseSiege": "chez coco",
+                "motDePasse": "cocopassword",
+                "logo": "psa-logo.png",
+                "telephone": "numero coco modifie"
+            }
+          ]
+        }
+      }
+    ]
+}

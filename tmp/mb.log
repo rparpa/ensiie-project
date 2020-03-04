@@ -1,0 +1,7 @@
+{"message":"[mb:2525] Running with --allowInjection set. See http://localhost:2525/docs/security for security info","level":"warn","timestamp":"2020-02-26T14:36:15.562Z"}
+{"message":"[mb:2525] mountebank v2.2.0 now taking orders - point your browser to http://localhost:2525/ for help","level":"info","timestamp":"2020-02-26T14:36:15.593Z"}
+{"message":"[mb:2525] config: {\"options\":{\"logfile\":\"./tmp/mb.log\",\"pidfile\":\"./tmp/mb.pid\",\"configfile\":\"./imposters/imposters.ejs\",\"allowInjection\":true,\"loglevel\":\"debug\",\"port\":2525,\"noParse\":false,\"nologfile\":false,\"localOnly\":false,\"ipWhitelist\":[\"*\"],\"mock\":false,\"debug\":false,\"heroku\":false,\"protofile\":\"protocols.json\"},\"process\":{\"nodeVersion\":\"v12.16.0\",\"architecture\":\"x64\",\"platform\":\"linux\"}}","level":"debug","timestamp":"2020-02-26T14:36:15.593Z"}
+{"message":"[mb:2525] PUT /imposters","level":"info","timestamp":"2020-02-26T14:36:15.617Z"}
+{"message":"[mb:2525] ::ffff:127.0.0.1:56960 => {\"imposters\":[{\"port\":4545,\"protocol\":\"http\",\"stubs\":[{\"predicates\":[{\"equals\":{\"method\":\"GET\",\"path\":\"/accueil\"}},{\"matches\":{}}],\"responses\":[{\"is\":{\"headers\":{\"Access-Control-Allow-Origin\":\"*\"},\"body\":[{\"salaire\":\"100k\"}]}}]}]}]}","level":"debug","timestamp":"2020-02-26T14:36:15.676Z"}
+{"message":"[http:4545] Open for business...","level":"info","timestamp":"2020-02-26T14:36:15.737Z"}
+{"message":"[mb:2525] Adios - see you soon?","level":"info","timestamp":"2020-02-26T14:39:39.123Z"}
