@@ -30,6 +30,6 @@ Below are some useful commands :
 * `make install` Reinstall all containers
 
 ## User creation
-![Create user in db](public/assets/documentation_images/Diagramme de classe Sandwicheriie.png)
+![Create user in db](public/assets/documentation_images/Diagramme_de_classe_Sandwicheriie.png)
 
 * ``
