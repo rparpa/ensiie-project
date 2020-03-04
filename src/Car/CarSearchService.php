@@ -32,22 +32,22 @@ class CarSearchService {
 
         if(isset($marque)) {
             $marques = $this->carRepository->searchBrand($marque);
-            $return = json_encode(array("status"=>1,"marque"=>$marques));
+            $return = json_encode(array("status"=>1,"marque"=>$marques),JSON_FORCE_OBJECT);
         }
 
         if(isset($modele) && sizeof($marques)==1) {
             $modeles = $this->carRepository->searchModel($modele);
-            $return = json_encode(array("status"=>1,"marque"=>$marques,"modele"=>$modeles));
+            $return = json_encode(array("status"=>1,"marque"=>$marques,"modele"=>$modeles),JSON_FORCE_OBJECT);
         }
 
         if(isset($finition) && sizeof($modeles)==1) {
             $finitions = $this->carRepository->searchFinition($finition);
-            $return = json_encode(array("status"=>1,"marque"=>$marques,"modele"=>$modeles,"finition"=>$finitions));
+            $return = json_encode(array("status"=>1,"marque"=>$marques,"modele"=>$modeles,"finition"=>$finitions),JSON_FORCE_OBJECT);
         }
 
         if(isset($puissance) && sizeof($puissances)==1) {
             $puissances = $this->carRepository->searchPuissance($puissance);
-            $return = json_encode(array("status"=>1,"marque"=>$marques,"modele"=>$modeles,"finition"=>$finitions,"puissance"=>$puissances));
+            $return = json_encode(array("status"=>1,"marque"=>$marques,"modele"=>$modeles,"finition"=>$finitions,"puissance"=>$puissances),JSON_FORCE_OBJECT);
         }
 
         echo $return;

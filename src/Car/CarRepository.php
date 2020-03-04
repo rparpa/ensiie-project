@@ -87,7 +87,8 @@ class CarRepository
     }
 
     public function searchBrand($brand) {
-        $statement = $this->connection->prepare("SELECT * FROM marque WHERE nom_marque LIKE ?");
+        //$brand = strtolower($brand);
+        $statement = $this->connection->prepare("SELECT * FROM marque WHERE nom_marque ILIKE ?");
 
         $statement->execute(array("%".$brand."%"));
         $rows = $statement->fetchAll(PDO::FETCH_OBJ);
