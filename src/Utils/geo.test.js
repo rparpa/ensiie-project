@@ -3,7 +3,7 @@ describe("Test of GetAddress", () => {
 
     test('Test of getting Address', async () => {
         const data = await geograph.getCoordsByAddr("137, Pilkington Avenue, Sutton Coldfield, Birmingham, West Midlands Combined Authority, West Midlands, Angleterre, B72 1LH, Royaume-Uni");
-        expect(data).toBe({lat:52.54877605,lon:-1.8162703328316416});
+        expect(data).toEqual({lat:"52.54877605",lon:"-1.8162703328316416"});
         
     });
     test('Missing addr',async ()=> {
@@ -61,21 +61,21 @@ describe("Test of GetAddress", () => {
         function Compute(){
             geograph.ComputeDistance("abc",45.23,2.293957,25.3);
         }
-        expect(Compute).toThrow(new Error('Parameter must be number'));
+        expect(Compute).toThrow(new Error('Parameter must be a number'));
     })
     test('Missing lon2',()=> {
 
         function Compute(){
             geograph.ComputeDistance(48.859315,48.859675,"abc",25.3);
         }
-        expect(Compute).toThrow(new Error('Parameter must be number'));
+        expect(Compute).toThrow(new Error('Parameter must be a number'));
     })
     test('Missing lon2',()=> {
 
         function Compute(){
             geograph.ComputeDistance(48.859315,48.859675,2.293957,"abc");
         }
-        expect(Compute).toThrow(new Error('Parameter must be number'));
+        expect(Compute).toThrow(new Error('Parameter must be a number'));
     })
     test('Missing lon2',()=> {
 
