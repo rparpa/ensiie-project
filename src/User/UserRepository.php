@@ -204,6 +204,7 @@ class UserRepository
         {
             $query->errorInfo();
         }
+        return $result;
     }
 
 
