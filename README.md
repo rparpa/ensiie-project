@@ -45,6 +45,8 @@ Les points d’entrés de ses objets sont situés dans les services suivants ave
 
 ## Patterns
 
+![Create user in db](public/assets/documentation_images/Pattern_Sandwicheriie.png)
+
 Nous avons utilisé plusieurs patterns pour venir à bout de nos challenges techniques.
 
 Deux patterns d’architectures notables :
