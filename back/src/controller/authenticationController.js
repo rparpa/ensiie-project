@@ -23,11 +23,12 @@ class AuthenticationController {
     }
   }
 
-  async createUser(username, email, encryptedPassword) {
+  async createUser(username, email, encryptedPassword,userRole) {
     let values = {
       username: username,
       email: email,
-      password: encryptedPassword
+      password: encryptedPassword,
+      role: userRole
     };
     const result = await this.service
     .create("User", values)
@@ -37,7 +38,8 @@ class AuthenticationController {
       const user = new User(
         username,
         encryptedPassword,
-        email
+        email,
+        userRole
       )
       return user
     }

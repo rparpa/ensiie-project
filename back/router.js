@@ -27,7 +27,7 @@ router.post('/authentication', function(req, res, next) {
 router.post('/registration', function(req, res, next) {
   const controller = new AuthenticationController(new DatabaseService());
   (async () => {
-    const user = await controller.createUser(req.body.username, req.body.email, req.body.password);
+    const user = await controller.createUser(req.body.username, req.body.email, req.body.password,req.body.role);
     if (undefined !== user) {
       res.send(user.toJson());
     } else {
