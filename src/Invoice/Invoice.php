@@ -27,7 +27,7 @@ class Invoice
     /**
      * @var int
      */
-    private int $orderNumber;
+    private ?int $orderNumber = null;
 
     /**
      * @var string
@@ -68,7 +68,7 @@ class Invoice
     /**
      * @return int
      */
-    public function getOrderNumber(): int
+    public function getOrderNumber()
     {
         return $this->orderNumber;
     }
@@ -148,7 +148,7 @@ class Invoice
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -156,7 +156,7 @@ class Invoice
     /**
      * @param int $id
      */
-    public function setId(int $id): void
+    public function setId($id)
     {
         $this->id = $id;
     }
