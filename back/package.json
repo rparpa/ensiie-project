@@ -7,16 +7,17 @@
   "scripts": {
     "start": "node ./bin/www",
     "unit.test": "jest",
-    "test": "jest",
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
     "newman": "^4.5.7",
     "nodemon": "^2.0.2",
+    "pg": "^7.18.2",
     "apicache": "1.5.3"
   },
   "devDependencies": {

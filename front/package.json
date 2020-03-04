@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --https true",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e-headless": "vue-cli-service test:e2e --headless",
@@ -11,11 +11,14 @@
     "mountbank-start": "node tests/mountbank/index.js"
   },
   "dependencies": {
-    "mapbox-gl": "^1.8.0",
-    "node-fetch": "^2.6.0",
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.5.0",
+    "js-sha256": "^0.9.0",
+    "mapbox-gl": "^1.8.0",
+    "node-fetch": "^2.6.0",
     "vue": "^2.6.11",
+    "vue-axios": "^2.1.5",
     "vue-mapbox": "^0.4.1",
     "vue-router": "^3.1.5"
   },
@@ -28,6 +31,7 @@
     "axios": "^0.19.2",
     "cypress": "^4.0.2",
     "mountebank": "^2.2.0",
+    "vue-places": "^2.1.3",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [

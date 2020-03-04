@@ -1,14 +1,35 @@
 module.exports = class {
-    constructor(id, firstName, lastName, numVoie, typeVoie, nomVoie, arrond, vehiculeId) {
-        this._id = id;
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._numVoie = numVoie;
-        this._typeVoie = typeVoie;
-        this._arrond = arrond;
-        this._vehiculeId = vehiculeId ;
+    constructor(username, encryptedPassword, email, vehiculeId, addressId) {
+        this._username = username;
+        this._encryptedPassword = encryptedPassword;
+        this._email = email;
+        this._vehiculeId = vehiculeId;
+        this._addressId = addressId;
     }
 
+    get username() {
+        return this._username;
+    }
+
+    set username(value) {
+        this._username = value;
+    }
+
+    get encryptedPassword() {
+        return this._encryptedPassword;
+    }
+
+    set encryptedPassword(value) {
+        this._encryptedPassword = encryptedPassword;
+    }
+
+    get email() {
+        return this._email;
+    }
+
+    set email(value) {
+        this._email = value;
+    }
 
     get vehiculeId() {
         return this._vehiculeId;
@@ -18,72 +39,21 @@ module.exports = class {
         this._vehiculeId = value;
     }
 
-    get id() {
-        return this._id;
+    get addressId() {
+        return this._addressId;
     }
 
-    set id(value) {
-        this._id = value;
-    }
-
-    get firstName() {
-        return this._firstName;
-    }
-
-    set firstName(value) {
-        this._firstName = value;
-    }
-
-    get lastName() {
-        return this._lastName;
-    }
-
-    set lastName(value) {
-        this._lastName = value;
-    }
-
-    get numVoie() {
-        return this._numVoie;
-    }
-
-    set numVoie(value) {
-        this._numVoie = value;
-    }
-
-    get typeVoie() {
-        return this._typeVoie;
-    }
-
-    set typeVoie(value) {
-        this._typeVoie = value;
-    }
-
-    get nomVoie() {
-        return this._nomVoie;
-    }
-
-    set nomVoie(value) {
-        this._nomVoie = value;
-    }
-
-    get arrond() {
-        return this._arrond;
-    }
-
-    set arrond(value) {
-        this._arrond = value;
+    set addressId(value) {
+        this._addressId = addressId;
     }
 
     toJson() {
         return {
-            id: this.id,
-            firstName: this._firstName,
-            lastName: this._lastName,
-            numVoie: this._numVoie,
-            typeVoie: this._typeVoie,
-            nomVoie: this._nomVoie,
-            arrond: this._arrond,
-            vehiculeId: this.vehiculeId
+            username: this._username,
+            encryptedPassword: this._encryptedPassword,
+            email: this._email,
+            vehiculeId: this._vehiculeId,
+            addressId: this._addressId
         }
     };
 
