@@ -1,0 +1,45 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/light.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="text-center padding-bottom padding-top-xl">
+        <a class="logo logo-lg" href="index.php">
+            <?php include "logo.html"; ?>
+        </a>
+        <div class="container bg-white borders margin-top-lg">
+            <p> 
+                <h1 class="display-2">
+                    Sign up for Insane Interactions
+                </h1>
+            </p>
+            <hr>
+            <p>
+                <?php echo $error ?>
+                <form action="index.php?module=module_register" method="post" id="needs-validation">
+                    <div class="form-group text-left">
+                        <input type="text" class="form-control" name="pseudo" placeholder="Username" required>
+                        <div class="invalid-feedback">
+                            Please provide a username.
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <input type="email" class="form-control" name="email" placeholder="Email address (optional)">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group text-left">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        <div class="invalid-feedback">
+                            Please provide a password.
+                        </div>
+                        <small class="form-text text-muted">Use at least one letter, one numeral, and seven characters.</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg">Sign up</button>
+                    <small class="form-text text-muted">By clicking "Sign up", you agree to our terms of service and <a href="index.php?module=module_privacy">privacy policy</a>. We’ll occasionally send you account related emails.</small>
+                </form>
+            </p>
+        </div>
+    </main>
+
+    <?php include "footer.html"; ?>

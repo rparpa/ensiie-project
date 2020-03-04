@@ -1,0 +1,35 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/light.css" rel="stylesheet">
+</head>
+
+<body>
+<?php include "header.html"; ?>
+
+<main class="d-flex align-items-center padding-top-xxl">
+    <div class="container text-center bg-white borders">
+        <p>
+            <h1 class="display-2">
+                Reset your password
+            </h1>
+        </p>
+        <hr> 
+            <form action="index.php?module=module_forgot" method="post" id="needs-validation">
+                <p>
+                    <?php echo $error ?>
+                    <div class="form-group text-left">
+                        <input type="email" class="form-control" name="email" placeholder="Email address" required>
+                        <small class="form-text text-muted">We will send you a link to reset your password.</small>
+                        <div class="invalid-feedback text-left">
+                            Please provide your email address.
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    <button type="submit" class="btn btn-dark btn-lg">Send email</button>   
+                </p>
+            </form>
+    </div>
+</main>
+
+<script src="include/templates/js/validation.js"></script>
+<?php include "footer.html"; ?>

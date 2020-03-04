@@ -1,5 +1,7 @@
-postgres-data
+db-data
 .idea/
-vendor
 composer.lock
 .phpunit.result.cache
+
+public/uploads/*
+.DS_Store

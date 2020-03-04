@@ -1,0 +1,142 @@
+/*
+--- ----------
+--- RESPONSIVE
+--- ----------
+*/
+
+/*Extra small devices (phones, 0px and up)*/
+/*@media (min-width: 0px) { */
+    main {
+        /*padding-left: 2vh;
+        padding-right: 2vh;*/
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .display-1 {
+      font-size: 3rem;
+    }
+
+    .display-2 {
+      font-size: 2rem;
+    }
+
+    .display-3 {
+      font-size: 1.5rem;
+    }
+
+    .lead-min {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    footer a {
+        font-size: 0.8rem;
+    }
+
+    footer .navbar-text {
+        font-size: 0.8rem;
+    }
+/*}*/
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) { 
+    .lead {
+        font-size: 1.25rem;
+    }
+
+    .lead-min {
+        font-size: 1.125rem;
+    }
+
+    footer a {
+        font-size: 1rem;
+    }
+
+    footer .navbar-text {
+        font-size: 1rem;
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) { 
+    main {
+        /*padding-left: 15vh;
+        padding-right: 15vh;*/
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    .main-lg {
+        /*padding-left: 10vh;
+        padding-right: 10vh;*/
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .display-1 {
+        font-size: 3.5rem;
+    }
+
+    .display-2 {
+        font-size: 2.25rem;
+    }
+
+    .display-3 {
+        font-size: 1.625rem;
+    }
+
+    .lead {
+        font-size: 1.5rem;
+    }
+
+    .lead-min {
+        font-size: 1.25rem;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) { 
+    main {
+        /*padding-left: 25vh;
+        padding-right: 25vh;*/
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+
+    .main-lg {
+        /*padding-left: 15vh;
+        padding-right: 15vh;*/
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    .display-1 {
+        font-size: 4rem;
+    }
+
+    .display-2 {
+        font-size: 2.5rem;
+    }
+
+    .display-3 {
+        font-size: 1.75rem;
+    }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+    main {
+        /*padding-left: 35vh;
+        padding-right: 35vh;*/
+        padding-left: 35%;
+        padding-right: 35%;
+    }
+
+    .main-lg {
+        /*padding-left: 25vh;
+        padding-right: 25vh;*/
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+}

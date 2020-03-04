@@ -1,0 +1,22 @@
+<div class="btn-group">
+    <a href="index.php?module=module_profile"><button type="button" class="btn btn-link no-vertical-padding"><img src="
+                    <?php
+                        $test = glob('uploads/avatar' . $_SESSION['id'] . '*');
+                        if(!empty($test))
+                            echo $test[0];
+                        else
+                            echo 'include/templates/images/user.png';
+                    ?>" class="avatar rounded-circle"></button></a>
+    <button type="button" class="btn btn-link dropdown-toggle dropdown-toggle-split no-vertical-padding" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="index.php?module=module_conversations">Conversations</a>
+        <?php 
+        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+            include "headerAdmin.html";
+        }
+        ?>
+        <a data-toggle="modal" data-target="#modal-logout" title="Log out" class="dropdown-item" href="#">Log out</a>
+    </div>
+</div>
+
+<?php include "modal.html"; ?>

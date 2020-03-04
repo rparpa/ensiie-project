@@ -1,0 +1,35 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/dark.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="text-center padding-bottom padding-top-xl">
+        <a class="logo logo-lg" href="index.php">
+            <?php include "logo.html"; ?>
+        </a>
+        <div class="container borders margin-top-lg">
+            <p> 
+                <h1 class="display-2">
+                    Create an admin account
+                </h1>
+            </p>
+            <hr>
+            <p>
+                <?php echo $error ?>
+                <form action="index.php?module=module_addadmin" method="post" id="needs-validation">
+                    <div class="form-group text-left">
+                        <input type="text" class="form-control" name="pseudo" placeholder="Username" required>
+                        <div class="invalid-feedback">
+                            Please provide a username.
+                        </div>
+                        <small class="form-text text-muted">Be careful, this acion is reversible only by a super admin. As a wise man once said "With great power comes great responsability."</small>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                </form>
+            </p>
+        </div>
+    </main>
+
+<script src="include/templates/js/validation.js"></script>
+
+<?php include "footer.html"; ?>

@@ -1,0 +1,89 @@
+/*
+--- ----------
+--- DARK THEME
+--- ----------
+*/
+
+/*
+CORE
+*/
+
+body {
+    color: white;
+    background-color: #111;
+}
+
+.border {
+    border: 0 !important;
+}
+
+/*
+HEADER
+*/
+
+.logo svg {
+    fill: #fff;
+    stroke: #fff;
+}
+.navbar-brand:hover svg {
+    fill: lightgreen;
+    stroke: lightgreen;
+}
+
+.navbar-brand {
+    color: white;
+}
+.navbar-brand:hover {
+    color: lightgreen;
+}
+
+.navbar-nav a {
+    color: white;
+}
+.navbar-nav a:hover {
+    color: lightgreen;
+    border-bottom-color: lightgreen;
+}
+
+.btn-group .btn-link {
+    color: #fff;
+}
+
+.btn-group .btn-link:hover {
+    color: lightgreen;
+}
+
+/*White hamburger*/
+.navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+main .borders {
+    background-color: #333;
+    border: 4px solid #222 !important;
+    border-radius: 1rem !important;
+}
+
+/*
+BODY
+*/
+
+strong {
+    color: lightgreen;
+}
+
+a {
+    color: white;
+}
+
+/*
+FOOTER
+*/
+
+footer a:hover {
+    color: white;
+}
+
+hr {
+    background-color: white;
+}

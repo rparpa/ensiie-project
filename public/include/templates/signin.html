@@ -1,0 +1,49 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/light.css" rel="stylesheet">
+</head>
+
+<body>
+    <main class="text-center padding-bottom padding-top-xl">
+        <a class="logo logo-lg" href="index.php">
+            <?php include "logo.html"; ?>
+        </a>
+        <div class="container bg-white borders margin-top-lg">
+            <p>
+                <h1 class="display-2">
+                    Please sign in
+                </h1>
+            </p> 
+            <hr>
+            <p>
+                <?php echo $error ?>
+                <form action="index.php?module=module_signin" method="post" id="needs-validation">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="pseudo" placeholder="Username or email address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                    </div>
+                    <small class="form-text">
+                        <div class="row">
+                            <div class="col-6 text-left">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Remember my preference</span>
+                                </label>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="index.php?module=module_forgot">Forgot password ?</a>
+                            </div>
+                        </div>
+                    </small>
+                    <button type="submit" id="submit" class="btn btn-success btn-lg">Sign in</button>
+                </form> 
+                <!-- Server side validation: https://getbootstrap.com/docs/4.0/components/forms/#server-side -->
+                <hr>
+                <small class="form-text text-muted">Don't have an account ? <a href="index.php?module=module_register">Create one.</a></small>
+            </p>
+        </div> 
+    </main>
+
+    <?php include "footer.html"; ?>

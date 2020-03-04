@@ -1,0 +1,38 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/light.css" rel="stylesheet">
+</head>
+
+<body>
+<?php include "header.html"; ?>
+
+<main class="d-flex align-items-center padding-top-xxl">
+    <div class="container text-center bg-white borders">
+        <p>
+            <h1 class="display-2">
+                Invite some friends
+            </h1>
+        </p>
+        <hr>
+        <p>
+            <?php echo $error ?>
+            <form action="index.php?module=module_invite&submit=on" method="post" id="needs-validation">
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email1" placeholder="Add Email 1">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email2" placeholder="Add Email 2">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email3" placeholder="Add Email 3">
+                </div>
+                <small class="form-text text-muted">Those are optional, you can skip this page if you want to.</small>
+                <p>
+                    <button type="submit" class="btn btn-dark btn-lg">Let's go !</button>
+                </p>
+            </form>
+        </p>
+    </div>
+</main>
+
+<script src="include/templates/js/validation.js"></script>
+<?php include "footer.html"; ?>

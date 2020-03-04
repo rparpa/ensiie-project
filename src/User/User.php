@@ -24,6 +24,20 @@ class User
     private $birthday;
 
     /**
+     * @var mixed
+     *
+     * X.509 certificate resource
+     */
+    private $private_key;
+
+    /**
+     * @var mixed
+     *
+     * X.509 certificate resource
+     */
+    private $public_key;
+
+    /**
      * @return int
      */
     public function getId()
@@ -109,6 +123,42 @@ class User
         }
 
         return $now->diff($this->getBirthday())->y;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrivateKey()
+    {
+        return $this->private_key;
+    }
+
+    /**
+     * @param $private_key mixed
+     * @return User
+     */
+    public function setPrivateKey($private_key): User
+    {
+        $this->private_key = $private_key;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublicKey()
+    {
+        return $this->public_key;
+    }
+
+    /**
+     * @param $public_key mixed
+     * @return User
+     */
+    public function setPublicKey($public_key): User
+    {
+        $this->public_key = $public_key;
+        return $this;
     }
 }
 

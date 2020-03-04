@@ -28,12 +28,12 @@ services:
       TZ: ${TIMEZONE}
       XDEBUG_CONFIG: remote_host=${REMOTE_HOST}
       SSH_AUTH_SOCK: /ssh-agent
-      DB_NAME: ${DB_USER}
-      DB_USER: ${DB_USER}
+      DB_NAME: 'projet'
+      DB_USER: 'root'
       DB_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - .:/var/www/html
-      - $SSH_AUTH_SOCK:/ssh-agent
+      - ./:/var/www/html
+      # - /run/user/1000/keyring/ssh:/ssh-agent
     working_dir: /var/www/html
     user: "${DOCKER_USER}"
     entrypoint:
@@ -43,20 +43,33 @@ services:
     networks:
       - "ensiie"
 
-  postgres:
+  mysql:
     build:
-      context: ./.docker/postgres
+      context: ./.docker/mysql
     ports:
-      - ${DB_PORT_EXTERNAL}
+      - "${DB_PORT_EXTERNAL}:3306"
     environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-      - .:/var/www/html
+      - ./db-data:/var/lib/mysql
+      - ./:/var/www/html
     working_dir: /var/www/html
     networks:
       - "ensiie"
+  
+  phpmyadmin:
+    depends_on:
+      - mysql
+    build:
+      context: ./.docker/phpmyadmin
+    restart: always
+    ports:
+      - '8081:80'
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - ensiie
 
 networks:
     ensiie:

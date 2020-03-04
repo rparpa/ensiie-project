@@ -1,0 +1,93 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/light.css" rel="stylesheet">
+</head>
+
+<body>
+<?php include "header.html"; ?>
+
+<main class="align-items-center main-lg padding-top-xl">
+    <div class="container text-center bg-white borders">
+        <p>
+            <h1 class="display-2">
+                Profile
+            </h1>
+        </p>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="
+                    <?php
+                        $this->loadAvatar();
+                    ?>" class="rounded-circle img-fluid mx-auto d-block avatarXL">
+                <p>
+                    <h4> <?php $this->displayInfo("pseudo"); ?> </h4>
+                </p>
+                <p>
+                    <?php $this->displayInfo("description")?>
+                </p>
+            </div>
+            <div class="col-sm-6 text-left">
+                <div class="row">
+                    <div class="col-5 font-weight-bold">
+                        Email:  
+                    </div>
+                    <div class="col-7">
+                        <?php $this->displayInfo("Email"); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5 font-weight-bold">
+                        Full name:
+                    </div>
+                    <div class="col-7">
+                        <?php $this->displayInfo("Name") ; ?> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5 font-weight-bold">
+                        Gender:
+                    </div>
+                    <div class="col-7">
+                        <?php $this->displayInfo("Gender"); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5 font-weight-bold">
+                        Age:
+                    </div>
+                    <div class="col-7">
+                        <?php $this->displayInfo("Age"); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5 font-weight-bold">
+                        Occupation:
+                    </div>
+                    <div class="col-7">
+                        <?php $this->displayInfo("Occupation"); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5 font-weight-bold">
+                        Location:
+                    </div>
+                    <div class="col-7">
+                        <?php $this->displayInfo("Location"); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5 font-weight-bold">
+                        Favorite quotation:
+                    </div>
+                    <div class="col-7 font-italic">
+                        <?php $this->displayInfo("Quote"); ?>
+                    </div>
+                </div>
+
+                <?php echo $edit ?>
+            </div>
+        </div>
+    </div>
+</main>
+
+<?php include "footer.html"; ?>

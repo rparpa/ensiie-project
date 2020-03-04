@@ -12,6 +12,8 @@ help:
 	@echo "${bold}db.connect${normal}\n\t Connects to the database.\n"
 	@echo "${bold}phpunit.run${normal}\n\t Runs the unit tests.\n"
 
+restart: stop start
+
 start:
 	docker-compose up --build -d
 	sleep 3
@@ -20,19 +22,24 @@ stop:
 	docker-compose down -v
 	docker-compose rm -v
 
-install: uninstall start composer.install db.install
+install: uninstall start composer.install sleep db.install
+
+ci: uninstall start sleep db.install
 
 uninstall: stop
-	@sudo rm -rf postgres-data
+	@sudo rm -rf db-data
 
 reinstall: install
 
+sleep:
+	sleep 20
+
 #Connects to the databatase
 db.connect:
-	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER'
+	docker-compose exec mysql /bin/bash -c 'mysql -u root -pensiie'
 
 db.install:
-	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER -h localhost -f data/db.sql'
+	docker-compose exec mysql /bin/bash -c 'mysql -u root -pensiie -e "DROP DATABASE IF EXISTS projet; create database projet"; mysql -u root -pensiie projet < data/db.sql'
 
 php.connect:
 	docker-compose exec php /bin/bash

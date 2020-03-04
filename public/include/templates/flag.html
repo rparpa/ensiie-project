@@ -1,0 +1,25 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/dark.css" rel="stylesheet">
+</head>
+
+<body>
+<?php include "header.html"; ?>
+
+<main class="main-lg padding-top">
+    <div class="container text-center">
+        <p>
+            <h1 class="display-1">Flagged messages</h1> 
+        </p>
+        <?php echo $error ?>
+        <form action="index.php?module=module_flag" method="post">
+            <div class="container text-left">
+                <?php echo $messages ?>
+            </div>
+            <div class="padding-left-l padding-right-l">
+                <button type="submit" class="btn btn-success btn-lg">Submit</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<?php include "footer.html"; ?>

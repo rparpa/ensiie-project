@@ -1,0 +1,70 @@
+    <?php include "head.html"; ?>
+        <link href="include/templates/css/light.css" rel="stylesheet">
+        <link href="include/templates/css/chat.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="container-fluid no-padding">
+            <!-- Sidebar -->
+            <!-- https://www.w3schools.com/w3css/w3css_sidebar.asp -->
+            <div class="sidebar bg-light no-padding" id="sidebar">
+                <!-- Room's title -->
+                <!-- <div class="sidebar-content" id="sidebar-content"> -->
+                    <div class="title d-flex align-items-center">
+                        <div class="container-fluid text-center">
+                            <h1 class="display-2"><?php echo $roomName ?></h1>
+                        </div>         
+                    </div>
+                    <!-- Room's menu -->
+                    <div class="menu padding-top" >
+                        <h1 class="display-3 text-center">
+                            Available conversations
+                        </h1>   
+                        <hr>      
+                        <nav class="flex-column text-center lead-min">
+                            <?php echo $conversations ?>
+                        </nav>
+                    </div>
+                    <div class="buttons d-flex align-items-center">
+                        <div class="container-fluid text-center">
+                            <button data-toggle="modal" data-target="#modal-delete" onclick="delConv()" title="Delete conversation" class="btn btn-link"><img class="logo" src="include/templates/icons/x.svg"/></button>
+                            <a href="index.php"><button data-toggle="tooltip" title="Home" class="btn btn-link"><img class="logo" src="include/templates/icons/home.svg"/></button></a>
+                            <a href="index.php?module=module_profile"><button data-toggle="tooltip" title="Profile" class="btn btn-link"><img class="logo" src="include/templates/icons/user.svg"/></button></a>
+                            <button data-toggle="modal" data-target="#modal-logout" title="Log out" class="btn btn-link"><img class="logo" src="include/templates/icons/log-out.svg"/></button>
+                            <button class="btn btn-link shrinkButtons" data-toggle="tooltip" title="Hide sidbar" id="shrink"><img class="logo" src="include/templates/icons/minimize.svg"/></button>
+                        </div> 
+                    </div>
+                <!-- </div> -->
+            </div>
+
+            <main class="no-padding">
+                <div id="chat" class="chat">
+                </div>
+
+                <div class="messageBar bg-light d-flex align-items-center">
+                    <button class="btn btn-link shrinkButtons" data-toggle="tooltip" title="Show sidebar" id="unshrink"><img class="logo" src="include/templates/icons/sidebar.svg"/></button>
+                    <textarea class="form-control bg-light" id="messageInput" rows="1" placeholder="Type a message"></textarea>
+                    <button id="messageButton" data-toggle="tooltip" title="Send message" class="btn btn-link"><img class="logo" src="include/templates/icons/send.svg"/></button>
+                    
+                    <div class="padding-right-xxs">
+                        <label class="no-margin">
+                            <input type="file" id="file" class="">
+                            <span id="" class=""><img class="logo" id="" src="include/templates/icons/image.svg"/></span>
+                        </label>
+                    </div> 
+                </div>
+            </main>
+        </div>
+
+        <?php include "modal.html"; ?>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+        <script src="include/templates/js/chat.js"></script>
+        <script src="include/templates/js/shrink.js"></script>
+  </body>
+</html>

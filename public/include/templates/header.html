@@ -1,0 +1,18 @@
+<header class="border-bottom">
+    <nav class="navbar navbar-expand-sm">
+        <div class="container">
+            <a class="navbar-brand logo" href="index.php">
+                <?php include "logo.html"; ?>
+                Insane Interactions
+            </a>
+
+            <?php 
+                if (isset($_SESSION['pseudo']) && $_SESSION['pseudo'] != '') {
+                    include "headerCo.html";
+                } else {
+                    include "headerNotCo.html";
+                }
+            ?>
+        </div>
+    </nav>
+</header>

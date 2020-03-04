@@ -1,0 +1,73 @@
+/*
+--- ----------
+--- LIGHT THEME
+--- ----------
+*/
+
+/*
+CORE
+*/
+
+body {
+    color: black;
+    background: url("../images/mosaiq.png");
+    background-color: white;
+}
+
+/*
+HEADER
+*/
+
+header {
+    background-color: white;
+}
+
+.border-bottom {
+    border-bottom: 2px solid #F1F3F5 !important;
+}
+
+/*
+BODY
+*/
+
+/*Border of the body*/
+main {
+    border-radius: 5px;
+}
+
+main .container {
+    padding-left: 4vh;
+    padding-right: 4vh;
+    padding-bottom: 2vh;
+}
+
+main .borders {
+    border: 4px solid #F1F3F5 !important;
+    border-radius: 1rem !important;
+}
+
+.btn-link {
+    color: #28A745;
+}
+.btn-link:hover {
+    color: #28A745;
+}
+
+.form-control {
+    border-color: lightgrey;
+}
+.form-control:focus {
+    border-color: #28A745;
+}
+
+/*
+FOOTER
+*/
+
+footer {
+    background-color: white;
+}
+
+.border-top {
+    border-top: 2px solid #F1F3F5 !important;
+}   

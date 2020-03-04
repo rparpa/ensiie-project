@@ -1,0 +1,44 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/light.css" rel="stylesheet">
+</head>
+<body>
+    <?php include "header.html"; ?>
+
+    <main class="d-flex align-items-center padding-top-xxl">
+    <div class="container text-center bg-white borders">
+    <p>
+        <h1 class="display-2">
+            Create a conversation
+        </h1>
+    </p>
+    <hr>
+    <p>
+        <small class="form-text text-muted">This is your key to join the conversation, you can either copy it by clicking on it and send it to your friends or you can directly go to the next page, provide us with their emails and we'll take care of the rest ! Enjoy ! :)</small>
+    </p>
+    <p>
+        <button class="btn btn-outline-success btn-lg" id="copy-button" data-clipboard-text="<?php echo $key ?>" data-toggle="popover" data-placement="right" data-content="Key copied !" >
+            <?php echo $key ?>
+        </button>
+
+    </p>
+    <form action="index.php?module=module_create" method="post" id="needs-validation">
+        <?php echo $error ?>
+        <div class="form-group text-left padding-left padding-right">
+            <input type="text" class="form-control" name="name" placeholder="Choose a name" required>
+            <small class="form-text text-muted">This will be the name of your conversation.</small>
+            <div class="invalid-feedback text-left">
+                Please provide a FUNNY name.
+            </div>
+        </div>
+    <p>
+        <button type="submit" class="btn btn-dark btn-lg">Invite some friends</button>
+    </p>
+    </form>
+</div>
+</main>
+</body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
+<script src="include/templates/js/copy.js"></script>
+
+<?php include "footer.html"; ?>

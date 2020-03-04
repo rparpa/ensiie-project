@@ -1,0 +1,41 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/light.css" rel="stylesheet">
+</head>
+
+<body>
+<?php include "header.html"; ?>
+
+<main class="d-flex align-items-center padding-top-xxl">
+    <div class="container text-center bg-white borders">
+        <p>
+            <h1 class="display-2">
+                Reset your password
+            </h1>
+        </p>
+        <p>Warning: This will create a new encryption key for you. Past messages won't be accessible until someone that can read them logs in.</p>
+        <hr>
+        <p>
+            <?php echo $error ?>
+            <form action="<?php echo 'index.php?module=module_reset&p=' . htmlspecialchars($_GET['p'])?>" method="post" id="needs-validation">                
+                <div class="form-group">
+                    <input type="password" class="form-control" name="newPassword" placeholder="New password" required>
+                    <div class="invalid-feedback text-left">
+                        Please provide your new password.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="newPasswordRepeat" placeholder="Confirm new password" required>
+                    <div class="invalid-feedback text-left">
+                        Please repeat your new password.
+                    </div>
+                </div>
+                <p>
+                    <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+                </p>  
+            </form>
+        </p>
+    </div>
+</main>
+
+<script src="include/templates/js/validation.js"></script>
+<?php //include "footer.html"; ?>

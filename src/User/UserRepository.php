@@ -28,11 +28,13 @@ class UserRepository
         $users = [];
         foreach ($rows as $row) {
             $user = new User();
+            $private_key = openssl_pkey_get_private($row->private_key);
             $user
                 ->setId($row->id)
                 ->setFirstname($row->firstname)
                 ->setLastname($row->lastname)
-                ->setBirthday(new \DateTimeImmutable($row->birthday));
+                ->setBirthday(new \DateTimeImmutable($row->birthday))
+                ->setPrivateKey($private_key);
 
             $users[] = $user;
         }

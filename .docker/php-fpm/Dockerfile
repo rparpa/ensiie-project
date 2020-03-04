@@ -25,7 +25,7 @@ RUN apt-get update -qq \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && docker-php-ext-install -j$(nproc) \
         pdo \
-        pdo_pgsql \
+        pdo_mysql \
         bcmath \
         xml \
         curl \

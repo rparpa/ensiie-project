@@ -1,0 +1,3 @@
+to run test : 
+ docker-compose exec php php ./vendor/bin/phpunit ./test/unit/User/*.php
+ 

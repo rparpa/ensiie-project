@@ -1,0 +1,74 @@
+<?php include "head.html"; ?>
+    <link href="include/templates/css/light.css" rel="stylesheet">
+</head>
+
+<body>
+<?php include "header.html"; ?>
+
+<main class="align-items-center main-lg padding-top-xl">
+    <div class="container text-center bg-white borders">
+        <p>
+            <h1 class="display-2">
+                My profile
+            </h1>
+        </p>
+        <form action="index.php?module=module_edit" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="
+                    <?php
+                        $test = glob('uploads/avatar' . $_SESSION['id'] . '*');
+                        if(!empty($test))
+                            echo $test[0];
+                        else
+                            echo 'include/templates/images/user.png';
+                    ?>" class="rounded-circle img-fluid mx-auto d-block avatarXL">
+                    <p>
+                        <input type="file" class="form-control-file" name="file" aria-describedby="fileHelp">
+                    </p>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="12" placeholder="Tell us a little bit about yourself" name="description"><?php $this->displayInfo("Description"); ?></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-6 text-left"> 
+                    <?php echo $error ?>             
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your email address" name="email" value="<?php $this->displayInfo('Email'); ?>">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your name" name="name" value="<?php $this->displayInfo('Name'); ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" min="13" max="130" placeholder="Age" name="age" value="<?php $this->displayInfo('Age'); ?>" >
+                    </div>
+                    <div class="form-group">
+                        <select class="custom-select" name="gender">
+                            <option selected><?php $this->displayInfo("Gender"); ?></option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Occupation" name="occupation" value="<?php $this->displayInfo('Occupation'); ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Location" name="location" value="<?php $this->displayInfo('Location'); ?>">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" maxlength="120" placeholder="Your favorite quote" name="quote"><?php $this->displayInfo("Quote"); ?></textarea>
+                    </div>
+                    <p class="text-center">
+                        <button type="submit" class="btn btn-lg btn-success">Submit</button>
+                    </p> 
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+<!-- <script src="include/templates/js/validation.js"></script> -->
+
+<?php include "footer.html"; ?>
