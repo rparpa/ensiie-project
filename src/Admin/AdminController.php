@@ -46,10 +46,10 @@ class AdminController {
 
 	public function ajoutVoiture($post) {
 		try {
-			$this->carRepository->create($post['immat'],new \DateTimeImmutable($post['date_immat']),$post['id_marque'],$post['id_puissance'],$post['id_finition'],$post['lien_img'],$post['prix']);
+			$this->carRepository->create($post['immat'],$post['date_immat'],$post['id_marque'],$post['id_modele'],$post['id_puissance'],$post['id_finition'],$post['prix']);
 			$this->adminView->afficheAjout($post);
 		} catch(Exception $e) {
-
+			echo $e;
 		}
 	}
 

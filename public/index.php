@@ -102,7 +102,7 @@ if (isset($_GET['api'])) {
             $controller->afficheVoitures();
         } else if ($_GET['action'] == 'ajouter') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
-            if(isset($_POST["nom_modele"])) {
+            if(isset($_POST["id_modele"])) {
                 $controller->ajoutVoiture($_POST);
             } else {
                 $controller->afficheAjoutVoiture();

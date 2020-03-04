@@ -72,7 +72,7 @@ class CarSearchService {
         die();
     }
 
-    public function fetchPuissances($puissance) {
+    public function fetchPuissances($brand) {
         header("Content-Type: application/json");
         $res = $this->carRepository->fetchPuissances($brand);
         echo json_encode(array("status"=>1,"content"=>$res));

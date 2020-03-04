@@ -97,12 +97,15 @@ class AdminView {
       <div id="formContent">
         <h3 class="fadeIn first title">Ajout d'une voiture</h3>
         <form id="form_ajout" class="fadeIn first" action="index.php?action=ajouter" method="POST">
-          <input type="text" id="nom_modele" name="nom_modele" placeholder="Nom du modèle">
-          <input type="text" id="marque" name="marque" placeholder="Marque">
-          <input type="text" id="lien_img" name="lien_img" placeholder="Lien de l'image">
-          <input type="text" id="puissance_fisc" name="puissance_fisc" placeholder="Puissance fiscale">
-          <input type="text" id="" name="puissance_ch" placeholder="Puissance en chevaux">
-          <input type="text" id="nom_finition" name="nom_finition" placeholder="Nom de la finition">
+          <input type="text" id="modeleForm" name="nom_modele" class="autocomplete" placeholder="Nom du modèle">
+          <input type="hidden" name="id_modele" value="">
+          <input type="text" id="marqueForm" class="autocomplete" placeholder="Marque">
+          <input type="hidden" name="id_marque" value="">
+          <!--<input type="text" id="lien_img" name="lien_img" placeholder="Lien de l'image">-->
+          <input type="text" id="puissanceForm"  class="autocomplete" placeholder="Puissance en chevaux">
+          <input type="hidden" name="id_puissance" value="">
+          <input type="text" id="finitionForm" class="autocomplete" placeholder="Nom de la finition">
+          <input type="hidden" name="id_finition" value="">
           <input type="text" id="immat" name="immat" placeholder="Numéro d'immatriculation">
           <input type="date" id="date_immat" name="date_immat" placeholder="Date d'immatriculation">
           <input type="text" id="prix" name="prix" placeholder="Prix à la journée">

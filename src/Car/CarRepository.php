@@ -50,19 +50,20 @@ class CarRepository
     }
 
 
-    public function create($immat, $date_immat, $id_marque, $id_modele, $id_puissance, $id_finition, $lien_img, $prix)
+    public function create($immat, $date_immat, $id_marque, $id_modele, $id_puissance, $id_finition, $prix)
     {
-        $date_immat = new \DateTimeImmutable($date_immat);
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //$date_immat = new \DateTimeImmutable($date_immat);
 
-        $statement = $this->connection->prepare("INSERT INTO \"voiture\" (immat,date_immat,id_marque,id_modele,id_puissance,id_finition,lien_img,prix)\
-                                                values(:immat,:date_immat,:id_marque,:id_modele,:id_puissance,:id_finition,:lien_img,:prix)");
+        $statement = $this->connection->prepare("INSERT INTO \"voiture\" (immat,date_immat,id_marque,id_modele,id_puissance,id_finition,prix)
+                                                values(:immat,:date_immat,:id_marque,:id_modele,:id_puissance,:id_finition,:prix)");
 
         $statement->bindParam(":immat", $immat);
         $statement->bindParam(":date_immat", $date_immat);
         $statement->bindParam(":id_marque", $id_marque);
+        $statement->bindParam(":id_modele", $id_modele);
         $statement->bindParam(":id_puissance", $id_puissance);
         $statement->bindParam(":id_finition", $id_finition);
-        $statement->bindParam(":lien_img", $lien_img);
         $statement->bindParam(":prix", $prix);
 
         $statement->execute();
@@ -230,6 +231,7 @@ class CarRepository
 
     public function fetchBrands() {
         $statement = $this->connection->prepare("SELECT * FROM marque");
+        $statement->execute();
         $rows = $statement->fetchAll(PDO::FETCH_OBJ);
 
         $finalprod = [];
@@ -271,7 +273,7 @@ class CarRepository
         return $finalprod;
     }
 
-    public function fetchFinition($brand) {
+    public function fetchFinitions($brand) {
         $statement = $this->connection->prepare("SELECT * FROM finition WHERE id_marque = ?");
 
         $statement->execute(array($brand));

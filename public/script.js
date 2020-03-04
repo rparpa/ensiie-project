@@ -5,6 +5,8 @@ $(document).ready(function() {
 
 	fetchCarInfo();
 
+	fetchAndSetupMarques();
+
 	$("#sendRq").click(function() {
 		// TODO form check
 
@@ -154,12 +156,16 @@ $(document).ready(function() {
 	  });
 	  }*/
 	  var contenu = "";
+	  var marques = "";
+	  var models = "";
+	  var finitions = "";
+	  var puissances = "";
 	  var id_marque = "";
 	  var id_modele = "";
 	  var id_finition = "";
 	  var id_puissance = "";
 
-	  function fetchCarInfo() {
+	function fetchCarInfo() {
 		$.ajax({
 			url:"index.php?api=fetch",
 			type:"POST",
@@ -182,6 +188,120 @@ $(document).ready(function() {
 		});
 	}
 
+	function fetchAndSetupMarques() {
+		$.ajax({
+			url:"index.php?api=fetchBrands",
+			type:"POST",
+			data: {
+				string: ""
+			},
+			dataType:"json",
+			success: function(data){
+				if(data["status"]!="-1") {
+					marques = data["content"];
+
+					$('#marqueForm').autocomplete({
+						dataSource: marques,
+						textProperty:'nom',
+						valueProperty:'id',
+						allowCustomValue: true
+					});
+					$('#marqueForm').click(function(){
+						id_marque = $(this).next().find('li.selected').attr('data-value');
+						$('input[name=id_marque]').val(id_marque); 
+						fetchAndSetupModels();
+						fetchAndSetupFinitions();
+						fetchAndSetupPuissances();
+					});
+				}
+			}
+		});
+	}
+
+	function fetchAndSetupModels() {
+		$.ajax({
+			url:"index.php?api=fetchModels",
+			type:"POST",
+			data: {
+				id_marque: id_marque
+			},
+			dataType:"json",
+			success: function(data){
+				if(data["status"]!="-1") {
+					models = data["content"];
+
+					$('#modeleForm').autocomplete({
+						dataSource: models,
+						textProperty:'nom',
+						valueProperty:'id',
+						allowCustomValue: true
+					});
+					$('#modeleForm').click(function(){
+						id_modele = $(this).next().find('li.selected').attr('data-value');
+						$('input[name=id_modele]').val(id_modele); 
+					});
+				}
+			}
+		});
+	}
+
+	function fetchAndSetupFinitions() {
+		$.ajax({
+			url:"index.php?api=fetchFinitions",
+			type:"POST",
+			data: {
+				id_marque: id_marque
+			},
+			dataType:"json",
+			success: function(data){
+				if(data["status"]!="-1") {
+					finitions = data["content"];
+
+					$('#finitionForm').autocomplete({
+						dataSource: finitions,
+						textProperty:'nom',
+						valueProperty:'id',
+						allowCustomValue: true
+					});
+					$('#finitionForm').click(function(){
+						id_finition = $(this).next().find('li.selected').attr('data-value');
+						$('input[name=id_finition]').val(id_finition); 
+					});
+				}
+			}
+		});
+
+		
+	}
+
+	function fetchAndSetupPuissances() {
+		$.ajax({
+			url:"index.php?api=fetchPuissances",
+			type:"POST",
+			data: {
+				id_marque: id_marque
+			},
+			dataType:"json",
+			success: function(data){
+				if(data["status"]!="-1") {
+					puissances = data["content"];
+
+				$('#puissanceForm').autocomplete({
+					dataSource: puissances,
+					textProperty:'nom',
+					valueProperty:'id',
+					allowCustomValue: true
+				});
+				$('#puissanceForm').click(function(){
+					id_puissance = $(this).next().find('li.selected').attr('data-value');
+					$('input[name=id_puissance]').val(id_puissance); 
+				});
+				}
+			}
+		});
+	}
+
+
 	function searchCar() {
 		sc = [];
 		leng = $("#voiture").val().split(" ").length;
@@ -202,14 +322,14 @@ $(document).ready(function() {
 			}
 		});
 		console.log(sc);				
-		$('.autocomplete').autocomplete({
+		$('#voiture').autocomplete({
 			dataSource: sc,
 			textProperty:'nom',
 			valueProperty:'id',
 			allowCustomValue: true
 		});
-		$('.autocomplete').on('click','.autocomplete-list',function(){ 
-			args = $(this).find('li.selected').attr('data-value').split();
+		$('#voiture').click(function(){
+			args = $(this).next().find('li.selected').attr('data-value');
 			if(args.length > 0) id_marque = args[0]; else id_marque = "";
 			if(args.length > 1) id_modele = args[1]; else id_modele = "";
 			if(args.length > 2) id_finition = args[2]; else id_finition = "";
