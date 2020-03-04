@@ -1,6 +1,8 @@
 
 <?php include 'header.php';?>
 
+<!-- Main -->
+<div id="main">
 
 <!-- connexion -->
 <article id="connexion">

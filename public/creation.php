@@ -1,6 +1,9 @@
 
 <?php include 'header.php';?>
 
+<!-- Main -->
+<div id="main">
+
 <article id="CreerCompte">
     <section>
         <h3 class="major">Création de compte</h3>

@@ -1,117 +1,67 @@
+<?php
+require_once '../src/Bootstrap.php';
+
+use Ingredient\IngredientRepository;
+use Ingredient\IngredientService;
+
+$my_connection = \Db\Connection::get();
+$ingredientService = new IngredientService(new IngredientRepository($my_connection));
+
+$availableIngredients = $ingredientService->getAvailableIngredients();
+
+?>
 
 <?php include 'header.php';?>
 
-<!-- Recap -->
-<article id="recap">
-
-    <?
-
-    use Order\Order;
-    use Sandwich\Sandwich;
-    use User\User;
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        $newSandwich = new Sandwich();
-        $newSandwich->setLabel('Custom');
-
-        $filterIngredients = [];
-        foreach ($availableIngredients as $ingredient) {
-            if(isset($_POST[$ingredient->getLabel()])) {
-                $filterIngredients[] = $ingredient;
-            }
-        }
-
-        $newSandwich->setIngredients($filterIngredients);
-        $sandwichRepository->createSandwich($newSandwich);
-
-        $sandwichList[] = $newSandwich;
-
-        $userClient = new User();
-        $userClient = $userService->getUserById(1);
-        //@TODO get user
-
-        $newOrder = new Order();
-        $newOrder
-            ->setApproval(false)
-            ->setDate(new DateTimeImmutable(date('d-m-Y')))
-            ->setSandwichs($sandwichList)
-            ->setClient($userClient);
-
-        $orderService->createOrder($newOrder);
-        //$_SESSION['sandwichList'] = $sandwichList;
-        echo $newOrder->getId();
-    }
-    ?>
+<!-- Main -->
+<div id="main">
 
 
+<!-- commander -->
+<article id="order">
+    <h1 class="major">Commander</h1>
 
-    <h2 class="major">Validation</h2>
-    <div class="table-wrapper">
-        <table>
-            <thead>
-            <tr>
-                <th>Sandwich</th>
-                <th>Extra</th>
-                <th>Prix</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody id="tabvalidation">
-            <?
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                foreach ($sandwichList as $sandwich) {
-                    $price = 0;
-                    $description = "";
-                    $ingredients = $sandwich->getIngredients();
-                    if ($ingredients != null) {
-                        foreach ($ingredients as $ingredient) {
-                            $price += $ingredient->getPrice();
-                            $description .= $ingredient->getLabel() . "<br>";
-                        }
+    <section>
+        <h3>Pimp my sandwich</h3>
+        <br>
+        <div class="table-wrapper">
+            <form action="invoice.php" id="sandwichForm" method="POST">
+            <table class="alt customSandwich">
+                <thead>
+                <tr>
+                    <th>Ingrédient</th>
+                    <th>Description</th>
+                    <th>Sélectionner</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    <?
+                    foreach ($availableIngredients as $ingredient) {
+
+                        echo "<tr class=\"item\">
+                                    <td>
+                                        <img src=\"" . $ingredient->getImageLink() . "\" width=\"50%\" alt=\"\" style=\"vertical-align: middle\"/>
+                                    </td>
+                                    
+                                    <td class=\"ingredLabel\">" . $ingredient->getLabel() . "</td>
+                                    
+                                    <td>
+                                       <input type=\"checkbox\" id=\"" . $ingredient->getLabel() . "\" name=\"" . $ingredient->getLabel() . "\">
+                                       <label for=\"" . $ingredient->getLabel() . "\">
+                                    </td>
+                              </tr>";
                     }
-
-                    echo "<tr>
-                                                        <td>
-                                                            <div class=\"sandwich\">" . $sandwich->getLabel() . "
-                                                                <div id=\"tooltip\">" . $description . "</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Pas d'extra</td>
-                                                        <td>" . $price . " €</td>
-                                                        <td class=\"min\"><i class=\"fas fa-times\"></i></td>
-                                                    </tr>
-                                                    ";
-
-                }
-            }
-            ?>
-            </tbody>
-            <tfoot>
-            <tr>
-                <td colspan="2">
-                    <a id="add" href="#commander" class="fas fa-plus"></a>
-                </td>
-                <td><? if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                        echo $newOrder->getTotalPrice();
-                    } ?> €</td>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
-
-    <form action="#pay" id="sandwichListForm" method="POST">
-        <?
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $newOrder->getId();
-            $id = 1; //Wait until debug
-            echo "<input type=\"text\" name=\"id\" style=\"display: none;\" value=\"" . $id . "\" \">";
-        }
-        ?>
-    </form>
-    <button type="submit" class="button primary validation" form="sandwichListForm">Payer</button>
-
-    <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
+                    ?>
+                </tbody>
+            </table>
+            </form>
+            <div class="postform"></div>
+            <button class="btn btn-white addSandwich" type="submit" form="sandwichForm">Valider</button>
+        </div>
+        <span class="image main"><img src="assets/gif/3.gif" alt="" /></span>
+    </section>
 </article>
 
-<?php include 'footer.php';?>
+    <?php include 'footer.php';?>
+

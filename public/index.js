@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
 
+
     /* Table validation */
 
     $('.sandwich').children().hide();

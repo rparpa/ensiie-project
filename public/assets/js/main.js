@@ -295,7 +295,7 @@
 					$('<div class="close">Close</div>')
 						.appendTo($this)
 						.on('click', function() {
-							location.pathname = '';
+							location.pathname = '/';
 						});
 
 				// Prevent clicks from inside article from bubbling.
@@ -391,9 +391,9 @@
 				$main_articles.hide();
 
 			// Initial article.
-				if (location.pathname != '')
+				if (location.pathname.length >= 0)
 					$window.on('load', function() {
-						$main._show(location.pathname.substr(1,location.pathname.length-5), false);
+						$main._show(location.pathname.substr(1,location.pathname.length-5), true);
 					});
 
 })(jQuery);

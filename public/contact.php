@@ -1,5 +1,10 @@
 
+
 <?php include 'header.php';?>
+
+<!-- Main -->
+<div id="main">
+
 
 <!-- Contact -->
 <article id="contact">
@@ -21,7 +26,6 @@
         </div>
         <ul class="actions">
             <li><input type="submit" value="Send Message" class="primary" /></li>
-            <li><input type="reset" value="Reset" /></li>
         </ul>
     </form>
     <ul class="icons">
@@ -31,5 +35,7 @@
         <li><a href="https://github.com/MarwanOriginals/SandwicherIIE" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
     </ul>
 </article>
+
+
 
 <?php include 'footer.php';?>

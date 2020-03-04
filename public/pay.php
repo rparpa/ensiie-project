@@ -1,5 +1,31 @@
+<?php
+
+require_once '../src/Bootstrap.php';
+
+use Invoice\InvoiceRepository;
+use Order\Order;
+use Order\OrderRepository;
+use Order\OrderService;
+use Sandwich\SandwichRepository;
+use User\UserRepository;
+
+$my_connection = \Db\Connection::get();
+
+$sandwichRepository = new SandwichRepository($my_connection);
+
+$orderService = new OrderService(
+    new OrderRepository($my_connection),
+    $sandwichRepository,
+    new UserRepository($my_connection),
+    new InvoiceRepository($my_connection)
+);
+
+?>
 <?php include 'header.php';?>
 
+
+<!-- Main -->
+<div id="main">
 
 <!-- Pay -->
 <article id="pay">
