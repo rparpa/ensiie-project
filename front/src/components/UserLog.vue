@@ -1,36 +1,48 @@
 <template>
   <div class="logvue">
-    <b-form class= "my-3" inline @submit="onLogIn" v-if="this.$root.$data.user === undefined">
-      <label class="sr-only" for="login-form-username">Username</label>
-      <b-input
-        id="login-form-username"
-        class="mr-2"
-        v-model="logIn.username"
-        placeholder="Username"
-      ></b-input>
+    <b-form class= "my-3" inline @submit.stop.prevent="onLogIn" v-if="this.$root.$data.user===undefined">
+      <b-form-group id="signin-form-group-username">
+        <b-form-input
+          id="login-form-input-username"
+          placeholder="Username"
+          class="mr-2"
+          v-model="logIn.username"
+        ></b-form-input>
+      </b-form-group>
 
       <label class="sr-only" for="login-form-password">Password</label>
       <b-input
         id="login-form-password"
         class="mr-3"
         type="password"
-        v-model="clearLogInPasswordHolder"
+        v-model="clearPasswords.clearLogInPasswordHolder"
         placeholder="Password"
       ></b-input>
-      <b-button class="mr-2" type="submit" variant="primary">Log-in</b-button>
+      <b-button class="mr-2" type="submit" variant="primary">Connexion</b-button>
       <div>
         <!-- Using modifiers -->
-        <b-button v-b-modal.signInModal @submit="onSignIn">Sign In</b-button>
+        <b-button v-b-modal.signInModal @submit="onSignIn">Inscription</b-button>
         <!-- The modal -->
-        <b-modal id="signInModal" title="Sign In" hide-footer>
-            <b-form @submit="onSignIn">
-            <label class="sr-only" for="signin-form-username">Username</label>
-            <b-input
-              id="signin-form-username"
-              class="mb-2"
-              v-model="signIn.username"
-              placeholder="Username"
-            ></b-input>
+        <b-modal id="signInModal" title="Inscription" @hidden="onHideSignInModal" hide-footer>
+            <b-form @submit.stop.prevent="onSignIn">
+              <b-alert v-model="signInErrorAlert" variant="danger">
+                Nom d'utilisateur ou adresse email déjà utlisée.
+              </b-alert>
+              <b-form-group id="signin-form-group-username">
+                <b-form-input
+                  id="signin-form-input-username"
+                  placeholder="Nom d'utilisateur"
+                  class="mb-2"
+                  v-model="$v.signIn.username.$model"
+                  :state="validateSignInState('username')"
+                  aria-describedby="signin-username-live-feedback"
+                ></b-form-input>
+
+                <b-form-invalid-feedback
+                  id="signin-username-live-feedback"
+                  >Ce champ doit comporter au moins 5 caractères.
+                </b-form-invalid-feedback>
+              </b-form-group>
 
             <label class="sr-only" for="signin-form-email">Email</label>
             <b-input-group class="mb-2" prepend="@">
@@ -42,22 +54,30 @@
               ></b-input>
             </b-input-group>
 
-            <label class="sr-only" for="signin-form-password">Password</label>
-            <b-input
-              id="signin-form-password"
-              class="mb-3"
-              type="password"
-              v-model="clearSignInPasswordHolder"
-              placeholder="Password"
-            ></b-input>           
-            <b-button type="submit" variant="primary" >Create Account</b-button>
+            <b-form-group id="signin-form-group-password">
+              <b-form-input
+                id="signin-form-input-password"
+                placeholder="Mot de passe"
+                class="mb-3"
+                type="password"
+                v-model="$v.clearPasswords.clearSignInPasswordHolder.$model"
+                :state="validateClearPasswordState('clearSignInPasswordHolder')"
+                aria-describedby="signin-password-live-feedback"
+              ></b-form-input>           
+
+              <b-form-invalid-feedback
+                id="signin-password-live-feedback"
+                >Ce champ doit comporter au moins 6 caractères.
+              </b-form-invalid-feedback>
+            </b-form-group>
+            <b-button type="submit" variant="primary">Créer un compte</b-button>
           </b-form>
         </b-modal>
       </div>
     </b-form>
     <b-collapse id="errorMessageCollapsible" v-model="displayAuthenticationErrorAlert">
       <b-alert variant="warning" show>
-        Username or password incorrect!
+        Nom d'utilisateur ou mot de passe incorrect !
       </b-alert>
     </b-collapse>
     <div class= "my-1" id="userLoggedInContainer" v-if="this.$root.$data.user != undefined">
@@ -66,7 +86,7 @@
       </p>
       <b-row>
         <b-button class= "mr-2" v-b-modal.settingsModel @submit="onUpdateSettings">Paramètres</b-button>
-        <b-modal id="settingsModel" title="Paramètres" hide-footer>
+        <b-modal id="settingsModel" title="Paramètres" @hidden="onHideSettingsModal" hide-footer>
             <b-form @submit="onUpdateSettings">
             <label class="sr-only" for="settings-form-username">Username</label>
             <b-input
@@ -87,7 +107,7 @@
               id="settings-form-pwd"
               class="mb-2"
               placeholder="New Password"
-              v-model="clearSettingsPasswordHolder"
+              v-model="clearPasswords.clearSettingsPasswordHolder"
             ></b-input>  
             <b-button type="submit" variant="primary">Mettre a jour</b-button>
           </b-form>
@@ -108,10 +128,16 @@
 <script>
 import {HTTP} from '../http-constants'
 import User from '../entity/User'
+
+import { validationMixin } from "vuelidate";
+import { required, minLength } from "vuelidate/lib/validators";
+
 import { EventBus } from '../event-bus';
+
 const sha256 = require('js-sha256');
 
 export default {
+  mixins: [validationMixin],
   data() {
     return {
       logIn: {
@@ -130,28 +156,45 @@ export default {
         password: ''
       },
       currentUser: undefined,
-      clearLogInPasswordHolder: '',
-      clearSignInPasswordHolder: '',
-      clearSettingsPasswordHolder: '',
-      displayAuthenticationErrorAlert: false
+      clearPasswords: {
+        clearLogInPasswordHolder: null,
+        clearSignInPasswordHolder: null,
+        clearSettingsPasswordHolder: null,
+      },
+      displayAuthenticationErrorAlert: false,
+      signInErrorAlert: false
+    }
+  },
+  validations: {
+    signIn: {
+      username: {
+        required,
+        minLength: minLength(5)
+      }
+    },
+    clearPasswords: {
+      clearSignInPasswordHolder: {
+        required,
+        minLength: minLength(6)
+      }
     }
   },
   watch: {
-    clearLogInPasswordHolder: function(value) {
+    'clearPasswords.clearLogInPasswordHolder': function(value) {
       sha256(value);
       let hash = sha256.create();
-      hash.update(value);
+      hash.update(value); 
 
       this.logIn.password = hash.hex();
     },
-    clearSignInPasswordHolder: function(value) {
+    'clearPasswords.clearSignInPasswordHolder': function(value) {
       sha256(value);
       let hash = sha256.create();
       hash.update(value);
 
       this.signIn.password = hash.hex();
     },
-    clearSettingsPasswordHolder: function(value) {
+    'clearPasswords.clearSettingsPasswordHolder': function(value) {
       sha256(value);
       let hash = sha256.create();
       hash.update(value);
@@ -161,6 +204,14 @@ export default {
     }
   },
   methods: {
+    validateSignInState(name) {
+      const { $dirty, $error } = this.$v.signIn[name];
+      return $dirty ? !$error : null;
+    },
+    validateClearPasswordState(name) {
+      const { $dirty, $error } = this.$v.clearPasswords[name]
+      return $dirty ? !$error : null;
+    },
     onLogIn(evt) {
       evt.preventDefault();
       HTTP.post('authentication'
@@ -179,16 +230,29 @@ export default {
       })
     },
     onSignIn(evt) {
-      evt.preventDefault()      
+      this.$v.signIn.$touch();
+      if (this.$v.signIn.$anyError || this.$v.clearPasswords.$anyError) {
+        return;
+      } 
+
+      evt.preventDefault()
+      
       HTTP.post('registration'
       , this.signIn
       )
       .then(response => {
         this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email, undefined, undefined, response.data.role);
         this.$root.$data.user = this.currentUser;
+        this.signIn.username = '';
+        this.signIn.email = '';
+        this.settings.username = this.currentUser.username
+        this.settings.email = this.currentUser.email
+        this.clearPasswords.clearSignInPasswordHolder = '';
+        this.signInErrorAlert = false;
       })
       .catch(error => {      
         console.log(error);
+        this.signInErrorAlert = true;
       })
     },
     onUpdateSettings(evt) {
@@ -203,13 +267,26 @@ export default {
 
       HTTP.post('updateUser'
       , postObject)
-      .then(this.currentUser = new User(postObject.newUsername, postObject.newPassword, postObject.newEmail))
+      .then(
+        this.currentUser = new User(postObject.newUsername, postObject.newPassword, postObject.newEmail)
+      )
       .catch(error => {      
         console.log(error);
       })
     },
-
+    onHideSignInModal(evt) {
+      this.signIn.username = '';
+      this.signIn.email = '';
+      this.clearPasswords.clearSignInPasswordHolder = '';
+      this.signInErrorAlert = false;
+    },
+    onHideSettingsModal(evt) {
+      this.settings.username = this.currentUser.username
+      this.settings.email = this.currentUser.email
+    },
     onDeconnection(){
+      this.logIn.username = '';
+      this.logIn.password = '';
       this.currentUser =undefined;
       this.$root.$data.user = undefined;
       EventBus.$emit('deconected');
