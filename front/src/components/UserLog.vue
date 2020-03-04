@@ -121,7 +121,8 @@ export default {
       signIn: {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        role: 0
       },
       settings: {
         username: '',
