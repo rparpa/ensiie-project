@@ -9,7 +9,20 @@ $date = new DateTime($details_annonce[0]['date_publication']);
 </br>
 <div class="container">
     <div class="card ">
-        <h5 class="card-header text-white bg-primary"><?php echo $details_annonce[0]['titre']?></h5>
+        <div class='card-header bg-primary'>
+        <div class="d-flex justify-content-between">
+            <h5 class="text-white"><?php echo $details_annonce[0]['titre']?></h5>
+            <?php echo '<div class="float-right btn-group">';
+                    if($details_annonce[0]['id_user']!=$id_user){
+                        ?>
+                            <button type="button" id="Signaler" name="Signaler" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/signaler_annonce/'.$details_annonce[0]['id_annonce']); ?>');">Signaler</button>
+                        <?php
+                    }
+                    echo '</div>';
+            ?>
+        </div>
+        </div>
+        
         <div class="card-body">
             <div class='row'>
                 <div class="col-md">
@@ -19,13 +32,6 @@ $date = new DateTime($details_annonce[0]['date_publication']);
                 </div>
                 <div class="col-md ">
                 <?php
-                    echo '<div class="float-right btn-group">';
-                    if($details_annonce[0]['id_user']!=$id_user){
-                        ?>
-                            <button type="button" id="Signaler" name="Signaler" class="btn btn-sm btn-outline-warning" onclick="window.location.replace('<?php echo site_url('/Annonce/signaler_annonce/'.$details_annonce[0]['id_annonce']); ?>');">Signaler</button>
-                        <?php
-                    }
-                    echo '</div>';
                     if(!($image[0]['url'])||$image[0]['url']=="")
                         echo '<a><img class="rounded float-right img-fluid" src="'.base_url().'/assets/images/default.jpg" alt=""></a>';
                     else
