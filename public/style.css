@@ -474,18 +474,18 @@ a:hover {
 
 #three-column .tbox1 {
 	float: left;
-	width: 384px;
+	width: 355px;
 	margin-right: 20px;
 }
 
 #three-column .tbox2 {
 	float: left;
-	width: 384px;
+	width: 355px;
 }
 
 #three-column .tbox3 {
 	float: right;
-	width: 384px;
+	width: 355px;
 }
 
 .box-style {
@@ -644,7 +644,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text], input[type=email], input[type=password], input[type=date] {
+input[type=text], input[type=email], input[type=password], input[type=date], input[type=number] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -777,10 +777,6 @@ input[type=text]:placeholder, input[type=email]:placeholder, input[type=password
 	margin: 70 8;
 }
 
-#btn_header {
-  margin: 10px;
-}
-
 #accueil {
-	margin: 13px;
+	margin: 15px;
 }

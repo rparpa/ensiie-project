@@ -5,9 +5,24 @@ session_start();
 ob_start();
 
 if (isset($_GET['api'])) {
-    if ($_GET['api'] == 'search' && isset($_POST['string'])) {
+    if ($_GET['api'] == 'fetch' && isset($_POST['string'])) { // post string kept for backward compatibility with old system
         $service = new \Car\CarSearchService(\Db\Connection::get());
-        $service->searchCars($_POST['string']);
+        $service->fetchEveryPossibleCar($_POST['string']);
+    } else if($_GET['api'] == 'search' && isset($_POST)) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->searchCar($_POST);
+    } else if($_GET['api'] == 'fetchBrands') {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->fetchBrands($_POST);
+    } else if($_GET['api'] == 'fetchModels' && isset($_POST['id_marque'])) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->fetchModels($_POST['id_marque']);
+    } else if($_GET['api'] == 'fetchPuissances' && isset($_POST['id_marque'])) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->fetchPuissances($_POST['id_marque']);
+    } else if($_GET['api'] == 'fetchFinitions' && isset($_POST['id_marque'])) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->fetchFinitions($_POST['id_marque']);
     }
 }
 ?>
@@ -15,8 +30,10 @@ if (isset($_GET['api'])) {
 <html>
 <head>
   <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="autocomplete.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="autocomplete.js"></script>
   <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
@@ -27,7 +44,7 @@ if (isset($_GET['api'])) {
   </a>
   <form class="form-inline my-2 my-lg-0">
     <?php if(!isset($_SESSION["name_firstname"])) { ?>
-      <a class="btn btn-outline-primary" id="btn_header" href='index.php?action=connect'>Se connecter</a>
+      <a class="btn btn-outline-primary" id="accueil" href='index.php?action=connect'>Se connecter</a>
       <a class="btn btn-outline-primary" href='index.php?action=register'>S'inscrire</a>
   <?php } else {?>
     Bienvenue, <?php echo $_SESSION["name_firstname"]; ?>.
@@ -38,7 +55,7 @@ if (isset($_GET['api'])) {
 <?php } ?>
 </form>
 </nav>
-
+<link href="adminpanel.css" rel="stylesheet" type="text/css" media="screen" />
 <div id="wrapper">
     <?php
     if (isset($_GET['action'])) {
@@ -70,7 +87,7 @@ if (isset($_GET['api'])) {
                 $controller->afficheFormulaireReset();
             }
         } else if ($_GET['action'] == 'showCar') {
-            if(isset($_GET['car_id'])) {
+            if(isset($_GET["car_id"])) {
                 $controller = new \Car\CarController(\Db\Connection::get());
                 $controller->afficheVoiture($_GET['car_id']);
             }
@@ -81,27 +98,34 @@ if (isset($_GET['api'])) {
             }
         } else if ($_GET['action'] == 'admin') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
-            //$controller->afficheLocations(); A CORRIGER
+            $controller->afficheLocations();
             $controller->afficheVoitures();
         } else if ($_GET['action'] == 'ajouter') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
-            $controller->afficheAjoutVoiture();
-            // TODO (POST)
+            if(isset($_POST["id_modele"])) {
+                $controller->ajoutVoiture($_POST);
+            } else {
+                $controller->afficheAjoutVoiture();
+            }
         } else if ($_GET['action'] == 'modifVoiture') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
-            // TODO car_id
+            if(isset($_POST["nom_modele"])) {
+                $controller->modifVoiture($_POST['car_id'],$_POST);
+            } else {
+                $controller->afficheModifVoiture($_POST['car_id']);
+            }
         }  else if ($_GET['action'] == 'deleteVoiture') {
-            $controller = new \Admin\AdminController(\Db\Connection::get());
-            // TODO car_id
+                $controller = new \Admin\AdminController(\Db\Connection::get());
+                $controller->deleteVoiture($_POST);
         }   else if ($_GET['action'] == 'deleteLocation') {
-            $controller = new \Admin\AdminController(\Db\Connection::get());
-            // TODO id_location
+                $controller = new \Admin\AdminController(\Db\Connection::get());
+                $controller->deleteLocation($_POST);
         }
     } else {
         ?><link href="style.css" rel="stylesheet" type="text/css" media="screen" />
         <div id="logo" class="container">
           <h1><a href="#">CookRental</a></h1>
-          <p>You are cooked and looking for a car quickly, we are the solution.</p>
+          <p>Vous êtes à la recherche d'une voiture rapidement, nous somme la solution.</p>
       </div>
       <div id="page" class="container">
           <div>
@@ -121,22 +145,21 @@ if (isset($_GET['api'])) {
                 <div class="col-lg-4">
                     <dl class="param param-feature">
                         <dt>Marque, modèle ...</dt>
-                        <input type="text" id="voiture" name="voiture" placeholder="Marque, modele, ...">
+                        <input type="text" id="voiture" class="autocomplete" name="voiture" placeholder="Marque, modele, ...">
                     </dl>
                 </div>
                 <div class="col-lg-4">
                     <dl class="param param-feature">
                         <dt>Budget</dt>
-                        <input type="text" name="budget" placeholder="Budget">
+                        <input type="number" name="budget" placeholder="Budget">
                     </dl>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8" style="margin-top: 33px;">
                     <a style="color:white;" id="sendRq" type="button" class="btn btn-danger">Trouver la voiture de mes rêves</a>
                 </div>
             </div>
             <div class="entry">
-                <p>Below is our list of cars available for hire.<br>
-                You will find all the details by clicking on "More details".</p>
+                <p>Voici notre liste de voitures disponibles a la location, Vous trouverez tous les détails en cliquant sur le prix.</p>
             </div>
         </div>
         </div><?php

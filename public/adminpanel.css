@@ -217,18 +217,18 @@ a:hover {
 
 #column1 {
 	float: left;
-	width: 384px;
+	width: 355px;
 	margin-right: 20px;
 }
 
 #column2 {
 	float: left;
-	width: 384px;
+	width: 355px;
 }
 
 #column3 {
 	float: right;
-	width: 384px;
+	width: 355px;
 }
 
 /* Footer */
@@ -314,18 +314,18 @@ a:hover {
 
 #three-column-loc .tbox1 {
 	float: left;
-	width: 384px;
+	width: 354px;
 	margin-right: 20px;
 }
 
 #three-column-loc .tbox2 {
 	float: left;
-	width: 384px;
+	width: 354px;
 }
 
 #three-column-loc .tbox3 {
 	float: right;
-	width: 384px;
+	width: 354px;
 }
 
 
@@ -339,18 +339,18 @@ a:hover {
 
 #three-column .tbox1 {
 	float: left;
-	width: 384px;
+	width: 354px;
 	margin-right: 20px;
 }
 
 #three-column .tbox2 {
 	float: left;
-	width: 384px;
+	width: 354px;
 }
 
 #three-column .tbox3 {
 	float: right;
-	width: 384px;
+	width: 354px;
 }
 
 .box-style {

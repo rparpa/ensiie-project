@@ -7,6 +7,7 @@ class CarView {
   }
 
   public function afficheVoituresIndex($voitures) {
+    ?><div id="columnsCars"><?php
     $i = 0;
     foreach($voitures as $voiture) {
       if($i % 3 == 0) {
@@ -26,8 +27,10 @@ class CarView {
       $i++;
       if($i % 3 == 0) {
         ?></div><?php
+        $i = 0;
       }
     }
+    ?></div><?php
   }
 
   public function afficheVoitures($voitures) {

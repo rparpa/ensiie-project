@@ -45,26 +45,51 @@ class AdminController {
 	}
 
 	public function ajoutVoiture($post) {
-		if($this->carRepository->ajoutVoiture($post)!==false) {
-			echo "ok";
-		} else {
-			echo "pasok";
+		try {
+			$this->carRepository->create($post['immat'],$post['date_immat'],$post['id_marque'],$post['id_modele'],$post['id_puissance'],$post['id_finition'],$post['prix']);
+			$this->adminView->afficheAjout($post);
+		} catch(Exception $e) {
+			echo $e;
 		}
 	}
 
-	public function modifVoiture($post) {
-		if($this->carRepository->modifVoiture($post)!==false) {
-			echo "ok";
-		} else {
-			echo "pasok";
+	public function afficheModifVoiture($car_id) {
+		try {
+			$this->adminView->afficheModifVoiture($this->carRepository->fetch($car_id));
+		} catch(Exception $e) {
+			//$this->connexionView->vue_erreur($e->getMessage());
+		}
+	}
+
+	public function modifVoiture($id, $post) {
+		$modifications;
+		if(isset($post['immat']))
+			$modifications['immat'] = $post['immat'];
+		if(isset($post['date_immat']))
+			$modifications['date_immat'] = $post['date_immat'];
+		/*if($post['id_marque'])
+		if($post['id_puissance'])
+		if($post['id_finition'])*/
+		if(isset($post['lien_img']))
+			$modifications['lien_img'] = $post['lien_img'];
+		if(isset($post['prix']))
+			$modifications['prix'] = $post['prix'];
+
+		try {
+			$voitures[] = $this->carRepository->update($id,$modifications);
+			$this->adminView->afficheModif($post);
+		} catch(Exception $e) {
+			echo $e;
+			//$this->connexionView->vue_erreur($e->getMessage());
 		}
 	}
 
 	public function deleteVoiture($post) {
-		if($this->carRepository->deleteVoiture($post)!==false) {
-			echo "ok";
-		} else {
-			echo "pasok";
+		try {
+			$this->carRepository->delete($post['car_id']);
+			$this->adminView->afficheDelete($post);
+		} catch(Exception $e) {
+			//echo $e;
 		}
 	}
 	
@@ -78,7 +103,8 @@ class AdminController {
 	public function deleteLocation($post)
     {
         try {
-            $this->locationRepository->delete($post);
+            $this->locationRepository->delete($post['location_id']);
+            $this->adminView->afficheDeleteLocation($post);
         } catch (Exception $e) {
             //$this->userView->vueErreur($e->getMessage());
         }
