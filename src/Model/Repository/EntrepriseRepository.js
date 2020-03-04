@@ -10,8 +10,11 @@ const checkIdentifiant = "SELECT id FROM entreprise WHERE adressemail = $1";
 const login = "SELECT id FROM entreprise WHERE adressemail = $1 AND motdepasse = $2";
 
 const insert = "INSERT INTO entreprise(nom, adressemail, adressesiege, motdepasse, logo, isvalid, telephone) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id";
+
 const selectAllValidated = "SELECT id, nom, adressemail, adressesiege, logo, isvalid, telephone FROM entreprise WHERE isvalid = TRUE";
 const selectAllNoValidated = "SELECT id, nom, adressemail, adressesiege, logo, isvalid, telephone FROM entreprise WHERE isvalid = FALSE";
+const selectById = "SELECT nom, adressemail, adressesiege, logo, telephone FROM entreprise WHERE id = $1";
+
 const updateNom = "UPDATE entreprise SET nom = $1 WHERE id = $2 RETURNING nom, adressemail, adressesiege, logo, telephone, isvalid";
 const updateAdressemail = "UPDATE entreprise SET adressemail = $1 WHERE id = $2 RETURNING nom, adressemail, adressesiege, logo, telephone, isvalid";
 const updateAdressesiege = "UPDATE entreprise SET adressesiege = $1 WHERE id = $2 RETURNING nom, adressemail, adressesiege, logo, telephone, isvalid";
@@ -83,6 +86,31 @@ module.exports = class {
         }
 
         return result.rows[0];
+    }
+
+    static async getById(id) {
+        var result;
+        var client = ClientSession.getSession();
+        try {
+            await client.query(begin)
+            .catch(err => {throw 'Error in transaction'});
+
+            result = await client.query(selectById, [id])
+            .catch(err => {throw 'Error in database'});
+
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
+
+            await client.query(commit)
+            .catch(err => {throw 'Error in transaction'});
+        }
+        catch(e) {
+            await client.query(rollback);
+            throw e;
+        }
+
+        return result.rows;
     }
     
     static async getAllValidated() {

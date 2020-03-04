@@ -1003,6 +1003,132 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Entreprise By Id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7c9992e9-1168-49e8-a42d-d7c89043416a",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ea16496-600f-4ab9-a979-7a8a7206cc40",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([",
+											"    {",
+											"        \"nom\": \"ENSIIE CORPO\",",
+											"        \"adressemail\": \"ensiie@ensiie.fr\",",
+											"        \"adressesiege\": \"ensiie\",",
+											"        \"logo\": \"nomLogo.png\",",
+											"        \"telephone\": \"0700000000\"",
+											"    }",
+											"])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/entreprise/request?id=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Get Entreprise with wrong Id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7c9992e9-1168-49e8-a42d-d7c89043416a",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ea16496-600f-4ab9-a979-7a8a7206cc40",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Invalid Id\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Invalid Id');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/entreprise/request?id=10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},

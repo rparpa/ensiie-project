@@ -146,7 +146,12 @@ module.exports = http.createServer((req, res) => {
             EntrepriseWebService.create(req, res);
         }
         else if(req.method == 'GET') {
-            EntrepriseWebService.getAllValidated(req, res);
+            if(params.has('id')) {
+                EntrepriseWebService.getById(req, res, params.get('id'));
+            }
+            else {
+                EntrepriseWebService.getAllValidated(req, res);
+            }
         }
         else if(req.method == 'PUT') {
             EntrepriseWebService.updateOne(req, res);

@@ -29,6 +29,26 @@ module.exports = class EntrepriseWebService {
         })
     }
 
+    static async getById(req, res, id) {
+        let response;
+        let codestatus;
+        try {
+            response = await EntrepriseRepository.getById(id);
+            codestatus = 200;
+        }
+        catch(e) {
+            if (e == 'Error in the database' || e == 'Error in transaction') {
+                codestatus = 500;
+            }
+            else codestatus = 400;
+
+            response = e;
+        }
+        
+        res.writeHead(codestatus, {'Content-Type': 'application/json'});
+        res.end(JSON.stringify(response));
+    }
+
     static async getAllValidated(req, res) {
         let response;
         let codestatus;
