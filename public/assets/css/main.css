@@ -953,8 +953,29 @@ input, select, textarea {
 
 		table td {
 			padding: 0.75em 0.75em;
+
+		}
+
+		.item>td{
 			align-items: center;
 			text-align: center;
+		}
+
+		.item>tr {
+			display: flex;
+		}
+
+		.item>td:last-child {
+			display:inline-block;
+		}
+
+		td.ingredLabel {
+			width: 100%
+		}
+
+
+		.item>td>input {
+			margin-right: auto;
 		}
 
 		table th {
@@ -963,6 +984,9 @@ input, select, textarea {
 			font-weight: 600;
 			padding: 0 0.75em 0.75em 0.75em;
 			text-align: left;
+		}
+		.customSandwich>thead>tr>th {
+			text-align: center;
 		}
 
 		table thead {
@@ -1037,6 +1061,7 @@ input, select, textarea {
       		display: inline-block;
       		vertical-align: middle;
 		}
+
 
 	.validation {
 		text-align: center !important

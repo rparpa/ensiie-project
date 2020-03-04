@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
 
+
     /* Table validation */
 
     $('.sandwich').children().hide();
@@ -13,11 +14,20 @@ $(document).ready(function(){
 
     $('.min > .fas').click(function(){
 
-        if($('#tabvalidation tr:visible').length > 1){
-            $(this).parents('tr').fadeOut();
+        $.ajax({
+            type: "POST",
+            url: '/invoice.php',
+            data: {order_id:$('#sandwichListForm>input').attr('value'), remove:$(this).attr('id')}
+        });
+
+        if($('#tabvalidation tr:visible').length < 2) {
+            setTimeout(function () {
+                window.location = window.location.href;
+            }, 300);
         } else {
-            window.location.href='/';
+            $(this).parents('tr').fadeOut(400);
         }
+
     });
 
     /*Payment*/

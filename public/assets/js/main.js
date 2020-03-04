@@ -208,7 +208,7 @@
 				// Add state?
 					if (typeof addState != 'undefined'
 					&&	addState === true)
-						history.pushState(null, null, '#');
+						history.pushState(null, null, '');
 
 				// Handle lock.
 
@@ -295,7 +295,7 @@
 					$('<div class="close">Close</div>')
 						.appendTo($this)
 						.on('click', function() {
-							location.hash = '';
+							location.pathname = '/';
 						});
 
 				// Prevent clicks from inside article from bubbling.
@@ -309,8 +309,10 @@
 			$body.on('click', function(event) {
 
 				// Article visible? Hide.
-					if ($body.hasClass('is-article-visible'))
+					if ($body.hasClass('is-article-visible')){
 						$main._hide(true);
+						location.pathname = '/';
+					}
 
 			});
 
@@ -336,8 +338,7 @@
 			$window.on('hashchange', function(event) {
 
 				// Empty hash?
-					if (location.hash == ''
-					||	location.hash == '#') {
+					if (location.pathname.substr(1,location.pathname.length-5) == '') {
 
 						// Prevent default.
 							event.preventDefault();
@@ -349,14 +350,14 @@
 					}
 
 				// Otherwise, check for a matching article.
-					else if ($main_articles.filter(location.hash).length > 0) {
+					else if ($main_articles.filter(location.pathname).length > 0) {
 
 						// Prevent default.
 							event.preventDefault();
 							event.stopPropagation();
 
 						// Show article.
-							$main._show(location.hash.substr(1));
+							$main._show(location.pathname.substr(1,location.pathname.length-5));
 
 					}
 
@@ -392,10 +393,9 @@
 				$main_articles.hide();
 
 			// Initial article.
-				if (location.hash != ''
-				&&	location.hash != '#')
+				if (location.pathname.length >= 0)
 					$window.on('load', function() {
-						$main._show(location.hash.substr(1), true);
+						$main._show(location.pathname.substr(1,location.pathname.length-5), true);
 					});
 
 })(jQuery);
