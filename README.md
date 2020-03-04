@@ -1,5 +1,6 @@
 # La Sandwicheriie : présentation générale du projet
 
+
 ## Problématiques
 L’association SandwicherIIE de l’ENSIIE propose des sandwichs tous les midis. Cependant, il n’y avait pas de plateforme pour commander en ligne. Un sandwich unique tous les midis : l’association ne proposait qu’un seul et unique sandwich par jour. Cela limitait le choix de nos clients.
 
@@ -95,7 +96,3 @@ Below are some useful commands :
 * `make db.connect` Connect to th database
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
-
-
-
-

@@ -63,10 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $invoice_test->deleteInvoice($newInvoice);
     //$invoice_test->writeInvoice($newInvoice);
 
-
-
-    #delete example
-    $orderService->deleteOrder($newOrder);
+    
 
     #get all example
     $orders = $orderService->getAllOrders();

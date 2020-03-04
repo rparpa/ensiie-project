@@ -10,10 +10,10 @@ CREATE TABLE "user" (
     isvalidator BOOLEAN
 );
 
-INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Marwan', 'GUERNOUG', '1997-12-18', 'Kart', 'marwan.guernoug@ensiie.fr', '1234', true);
-INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Mike', 'MALECOT', '1995-08-06', 'Adolf', 'mike.malecot@ensiie.fr', '1234', true);
-INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Nicolas', 'CHARLON', '1996-11-09', 'Kozak', 'nicolas.charlon@ensiie.fr', '1234', true);
-INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Rayan', 'BELMADANI', '1996-10-18', 'Greenns', 'rayan.belmadani@ensiie.fr', '1234', true);
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Marwan', 'GUERNOUG', '1997-12-18', 'Kart', 'marwan.guernoug@ensiie.fr', '3a103a4e57', true);
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Mike', 'MALECOT', '1995-08-06', 'Adolf', 'mike.malecot@ensiie.fr', '3a103a4e57', true);
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Nicolas', 'CHARLON', '1996-11-09', 'Kozak', 'nicolas.charlon@ensiie.fr', '3a103a4e57', true);
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Rayan', 'BELMADANI', '1996-10-18', 'Greenns', 'rayan.belmadani@ensiie.fr', '3a103a4e57', true);
 
 DROP TABLE  "ingredient";
 CREATE TABLE "ingredient" (
@@ -24,12 +24,20 @@ CREATE TABLE "ingredient" (
     image_link VARCHAR
 );
 
-INSERT INTO "ingredient" (label, available, price)
-VALUES ('Salade', true, 0.2);
-INSERT INTO "ingredient" (label, available, price)
-VALUES ('Tomate', true, 0.3);
-INSERT INTO "ingredient" (label, available, price)
-VALUES ('Oignon', true, 0.3);
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Salade', true, 0.2, '/images/lettuce.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Tomate', true, 0.5, '/images/tomato.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Oignon', true, 0.3, '/images/onion.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Egg', true, 0.9, '/images/egg.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Tuna', true, 0.3, '/images/tuna.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Mozzarella', true, 1.2, '/images/mozzarella.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Hummus', true, 1.0, '/images/hummus.png');
 
 DROP TABLE  "sandwich";
 CREATE TABLE "sandwich" (
