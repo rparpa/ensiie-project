@@ -1,0 +1,802 @@
+abilities;against_bug;against_dark;against_dragon;against_electric;against_fairy;against_fight;against_fire;against_flying;against_ghost;against_grass;against_ground;against_ice;against_normal;against_poison;against_psychic;against_rock;against_steel;against_water;attack;base_egg_steps;base_happiness;base_total;capture_rate;classfication;defense;experience_growth;height_m;hp;japanese_name;english_name;french_name;percentage_male;pokedex_number;sp_attack;sp_defense;speed;type1;type2;weight_kg;generation;is_legendary
+Overgrow, Chlorophyll;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;49;5120;70;318;45;Seed Pokemon;49;1059860;0.7;45;Fushigidane?????;Bulbasaur;Bulbizarre;88.1;1;65;65;45;grass;poison;6.9;1;0
+Overgrow, Chlorophyll;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;62;5120;70;405;45;Seed Pokemon;63;1059860;1.0;60;Fushigisou?????;Ivysaur;Herbizarre;88.1;2;80;80;60;grass;poison;13.0;1;0
+Overgrow, Chlorophyll;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;100;5120;70;625;45;Seed Pokemon;123;1059860;2.0;80;Fushigibana?????;Venusaur;Florizarre;88.1;3;122;120;80;grass;poison;100.0;1;0
+Blaze, Solar Power;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;52;5120;70;309;45;Lizard Pokemon;43;1059860;0.6;39;Hitokage????;Charmander;Salamèche;88.1;4;60;50;65;fire;;8.5;1;0
+Blaze, Solar Power;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;64;5120;70;405;45;Flame Pokemon;58;1059860;1.1;58;Lizardo????;Charmeleon;Reptincel;88.1;5;80;65;80;fire;;19.0;1;0
+Blaze, Solar Power;0.25;1;1;2;0.5;0.5;0.5;1;1;0.25;0;1;1;1;1;4;0.5;2;104;5120;70;634;45;Flame Pokemon;78;1059860;1.7;78;Lizardon?????;Charizard;Dracaufeu;88.1;6;159;115;100;fire;flying;90.5;1;0
+Torrent, Rain Dish;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;48;5120;70;314;45;Tiny Turtle Pokemon;65;1059860;0.5;44;Zenigame????;Squirtle;Carapuce;88.1;7;50;64;43;water;;9.0;1;0
+Torrent, Rain Dish;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;63;5120;70;405;45;Turtle Pokemon;80;1059860;1.0;59;Kameil????;Wartortle;Carabaffe;88.1;8;65;80;58;water;;22.5;1;0
+Torrent, Rain Dish;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;103;5120;70;630;45;Shellfish Pokemon;120;1059860;1.6;79;Kamex?????;Blastoise;Tortank;88.1;9;135;115;78;water;;85.5;1;0
+Shield Dust, Run Away;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;30;3840;70;195;255;Worm Pokemon;35;1000000;0.3;45;Caterpie?????;Caterpie;Chenipan;50;10;20;20;45;bug;;2.9;1;0
+Shed Skin;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;20;3840;70;205;120;Cocoon Pokemon;55;1000000;0.7;50;Transel?????;Metapod;Chrysacier;50;11;25;25;30;bug;;9.9;1;0
+Compoundeyes, Tinted Lens;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;45;3840;70;395;45;Butterfly Pokemon;50;1000000;1.1;60;Butterfree?????;Butterfree;Papilusion;50;12;90;80;70;bug;flying;32.0;1;0
+Shield Dust, Run Away;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;35;3840;70;195;255;Hairy Pokemon;30;1000000;0.3;40;Beedle????;Weedle;Aspicot;50;13;20;20;50;bug;poison;3.2;1;0
+Shed Skin;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;25;3840;70;205;120;Cocoon Pokemon;50;1000000;0.6;45;Cocoon????;Kakuna;Coconfort;50;14;25;25;35;bug;poison;10.0;1;0
+Swarm, Sniper;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;150;3840;70;495;45;Poison Bee Pokemon;40;1000000;1.0;65;Spear????;Beedrill;Dardargnan;50;15;15;80;145;bug;poison;29.5;1;0
+Keen Eye, Tangled Feet, Big Pecks;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;45;3840;70;251;255;Tiny Bird Pokemon;40;1059860;0.3;40;Poppo???;Pidgey;Roucool;50;16;35;35;56;normal;flying;1.8;1;0
+Keen Eye, Tangled Feet, Big Pecks;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;60;3840;70;349;120;Bird Pokemon;55;1059860;1.1;63;Pigeon????;Pidgeotto;Roucoups;50;17;50;50;71;normal;flying;30.0;1;0
+Keen Eye, Tangled Feet, Big Pecks;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;80;3840;70;579;45;Bird Pokemon;80;1059860;1.5;83;Pigeot?????;Pidgeot;Roucarnage;50;18;135;80;121;normal;flying;39.5;1;0
+Run Away, Guts, Hustle, Gluttony, Hustle, Thick Fat;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;56;3840;70;253;255;Mouse Pokemon;35;1000000;;30;Koratta????;Rattata;Rattata;50;19;25;35;72;normal;dark;;1;0
+Run Away, Guts, Hustle, Gluttony, Hustle, Thick Fat;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;71;3840;70;413;127;Mouse Pokemon;70;1000000;;75;Ratta???;Raticate;Rattatac;50;20;40;80;77;normal;dark;;1;0
+Keen Eye, Sniper;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;60;3840;70;262;255;Tiny Bird Pokemon;30;1000000;0.3;40;Onisuzume?????;Spearow;Piafabec;50;21;31;31;70;normal;flying;2.0;1;0
+Keen Eye, Sniper;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;90;3840;70;442;90;Beak Pokemon;65;1000000;1.2;65;Onidrill?????;Fearow;Rapasdepic;50;22;61;61;100;normal;flying;38.0;1;0
+Intimidate, Shed Skin, Unnerve;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;60;5120;70;288;255;Snake Pokemon;44;1000000;2.0;35;Arbo???;Ekans;Abo;50;23;40;54;55;poison;;6.9;1;0
+Intimidate, Shed Skin, Unnerve;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;95;5120;70;448;90;Cobra Pokemon;69;1000000;3.5;60;Arbok?????;Arbok;Arbok;50;24;65;79;80;poison;;65.0;1;0
+Static, Lightningrod;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;55;2560;70;320;190;Mouse Pokemon;40;1000000;0.4;35;Pikachu?????;Pikachu;Pikachu;50;25;50;50;90;electric;;6.0;1;0
+Static, Lightningrod, Surge Surfer;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;85;2560;70;485;75;Mouse Pokemon;50;1000000;;60;Raichu?????;Raichu;Raichu;50;26;95;85;110;electric;electric;;1;0
+Sand Veil, Sand Rush, Snow Cloak, Slush Rush;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;75;5120;70;300;255;Mouse Pokemon;90;1000000;;50;Sand???;Sandshrew;Sabelette;50;27;10;35;40;ground;ice;;1;0
+Sand Veil, Sand Rush, Snow Cloak, Slush Rush;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;100;5120;70;450;90;Mouse Pokemon;120;1000000;;75;Sandpan?????;Sandslash;Sablaireau;50;28;25;65;65;ground;ice;;1;0
+Poison Point, Rivalry, Hustle;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;47;5120;70;275;235;Poison Pin Pokemon;52;1059860;0.4;55;Nidoran??????;Nidoranâ™€;Nidoran femelle;0;29;40;40;41;poison;;7.0;1;0
+Poison Point, Rivalry, Hustle;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;62;5120;70;365;120;Poison Pin Pokemon;67;1059860;0.8;70;Nidorina?????;Nidorina;Nidorina;0;30;55;55;56;poison;;20.0;1;0
+Poison Point, Rivalry, Sheer Force;0.5;1;1;0;0.5;0.5;1;1;1;1;2;2;1;0.25;2;0.5;1;2;92;5120;70;505;45;Drill Pokemon;87;1059860;1.3;90;Nidoqueen?????;Nidoqueen;Nidoqueen;0;31;75;85;76;poison;ground;60.0;1;0
+Poison Point, Rivalry, Hustle;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;57;5120;70;273;235;Poison Pin Pokemon;40;1059860;0.5;46;Nidoran??????;Nidoranâ™‚;Nidoran mâle;100;32;40;40;50;poison;;9.0;1;0
+Poison Point, Rivalry, Hustle;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;72;5120;70;365;120;Poison Pin Pokemon;57;1059860;0.9;61;Nidorino?????;Nidorino;Nidorino;100;33;55;55;65;poison;;19.5;1;0
+Poison Point, Rivalry, Sheer Force;0.5;1;1;0;0.5;0.5;1;1;1;1;2;2;1;0.25;2;0.5;1;2;102;5120;70;505;45;Drill Pokemon;77;1059860;1.4;81;Nidoking?????;Nidoking;Nidoking;100;34;85;75;85;poison;ground;62.0;1;0
+Cute Charm, Magic Guard, Friend Guard;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;45;2560;140;323;150;Fairy Pokemon;48;800000;0.6;70;Pippi???;Clefairy;Melofée;24.6;35;60;65;35;fairy;;7.5;1;0
+Cute Charm, Magic Guard, Unaware;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;70;2560;140;483;25;Fairy Pokemon;73;800000;1.3;95;Pixy????;Clefable;Melodelfe;24.6;36;95;90;60;fairy;;40.0;1;0
+Flash Fire, Drought, Snow Cloak, Snow Warning;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;41;5120;70;299;190;Fox Pokemon;40;1000000;;38;Rokon???;Vulpix;Goupix;24.6;37;50;65;65;fire;ice;;1;0
+Flash Fire, Drought, Snow Cloak, Snow Warning;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;67;5120;70;505;75;Fox Pokemon;75;1000000;;73;Kyukon?????;Ninetales;Feunard;24.6;38;81;100;109;fire;ice;;1;0
+Cute Charm, Competitive, Friend Guard;0.5;0.5;0;1;1;1;1;1;0;1;1;1;1;2;1;1;2;1;45;2560;70;270;170;Balloon Pokemon;20;800000;0.5;115;Purin???;Jigglypuff;Rondoudou;24.6;39;45;25;20;normal;fairy;5.5;1;0
+Cute Charm, Competitive, Frisk;0.5;0.5;0;1;1;1;1;1;0;1;1;1;1;2;1;1;2;1;70;2560;70;435;50;Balloon Pokemon;45;800000;1.0;140;Pukurin????;Wigglytuff;Grodoudou;24.6;40;85;50;45;normal;fairy;12.0;1;0
+Inner Focus, Infiltrator;0.25;1;1;2;0.5;0.25;1;1;1;0.25;0;2;1;0.5;2;2;1;1;45;3840;70;245;255;Bat Pokemon;35;1000000;0.8;40;Zubat????;Zubat;Nosferapti;50;41;30;40;55;poison;flying;7.5;1;0
+Inner Focus, Infiltrator;0.25;1;1;2;0.5;0.25;1;1;1;0.25;0;2;1;0.5;2;2;1;1;80;3840;70;455;90;Bat Pokemon;70;1000000;1.6;75;Golbat?????;Golbat;Nosferalto;50;42;65;75;90;poison;flying;55.0;1;0
+Chlorophyll, Run Away;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;50;5120;70;320;255;Weed Pokemon;55;1059860;0.5;45;Nazonokusa?????;Oddish;Mystherbe;50;43;75;65;30;grass;poison;5.4;1;0
+Chlorophyll, Stench;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;65;5120;70;395;120;Weed Pokemon;70;1059860;0.8;60;Kusaihana?????;Gloom;Ortide;50;44;85;75;40;grass;poison;8.6;1;0
+Chlorophyll, Effect Spore;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;80;5120;70;490;45;Flower Pokemon;85;1059860;1.2;75;Ruffresia?????;Vileplume;Rafflesia;50;45;110;90;50;grass;poison;18.6;1;0
+Effect Spore, Dry Skin, Damp;2;1;1;0.5;1;0.5;4;4;1;0.25;0.25;2;1;2;1;2;1;0.5;70;5120;70;285;190;Mushroom Pokemon;55;1000000;0.3;35;Paras???;Paras;Paras;50;46;45;55;25;bug;grass;5.4;1;0
+Effect Spore, Dry Skin, Damp;2;1;1;0.5;1;0.5;4;4;1;0.25;0.25;2;1;2;1;2;1;0.5;95;5120;70;405;75;Mushroom Pokemon;80;1000000;1.0;60;Parasect?????;Parasect;Parasect;50;47;60;80;30;bug;grass;29.5;1;0
+Compoundeyes, Tinted Lens, Run Away;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;55;5120;70;305;190;Insect Pokemon;50;1000000;1.0;60;Kongpang????;Venonat;Mimitoss;50;48;40;55;45;bug;poison;30.0;1;0
+Shield Dust, Tinted Lens, Wonder Skin ;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;65;5120;70;450;75;Poison Moth Pokemon;60;1000000;1.5;70;Morphon?????;Venomoth;Aéromite;50;49;90;75;90;bug;poison;12.5;1;0
+Sand Veil, Arena Trap, Sand Force, Sand Veil, Tangling Hair, Sand Force;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;55;5120;70;265;255;Mole Pokemon;30;1000000;;10;Digda????;Diglett;Taupiqueur;50;50;35;45;90;ground;ground;;1;0
+Sand Veil, Arena Trap, Sand Force, Sand Veil, Tangling Hair, Sand Force;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;100;5120;70;425;50;Mole Pokemon;60;1000000;;35;Dugtrio?????;Dugtrio;Triopikeur;50;51;50;70;110;ground;ground;;1;0
+Pickup, Technician, Unnerve, Pickup, Technician, Rattled;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;35;5120;70;290;255;Scratch Cat Pokemon;35;1000000;;40;Nyarth????;Meowth;Miaouss;50;52;50;40;90;normal;dark;;1;0
+Limber, Technician, Unnerve, Fur Coat, Technician, Rattled;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;60;5120;70;440;90;Classy Cat Pokemon;60;1000000;;65;Persian?????;Persian;Persian;50;53;75;65;115;normal;dark;;1;0
+Damp, Cloud Nine, Swift Swim;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;52;5120;70;320;190;Duck Pokemon;48;1000000;0.8;50;Koduck????;Psyduck;Psykokwak;50;54;65;50;55;water;;19.6;1;0
+Damp, Cloud Nine, Swift Swim;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;82;5120;70;500;75;Duck Pokemon;78;1000000;1.7;80;Golduck?????;Golduck;Akwakwak;50;55;95;80;85;water;;76.6;1;0
+Vital Spirit, Anger Point, Defiant;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;80;5120;70;305;190;Pig Monkey Pokemon;35;1000000;0.5;40;Mankey????;Mankey;Férosinge;50;56;35;45;70;fighting;;28.0;1;0
+Vital Spirit, Anger Point, Defiant;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;105;5120;70;455;75;Pig Monkey Pokemon;60;1000000;1.0;65;Okorizaru?????;Primeape;Colossinge;50;57;60;70;95;fighting;;32.0;1;0
+Intimidate, Flash Fire, Justified;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;70;5120;70;350;190;Puppy Pokemon;45;1250000;0.7;55;Gardie????;Growlithe;Caninos;75.4;58;70;50;60;fire;;19.0;1;0
+Intimidate, Flash Fire, Justified;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;110;5120;70;555;75;Legendary Pokemon;80;1250000;1.9;90;Windie?????;Arcanine;Arcanin;75.4;59;100;80;95;fire;;155.0;1;0
+Water Absorb, Damp, Swift Swim;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;50;5120;70;300;255;Tadpole Pokemon;40;1059860;0.6;40;Nyoromo????;Poliwag;Ptitard;50;60;40;40;90;water;;12.4;1;0
+Water Absorb, Damp, Swift Swim;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;65;5120;70;385;120;Tadpole Pokemon;65;1059860;1.0;65;Nyorozo????;Poliwhirl;Têtarte;50;61;50;50;90;water;;20.0;1;0
+Water Absorb, Damp, Swift Swim;0.5;0.5;1;2;2;1;0.5;2;1;2;1;0.5;1;1;2;0.5;0.5;0.5;95;5120;70;510;45;Tadpole Pokemon;95;1059860;1.3;90;Nyorobon?????;Poliwrath;Tartard;50;62;70;90;70;water;fighting;54.0;1;0
+Synchronize, Inner Focus, Magic Guard;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;20;5120;70;310;200;Psi Pokemon;15;1059860;0.9;25;Casey????;Abra;Abra;75.4;63;105;55;90;psychic;;19.5;1;0
+Synchronize, Inner Focus, Magic Guard;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;35;5120;70;400;100;Psi Pokemon;30;1059860;1.3;40;Yungerer?????;Kadabra;Kadabra;75.4;64;120;70;105;psychic;;56.5;1;0
+Synchronize, Inner Focus, Magic Guard;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;50;5120;70;600;50;Psi Pokemon;65;1059860;1.5;55;Foodin?????;Alakazam;Alakazam;75.4;65;175;105;150;psychic;;48.0;1;0
+Guts, No Guard, Steadfast;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;80;5120;70;305;180;Superpower Pokemon;50;1059860;0.8;70;Wanriky?????;Machop;Machoc;75.4;66;35;35;35;fighting;;19.5;1;0
+Guts, No Guard, Steadfast;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;100;5120;70;405;90;Superpower Pokemon;70;1059860;1.5;80;Goriky?????;Machoke;Machopeur;75.4;67;50;60;45;fighting;;70.5;1;0
+Guts, No Guard, Steadfast;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;130;5120;70;505;45;Superpower Pokemon;80;1059860;1.6;90;Kairiky?????;Machamp;Mackogneur;75.4;68;65;85;55;fighting;;130.0;1;0
+Chlorophyll, Gluttony;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;75;5120;70;300;255;Flower Pokemon;35;1059860;0.7;50;Madatsubomi?????;Bellsprout;Chétiflor;50;69;70;30;40;grass;poison;4.0;1;0
+Chlorophyll, Gluttony;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;90;5120;70;390;120;Flycatcher Pokemon;50;1059860;1.0;65;Utsudon????;Weepinbell;Boustiflor;50;70;85;45;55;grass;poison;6.4;1;0
+Chlorophyll, Gluttony;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;105;5120;70;490;45;Flycatcher Pokemon;65;1059860;1.7;80;Utsubot?????;Victreebel;Empiflor;50;71;100;70;70;grass;poison;15.5;1;0
+Clear Body, Liquid Ooze, Rain Dish;0.5;1;1;2;0.5;0.5;0.5;1;1;1;2;0.5;1;0.5;2;1;0.5;0.5;40;5120;70;335;190;Jellyfish Pokemon;35;1250000;0.9;40;Menokurage?????;Tentacool;Tentacool;50;72;50;100;70;water;poison;45.5;1;0
+Clear Body, Liquid Ooze, Rain Dish;0.5;1;1;2;0.5;0.5;0.5;1;1;1;2;0.5;1;0.5;2;1;0.5;0.5;70;5120;70;515;60;Jellyfish Pokemon;65;1250000;1.6;80;Dokukurage?????;Tentacruel;Tentacruel;50;73;80;120;100;water;poison;55.0;1;0
+Rock Head, Sturdy, Sand Veil, Magnet Pull, Sturdy, Galvanize;1;1;1;0;1;2;0.5;0.5;1;4;2;2;0.5;0.25;1;0.5;2;4;80;3840;70;300;255;Rock Pokemon;100;1059860;;40;Isitsubute?????;Geodude;Racaillou;50;74;30;30;20;rock;ground;;1;0
+Rock Head, Sturdy, Sand Veil, Magnet Pull, Sturdy, Galvanize;1;1;1;0;1;2;0.5;0.5;1;4;2;2;0.5;0.25;1;0.5;2;4;95;3840;70;390;120;Rock Pokemon;115;1059860;;55;Golone????;Graveler;Gravalanch;50;75;45;45;35;rock;ground;;1;0
+Rock Head, Sturdy, Sand Veil, Magnet Pull, Sturdy, Galvanize;1;1;1;0;1;2;0.5;0.5;1;4;2;2;0.5;0.25;1;0.5;2;4;120;3840;70;495;45;Megaton Pokemon;130;1059860;;80;Golonya?????;Golem;Grolem;50;76;55;65;45;rock;ground;;1;0
+Run Away, Flash Fire, Flame Body;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;85;5120;70;410;190;Fire Horse Pokemon;55;1000000;1.0;50;Ponyta????;Ponyta;Ponyta;50;77;65;65;90;fire;;30.0;1;0
+Run Away, Flash Fire, Flame Body;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;100;5120;70;500;60;Fire Horse Pokemon;70;1000000;1.7;65;Gallop?????;Rapidash;Galopa;50;78;80;80;105;fire;;95.0;1;0
+Oblivious, Own Tempo, Regenerator;2;2;1;2;1;0.5;0.5;1;2;2;1;0.5;1;1;0.5;1;0.5;0.5;65;5120;70;315;190;Dopey Pokemon;65;1000000;1.2;90;Yadon???;Slowpoke;Ramoloss;50;79;40;40;15;water;psychic;36.0;1;0
+Oblivious, Own Tempo, Regenerator;2;2;1;2;1;0.5;0.5;1;2;2;1;0.5;1;1;0.5;1;0.5;0.5;75;5120;70;590;75;Hermit Crab Pokemon;180;1000000;1.6;95;Yadoran????;Slowbro;Flagadoss;50;80;130;80;30;water;psychic;78.5;1;0
+Magnet Pull, Sturdy, Analytic;0.5;1;0.5;0.5;0.5;2;2;0.25;1;0.5;4;0.5;0.5;0;0.5;0.5;0.25;1;35;5120;70;325;190;Magnet Pokemon;70;1000000;0.3;25;Coil???;Magnemite;Magnéti;;81;95;55;45;electric;steel;6.0;1;0
+Magnet Pull, Sturdy, Analytic;0.5;1;0.5;0.5;0.5;2;2;0.25;1;0.5;4;0.5;0.5;0;0.5;0.5;0.25;1;60;5120;70;465;60;Magnet Pokemon;95;1000000;1.0;50;Rarecoil?????;Magneton;Magnéton;;82;120;70;70;electric;steel;60.0;1;0
+Keen Eye, Inner Focus, Defiant;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;90;5120;70;377;45;Wild Duck Pokemon;55;1000000;0.8;52;Kamonegi????;Farfetch'd;Canarticho;50;83;58;62;60;normal;flying;15.0;1;0
+Run Away, Early Bird, Tangled Feet;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;85;5120;70;310;190;Twin Bird Pokemon;45;1000000;1.4;35;Dodo????;Doduo;Doduo;50;84;35;35;75;normal;flying;39.2;1;0
+Run Away, Early Bird, Tangled Feet;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;110;5120;70;470;45;Triple Bird Pokemon;70;1000000;1.8;60;Dodorio?????;Dodrio;Dodrio;50;85;60;60;110;normal;flying;85.2;1;0
+Thick Fat, Hydration, Ice Body;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;45;5120;70;325;190;Sea Lion Pokemon;55;1000000;1.1;65;Pawou????;Seel;Otaria;50;86;45;70;45;water;;90.0;1;0
+Thick Fat, Hydration, Ice Body;1;1;1;2;1;2;1;1;1;2;1;0.25;1;1;1;2;1;0.5;70;5120;70;475;75;Sea Lion Pokemon;80;1000000;1.7;90;Jugon????;Dewgong;Lamantine;50;87;70;95;70;water;ice;120.0;1;0
+Stench, Sticky Hold, Poison Touch, Poison Touch, Gluttony, Power of Alchemy;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;80;5120;70;325;190;Sludge Pokemon;50;1000000;;80;Betbeter?????;Grimer;Tadmorv;50;88;40;50;25;poison;poison;;1;0
+Stench, Sticky Hold, Poison Touch, Poison Touch, Gluttony, Power of Alchemy;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;105;5120;70;500;75;Sludge Pokemon;75;1000000;;105;Betbeton?????;Muk;Grotadmorv;50;89;65;100;50;poison;poison;;1;0
+Shell Armor, Skill Link, Overcoat;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;65;5120;70;305;190;Bivalve Pokemon;100;1250000;0.3;30;Shellder?????;Shellder;Kokiyas;50;90;45;25;40;water;;4.0;1;0
+Shell Armor, Skill Link, Overcoat;1;1;1;2;1;2;1;1;1;2;1;0.25;1;1;1;2;1;0.5;95;5120;70;525;60;Bivalve Pokemon;180;1250000;1.5;50;Parshen?????;Cloyster;Crustabri;50;91;85;45;70;water;ice;132.5;1;0
+Levitate;0.25;2;1;1;0.5;0;1;1;2;0.5;2;1;0;0.25;2;1;1;1;35;5120;70;310;190;Gas Pokemon;30;1059860;1.3;30;Ghos???;Gastly;Fantominus;50;92;100;35;80;ghost;poison;0.1;1;0
+Levitate;0.25;2;1;1;0.5;0;1;1;2;0.5;2;1;0;0.25;2;1;1;1;50;5120;70;405;90;Gas Pokemon;45;1059860;1.6;45;Ghost????;Haunter;Spectrum;50;93;115;55;95;ghost;poison;0.1;1;0
+Cursed Body;0.25;2;1;1;0.5;0;1;1;2;0.5;2;1;0;0.25;2;1;1;1;65;5120;70;600;45;Shadow Pokemon;80;1059860;1.5;60;Gangar????;Gengar;Ectoplasma;50;94;170;95;130;ghost;poison;40.5;1;0
+Rock Head, Sturdy, Weak Armor;1;1;1;0;1;2;0.5;0.5;1;4;2;2;0.5;0.25;1;0.5;2;4;45;6400;70;385;45;Rock Snake Pokemon;160;1000000;8.8;35;Iwark????;Onix;Onix;50;95;30;45;70;rock;ground;210.0;1;0
+Insomnia, Forewarn, Inner Focus;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;48;5120;70;328;190;Hypnosis Pokemon;45;1000000;1.0;60;Sleepe????;Drowzee;Soporifik;50;96;43;90;42;psychic;;32.4;1;0
+Insomnia, Forewarn, Inner Focus;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;73;5120;70;483;75;Hypnosis Pokemon;70;1000000;1.6;85;Sleeper?????;Hypno;Hypnomade;50;97;73;115;67;psychic;;75.6;1;0
+Hyper Cutter, Shell Armor, Sheer Force;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;105;5120;70;325;225;River Crab Pokemon;90;1000000;0.4;30;Crab???;Krabby;Krabby;50;98;25;25;50;water;;6.5;1;0
+Hyper Cutter, Shell Armor, Sheer Force;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;130;5120;70;475;60;Pincer Pokemon;115;1000000;1.3;55;Kingler?????;Kingler;Krabboss;50;99;50;50;75;water;;60.0;1;0
+Soundproof, Static, Aftermath;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;30;5120;70;330;190;Ball Pokemon;50;1000000;0.5;40;Biriridama?????;Voltorb;Voltorbe;;100;55;55;100;electric;;10.4;1;0
+Soundproof, Static, Aftermath;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;50;5120;70;490;60;Ball Pokemon;70;1000000;1.2;60;Marumine?????;Electrode;Electrode;;101;80;80;150;electric;;66.6;1;0
+Chlorophyll, Harvest;4;2;1;0.5;1;0.5;2;2;2;0.5;0.5;2;1;2;0.5;1;1;0.5;40;5120;70;325;90;Egg Pokemon;80;1250000;0.4;60;Tamatama????;Exeggcute;Noeunoeuf;50;102;60;45;40;grass;psychic;2.5;1;0
+Chlorophyll, Harvest, Frisk, Harvest;4;2;1;0.5;1;0.5;2;2;2;0.5;0.5;2;1;2;0.5;1;1;0.5;105;5120;70;530;45;Coconut Pokemon;85;1250000;;95;Nassy????;Exeggutor;Noadkoko;50;103;125;75;45;grass;psychic;;1;0
+Rock Head, Lightningrod, Battle Armor;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;50;5120;70;320;190;Lonely Pokemon;95;1000000;0.4;50;Karakara????;Cubone;Osselait;50;104;40;50;35;ground;;6.5;1;0
+Rock Head, Lightningrod, Battle Armor, Cursed Body, Lightningrod, Rock Head;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;80;5120;70;425;75;Bone Keeper Pokemon;110;1000000;;60;Garagara????;Marowak;Ossatueur;50;105;50;80;45;ground;fire;;1;0
+Limber, Reckless, Unburden;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;120;6400;70;455;45;Kicking Pokemon;53;1000000;1.5;50;Sawamular?????;Hitmonlee;Kicklee;100;106;35;110;87;fighting;;49.8;1;0
+Keen Eye, Iron Fist, Inner Focus;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;105;6400;70;455;45;Punching Pokemon;79;1000000;1.4;50;Ebiwalar?????;Hitmonchan;Tygnon;100;107;35;110;76;fighting;;50.2;1;0
+Own Tempo, Oblivious, Cloud Nine;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;55;5120;70;385;45;Licking Pokemon;75;1000000;1.2;90;Beroringa?????;Lickitung;Excelangue;50;108;60;75;30;normal;;65.5;1;0
+Levitate;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;65;5120;70;340;190;Poison Gas Pokemon;95;1000000;0.6;40;Dogars????;Koffing;Smogo;50;109;60;45;35;poison;;1.0;1;0
+Levitate;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;90;5120;70;490;60;Poison Gas Pokemon;120;1000000;1.2;65;Matadogas?????;Weezing;Smogogo;50;110;85;70;60;poison;;9.5;1;0
+Lightningrod, Rock Head, Reckless;1;1;1;0;1;2;0.5;0.5;1;4;2;2;0.5;0.25;1;0.5;2;4;85;5120;70;345;120;Spikes Pokemon;95;1250000;1.0;80;Sihorn?????;Rhyhorn;Rhinocorne;50;111;30;30;25;ground;rock;115.0;1;0
+Lightningrod, Rock Head, Reckless;1;1;1;0;1;2;0.5;0.5;1;4;2;2;0.5;0.25;1;0.5;2;4;130;5120;70;485;60;Drill Pokemon;120;1250000;1.9;105;Sidon????;Rhydon;Rhinoféros;50;112;45;45;40;ground;rock;120.0;1;0
+Natural Cure, Serene Grace, Healer;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;5;10240;140;450;30;Egg Pokemon;5;800000;1.1;250;Lucky????;Chansey;Leveinard;0;113;35;105;50;normal;;34.6;1;0
+Chlorophyll, Leaf Guard, Regenerator;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;55;5120;70;435;45;Vine Pokemon;115;1000000;1.0;65;Monjara?????;Tangela;Saquedeneu;50;114;100;40;60;grass;;35.0;1;0
+Early Bird, Scrappy, Inner Focus;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;125;5120;70;590;45;Parent Pokemon;100;1000000;2.2;105;Garura????;Kangaskhan;Kangourex;0;115;60;100;100;normal;;80.0;1;0
+Swift Swim, Sniper, Damp;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;40;5120;70;295;225;Dragon Pokemon;70;1000000;0.4;30;Tattu????;Horsea;Hypotrempe;50;116;70;25;60;water;;8.0;1;0
+Poison Point, Sniper, Damp;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;65;5120;70;440;75;Dragon Pokemon;95;1000000;1.2;55;Seadra????;Seadra;Hypocéan;50;117;95;45;85;water;;25.0;1;0
+Swift Swim, Water Veil, Lightningrod;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;67;5120;70;320;225;Goldfish Pokemon;60;1000000;0.6;45;Tosakinto?????;Goldeen;Poissirène;50;118;35;50;63;water;;15.0;1;0
+Swift Swim, Water Veil, Lightningrod;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;92;5120;70;450;60;Goldfish Pokemon;65;1000000;1.3;80;Azumao?????;Seaking;Poissoroy;50;119;65;80;68;water;;39.0;1;0
+Illuminate, Natural Cure, Analytic;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;45;5120;70;340;225;Starshape Pokemon;55;1250000;0.8;30;Hitodeman?????;Staryu;Stari;;120;70;55;85;water;;34.5;1;0
+Illuminate, Natural Cure, Analytic;2;2;1;2;1;0.5;0.5;1;2;2;1;0.5;1;1;0.5;1;0.5;0.5;75;5120;70;520;60;Mysterious Pokemon;85;1250000;1.1;60;Starmie?????;Starmie;Staross;;121;100;85;115;water;psychic;80.0;1;0
+Soundproof, Filter, Technician;1;1;0;1;1;0.25;1;1;2;1;1;1;1;2;0.5;1;2;1;45;6400;70;460;45;Barrier Pokemon;65;1000000;1.3;40;Barrierd?????;Mr. Mime;M.Mime;50;122;100;120;90;psychic;fairy;54.5;1;0
+Swarm, Technician, Steadfast;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;110;6400;70;500;45;Mantis Pokemon;80;1000000;1.5;70;Strike?????;Scyther;Insécateur;50;123;55;80;105;bug;flying;56.0;1;0
+Oblivious, Forewarn, Dry Skin;2;2;1;1;1;1;2;1;2;1;1;0.5;1;1;0.5;2;2;1;50;6400;70;455;45;Humanshape Pokemon;35;1000000;1.4;65;Rougela?????;Jynx;Lippoutou;0;124;115;95;95;ice;psychic;40.6;1;0
+Static, Vital Spirit;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;83;6400;70;490;45;Electric Pokemon;57;1000000;1.1;65;Eleboo????;Electabuzz;Elektek;75.4;125;95;85;105;electric;;30.0;1;0
+Flame Body, Vital Spirit;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;95;6400;70;495;45;Spitfire Pokemon;57;1000000;1.3;65;Boober????;Magmar;Magmar;75.4;126;100;85;93;fire;;44.5;1;0
+Hyper Cutter, Mold Breaker, Moxie;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;155;6400;70;600;45;Stagbeetle Pokemon;120;1250000;1.5;65;Kailios????;Pinsir;Scarabrute;50;127;65;90;105;bug;;55.0;1;0
+Intimidate, Anger Point, Sheer Force;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;100;5120;70;490;45;Wild Bull Pokemon;95;1250000;1.4;75;Kentauros?????;Tauros;Tauros;100;128;40;70;110;normal;;88.4;1;0
+Swift Swim, Rattled;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;10;1280;70;200;255;Fish Pokemon;55;1250000;0.9;20;Koiking?????;Magikarp;Magicarpe;50;129;15;20;80;water;;10.0;1;0
+Intimidate, Moxie;0.5;1;1;4;1;0.5;0.5;1;1;1;0;1;1;1;1;2;0.5;0.5;155;1280;70;640;45;Atrocious Pokemon;109;1250000;6.5;95;Gyarados?????;Gyarados;Léviator;50;130;70;130;81;water;flying;235.0;1;0
+Water Absorb, Shell Armor, Hydration;1;1;1;2;1;2;1;1;1;2;1;0.25;1;1;1;2;1;0.5;85;10240;70;535;45;Transport Pokemon;80;1250000;2.5;130;Laplace????;Lapras;Locklass;50;131;85;95;60;water;ice;220.0;1;0
+Limber, Imposter;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;48;5120;70;288;35;Transform Pokemon;48;1000000;0.3;48;Metamon????;Ditto;Métamorph;;132;48;48;48;normal;;4.0;1;0
+Run Away, Adaptability, Anticipation;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;55;8960;70;325;45;Evolution Pokemon;50;1000000;0.3;55;Eievui????;Eevee;Evoli;88.1;133;45;65;55;normal;;6.5;1;0
+Water Absorb, Hydration;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;65;8960;70;525;45;Bubble Jet Pokemon;60;1000000;1.0;130;Showers?????;Vaporeon;Aquali;88.1;134;110;95;65;water;;29.0;1;0
+Volt Absorb, Quick Feet;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;65;8960;70;525;45;Lightning Pokemon;60;1000000;0.8;65;Thunders?????;Jolteon;Voltali;88.1;135;110;95;130;electric;;24.5;1;0
+Flash Fire, Guts;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;130;8960;70;525;45;Flame Pokemon;60;1000000;0.9;65;Booster?????;Flareon;Pyroli;88.1;136;95;110;65;fire;;25.0;1;0
+Trace, Download, Analytic;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;60;5120;70;395;45;Virtual Pokemon;70;1000000;0.8;65;Porygon????;Porygon;Porygon;;137;85;75;40;normal;;36.5;1;0
+Swift Swim, Shell Armor, Weak Armor;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;40;7680;70;355;45;Spiral Pokemon;100;1000000;0.4;35;Omnite?????;Omanyte;Amonita;88.1;138;90;55;35;rock;water;7.5;1;0
+Swift Swim, Shell Armor, Weak Armor;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;60;7680;70;495;45;Spiral Pokemon;125;1000000;1.0;70;Omstar?????;Omastar;Amonistar;88.1;139;115;70;55;rock;water;35.0;1;0
+Swift Swim, Battle Armor, Weak Armor;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;80;7680;70;355;45;Shellfish Pokemon;90;1000000;0.5;30;Kabuto???;Kabuto;Kabuto;88.1;140;55;45;55;rock;water;11.5;1;0
+Swift Swim, Battle Armor, Weak Armor;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;115;7680;70;495;45;Shellfish Pokemon;105;1000000;1.3;60;Kabutops?????;Kabutops;Kabutops;88.1;141;65;70;80;rock;water;40.5;1;0
+Rock Head, Pressure, Unnerve;0.5;1;1;2;1;1;0.5;0.5;1;1;0;2;0.5;0.5;1;2;2;2;135;8960;70;615;45;Fossil Pokemon;85;1250000;1.8;80;Ptera???;Aerodactyl;Ptéra;88.1;142;70;95;150;rock;flying;59.0;1;0
+Immunity, Thick Fat, Gluttony;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;110;10240;70;540;25;Sleeping Pokemon;65;1250000;2.1;160;Kabigon????;Snorlax;Ronflex;88.1;143;65;110;30;normal;;460.0;1;0
+Pressure, Snow Cloak;0.5;1;1;2;1;1;2;1;1;0.5;0;1;1;1;1;4;2;1;85;20480;35;580;3;Freeze Pokemon;100;1250000;1.7;90;Freezer?????;Articuno;Artikodin;;144;95;125;85;ice;flying;55.4;1;1
+Pressure, Static;0.5;1;1;1;1;0.5;1;0.5;1;0.5;0;2;1;1;1;2;0.5;1;90;20480;35;580;3;Electric Pokemon;85;1250000;1.6;90;Thunder????;Zapdos;Electhor;;145;125;90;100;electric;flying;52.6;1;1
+Pressure, Flame Body;0.25;1;1;2;0.5;0.5;0.5;1;1;0.25;0;1;1;1;1;4;0.5;2;100;20480;35;580;3;Flame Pokemon;90;1250000;2.0;90;Fire?????;Moltres;Sulfura;;146;125;85;90;fire;flying;60.0;1;1
+Shed Skin, Marvel Scale;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;64;10240;35;300;45;Dragon Pokemon;45;1250000;1.8;41;Miniryu?????;Dratini;Minidraco;50;147;50;50;50;dragon;;3.3;1;0
+Shed Skin, Marvel Scale;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;84;10240;35;420;45;Dragon Pokemon;65;1250000;4.0;61;Hakuryu?????;Dragonair;Draco;50;148;70;70;70;dragon;;16.5;1;0
+Inner Focus, Multiscale;0.5;1;2;1;2;0.5;0.5;1;1;0.25;0;4;1;1;1;2;1;0.5;134;10240;35;600;45;Dragon Pokemon;95;1250000;2.2;91;Kairyu?????;Dragonite;Dracolosse;50;149;100;100;80;dragon;flying;210.0;1;0
+Pressure, Unnerve;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;150;30720;0;780;3;Genetic Pokemon;70;1250000;2.0;106;Mewtwo?????;Mewtwo;Mewtwo;;150;194;120;140;psychic;;122.0;1;1
+Synchronize;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;100;30720;100;600;45;New Species Pokemon;100;1059860;0.4;100;Mew???;Mew;Mew;;151;100;100;100;psychic;;4.0;1;1
+Overgrow, Leaf Guard;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;49;5120;70;318;45;Leaf Pokemon;65;1059860;0.9;45;Chicorita?????;Chikorita;Germignon;88.1;152;49;65;45;grass;;6.4;2;0
+Overgrow, Leaf Guard;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;62;5120;70;405;45;Leaf Pokemon;80;1059860;1.2;60;Bayleaf?????;Bayleef;Macronium;88.1;153;63;80;60;grass;;15.8;2;0
+Overgrow, Leaf Guard;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;82;5120;70;525;45;Herb Pokemon;100;1059860;1.8;80;Meganium?????;Meganium;Méganium;88.1;154;83;100;80;grass;;100.5;2;0
+Blaze, Flash Fire;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;52;5120;70;309;45;Fire Mouse Pokemon;43;1059860;0.5;39;Hinoarashi?????;Cyndaquil;Héricendre;88.1;155;60;50;65;fire;;7.9;2;0
+Blaze, Flash Fire;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;64;5120;70;405;45;Volcano Pokemon;58;1059860;0.9;58;Magmarashi?????;Quilava;Feurisson;88.1;156;80;65;80;fire;;19.0;2;0
+Blaze, Flash Fire;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;84;5120;70;534;45;Volcano Pokemon;78;1059860;1.7;78;Bakphoon?????;Typhlosion;Typhlosion;88.1;157;109;85;100;fire;;79.5;2;0
+Torrent, Sheer Force;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;65;5120;70;314;45;Big Jaw Pokemon;64;1059860;0.6;50;Waninoko????;Totodile;Kaiminus;88.1;158;44;48;43;water;;9.5;2;0
+Torrent, Sheer Force;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;80;5120;70;405;45;Big Jaw Pokemon;80;1059860;1.1;65;Alligates?????;Croconaw;Crocrodil;88.1;159;59;63;58;water;;25.0;2;0
+Torrent, Sheer Force;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;105;5120;70;530;45;Big Jaw Pokemon;100;1059860;2.3;85;Ordile?????;Feraligatr;Aligatueur;88.1;160;79;83;78;water;;88.8;2;0
+Run Away, Keen Eye, Frisk;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;46;3840;70;215;255;Scout Pokemon;34;1000000;0.8;35;Otachi???;Sentret;Fouinette;50;161;35;45;20;normal;;6.0;2;0
+Run Away, Keen Eye, Frisk;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;76;3840;70;415;90;Long Body Pokemon;64;1000000;1.8;85;Ootachi????;Furret;Fouinar;50;162;45;55;90;normal;;32.5;2;0
+Insomnia, Keen Eye, Tinted Lens;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;30;3840;70;262;255;Owl Pokemon;30;1000000;0.7;60;Hoho????;Hoothoot;Hoothoot;50;163;36;56;50;normal;flying;21.2;2;0
+Insomnia, Keen Eye, Tinted Lens;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;50;3840;70;452;90;Owl Pokemon;50;1000000;1.6;100;Yorunozuku?????;Noctowl;Noarfang;50;164;86;96;70;normal;flying;40.8;2;0
+Swarm, Early Bird, Rattled;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;20;3840;70;265;255;Five Star Pokemon;30;800000;1.0;40;Rediba????;Ledyba;Coxy;50;165;40;80;55;bug;flying;10.8;2;0
+Swarm, Early Bird, Iron Fist;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;35;3840;70;390;90;Five Star Pokemon;50;800000;1.4;55;Redian?????;Ledian;Coxyclaque;50;166;55;110;85;bug;flying;35.6;2;0
+Swarm, Insomnia, Sniper;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;60;3840;70;250;255;String Spit Pokemon;40;800000;0.5;40;Itomaru????;Spinarak;Mimigal;50;167;40;40;30;bug;poison;8.5;2;0
+Swarm, Insomnia, Sniper;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;90;3840;70;400;90;Long Leg Pokemon;70;800000;1.1;70;Ariados?????;Ariados;Migalos;50;168;60;70;40;bug;poison;33.5;2;0
+Inner Focus, Infiltrator;0.25;1;1;2;0.5;0.25;1;1;1;0.25;0;2;1;0.5;2;2;1;1;90;3840;70;535;90;Bat Pokemon;80;1000000;1.8;85;Crobat?????;Crobat;Nostenfer;50;169;70;80;130;poison;flying;75.0;2;0
+Volt Absorb, Illuminate, Water Absorb;1;1;1;1;1;1;0.5;0.5;1;2;2;0.5;1;1;1;1;0.25;0.5;38;5120;70;330;190;Angler Pokemon;38;1250000;0.5;75;Chonchie?????;Chinchou;Loupio;50;170;56;56;67;water;electric;12.0;2;0
+Volt Absorb, Illuminate, Water Absorb;1;1;1;1;1;1;0.5;0.5;1;2;2;0.5;1;1;1;1;0.25;0.5;58;5120;70;460;75;Light Pokemon;58;1250000;1.2;125;Lantern?????;Lanturn;Lanturn;50;171;76;76;67;water;electric;22.5;2;0
+Static, Lightningrod;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;40;2560;70;205;190;Tiny Mouse Pokemon;15;1000000;0.3;20;Pichu????;Pichu;Pichu;50;172;35;35;60;electric;;2.0;2;0
+Cute Charm, Magic Guard, Friend Guard;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;25;2560;140;218;150;Star Shape Pokemon;28;800000;0.3;50;Py??;Cleffa;Mélo;24.6;173;45;55;15;fairy;;3.0;2;0
+Cute Charm, Competitive, Friend Guard;0.5;0.5;0;1;1;1;1;1;0;1;1;1;1;2;1;1;2;1;30;2560;70;210;170;Balloon Pokemon;15;800000;0.3;90;Pupurin????;Igglybuff;Toudoudou;24.6;174;40;20;15;normal;fairy;1.0;2;0
+Hustle, Serene Grace, Super Luck;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;20;2560;70;245;190;Spike Ball Pokemon;65;800000;0.3;35;Togepy????;Togepi;Togepi;88.1;175;40;65;20;fairy;;1.5;2;0
+Hustle, Serene Grace, Super Luck;0.25;0.5;0;2;1;0.25;1;1;1;0.5;0;2;1;2;1;2;2;1;40;2560;70;405;75;Happiness Pokemon;85;800000;0.6;55;Togechick?????;Togetic;Togetic;88.1;176;80;105;40;fairy;flying;3.2;2;0
+Synchronize, Early Bird, Magic Bounce;1;2;1;2;1;0.25;1;1;2;0.5;0;2;1;1;0.5;2;1;1;50;5120;70;320;190;Little Bird Pokemon;45;1000000;0.2;40;Naty????;Natu;Natu;50;177;70;45;70;psychic;flying;2.0;2;0
+Synchronize, Early Bird, Magic Bounce;1;2;1;2;1;0.25;1;1;2;0.5;0;2;1;1;0.5;2;1;1;75;5120;70;470;75;Mystic Pokemon;70;1000000;1.5;65;Natio?????;Xatu;Xatu;50;178;95;70;95;psychic;flying;15.0;2;0
+Static, Plus;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;40;5120;70;280;235;Wool Pokemon;40;1059860;0.6;55;Merriep????;Mareep;Wattouat;50;179;65;45;35;electric;;7.8;2;0
+Static, Plus;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;55;5120;70;365;120;Wool Pokemon;55;1059860;0.8;70;Mokoko???;Flaaffy;Lainergie;50;180;80;60;45;electric;;13.3;2;0
+Static, Plus;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;95;5120;70;610;45;Light Pokemon;105;1059860;1.4;90;Denryu?????;Ampharos;Pharamp;50;181;165;110;45;electric;;61.5;2;0
+Chlorophyll, Healer;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;80;5120;70;490;45;Flower Pokemon;95;1059860;0.4;75;Kireihana?????;Bellossom;Joliflor;50;182;90;100;50;grass;;5.8;2;0
+Thick Fat, Huge Power, Sap Sipper;0.5;0.5;0;2;1;0.5;0.5;1;1;2;1;0.5;1;2;1;1;1;0.5;20;2560;70;250;190;Aquamouse Pokemon;50;800000;0.4;70;Maril???;Marill;Marill;50;183;20;50;40;water;fairy;8.5;2;0
+Thick Fat, Huge Power, Sap Sipper;0.5;0.5;0;2;1;0.5;0.5;1;1;2;1;0.5;1;2;1;1;1;0.5;50;2560;70;420;75;Aquarabbit Pokemon;80;800000;0.8;100;Marilli????;Azumarill;Azumarill;50;184;60;80;50;water;fairy;28.5;2;0
+Sturdy, Rock Head, Rattled;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;100;5120;70;410;65;Imitation Pokemon;115;1000000;1.2;70;Usokkie?????;Sudowoodo;Simularbre;50;185;30;65;30;rock;;38.0;2;0
+Water Absorb, Damp, Drizzle;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;75;5120;70;500;45;Frog Pokemon;75;1059860;1.1;90;Nyorotono?????;Politoed;Tarpaud;50;186;90;100;70;water;;33.9;2;0
+Chlorophyll, Leaf Guard, Infiltrator;1;1;1;1;1;0.5;2;2;1;0.25;0;4;1;2;1;2;1;0.5;35;5120;70;250;255;Cottonweed Pokemon;40;1059860;0.4;35;Hanecco????;Hoppip;Granivol;50;187;35;55;50;grass;flying;0.5;2;0
+Chlorophyll, Leaf Guard, Infiltrator;1;1;1;1;1;0.5;2;2;1;0.25;0;4;1;2;1;2;1;0.5;45;5120;70;340;120;Cottonweed Pokemon;50;1059860;0.6;55;Popocco????;Skiploom;Floravol;50;188;45;65;80;grass;flying;1.0;2;0
+Chlorophyll, Leaf Guard, Infiltrator;1;1;1;1;1;0.5;2;2;1;0.25;0;4;1;2;1;2;1;0.5;55;5120;70;460;45;Cottonweed Pokemon;70;1059860;0.8;75;Watacco????;Jumpluff;Cotovol;50;189;55;95;110;grass;flying;3.0;2;0
+Run Away, Pickup, Skill Link;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;70;5120;70;360;45;Long Tail Pokemon;55;800000;0.8;55;Eipam????;Aipom;Capumain;50;190;40;55;85;normal;;11.5;2;0
+Chlorophyll, Solar Power, Early Bird;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;30;5120;70;180;235;Seed Pokemon;30;1059860;0.3;30;Himanuts?????;Sunkern;Tournegrin;50;191;30;30;30;grass;;1.8;2;0
+Chlorophyll, Solar Power, Early Bird;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;75;5120;70;425;120;Sun Pokemon;55;1059860;0.8;75;Kimawari????;Sunflora;Héliatronc;50;192;105;85;30;grass;;8.5;2;0
+Speed Boost, Compoundeyes, Frisk;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;65;5120;70;390;75;Clear Wing Pokemon;45;1000000;1.2;65;Yanyanma?????;Yanma;Yamna;50;193;75;45;95;bug;flying;38.0;2;0
+Damp, Water Absorb, Unaware;1;1;1;0;1;1;0.5;1;1;4;1;1;1;0.5;1;0.5;0.5;1;45;5120;70;210;255;Water Fish Pokemon;45;1000000;0.4;55;Upah???;Wooper;Axoloto;50;194;25;25;15;water;ground;8.5;2;0
+Damp, Water Absorb, Unaware;1;1;1;0;1;1;0.5;1;1;4;1;1;1;0.5;1;0.5;0.5;1;85;5120;70;430;90;Water Fish Pokemon;85;1000000;1.4;95;Nuoh???;Quagsire;Maraiste;50;195;65;65;35;water;ground;75.0;2;0
+Synchronize, Magic Bounce;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;65;8960;70;525;45;Sun Pokemon;60;1000000;0.9;65;Eifie????;Espeon;Mentali;88.1;196;130;95;110;psychic;;26.5;2;0
+Synchronize, Inner Focus;2;0.5;1;1;2;2;1;1;0.5;1;1;1;1;1;0;1;1;1;65;8960;35;525;45;Moonlight Pokemon;110;1000000;1.0;95;Blacky?????;Umbreon;Noctali;88.1;197;60;130;65;dark;;27.0;2;0
+Insomnia, Super Luck, Prankster;1;0.5;1;2;2;1;1;1;0.5;0.5;0;2;1;1;0;2;1;1;85;5120;35;405;30;Darkness Pokemon;42;1059860;0.5;60;Yamikarasu?????;Murkrow;Cornèbre;50;198;85;42;91;dark;flying;2.1;2;0
+Oblivious, Own Tempo, Regenerator;2;2;1;2;1;0.5;0.5;1;2;2;1;0.5;1;1;0.5;1;0.5;0.5;75;5120;70;490;70;Royal Pokemon;80;1000000;2.0;95;Yadoking?????;Slowking;Roigada;50;199;100;110;30;water;psychic;79.5;2;0
+Levitate;0.5;2;1;1;1;0;1;1;2;1;1;1;0;0.5;1;1;1;1;60;6400;35;435;45;Screech Pokemon;60;800000;0.7;60;Muma???;Misdreavus;Feuforêve;50;200;85;85;85;ghost;;1.0;2;0
+Levitate;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;72;10240;70;336;225;Symbol Pokemon;48;1000000;0.5;48;Unknown?????;Unown;Zarbi;;201;72;48;48;psychic;;5.0;2;0
+Shadow Tag, Telepathy;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;33;5120;70;405;45;Patient Pokemon;58;1000000;1.3;190;Sonans?????;Wobbuffet;Qulbutoké;50;202;33;58;33;psychic;;28.5;2;0
+Inner Focus, Early Bird, Sap Sipper;2;2;1;1;1;1;1;1;0;1;1;1;1;1;0.5;1;1;1;80;5120;70;455;60;Long Neck Pokemon;65;1000000;1.5;70;Kirinriki?????;Girafarig;Girafarig;50;203;90;65;85;normal;psychic;41.5;2;0
+Sturdy, Overcoat;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;65;5120;70;290;190;Bagworm Pokemon;90;1000000;0.6;50;Kunugidama?????;Pineco;Pomdepik;50;204;35;35;15;bug;;7.2;2;0
+Sturdy, Overcoat;0.5;1;0.5;1;0.5;1;4;1;1;0.25;1;0.5;0.5;0;0.5;1;0.5;1;90;5120;70;465;75;Bagworm Pokemon;140;1000000;1.2;75;Foretos?????;Forretress;Foretress;50;205;60;60;40;bug;steel;125.8;2;0
+Serene Grace, Run Away, Rattled;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;70;5120;70;415;190;Land Snake Pokemon;70;1000000;1.5;100;Nokocchi????;Dunsparce;Insolourdo;50;206;65;65;45;normal;;14.0;2;0
+Hyper Cutter, Sand Veil, Immunity;0.5;1;1;0;1;0.5;1;1;1;1;0;4;1;0.5;1;1;1;2;75;5120;70;430;60;Flyscorpion Pokemon;105;1059860;1.1;65;Gliger?????;Gligar;Scorplane;50;207;35;65;85;ground;flying;64.8;2;0
+Rock Head, Sturdy, Sheer Force;0.5;1;0.5;0;0.5;2;2;0.5;1;1;2;1;0.5;0;0.5;0.25;0.5;2;125;6400;70;610;25;Iron Snake Pokemon;230;1000000;9.2;75;Haganeil?????;Steelix;Steelix;50;208;55;95;30;steel;ground;400.0;2;0
+Intimidate, Run Away, Rattled;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;80;5120;70;300;190;Fairy Pokemon;50;800000;0.6;60;Bulu???;Snubbull;Snubbull;24.6;209;40;40;30;fairy;;7.8;2;0
+Intimidate, Quick Feet, Rattled;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;120;5120;70;450;75;Fairy Pokemon;75;800000;1.4;90;Granbulu?????;Granbull;Granbull;24.6;210;60;60;45;fairy;;48.7;2;0
+Poison Point, Swift Swim, Intimidate;0.5;1;1;2;0.5;0.5;0.5;1;1;1;2;0.5;1;0.5;2;1;0.5;0.5;95;5120;70;440;45;Balloon Pokemon;85;1000000;0.5;65;Harysen?????;Qwilfish;Qwilfish;50;211;55;55;85;water;poison;3.9;2;0
+Swarm, Technician, Light Metal;0.5;1;0.5;1;0.5;1;4;1;1;0.25;1;0.5;0.5;0;0.5;1;0.5;1;150;6400;70;600;25;Pincer Pokemon;140;1000000;1.8;70;Hassam????;Scizor;Cizayox;50;212;65;100;75;bug;steel;118.0;2;0
+Sturdy, Gluttony, Contrary;1;1;1;1;1;1;1;1;1;1;1;1;0.5;0.5;1;2;2;2;10;5120;70;505;190;Mold Pokemon;230;1059860;0.6;20;Tsubotsubo????;Shuckle;Caratroc;50;213;10;230;5;bug;rock;20.5;2;0
+Swarm, Guts, Moxie;0.5;0.5;1;1;2;0.5;2;4;1;0.5;0.5;1;1;1;2;1;1;1;185;6400;70;600;45;Singlehorn Pokemon;115;1250000;1.5;80;Heracros?????;Heracross;Scarhino;50;214;40;105;75;bug;fighting;54.0;2;0
+Inner Focus, Keen Eye, Pickpocket;2;0.5;1;1;2;4;2;1;0.5;1;1;0.5;1;1;0;2;2;1;95;5120;35;430;60;Sharp Claw Pokemon;55;1059860;0.9;55;Nyula????;Sneasel;Farfuret;50;215;35;75;115;dark;ice;28.0;2;0
+Pickup, Quick Feet, Honey Gather;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;80;5120;70;330;120;Little Bear Pokemon;50;1000000;0.6;60;Himeguma????;Teddiursa;Teddiursa;50;216;50;50;40;normal;;8.8;2;0
+Guts, Quick Feet, Unnerve;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;130;5120;70;500;60;Hibernator Pokemon;75;1000000;1.8;90;Ringuma????;Ursaring;Ursaring;50;217;75;75;55;normal;;125.8;2;0
+Magma Armor, Flame Body, Weak Armor;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;40;5120;70;250;190;Lava Pokemon;40;1000000;0.7;40;Magmag?????;Slugma;Limagma;50;218;70;40;20;fire;;35.0;2;0
+Magma Armor, Flame Body, Weak Armor;0.5;1;1;1;0.5;2;0.25;0.5;1;1;4;0.5;0.5;0.5;1;2;1;4;50;5120;70;430;75;Lava Pokemon;120;1000000;0.8;60;Magcargot?????;Magcargo;Volcaropod;50;219;90;80;30;fire;rock;55.0;2;0
+Oblivious, Snow Cloak, Thick Fat;1;1;1;0;1;2;2;1;1;2;1;1;1;0.5;1;1;2;2;50;5120;70;250;225;Pig Pokemon;40;1250000;0.4;50;Urimoo????;Swinub;Marcacrin;50;220;30;30;50;ice;ground;6.5;2;0
+Oblivious, Snow Cloak, Thick Fat;1;1;1;0;1;2;2;1;1;2;1;1;1;0.5;1;1;2;2;100;5120;70;450;75;Swine Pokemon;80;1250000;1.1;100;Inomoo????;Piloswine;Cochignon;50;221;60;60;50;ice;ground;55.8;2;0
+Hustle, Natural Cure, Regenerator;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;55;5120;70;410;60;Coral Pokemon;95;800000;0.6;65;Sunnygo????;Corsola;Corayon;24.6;222;65;95;35;water;rock;5.0;2;0
+Hustle, Sniper, Moody;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;65;5120;70;300;190;Jet Pokemon;35;1000000;0.6;35;Teppouo?????;Remoraid;Rémoraid;50;223;65;35;65;water;;12.0;2;0
+Suction Cups, Sniper, Moody;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;105;5120;70;480;75;Jet Pokemon;75;1000000;0.9;75;Okutank????;Octillery;Octillery;50;224;105;75;45;water;;28.5;2;0
+Vital Spirit, Hustle, Insomnia;0.5;1;1;2;1;1;2;1;1;0.5;0;1;1;1;1;4;2;1;55;5120;70;330;45;Delivery Pokemon;45;800000;0.9;45;Delibird?????;Delibird;Cadoizo;50;225;65;45;75;ice;flying;16.0;2;0
+Swift Swim, Water Absorb, Water Veil;0.5;1;1;4;1;0.5;0.5;1;1;1;0;1;1;1;1;2;0.5;0.5;40;6400;70;485;25;Kite Pokemon;70;1250000;2.1;85;Mantain?????;Mantine;Démanta;50;226;80;140;70;water;flying;220.0;2;0
+Keen Eye, Sturdy, Weak Armor;0.25;1;0.5;2;0.5;1;2;0.5;1;0.25;0;1;0.5;0;0.5;1;0.5;1;80;6400;70;465;25;Armor Bird Pokemon;140;1250000;1.7;65;Airmd?????;Skarmory;Airmure;50;227;40;70;70;steel;flying;50.5;2;0
+Early Bird, Flash Fire, Unnerve;1;0.5;1;1;1;2;0.5;1;0.5;0.5;2;0.5;1;1;0;2;0.5;2;60;5120;35;330;120;Dark Pokemon;30;1250000;0.6;45;Delvil????;Houndour;Malosse;50;228;80;50;65;dark;fire;10.8;2;0
+Early Bird, Flash Fire, Unnerve;1;0.5;1;1;1;2;0.5;1;0.5;0.5;2;0.5;1;1;0;2;0.5;2;90;5120;35;600;45;Dark Pokemon;90;1250000;1.4;75;Hellgar????;Houndoom;Démolosse;50;229;140;90;115;dark;fire;35.0;2;0
+Swift Swim, Sniper, Damp;1;1;2;1;2;1;0.25;1;1;1;1;1;1;1;1;1;0.5;0.25;95;5120;70;540;45;Dragon Pokemon;95;1000000;1.8;75;Kingdra?????;Kingdra;Hyporoi;50;230;95;95;85;water;dragon;152.0;2;0
+Pickup, Sand Veil;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;60;5120;70;330;120;Long Nose Pokemon;60;1000000;0.5;90;Gomazou????;Phanpy;Phanpy;50;231;40;40;40;ground;;33.5;2;0
+Sturdy, Sand Veil;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;120;5120;70;500;60;Armor Pokemon;120;1000000;1.1;90;Donfan?????;Donphan;Donphan;50;232;60;60;50;ground;;120.0;2;0
+Trace, Download, Analytic;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;80;5120;70;515;45;Virtual Pokemon;90;1000000;0.6;85;Porygon2?????;Porygon2;Porygon2;;233;105;95;60;normal;;32.5;2;0
+Intimidate, Frisk, Sap Sipper;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;95;5120;70;465;45;Big Horn Pokemon;62;1250000;1.4;73;Odoshishi????;Stantler;Cerfrousse;50;234;85;65;85;normal;;71.2;2;0
+Own Tempo, Technician, Moody;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;20;5120;70;250;45;Painter Pokemon;35;800000;1.2;55;Doble????;Smeargle;Queulorior;50;235;20;45;75;normal;;58.0;2;0
+Guts, Steadfast, Vital Spirit;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;35;6400;70;210;75;Scuffle Pokemon;35;1000000;0.7;35;Balkie????;Tyrogue;Débugant;100;236;35;35;35;fighting;;21.0;2;0
+Intimidate, Technician, Steadfast;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;95;6400;70;455;45;Handstand Pokemon;95;1000000;1.4;50;Kapoerer?????;Hitmontop;Kapoera;100;237;35;110;70;fighting;;48.0;2;0
+Oblivious, Forewarn, Hydration;2;2;1;1;1;1;2;1;2;1;1;0.5;1;1;0.5;2;2;1;30;6400;70;305;45;Kiss Pokemon;15;1000000;0.4;45;Muchul?????;Smoochum;Lippouti;0;238;85;65;65;ice;psychic;6.0;2;0
+Static, Vital Spirit;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;63;6400;70;360;45;Electric Pokemon;37;1000000;0.6;45;Elekid?????;Elekid;Elekid;75.4;239;65;55;95;electric;;23.5;2;0
+Flame Body, Vital Spirit;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;75;6400;70;365;45;Live Coal Pokemon;37;1000000;0.7;45;Buby???;Magby;Magby;75.4;240;70;55;83;fire;;21.4;2;0
+Thick Fat, Scrappy, Sap Sipper;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;80;5120;70;490;45;Milk Cow Pokemon;105;1250000;1.2;95;Miltank?????;Miltank;Ecremeuh;0;241;40;70;100;normal;;75.5;2;0
+Natural Cure, Serene Grace, Healer;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;10;10240;140;540;30;Happiness Pokemon;10;800000;1.5;255;Happinas????;Blissey;Leuphorie;0;242;75;135;55;normal;;46.8;2;0
+Pressure, Inner Focus;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;85;20480;35;580;3;Thunder Pokemon;75;1250000;1.9;90;Raikou????;Raikou;Raikou;;243;115;100;115;electric;;178.0;2;1
+Pressure, Inner Focus;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;115;20480;35;580;3;Volcano Pokemon;85;1250000;2.1;115;Entei????;Entei;Entei;;244;90;75;100;fire;;198.0;2;1
+Pressure, Inner Focus;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;75;20480;35;580;3;Aurora Pokemon;115;1250000;2.0;100;Suicune????;Suicune;Suicune;;245;90;115;85;water;;187.0;2;1
+Guts, Sand Veil;1;1;1;0;1;2;0.5;0.5;1;4;2;2;0.5;0.25;1;0.5;2;4;64;10240;35;300;45;Rock Skin Pokemon;50;1250000;0.6;50;Yogiras?????;Larvitar;Embrylex;50;246;45;50;41;rock;ground;72.0;2;0
+Shed Skin;1;1;1;0;1;2;0.5;0.5;1;4;2;2;0.5;0.25;1;0.5;2;4;84;10240;35;410;45;Hard Shell Pokemon;70;1250000;1.2;70;Sanagiras?????;Pupitar;Ymphect;50;247;65;70;51;rock;ground;152.0;2;0
+Sand Stream, Unnerve;2;0.5;1;1;2;4;0.5;0.5;0.5;2;2;1;0.5;0.5;0;1;2;2;164;10240;35;700;45;Armor Pokemon;150;1250000;2.0;100;Bangiras?????;Tyranitar;Tyranocif;50;248;95;120;71;rock;dark;202.0;2;0
+Pressure, Multiscale;1;2;1;2;1;0.25;1;1;2;0.5;0;2;1;1;0.5;2;1;1;90;30720;0;680;3;Diving Pokemon;130;1250000;5.2;106;Lugia???;Lugia;Lugia;;249;90;154;110;psychic;flying;216.0;2;1
+Pressure, Regenerator;0.25;1;1;2;0.5;0.5;0.5;1;1;0.25;0;1;1;1;1;4;0.5;2;130;30720;0;680;3;Rainbow Pokemon;90;1250000;3.8;106;Houou????;Ho-Oh;Ho-Oh;;250;110;154;90;fire;flying;199.0;2;1
+Natural Cure;4;2;1;0.5;1;0.5;2;2;2;0.5;0.5;2;1;2;0.5;1;1;0.5;100;30720;100;600;45;Time Travel Pokemon;100;1059860;0.6;100;Celebi????;Celebi;Célébi;;251;100;100;100;psychic;grass;5.0;2;1
+Overgrow, Unburden;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;45;5120;70;310;45;Wood Gecko Pokemon;35;1059860;0.5;40;Kimori???;Treecko;Arcko;88.1;252;65;55;70;grass;;5.0;3;0
+Overgrow, Unburden;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;65;5120;70;405;45;Wood Gecko Pokemon;45;1059860;0.9;50;Juptile?????;Grovyle;Massko;88.1;253;85;65;95;grass;;21.6;3;0
+Overgrow, Unburden;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;110;5120;70;630;45;Forest Pokemon;75;1059860;1.7;70;Jukain?????;Sceptile;Jungko;88.1;254;145;85;145;grass;;52.2;3;0
+Blaze, Speed Boost;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;60;5120;70;310;45;Chick Pokemon;40;1059860;0.4;45;Achamo????;Torchic;Poussifeu;88.1;255;70;50;45;fire;;2.5;3;0
+Blaze, Speed Boost;0.25;0.5;1;1;1;1;0.5;2;1;0.5;2;0.5;1;1;2;1;0.5;2;85;5120;70;405;45;Young Fowl Pokemon;60;1059860;0.9;60;Wakasyamo?????;Combusken;Galifeu;88.1;256;85;60;55;fire;fighting;19.5;3;0
+Blaze, Speed Boost;0.25;0.5;1;1;1;1;0.5;2;1;0.5;2;0.5;1;1;2;1;0.5;2;160;5120;70;630;45;Blaze Pokemon;80;1059860;1.9;80;Bursyamo?????;Blaziken;Braségali;88.1;257;130;80;100;fire;fighting;52.0;3;0
+Torrent, Damp;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;70;5120;70;310;45;Mud Fish Pokemon;50;1059860;0.4;50;Mizugorou?????;Mudkip;Gobou;88.1;258;50;50;40;water;;7.6;3;0
+Torrent, Damp;1;1;1;0;1;1;0.5;1;1;4;1;1;1;0.5;1;0.5;0.5;1;85;5120;70;405;45;Mud Fish Pokemon;70;1059860;0.7;70;Numacraw?????;Marshtomp;Flobio;88.1;259;60;70;50;water;ground;28.0;3;0
+Torrent, Damp;1;1;1;0;1;1;0.5;1;1;4;1;1;1;0.5;1;0.5;0.5;1;150;5120;70;635;45;Mud Fish Pokemon;110;1059860;1.5;100;Laglarge?????;Swampert;Laggron;88.1;260;95;110;70;water;ground;81.9;3;0
+Run Away, Quick Feet, Rattled;2;0.5;1;1;2;2;1;1;0.5;1;1;1;1;1;0;1;1;1;55;3840;70;220;255;Bite Pokemon;35;1000000;0.5;35;Pochiena????;Poochyena;Medhyèna;50;261;30;30;35;dark;;13.6;3;0
+Intimidate, Quick Feet, Moxie;2;0.5;1;1;2;2;1;1;0.5;1;1;1;1;1;0;1;1;1;90;3840;70;420;127;Bite Pokemon;70;1000000;1.0;70;Graena????;Mightyena;Grahyèna;50;262;60;60;70;dark;;37.0;3;0
+Pickup, Gluttony, Quick Feet;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;30;3840;70;240;255;Tiny Racoon Pokemon;41;1000000;0.4;38;Jiguzaguma?????;Zigzagoon;Zigzaton;50;263;30;41;60;normal;;17.5;3;0
+Pickup, Gluttony, Quick Feet;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;70;3840;70;420;90;Rush Pokemon;61;1000000;0.5;78;Massuguma?????;Linoone;Linéon;50;264;50;61;100;normal;;32.5;3;0
+Shield Dust, Run Away;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;45;3840;70;195;255;Worm Pokemon;35;1000000;0.3;45;Kemusso????;Wurmple;Chenipotte;50;265;20;30;20;bug;;3.6;3;0
+Shed Skin;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;35;3840;70;205;120;Cocoon Pokemon;55;1000000;0.6;50;Karasalis?????;Silcoon;Armulys;50;266;25;25;15;bug;;10.0;3;0
+Swarm, Rivalry;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;70;3840;70;395;45;Butterfly Pokemon;50;1000000;1.0;60;Agehunt?????;Beautifly;Charmillon;50;267;100;50;65;bug;flying;28.4;3;0
+Shed Skin;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;35;3840;70;205;120;Cocoon Pokemon;55;1000000;0.7;50;Mayuld????;Cascoon;Blindalys;50;268;25;25;15;bug;;11.5;3;0
+Shield Dust, Compoundeyes;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;50;3840;70;385;45;Poison Moth Pokemon;70;1000000;1.2;60;Dokucale?????;Dustox;Papinox;50;269;50;90;65;bug;poison;31.6;3;0
+Swift Swim, Rain Dish, Own Tempo;2;1;1;1;1;1;1;2;1;1;0.5;1;1;2;1;1;0.5;0.25;30;3840;70;220;255;Water Weed Pokemon;30;1059860;0.5;40;Hassboh????;Lotad;Nénupiot;50;270;40;50;30;water;grass;2.6;3;0
+Swift Swim, Rain Dish, Own Tempo;2;1;1;1;1;1;1;2;1;1;0.5;1;1;2;1;1;0.5;0.25;50;3840;70;340;120;Jolly Pokemon;50;1059860;1.2;60;Hasubrero?????;Lombre;Lombre;50;271;60;70;50;water;grass;32.5;3;0
+Swift Swim, Rain Dish, Own Tempo;2;1;1;1;1;1;1;2;1;1;0.5;1;1;2;1;1;0.5;0.25;70;3840;70;480;45;Carefree Pokemon;70;1059860;1.5;80;Runpappa?????;Ludicolo;Ludicolo;50;272;90;100;70;water;grass;55.0;3;0
+Chlorophyll, Early Bird, Pickpocket;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;40;3840;70;220;255;Acorn Pokemon;50;1059860;0.5;40;Taneboh????;Seedot;Grainipiot;50;273;30;30;30;grass;;4.0;3;0
+Chlorophyll, Early Bird, Pickpocket;4;0.5;1;0.5;2;2;2;2;0.5;0.5;0.5;2;1;2;0;1;1;0.5;70;3840;70;340;120;Wily Pokemon;40;1059860;1.0;70;Konohana????;Nuzleaf;Pifeuil;50;274;60;40;60;grass;dark;28.0;3;0
+Chlorophyll, Early Bird, Pickpocket;4;0.5;1;0.5;2;2;2;2;0.5;0.5;0.5;2;1;2;0;1;1;0.5;100;3840;70;480;45;Wickid Pokemon;60;1059860;1.3;90;Dirteng?????;Shiftry;Tengalice;50;275;90;60;80;grass;dark;59.6;3;0
+Guts, Scrappy;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;55;3840;70;270;200;TinySwallow Pokemon;30;1059860;0.3;40;Subame???;Taillow;Nirondelle;50;276;30;30;85;normal;flying;2.3;3;0
+Guts, Scrappy;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;85;3840;70;455;45;Swallow Pokemon;60;1059860;0.7;60;Ohsubame?????;Swellow;Hélédelle;50;277;75;50;125;normal;flying;19.8;3;0
+Keen Eye, Hydration, Rain Dish;0.5;1;1;4;1;0.5;0.5;1;1;1;0;1;1;1;1;2;0.5;0.5;30;5120;70;270;190;Seagull Pokemon;30;1000000;0.6;40;Camome????;Wingull;Goélise;50;278;55;30;85;water;flying;9.5;3;0
+Keen Eye, Drizzle, Rain Dish;0.5;1;1;4;1;0.5;0.5;1;1;1;0;1;1;1;1;2;0.5;0.5;50;5120;70;440;45;Water Bird Pokemon;100;1000000;1.2;60;Pelipper?????;Pelipper;Bekipan;50;279;95;70;65;water;flying;28.0;3;0
+Synchronize, Trace, Telepathy;1;1;0;1;1;0.25;1;1;2;1;1;1;1;2;0.5;1;2;1;25;5120;35;198;235;Feeling Pokemon;25;1250000;0.4;28;Ralts????;Ralts;Tarsal;50;280;45;35;40;psychic;fairy;6.6;3;0
+Synchronize, Trace, Telepathy;1;1;0;1;1;0.25;1;1;2;1;1;1;1;2;0.5;1;2;1;35;5120;35;278;120;Emotion Pokemon;35;1250000;0.8;38;Kirlia????;Kirlia;Kirlia;50;281;65;55;50;psychic;fairy;20.2;3;0
+Synchronize, Trace, Telepathy;1;1;0;1;1;0.25;1;1;2;1;1;1;1;2;0.5;1;2;1;85;5120;35;618;45;Embrace Pokemon;65;1250000;1.6;68;Sirnight?????;Gardevoir;Gardevoir;50;282;165;135;100;psychic;fairy;48.4;3;0
+Swift Swim, Rain Dish;1;1;1;2;1;0.5;1;2;1;1;0.5;0.5;1;1;1;2;0.5;0.5;30;3840;70;269;200;Pond Skater Pokemon;32;1000000;0.5;40;Ametama????;Surskit;Arakdo;50;283;50;52;65;bug;water;1.7;3;0
+Intimidate, Unnerve;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;60;3840;70;454;75;Eyeball Pokemon;62;1000000;0.8;70;Amemoth?????;Masquerain;Maskadra;50;284;100;82;80;bug;flying;3.6;3;0
+Effect Spore, Poison Heal, Quick Feet;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;40;3840;70;295;255;Mushroom Pokemon;60;1640000;0.4;60;Kinococo????;Shroomish;Balignon;50;285;40;60;35;grass;;4.5;3;0
+Effect Spore, Poison Heal, Technician;1;0.5;1;0.5;2;1;2;4;1;0.5;0.5;2;1;2;2;0.5;1;0.5;130;3840;70;460;90;Mushroom Pokemon;80;1640000;1.2;60;Kinogassa?????;Breloom;Chapignon;50;286;60;60;70;grass;fighting;39.2;3;0
+Truant;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;60;3840;70;280;255;Slacker Pokemon;60;1250000;0.8;60;Namakero????;Slakoth;Parecool;50;287;35;35;30;normal;;24.0;3;0
+Vital Spirit;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;80;3840;70;440;120;Wild Monkey Pokemon;80;1250000;1.4;80;Yarukimono?????;Vigoroth;Vigoroth;50;288;55;55;90;normal;;46.5;3;0
+Truant;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;160;3840;70;670;45;Lazy Pokemon;100;1250000;2.0;150;Kekking?????;Slaking;Manoflèmit;50;289;95;65;100;normal;;130.5;3;0
+Compoundeyes, Run Away;1;1;1;0;1;0.5;2;2;1;1;0.5;2;1;0.5;1;1;1;2;45;3840;70;266;255;Trainee Pokemon;90;600000;0.5;31;Tutinin????;Nincada;Ningale;50;290;30;30;40;bug;ground;5.5;3;0
+Speed Boost, Infiltrator;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;90;3840;70;456;120;Ninja Pokemon;45;600000;0.8;61;Tekkanin?????;Ninjask;Ninjask;50;291;50;50;160;bug;flying;12.0;3;0
+Wonder Guard;0.5;2;1;1;1;0;2;2;2;0.5;0.5;1;0;0.5;1;2;1;1;90;3840;70;236;45;Shed Pokemon;45;600000;0.8;1;Nukenin????;Shedinja;Munja;;292;30;30;40;bug;ghost;1.2;3;0
+Soundproof, Rattled;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;51;5120;70;240;190;Whisper Pokemon;23;1059860;0.6;64;Gonyonyo?????;Whismur;Chuchmur;50;293;51;23;28;normal;;16.3;3;0
+Soundproof, Scrappy;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;71;5120;70;360;120;Big Voice Pokemon;43;1059860;1.0;84;Dogohmb????;Loudred;Ramboum;50;294;71;43;48;normal;;40.5;3;0
+Soundproof, Scrappy;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;91;5120;70;490;45;Loud Noise Pokemon;63;1059860;1.5;104;Bakuong?????;Exploud;Brouhabam;50;295;91;73;68;normal;;84.0;3;0
+Thick Fat, Guts, Sheer Force;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;60;5120;70;237;180;Guts Pokemon;30;1640000;1.0;72;Makunoshita?????;Makuhita;Makuhita;75.4;296;20;30;25;fighting;;86.4;3;0
+Thick Fat, Guts, Sheer Force;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;120;5120;70;474;200;Arm Thrust Pokemon;60;1640000;2.3;144;Hariteyama?????;Hariyama;Hariyama;75.4;297;40;60;50;fighting;;253.8;3;0
+Thick Fat, Huge Power, Sap Sipper;0.5;0.5;0;1;1;1;1;1;0;1;1;1;1;2;1;1;2;1;20;2560;70;190;150;Polka Dot Pokemon;40;800000;0.2;50;Ruriri???;Azurill;Azurill;24.6;298;20;40;20;normal;fairy;2.0;3;0
+Sturdy, Magnet Pull, Sand Force;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;45;5120;70;375;255;Compass Pokemon;135;1000000;1.0;30;Nosepass????;Nosepass;Tarinor;50;299;45;90;30;rock;;97.0;3;0
+Cute Charm, Normalize, Wonder Skin ;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;45;3840;70;260;255;Kitten Pokemon;45;800000;0.6;50;Eneco???;Skitty;Skitty;24.6;300;35;35;50;normal;;11.0;3;0
+Cute Charm, Normalize, Wonder Skin ;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;65;3840;70;400;60;Prim Pokemon;65;800000;1.1;70;Enekororo?????;Delcatty;Delcatty;24.6;301;55;55;90;normal;;32.6;3;0
+Keen Eye, Stall, Prankster;1;1;1;1;2;0;1;1;1;1;1;1;0;0.5;0;1;1;1;85;6400;35;480;45;Darkness Pokemon;125;1059860;0.5;50;Yamirami????;Sableye;Ténéfix;50;302;85;115;20;dark;ghost;11.0;3;0
+Hyper Cutter, Intimidate, Sheer Force;0.25;0.5;0;1;0.5;1;2;0.5;1;0.5;2;0.5;0.5;0;0.5;0.5;1;1;105;5120;70;480;45;Deceiver Pokemon;125;800000;0.6;50;Kucheat????;Mawile;Mystibule;50;303;55;95;50;steel;fairy;11.5;3;0
+Sturdy, Rock Head, Heavy Metal;0.5;1;0.5;1;0.5;4;1;0.25;1;1;4;0.5;0.25;0;0.5;0.5;1;2;70;8960;35;330;180;Iron Armor Pokemon;100;1250000;0.4;50;Cokodora????;Aron;Galekid;50;304;40;40;30;steel;rock;60.0;3;0
+Sturdy, Rock Head, Heavy Metal;0.5;1;0.5;1;0.5;4;1;0.25;1;1;4;0.5;0.25;0;0.5;0.5;1;2;90;8960;35;430;90;Iron Armor Pokemon;140;1250000;0.9;60;Kodora???;Lairon;Galegon;50;305;50;50;40;steel;rock;120.0;3;0
+Sturdy, Rock Head, Heavy Metal;0.5;1;0.5;1;0.5;4;1;0.25;1;1;4;0.5;0.25;0;0.5;0.5;1;2;140;8960;35;630;45;Iron Armor Pokemon;230;1250000;2.1;70;Bossgodora?????;Aggron;Galeking;50;306;60;80;50;steel;rock;360.0;3;0
+Pure Power, Telepathy;1;1;1;1;2;0.5;1;2;2;1;1;1;1;1;1;0.5;1;1;40;5120;70;280;180;Meditate Pokemon;55;1000000;0.6;30;Asanan????;Meditite;Méditikka;50;307;40;55;60;fighting;psychic;11.2;3;0
+Pure Power, Telepathy;1;1;1;1;2;0.5;1;2;2;1;1;1;1;1;1;0.5;1;1;100;5120;70;510;90;Meditate Pokemon;85;1000000;1.3;60;Charem?????;Medicham;Charmina;50;308;80;85;100;fighting;psychic;31.5;3;0
+Static, Lightningrod, Minus;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;45;5120;70;295;120;Lightning Pokemon;40;1250000;0.6;40;Rakurai????;Electrike;Dynavolt;50;309;65;40;65;electric;;15.2;3;0
+Static, Lightningrod, Minus;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;75;5120;70;575;45;Discharge Pokemon;80;1250000;1.5;70;Livolt?????;Manectric;Elecsprint;50;310;135;80;135;electric;;40.2;3;0
+Plus, Lightningrod;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;50;5120;70;405;200;Cheering Pokemon;40;1000000;0.4;60;Prasle????;Plusle;Posipi;50;311;85;75;95;electric;;4.2;3;0
+Minus, Volt Absorb;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;40;5120;70;405;200;Cheering Pokemon;50;1000000;0.4;60;Minun????;Minun;Négapi;50;312;75;85;95;electric;;4.2;3;0
+Illuminate, Swarm, Prankster;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;73;3840;70;430;150;Firefly Pokemon;75;600000;0.7;65;Barubeat?????;Volbeat;Muciole;100;313;47;85;85;bug;;17.7;3;0
+Oblivious, Tinted Lens, Prankster;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;47;3840;70;430;150;Firefly Pokemon;75;1640000;0.6;65;Illumise?????;Illumise;Lumivole;0;314;73;85;85;bug;;17.7;3;0
+Natural Cure, Poison Point, Leaf Guard;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;60;5120;70;400;150;Thorn Pokemon;45;1059860;0.3;50;Roselia????;Roselia;Rosélia;50;315;100;80;65;grass;poison;2.0;3;0
+Liquid Ooze, Sticky Hold, Gluttony;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;43;5120;70;302;225;Stomach Pokemon;53;1640000;0.4;70;Gokulin????;Gulpin;Gloupti;50;316;43;53;40;poison;;10.3;3;0
+Liquid Ooze, Sticky Hold, Gluttony;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;73;5120;70;467;75;Poison Bag Pokemon;83;1640000;1.7;100;Marunoom?????;Swalot;Avaltout;50;317;73;83;55;poison;;80.0;3;0
+Rough Skin, Speed Boost;2;0.5;1;2;2;2;0.5;1;0.5;2;1;0.5;1;1;0;1;0.5;0.5;90;5120;35;305;225;Savage Pokemon;20;1250000;0.8;45;Kibanha????;Carvanha;Carvanha;50;318;65;20;65;water;dark;20.8;3;0
+Rough Skin, Speed Boost;2;0.5;1;2;2;2;0.5;1;0.5;2;1;0.5;1;1;0;1;0.5;0.5;140;5120;35;560;60;Brutal Pokemon;70;1250000;1.8;70;Samehader?????;Sharpedo;Sharpedo;50;319;110;65;105;water;dark;88.8;3;0
+Water Veil, Oblivious, Pressure;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;70;10240;70;400;125;Ball Whale Pokemon;35;1640000;2.0;130;Hoeruko????;Wailmer;Wailmer;50;320;70;35;60;water;;130.0;3;0
+Water Veil, Oblivious, Pressure;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;90;10240;70;500;60;Float Whale Pokemon;45;1640000;14.5;170;Whaloh?????;Wailord;Wailord;50;321;90;45;60;water;;398.0;3;0
+Oblivious, Simple, Own Tempo;0.5;1;1;0;0.5;1;0.5;1;1;1;2;1;1;0.5;1;1;0.5;4;60;5120;70;305;255;Numb Pokemon;40;1000000;0.7;60;Donmel????;Numel;Chamallot;50;322;65;45;35;fire;ground;24.0;3;0
+Magma Armor, Solid Rock, Anger Point;0.5;1;1;0;0.5;1;0.5;1;1;1;2;1;1;0.5;1;1;0.5;4;120;5120;70;560;150;Eruption Pokemon;100;1000000;1.9;70;Bakuuda????;Camerupt;Camérupt;50;323;145;105;20;fire;ground;220.0;3;0
+White Smoke, Drought, Shell Armor;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;85;5120;70;470;90;Coal Pokemon;140;1000000;0.5;70;Cotoise????;Torkoal;Chartor;50;324;85;70;20;fire;;80.4;3;0
+Thick Fat, Own Tempo, Gluttony;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;25;5120;70;330;255;Bounce Pokemon;35;800000;0.7;60;Baneboo????;Spoink;Spoink;50;325;70;80;60;psychic;;30.6;3;0
+Thick Fat, Own Tempo, Gluttony;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;45;5120;70;470;60;Manipulate Pokemon;65;800000;0.9;80;Boopig?????;Grumpig;Groret;50;326;90;110;80;psychic;;71.5;3;0
+Own Tempo, Tangled Feet, Contrary;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;60;3840;70;360;255;Spot Panda Pokemon;60;800000;1.1;60;Patcheel?????;Spinda;Spinda;50;327;60;60;60;normal;;5.0;3;0
+Hyper Cutter, Arena Trap, Sheer Force;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;100;5120;70;290;255;Ant Pit Pokemon;45;1059860;0.7;45;Nuckrar?????;Trapinch;Kraknoix;50;328;45;45;10;ground;;15.0;3;0
+Levitate;1;1;2;0;2;1;0.5;1;1;1;1;4;1;0.5;1;0.5;1;1;70;5120;70;340;120;Vibration Pokemon;50;1059860;1.1;50;Vibrava?????;Vibrava;Vibraninf;50;329;50;50;70;ground;dragon;15.3;3;0
+Levitate;1;1;2;0;2;1;0.5;1;1;1;1;4;1;0.5;1;0.5;1;1;100;5120;70;520;45;Mystic Pokemon;80;1059860;2.0;80;Flygon?????;Flygon;Libégon;50;330;80;80;100;ground;dragon;82.0;3;0
+Sand Veil, Water Absorb;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;85;5120;35;335;190;Cactus Pokemon;40;1059860;0.4;50;Sabonea????;Cacnea;Cacnéa;50;331;85;40;35;grass;;51.3;3;0
+Sand Veil, Water Absorb;4;0.5;1;0.5;2;2;2;2;0.5;0.5;0.5;2;1;2;0;1;1;0.5;115;5120;35;475;60;Scarecrow Pokemon;60;1059860;1.3;70;Noctus????;Cacturne;Cacturne;50;332;115;60;55;grass;dark;77.4;3;0
+Natural Cure, Cloud Nine;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;40;5120;70;310;255;Cotton Bird Pokemon;60;600000;0.4;45;Tyltto????;Swablu;Tylton;50;333;40;75;50;normal;flying;1.2;3;0
+Natural Cure, Cloud Nine;0.5;1;2;1;2;0.5;0.5;1;1;0.25;0;4;1;1;1;2;1;0.5;110;5120;70;590;45;Humming Pokemon;110;600000;1.1;75;Tyltalis?????;Altaria;Altaria;50;334;110;105;80;dragon;flying;20.6;3;0
+Immunity, Toxic Boost;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;115;5120;70;458;90;Cat Ferret Pokemon;60;600000;1.3;73;Zangoose?????;Zangoose;Mangriff;50;335;60;60;90;normal;;40.3;3;0
+Shed Skin, Infiltrator;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;100;5120;70;458;90;Fang Snake Pokemon;60;1640000;2.7;73;Habunake?????;Seviper;Séviper;50;336;100;60;65;poison;;52.5;3;0
+Levitate;2;2;1;1;1;1;0.5;0.5;2;2;2;1;0.5;0.5;0.5;1;2;2;55;6400;70;460;45;Meteorite Pokemon;65;800000;1.0;90;Lunatone?????;Lunatone;Séléroc;;337;95;85;70;rock;psychic;168.0;3;0
+Levitate;2;2;1;1;1;1;0.5;0.5;2;2;2;1;0.5;0.5;0.5;1;2;2;95;6400;70;460;45;Meteorite Pokemon;85;800000;1.2;90;Solrock?????;Solrock;Solaroc;;338;55;65;70;rock;psychic;154.0;3;0
+Oblivious, Anticipation, Hydration;1;1;1;0;1;1;0.5;1;1;4;1;1;1;0.5;1;0.5;0.5;1;48;5120;70;288;190;Whiskers Pokemon;43;1000000;0.4;50;Dojoach?????;Barboach;Barloche;50;339;46;41;60;water;ground;1.9;3;0
+Oblivious, Anticipation, Hydration;1;1;1;0;1;1;0.5;1;1;4;1;1;1;0.5;1;0.5;0.5;1;78;5120;70;468;75;Whiskers Pokemon;73;1000000;0.9;110;Namazun????;Whiscash;Barbicha;50;340;76;71;60;water;ground;23.6;3;0
+Hyper Cutter, Shell Armor, Adaptability;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;80;3840;70;308;205;Ruffian Pokemon;65;1640000;0.6;43;Heigani????;Corphish;Ecrapince;50;341;50;35;35;water;;11.5;3;0
+Hyper Cutter, Shell Armor, Adaptability;2;0.5;1;2;2;2;0.5;1;0.5;2;1;0.5;1;1;0;1;0.5;0.5;120;3840;70;468;155;Rogue Pokemon;85;1640000;1.1;63;Shizariger?????;Crawdaunt;Colhomard;50;342;90;55;55;water;dark;32.8;3;0
+Levitate;2;2;1;0;1;0.5;1;1;2;2;1;2;1;0.5;0.5;0.5;1;2;40;5120;70;300;255;Clay Doll Pokemon;55;1000000;0.5;40;Yajilon????;Baltoy;Balbuto;;343;40;70;55;ground;psychic;21.5;3;0
+Levitate;2;2;1;0;1;0.5;1;1;2;2;1;2;1;0.5;0.5;0.5;1;2;70;5120;70;500;90;Clay Doll Pokemon;105;1000000;1.5;60;Nendoll?????;Claydol;Kaorine;;344;70;120;75;ground;psychic;108.0;3;0
+Suction Cups, Storm Drain;2;1;1;0.5;1;2;1;1;1;1;1;2;0.5;1;1;1;2;1;41;7680;70;355;45;Sea Lily Pokemon;77;600000;1.0;66;Lilyla????;Lileep;Lilia;88.1;345;61;87;23;rock;grass;23.8;3;0
+Suction Cups, Storm Drain;2;1;1;0.5;1;2;1;1;1;1;1;2;0.5;1;1;1;2;1;81;7680;70;495;45;Barnacle Pokemon;97;600000;1.5;86;Yuradle?????;Cradily;Vacilys;88.1;346;81;107;43;rock;grass;60.4;3;0
+Battle Armor, Swift Swim;1;1;1;1;1;1;1;1;1;1;1;1;0.5;0.5;1;2;2;2;95;7680;70;355;45;Old Shrimp Pokemon;50;600000;0.7;45;Anopth????;Anorith;Anorith;88.1;347;40;50;75;rock;bug;12.5;3;0
+Battle Armor, Swift Swim;1;1;1;1;1;1;1;1;1;1;1;1;0.5;0.5;1;2;2;2;125;7680;70;495;45;Plate Pokemon;100;600000;1.5;75;Armaldo?????;Armaldo;Armaldo;88.1;348;70;80;45;rock;bug;68.2;3;0
+Swift Swim, Oblivious, Adaptability;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;15;5120;70;200;255;Fish Pokemon;20;600000;0.6;20;Hinbass????;Feebas;Barpau;50;349;10;55;80;water;;7.4;3;0
+Marvel Scale, Competitive, Cute Charm;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;60;5120;70;540;60;Tender Pokemon;79;600000;6.2;95;Milokaross?????;Milotic;Milobellus;50;350;100;125;81;water;;162.0;3;0
+Forecast;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;70;6400;70;420;45;Weather Pokemon;70;1000000;0.3;70;Powalen????;Castform;Morphéo;50;351;70;70;70;normal;;0.8;3;0
+Color Change, Protean;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;90;5120;70;440;200;Color Swap Pokemon;70;1059860;1.0;60;Kakureon?????;Kecleon;Kecleon;50;352;60;120;40;normal;;22.0;3;0
+Insomnia, Frisk, Cursed Body;0.5;2;1;1;1;0;1;1;2;1;1;1;0;0.5;1;1;1;1;75;6400;35;295;225;Puppet Pokemon;35;800000;0.6;44;Kagebouzu?????;Shuppet;Polichombr;50;353;63;33;45;ghost;;2.3;3;0
+Insomnia, Frisk, Cursed Body;0.5;2;1;1;1;0;1;1;2;1;1;1;0;0.5;1;1;1;1;165;6400;35;555;45;Marionette Pokemon;75;800000;1.1;64;Juppeta?????;Banette;Branette;50;354;93;83;75;ghost;;12.5;3;0
+Levitate, Frisk;0.5;2;1;1;1;0;1;1;2;1;1;1;0;0.5;1;1;1;1;40;6400;35;295;190;Requiem Pokemon;90;800000;0.8;20;Yomawaru????;Duskull;Skelénox;50;355;30;90;25;ghost;;15.0;3;0
+Pressure, Frisk;0.5;2;1;1;1;0;1;1;2;1;1;1;0;0.5;1;1;1;1;70;6400;35;455;90;Beckon Pokemon;130;800000;1.6;40;Samayouru?????;Dusclops;Téraclope;50;356;60;130;25;ghost;;30.6;3;0
+Chlorophyll, Solar Power, Harvest;1;1;1;1;1;0.5;2;2;1;0.25;0;4;1;2;1;2;1;0.5;68;6400;70;460;200;Fruit Pokemon;83;1250000;2.0;99;Tropius?????;Tropius;Tropius;50;357;72;87;51;grass;flying;100.0;3;0
+Levitate;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;50;6400;70;455;45;Wind Chime Pokemon;80;800000;0.6;75;Chirean????;Chimecho;Eoko;50;358;95;90;65;psychic;;1.0;3;0
+Pressure, Super Luck, Justified;2;0.5;1;1;2;2;1;1;0.5;1;1;1;1;1;0;1;1;1;150;6400;35;565;30;Disaster Pokemon;60;1059860;1.2;65;Absol????;Absol;Absol;50;359;115;60;115;dark;;47.0;3;0
+Shadow Tag, Telepathy;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;23;5120;70;260;125;Bright Pokemon;48;1000000;0.6;95;Sohnano????;Wynaut;Okéoké;50;360;23;48;23;psychic;;14.0;3;0
+Inner Focus, Ice Body, Moody;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;50;5120;70;300;190;Snow Hat Pokemon;50;1000000;0.7;50;Yukiwarashi?????;Snorunt;Stalgamin;50;361;50;50;50;ice;;16.8;3;0
+Inner Focus, Ice Body, Moody;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;120;5120;70;580;75;Face Pokemon;80;1000000;1.5;80;Onigohri?????;Glalie;Oniglali;50;362;120;80;100;ice;;256.5;3;0
+Thick Fat, Ice Body, Oblivious;1;1;1;2;1;2;1;1;1;2;1;0.25;1;1;1;2;1;0.5;40;5120;70;290;255;Clap Pokemon;50;1059860;0.8;70;Tamazarashi?????;Spheal;Obalie;50;363;55;50;25;ice;water;39.5;3;0
+Thick Fat, Ice Body, Oblivious;1;1;1;2;1;2;1;1;1;2;1;0.25;1;1;1;2;1;0.5;60;5120;70;410;120;Ball Roll Pokemon;70;1059860;1.1;90;Todoggler?????;Sealeo;Phogleur;50;364;75;70;45;ice;water;87.6;3;0
+Thick Fat, Ice Body, Oblivious;1;1;1;2;1;2;1;1;1;2;1;0.25;1;1;1;2;1;0.5;80;5120;70;530;45;Ice Break Pokemon;90;1059860;1.4;110;Todoseruga?????;Walrein;Kaymorse;50;365;95;90;65;ice;water;150.6;3;0
+Shell Armor, Rattled;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;64;5120;70;345;255;Bivalve Pokemon;85;600000;0.4;35;Pearlulu????;Clamperl;Coquiperl;50;366;74;55;32;water;;52.5;3;0
+Swift Swim, Water Veil;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;104;5120;70;485;60;Deep Sea Pokemon;105;600000;1.7;55;Huntail?????;Huntail;Serpang;50;367;94;75;52;water;;27.0;3;0
+Swift Swim, Hydration;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;84;5120;70;485;60;South Sea Pokemon;105;600000;1.8;55;Sakurabyss?????;Gorebyss;Rosabyss;50;368;114;75;52;water;;22.6;3;0
+Swift Swim, Rock Head, Sturdy;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;90;10240;70;485;25;Longevity Pokemon;130;1250000;1.0;100;Glanth?????;Relicanth;Relicanth;88.1;369;45;65;55;water;rock;23.4;3;0
+Swift Swim, Hydration;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;30;5120;70;330;225;Rendezvous Pokemon;55;800000;0.6;43;Lovecus????;Luvdisc;Lovdisc;24.6;370;40;65;97;water;;8.7;3;0
+Rock Head, Sheer Force;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;75;10240;35;300;45;Rock Head Pokemon;60;1250000;0.6;45;Tatsubay????;Bagon;Draby;50;371;40;30;50;dragon;;42.1;3;0
+Rock Head, Overcoat;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;95;10240;35;420;45;Endurance Pokemon;100;1250000;1.1;65;Komoruu????;Shelgon;Drackhaus;50;372;60;50;50;dragon;;110.5;3;0
+Intimidate, Moxie;0.5;1;2;1;2;0.5;0.5;1;1;0.25;0;4;1;1;1;2;1;0.5;145;10240;35;700;45;Dragon Pokemon;130;1250000;1.5;95;Bohmander?????;Salamence;Drattak;50;373;120;90;120;dragon;flying;102.6;3;0
+Clear Body, Light Metal;1;2;0.5;1;0.5;1;2;0.5;2;0.5;2;0.5;0.5;0;0.25;0.5;0.5;1;55;10240;35;300;3;Iron Ball Pokemon;80;1250000;0.6;40;Dumbber????;Beldum;Terhal;;374;35;60;30;steel;psychic;95.2;3;0
+Clear Body, Light Metal;1;2;0.5;1;0.5;1;2;0.5;2;0.5;2;0.5;0.5;0;0.25;0.5;0.5;1;75;10240;35;420;3;Iron Claw Pokemon;100;1250000;1.2;60;Metang????;Metang;Métang;;375;55;80;50;steel;psychic;202.5;3;0
+Clear Body, Light Metal;1;2;0.5;1;0.5;1;2;0.5;2;0.5;2;0.5;0.5;0;0.25;0.5;0.5;1;145;10240;35;700;3;Iron Leg Pokemon;150;1250000;1.6;80;Metagross?????;Metagross;Métalosse;;376;105;110;110;steel;psychic;550.0;3;0
+Clear Body, Sturdy;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;100;20480;35;580;3;Rock Peak Pokemon;200;1250000;1.7;80;Regirock?????;Regirock;Regirock;;377;50;100;50;rock;;230.0;3;1
+Clear Body, Ice Body;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;50;20480;35;580;3;Iceberg Pokemon;100;1250000;1.8;80;Regice?????;Regice;Regice;;378;100;200;50;ice;;175.0;3;1
+Clear Body, Light Metal;0.5;1;0.5;1;0.5;2;2;0.5;1;0.5;2;0.5;0.5;0;0.5;0.5;0.5;1;75;20480;35;580;3;Iron Pokemon;150;1250000;1.9;80;Registeel?????;Registeel;Registeel;;379;75;150;50;steel;;205.0;3;1
+Levitate;2;2;2;0.5;2;0.5;0.5;1;2;0.5;1;2;1;1;0.5;1;1;0.5;100;30720;90;700;3;Eon Pokemon;120;1250000;1.4;80;Latias?????;Latias;Latias;0;380;140;150;110;dragon;psychic;40.0;3;1
+Levitate;2;2;2;0.5;2;0.5;0.5;1;2;0.5;1;2;1;1;0.5;1;1;0.5;130;30720;90;700;3;Eon Pokemon;100;1250000;2.0;80;Latios?????;Latios;Latios;100;381;160;120;110;dragon;psychic;60.0;3;1
+Drizzle;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;150;30720;0;770;3;Sea Basin Pokemon;90;1250000;4.5;100;Kyogre?????;Kyogre;Kyogre;;382;180;160;90;water;;352.0;3;1
+Drought;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;180;30720;0;770;3;Continent Pokemon;160;1250000;3.5;100;Groudon?????;Groudon;Groudon;;383;150;90;90;ground;;950.0;3;1
+Air Lock;0.5;1;2;1;2;0.5;0.5;1;1;0.25;0;4;1;1;1;2;1;0.5;180;30720;0;780;45;Sky High Pokemon;100;1250000;7.0;105;Rayquaza?????;Rayquaza;Rayquaza;;384;180;100;115;dragon;flying;206.5;3;1
+Serene Grace;1;2;0.5;1;0.5;1;2;0.5;2;0.5;2;0.5;0.5;0;0.25;0.5;0.5;1;100;30720;100;600;3;Wish Pokemon;100;1250000;0.3;100;Jirachi????;Jirachi;Jirachi;;385;100;100;100;steel;psychic;1.1;3;1
+Pressure;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;95;30720;0;600;3;DNA Pokemon;90;1250000;1.7;50;Deoxys?????;Deoxys;Deoxys;;386;95;90;180;psychic;;60.8;3;1
+Overgrow, Shell Armor;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;68;5120;70;318;45;Tiny Leaf Pokemon;64;1059860;0.4;55;Naetle????;Turtwig;Tortipouss;88.1;387;45;55;31;grass;;10.2;4;0
+Overgrow, Shell Armor;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;89;5120;70;405;45;Grove Pokemon;85;1059860;1.1;75;Hayashigame?????;Grotle;Boskara;88.1;388;55;65;36;grass;;97.0;4;0
+Overgrow, Shell Armor;2;1;1;0;1;1;2;2;1;1;0.5;4;1;1;1;0.5;1;1;109;5120;70;525;45;Continent Pokemon;105;1059860;2.2;95;Dodaitose?????;Torterra;Torterra;88.1;389;75;85;56;grass;ground;310.0;4;0
+Blaze, Iron Fist;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;58;5120;70;309;45;Chimp Pokemon;44;1059860;0.5;44;Hikozaru????;Chimchar;Ouisticram;88.1;390;58;44;61;fire;;6.2;4;0
+Blaze, Iron Fist;0.25;0.5;1;1;1;1;0.5;2;1;0.5;2;0.5;1;1;2;1;0.5;2;78;5120;70;405;45;Playful Pokemon;52;1059860;0.9;64;Moukazaru?????;Monferno;Chimpenfeu;88.1;391;78;52;81;fire;fighting;22.0;4;0
+Blaze, Iron Fist;0.25;0.5;1;1;1;1;0.5;2;1;0.5;2;0.5;1;1;2;1;0.5;2;104;5120;70;534;45;Flame Pokemon;71;1059860;1.2;76;Goukazaru?????;Infernape;Simiabraz;88.1;392;104;71;108;fire;fighting;55.0;4;0
+Torrent, Defiant;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;51;5120;70;314;45;Penguin Pokemon;53;1059860;0.4;53;Pochama?????;Piplup;Tiplouf;88.1;393;61;56;40;water;;5.2;4;0
+Torrent, Defiant;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;66;5120;70;405;45;Penguin Pokemon;68;1059860;0.8;64;Pottaishi?????;Prinplup;Prinplouf;88.1;394;81;76;50;water;;23.0;4;0
+Torrent, Defiant;0.5;1;0.5;2;0.5;2;1;0.5;1;1;2;0.25;0.5;0;0.5;0.5;0.25;0.5;86;5120;70;530;45;Emperor Pokemon;88;1059860;1.7;84;Emperte?????;Empoleon;Pingoléon;88.1;395;111;101;60;water;steel;84.5;4;0
+Keen Eye, Reckless;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;55;3840;70;245;255;Starling Pokemon;30;1059860;0.3;40;Mukkuru????;Starly;Etourmi;50;396;30;30;60;normal;flying;2.0;4;0
+Intimidate, Reckless;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;75;3840;70;340;120;Starling Pokemon;50;1059860;0.6;55;Mukubird?????;Staravia;Etourvol;50;397;40;40;80;normal;flying;15.5;4;0
+Intimidate, Reckless;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;120;3840;70;485;45;Predator Pokemon;70;1059860;1.2;85;Mukuhawk?????;Staraptor;Etouraptor;50;398;50;60;100;normal;flying;24.9;4;0
+Simple, Unaware, Moody;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;45;3840;70;250;255;Plump Mouse Pokemon;40;1000000;0.5;59;Bippa???;Bidoof;Keunotor;50;399;35;40;31;normal;;20.0;4;0
+Simple, Unaware, Moody;1;1;1;2;1;2;0.5;1;0;2;1;0.5;1;1;1;1;0.5;0.5;85;3840;70;410;127;Beaver Pokemon;60;1000000;1.0;79;Beadaru????;Bibarel;Castorno;50;400;55;60;71;normal;water;31.5;4;0
+Shed Skin, Run Away;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;25;3840;70;194;255;Cricket Pokemon;41;1059860;0.3;37;Korobohshi?????;Kricketot;Crikzik;50;401;25;41;25;bug;;2.2;4;0
+Swarm, Technician;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;85;3840;70;384;45;Cricket Pokemon;51;1059860;1.0;77;Korotock?????;Kricketune;Mélokrik;50;402;55;51;65;bug;;25.5;4;0
+Rivalry, Intimidate, Guts;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;65;5120;70;263;235;Flash Pokemon;34;1059860;0.5;45;Kolink????;Shinx;Lixy;50;403;40;34;45;electric;;9.5;4;0
+Rivalry, Intimidate, Guts;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;85;5120;100;363;120;Spark Pokemon;49;1059860;0.9;60;Luxio????;Luxio;Luxio;50;404;60;49;60;electric;;30.5;4;0
+Rivalry, Intimidate, Guts;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;120;5120;70;523;45;Gleam Eyes Pokemon;79;1059860;1.4;80;Rentorar?????;Luxray;Luxray;50;405;95;79;70;electric;;42.0;4;0
+Natural Cure, Poison Point, Leaf Guard;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;30;5120;70;280;255;Bud Pokemon;35;1059860;0.2;40;Subomie????;Budew;Rozbouton;50;406;50;70;55;grass;poison;1.2;4;0
+Natural Cure, Poison Point, Technician;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;70;5120;70;515;75;Bouquet Pokemon;65;1059860;0.9;60;Roserade?????;Roserade;Roserade;50;407;125;105;90;grass;poison;14.5;4;0
+Mold Breaker, Sheer Force;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;125;7680;70;350;45;Head Butt Pokemon;40;600000;0.9;67;Zugaidos?????;Cranidos;Kranidos;88.1;408;30;30;58;rock;;31.5;4;0
+Mold Breaker, Sheer Force;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;165;7680;70;495;45;Head Butt Pokemon;60;600000;1.6;97;Rampald?????;Rampardos;Charkos;88.1;409;65;50;58;rock;;102.5;4;0
+Sturdy, Soundproof;0.5;1;0.5;1;0.5;4;1;0.25;1;1;4;0.5;0.25;0;0.5;0.5;1;2;42;7680;70;350;45;Shield Pokemon;118;600000;0.5;30;Tatetops?????;Shieldon;Dinoclier;88.1;410;42;88;30;rock;steel;57.0;4;0
+Sturdy, Soundproof;0.5;1;0.5;1;0.5;4;1;0.25;1;1;4;0.5;0.25;0;0.5;0.5;1;2;52;7680;70;495;45;Shield Pokemon;168;600000;1.3;60;Torideps?????;Bastiodon;Bastiodon;88.1;411;47;138;30;rock;steel;149.5;4;0
+Shed Skin, Overcoat;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;29;3840;70;224;120;Bagworm Pokemon;45;1000000;0.2;40;Minomucchi?????;Burmy;Cheniti;50;412;29;45;36;bug;;3.4;4;0
+Anticipation, Overcoat;2;1;1;0.5;1;0.5;4;4;1;0.25;0.25;2;1;2;1;2;1;0.5;69;3840;70;424;45;Bagworm Pokemon;95;1000000;0.5;60;Minomadam (kusaki No Mino)?????;Wormadam;Cheniselle;0;413;69;95;36;bug;grass;6.5;4;0
+Swarm, Tinted Lens;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;94;3840;70;424;45;Moth Pokemon;50;1000000;0.9;70;Gamale?????;Mothim;Papilord;100;414;94;50;66;bug;flying;23.3;4;0
+Honey Gather, Hustle;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;30;3840;70;244;120;Tiny Bee Pokemon;42;1059860;0.3;30;Mitsuhoney?????;Combee;Apitrini;88.1;415;30;42;70;bug;flying;5.5;4;0
+Pressure, Unnerve;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;80;3840;70;474;45;Beehive Pokemon;102;1059860;1.2;70;Beequen?????;Vespiquen;Apireine;0;416;80;102;40;bug;flying;38.5;4;0
+Run Away, Pickup, Volt Absorb;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;45;2560;100;405;200;EleSquirrel Pokemon;70;1000000;0.4;60;Pachirisu????;Pachirisu;Pachirisu;50;417;45;90;95;electric;;3.9;4;0
+Swift Swim, Water Veil;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;65;5120;70;330;190;Sea Weasel Pokemon;35;1000000;0.7;55;Buoysel????;Buizel;Mustébouée;50;418;60;30;85;water;;29.5;4;0
+Swift Swim, Water Veil;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;105;5120;70;495;75;Sea Weasel Pokemon;55;1000000;1.1;85;Floazel?????;Floatzel;Mustéflott;50;419;85;50;115;water;;33.5;4;0
+Chlorophyll;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;35;5120;70;275;190;Cherry Pokemon;45;1000000;0.4;45;Cherinbo?????;Cherubi;Ceribou;50;420;62;53;35;grass;;3.3;4;0
+Flower Gift;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;60;5120;70;450;75;Blossom Pokemon;70;1000000;0.5;70;Cherrim????;Cherrim;Ceriflor;50;421;87;78;85;grass;;9.3;4;0
+Sticky Hold, Storm Drain, Sand Force;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;48;5120;70;325;190;Sea Slug Pokemon;48;1000000;0.3;76;Karanakushi?????;Shellos;Sancoki;50;422;57;62;34;water;;6.3;4;0
+Sticky Hold, Storm Drain, Sand Force;1;1;1;0;1;1;0.5;1;1;4;1;1;1;0.5;1;0.5;0.5;1;83;5120;70;475;75;Sea Slug Pokemon;68;1000000;0.9;111;Tritodon?????;Gastrodon;Tritosor;50;423;92;82;39;water;ground;29.9;4;0
+Technician, Pickup, Skill Link;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;100;5120;100;482;45;Long Tail Pokemon;66;800000;1.2;75;Eteboth?????;Ambipom;Capidextre;50;424;60;66;115;normal;;20.3;4;0
+Aftermath, Unburden, Flare Boost;0.25;2;1;2;1;0;1;1;2;0.5;0;2;0;0.5;1;2;1;1;50;7680;70;348;125;Balloon Pokemon;34;1640000;0.4;90;Fuwante????;Drifloon;Baudrive;50;425;60;44;70;ghost;flying;1.2;4;0
+Aftermath, Unburden, Flare Boost;0.25;2;1;2;1;0;1;1;2;0.5;0;2;0;0.5;1;2;1;1;80;7680;70;498;60;Blimp Pokemon;44;1640000;1.2;150;Fuwaride?????;Drifblim;Grodrive;50;426;90;54;80;ghost;flying;15.0;4;0
+Run Away, Klutz, Limber;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;66;5120;0;350;190;Rabbit Pokemon;44;1000000;0.4;55;Mimirol????;Buneary;Laporeille;50;427;44;56;85;normal;;5.5;4;0
+Cute Charm, Klutz, Limber;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;136;5120;140;580;60;Rabbit Pokemon;94;1000000;1.2;65;Mimilop?????;Lopunny;Lockpin;50;428;54;96;135;normal;;33.3;4;0
+Levitate;0.5;2;1;1;1;0;1;1;2;1;1;1;0;0.5;1;1;1;1;60;6400;35;495;45;Magical Pokemon;60;800000;0.9;60;Mumargi?????;Mismagius;Magirêve;50;429;105;105;105;ghost;;4.4;4;0
+Insomnia, Super Luck, Moxie;1;0.5;1;2;2;1;1;1;0.5;0.5;0;2;1;1;0;2;1;1;125;5120;35;505;30;Big Boss Pokemon;52;1059860;0.9;100;Dongkarasu?????;Honchkrow;Corboss;50;430;105;52;71;dark;flying;27.3;4;0
+Limber, Own Tempo, Keen Eye;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;55;5120;70;310;190;Catty Pokemon;42;800000;0.5;49;Nyarmar?????;Glameow;Chaglam;24.6;431;42;37;85;normal;;3.9;4;0
+Thick Fat, Own Tempo, Defiant;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;82;5120;70;452;75;Tiger Cat Pokemon;64;800000;1.0;71;Bunyatto?????;Purugly;Chaffreux;24.6;432;64;59;112;normal;;43.8;4;0
+Levitate;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;30;6400;70;285;120;Bell Pokemon;50;800000;0.2;45;Lisyan?????;Chingling;Korillon;50;433;65;50;45;psychic;;0.6;4;0
+Stench, Aftermath, Keen Eye;1;0.5;1;1;1;1;1;1;0.5;0.5;2;1;1;0.5;0;1;1;1;63;5120;70;329;225;Skunk Pokemon;47;1000000;0.4;63;Skunpuu?????;Stunky;Moufouette;50;434;41;41;74;poison;dark;19.2;4;0
+Stench, Aftermath, Keen Eye;1;0.5;1;1;1;1;1;1;0.5;0.5;2;1;1;0.5;0;1;1;1;93;5120;70;479;60;Skunk Pokemon;67;1000000;1.0;103;Skutank?????;Skuntank;Moufflair;50;435;71;61;84;poison;dark;38.0;4;0
+Levitate, Heatproof, Heavy Metal;1;2;0.5;1;0.5;1;2;0.5;2;0.5;2;0.5;0.5;0;0.25;0.5;0.5;1;24;5120;70;300;255;Bronze Pokemon;86;1000000;0.5;57;Dohmirror?????;Bronzor;Archéomire;;436;24;86;23;steel;psychic;60.5;4;0
+Levitate, Heatproof, Heavy Metal;1;2;0.5;1;0.5;1;2;0.5;2;0.5;2;0.5;0.5;0;0.25;0.5;0.5;1;89;5120;70;500;90;Bronze Bell Pokemon;116;1000000;1.3;67;Dohtakun?????;Bronzong;Archéodong;;437;79;116;33;steel;psychic;187.0;4;0
+Sturdy, Rock Head, Rattled;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;80;5120;70;290;255;Bonsai Pokemon;95;1000000;0.5;50;Usohachi????;Bonsly;Manzaï;50;438;10;45;10;rock;;15.0;4;0
+Soundproof, Filter, Technician;1;1;0;1;1;0.25;1;1;2;1;1;1;1;2;0.5;1;2;1;25;6400;70;310;145;Mime Pokemon;45;1000000;0.6;20;Manene???;Mime Jr.;Mime junior;50;439;70;90;60;psychic;fairy;13.0;4;0
+Natural Cure, Serene Grace, Friend Guard;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;5;10240;140;220;130;Playhouse Pokemon;5;800000;0.6;100;Pinpuku????;Happiny;Ptiravi;0;440;15;65;30;normal;;24.4;4;0
+Keen Eye, Tangled Feet, Big Pecks;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;65;5120;35;411;30;Music Note Pokemon;45;1059860;0.5;76;Perap????;Chatot;Pijako;50;441;92;42;91;normal;flying;1.9;4;0
+Pressure, Infiltrator;1;1;1;1;2;0;1;1;1;1;1;1;0;0.5;0;1;1;1;92;7680;70;485;100;Forbidden Pokemon;108;1000000;1.0;50;Mikaruge????;Spiritomb;Spiritomb;50;442;92;108;35;ghost;dark;108.0;4;0
+Sand Veil, Rough Skin;1;1;2;0;2;1;0.5;1;1;1;1;4;1;0.5;1;0.5;1;1;70;10240;70;300;45;Land Shark Pokemon;45;1250000;0.7;58;Fukamaru????;Gible;Griknot;50;443;40;45;42;dragon;ground;20.5;4;0
+Sand Veil, Rough Skin;1;1;2;0;2;1;0.5;1;1;1;1;4;1;0.5;1;0.5;1;1;90;10240;70;410;45;Cave Pokemon;65;1250000;1.4;68;Gabite????;Gabite;Carmache;50;444;50;55;82;dragon;ground;56.0;4;0
+Sand Veil, Rough Skin;1;1;2;0;2;1;0.5;1;1;1;1;4;1;0.5;1;0.5;1;1;170;10240;70;700;45;Mach Pokemon;115;1250000;1.9;108;Gaburias?????;Garchomp;Carchacrok;50;445;120;95;92;dragon;ground;95.0;4;0
+Pickup, Thick Fat, Gluttony;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;85;10240;70;390;50;Big Eater Pokemon;40;1250000;0.6;135;Gonbe???;Munchlax;Goinfrex;88.1;446;40;85;5;normal;;105.0;4;0
+Steadfast, Inner Focus, Prankster;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;70;6400;70;285;75;Emanation Pokemon;40;1059860;0.7;40;Riolu???;Riolu;Riolu;88.1;447;35;40;60;fighting;;20.2;4;0
+Steadfast, Inner Focus, Justified;0.25;0.5;0.5;1;1;2;2;1;1;0.5;2;0.5;0.5;0;1;0.25;0.5;1;145;6400;70;625;45;Aura Pokemon;88;1059860;1.2;70;Lucario????;Lucario;Lucario;88.1;448;140;70;112;fighting;steel;54.0;4;0
+Sand Stream, Sand Force;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;72;7680;70;330;140;Hippo Pokemon;78;1250000;0.8;68;Hippopotas?????;Hippopotas;Hippopotas;50;449;38;42;32;ground;;49.5;4;0
+Sand Stream, Sand Force;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;112;7680;70;525;60;Heavyweight Pokemon;118;1250000;2.0;108;Kabaldon?????;Hippowdon;Hippodocus;50;450;68;72;47;ground;;300.0;4;0
+Battle Armor, Sniper, Keen Eye;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;50;5120;70;330;120;Scorpion Pokemon;90;1250000;0.8;40;Scorupi????;Skorupi;Rapion;50;451;30;55;65;poison;bug;12.0;4;0
+Battle Armor, Sniper, Keen Eye;1;0.5;1;1;1;1;1;1;0.5;0.5;2;1;1;0.5;0;1;1;1;90;5120;70;500;45;Ogre Scorp Pokemon;110;1250000;1.3;70;Dorapion?????;Drapion;Drascore;50;452;60;75;95;poison;dark;61.5;4;0
+Anticipation, Dry Skin, Poison Touch;0.25;0.5;1;1;1;0.5;1;2;1;0.5;2;1;1;0.5;4;0.5;1;1;61;2560;100;300;140;Toxic Mouth Pokemon;40;1000000;0.7;48;Gureggru?????;Croagunk;Cradopaud;50;453;61;40;50;poison;fighting;23.0;4;0
+Anticipation, Dry Skin, Poison Touch;0.25;0.5;1;1;1;0.5;1;2;1;0.5;2;1;1;0.5;4;0.5;1;1;106;5120;70;490;75;Toxic Mouth Pokemon;65;1000000;1.3;83;Dokurog?????;Toxicroak;Coatox;50;454;86;65;85;poison;fighting;44.4;4;0
+Levitate;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;100;6400;70;454;200;Bug Catcher Pokemon;72;1250000;1.4;74;Muskippa?????;Carnivine;Vortente;50;455;90;72;46;grass;;27.0;4;0
+Swift Swim, Storm Drain, Water Veil;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;49;5120;70;330;190;Wing Fish Pokemon;56;600000;0.4;49;Keikouo?????;Finneon;Ecayon;50;456;49;61;66;water;;7.0;4;0
+Swift Swim, Storm Drain, Water Veil;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;69;5120;70;460;75;Neon Pokemon;76;600000;1.2;69;Neolant?????;Lumineon;Luminéon;50;457;69;86;91;water;;24.0;4;0
+Swift Swim, Water Absorb, Water Veil;0.5;1;1;4;1;0.5;0.5;1;1;1;0;1;1;1;1;2;0.5;0.5;20;6400;70;345;25;Kite Pokemon;50;1250000;1.0;45;Tamanta????;Mantyke;Babimanta;50;458;60;120;50;water;flying;65.0;4;0
+Snow Warning, Soundproof;2;1;1;0.5;1;2;4;2;1;0.5;0.5;1;1;2;1;2;2;0.5;62;5120;70;334;120;Frosted Tree Pokemon;50;1250000;1.0;60;Yukikaburi?????;Snover;Blizzi;50;459;62;60;40;grass;ice;50.5;4;0
+Snow Warning, Soundproof;2;1;1;0.5;1;2;4;2;1;0.5;0.5;1;1;2;1;2;2;0.5;132;5120;70;594;60;Frosted Tree Pokemon;105;1250000;2.2;90;Yukinooh?????;Abomasnow;Blizzaroi;50;460;132;105;30;grass;ice;135.5;4;0
+Pressure, Pickpocket;2;0.5;1;1;2;4;2;1;0.5;1;1;0.5;1;1;0;2;2;1;120;5120;35;510;45;Sharp Claw Pokemon;65;1059860;1.1;70;Manyula?????;Weavile;Dimoret;50;461;45;85;125;dark;ice;34.0;4;0
+Magnet Pull, Sturdy, Analytic;0.5;1;0.5;0.5;0.5;2;2;0.25;1;0.5;4;0.5;0.5;0;0.5;0.5;0.25;1;70;5120;70;535;30;Magnet Area Pokemon;115;1000000;1.2;70;Jibacoil?????;Magnezone;Magnézone;;462;130;90;60;electric;steel;180.0;4;0
+Own Tempo, Oblivious, Cloud Nine;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;85;5120;70;515;30;Licking Pokemon;95;1000000;1.7;110;Berobelt?????;Lickilicky;Coudlangue;50;463;80;95;50;normal;;140.0;4;0
+Lightningrod, Solid Rock, Reckless;1;1;1;0;1;2;0.5;0.5;1;4;2;2;0.5;0.25;1;0.5;2;4;140;5120;70;535;30;Drill Pokemon;130;1250000;2.4;115;Dosidon?????;Rhyperior;Rhinastoc;50;464;55;55;40;ground;rock;282.8;4;0
+Chlorophyll, Leaf Guard, Regenerator;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;100;5120;70;535;30;Vine Pokemon;125;1000000;2.0;100;Mojumbo?????;Tangrowth;Bouldeneu;50;465;110;50;50;grass;;128.6;4;0
+Motor Drive, Vital Spirit;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;123;6400;70;540;30;Thunderbolt Pokemon;67;1000000;1.8;75;Elekible?????;Electivire;Elekable;75.4;466;95;85;95;electric;;138.6;4;0
+Flame Body, Vital Spirit;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;95;6400;70;540;30;Blast Pokemon;67;1000000;1.6;75;Booburn?????;Magmortar;Maganon;75.4;467;125;95;83;fire;;68.0;4;0
+Hustle, Serene Grace, Super Luck;0.25;0.5;0;2;1;0.25;1;1;1;0.5;0;2;1;2;1;2;2;1;50;2560;70;545;30;Jubilee Pokemon;95;800000;1.5;85;Togekiss?????;Togekiss;Togekiss;88.1;468;120;115;80;fairy;flying;38.0;4;0
+Speed Boost, Tinted Lens, Frisk;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;76;5120;70;515;30;Ogre Darner Pokemon;86;1000000;1.9;86;Megayanma?????;Yanmega;Yanmega;50;469;116;56;95;bug;flying;51.5;4;0
+Leaf Guard, Chlorophyll;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;110;8960;35;525;45;Verdant Pokemon;130;1000000;1.0;65;Leafia?????;Leafeon;Phyllali;88.1;470;60;65;95;grass;;25.5;4;0
+Snow Cloak, Ice Body;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;60;8960;35;525;45;Fresh Snow Pokemon;110;1000000;0.8;65;Glacia?????;Glaceon;Givrali;88.1;471;130;95;65;ice;;25.9;4;0
+Hyper Cutter, Sand Veil, Poison Heal;0.5;1;1;0;1;0.5;1;1;1;1;0;4;1;0.5;1;1;1;2;95;5120;70;510;30;Fang Scorp Pokemon;125;1059860;2.0;75;Glion?????;Gliscor;Scorvol;50;472;45;75;95;ground;flying;42.5;4;0
+Oblivious, Snow Cloak, Thick Fat;1;1;1;0;1;2;2;1;1;2;1;1;1;0.5;1;1;2;2;130;5120;70;530;50;Twin Tusk Pokemon;80;1250000;2.5;110;Mammoo????;Mamoswine;Mammochon;50;473;70;60;80;ice;ground;291.0;4;0
+Adaptability, Download, Analytic;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;80;5120;70;535;30;Virtual Pokemon;70;1000000;0.9;85;Porygon-z?????;Porygon-Z;PorygonZ;;474;135;75;90;normal;;34.0;4;0
+Steadfast, Justified;1;1;1;1;2;0.5;1;2;2;1;1;1;1;1;1;0.5;1;1;165;5120;35;618;45;Blade Pokemon;95;1250000;1.6;68;Erureido?????;Gallade;Gallame;100;475;65;115;110;psychic;fighting;52.0;4;0
+Sturdy, Magnet Pull, Sand Force;0.5;1;0.5;1;0.5;4;1;0.25;1;1;4;0.5;0.25;0;0.5;0.5;1;2;55;5120;70;525;60;Compass Pokemon;145;1000000;1.4;60;Dainose?????;Probopass;Tarinorme;50;476;75;150;40;rock;steel;340.0;4;0
+Pressure, Frisk;0.5;2;1;1;1;0;1;1;2;1;1;1;0;0.5;1;1;1;1;100;6400;35;525;45;Gripper Pokemon;135;800000;2.2;45;Yonoir?????;Dusknoir;Noctunoir;50;477;65;135;45;ghost;;106.6;4;0
+Snow Cloak, Cursed Body;0.5;2;1;1;1;0;2;1;2;1;1;0.5;0;0.5;1;2;2;1;80;5120;70;480;75;Snow Land Pokemon;70;1000000;1.3;70;Yukimenoko?????;Froslass;Momartik;0;478;80;70;110;ice;ghost;26.6;4;0
+Levitate;0.5;2;1;0.5;1;0;1;0.5;2;1;2;1;0;0.5;1;1;0.5;1;65;5120;70;520;45;Plasma Pokemon;107;1000000;0.3;50;Rotom???;Rotom;Motisma;;479;105;107;86;electric;ghost;0.3;4;0
+Levitate;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;75;20480;140;580;3;Knowledge Pokemon;130;1250000;0.3;75;Yuxie????;Uxie;Créhelf;;480;75;130;95;psychic;;0.3;4;1
+Levitate;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;105;20480;140;580;3;Emotion Pokemon;105;1250000;0.3;80;Emrit?????;Mesprit;Créfollet;;481;105;105;80;psychic;;0.3;4;1
+Levitate;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;125;20480;140;580;3;Willpower Pokemon;70;1250000;0.3;75;Agnome????;Azelf;Créfadet;;482;125;70;115;psychic;;0.3;4;1
+Pressure, Telepathy;0.5;1;1;0.5;1;2;1;0.5;1;0.25;2;1;0.5;0;0.5;0.5;0.5;0.5;120;30720;0;680;3;Temporal Pokemon;120;1250000;5.4;100;Dialga?????;Dialga;Dialga;;483;150;100;90;steel;dragon;683.0;4;1
+Pressure, Telepathy;1;1;2;1;2;1;0.25;1;1;1;1;1;1;1;1;1;0.5;0.25;120;30720;0;680;3;Spatial Pokemon;100;1250000;4.2;90;Palkia????;Palkia;Palkia;;484;150;120;100;water;dragon;336.0;4;1
+Flash Fire, Flame Body;0.25;1;0.5;1;0.25;2;1;0.5;1;0.25;4;0.25;0.5;0;0.5;1;0.25;2;90;2560;100;600;3;Lava Dome Pokemon;106;1250000;1.7;91;Heatran?????;Heatran;Heatran;50;485;130;106;77;fire;steel;430.0;4;1
+Slow Start;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;160;30720;0;670;3;Colossal Pokemon;110;1250000;3.7;110;Regigigas?????;Regigigas;Regigigas;;486;80;110;100;normal;;420.0;4;1
+Pressure, Telepathy, Levitate;0.5;2;2;0.5;2;0;0.5;1;2;0.5;1;2;0;0.5;1;1;1;0.5;120;30720;0;680;3;Renegade Pokemon;100;1250000;4.5;150;Giratina (another Forme)?????;Giratina;Giratina;;487;120;100;90;ghost;dragon;750.0;4;1
+Levitate;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;70;30720;100;600;3;Lunar Pokemon;120;1250000;1.5;120;Cresselia?????;Cresselia;Cresselia;0;488;75;130;85;psychic;;85.6;4;1
+Hydration;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;80;10240;70;480;30;Sea Drifter Pokemon;80;1250000;0.4;80;Phione????;Phione;Phione;;489;80;80;80;water;;3.1;4;0
+Hydration;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;100;2560;70;600;3;Seafaring Pokemon;100;1250000;0.3;100;Manaphy????;Manaphy;Manaphy;;490;100;100;100;water;;1.4;4;1
+Bad Dreams;2;0.5;1;1;2;2;1;1;0.5;1;1;1;1;1;0;1;1;1;90;30720;0;600;3;Pitch-Black Pokemon;90;1250000;1.5;70;Darkrai?????;Darkrai;Darkrai;;491;135;90;125;dark;;50.5;4;1
+Natural Cure, Serene Grace;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;103;30720;100;600;45;Gratitude Pokemon;75;1059860;0.2;100;Shaymin (sky Forme)????;Shaymin;Shaymin;;492;120;75;127;grass;grass;2.1;4;1
+Multitype;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;120;30720;0;720;3;Alpha Pokemon;120;1250000;3.2;120;Arceus?????;Arceus;Arceus;;493;120;120;120;normal;;320.0;4;1
+Victory Star;1;2;1;1;0.5;0.5;0.5;1;2;0.5;2;0.5;1;1;0.5;2;0.5;2;100;30720;100;600;3;Victory Pokemon;100;1250000;0.4;100;Victini?????;Victini;Victini;;494;100;100;100;psychic;fire;4.0;5;1
+Overgrow, Contrary;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;45;5120;70;308;45;Grass Snake Pokemon;55;1059860;0.6;45;Tsutarja?????;Snivy;Vipélierre;88.1;495;45;55;63;grass;;8.1;5;0
+Overgrow, Contrary;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;60;5120;70;413;45;Grass Snake Pokemon;75;1059860;0.8;60;Janovy?????;Servine;Lianaja;88.1;496;60;75;83;grass;;16.0;5;0
+Overgrow, Contrary;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;75;5120;70;528;45;Regal Pokemon;95;1059860;3.3;75;Jalorda?????;Serperior;Majaspic;88.1;497;75;95;113;grass;;63.0;5;0
+Blaze, Thick Fat;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;63;5120;70;308;45;Fire Pig Pokemon;45;1059860;0.5;65;Pokabu???;Tepig;Gruikui;88.1;498;45;45;45;fire;;9.9;5;0
+Blaze, Thick Fat;0.25;0.5;1;1;1;1;0.5;2;1;0.5;2;0.5;1;1;2;1;0.5;2;93;5120;70;418;45;Fire Pig Pokemon;55;1059860;1.0;90;Chaoboo?????;Pignite;Grotichon;88.1;499;70;55;55;fire;fighting;55.5;5;0
+Blaze, Reckless;0.25;0.5;1;1;1;1;0.5;2;1;0.5;2;0.5;1;1;2;1;0.5;2;123;5120;70;528;45;Mega Fire Pig Pokemon;65;1059860;1.6;110;Enbuoh?????;Emboar;Roitiflam;88.1;500;100;65;65;fire;fighting;150.0;5;0
+Torrent, Shell Armor;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;55;5120;70;308;45;Sea Otter Pokemon;45;1059860;0.5;55;Mijumaru?????;Oshawott;Moustillon;88.1;501;63;45;45;water;;5.9;5;0
+Torrent, Shell Armor;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;75;5120;70;413;45;Discipline Pokemon;60;1059860;0.8;75;Futachimaru?????;Dewott;Mateloutre;88.1;502;83;60;60;water;;24.5;5;0
+Torrent, Shell Armor;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;100;5120;70;528;45;Formidable Pokemon;85;1059860;1.5;95;Daikenki?????;Samurott;Clamiral;88.1;503;108;70;70;water;;94.6;5;0
+Run Away, Keen Eye, Analytic;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;55;3840;70;255;255;Scout Pokemon;39;1000000;0.5;45;Minezumi????;Patrat;Ratentif;50;504;35;39;42;normal;;11.6;5;0
+Illuminate, Keen Eye, Analytic;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;85;5120;70;420;255;Lookout Pokemon;69;1000000;1.1;60;Miruhog?????;Watchog;Miradar;50;505;60;69;77;normal;;27.0;5;0
+Vital Spirit, Pickup, Run Away;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;60;3840;70;275;255;Puppy Pokemon;45;1059860;0.4;45;Yorterrie?????;Lillipup;Ponchiot;50;506;25;45;55;normal;;4.1;5;0
+Intimidate, Sand Rush, Scrappy;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;80;3840;70;370;120;Loyal Dog Pokemon;65;1059860;0.9;65;Herderrie?????;Herdier;Ponchien;50;507;35;65;60;normal;;14.7;5;0
+Intimidate, Sand Rush, Scrappy;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;110;3840;70;500;45;Big-Hearted Pokemon;90;1059860;1.2;85;Mooland?????;Stoutland;Mastouffe;50;508;45;90;80;normal;;61.0;5;0
+Limber, Unburden, Prankster;2;0.5;1;1;2;2;1;1;0.5;1;1;1;1;1;0;1;1;1;50;5120;70;281;255;Devious Pokemon;37;1000000;0.4;41;Choroneko?????;Purrloin;Chacripan;50;509;50;37;66;dark;;10.1;5;0
+Limber, Unburden, Prankster;2;0.5;1;1;2;2;1;1;0.5;1;1;1;1;1;0;1;1;1;88;5120;70;446;90;Cruel Pokemon;50;1000000;1.1;64;Lepardas?????;Liepard;Léopardus;50;510;88;50;106;dark;;37.5;5;0
+Gluttony, Overgrow;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;53;5120;70;316;190;Grass Monkey Pokemon;48;1000000;0.6;50;Yanappu????;Pansage;Feuillajou;88.1;511;53;48;64;grass;;10.5;5;0
+Gluttony, Overgrow;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;98;5120;70;498;75;Thorn Monkey Pokemon;63;1000000;1.1;75;Yanakkie?????;Simisage;Feuiloutan;88.1;512;98;63;101;grass;;30.5;5;0
+Gluttony, Blaze;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;53;5120;70;316;190;High Temp Pokemon;48;1000000;0.6;50;Baoppu????;Pansear;Flamajou;88.1;513;53;48;64;fire;;11.0;5;0
+Gluttony, Blaze;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;98;5120;70;498;75;Ember Pokemon;63;1000000;1.0;75;Baokkie?????;Simisear;Flamoutan;88.1;514;98;63;101;fire;;28.0;5;0
+Gluttony, Torrent;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;53;5120;70;316;190;Spray Pokemon;48;1000000;0.6;50;Hiyappu????;Panpour;Flotajou;88.1;515;53;48;64;water;;13.5;5;0
+Gluttony, Torrent;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;98;5120;70;498;75;Geyser Pokemon;63;1000000;1.0;75;Hiyakkie?????;Simipour;Flotoutan;88.1;516;98;63;101;water;;29.0;5;0
+Forewarn, Synchronize, Telepathy;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;25;2560;70;292;190;Dream Eater Pokemon;45;800000;0.6;76;Munna???;Munna;Munna;50;517;67;55;24;psychic;;23.3;5;0
+Forewarn, Synchronize, Telepathy;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;55;2560;70;487;75;Drowsing Pokemon;85;800000;1.1;116;Musharna?????;Musharna;Mushana;50;518;107;95;29;psychic;;60.5;5;0
+Big Pecks, Super Luck, Rivalry;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;55;3840;70;264;255;Tiny Pigeon Pokemon;50;1059860;0.3;50;Mamepato????;Pidove;Poichigeon;50;519;36;30;43;normal;flying;2.1;5;0
+Big Pecks, Super Luck, Rivalry;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;77;3840;70;358;120;Wild Pigeon Pokemon;62;1059860;0.6;62;Hatoboh?????;Tranquill;Colombeau;50;520;50;42;65;normal;flying;15.0;5;0
+Big Pecks, Super Luck, Rivalry;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;115;3840;70;488;45;Proud Pokemon;80;1059860;1.2;80;Kenhallow?????;Unfezant;Déflaisan;50;521;65;55;93;normal;flying;29.0;5;0
+Lightningrod, Motor Drive, Sap Sipper;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;60;5120;70;295;190;Electrified Pokemon;32;1000000;0.8;45;Shimama???;Blitzle;Zébiron;50;522;50;32;76;electric;;29.8;5;0
+Lightningrod, Motor Drive, Sap Sipper;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;100;5120;70;497;75;Thunderbolt Pokemon;63;1000000;1.6;75;Zebraika?????;Zebstrika;Zéblitz;50;523;80;63;116;electric;;79.5;5;0
+Sturdy, Weak Armor, Sand Force;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;75;3840;70;280;255;Mantle Pokemon;85;1059860;0.4;55;Dangoro????;Roggenrola;Nodulithe;50;524;25;25;15;rock;;18.0;5;0
+Sturdy, Weak Armor, Sand Force;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;105;3840;70;390;120;Ore Pokemon;105;1059860;0.9;70;Gantle????;Boldore;Géolithe;50;525;50;40;20;rock;;102.0;5;0
+Sturdy, Sand Stream, Sand Force;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;135;3840;70;515;45;Compressed Pokemon;130;1059860;1.7;85;Gigaiath?????;Gigalith;Gigalithe;50;526;60;80;25;rock;;260.0;5;0
+Unaware, Klutz, Simple;1;2;1;2;1;0.25;1;1;2;0.5;0;2;1;1;0.5;2;1;1;45;3840;70;323;190;Bat Pokemon;43;1000000;0.4;65;Koromori????;Woobat;Chovsourir;50;527;55;43;72;psychic;flying;2.1;5;0
+Unaware, Klutz, Simple;1;2;1;2;1;0.25;1;1;2;0.5;0;2;1;1;0.5;2;1;1;57;3840;70;425;45;Courting Pokemon;55;1000000;0.9;67;Kokoromori?????;Swoobat;Rhinolove;50;528;77;55;114;psychic;flying;10.5;5;0
+Sand Rush, Sand Force, Mold Breaker;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;85;5120;70;328;120;Mole Pokemon;40;1000000;0.3;60;Mogurew?????;Drilbur;Rototaupe;50;529;30;45;68;ground;;8.5;5;0
+Sand Rush, Sand Force, Mold Breaker;0.5;1;0.5;0;0.5;2;2;0.5;1;1;2;1;0.5;0;0.5;0.25;0.5;2;135;5120;70;508;60;Subterrene Pokemon;60;1000000;0.7;110;Doryuzu?????;Excadrill;Minotaupe;50;530;50;65;88;ground;steel;40.4;5;0
+Healer, Regenerator, Klutz;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;60;5120;70;545;255;Hearing Pokemon;126;800000;1.1;103;Tabunne????;Audino;Nanméouie;50;531;80;126;50;normal;;31.0;5;0
+Guts, Sheer Force, Iron Fist;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;80;5120;70;305;180;Muscular Pokemon;55;1059860;0.6;75;Dokkorer?????;Timburr;Charpenti;75.4;532;25;35;35;fighting;;12.5;5;0
+Guts, Sheer Force, Iron Fist;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;105;5120;70;405;90;Muscular Pokemon;85;1059860;1.2;85;Dotekkotsu?????;Gurdurr;Ouvrifier;75.4;533;40;50;40;fighting;;40.0;5;0
+Guts, Sheer Force, Iron Fist;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;140;5120;70;505;45;Muscular Pokemon;95;1059860;1.4;105;Roubushin?????;Conkeldurr;Bétochef;75.4;534;55;65;45;fighting;;87.0;5;0
+Swift Swim, Hydration, Water Absorb;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;50;5120;70;294;255;Tadpole Pokemon;40;1059860;0.5;50;Otamaro????;Tympole;Tritonde;50;535;50;40;64;water;;4.5;5;0
+Swift Swim, Hydration, Water Absorb;1;1;1;0;1;1;0.5;1;1;4;1;1;1;0.5;1;0.5;0.5;1;65;5120;70;384;120;Vibration Pokemon;55;1059860;0.8;75;Gamagaru????;Palpitoad;Batracné;50;536;65;55;69;water;ground;17.0;5;0
+Swift Swim, Poison Touch, Water Absorb;1;1;1;0;1;1;0.5;1;1;4;1;1;1;0.5;1;0.5;0.5;1;95;5120;70;509;45;Vibration Pokemon;75;1059860;1.5;105;Gamageroge?????;Seismitoad;Crapustule;50;537;85;75;74;water;ground;62.0;5;0
+Guts, Inner Focus, Mold Breaker;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;100;5120;70;465;45;Judo Pokemon;85;1000000;1.3;120;Nageki???;Throh;Judokrak;100;538;30;85;45;fighting;;55.5;5;0
+Sturdy, Inner Focus, Mold Breaker;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;125;5120;70;465;45;Karate Pokemon;75;1000000;1.4;75;Dageki???;Sawk;Karaclée;100;539;30;75;85;fighting;;51.0;5;0
+Swarm, Chlorophyll, Overcoat;2;1;1;0.5;1;0.5;4;4;1;0.25;0.25;2;1;2;1;2;1;0.5;53;3840;70;310;255;Sewing Pokemon;70;1059860;0.3;45;Kurumiru????;Sewaddle;Larveyette;50;540;40;60;42;bug;grass;2.5;5;0
+Leaf Guard, Chlorophyll, Overcoat;2;1;1;0.5;1;0.5;4;4;1;0.25;0.25;2;1;2;1;2;1;0.5;63;3840;70;380;120;Leaf-Wrapped Pokemon;90;1059860;0.5;55;Kurumayu????;Swadloon;Couverdure;50;541;50;80;42;bug;grass;7.3;5;0
+Swarm, Chlorophyll, Overcoat;2;1;1;0.5;1;0.5;4;4;1;0.25;0.25;2;1;2;1;2;1;0.5;103;3840;70;500;45;Nurturing Pokemon;80;1059860;1.2;75;Hahakomori?????;Leavanny;Manternel;50;542;70;80;92;bug;grass;20.5;5;0
+Poison Point, Swarm, Speed Boost;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;45;3840;70;260;255;Centipede Pokemon;59;1059860;0.4;30;Fushide???;Venipede;Venipatte;50;543;30;39;57;bug;poison;5.3;5;0
+Poison Point, Swarm, Speed Boost;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;55;3840;70;360;120;Curlipede Pokemon;99;1059860;1.2;40;Wheega????;Whirlipede;Scobolide;50;544;40;79;47;bug;poison;58.5;5;0
+Poison Point, Swarm, Speed Boost;0.5;1;1;1;0.5;0.25;2;2;1;0.25;1;1;1;0.5;2;2;1;1;100;5120;70;485;45;Megapede Pokemon;89;1059860;2.5;60;Pendror?????;Scolipede;Brutapode;50;545;55;69;112;bug;poison;200.5;5;0
+Prankster, Infiltrator, Chlorophyll;1;0.5;0;0.5;1;0.5;2;2;1;0.5;0.5;2;1;4;1;1;2;0.5;27;5120;70;280;190;Cotton Puff Pokemon;60;1000000;0.3;40;Monmen????;Cottonee;Doudouvet;50;546;37;50;66;grass;fairy;0.6;5;0
+Prankster, Infiltrator, Chlorophyll;1;0.5;0;0.5;1;0.5;2;2;1;0.5;0.5;2;1;4;1;1;2;0.5;67;5120;70;480;75;Windveiled Pokemon;85;1000000;0.7;60;Elfuun?????;Whimsicott;Farfaduvet;50;547;77;75;116;grass;fairy;6.6;5;0
+Chlorophyll, Own Tempo, Leaf Guard;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;35;5120;70;280;190;Bulb Pokemon;50;1000000;0.5;45;Churine????;Petilil;Chlorobule;0;548;70;50;30;grass;;6.6;5;0
+Chlorophyll, Own Tempo, Leaf Guard;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;60;5120;70;480;75;Flowering Pokemon;75;1000000;1.1;70;Dredear?????;Lilligant;Fragilady;0;549;110;75;90;grass;;16.3;5;0
+Reckless, Rock Head, Adaptability, Mold Breaker;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;92;10240;70;460;25;Hostile Pokemon;65;1000000;1.0;70;Bassrao????;Basculin;Bargantua;50;550;80;55;98;water;;18.0;5;0
+Intimidate, Moxie, Anger Point;2;0.5;1;0;2;2;1;1;0.5;2;1;2;1;0.5;0;0.5;1;2;72;5120;70;292;180;Desert Croc Pokemon;35;1059860;0.7;50;Meguroco????;Sandile;Mascaïman;50;551;35;35;65;ground;dark;15.2;5;0
+Intimidate, Moxie, Anger Point;2;0.5;1;0;2;2;1;1;0.5;2;1;2;1;0.5;0;0.5;1;2;82;5120;70;351;90;Desert Croc Pokemon;45;1059860;1.0;60;Waruvile????;Krokorok;Escroco;50;552;45;45;74;ground;dark;33.4;5;0
+Intimidate, Moxie, Anger Point;2;0.5;1;0;2;2;1;1;0.5;2;1;2;1;0.5;0;0.5;1;2;117;5120;70;519;45;Intimidation Pokemon;80;1059860;1.5;95;Waruvial?????;Krookodile;Crocorible;50;553;65;70;92;ground;dark;96.3;5;0
+Hustle, Inner Focus;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;90;5120;70;315;120;Zen Charm Pokemon;45;1059860;0.6;70;Darumakka?????;Darumaka;Darumarond;50;554;15;45;50;fire;;37.5;5;0
+Sheer Force, Zen Mode;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;30;5120;70;540;60;Blazing Pokemon;105;1059860;1.3;105;Hihidaruma?????;Darmanitan;Darumacho;50;555;140;105;55;fire;fire;92.9;5;0
+Water Absorb, Chlorophyll, Storm Drain;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;86;5120;70;461;255;Cactus Pokemon;67;1000000;1.0;75;Maracacchi?????;Maractus;Maracachi;50;556;106;67;60;grass;;28.0;5;0
+Sturdy, Shell Armor, Weak Armor;1;1;1;1;1;1;1;1;1;1;1;1;0.5;0.5;1;2;2;2;65;5120;70;325;190;Rock Inn Pokemon;85;1000000;0.3;50;Ishizumai?????;Dwebble;Crabicoque;50;557;35;35;55;bug;rock;14.5;5;0
+Sturdy, Shell Armor, Weak Armor;1;1;1;1;1;1;1;1;1;1;1;1;0.5;0.5;1;2;2;2;105;5120;70;485;75;Stone Home Pokemon;125;1000000;1.4;70;Iwapalace?????;Crustle;Crabaraque;50;558;65;75;45;bug;rock;200.0;5;0
+Shed Skin, Moxie, Intimidate;1;0.25;1;1;4;2;1;2;0.5;1;1;1;1;1;0;0.5;1;1;75;3840;35;348;180;Shedding Pokemon;70;1000000;0.6;50;Zuruggu????;Scraggy;Baggiguane;50;559;35;70;48;dark;fighting;11.8;5;0
+Shed Skin, Moxie, Intimidate;1;0.25;1;1;4;2;1;2;0.5;1;1;1;1;1;0;0.5;1;1;90;3840;70;488;90;Hoodlum Pokemon;115;1000000;1.1;65;Zuruzukin?????;Scrafty;Baggaïd;50;560;45;115;58;dark;fighting;30.0;5;0
+Wonder Skin , Magic Guard, Tinted Lens;1;2;1;2;1;0.25;1;1;2;0.5;0;2;1;1;0.5;2;1;1;58;5120;70;490;45;Avianoid Pokemon;80;1000000;1.4;72;Symboler?????;Sigilyph;Cryptéro;50;561;103;80;97;psychic;flying;14.0;5;0
+Mummy;0.5;2;1;1;1;0;1;1;2;1;1;1;0;0.5;1;1;1;1;30;6400;70;303;190;Spirit Pokemon;85;1000000;0.5;38;Desumasu????;Yamask;Tutafeh;50;562;55;65;30;ghost;;1.5;5;0
+Mummy;0.5;2;1;1;1;0;1;1;2;1;1;1;0;0.5;1;1;1;1;50;6400;70;483;90;Coffin Pokemon;145;1000000;1.7;58;Desukarn?????;Cofagrigus;Tutankafer;50;563;95;105;30;ghost;;76.5;5;0
+Solid Rock, Sturdy, Swift Swim;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;78;7680;70;355;45;Prototurtle Pokemon;103;1000000;0.7;54;Protoga?????;Tirtouga;Carapagos;88.1;564;53;45;22;water;rock;16.5;5;0
+Solid Rock, Sturdy, Swift Swim;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;108;7680;70;495;45;Prototurtle Pokemon;133;1000000;1.2;74;Abagoura?????;Carracosta;Mégapagos;88.1;565;83;65;32;water;rock;81.0;5;0
+Defeatist;0.5;1;1;2;1;1;0.5;0.5;1;1;0;2;0.5;0.5;1;2;2;2;112;7680;70;401;45;First Bird Pokemon;45;1000000;0.5;55;Archen????;Archen;Arkéapti;88.1;566;74;45;70;rock;flying;9.5;5;0
+Defeatist;0.5;1;1;2;1;1;0.5;0.5;1;1;0;2;0.5;0.5;1;2;2;2;140;7680;70;567;45;First Bird Pokemon;65;1000000;1.4;75;Archeos?????;Archeops;Aéroptéryx;88.1;567;112;65;110;rock;flying;32.0;5;0
+Stench, Sticky Hold, Aftermath;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;50;5120;70;329;190;Trash Bag Pokemon;62;1000000;0.6;50;Yabukuron?????;Trubbish;Miamiasme;50;568;40;62;65;poison;;31.0;5;0
+Stench, Weak Armor, Aftermath;0.5;1;1;1;0.5;0.5;1;1;1;0.5;2;1;1;0.5;2;1;1;1;95;5120;70;474;60;Trash Heap Pokemon;82;1000000;1.9;80;Dustdas?????;Garbodor;Miasmax;50;569;60;82;75;poison;;107.3;5;0
+Illusion;2;0.5;1;1;2;2;1;1;0.5;1;1;1;1;1;0;1;1;1;65;6400;70;330;75;Tricky Fox Pokemon;40;1059860;0.7;40;Zorua???;Zorua;Zorua;88.1;570;80;40;65;dark;;12.5;5;0
+Illusion;2;0.5;1;1;2;2;1;1;0.5;1;1;1;1;1;0;1;1;1;105;5120;70;510;45;Illusion Fox Pokemon;60;1059860;1.6;60;Zoroark?????;Zoroark;Zoroark;88.1;571;120;60;105;dark;;81.1;5;0
+Cute Charm, Technician, Skill Link;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;50;3840;70;300;255;Chinchilla Pokemon;40;800000;0.4;55;Chillarmy?????;Minccino;Chinchidou;24.6;572;40;40;75;normal;;5.8;5;0
+Cute Charm, Technician, Skill Link;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;95;3840;70;470;60;Scarf Pokemon;60;800000;0.5;75;Chillaccino?????;Cinccino;Pashmilla;24.6;573;65;60;115;normal;;7.5;5;0
+Frisk, Competitive, Shadow Tag;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;30;5120;70;290;200;Fixation Pokemon;50;1059860;0.4;45;Gothimu???;Gothita;Scrutella;24.6;574;55;65;45;psychic;;5.8;5;0
+Frisk, Competitive, Shadow Tag;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;45;5120;70;390;100;Manipulate Pokemon;70;1059860;0.7;60;Gothimiru????;Gothorita;Mesmérella;24.6;575;75;85;55;psychic;;18.0;5;0
+Frisk, Competitive, Shadow Tag;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;55;5120;70;490;50;Astral Body Pokemon;95;1059860;1.5;70;Gothiruselle?????;Gothitelle;Sidérella;24.6;576;95;110;65;psychic;;44.0;5;0
+Overcoat, Magic Guard, Regenerator;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;30;5120;70;290;200;Cell Pokemon;40;1059860;0.3;45;Uniran????;Solosis;Nucléos;50;577;105;50;20;psychic;;1.0;5;0
+Overcoat, Magic Guard, Regenerator;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;40;5120;70;370;100;Mitosis Pokemon;50;1059860;0.6;65;Doublan????;Duosion;Méios;50;578;125;60;30;psychic;;8.0;5;0
+Overcoat, Magic Guard, Regenerator;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;65;5120;70;490;50;Multiplying Pokemon;75;1059860;1.0;110;Lanculus?????;Reuniclus;Symbios;50;579;125;85;30;psychic;;20.1;5;0
+Keen Eye, Big Pecks, Hydration;0.5;1;1;4;1;0.5;0.5;1;1;1;0;1;1;1;1;2;0.5;0.5;44;5120;70;305;190;Water Bird Pokemon;50;1000000;0.5;62;Koaruhie?????;Ducklett;Couaneton;50;580;44;50;55;water;flying;5.5;5;0
+Keen Eye, Big Pecks, Hydration;0.5;1;1;4;1;0.5;0.5;1;1;1;0;1;1;1;1;2;0.5;0.5;87;5120;70;473;45;White Bird Pokemon;63;1000000;1.3;75;Swanna????;Swanna;Lakmécygne;50;581;87;63;98;water;flying;24.2;5;0
+Ice Body, Snow Cloak, Weak Armor;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;50;5120;70;305;255;Fresh Snow Pokemon;50;1250000;0.4;36;Vanipeti?????;Vanillite;Sorbébé;50;582;65;60;44;ice;;5.7;5;0
+Ice Body, Snow Cloak, Weak Armor;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;65;5120;70;395;120;Icy Snow Pokemon;65;1250000;1.1;51;Vanirich?????;Vanillish;Sorboul;50;583;80;75;59;ice;;41.0;5;0
+Ice Body, Snow Warning, Weak Armor;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;95;5120;70;535;45;Snowstorm Pokemon;85;1250000;1.3;71;Baivanilla?????;Vanilluxe;Sorbouboul;50;584;110;95;79;ice;;57.5;5;0
+Chlorophyll, Sap Sipper, Serene Grace;2;1;1;0.5;1;2;2;2;0;0.5;0.5;2;1;2;1;1;1;0.5;60;5120;70;335;190;Season Pokemon;50;1000000;0.6;60;Shikijika????;Deerling;Vivaldaim;50;585;40;50;75;normal;grass;19.5;5;0
+Chlorophyll, Sap Sipper, Serene Grace;2;1;1;0.5;1;2;2;2;0;0.5;0.5;2;1;2;1;1;1;0.5;100;5120;70;475;75;Season Pokemon;70;1000000;1.9;80;Mebukijika?????;Sawsbuck;Haidaim;50;586;60;70;95;normal;grass;92.5;5;0
+Static, Motor Drive;0.5;1;1;1;1;0.5;1;0.5;1;0.5;0;2;1;1;1;2;0.5;1;75;5120;70;428;200;Sky Squirrel Pokemon;60;1000000;0.4;55;Emonga????;Emolga;Emolga;50;587;75;60;103;electric;flying;5.0;5;0
+Swarm, Shed Skin, No Guard;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;75;3840;70;315;200;Clamping Pokemon;45;1000000;0.5;50;Kaburumo????;Karrablast;Carabing;50;588;40;45;60;bug;;5.9;5;0
+Swarm, Shell Armor, Overcoat;0.5;1;0.5;1;0.5;1;4;1;1;0.25;1;0.5;0.5;0;0.5;1;0.5;1;135;3840;70;495;75;Cavalry Pokemon;105;1000000;1.0;70;Chevargo?????;Escavalier;Lançargot;50;589;60;105;20;bug;steel;33.0;5;0
+Effect Spore, Regenerator;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;55;5120;70;294;190;Mushroom Pokemon;45;1000000;0.2;69;Tamagetake?????;Foongus;Trompignon;50;590;55;55;15;grass;poison;1.0;5;0
+Effect Spore, Regenerator;1;1;1;0.5;0.5;0.5;2;2;1;0.25;1;2;1;1;2;1;1;0.5;85;5120;70;464;75;Mushroom Pokemon;70;1000000;0.6;114;Morobareru?????;Amoonguss;Gaulet;50;591;85;80;30;grass;poison;10.5;5;0
+Water Absorb, Cursed Body, Damp;0.5;2;1;2;1;0;0.5;1;2;2;1;0.5;0;0.5;1;1;0.5;0.5;40;5120;70;335;190;Floating Pokemon;50;1000000;1.2;55;Pururill????;Frillish;Viskuse;50;592;65;85;40;water;ghost;33.0;5;0
+Water Absorb, Cursed Body, Damp;0.5;2;1;2;1;0;0.5;1;2;2;1;0.5;0;0.5;1;1;0.5;0.5;60;5120;70;480;60;Floating Pokemon;70;1000000;2.2;100;Burungel?????;Jellicent;Moyade;50;593;85;105;60;water;ghost;135.0;5;0
+Healer, Hydration, Regenerator;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;75;10240;70;470;75;Caring Pokemon;80;800000;1.2;165;Mamanbou?????;Alomomola;Mamanbo;50;594;40;45;65;water;;31.6;5;0
+Compoundeyes, Unnerve, Swarm;1;1;1;0.5;1;0.5;2;1;1;0.5;1;1;1;1;1;2;0.5;1;47;5120;70;319;190;Attaching Pokemon;50;1000000;0.1;50;Bachuru????;Joltik;Statitik;50;595;57;50;65;bug;electric;0.6;5;0
+Compoundeyes, Unnerve, Swarm;1;1;1;0.5;1;0.5;2;1;1;0.5;1;1;1;1;1;2;0.5;1;77;5120;70;472;75;EleSpider Pokemon;60;1000000;0.8;70;Dentula?????;Galvantula;Mygavolt;50;596;97;60;108;bug;electric;14.3;5;0
+Iron Barbs;1;1;0.5;0.5;0.5;2;4;1;1;0.25;1;1;0.5;0;0.5;0.5;0.5;0.5;50;5120;70;305;255;Thorn Seed Pokemon;91;1000000;0.6;44;Tesseed?????;Ferroseed;Grindur;50;597;24;86;10;grass;steel;18.8;5;0
+Iron Barbs, Anticipation;1;1;0.5;0.5;0.5;2;4;1;1;0.25;1;1;0.5;0;0.5;0.5;0.5;0.5;94;5120;70;489;90;Thorn Pod Pokemon;131;1000000;1.0;74;Nutrey?????;Ferrothorn;Noacier;50;598;54;116;20;grass;steel;110.0;5;0
+Plus, Minus, Clear Body;0.5;1;0.5;1;0.5;2;2;0.5;1;0.5;2;0.5;0.5;0;0.5;0.5;0.5;1;55;5120;70;300;130;Gear Pokemon;70;1059860;0.3;40;Giaru???;Klink;Tic;;599;45;60;30;steel;;21.0;5;0
+Plus, Minus, Clear Body;0.5;1;0.5;1;0.5;2;2;0.5;1;0.5;2;0.5;0.5;0;0.5;0.5;0.5;1;80;5120;70;440;60;Gear Pokemon;95;1059860;0.6;60;Gigiaru????;Klang;Clic;;600;70;85;50;steel;;51.0;5;0
+Plus, Minus, Clear Body;0.5;1;0.5;1;0.5;2;2;0.5;1;0.5;2;0.5;0.5;0;0.5;0.5;0.5;1;100;5120;70;520;30;Gear Pokemon;115;1059860;0.6;60;Gigigiaru?????;Klinklang;Cliticlic;;601;70;85;90;steel;;81.0;5;0
+Levitate;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;55;5120;70;275;190;EleFish Pokemon;40;1250000;0.2;35;Shibishirasu?????;Tynamo;Anchwatt;50;602;45;40;60;electric;;0.3;5;0
+Levitate;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;85;5120;70;405;60;EleFish Pokemon;70;1250000;1.2;65;Shibibeel?????;Eelektrik;Lampéroie;50;603;75;70;40;electric;;22.0;5;0
+Levitate;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;115;5120;70;515;30;EleFish Pokemon;80;1250000;2.1;85;Shibirudon?????;Eelektross;Ohmassacre;50;604;105;80;50;electric;;80.5;5;0
+Telepathy, Synchronize, Analytic;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;55;5120;70;335;255;Cerebral Pokemon;55;1000000;0.5;55;Ligray????;Elgyem;Lewsor;50;605;85;55;30;psychic;;9.0;5;0
+Telepathy, Synchronize, Analytic;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;75;5120;70;485;90;Cerebral Pokemon;75;1000000;1.0;75;Ohbem????;Beheeyem;Neitram;50;606;125;95;40;psychic;;34.5;5;0
+Flash Fire, Flame Body, Infiltrator;0.25;2;1;1;0.5;0;0.5;1;2;0.5;2;0.5;0;0.5;1;2;0.5;2;30;5120;70;275;190;Candle Pokemon;55;1059860;0.3;50;Hitomoshi????;Litwick;Funécire;50;607;65;55;20;ghost;fire;3.1;5;0
+Flash Fire, Flame Body, Infiltrator;0.25;2;1;1;0.5;0;0.5;1;2;0.5;2;0.5;0;0.5;1;2;0.5;2;40;5120;70;370;90;Lamp Pokemon;60;1059860;0.6;60;Lampler?????;Lampent;Mélancolux;50;608;95;60;55;ghost;fire;13.0;5;0
+Flash Fire, Flame Body, Infiltrator;0.25;2;1;1;0.5;0;0.5;1;2;0.5;2;0.5;0;0.5;1;2;0.5;2;55;5120;70;520;45;Luring Pokemon;90;1059860;1.0;60;Chandela?????;Chandelure;Lugulabre;50;609;145;90;80;ghost;fire;34.3;5;0
+Rivalry, Mold Breaker, Unnerve;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;87;10240;35;320;75;Tusk Pokemon;60;1250000;0.6;46;Kibago???;Axew;Coupenotte;50;610;30;40;57;dragon;;18.0;5;0
+Rivalry, Mold Breaker, Unnerve;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;117;10240;35;410;60;Axe Jaw Pokemon;70;1250000;1.0;66;Onondo????;Fraxure;Insisache;50;611;40;50;67;dragon;;36.0;5;0
+Rivalry, Mold Breaker, Unnerve;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;147;10240;35;540;45;Axe Jaw Pokemon;90;1250000;1.8;76;Ononokus?????;Haxorus;Tranchodon;50;612;60;70;97;dragon;;105.5;5;0
+Snow Cloak, Slush Rush, Rattled;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;70;5120;70;305;120;Chill Pokemon;40;1000000;0.5;55;Kumasyun?????;Cubchoo;Polarhume;50;613;60;40;40;ice;;8.5;5;0
+Snow Cloak, Slush Rush, Swift Swim;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;130;5120;70;505;60;Freezing Pokemon;80;1000000;2.6;95;Tunbear?????;Beartic;Polagriffe;50;614;70;80;50;ice;;260.0;5;0
+Levitate;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;50;6400;70;515;25;Crystallizing Pokemon;50;1000000;1.1;80;Freegeo?????;Cryogonal;Hexagel;;615;95;135;105;ice;;148.0;5;0
+Hydration, Shell Armor, Overcoat;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;40;3840;70;305;200;Snail Pokemon;85;1000000;0.4;50;Chobomaki?????;Shelmet;Escargaume;50;616;40;65;25;bug;;7.7;5;0
+Hydration, Sticky Hold, Unburden;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;70;3840;70;495;75;Shell Out Pokemon;40;1000000;0.8;80;Agilder?????;Accelgor;Limaspeed;50;617;100;60;145;bug;;25.3;5;0
+Static, Limber, Sand Veil;1;1;1;0;1;1;1;0.5;1;2;2;2;1;0.5;1;0.5;0.5;2;66;5120;70;471;75;Trap Pokemon;84;1000000;0.7;109;Maggyo????;Stunfisk;Limonde;50;618;81;99;32;ground;electric;11.0;5;0
+Inner Focus, Regenerator, Reckless;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;85;6400;70;350;180;Martial Arts Pokemon;50;1059860;0.9;45;Kojofu?????;Mienfoo;Kungfouine;50;619;55;50;65;fighting;;20.0;5;0
+Inner Focus, Regenerator, Reckless;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;125;6400;70;510;45;Martial Arts Pokemon;60;1059860;1.4;65;Kojondo?????;Mienshao;Shaofouine;50;620;95;60;105;fighting;;35.5;5;0
+Rough Skin, Sheer Force, Mold Breaker;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;120;7680;70;485;45;Cave Pokemon;90;1000000;1.6;77;Crimgan?????;Druddigon;Drakkarmin;50;621;60;90;48;dragon;;139.0;5;0
+Iron Fist, Klutz, No Guard;0.5;2;1;0;1;0;1;1;2;2;1;2;0;0.25;1;0.5;1;2;74;6400;70;303;190;Automaton Pokemon;50;1000000;1.0;59;Gobit????;Golett;Gringolem;;622;35;50;35;ground;ghost;92.0;5;0
+Iron Fist, Klutz, No Guard;0.5;2;1;0;1;0;1;1;2;2;1;2;0;0.25;1;0.5;1;2;124;6400;70;483;90;Automaton Pokemon;80;1000000;2.8;89;Goloog????;Golurk;Golemastoc;;623;55;80;55;ground;ghost;330.0;5;0
+Defiant, Inner Focus, Pressure;1;0.5;0.5;1;1;4;2;0.5;0.5;0.5;2;0.5;0.5;0;0;0.5;0.5;1;85;5120;35;340;120;Sharp Blade Pokemon;70;1000000;0.5;45;Komatana????;Pawniard;Scalpion;50;624;40;40;60;dark;steel;10.2;5;0
+Defiant, Inner Focus, Pressure;1;0.5;0.5;1;1;4;2;0.5;0.5;0.5;2;0.5;0.5;0;0;0.5;0.5;1;125;5120;35;490;45;Sword Blade Pokemon;100;1000000;1.6;65;Kirikizan?????;Bisharp;Scalproie;50;625;60;70;70;dark;steel;70.0;5;0
+Reckless, Sap Sipper, Soundproof;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;110;5120;70;490;45;Bash Buffalo Pokemon;95;1000000;1.6;95;Buffron?????;Bouffalant;Frison;50;626;40;95;55;normal;;94.6;5;0
+Keen Eye, Sheer Force, Hustle;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;83;5120;70;350;190;Eaglet Pokemon;50;1250000;0.5;70;Washibon????;Rufflet;Furaiglon;100;627;37;50;60;normal;flying;10.5;5;0
+Keen Eye, Sheer Force, Defiant;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;123;5120;70;510;60;Valiant Pokemon;75;1250000;1.5;100;Warrgle?????;Braviary;Gueriaigle;100;628;57;75;80;normal;flying;41.0;5;0
+Big Pecks, Overcoat, Weak Armor;1;0.5;1;2;2;1;1;1;0.5;0.5;0;2;1;1;0;2;1;1;55;5120;35;370;190;Diapered Pokemon;75;1250000;0.5;70;Valchai?????;Vullaby;Vostourno;0;629;45;65;60;dark;flying;9.0;5;0
+Big Pecks, Overcoat, Weak Armor;1;0.5;1;2;2;1;1;1;0.5;0.5;0;2;1;1;0;2;1;1;65;5120;35;510;60;Bone Vulture Pokemon;105;1250000;1.2;110;Vulgina?????;Mandibuzz;Vaututrice;0;630;55;95;80;dark;flying;39.5;5;0
+Gluttony, Flash Fire, White Smoke;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;97;5120;70;484;90;Anteater Pokemon;66;1000000;1.4;85;Kuitaran?????;Heatmor;Aflamanoir;50;631;105;66;65;fire;;58.0;5;0
+Swarm, Hustle, Truant;0.5;1;0.5;1;0.5;1;4;1;1;0.25;1;0.5;0.5;0;0.5;1;0.5;1;109;5120;70;484;90;Iron Ant Pokemon;112;1000000;0.3;58;Aiant?????;Durant;Fermite;50;632;48;48;109;bug;steel;33.0;5;0
+Hustle;2;0.5;2;0.5;4;2;0.5;1;0.5;0.5;1;2;1;1;0;1;1;0.5;65;10240;35;300;45;Irate Pokemon;50;1250000;0.8;52;Monozu???;Deino;Salochi;50;633;45;50;38;dark;dragon;17.3;5;0
+Hustle;2;0.5;2;0.5;4;2;0.5;1;0.5;0.5;1;2;1;1;0;1;1;0.5;85;10240;35;420;45;Hostile Pokemon;70;1250000;1.4;72;Dihead????;Zweilous;Diamat;50;634;65;70;58;dark;dragon;50.0;5;0
+Levitate;2;0.5;2;0.5;4;2;0.5;1;0.5;0.5;1;2;1;1;0;1;1;0.5;105;10240;35;600;45;Brutal Pokemon;90;1250000;1.8;92;Sazandora?????;Hydreigon;Trioxhydre;50;635;125;90;98;dark;dragon;160.0;5;0
+Flame Body, Swarm;0.5;1;1;1;0.5;0.5;1;2;1;0.25;1;0.5;1;1;1;4;0.5;2;85;10240;70;360;45;Torch Pokemon;55;1250000;1.1;55;Merlarva????;Larvesta;Pyronille;50;636;50;55;60;bug;fire;28.8;5;0
+Flame Body, Swarm;0.5;1;1;1;0.5;0.5;1;2;1;0.25;1;0.5;1;1;1;4;0.5;2;60;10240;70;550;15;Sun Pokemon;65;1250000;1.6;85;Ulgamoth?????;Volcarona;Pyrax;50;637;135;105;100;bug;fire;46.0;5;0
+Justified;0.25;0.5;0.5;1;1;2;2;1;1;0.5;2;0.5;0.5;0;1;0.25;0.5;1;90;20480;35;580;3;Iron Will Pokemon;129;1250000;2.1;91;Cobalon?????;Cobalion;Cobaltium;;638;90;72;108;steel;fighting;250.0;5;1
+Justified;0.5;0.5;1;1;2;2;0.5;1;1;2;2;1;0.5;0.5;2;0.5;2;2;129;20480;35;580;3;Cavern Pokemon;90;1250000;1.9;91;Terrakion?????;Terrakion;Terrakium;;639;72;90;108;rock;fighting;260.0;5;1
+Justified;1;0.5;1;0.5;2;1;2;4;1;0.5;0.5;2;1;2;2;0.5;1;0.5;90;20480;35;580;3;Grassland Pokemon;72;1250000;2.0;91;Virizion?????;Virizion;Viridium;;640;90;129;108;grass;fighting;200.0;5;1
+Prankster, Defiant, Regenerator;0.5;1;1;2;1;0.5;1;1;1;0.5;0;2;1;1;1;2;1;1;100;30720;90;580;3;Cyclone Pokemon;80;1250000;1.5;79;Tornelos (keshin Forme)?????;Tornadus;Boréas;100;641;110;90;121;flying;;63.0;5;1
+Prankster, Defiant, Volt Absorb;0.5;1;1;1;1;0.5;1;0.5;1;0.5;0;2;1;1;1;2;0.5;1;105;30720;90;580;3;Bolt Strike Pokemon;70;1250000;1.5;79;Voltolos (keshin Forme)?????;Thundurus;Fulguris;100;642;145;80;101;electric;flying;61.0;5;1
+Turboblaze;0.5;1;2;0.5;1;1;0.25;1;1;0.25;2;1;1;1;1;2;0.5;1;120;30720;0;680;3;Vast White Pokemon;100;1250000;3.2;100;Reshiram????;Reshiram;Reshiram;;643;150;120;90;dragon;fire;330.0;5;1
+Teravolt;1;1;2;0.25;2;1;0.5;0.5;1;0.5;2;2;1;1;1;1;0.5;0.5;150;30720;0;680;3;Deep Black Pokemon;120;1250000;2.9;100;Zekrom????;Zekrom;Zekrom;;644;120;100;90;dragon;electric;345.0;5;1
+Sand Force, Sheer Force, Intimidate;0.5;1;1;0;1;0.5;1;1;1;1;0;4;1;0.5;1;1;1;2;145;30720;90;600;3;Abundance Pokemon;90;1250000;1.5;89;Landlos (keshin Forme)?????;Landorus;Démétéros;100;645;105;80;91;ground;flying;68.0;5;1
+Pressure, Teravolt, Turboblaze;1;1;2;0.5;2;2;1;1;1;0.5;1;1;1;1;1;2;2;0.5;120;30720;0;700;3;Boundary Pokemon;90;1250000;3.0;125;Kyurem????;Kyurem;Kuyrem;;646;170;100;95;dragon;ice;325.0;5;1
+Justified;0.5;0.5;1;2;2;1;0.5;2;1;2;1;0.5;1;1;2;0.5;0.5;0.5;72;20480;35;580;3;Colt Pokemon;90;1250000;1.4;91;Keldeo (itsumo No Sugata)?????;Keldeo;Keldeo;;647;129;90;108;water;fighting;48.5;5;1
+Serene Grace;2;2;1;1;1;1;1;1;0;1;1;1;1;1;0.5;1;1;1;128;30720;100;600;3;Melody Pokemon;90;1250000;0.6;100;Meloetta (step Forme)?????;Meloetta;Meloetta;;648;77;77;128;normal;psychic;6.5;5;1
+Download;0.5;1;0.5;1;0.5;1;4;1;1;0.25;1;0.5;0.5;0;0.5;1;0.5;1;120;30720;0;600;3;Paleozoic Pokemon;95;1250000;1.5;71;Genesect?????;Genesect;Genesect;;649;120;95;99;bug;steel;82.5;5;1
+Overgrow, Bulletproof;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;61;5120;70;313;45;Spiky Nut Pokemon;65;1059860;0.4;56;Harimaron?????;Chespin;Marisson;88.1;650;48;45;38;grass;;9.0;6;0
+Overgrow, Bulletproof;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;78;5120;70;405;45;Spiny Armor Pokemon;95;1059860;0.7;61;Hariborg?????;Quilladin;Boguérisse;88.1;651;56;58;57;grass;;29.0;6;0
+Overgrow, Bulletproof;1;0.5;1;0.5;2;1;2;4;1;0.5;0.5;2;1;2;2;0.5;1;0.5;107;5120;70;530;45;Spiny Armor Pokemon;122;1059860;1.6;88;Brigarron?????;Chesnaught;Blindépique;88.1;652;74;75;64;grass;fighting;90.0;6;0
+Blaze, Magician;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;45;5120;70;307;45;Fox Pokemon;40;1059860;0.4;40;Fokko????;Fennekin;Feunnec;88.1;653;62;60;60;fire;;9.4;6;0
+Blaze, Magician;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;59;5120;70;409;45;Fox Pokemon;58;1059860;1.0;59;Tairenar?????;Braixen;Roussil;88.1;654;90;70;73;fire;;14.5;6;0
+Blaze, Magician;1;2;1;1;0.5;0.5;0.5;1;2;0.5;2;0.5;1;1;0.5;2;0.5;2;69;5120;70;534;45;Fox Pokemon;72;1059860;1.5;75;Mahoxy??????;Delphox;Goupelin;88.1;655;114;100;104;fire;psychic;39.0;6;0
+Torrent, Protean;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;56;5120;70;314;45;Bubble Frog Pokemon;40;1059860;0.3;41;Keromatsu????;Froakie;Grenousse;88.1;656;62;44;71;water;;7.0;6;0
+Torrent, Protean;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;63;5120;70;405;45;Bubble Frog Pokemon;52;1059860;0.6;54;Gekogashira?????;Frogadier;Croâporal;88.1;657;83;56;97;water;;10.9;6;0
+Torrent, Protean, Battle Bond;2;0.5;1;2;2;2;0.5;1;0.5;2;1;0.5;1;1;0;1;0.5;0.5;145;5120;70;640;45;Ninja Pokemon;67;1059860;1.5;72;Gekkouga?????;Greninja;Amphinobi;88.1;658;153;71;132;water;dark;40.0;6;0
+Pickup, Cheek Pouch, Huge Power;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;36;3840;70;237;255;Digging Pokemon;38;1000000;0.4;38;Horubee????;Bunnelby;Sapereau;50;659;32;36;57;normal;;5.0;6;0
+Pickup, Cheek Pouch, Huge Power;1;1;1;0;1;2;1;1;0;2;1;2;1;0.5;1;0.5;1;2;56;3840;70;423;127;Digging Pokemon;77;1000000;1.0;85;Horudo????;Diggersby;Excavarenne;50;660;50;77;78;normal;ground;42.4;6;0
+Big Pecks, Gale Wings;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;50;3840;70;278;255;Tiny Robin Pokemon;43;1059860;0.3;45;Yayakoma????;Fletchling;Passerouge;50;661;40;38;62;normal;flying;1.7;6;0
+Flame Body, Gale Wings;0.25;1;1;2;0.5;0.5;0.5;1;1;0.25;0;1;1;1;1;4;0.5;2;73;3840;70;382;120;Ember Pokemon;55;1059860;0.7;62;Hinoyakoma?????;Fletchinder;Braisillon;50;662;56;52;84;fire;flying;16.0;6;0
+Flame Body, Gale Wings;0.25;1;1;2;0.5;0.5;0.5;1;1;0.25;0;1;1;1;1;4;0.5;2;81;3840;70;499;45;Scorching Pokemon;71;1059860;1.2;78;Fiarrow??????;Talonflame;Flambusard;50;663;74;69;126;fire;flying;24.5;6;0
+Shield Dust, Compoundeyes, Friend Guard;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;35;3840;70;200;255;Scatterdust Pokemon;40;1000000;0.3;38;Kofukimushi?????;Scatterbug;Lépidonille;50;664;27;25;35;bug;;2.5;6;0
+Shed Skin, Friend Guard;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;22;3840;70;213;120;Scatterdust Pokemon;60;1000000;0.3;45;Kofuurai?????;Spewpa;Pérégrain;50;665;27;30;29;bug;;8.4;6;0
+Shield Dust, Compoundeyes, Friend Guard;0.5;1;1;2;1;0.25;2;2;1;0.25;0;2;1;1;1;4;1;1;52;3840;70;411;45;Scale Pokemon;50;1000000;1.2;80;Viviyon????;Vivillon;Prismillon;50;666;90;50;89;bug;flying;17.0;6;0
+Rivalry, Unnerve, Moxie;0.5;1;1;1;0.5;2;0.5;1;0;0.5;2;0.5;1;1;1;2;0.5;2;50;5120;70;369;220;Lion Cub Pokemon;58;1059860;0.6;62;Shishiko???;Litleo;Hélionceau;11.2;667;73;54;72;fire;normal;13.5;6;0
+Rivalry, Unnerve, Moxie;0.5;1;1;1;0.5;2;0.5;1;0;0.5;2;0.5;1;1;1;2;0.5;2;68;5120;70;507;65;Royal Pokemon;72;1059860;1.5;86;Kaenjishi?????;Pyroar;Némélios;11.2;668;109;66;106;fire;normal;81.5;6;0
+Flower Veil, Symbiosis;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;38;5120;70;303;225;Single Bloom Pokemon;39;1000000;0.1;44;Flabebe????;Flabebe;Flabébé;0;669;61;79;42;fairy;;0.1;6;0
+Flower Veil, Symbiosis;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;65;5120;70;551;120;Fairy Pokemon;67;1000000;0.2;74;Floette?????;Floette;Floette;0;670;125;128;92;fairy;;0.9;6;0
+Flower Veil, Symbiosis;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;65;5120;70;552;45;Garden Pokemon;68;1000000;1.1;78;Florges??????;Florges;Florges;0;671;112;154;75;fairy;;10.0;6;0
+Sap Sipper, Grass Pelt;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;65;5120;70;350;200;Mount Pokemon;48;1000000;0.9;66;Meecle?????;Skiddo;Cabriolaine;50;672;62;57;52;grass;;31.0;6;0
+Sap Sipper, Grass Pelt;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;100;5120;70;531;45;Mount Pokemon;62;1000000;1.7;123;Gogoat?????;Gogoat;Chevroum;50;673;97;81;68;grass;;91.0;6;0
+Iron Fist, Mold Breaker, Scrappy;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;82;6400;70;348;220;Playful Pokemon;62;1000000;0.6;67;Yancham?????;Pancham;Pandespiègle;50;674;46;48;43;fighting;;8.0;6;0
+Iron Fist, Mold Breaker, Scrappy;1;0.25;1;1;4;2;1;2;0.5;1;1;1;1;1;0;0.5;1;1;124;6400;70;495;65;Daunting Pokemon;78;1000000;2.1;95;Goronda????;Pangoro;Pandarbare;50;675;69;71;58;fighting;dark;136.0;6;0
+Fur Coat;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;80;5120;70;472;160;Poodle Pokemon;60;1000000;1.2;75;Trimmien?????;Furfrou;Couafarel;50;676;65;90;102;normal;;28.0;6;0
+Keen Eye, Infiltrator, Own Tempo;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;48;5120;70;355;190;Restraint Pokemon;54;1000000;0.3;62;Nyasper?????;Espurr;Psystigri;50;677;63;60;68;psychic;;3.5;6;0
+Keen Eye, Infiltrator, Prankster, Competitive;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;48;5120;70;466;75;Constraint Pokemon;76;1000000;0.6;74;Nyaonix??????;Meowstic;Mistigrix;50;678;83;81;104;psychic;;8.5;6;0
+No Guard;0.25;2;0.5;1;0.5;0;2;0.5;2;0.5;2;0.5;0;0;0.5;0.5;0.5;1;80;5120;70;325;180;Sword Pokemon;100;1000000;0.8;45;Hitotsuki????;Honedge;Monorpale;50;679;35;37;28;steel;ghost;2.0;6;0
+No Guard;0.25;2;0.5;1;0.5;0;2;0.5;2;0.5;2;0.5;0;0;0.5;0.5;0.5;1;110;5120;70;448;90;Sword Pokemon;150;1000000;0.8;59;Nidangill?????;Doublade;Dimoclès;50;680;45;49;35;steel;ghost;4.5;6;0
+Stance Change;0.25;2;0.5;1;0.5;0;2;0.5;2;0.5;2;0.5;0;0;0.5;0.5;0.5;1;150;5120;70;520;45;Royal Sword Pokemon;50;1000000;1.7;60;Gillgard?????;Aegislash;Exagide;50;681;150;50;60;steel;ghost;53.0;6;0
+Healer, Aroma Veil;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;52;5120;70;341;200;Perfume Pokemon;60;1000000;0.2;78;Shushupu?????;Spritzee;Fluvetin;50;682;63;65;23;fairy;;0.5;6;0
+Healer, Aroma Veil;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;72;5120;70;462;140;Fragrance Pokemon;72;1000000;0.8;101;Frefuwan?????;Aromatisse;Cocotine;50;683;99;89;29;fairy;;15.5;6;0
+Sweet Veil, Unburden;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;48;5120;70;341;200;Cotton Candy Pokemon;66;1000000;0.4;62;Peroppafu?????;Swirlix;Sucroquin;50;684;59;57;49;fairy;;3.5;6;0
+Sweet Veil, Unburden;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;80;5120;70;480;140;Meringue Pokemon;86;1000000;0.8;82;Peroream?????;Slurpuff;Cupcanaille;50;685;85;75;72;fairy;;5.0;6;0
+Contrary, Suction Cups, Infiltrator;4;1;1;1;2;1;1;1;1;1;1;1;1;1;0;1;1;1;54;5120;70;288;190;Revolving Pokemon;53;1000000;0.4;53;Maaiika?????;Inkay;Sepiatop;50;686;37;46;45;dark;psychic;3.5;6;0
+Contrary, Suction Cups, Infiltrator;4;1;1;1;2;1;1;1;1;1;1;1;1;1;0;1;1;1;92;5120;70;482;80;Overturning Pokemon;88;1000000;1.5;86;Calamanero?????;Malamar;Sepiatroce;50;687;68;75;73;dark;psychic;47.0;6;0
+Tough Claws, Sniper, Pickpocket;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;52;5120;70;306;120;Two-Handed Pokemon;67;1000000;0.5;42;Kametete????;Binacle;Opermine;50;688;39;56;50;rock;water;31.0;6;0
+Tough Claws, Sniper, Pickpocket;1;1;1;2;1;2;0.25;0.5;1;4;2;0.5;0.5;0.5;1;1;1;1;105;5120;70;500;45;Collective Pokemon;115;1000000;1.3;72;Gamenodes?????;Barbaracle;Golgopathe;50;689;54;86;68;rock;water;96.0;6;0
+Poison Point, Poison Touch, Adaptability;0.5;1;1;2;0.5;0.5;0.5;1;1;1;2;0.5;1;0.5;2;1;0.5;0.5;60;5120;70;320;225;Mock Kelp Pokemon;60;1000000;0.5;50;Kuzumo????;Skrelp;Venalgue;50;690;60;60;30;poison;water;7.3;6;0
+Poison Point, Poison Touch, Adaptability;0.5;1;2;0.5;1;0.5;0.5;1;1;0.25;2;2;1;0.5;2;1;1;0.5;75;5120;70;494;55;Mock Kelp Pokemon;90;1000000;1.8;65;Dramidoro?????;Dragalge;Kravarech;50;691;97;123;44;poison;dragon;81.5;6;0
+Mega Launcher;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;53;3840;70;330;225;Water Gun Pokemon;62;1250000;0.5;50;Udeppou?????;Clauncher;Flingouste;50;692;58;63;44;water;;8.3;6;0
+Mega Launcher;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;73;3840;70;500;55;Howitzer Pokemon;88;1250000;1.3;71;Bloster?????;Clawitzer;Gamblast;50;693;120;89;59;water;;35.3;6;0
+Dry Skin, Sand Veil, Solar Power;1;1;1;0.5;1;2;1;0.5;0;1;2;1;1;1;1;1;0.5;1;38;5120;70;289;190;Generator Pokemon;33;1000000;0.5;44;Erikiteru?????;Helioptile;Galvaran;50;694;61;43;70;electric;normal;6.0;6;0
+Dry Skin, Sand Veil, Solar Power;1;1;1;0.5;1;2;1;0.5;0;1;2;1;1;1;1;1;0.5;1;55;5120;70;481;75;Generator Pokemon;52;1000000;1.0;62;Elezard?????;Heliolisk;Iguolta;50;695;109;94;109;electric;normal;21.0;6;0
+Strong Jaw, Sturdy;1;1;2;0.5;2;2;0.25;0.5;1;1;2;2;0.5;0.5;1;1;2;1;89;7680;70;362;45;Royal Heir Pokemon;77;1000000;0.8;58;Chigoras????;Tyrunt;Ptyranidur;88.1;696;45;45;48;rock;dragon;26.0;6;0
+Strong Jaw, Rock Head;1;1;2;0.5;2;2;0.25;0.5;1;1;2;2;0.5;0.5;1;1;2;1;121;7680;70;521;45;Despot Pokemon;119;1000000;2.5;82;Gachigoras?????;Tyrantrum;Rexillius;88.1;697;69;59;71;rock;dragon;270.0;6;0
+Refrigerate, Snow Warning;1;1;1;1;1;4;1;0.5;1;2;2;0.5;0.5;0.5;1;2;4;2;59;7680;70;362;45;Tundra Pokemon;50;1000000;1.3;77;Amarus????;Amaura;Amagara;88.1;698;67;63;46;rock;ice;25.2;6;0
+Refrigerate, Snow Warning;1;1;1;1;1;4;1;0.5;1;2;2;0.5;0.5;0.5;1;2;4;2;77;7680;70;521;45;Tundra Pokemon;72;1000000;2.7;123;Amaruruga?????;Aurorus;Dragmara;88.1;699;99;92;58;rock;ice;225.0;6;0
+Cute Charm, Pixilate;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;65;8960;70;525;45;Intertwining Pokemon;65;1000000;1.0;95;Nymphia?????;Sylveon;Nymphali;88.1;700;110;130;60;fairy;;23.5;6;0
+Limber, Unburden, Mold Breaker;0.25;0.5;1;2;2;0.5;1;2;1;0.5;0;2;1;1;2;1;1;1;92;5120;70;500;100;Wrestling Pokemon;75;1000000;0.8;78;Luchabull?????;Hawlucha;Brutalibré;50;701;74;63;118;fighting;flying;21.5;6;0
+Cheek Pouch, Pickup, Plus;0.5;0.5;0;0.5;1;0.5;1;0.5;1;1;2;1;1;2;1;1;1;1;58;5120;70;431;180;Antenna Pokemon;57;1000000;0.2;67;Dedenne????;Dedenne;Dedenne;50;702;81;67;101;electric;fairy;2.2;6;0
+Clear Body, Sturdy;0.5;0.5;0;1;1;1;0.5;0.5;1;2;2;1;0.5;1;1;1;4;2;50;6400;70;500;60;Jewel Pokemon;150;1250000;0.3;50;Melecie????;Carbink;Strassie;;703;50;150;50;rock;fairy;5.7;6;0
+Sap Sipper, Hydration, Gooey;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;50;10240;35;300;45;Soft Tissue Pokemon;35;1250000;0.3;45;Numera???;Goomy;Mucuscule;50;704;55;75;40;dragon;;2.8;6;0
+Sap Sipper, Hydration, Gooey;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;75;10240;35;452;45;Soft Tissue Pokemon;53;1250000;0.8;68;Numeil????;Sliggoo;Colimucus;50;705;83;113;60;dragon;;17.5;6;0
+Sap Sipper, Hydration, Gooey;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;100;10240;35;600;45;Dragon Pokemon;70;1250000;2.0;90;Numelgon?????;Goodra;Muplodocus;50;706;110;150;80;dragon;;150.5;6;0
+Prankster, Magician;0.25;0.5;0;1;0.5;1;2;0.5;1;0.5;2;0.5;0.5;0;0.5;0.5;1;1;80;5120;70;470;75;Key Ring Pokemon;91;800000;0.2;57;Cleffy?????;Klefki;Trousselin;50;707;80;87;75;steel;fairy;3.0;6;0
+Natural Cure, Frisk, Harvest;1;2;1;0.5;1;0;2;2;2;0.5;0.5;2;0;1;1;1;1;0.5;70;5120;70;309;120;Stump Pokemon;48;1000000;0.4;43;Bokurei????;Phantump;Brocélôme;50;708;50;60;38;ghost;grass;7.0;6;0
+Natural Cure, Frisk, Harvest;1;2;1;0.5;1;0;2;2;2;0.5;0.5;2;0;1;1;1;1;0.5;110;5120;70;474;60;Elder Tree Pokemon;76;1000000;1.5;85;Ohrot?????;Trevenant;Desséliande;50;709;65;82;56;ghost;grass;71.0;6;0
+Pickup, Frisk, Insomnia;1;2;1;0.5;1;0;2;2;2;0.5;0.5;2;0;1;1;1;1;0.5;66;5120;70;335;120;Pumpkin Pokemon;70;1000000;0.8;59;Bakeccha?????;Pumpkaboo;Pitrouille;50;710;44;55;41;ghost;grass;15.0;6;0
+Pickup, Frisk, Insomnia;1;2;1;0.5;1;0;2;2;2;0.5;0.5;2;0;1;1;1;1;0.5;100;5120;70;494;60;Pumpkin Pokemon;122;1000000;1.7;85;Pumpjin?????;Gourgeist;Bansuitrouye;50;711;58;75;54;ghost;grass;39.0;6;0
+Own Tempo, Ice Body, Sturdy;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;69;5120;70;304;190;Ice Chunk Pokemon;85;1000000;1.0;55;Kachikohru?????;Bergmite;Grelaçon;50;712;32;35;28;ice;;99.5;6;0
+Own Tempo, Ice Body, Sturdy;1;1;1;1;1;2;2;1;1;1;1;0.5;1;1;1;2;2;1;117;5120;70;514;55;Iceberg Pokemon;184;1000000;2.0;95;Crebase?????;Avalugg;Séracrawl;50;713;44;46;28;ice;;505.0;6;0
+Frisk, Infiltrator, Telepathy;0.5;1;2;1;2;0.5;0.5;1;1;0.25;0;4;1;1;1;2;1;0.5;30;5120;70;245;190;Sound Wave Pokemon;35;1000000;0.5;40;Onbat?????;Noibat;Sonistrelle;50;714;45;40;55;flying;dragon;8.0;6;0
+Frisk, Infiltrator, Telepathy;0.5;1;2;1;2;0.5;0.5;1;1;0.25;0;4;1;1;1;2;1;0.5;70;5120;70;535;45;Sound Wave Pokemon;80;1000000;1.5;85;Onvern?????;Noivern;Bruyverne;50;715;97;80;123;flying;dragon;85.0;6;0
+Fairy Aura;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;131;30720;0;680;45;Life Pokemon;95;1250000;3.0;126;Xerneas?????;Xerneas;Xerneas;;716;131;98;99;fairy;;215.0;6;1
+Dark Aura;1;0.5;1;2;2;1;1;1;0.5;0.5;0;2;1;1;0;2;1;1;131;30720;0;680;45;Destruction Pokemon;95;1250000;5.8;126;Yveltal?????;Yveltal;Yveltal;;717;131;98;99;dark;flying;203.0;6;1
+Aura Break, Power Construct;1;1;2;0;2;1;0.5;1;1;1;1;4;1;0.5;1;0.5;1;1;100;30720;0;708;3;Order Pokemon;121;1250000;5.0;216;Zygarde (10% Forme)????;Zygarde;Zygarde;;718;91;95;85;dragon;ground;284.6;6;1
+Clear Body;0.5;0.5;0;1;1;1;0.5;0.5;1;2;2;1;0.5;1;1;1;4;2;160;6400;70;700;3;Jewel Pokemon;110;1250000;0.7;50;Diancie??????;Diancie;Diancie;;719;160;110;110;rock;fairy;8.8;6;1
+Magician;1;4;1;1;1;0;1;1;4;1;1;1;0;0.5;0.5;1;1;1;160;30720;100;680;3;Mischief Pokemon (Confined)Djinn Pokemonn (Unbound);60;1250000;;80;Hoopa (imashimerareshi Hoopa)???;Hoopa;Hoopa;;720;170;130;80;psychic;ghost;;6;1
+Water Absorb;0.5;1;1;2;0.5;1;0.25;1;1;1;2;0.25;1;1;1;2;0.25;1;110;30720;100;600;3;Steam Pokemon;120;1250000;1.7;80;Volcanion??????;Volcanion;Volcanion;;721;130;90;70;fire;water;195.0;6;1
+Overgrow, Long Reach;1;1;1;1;1;0.5;2;2;1;0.25;0;4;1;2;1;2;1;0.5;55;3840;70;320;45;Grass Quill Pokemon;55;1059860;0.3;68;Mokuroh????;Rowlet;Brindibou;88.1;722;50;50;42;grass;flying;1.5;7;0
+Overgrow, Long Reach;1;1;1;1;1;0.5;2;2;1;0.25;0;4;1;2;1;2;1;0.5;75;3840;70;420;45;Blade Quill Pokemon;75;1059860;0.7;78;Fukuthrow?????;Dartrix;Efflèche;88.1;723;70;70;52;grass;flying;16.0;7;0
+Overgrow, Long Reach;1;2;1;0.5;1;0;2;2;2;0.5;0.5;2;0;1;1;1;1;0.5;107;3840;70;530;45;Arrow Quill Pokemon;75;1059860;1.6;78;Junaiper??????;Decidueye;Archéduc;88.1;724;100;100;70;grass;ghost;36.6;7;0
+Blaze, Intimidate;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;65;3840;70;320;45;Fire Cat Pokemon;40;1059860;0.4;45;Nyabby????;Litten;Flamiaou;88.1;725;60;40;70;fire;;4.3;7;0
+Blaze, Intimidate;0.5;1;1;1;0.5;1;0.5;1;1;0.5;2;0.5;1;1;1;2;0.5;2;85;3840;70;420;45;Fire Cat Pokemon;50;1059860;0.7;65;Nyaheat?????;Torracat;Matoufeu;88.1;726;80;50;90;fire;;25.0;7;0
+Blaze, Intimidate;1;0.5;1;1;1;2;0.5;1;0.5;0.5;2;0.5;1;1;0;2;0.5;2;115;3840;70;530;45;Heel Pokemon;90;1059860;1.8;95;Gaogaen?????;Incineroar;Félinferno;88.1;727;80;90;60;fire;dark;83.0;7;0
+Torrent, Liquid Voice;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;54;3840;70;320;45;Sea Lion Pokemon;54;1059860;0.4;50;Ashimari????;Popplio;Otaquin;88.1;728;66;56;40;water;;7.5;7;0
+Torrent, Liquid Voice;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;69;3840;70;420;45;Pop Star Pokemon;69;1059860;0.6;60;Osyamari?????;Brionne;Oterlette;88.1;729;91;81;50;water;;17.5;7;0
+Torrent, Liquid Voice;0.5;0.5;0;2;1;0.5;0.5;1;1;2;1;0.5;1;2;1;1;1;0.5;74;3840;70;530;45;Soloist Pokemon;74;1059860;1.8;80;Ashirene?????;Primarina;Oratoria;88.1;730;126;116;60;water;fairy;44.0;7;0
+Keen Eye, Skill Link, Pickup;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;75;3840;70;265;255;Woodpecker Pokemon;30;1000000;0.3;35;Tsutsukera????;Pikipek;Picassaut;50;731;30;30;65;normal;flying;1.2;7;0
+Keen Eye, Skill Link, Pickup;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;85;3840;70;355;120;Bugle Beak Pokemon;50;1000000;0.6;55;Kerarappa?????;Trumbeak;Piclairon;50;732;40;50;75;normal;flying;14.8;7;0
+Keen Eye, Skill Link, Sheer Force;0.5;1;1;2;1;1;1;1;0;0.5;0;2;1;1;1;2;1;1;120;3840;70;485;45;Cannon Pokemon;75;1000000;1.1;80;Dodekabashi?????;Toucannon;Bazoucan;50;733;75;75;60;normal;flying;26.0;7;0
+Stakeout, Strong Jaw, Adaptability;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;70;3840;70;253;255;Loitering Pokemon;30;1000000;0.4;48;Youngoose?????;Yungoos;Manglouton;50;734;30;30;45;normal;;6.0;7;0
+Stakeout, Strong Jaw, Adaptability;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;110;3840;70;418;127;Stakeout Pokemon;60;1000000;0.7;88;Dekagoose?????;Gumshoos;Argouste;50;735;55;60;45;normal;;14.2;7;0
+Swarm;1;1;1;1;1;0.5;2;2;1;0.5;0.5;1;1;1;1;2;1;1;62;3840;70;300;255;Larva Pokemon;45;1000000;0.4;47;Agojimushi?????;Grubbin;Larvibule;50;736;55;45;46;bug;;4.4;7;0
+Battery;1;1;1;0.5;1;0.5;2;1;1;0.5;1;1;1;1;1;2;0.5;1;82;3840;70;400;120;Battery Pokemon;95;1000000;0.5;57;Dendimushi?????;Charjabug;Chrysapile;50;737;55;75;36;bug;electric;10.5;7;0
+Levitate;1;1;1;0.5;1;0.5;2;1;1;0.5;1;1;1;1;1;2;0.5;1;70;3840;70;500;45;Stag Beetle Pokemon;90;1000000;1.5;77;Kuwagannon?????;Vikavolt;Lucanon;50;738;145;75;43;bug;electric;45.0;7;0
+Hyper Cutter, Iron Fist, Anger Point;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;82;5120;70;338;225;Boxing Pokemon;57;1000000;0.6;47;Makenkani?????;Crabrawler;Crabagarre;50;739;42;47;63;fighting;;7.0;7;0
+Hyper Cutter, Iron Fist, Anger Point;0.5;0.5;1;1;2;2;2;2;1;1;1;0.5;1;1;2;1;2;1;132;5120;70;478;60;Woolly Crab Pokemon;77;1000000;1.7;97;Kekenkani?????;Crabominable;Crabominable;50;740;62;67;43;fighting;ice;180.0;7;0
+Dancer;0.25;1;1;2;0.5;0.5;0.5;1;1;0.25;0;1;1;1;1;4;0.5;2;70;5120;70;476;45;Dancing Pokemon;70;1000000;0.6;75;Odoridori (pachipachi Style)?????;Oricorio;Plumeline;24.6;741;98;70;93;fire;flying;3.4;7;0
+Honey Gather, Shield Dust, Sweet Veil;0.5;0.5;0;1;1;0.25;2;2;1;0.5;0.5;1;1;2;1;2;2;1;45;5120;70;304;190;Bee Fly Pokemon;40;1000000;0.1;40;Abuly????;Cutiefly;Bombydou;50;742;55;40;84;bug;fairy;0.2;7;0
+Honey Gather, Shield Dust, Sweet Veil;0.5;0.5;0;1;1;0.25;2;2;1;0.5;0.5;1;1;2;1;2;2;1;55;5120;70;464;75;Bee Fly Pokemon;60;1000000;0.2;60;Aburibbon?????;Ribombee;Rubombelle;50;743;95;70;124;bug;fairy;0.5;7;0
+Keen Eye, Vital Spirit, Steadfast;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;65;3840;70;280;190;Puppy Pokemon;40;1000000;0.5;45;Iwanko????;Rockruff;Rocabot;50;744;30;40;60;rock;;9.2;7;0
+Keen Eye, Sand Rush, Steadfast, Keen Eye, Vital Spirit, No Guard;1;1;1;1;1;2;0.5;0.5;1;2;2;1;0.5;0.5;1;1;2;2;115;3840;70;487;90;Wolf Pokemon;75;1000000;;85;Lugarugan (mahiru No Sugata)?????;Lycanroc;Lougaroc;50;745;55;75;82;rock;;;7;0
+Schooling;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;140;3840;70;620;60;Small Fry Pokemon;130;800000;0.2;45;Yowashi (tandoku No Sugata)???;Wishiwashi;Froussardine;50;746;140;135;30;water;;0.3;7;0
+Merciless, Limber, Regenerator;0.5;1;1;2;0.5;0.5;0.5;1;1;1;2;0.5;1;0.5;2;1;0.5;0.5;53;5120;70;305;190;Brutal Star Pokemon;62;1000000;0.4;50;Hidoide????;Mareanie;Vorastérie;50;747;43;52;45;poison;water;8.0;7;0
+Merciless, Limber, Regenerator;0.5;1;1;2;0.5;0.5;0.5;1;1;1;2;0.5;1;0.5;2;1;0.5;0.5;63;5120;70;495;75;Brutal Star Pokemon;152;1000000;0.7;50;Dohidoide?????;Toxapex;Prédastérie;50;748;53;142;35;poison;water;14.5;7;0
+Own Tempo, Stamina, Inner Focus;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;100;5120;70;385;190;Donkey Pokemon;70;1000000;1.0;70;Dorobanko?????;Mudbray;Tiboudet;50;749;45;55;45;ground;;110.0;7;0
+Own Tempo, Stamina, Inner Focus;1;1;1;0;1;1;1;1;1;2;1;2;1;0.5;1;0.5;1;2;125;5120;70;500;60;Draft Horse Pokemon;100;1000000;2.5;100;Banbadoro?????;Mudsdale;Bourrinos;50;750;55;85;35;ground;;920.0;7;0
+Water Bubble, Water Absorb;1;1;1;2;1;0.5;1;2;1;1;0.5;0.5;1;1;1;2;0.5;0.5;40;3840;70;269;200;Water Bubble Pokemon;52;1000000;0.3;38;Shizukumo????;Dewpider;Araqua;50;751;40;72;27;water;bug;4.0;7;0
+Water Bubble, Water Absorb;1;1;1;2;1;0.5;1;2;1;1;0.5;0.5;1;1;1;2;0.5;0.5;70;3840;70;454;100;Water Bubble Pokemon;92;1000000;1.8;68;Onishizukumo??????;Araquanid;Tarenbulle;50;752;50;132;42;water;bug;82.0;7;0
+Leaf Guard, Contrary;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;55;5120;70;250;190;Sickle Grass Pokemon;35;1000000;0.3;40;Karikiri????;Fomantis;Mimantis;50;753;50;35;35;grass;;1.5;7;0
+Leaf Guard, Contrary;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;105;5120;70;480;75;Bloom Sickle Pokemon;90;1000000;0.9;70;Lalantes?????;Lurantis;Floramantis;50;754;80;90;45;grass;;18.5;7;0
+Illuminate, Effect Spore, Rain Dish;1;0.5;0;0.5;1;0.5;2;2;1;0.5;0.5;2;1;4;1;1;2;0.5;35;5120;70;285;190;Illuminating Pokemon;55;1000000;0.2;40;Nemasyu????;Morelull;Spododo;50;755;65;75;15;grass;fairy;1.5;7;0
+Illuminate, Effect Spore, Rain Dish;1;0.5;0;0.5;1;0.5;2;2;1;0.5;0.5;2;1;4;1;1;2;0.5;45;5120;70;405;75;Illuminating Pokemon;80;1000000;1.0;60;Mashade?????;Shiinotic;Lampignon;50;756;90;100;30;grass;fairy;11.5;7;0
+Corrosion, Oblivious;0.25;1;1;1;0.25;0.5;0.5;1;1;0.25;4;0.5;1;0.5;2;2;0.5;2;44;5120;70;320;120;Toxic Lizard Pokemon;40;1000000;0.6;48;Yatoumori?????;Salandit;Tritox;88.1;757;71;40;77;poison;fire;4.8;7;0
+Corrosion, Oblivious;0.25;1;1;1;0.25;0.5;0.5;1;1;0.25;4;0.5;1;0.5;2;2;0.5;2;64;5120;70;480;45;Toxic Lizard Pokemon;60;1000000;1.2;68;Ennewt??????;Salazzle;Malamandre;0;758;111;60;117;poison;fire;22.2;7;0
+Fluffy, Klutz, Cute Charm;0.5;0.5;1;1;2;2;1;2;0;1;1;1;1;1;2;0.5;1;1;75;3840;70;340;140;Flailing Pokemon;50;1000000;0.5;70;Nuikoguma?????;Stufful;Nounourson;50;759;45;50;50;normal;fighting;6.8;7;0
+Fluffy, Klutz, Unnerve;0.5;0.5;1;1;2;2;1;2;0;1;1;1;1;1;2;0.5;1;1;125;3840;70;500;70;Strong Arm Pokemon;80;1000000;2.1;120;Kiteruguma?????;Bewear;Chelours;50;760;55;60;60;normal;fighting;135.0;7;0
+Leaf Guard, Oblivious, Sweet Veil;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;30;5120;70;210;235;Fruit Pokemon;38;1059860;0.3;42;Amakaji????;Bounsweet;Croquine;0;761;30;38;32;grass;;3.2;7;0
+Leaf Guard, Oblivious, Sweet Veil;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;40;5120;70;290;120;Fruit Pokemon;48;1059860;0.7;52;Amamaiko?????;Steenee;Candine;0;762;40;48;62;grass;;8.2;7;0
+Leaf Guard, Queenly Majesty, Sweet Veil;2;1;1;0.5;1;1;2;2;1;0.5;0.5;2;1;2;1;1;1;0.5;120;5120;70;510;45;Fruit Pokemon;98;1059860;1.2;72;Amajo?????;Tsareena;Sucreine;0;763;50;98;72;grass;;21.4;7;0
+Flower Veil, Triage, Natural Cure;0.5;0.5;0;1;1;0.5;1;1;1;1;1;1;1;2;1;1;2;1;52;5120;70;485;60;Posy Picker Pokemon;90;800000;0.1;51;Cuwawa?????;Comfey;Guérilande;24.6;764;82;110;100;fairy;;0.3;7;0
+Inner Focus, Telepathy, Symbiosis;2;2;1;1;1;1;1;1;0;1;1;1;1;1;0.5;1;1;1;60;5120;70;490;45;Sage Pokemon;80;1250000;1.5;90;Yareyuutan??????;Oranguru;Gouroutan;50;765;90;110;60;normal;psychic;76.0;7;0
+Receiver, Defiant;0.5;0.5;1;1;2;1;1;2;1;1;1;1;1;1;2;0.5;1;1;120;5120;70;490;45;Teamwork Pokemon;90;1250000;2.0;100;Nagetukesaru??????;Passimian;Quartermac;50;766;40;60;80;fighting;;82.8;7;0
+Wimp Out;1;1;1;2;1;0.5;1;2;1;1;0.5;0.5;1;1;1;2;0.5;0.5;35;5120;70;230;90;Turn Tail Pokemon;40;1000000;0.5;25;Kosokumushi?????;Wimpod;Sovkipou;50;767;20;30;80;bug;water;12.0;7;0
+Emergency Exit;1;1;1;2;1;0.5;1;2;1;1;0.5;0.5;1;1;1;2;0.5;0.5;125;5120;70;530;45;Hard Scale Pokemon;140;1000000;2.0;75;Gusokumusha??????;Golisopod;Sarmuraï;50;768;60;90;40;bug;water;108.0;7;0
+Water Compaction, Sand Veil;0.5;2;1;0;1;0;1;1;2;2;1;2;0;0.25;1;0.5;1;2;55;3840;70;320;140;Sand Heap Pokemon;80;1000000;0.5;55;Sunaba????;Sandygast;Bacabouh;50;769;70;45;15;ghost;ground;70.0;7;0
+Water Compaction, Sand Veil;0.5;2;1;0;1;0;1;1;2;2;1;2;0;0.25;1;0.5;1;2;75;3840;70;480;60;Sand Castle Pokemon;110;1000000;1.3;85;Sirodethna?????;Palossand;Trépassable;50;770;100;75;35;ghost;ground;250.0;7;0
+Innards Out, Unaware;1;1;1;2;1;1;0.5;1;1;2;1;0.5;1;1;1;1;0.5;0.5;60;3840;70;410;60;Sea Cucumber Pokemon;130;800000;0.3;55;Namakobushi?????;Pyukumuku;Concombaffe;50;771;30;130;5;water;;1.2;7;0
+Battle Armor;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;95;30720;0;534;3;Synthetic Pokemon;95;1250000;1.9;95;Type: Null??????;Type: Null;Type:0;;772;95;95;59;normal;;120.5;7;0
+RKS System;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;95;30720;0;570;3;Synthetic Pokemon;95;1250000;2.3;95;Silvady??????;Silvally;Silvallié;;773;95;95;95;normal;;100.5;7;0
+Shields Down;0.5;1;1;2;1;1;0.5;0.5;1;1;0;2;0.5;0.5;1;2;2;2;100;6400;70;500;30 (Meteorite)255 (Core);Meteor Pokemon;60;1059860;0.3;60;Meteno???;Minior;Météno;;774;100;60;120;rock;flying;40.0;7;0
+Comatose;1;1;1;1;1;2;1;1;0;1;1;1;1;1;1;1;1;1;115;5120;70;480;45;Drowsing Pokemon;65;1250000;0.4;65;Nekkoara?????;Komala;Dodoala;50;775;75;95;65;normal;;19.9;7;0
+Shell Armor;0.5;1;2;0.5;1;1;0.25;1;1;0.25;2;1;1;1;1;2;0.5;1;78;5120;70;485;70;Blast Turtle Pokemon;135;1000000;2.0;60;Bakugames?????;Turtonator;Boumata;50;776;91;85;36;fire;dragon;212.0;7;0
+Iron Barbs, Lightningrod, Sturdy;0.5;1;0.5;0.5;0.5;2;2;0.25;1;0.5;4;0.5;0.5;0;0.5;0.5;0.25;1;98;2560;70;435;180;Roly-Poly Pokemon;63;1000000;0.3;65;Togedemaru?????;Togedemaru;Togedemaru;50;777;40;73;96;electric;steel;3.3;7;0
+Disguise;0.25;1;0;1;1;0;1;1;2;1;1;1;0;1;1;1;2;1;90;5120;70;476;45;Disguise Pokemon;80;1000000;0.2;55;Mimikkyu?????;Mimikyu;Mimiqui;50;778;50;105;96;ghost;fairy;0.7;7;0
+Dazzling, Strong Jaw, Wonder Skin ;2;2;1;2;1;0.5;0.5;1;2;2;1;0.5;1;1;0.5;1;0.5;0.5;105;3840;70;475;80;Gnash Teeth Pokemon;70;1000000;0.9;68;Hagigishiri?????;Bruxish;Denticrisse;50;779;70;70;92;water;psychic;19.0;7;0
+Berserk, Sap Sipper, Cloud Nine;1;1;2;0.5;2;2;0.5;1;0;0.5;1;2;1;1;1;1;1;0.5;60;5120;70;485;70;Placid Pokemon;85;1000000;3.0;78;Jijilong?????;Drampa;Draïeul;50;780;135;91;36;normal;dragon;185.0;7;0
+Steelworker;1;2;1;0.5;1;0;2;2;2;0.5;0.5;2;0;1;1;1;1;0.5;131;6400;70;517;25;Sea Creeper Pokemon;100;1000000;3.9;70;Dadarin????;Dhelmise;Sinistrail;;781;86;90;40;ghost;grass;210.0;7;0
+Bulletproof, Soundproof, Overcoat;1;1;2;0.5;2;1;0.5;1;1;0.5;1;2;1;1;1;1;1;0.5;55;10240;70;300;45;Scaly Pokemon;65;1250000;0.6;45;Jyarako????;Jangmo-o;Bébécaille;50;782;45;45;45;dragon;;29.7;7;0
+Bulletproof, Soundproof, Overcoat;0.5;0.5;2;0.5;4;1;0.5;2;1;0.5;1;2;1;1;2;0.5;1;0.5;75;10240;70;420;45;Scaly Pokemon;90;1250000;1.2;55;Jyarango?????;Hakamo-o;Écaïd;50;783;65;70;65;dragon;fighting;47.0;7;0
+Bulletproof, Soundproof, Overcoat;0.5;0.5;2;0.5;4;1;0.5;2;1;0.5;1;2;1;1;2;0.5;1;0.5;110;10240;70;600;45;Scaly Pokemon;125;1250000;1.6;75;Jyararanga??????;Kommo-o;Ékaïser;50;784;100;105;85;dragon;fighting;78.2;7;0
+Electric Surge, Telepathy;0.5;0.5;0;0.5;1;0.5;1;0.5;1;1;2;1;1;2;1;1;1;1;115;3840;70;570;3;Land Spirit Pokemon;85;1250000;1.8;70;Kapu-kokeko??????;Tapu Koko;Tokorico;;785;95;75;130;electric;fairy;20.5;7;1
+Psychic Surge, Telepathy;1;1;0;1;1;0.25;1;1;2;1;1;1;1;2;0.5;1;2;1;85;3840;70;570;3;Land Spirit Pokemon;75;1250000;1.2;70;Kapu-tetefu??????;Tapu Lele;Tokopiyon;;786;130;115;95;psychic;fairy;18.6;7;1
+Grassy Surge, Telepathy;1;0.5;0;0.5;1;0.5;2;2;1;0.5;0.5;2;1;4;1;1;2;0.5;130;3840;70;570;3;Land Spirit Pokemon;115;1250000;1.9;70;Kapu-bulul??????;Tapu Bulu;Tokotoro;;787;85;95;75;grass;fairy;45.5;7;1
+Misty Surge, Telepathy;0.5;0.5;0;2;1;0.5;0.5;1;1;2;1;0.5;1;2;1;1;1;0.5;75;3840;70;570;3;Land Spirit Pokemon;115;1250000;1.3;70;Kapu-rehire??????;Tapu Fini;Tokopisco;;788;95;130;85;water;fairy;21.2;7;1
+Unaware;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;29;30720;0;200;45;Nebula Pokemon;31;1250000;0.2;43;Cosmog?????;Cosmog;Cosmog;;789;29;31;37;psychic;;0.1;7;1
+Sturdy;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;29;30720;0;400;45;Protostar Pokemon;131;1250000;0.1;43;Cosmovum?????;Cosmoem;Cosmovum;;790;29;131;37;psychic;;999.9;7;1
+Full Metal Body;1;2;0.5;1;0.5;1;2;0.5;2;0.5;2;0.5;0.5;0;0.25;0.5;0.5;1;137;30720;0;680;45;Sunne Pokemon;107;1250000;3.4;137;Solgaleo?????;Solgaleo;Solgaleo;;791;113;89;97;psychic;steel;230.0;7;1
+Shadow Shield;1;4;1;1;1;0;1;1;4;1;1;1;0;0.5;0.5;1;1;1;113;30720;0;680;45;Moone Pokemon;89;1250000;4.0;137;Lunala?????;Lunala;Lunala;;792;137;107;97;psychic;ghost;120.0;7;1
+Beast Boost;0.5;1;1;1;0.5;1;0.5;0.5;1;1;4;1;0.5;0.25;2;1;2;2;53;30720;0;570;45;Parasite Pokemon;47;1250000;1.2;109;Uturoid?????;Nihilego;Zéroïd;;793;127;131;103;rock;poison;55.5;7;1
+Beast Boost;0.5;0.5;1;1;2;0.5;2;4;1;0.5;0.5;1;1;1;2;1;1;1;139;30720;0;570;25;Swollen Pokemon;139;1250000;2.4;107;Massivoon??????;Buzzwole;Mouscoto;;794;53;53;79;bug;fighting;333.6;7;1
+Beast Boost;0.5;0.5;1;1;2;0.5;2;4;1;0.5;0.5;1;1;1;2;1;1;1;137;30720;0;570;255;Lissome Pokemon;37;1250000;1.8;71;Pheroache??????;Pheromosa;Cancrelove;;795;137;37;151;bug;fighting;25.0;7;1
+Beast Boost;1;1;1;0.5;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;89;30720;0;570;30;Glowing Pokemon;71;1250000;3.8;83;Denjyumoku??????;Xurkitree;Câblifère;;796;173;71;83;electric;;100.0;7;1
+Beast Boost;0.25;1;0.5;2;0.5;1;2;0.5;1;0.25;0;1;0.5;0;0.5;1;0.5;1;101;30720;0;570;25;Launch Pokemon;103;1250000;9.2;97;Tekkaguya?????;Celesteela;Bamboiselle;;797;107;101;61;steel;flying;999.9;7;1
+Beast Boost;1;1;0.5;0.5;0.5;2;4;1;1;0.25;1;1;0.5;0;0.5;0.5;0.5;0.5;181;30720;0;570;255;Drawn Sword Pokemon;131;1250000;0.3;59;Kamiturugi?????;Kartana;Katagami;;798;59;31;109;grass;steel;0.1;7;1
+Beast Boost;2;0.5;2;0.5;4;2;0.5;1;0.5;0.5;1;2;1;1;0;1;1;0.5;101;30720;0;570;15;Junkivore Pokemon;53;1250000;5.5;223;Akuziking??????;Guzzlord;Engloutyran;;799;97;53;43;dark;dragon;888.0;7;1
+Prism Armor;2;2;1;1;1;0.5;1;1;2;1;1;1;1;1;0.5;1;1;1;107;30720;0;600;3;Prism Pokemon;101;1250000;2.4;97;Necrozma?????;Necrozma;Necrozma;;800;127;89;79;psychic;;230.0;7;1
+Soul-Heart;0.25;0.5;0;1;0.5;1;2;0.5;1;0.5;2;0.5;0.5;0;0.5;0.5;1;1;95;30720;0;600;3;Artificial Pokemon;115;1250000;1.0;80;Magearna????;Magearna;Magearna;;801;130;115;65;steel;fairy;80.5;7;1
