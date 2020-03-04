@@ -14,10 +14,10 @@ $("input[type=file]").change(function (e){$(this).next('.custom-file-label').tex
 
 
 
-if(localStorage.getItem('id') == "2"){
+if(localStorage.getItem('id') == "1"){
     document.getElementById("list-particulier").style.display = "none";
     document.getElementById("list-entreprise").style.display = "block";
-}else if(localStorage.getItem('id') == "1"){
+}else if(localStorage.getItem('id') == "2"){
     document.getElementById("list-particulier").style.display = "block";
     document.getElementById("list-entreprise").style.display = "none";
 }
@@ -40,7 +40,7 @@ const particulierService = new ParticulierService(httpClient);
 const entrepriseService = new EntrepriseService(httpClient);
 
 
-if(localStorage.getItem('id') == "1"){
+if(localStorage.getItem('id') == "2"){
     particulierService.getProfil(localStorage.getItem('id')).then(particuliers => {
         particuliers.forEach((particulier) => {
             document.getElementById('nom').innerHTML = particulier.nom;
@@ -53,7 +53,7 @@ if(localStorage.getItem('id') == "1"){
         })
     });
 }
-else if(localStorage.getItem('id') == "2"){
+else if(localStorage.getItem('id') == "1"){
     entrepriseService.getProfil(localStorage.getItem('id')).then(entreprises => {
         entreprises.forEach((entreprise) => {
             document.getElementById('telephoneE').innerHTML = entreprise.telephone;

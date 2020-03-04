@@ -20,7 +20,8 @@ document.getElementById('btnChercher').onclick = function() {
         document.getElementById('exampleInputLocation').value,
         document.getElementById('inputContrat').value,
         document.getElementById('inputSalaire').value,
-        document.getElementById('inputDate').value
+        document.getElementById('inputDate').value,
+        document.getElementById('inputDistance').value
     ).then(offres => {
         let html =''
         offres.forEach((offre) => {
