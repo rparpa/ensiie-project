@@ -10,10 +10,5 @@ module.export = class {
                 return -1;
             }
         }); 
-        
-        // Or
-        fs.writeFileSync('/tmp/test-sync');
-        
-        
     }
 }
