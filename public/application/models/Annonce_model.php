@@ -112,7 +112,7 @@ class Annonce_model extends CI_Model
 	* @param $description Description de l'annonce
 	* @param @prix Prix de l'annonce
 	 */
-	public function updateAnnonce($id_annonce,$user,$titre,$description,$prix,$etat){
+	public function updateAnnonce($id_annonce,$user,$titre,$description,$prix,$etat,$categories){
 
 		$data = array(
 			'id_user' => $user,
@@ -122,7 +122,13 @@ class Annonce_model extends CI_Model
 			'prix'=>$prix,
 		);
 		$this->db->where('id_annonce', $id_annonce);
-		return $this->db->update('annonce',$data);
+		$this->db->update('annonce',$data);
+
+		//Ajout du tuple dans la table Categorie_annonce
+		if($categories!=null){
+			$this->categorieAnnonce->delete($id_annonce);
+			$this->categorieAnnonce->insert($id_annonce,$categories);
+		}
   }
 
 

@@ -14,9 +14,17 @@ class CategorieAnnonce_model extends CI_Model
      */
     public function insert($id_annonce,$categories){
 
+
         foreach($categories as $key=>$value){
-           $value=$value+1;
-           $this->db->insert('categorie_annonce',array('id_annonce'=>$id_annonce,'id_categorie'=>$value));
+            if(is_numeric($value)){
+                $value=$value+1;
+                $this->db->insert('categorie_annonce',array('id_annonce'=>$id_annonce,'id_categorie'=>$value));
+            }
+            else{
+                $id_categorie=$this->categorie->getCategorieByName($value)[0]['id_categorie'];
+                $this->db->insert('categorie_annonce',array('id_annonce'=>$id_annonce,'id_categorie'=>$id_categorie));
+            }
+
         }
 
     }
