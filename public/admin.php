@@ -76,6 +76,14 @@
                     <h1 class="h2">Dashboard</h1>
                 </div>
 
+                <br>
+                <?php
+                $fi = new FilesystemIterator('assets/gif', FilesystemIterator::SKIP_DOTS);
+                $r = rand(2, iterator_count($fi)+1);
+                $file = scandir('assets/gif');
+
+                echo "<img class=\"img-center gif\" src=\"assets/gif/" . $file[$r] . "\"/>";
+                ?>
             </main>
         </div>
     </div>

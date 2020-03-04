@@ -43,6 +43,7 @@ $orderService = new OrderService(
     if (isset($_SESSION['order_id'])) {
         $newOrder = $orderService->getOrderById($_SESSION['order_id']);
         $str = ($newOrder->getApproval()) ? ("Approuvé") : ("En attente");
+        unset($_SESSION['order_id']);
 
         echo "
                                 <p class=\"align-center\"> Merci pour votre commande #" . $newOrder->getId() . "<br>Etat de la commande : " . $str . "<br>" . $newOrder->getDate()->format("Y-m-d") . "</p>

@@ -27,9 +27,17 @@ CREATE TABLE "ingredient" (
 INSERT INTO "ingredient" (label, available, price, image_link)
 VALUES ('Salade', true, 0.2, '/images/lettuce.png');
 INSERT INTO "ingredient" (label, available, price, image_link)
-VALUES ('Tomate', true, 0.3, '/images/tomato.png');
+VALUES ('Tomate', true, 0.5, '/images/tomato.png');
 INSERT INTO "ingredient" (label, available, price, image_link)
 VALUES ('Oignon', true, 0.3, '/images/onion.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Egg', true, 0.9, '/images/egg.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Tuna', true, 0.3, '/images/tuna.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Mozzarella', true, 1.2, '/images/mozzarella.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Hummus', true, 1.0, '/images/hummus.png');
 
 DROP TABLE  "sandwich";
 CREATE TABLE "sandwich" (
