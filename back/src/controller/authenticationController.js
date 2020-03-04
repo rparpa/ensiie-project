@@ -18,6 +18,7 @@ class AuthenticationController {
         , result.rows[0].email
         , result.rows[0].vehiculeId
         , result.rows[0].addressId
+        , result.rows[0].role
         )
       return user;
     }

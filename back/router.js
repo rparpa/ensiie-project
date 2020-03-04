@@ -15,6 +15,7 @@ router.post('/authentication', function(req, res, next) {
   (async () => {
     const user = await controller.getUserFromCredentials(req.body.username, req.body.password);
     if (undefined !== user) {
+      console.log(user.toJson())
       res.send(user.toJson());
     } else {
       return res.status(404).send({

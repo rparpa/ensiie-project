@@ -3,7 +3,6 @@
       <div v-if="retrieving" class="clearfix">
         <b-spinner class="float-right" label="Floated Right"></b-spinner>
       </div>
-      <h1 v-if="this.$root.$data.user != undefined">{{this.$root.$data.user._username}}</h1>
       <br/>
       <MglMap
         :accessToken="accessToken"

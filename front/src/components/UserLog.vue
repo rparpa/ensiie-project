@@ -167,8 +167,8 @@ export default {
       , this.logIn
       )
       .then(response => {
-        this.displayAuthenticationErrorAlert = false
-        this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email)
+        this.displayAuthenticationErrorAlert = false;        
+        this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email,undefined , undefined, response.data.role)
         this.settings.username = this.currentUser.username
         this.settings.email = this.currentUser.email
         this.$root.$data.user = this.currentUser;
@@ -184,7 +184,7 @@ export default {
       , this.signIn
       )
       .then(response => {
-        this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email);
+        this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email, undefined, undefined, response.data.role);
         this.$root.$data.user = this.currentUser;
       })
       .catch(error => {      

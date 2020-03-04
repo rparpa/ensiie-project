@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header/>
-    <Nav v-if="this.$root.$data.user != undefined" class="navButtons"/>
+    <Nav v-if="this.$root.$data.user != undefined && this.$root.$data.user.role == 1" class="navButtons"/>
     <Map/>
   </div>
 </template>

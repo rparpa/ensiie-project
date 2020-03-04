@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="this.$root.$data.user !== undefined">
+    <div v-if="this.$root.$data.user !== undefined && this.$root.$data.user.role == 1">
       <Header/>
     <Nav class="navButtons"/>
     <div class="userTable">
