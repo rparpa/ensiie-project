@@ -1,4 +1,4 @@
-# ENSIIE Web Project Skeleton
+# La Sandwicheriie
 
 ## Install your application
 This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
@@ -28,3 +28,8 @@ Below are some useful commands :
 * `make db.connect` Connect to th database
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
+
+## User creation
+![Create user in db](public/assets/documentation_images/test_create_user_db.png)
+
+* ``
