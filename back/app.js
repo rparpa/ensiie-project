@@ -16,11 +16,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-// //add caching with apicache
-// const apicache = require('apicache');
-// const cache = apicache.middleware;
-// app.use(cache("5 minutes"));
-
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());

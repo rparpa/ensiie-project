@@ -3,6 +3,10 @@ var router = express.Router();
 var openDataRepository = require('../repository/openDataParisRepository');
 var ParkingSpot = require('../entity/ParkingSpot');
 
+//add caching with apicache for openDataParis request
+const apicache = require('apicache');
+const cache = apicache.middleware;
+
 /* ### FONCTIONS ### */
 
 function fromJsonToObject(dataFromOpenDataParisRepo){
@@ -32,7 +36,7 @@ function fromJsonToObject(dataFromOpenDataParisRepo){
 
 /* ### ROUTAGE ### */
 
-router.get('/getAllParkingSpots', function(req, res, next) {
+router.get('/getAllParkingSpots', cache('5 minutes'), function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
@@ -51,7 +55,7 @@ router.get('/getAllParkingSpots', function(req, res, next) {
 
 });
 
-router.get('/getAllParkingSpotsVoitures', function(req, res, next) {
+router.get('/getAllParkingSpotsVoitures', cache('5 minutes'), function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
@@ -70,7 +74,7 @@ router.get('/getAllParkingSpotsVoitures', function(req, res, next) {
 
 });
 
-router.get('/getAllParkingSpotsMotos', function(req, res, next) {
+router.get('/getAllParkingSpotsMotos', cache('5 minutes'), function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
@@ -90,7 +94,7 @@ router.get('/getAllParkingSpotsMotos', function(req, res, next) {
 
 
 
-router.get('/getAllParkingSpotsVelos', function(req, res, next) {
+router.get('/getAllParkingSpotsVelos', cache('5 minutes'), function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
@@ -108,7 +112,7 @@ router.get('/getAllParkingSpotsVelos', function(req, res, next) {
     repository.getAllParkingSpotsVelos(urlOptions, onDataFromOpenDataParisRepo);
 });
 
-router.get('/getAllParkingSpotsGratuit', function(req, res, next) {
+router.get('/getAllParkingSpotsGratuit', cache('5 minutes'), function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
@@ -126,7 +130,7 @@ router.get('/getAllParkingSpotsGratuit', function(req, res, next) {
     repository.getAllParkingSpotsGratuit(urlOptions, onDataFromOpenDataParisRepo);
 });
 
-router.get('/getAllParkingSpotsLivraison', function(req, res, next) {
+router.get('/getAllParkingSpotsLivraison', cache('5 minutes'), function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
@@ -144,7 +148,7 @@ router.get('/getAllParkingSpotsLivraison', function(req, res, next) {
     repository.getAllParkingSpotsLivraison(urlOptions, onDataFromOpenDataParisRepo);
 });
 
-router.get('/getAllParkingSpotsAutocar', function(req, res, next) {
+router.get('/getAllParkingSpotsAutocar', cache('5 minutes'), function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
@@ -162,7 +166,7 @@ router.get('/getAllParkingSpotsAutocar', function(req, res, next) {
     repository.getAllParkingSpotsAutocar(urlOptions, onDataFromOpenDataParisRepo);
 });
 
-router.get('/getAllParkingSpotsElectrique', function(req, res, next) {
+router.get('/getAllParkingSpotsElectrique', cache('5 minutes'),  function(req, res, next) {
     let repository = new openDataRepository();
 
     var onDataFromOpenDataParisRepo = function (dataFromOpenDataParisRepo){
