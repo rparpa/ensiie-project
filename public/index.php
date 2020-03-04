@@ -7,22 +7,28 @@ use Ingredient\IngredientService;
 use Order\Order;
 use Order\OrderRepository;
 use Order\OrderService;
+use User\UserRepository;
+use Invoice\InvoiceRepository;
+use User\User;
+use User\UserService;
+
 
 
 require_once '../src/Bootstrap.php';
 
 
 $my_connection = \Db\Connection::get();
-$userRepository = new \User\UserRepository(\Db\Connection::get());
-$userService = new \User\UserService($userRepository);
 
-$ingredientService = new IngredientService(new IngredientRepository($my_connection));
 $sandwichRepository = new SandwichRepository($my_connection);
 
 $orderService = new OrderService(
     new OrderRepository($my_connection),
-    new SandwichRepository($my_connection)
+    $sandwichRepository,
+    new UserRepository($my_connection),
+    new InvoiceRepository($my_connection)
 );
+$ingredientService = new IngredientService(new IngredientRepository($my_connection));
+$userService = new UserService(new \User\UserRepository($my_connection));
 
 
 $sandwichList = [];/*
@@ -36,113 +42,12 @@ $users = $userService->getAllUser();
 ?>
 
 <?php require_once '../src/User/UserRepository.php'; ?>
-<!DOCTYPE HTML>
 
-<html>
-	<head>
-		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>	
-		<script type="text/javascript" src="./index.js"></script>
-		<title>SandwicherIIE</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-			<div id="wrapper">
-					<header id="header">
-						<div class="logo">
-							<img src="images/logo.png" width="80%"></img>
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>La SandwicherIIE</h1>
-								<p>L'association Sandwich de l'ENSIIE, commandez votre menu avec nous</p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#connexion">Connexion</a></li>
-								<?php if(isset($_POST['pseudo']))  echo
-								'<li><a href="#commander">Commander</a></li>
-								<li><a href="#contact">Contact</a></li>
-								<li><a href="#elements">Elements</a></li>'?>
-							</ul>
-						</nav>
-					</header>
 
-				<!-- Main -->
-					<div id="main">
+<?php include 'header.php';?>
 
-						<!-- connexion -->
-							<article id="connexion">
-							<section>
-									<h3 class="major">Connexion</h3>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="pseudo">Pseudo</label>
-												<input type="text" name="pseudo" id="pseudo" value="" placeholder="Snitchy" />
-											</div>
-											<div class="field half">
-												<label for="password">Mot de passe</label>
-												<input type="password" name="password" id="password" value="" placeholder="**********" autocomplete="off" />
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Connexion" class="primary" /></li>
 
-										</ul>
-										<ul class="actions">
-											<a class="primary" href="#CreerCompte">Créer un compte</a>
-										</ul>
-										
-									</form>
-								</section></article>
 
-							<article id="CreerCompte">
-							<section>
-									<h3 class="major">Création de compte</h3>
-									<? 
-									$userRepository = new \User\UserRepository(\Db\Connection::get());
-									$userService = new \User\UserService($userRepository);
-									$newUser = new \User\User();
-									$newUser->setFirstname("Noel");
-									$newUser->setLastname("Flantier");
-									$newUser->setBirthday(new DateTimeImmutable("01/01/1965"));
-									$newUser->setMail("bla@bla.fr");
-									$pseudo="";
-									$password="";
-									 echo
-									"<form name=\"CreateAccount\" method=\"post\" action=\"#\">
-										<div class=\"fields\">
-											<div class=\"field thrid\">
-												<label for=\"pseudo\">Pseudo</label>
-												<input type=\"text\" name=\"pseudo\" id=\"pseudo\" value=\"\" placeholder=\"Snitchy\" />
-											</div>
-											<div class=\"field half\">
-												<label for=\"password\">Mot de passe</label>
-												<input type=\"password\" name=\"password\" id=\"password\" value=\"\" placeholder=\"**********\" autocomplete=\"off\" />
-											</div>
-											<div class=\"field half\">
-												<label for=\"newmdp2\">Confirmation mot de passe</label>
-												<input type=\"password\" name=\"newmdp2\" id=\"newmdp2\" value=\"\" placeholder=\"**********\" autocomplete=\"off\" />
-											</div>
-
-										</div>
-										<div>
-											<ul class=\"actions\">
-											<li><button name =\"btnSignUp\" id=\"btnSignUp\" type=\"submit\" value=\"Créer un compte\" class=\"primary\">Créer un compte</button></li>
-											</ul>
-										</div>
-									</form>";
-									echo ("<script>console.log('PHP: " . $pseudo . "');</script>");
-									$newUser->setPseudo($_POST["pseudo"]);
-									$newUser->setPassword($_POST["password"]);
-									$userService->createUser($newUser);
-									?>
-								</section></article>
 
 						<!-- commander -->
 							<article id="commander">
@@ -190,172 +95,10 @@ $users = $userService->getAllUser();
 								</section>
 								</article>
 
-						<!-- Contact -->
-							<article id="contact">
-								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="4"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</article>
-
-
-                        <!-- Recap -->
-                        <article id="recap">
-
-                            <?
-                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-                                $newSandwich = new Sandwich();
-                                $newSandwich->setLabel('Custom');
-
-                                $filterIngredients = [];
-                                foreach ($availableIngredients as $ingredient) {
-                                    if(isset($_POST[$ingredient->getLabel()])) {
-                                        $filterIngredients[] = $ingredient;
-                                    }
-                                }
-
-                                $newSandwich->setIngredients($filterIngredients);
-                                $sandwichRepository->createSandwich($newSandwich);
-
-                                $sandwichList[] = $newSandwich;
-
-
-                                $newOrder = new Order();
-                                $newOrder
-                                    ->setApproval(false)
-                                    ->setDate(new DateTimeImmutable(date('d-m-Y')))
-                                    ->setSandwichs($sandwichList);
-
-                                $orderService->createOrder($newOrder);
-                                //$_SESSION['sandwichList'] = $sandwichList;
-                                echo $newOrder->getId();
-                            }
-                            ?>
 
 
 
-                            <h2 class="major">Validation</h2>
-                                <div class="table-wrapper">
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th>Sandwich</th>
-                                            <th>Extra</th>
-                                            <th>Prix</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="tabvalidation">
-                                        <?
-                                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                                            foreach ($sandwichList as $sandwich) {
-                                                $price = 0;
-                                                $description = "";
-                                                $ingredients = $sandwich->getIngredients();
-                                                if ($ingredients != null) {
-                                                    foreach ($ingredients as $ingredient) {
-                                                        $price += $ingredient->getPrice();
-                                                        $description .= $ingredient->getLabel() . "<br>";
-                                                    }
-                                                }
 
-                                                echo "<tr>
-                                                        <td>
-                                                            <div class=\"sandwich\">" . $sandwich->getLabel() . "
-                                                                <div id=\"tooltip\">" . $description . "</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Pas d'extra</td>
-                                                        <td>" . $price . " €</td>
-                                                        <td class=\"min\"><i class=\"fas fa-times\"></i></td>
-                                                    </tr>
-                                                    ";
-
-                                            }
-                                        }
-                                        ?>
-                                        </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <td colspan="2">
-                                                <a id="add" href="#commander" class="fas fa-plus"></a>
-                                            </td>
-                                            <td><? if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                                                    echo $orderService->getTotalPrice($newOrder);
-                                                } ?> €</td>
-                                        </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
-
-                                    <form action="#pay" id="sandwichListForm" method="POST">
-                                        <?
-                                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                                            $id = $newOrder->getId();
-                                            $id = 1; //Wait until debug
-                                            echo "<input type=\"text\" name=\"id\" style=\"display: none;\" value=\"" . $id . "\" \">";
-                                        }
-                                        ?>
-                                    </form>
-                                    <button type="submit" class="button primary validation" form="sandwichListForm">Payer</button>
-
-                            <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
-                        </article>
-
-
-                        <!-- Pay -->
-                        <article id="pay">
-                            <h2 class="major">Validation</h2>
-
-                            <div class="f-modal-alert">
-                                <div class="f-modal-icon f-modal-success animate">
-                                    <span class="f-modal-line f-modal-tip animateSuccessTip"></span>
-                                    <span class="f-modal-line f-modal-long animateSuccessLong"></span>
-                                    <div class="f-modal-placeholder"></div>
-                                    <div class="f-modal-fix"></div>
-                                </div>
-                            </div>
-                            <?
-                            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
-                                $newOrder = $orderService->getOrderById($_POST['id']);
-
-                               echo "
-                                <p class=\"align-center\"> Merci pour votre commande #" . $newOrder->getId() . "<br>Etat de la commande : " . $newOrder->getApproval() . "<br>" . $newOrder->getDate()->format("Y-m-d") . "</p>
-                                ";
-                            }
-                            $fi = new FilesystemIterator('assets/gif', FilesystemIterator::SKIP_DOTS);
-                            $r = rand(2, iterator_count($fi)+1);
-                            $file = scandir('assets/gif');
-
-                            echo "<img class=\"img-center gif\" src=\"assets/gif/" . $file[$r] . "\"/>";
-                            ?>
-
-                            <p><i id="disclaimer">La SandwicherIIE est une projet à but non lucratif, tous les aliments sont au prix coutant.</i></p>
-                        </article>
 
 						<!-- Elements -->
 							<article id="elements">
@@ -599,26 +342,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							</article>
 
 					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-					<?php if(isset($_POST['pseudo'])) echo 'Connecté en tant que : ' . $_POST['pseudo']; ?>
-					<? foreach ($users as $user)
-					echo $user->getPseudo()  ?>
-						<p class="copyright">&copy; SandwicherIIE <?php echo date("Y"); ?></p>
-					</footer>
+                <?php include 'footer.php';?>
 
 			</div>
 
-		<!-- BG -->
-			<div id="bg"></div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
 			<SCRIPT TYPE="text/javascript">
 
 
