@@ -138,9 +138,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <td>" . $order->getId() . "</td>
                                     <td>" . $order->getClient()->getPseudo() . "</td>
                                     <td>" . $description . "</td>
-                                    <td>" . $order->getDate()->format("Y-m-d") . "</td>
-                                    <td>" . $order->getValidator()->getPseudo() . "</td>
-                                    <td>" . $order->getApproval() . "</td>
+                                    <td>" . $order->getDate()->format("Y-m-d") . "</td>";
+
+                                    if ($order->getValidator() != null){
+                                        echo "<td>" .  $order->getValidator()->getPseudo() . "</td>";
+                                    } else {
+                                        echo "<td> </td>";
+                                    }
+
+
+                                echo "<td>" . $order->getApproval() . "</td>
                                     <td>
                                     <a class=\"badge badge-danger delorders\" id=\"" . $order->getId() . "\">
                                     
