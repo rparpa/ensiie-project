@@ -85,17 +85,26 @@ class IngredientService
             $result = false;
             $this->errors['label'] = 'Label is mandatory.';
 
-        } else if (null == $ingredient->getId()) {
+        } else {
+            $existingIngredient = null;
             $existingIngredient = $this->ingredientRepository->findOneByLabel($ingredient->getLabel());
-            if (null != $existingIngredient) {
-                $result = false;
-                $this->errors['label'] = 'This label already exists for an ingredient.';
+            if (null != $existingIngredient->getId()) {
+                if (null == $ingredient->getId() || $existingIngredient->getId() != $ingredient->getId()) {
+                    $result = false;
+                    $this->errors['label'] = 'This label already exists for an ingredient.';
+                }
             } 
+            
         }
 
-        if (null == $ingredient->getPrice() || 0 > $ingredient->getLabel() ) {
+        try {
+            if($ingredient->getPrice() == null) {
+                $result = false;
+                $this->errors['price'] = 'Price is mandatory.';
+            }
+        } catch(\OutOfRangeException $oore) {
             $result = false;
-            $this->errors['price'] = 'Price is mandatory and should be superior to zero..';
+            $this->errors['price'] = 'Price must be superior to zero.';
         }
 
         return $result;

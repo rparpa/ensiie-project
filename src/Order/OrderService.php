@@ -1,8 +1,12 @@
 <?php
 namespace Order;
 
+use Invoice\Invoice;
 use Sandwich\Sandwich;
 use Sandwich\SandwichRepository;
+use User\User;
+use User\UserRepository;
+use Invoice\InvoiceRepository;
 
 /**
  * Class OrderService
@@ -13,23 +17,20 @@ class OrderService
 
     //TODO
     // get orders by client
-    // ajout du client à la creation
-    // ajout de l'admin à la validation (setApproval) 
-    
-    //TODO 
-    //fonction validate client & validate admin 
-    //          -> même shéma que pour le sandwich
-
 
     private OrderRepository $orderRepository;
     private SandwichRepository $sandwichRepository;
+    private UserRepository $userRepository;
+    private InvoiceRepository $invoiceRepository;
 
     private ?array $errors = [];
 
-    public function __construct(OrderRepository $orderRepository, SandwichRepository $sandwichRepository)
+    public function __construct(OrderRepository $orderRepository, SandwichRepository $sandwichRepository, UserRepository $userRepository, InvoiceRepository $invoiceRepository)
     {
         $this->orderRepository = $orderRepository;
         $this->sandwichRepository = $sandwichRepository;
+        $this->userRepository = $userRepository;
+        $this->invoiceRepository = $invoiceRepository;
     }
 
     public function getErrors() {
@@ -101,29 +102,48 @@ class OrderService
         return $order;
     }
 
-    public function setApproval(Order $order) {
+    public function approveOrder(Order $order) {
         $this->resetErrors();
+        $order->setApproval(true);
+
+        $result = true;
         if (null == $order->getId()) {
+            $result = false;
             $this->errors['id'] = 'Order id shouldn\'t be null for validation.';
-        } else {
-            $this->orderRepository->setApproval($order);
+        }
+        
+        if($order->getValidator() == null) {
+            $result = false;
+            $this->errors['validator_empty'] = 'There is no Validator.';
+            
+        } else if (! $this->validateAdmin($order->getValidator()) ) {
+            $result = false;
+        }
+
+        if($result) {
+            if($this->orderRepository->setApproval($order)) {
+                $newInvoice = new Invoice();
+                $newInvoice->setOrder($order);
+                $this->invoiceRepository->createInvoice($newInvoice);
+            }
         }
     }
 
     public function deleteOrder(Order $order) {
         $this->resetErrors();
-        if($order->getId() == null) {
+        if($order->getId() == null)
             $this->errors['id'] = 'Order id shouldn\'t be null.';
-        } else {
+        else
             $result = $this->orderRepository->deleteOrder($order);
-        }
         return $result;
     }
 
     private function validateOrder(Order $order) {
         $result = true;
-        if( $order->getSandwichs() != null ) {
-            foreach ($order->getSandwichs() as $sandwich) {
+
+        #Sandwichs control
+        if($order->getSandwichs() != null) {
+            foreach($order->getSandwichs() as $sandwich) {
                 if(! $this->validateSandwich($sandwich)) {
                     $result = false;
                 }
@@ -132,47 +152,88 @@ class OrderService
             $result = false;
             $this->errors['sandwichs_empty'] = 'This order is empty.';
         }
-        return $result;
-    }
 
-    private function validateSandwich(Sandwich $sandwich) {
-        $result = true;
-
-        if (null != $sandwich->getId()) {
-            $existingSandwich = $this->sandwichRepository->findOneById($sandwich->getId());
-            if (null == $existingSandwich) {
+        #Client control
+        if($order->getClient() != null) {
+            if(! $this->validateClient($order->getClient())) {
                 $result = false;
-                $this->errors['sandwich_id'] = 'This id doesn\'t exists for a sandwich.';
             }
         } else {
-            if (null == $sandwich->getLabel() || '' == $sandwich->getLabel() ) {
-                $result = false;
-                $this->errors['sandwich_label'] = 'Label is mandatory.';    
-            }
+            $result = false;
+            $this->errors['client_empty'] = 'There is no Client.';
+        }
+
+        #Admin control
+        if($order->getValidator() != null) {
+            $result = false;
+            $this->errors['admin_filled'] = 'Validator must be empty on order creation.';
         }
 
         return $result;
     }
 
-    public function getTotalPrice(Order $order)
-    {
-        $result = -1;
-        if (null != $order)
-        {
-            if ($order->getSandwichs() == null)
-            {
-                $this->errors['sandwichs_empty'] = 'This order is empty.';
-            }
-            $result =  $order->getTotalPrice();
+private function validateClient(User $userClient)
+{
+    $result = true;
+
+    if(null != $userClient->getId()) {
+        $existingClient = $this->userRepository->findOneById($userClient->getId());
+        if (null == $existingClient) {
+            $result = false;
+            $this->errors['user_id'] = 'This id doesn\'t exists for a user.';
         }
-        else
-        {
-            $this->errors['id'] = 'Order id ' . $order->getId() . ' doesn\'t exists.';
-        }
-        return $result;
+    } else if (null == $userClient->getPseudo() || '' == $userClient->getPseudo() ) {
+            $result = false;
+            $this->errors['user_pseudo'] = 'Pseudo is mandatory.';
     }
 
-    private function resetErrors() {
-        $this->errors = [];
+    return $result;
+}
+
+private function validateAdmin(User $userAdmin) {
+    $result = true;
+
+    if(null != $userAdmin->getId()) {
+        $existingClient = $this->userRepository->findOneById($userAdmin->getId());
+        if (null == $userAdmin) {
+            $result = false;
+            $this->errors['user_id'] = 'This id doesn\'t exists for a user.';
+        }
+        if (!$userAdmin->isValidator()) {
+            $result = false;
+            $this->errors['user_validator'] = 'User isn\'t validator.';
+        }
+    } else {
+        if (null == $userAdmin->getPseudo() || '' == $userAdmin->getPseudo() ) {
+            $result = false;
+            $this->errors['user_pseudo'] = 'Pseudo is mandatory.';
+        }
     }
+    
+    return $result;
+}
+
+private function validateSandwich(Sandwich $sandwich) {
+    $result = true;
+
+    if (null != $sandwich->getId()) {
+        $existingSandwich = $this->sandwichRepository->findOneById($sandwich->getId());
+        if (null == $existingSandwich) {
+            $result = false;
+            $this->errors['sandwich_id'] = 'This id doesn\'t exists for a sandwich.';
+        }
+    } else {
+        if (null == $sandwich->getLabel() || '' == $sandwich->getLabel() ) {
+            $result = false;
+            $this->errors['sandwich_label'] = 'Label is mandatory.';    
+        }
+    }
+
+    return $result;
+}
+
+private function resetErrors() {
+    $this->errors = [];
+}
+
 }

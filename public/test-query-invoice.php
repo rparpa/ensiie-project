@@ -2,6 +2,7 @@
 
 require_once '../src/Bootstrap.php';
 
+use Invoice\InvoiceRepository;
 use Sandwich\Sandwich;
 use Sandwich\SandwichRepository;
 use Ingredient\IngredientRepository;
@@ -9,11 +10,15 @@ use Ingredient\IngredientService;
 use Order\Order;
 use Order\OrderRepository;
 use Order\OrderService;
+use User\UserRepository;
+
 
 $my_connection = \Db\Connection::get();
 $orderService = new OrderService(
     new OrderRepository($my_connection),
-    new SandwichRepository($my_connection)
+    new SandwichRepository($my_connection),
+    new UserRepository($my_connection),
+    new InvoiceRepository($my_connection)
 );
 
 
@@ -28,48 +33,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $newSandwichs = [];
     $newSandwichs[] = $newSandwich;
 
+    $userClient = new \User\User();
+    $userValidator = new \User\User();
+
+    $userRepository = new \User\UserRepository($my_connection);
+    $userClient = $userRepository->findOneById(1);
+    $userValidator = $userRepository->findOneById(2);
+
     $newOrder
         ->setApproval(true)
         ->setDate(new DateTimeImmutable('2020-02-01'))
-        ->setSandwichs($newSandwichs);
+        ->setSandwichs($newSandwichs)
+        ->setClient($userClient);
+    $newOrder->setValidator($userValidator);
 
     #create example
     $newOrder = $orderService->createOrder($newOrder);
-
-    #delete example
-    $orderService->deleteOrder($newOrder);
-
-    #get all example
-    $orders = $orderService->getAllOrders();
-    $ingredients = $ingredientService->getAvailableIngredients();
-}
-
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $ingredients = $ingredientService->getAvailableIngredients();
-
-    $filterIngredients = [];
-    foreach ($ingredients as $ingredient) {
-        if(isset($_POST[$ingredient->getLabel()])) {
-            $filterIngredients[] = $ingredient;
-        }
-    }
-
-    $newSandwich = new Sandwich();
-    $newSandwich
-        ->setLabel($_POST["label"])
-        ->setIngredients($filterIngredients);
-    $newSandwichs = [];
-    $newSandwichs[] = $newSandwich;
-
-    $newOrder = new Order();
-    $newOrder
-        ->setApproval(true)
-        ->setDate(new DateTimeImmutable('2020-02-05'))
-        ->setSandwichs($newSandwichs);
-
-    $orderService->createOrder($newOrder);
-    $orderService->getTotalPrice($newOrder);
 
     // INVOICE TEST
     $invoice_test = new \Invoice\InvoiceRepository($my_connection);
@@ -82,8 +61,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $newInvoice->setOrder($newOrder);
     $invoice_test->createInvoice($newInvoice);
     $invoice_test->deleteInvoice($newInvoice);
+    //$invoice_test->writeInvoice($newInvoice);
 
+
+
+    #delete example
+    $orderService->deleteOrder($newOrder);
+
+    #get all example
     $orders = $orderService->getAllOrders();
+    $ingredients = $ingredientService->getAvailableIngredients();
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
 }
 
 ?>
