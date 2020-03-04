@@ -22,7 +22,6 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="./accueil">Lancer une recherche</a>
-                    <a class="nav-link" href="./admin">Admin</a>
                 </li>
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: none;">
@@ -173,10 +172,24 @@
                 <input type="text" class="form-control" id="exampleInputJobs" aria-describedby="jobsHelp" placeholder="">
                 <small id="jobsHelp" class="form-text text-muted">Quel m&eacute;tier ?</small>
             </div>
-            <div class="form-group">
-                <label for="exampleInputLocation">Ou ?</label>
-                <input type="text" class="form-control" id="exampleInputLocation" placeholder="">
-                <small id="jobsHelp" class="form-text text-muted">Quelle ville ?</small>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-8">
+                    <label for="exampleInputLocation">Ou ?</label>
+                    <input type="text" class="form-control" id="exampleInputLocation" placeholder="">
+                    <small id="jobsHelp" class="form-text text-muted">Quelle ville ?</small>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputDistance">Distance en km</label>
+                    <select id="inputDistance" class="form-control">
+                    <option selected>Tout</option>
+                    <option> < 10 </option>
+                    <option> < 30 </option>
+                    <option> < 50 </option>
+                    </select>
+                </div>
             </div>
 
             <div class="form-row">
