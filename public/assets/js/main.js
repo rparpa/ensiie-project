@@ -309,8 +309,10 @@
 			$body.on('click', function(event) {
 
 				// Article visible? Hide.
-					if ($body.hasClass('is-article-visible'))
+					if ($body.hasClass('is-article-visible')){
 						$main._hide(true);
+						location.pathname = '/';
+					}
 
 			});
 

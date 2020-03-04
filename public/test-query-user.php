@@ -75,7 +75,7 @@ $users = $userService->getAllUser();
         <input type="submit" value="Créer un compte"><br>
     </form>
     <h3>Login</h3>
-    <form class = "form-signin" action="login.php" method="POST">
+    <form class = "form-signin" action="test-login.php" method="POST">
         <label for="pseudo">Pseudo 💳 :</label><br>
         <input type="text" id="pseudo" name="pseudo"><br>
 

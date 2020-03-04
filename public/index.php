@@ -22,7 +22,7 @@ $my_connection = \Db\Connection::get();
 $userRepository = new \User\UserRepository(\Db\Connection::get());
 $userService = new \User\UserService($userRepository);
 
-$is_connected = $_COOKIE['id'] != null;
+$is_connected = isset($_COOKIE['id']) &&  $_COOKIE['id'] != null;
 
 ?>
 
@@ -58,7 +58,7 @@ $is_connected = $_COOKIE['id'] != null;
                 <ul>
                     <?
                     if(!$is_connected){
-                        echo "<li><a href=\"\">Connexion</a></li>";
+                        echo "<li><a href=\"connexion.php\">Connexion</a></li>";
                     } else {
                         echo "
                     <li><a href=\"order.php\">Commander</a></li>

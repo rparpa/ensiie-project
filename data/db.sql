@@ -24,12 +24,12 @@ CREATE TABLE "ingredient" (
     image_link VARCHAR
 );
 
-INSERT INTO "ingredient" (label, available, price)
-VALUES ('Salade', true, 0.2);
-INSERT INTO "ingredient" (label, available, price)
-VALUES ('Tomate', true, 0.3);
-INSERT INTO "ingredient" (label, available, price)
-VALUES ('Oignon', true, 0.3);
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Salade', true, 0.2, '/images/lettuce.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Tomate', true, 0.3, '/images/tomato.png');
+INSERT INTO "ingredient" (label, available, price, image_link)
+VALUES ('Oignon', true, 0.3, '/images/onion.png');
 
 DROP TABLE  "sandwich";
 CREATE TABLE "sandwich" (
