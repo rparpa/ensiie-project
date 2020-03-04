@@ -123,12 +123,12 @@
                         echo '</div>';
                     
                     //Sinon
-                    /*}else{
-                        echo '<div class="col-md categorie">';  
+                    }else{
+                        echo '<div class="col-md categorie_modif">';  
                         echo form_label('Categorie de l\'objet :&nbsp;', 'objet','class="control-label"');
                         echo form_dropdown('test',$categories,5,'class="form-control list_categorie"');
-                        echo form_input('categorie','', array('type'=>'text','data-role'=>'tagsinput fqsfqs' ,'value'=>'jQuery,Script,Net', 'class'=>'input_categorie form-control'));               
-                        echo '</div>';*/
+                        echo form_input('categorie',implode(",",$categorie_modif), array('type'=>'text','data-role'=>'tagsinput fqsfqs' , 'class'=>'input_categorie form-control'));               
+                        echo '</div>';
                     }                    
 
                 ?>
@@ -190,6 +190,18 @@ $(document).ready(function(){
         });
         var index_categorie = parseInt($(".categorie .list_categorie").val())
         var cat = $(".categorie .list_categorie")[0][index_categorie]['label']
+        elt.tagsinput('add',{ id: index_categorie, text: cat });
+    });
+
+
+    $(".categorie_modif ").change(function(){
+        var elt = $(".categorie_modif .input_categorie");
+        elt.tagsinput({
+            itemValue: 'id',
+            itemText: 'text'
+        });
+        var index_categorie = parseInt($(".categorie_modif  .list_categorie").val())
+        var cat = $(".categorie_modif  .list_categorie")[0][index_categorie]['label']
         elt.tagsinput('add',{ id: index_categorie, text: cat });
     });
 
