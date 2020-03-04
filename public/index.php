@@ -159,9 +159,9 @@ $users = $userService->getAllUser();
 										</div>
 									</form>";
 									echo ("<script>console.log('PHP: " . $pseudo . "');</script>");
-									$newUser->setPseudo($_POST["pseudo"]);
+									if(isset($_POST['pseudo'])){$newUser->setPseudo($_POST["pseudo"]);
 									$newUser->setPassword($_POST["password"]);
-									$userService->createUser($newUser);
+									$userService->createUser($newUser);}
 									?>
 								</section></article>
 
