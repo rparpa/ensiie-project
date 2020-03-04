@@ -75,8 +75,8 @@ body {
 }
 
 .chat{
-  min-height: 60vh;
-  max-height: 60vh;
+  min-height: 57vh;
+  max-height: 57vh;
   overflow:auto;
 }
 
