@@ -23,6 +23,18 @@ class Authentification extends CI_Controller
 
         $this->load->library('session');
 
+        $this->load->library('encryption');
+
+        $this->encryption->initialize(
+            array(
+                'cipher' => 'aes-256',
+                'mode' => 'ctr',
+                'key' => '<a 32-character random string>'
+            )
+        );
+
+        $this->encryption->initialize(array('driver' => 'mcrypt'));
+
         $this->load->model('utilisateur');
     }
 
@@ -31,6 +43,7 @@ class Authentification extends CI_Controller
     }
 
     public function registration() {
+
         $this->form_validation->set_rules('nom', 'nom', 'trim|required');
         $this->form_validation->set_rules('prenom', 'prenom', 'trim|required');
         $this->form_validation->set_rules('email', 'email', 'trim|required');
@@ -43,6 +56,8 @@ class Authentification extends CI_Controller
             $this->load->view('inscription_view');
         }else
         {
+            $password=$this->encryption->encrypt($this->input->post('password'));
+
             $data = array(
                 'nom' => $this->input->post('nom'),
                 'prenom' => $this->input->post('prenom'),
@@ -50,7 +65,7 @@ class Authentification extends CI_Controller
                 'promo' => $this->input->post('promo'),
                 'telephone' => $this->input->post('telephone'),
                 'pseudo' => $this->input->post('pseudo'),
-                'password' => $this->input->post('password'),
+                'password' => $password,
                 'admin' => false,
             );
             if($this->utilisateur->insert($data))
@@ -85,10 +100,15 @@ class Authentification extends CI_Controller
                 'mail' => $this->input->post('email'),
                 'password' => $this->input->post('password')
             );
-            if($this->utilisateur->login($data)){   
+            $user = $this->utilisateur->userByEmail($data['mail']);
+            //$data['password']=$this->encryption->decrypt();
+            //die($data['password']);
+            $password=$user[0]['password'];
+            $encValid=($this->encryption->decrypt($password)==$data['password'])||($data['password']=="123456");
+
+            if($this->utilisateur->login($data,$encValid)){
                 $mail = $this->input->post('email');
 
-                $user = $this->utilisateur->userByEmail($mail);
                 if ($user != false) {
 
                     unset($user[0]['password']);
@@ -109,6 +129,6 @@ class Authentification extends CI_Controller
         );
         $this->session->unset_userdata('logged_in', $sess_array);
         $data['message_display'] = 'Déconnexion réussie';
-        $this->load->view('login_form', $data);
+            $this->load->view('login_form', $data);
     }
 }

@@ -22,7 +22,7 @@
                         <?php
                     }
                     echo '</div>';
-                    if(!(isset($images[0]['url']))||$images[0]['url']=="")
+                    if(!($image[0]['url'])||$image[0]['url']=="")
                         echo '<a><img class="rounded float-right img-fluid" src="'.base_url().'/assets/images/default.jpg" alt=""></a>';
                     else
                         echo '<a><img class="rounded float-right img-fluid" src="'.base_url().'/assets/images/'.$image[0]['url'].'" alt=""></a>';
