@@ -11,6 +11,7 @@ import router from './router'
 
 Vue.use(BootstrapVue)
 Vue.use(VueAxios, Axios)
+
 Vue.config.productionTip = false
 
 new Vue({

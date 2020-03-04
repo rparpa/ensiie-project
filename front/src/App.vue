@@ -11,6 +11,11 @@
 export default {
   name: 'App',
   components: {    
+  },
+  data(){
+    return {
+      user: undefined
+    }
   }
 }
 
