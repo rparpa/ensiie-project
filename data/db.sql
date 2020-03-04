@@ -79,14 +79,14 @@ INSERT INTO "marque"(id_marque,nom_marque) VALUES (3,'Peugeot');
 INSERT INTO "marque"(id_marque,nom_marque) VALUES (4,'Volskwagen');
 
 INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (1,0,'S60', 'https://i.ytimg.com/vi/LNc6Bal1lR0/hqdefault.jpg');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,1,'V60','https://static.moniteurautomobile.be/imgcontrol/images_tmp/clients/moniteur/c680-d465/content/medias/images/news/27000/0/0/2018-volvo-v60-09.jpg');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,2,'V70','https://i.wheelsage.org/pictures/volvo/v70/autowp.ru_volvo_v70_r-design_6.jpg');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,3,'S40','https://photos.auto-selection.com/fiche-technique/volvo-s40-p0013516.jpg');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (1,1,'V60','https://static.moniteurautomobile.be/imgcontrol/images_tmp/clients/moniteur/c680-d465/content/medias/images/news/27000/0/0/2018-volvo-v60-09.jpg');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (1,2,'V70','https://i.wheelsage.org/pictures/volvo/v70/autowp.ru_volvo_v70_r-design_6.jpg');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (1,3,'S40','https://photos.auto-selection.com/fiche-technique/volvo-s40-p0013516.jpg');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (1,4,'V40','https://sf2.viepratique.fr/wp-content/uploads/sites/9/2017/06/volvo-v40.jpg');
 
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (0,5,'Serie 1','https://www.turbo.fr/sites/default/files/styles/article_690x405/public/2019-09/bmw-serie-1-m135i-essai.png?itok=KYzW3Zmd');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (0,5,'Serie 1','https://www.turbo.fr/sites/default/files/styles/article_690x405/public/2019-09/bmw-serie-1-m135i-essai.png?itok=KYzW3Zmd');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (0,6,'Serie 2');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (0,7,'Serie 3','https://www.challenges.fr/assets/img/2019/02/19/cover-r4x3w1000-5c6bac62d4bd1-p90336763-highres.jpg');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (0,7,'Serie 3','https://www.challenges.fr/assets/img/2019/02/19/cover-r4x3w1000-5c6bac62d4bd1-p90336763-highres.jpg');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (0,8,'Serie 4');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (0,9,'Serie 5');
 
@@ -96,12 +96,12 @@ INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (2,12,'Megane');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (2,13,'Espace');
 
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (3,14,'208');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (2,15,'308');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (2,16,'2008');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (2,17,'3008');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (2,18,'5008');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (2,19,'508');
-INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (2,20,'508SW');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (3,15,'308');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (3,16,'2008');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (3,17,'3008');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (3,18,'5008');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (3,19,'508');
+INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (3,20,'508SW');
 
 INSERT INTO "puissance"(id_puissance,id_marque,puissance_fisc,puissance_ch) VALUES (0,1,6,120);
 INSERT INTO "puissance"(id_puissance,id_marque,puissance_fisc,puissance_ch) VALUES (1,1,9,150);
