@@ -22,7 +22,8 @@
     "unit.test.coverage": "jest --coverage",
     "unit.test.mutation": "stryker run",
     "build": "webpack --config webpack.config.js",
-    "watch": "webpack --config webpack.config.js --watch"
+    "watch": "webpack --config webpack.config.js --watch",
+    "api.test": "make db.install && newman run tests/api/collection.json"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
   },
   "homepage": "https://github.com/JonahR1/ensiie-project#readme",
   "dependencies": {
+    "newman": "^4.6.0",
     "node-dev": "^4.0.0",
     "pg": "^7.18.2"
   }

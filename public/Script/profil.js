@@ -14,10 +14,10 @@ $("input[type=file]").change(function (e){$(this).next('.custom-file-label').tex
 
 
 
-if(localStorage.getItem('id') == "2"){
+if(localStorage.getItem('id') == "1"){
     document.getElementById("list-particulier").style.display = "none";
     document.getElementById("list-entreprise").style.display = "block";
-}else if(localStorage.getItem('id') == "1"){
+}else if(localStorage.getItem('id') == "2"){
     document.getElementById("list-particulier").style.display = "block";
     document.getElementById("list-entreprise").style.display = "none";
 }
@@ -40,7 +40,7 @@ const particulierService = new ParticulierService(httpClient);
 const entrepriseService = new EntrepriseService(httpClient);
 
 
-if(localStorage.getItem('id') == "1"){
+if(localStorage.getItem('id') == "2"){
     particulierService.getProfil(localStorage.getItem('id')).then(particuliers => {
         particuliers.forEach((particulier) => {
             document.getElementById('nom').innerHTML = particulier.nom;
@@ -48,17 +48,17 @@ if(localStorage.getItem('id') == "1"){
             document.getElementById('adresseDomi').innerHTML = particulier.adresseDomicile;
             document.getElementById('telephone').innerHTML = particulier.telephone;
             document.getElementById('email').innerHTML = particulier.adresseMail;
-            document.getElementById('mdp').innerHTML = particulier.motDePasse;
+            document.getElementById('mdp').innerHTML = "********";
             document.getElementById('nomfichier').innerHTML = particulier.cv;
         })
     });
 }
-else if(localStorage.getItem('id') == "2"){
+else if(localStorage.getItem('id') == "1"){
     entrepriseService.getProfil(localStorage.getItem('id')).then(entreprises => {
         entreprises.forEach((entreprise) => {
             document.getElementById('telephoneE').innerHTML = entreprise.telephone;
             document.getElementById('emailE').innerHTML = entreprise.adresseMail;
-            document.getElementById('mdpE').innerHTML = entreprise.motDePasse;
+            document.getElementById('mdpE').innerHTML = "********";
             document.getElementById('nomfichierLogo').innerHTML = entreprise.logo;
             document.getElementById('nomE').innerHTML = entreprise.nom;
             document.getElementById('adresseE').innerHTML = entreprise.adresseSiege;
@@ -98,7 +98,7 @@ $('#NomModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseDomi').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephone').innerHTML = particulier.telephone;
                     document.getElementById('email').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdp').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdp').innerHTML = "********";
                     document.getElementById('nomfichier').innerHTML = particulier.cv;
                 })
             });
@@ -141,7 +141,7 @@ $('#PrenomModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseDomi').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephone').innerHTML = particulier.telephone;
                     document.getElementById('email').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdp').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdp').innerHTML = "********";
                     document.getElementById('nomfichier').innerHTML = particulier.cv;
                 })
             });
@@ -185,7 +185,7 @@ $('#EmailModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseDomi').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephone').innerHTML = particulier.telephone;
                     document.getElementById('email').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdp').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdp').innerHTML = "********";
                     document.getElementById('nomfichier').innerHTML = particulier.cv;
                 })
             });
@@ -228,7 +228,7 @@ $('#MdpModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseDomi').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephone').innerHTML = particulier.telephone;
                     document.getElementById('email').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdp').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdp').innerHTML = "********";
                     document.getElementById('nomfichier').innerHTML = particulier.cv;
                 })
             });
@@ -273,7 +273,7 @@ $('#TelephoneModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseDomi').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephone').innerHTML = particulier.telephone;
                     document.getElementById('email').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdp').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdp').innerHTML = "********";
                     document.getElementById('nomfichier').innerHTML = particulier.cv;
                 })
             });
@@ -318,7 +318,7 @@ $('#AdresseDomiModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseDomi').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephone').innerHTML = particulier.telephone;
                     document.getElementById('email').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdp').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdp').innerHTML = "********";
                     document.getElementById('nomfichier').innerHTML = particulier.cv;
                 })
             });
@@ -349,7 +349,7 @@ document.getElementById('btn-edit-cv').onclick = function(){
                     document.getElementById('adresseDomi').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephone').innerHTML = particulier.telephone;
                     document.getElementById('email').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdp').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdp').innerHTML = "********";
                     document.getElementById('nomfichier').innerHTML = particulier.cv;
             })
         });
@@ -420,7 +420,7 @@ $('#NomEModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseE').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephoneE').innerHTML = particulier.telephone;
                     document.getElementById('emailE').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdpE').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdpE').innerHTML = "********";
                     document.getElementById('nomfichierLogo').innerHTML = particulier.cv;
                 })
             });
@@ -464,7 +464,7 @@ $('#EmailEModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseE').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephoneE').innerHTML = particulier.telephone;
                     document.getElementById('emailE').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdpE').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdpE').innerHTML = "********";
                     document.getElementById('nomfichierLogo').innerHTML = particulier.cv;
                 })
             });
@@ -508,7 +508,7 @@ $('#MdpEModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseE').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephoneE').innerHTML = particulier.telephone;
                     document.getElementById('emailE').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdpE').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdpE').innerHTML = "********";
                     document.getElementById('nomfichierLogo').innerHTML = particulier.cv;
                 })
             });
@@ -552,7 +552,7 @@ $('#AdresseSiegeEModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseE').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephoneE').innerHTML = particulier.telephone;
                     document.getElementById('emailE').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdpE').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdpE').innerHTML = "********";
                     document.getElementById('nomfichierLogo').innerHTML = particulier.cv;
                 })
             });
@@ -596,7 +596,7 @@ $('#TelephoneEModal').on('show.bs.modal', function (event) {
                     document.getElementById('adresseE').innerHTML = particulier.adresseDomicile;
                     document.getElementById('telephoneE').innerHTML = particulier.telephone;
                     document.getElementById('emailE').innerHTML = particulier.adresseMail;
-                    document.getElementById('mdpE').innerHTML = particulier.motDePasse;
+                    document.getElementById('mdpE').innerHTML = "********";
                     document.getElementById('nomfichierLogo').innerHTML = particulier.cv;
                 })
             });
@@ -633,7 +633,7 @@ document.getElementById('btn-edit-logo').onclick = function(){
                 document.getElementById('adresseE').innerHTML = entreprise.adresseDomicile;
                 document.getElementById('telephoneE').innerHTML = entreprise.telephone;
                 document.getElementById('emailE').innerHTML = entreprise.adresseMail;
-                document.getElementById('mdpE').innerHTML = entreprise.motDePasse;
+                document.getElementById('mdpE').innerHTML = "********";
                 document.getElementById('nomfichierLogo').innerHTML = entreprise.logo;
             })
         });
@@ -641,5 +641,3 @@ document.getElementById('btn-edit-logo').onclick = function(){
     }
 
 }
-
-

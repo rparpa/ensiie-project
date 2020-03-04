@@ -165,7 +165,9 @@ module.exports = class {
             result = await client.query(updateDateparution, [dateparution, id])
             .catch(e => {throw 'Error in the database'});
 
-            result.dateparution = new Date(dateparution).getTime();
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
@@ -196,6 +198,10 @@ module.exports = class {
             result = await client.query(updateDescription, [description, id])
             .catch(e => {throw 'Error in the database'});
 
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
+
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
         }
@@ -224,6 +230,10 @@ module.exports = class {
 
             result = await client.query(updateDocument, [document, id])
             .catch(e => {throw 'Error in the database'});
+
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
@@ -254,6 +264,10 @@ module.exports = class {
             result = await client.query(updateTypecontrat, [typecontrat, id])
             .catch(e => {throw 'Error in the database'});
 
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
+
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
         }
@@ -282,6 +296,10 @@ module.exports = class {
 
             result = await client.query(updateAdresse, [adresse, id])
             .catch(e => {throw 'Error in the database'});
+
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
@@ -312,6 +330,10 @@ module.exports = class {
             result = await client.query(updateSalaire, [salaire, id])
             .catch(e => {throw 'Error in the database'});
 
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
+
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
         }
@@ -341,6 +363,10 @@ module.exports = class {
             result = await client.query(updateTitre, [titre, id])
             .catch(e => {throw 'Error in the database'});
 
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
+
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
         }
@@ -366,6 +392,10 @@ module.exports = class {
 
             result = await client.query(deleteOne, [id])
             .catch(e => {throw 'Error in the database'});
+
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
