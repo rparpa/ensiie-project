@@ -23,11 +23,12 @@ class Categorie_model extends CI_Model
 		$this->db->update('categorie',$data);
 	}
 
-    public function getAllCategorie()
+    public function getAllCategorie($sort=null)
     {
 		$this->db->select('*');
 		$this->db->from('categorie');
-		$this->db->order_by('categorie', 'ASC');
+		if($sort!=null)
+			$this->db->order_by('categorie', $sort);
 		return $this->db->get()->result_array();
     }
     public function getCategorie($id_categ)

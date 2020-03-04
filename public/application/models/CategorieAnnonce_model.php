@@ -15,8 +15,8 @@ class CategorieAnnonce_model extends CI_Model
     public function insert($id_annonce,$categories){
 
         foreach($categories as $key=>$value){
-          
-           $this->db->insert('categorie_annonce',array('id_annonce'=>$id_annonce,'id_categorie'=>$value+1));
+           $value=$value+1;
+           $this->db->insert('categorie_annonce',array('id_annonce'=>$id_annonce,'id_categorie'=>$value));
         }
 
     }

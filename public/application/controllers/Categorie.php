@@ -29,7 +29,7 @@ class Categorie extends CI_Controller
 
     public function index()
     {
-		$categ=$this->categorie->getAllCategorie();
+		$categ=$this->categorie->getAllCategorie('ASC');
 		print_r($categ);
     }
     /**
@@ -130,7 +130,7 @@ class Categorie extends CI_Controller
 
 	public function getAllCategories()
 	{
-		$categories=$this->categorie->getAllCategorie();
+		$categories=$this->categorie->getAllCategorie('ASC');
 		$this->load->view('elements/header',$this->data);
 		$this->load->view('categorieTable',['categories'=>$categories]);
 		$this->load->view('elements/footer');
