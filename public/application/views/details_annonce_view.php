@@ -1,6 +1,10 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 <!DOCTYPE html>
 
+<?php
+$date = new DateTime($details_annonce[0]['date_publication']);
+
+?>
 <!-- Container Boostrap -->
 </br>
 <div class="container">
@@ -11,7 +15,7 @@
                 <div class="col-md">
                     <h6 class="card-title text-justify"><?php echo $details_annonce[0]['description']?></h6>
                     <h6 class="card-title text-justify"><?php echo 'Vendu par '.$user_annonce[0]['nom'].' '.$user_annonce[0]['prenom'].' , '.$user_annonce[0]['email']?></h6>    
-                    <h6 class="font-italic card-title text-justify"><?php echo 'Publiée le '.$details_annonce[0]['date_publication']?></h6>               
+                    <h6 class="font-italic card-title text-justify"><?php echo 'Publiée le '.$date->format('d-m-Y H:i:s')?></h6>               
                 </div>
                 <div class="col-md ">
                 <?php
