@@ -37,7 +37,7 @@ class LocationRepository
             throw new OutOfRangeException("La location dure plus de 30 jours");
         }
 
-        if (!$this->isAvailable($post["id_voiture"], $date_debut, $date_fin))
+        if (!$this->isAvailable($id_voiture, $date_debut, $date_fin))
         {
             throw new Exception("La voiture n'est pas disponible");
         }
@@ -46,8 +46,8 @@ class LocationRepository
 
         $statement->bindParam(":id_voiture", $id_voiture);
         $statement->bindParam(":id_user", $_SESSION["id_user"]);
-        $statement->bindParam(":date_debut", $date_debut);
-        $statement->bindParam(":date_fin", $date_fin);
+        $statement->bindParam(":date_debut", $date_debut->format('Y-m-d H:i:s'));
+        $statement->bindParam(":date_fin", $date_fin->format('Y-m-d H:i:s'));
         $statement->bindParam(":km_max", $km_max);
 
         $car = $this->carRepository->fetch($id_voiture);
@@ -62,7 +62,7 @@ class LocationRepository
     {
         $rows = $this->connection->query('SELECT * FROM "location"
         inner join voiture USING(id_voiture)
-        inner join user on location.id_user = user.id')
+        inner join "user" ON location.id_user="user".id')
             ->fetchAll(PDO::FETCH_OBJ);
 
         $locations = [];
@@ -87,7 +87,7 @@ class LocationRepository
     {
         $statement = $this->connection->prepare('SELECT * FROM "location"
         inner join voiture USING(id_voiture)
-        inner join user USING(id_user) 
+        inner join "user" ON location.id_user="user".id 
         WHERE id_voiture=:id_voiture');
 
         $statement->bindParam(":id_voiture", $id_voiture);
@@ -116,7 +116,7 @@ class LocationRepository
     {
         $statement = $this->connection->prepare('SELECT * FROM "location"
         inner join voiture USING(id_voiture)
-        inner join user USING(id_user) 
+        inner join "user" ON location.id_user="user".id
         WHERE id_user=:id_user');
 
         $statement->bindParam(":id_user", $id_user);
@@ -145,7 +145,7 @@ class LocationRepository
     {
         $statement = $this->connection->prepare('SELECT * FROM "location"
         inner join voiture USING(id_voiture)
-        inner join user USING(id_user) 
+        inner join "user" ON location.id_user="user".id
         WHERE id_location=:id_location');
 
         $statement->bindParam(":id_location", $id_location);
@@ -165,10 +165,10 @@ class LocationRepository
         return $location;
     }
 
-    public function delete($post)
+    public function delete($id_location)
     {
         $statement = $this->connection->prepare("DELETE FROM \"location\" WHERE id_location = :id_location");
-        $statement->bindParam(":id_location", $post["id_location"]);
+        $statement->bindParam(":id_location", $id_location);
         $statement->execute();
     }
 
@@ -188,8 +188,8 @@ class LocationRepository
     {
         $statement = $this->connection->prepare("SELECT FROM \"location\" WHERE id_voiture = :id_voiture AND ((date_debut >= :date_debut AND date_debut <= :date_fin) OR (:date_debut >= date_debut AND :date_debut <= date_fin))");
         $statement->bindParam(":id_voiture", $id_voiture);
-        $statement->bindParam(":date_debut", $post["date_debut"]);
-        $statement->bindParam(":date_fin", $post["date_fin"]);
+        $statement->bindParam(":date_debut", $date_debut->format('Y-m-d H:i:s'));
+        $statement->bindParam(":date_fin", $date_fin->format('Y-m-d H:i:s'));
         $statement->execute();
         return $statement->rowCount() == 0;
     }
