@@ -54,4 +54,5 @@ CREATE TABLE "candidat" (
 INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom, telephone) VALUES('test@gmail.com', 'mdp', 'nomCV.pdf', 'LENOM', 'LEPRENOM', '0600000000');
 INSERT INTO entreprise(nom, adressemail, adressesiege, motdepasse, logo, isvalid, telephone) VALUES('ENSIIE CORPO', 'ensiie@ensiie.fr', 'rue ensiie', 'mdp', 'nomLogo.png', FALSE, '0700000000');
 INSERT INTO offre(identreprise, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution) VALUES(1, 'Mission incroyable', 'document.pdf', 'CDI', 'rue ensiie', 90, 90, 50000, 'Poste incroyable', 0);
-INSERT INTO candidat(idoffre, idparticulier) VALUES(1, 1)
+INSERT INTO candidat(idoffre, idparticulier) VALUES(1, 1);
+INSERT INTO administrateur(identifiant, motdepasse) VALUES('admin', 'admin');
