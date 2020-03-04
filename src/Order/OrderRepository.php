@@ -46,9 +46,11 @@ class OrderRepository
                 ->setId($row->id)
                 ->setDate(new DateTimeImmutable($row->order_date))
                 ->setApproval($row->approval)
-                ->setClient($this->fetchUser($row->client_id))
-                ->setValidator($this->fetchUser($row->validator_id));
-            
+                ->setClient($this->fetchUser($row->client_id));
+                        
+            if(isset($row->validator_id))
+                $order->setValidator($this->fetchUser($row->validator_id));
+
             $order->setSandwichs($this->fetchSandwichs($order->getId()));
 
             $orders[] = $order;
@@ -77,9 +79,12 @@ class OrderRepository
                 ->setId($row['id'])
                 ->setDate(new DateTimeImmutable($row['order_date']))
                 ->setApproval($row['approval'])
-                ->setClient($this->fetchUser($row['client_id']))
-                ->setValidator($this->fetchUser($row['validator_id']));
+                ->setClient($this->fetchUser($row['client_id']));
+                
+            if(isset($row['validator_id']))
+                $order->setValidator($this->fetchUser($row['validator_id']));
 
+            
             $order->setSandwichs($this->fetchSandwichs($order->getId()));
         } else {
             $order = null;
