@@ -40,6 +40,7 @@ class AdminView {
       $i++;
       if($i % 3 == 0) {
         ?></div><?php
+        $i = 0;
       }
     }
     ?></div><?php
