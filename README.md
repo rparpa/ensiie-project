@@ -14,6 +14,10 @@ Répondre aux problématiques évoquées et proposer une application pour simpli
 Réaliser une application web simple et moderne qui se démarque de la concurrence avec notre système de personnalisation de Sandwich.
 
 # Présentation technique
+
+## lien vers le trello : https://trello.com/b/rhdYqTJR/sandwicheriie
+
+
 ## Frontend
 Application web réalisé en php + framework bootstrap.
 6 écrans disponibles:
