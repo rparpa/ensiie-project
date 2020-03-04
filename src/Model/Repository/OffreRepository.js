@@ -79,23 +79,13 @@ module.exports = class {
         return result.rows;        
     }
 
-    static async getAllByArgs(titre, adresse, typecontrat, salaire, dateparution) {
-        var request = "SELECT offre.id, offre.identreprise, entreprise.nom, entreprise.adressemail, entreprise.adressesiege, entreprise.logo, entreprise.telephone, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution FROM offre, entreprise WHERE offre.identreprise = entreprise.id";
+    static async getAllByArgs(titre, adresse, typecontrat, salaire, dateparution, dist) {
+        var request = "SELECT o.id, o.identreprise, e.nom, e.adressemail, e.adressesiege, e.logo, e.telephone, o.description, o.document, o.typecontrat, o.adresse, o.latitude, o.longitude, o.salaire, o.titre, o.dateparution FROM offre o, entreprise e WHERE o.identreprise = e.id";
         
         if(titre != null && titre != "''") {
             request += " AND titre ~ '" + titre + "'";
         }
-        if(adresse != null && adresse != "''") {
-            // if(!isWhere) {
-            //     request += " WHERE";
-            //     isWhere = true;
-            // }
-            // else {
-            //     request += " AND"
-            // }
-
-
-        }
+        
         if(typecontrat != null && typecontrat != "''") {
             request += " AND typecontrat = '" + typecontrat + "'";
         }
@@ -107,6 +97,7 @@ module.exports = class {
         }
 
         var result;
+        
         var client = ClientSession.getSession();
         try {
             await client.query(begin)
@@ -115,30 +106,68 @@ module.exports = class {
             result = await client.query(request)
             .catch(err => {throw 'Error in database'});
 
-            let length = result.rows.length;
+            var rows = [];
 
-            for(let i = 0 ; i < length ; ++i) {
-                result.rows[i] = {
-                    "id": result.rows[i].id,
-                    "identreprise": {
-                        "id": result.rows[i].identreprise,
-                        "nom": result.rows[i].nom,
-                        "adressemail": result.rows[i].adressemail,
-                        "adressesiege": result.rows[i].adressesiege,
-                        "logo": result.rows[i].logo,
-                        "telephone": result.rows[i].telephone
-                    },
-                    "description": result.rows[i].description,
-                    "document": result.rows[i].document,
-                    "typecontrat": result.rows[i].typecontrat,
-                    "adresse": result.rows[i].adresse,
-                    "latitude": result.rows[i].latitude,
-                    "longitude": result.rows[i].longitude,
-                    "salaire": result.rows[i].salaire,
-                    "titre": result.rows[i].titre,
-                    "dateparution": result.rows[i].dateparution
+            let length = result.rows.length;            
+
+            if(adresse != null && adresse != "''" && dist != null && dist != "''") {
+                var coord;
+                console.log("hello")
+                coord = await Geo.getCoordsByAddr(adresse)
+                .then();
+                console.log("cooooord : ", coord);
+                for(let i = 0 ; i < length ; ++i) {
+                    console.log(i);
+                    if(dist >= Geo.ComputeDistance(result.rows[i].latitude, coord.lat, result.rows[i].longitude, coord.lon)){
+                        rows.push({
+                            "id": result.rows[i].id,
+                            "identreprise": {
+                                "id": result.rows[i].identreprise,
+                                "nom": result.rows[i].nom,
+                                "adressemail": result.rows[i].adressemail,
+                                "adressesiege": result.rows[i].adressesiege,
+                                "logo": result.rows[i].logo,
+                                "telephone": result.rows[i].telephone
+                            },
+                            "description": result.rows[i].description,
+                            "document": result.rows[i].document,
+                            "typecontrat": result.rows[i].typecontrat,
+                            "adresse": result.rows[i].adresse,
+                            "latitude": result.rows[i].latitude,
+                            "longitude": result.rows[i].longitude,
+                            "salaire": result.rows[i].salaire,
+                            "titre": result.rows[i].titre,
+                            "dateparution": result.rows[i].dateparution
+                        });
+                    }
                 }
             }
+            else {
+                for(let i = 0 ; i < length ; ++i) {
+                    rows.push({
+                                "id": result.rows[i].id,
+                                "identreprise": {
+                                    "id": result.rows[i].identreprise,
+                                    "nom": result.rows[i].nom,
+                                    "adressemail": result.rows[i].adressemail,
+                                    "adressesiege": result.rows[i].adressesiege,
+                                    "logo": result.rows[i].logo,
+                                    "telephone": result.rows[i].telephone
+                                },
+                                "description": result.rows[i].description,
+                                "document": result.rows[i].document,
+                                "typecontrat": result.rows[i].typecontrat,
+                                "adresse": result.rows[i].adresse,
+                                "latitude": result.rows[i].latitude,
+                                "longitude": result.rows[i].longitude,
+                                "salaire": result.rows[i].salaire,
+                                "titre": result.rows[i].titre,
+                                "dateparution": result.rows[i].dateparution
+                            });
+                }
+            }
+
+            
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
@@ -148,7 +177,7 @@ module.exports = class {
             throw e;
         }
 
-        return result.rows; 
+        return rows; 
     }
 
     static async updateDateparution(id, dateparution) {

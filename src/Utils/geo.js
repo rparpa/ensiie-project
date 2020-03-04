@@ -4,7 +4,7 @@ module.exports = class {
     }
 
     static async getCoordsByAddr(input) { // fonction async necessite async contexte lors de l'appel
-    if (!input) {
+    if (typeof input == "undefined" || input == null) {
         throw 'Parameter missing'
     }
     var encodedInput = input.split(' ').join('+');
@@ -21,13 +21,13 @@ module.exports = class {
         };
 
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 }
        
-    static ComputeDistance(lat1,lat2,lon1,lon2){ // Formule de Haversine pour la distance à vol d'oiseau
+    static ComputeDistance(lat1, lat2, lon1, lon2){ // Formule de Haversine pour la distance à vol d'oiseau
         // On travaille avec des radians donc tout nos angles sont convertis en radians en multipliant par pi / 180 
-       if(!lat1 ||!lat2 || !lon1||!lon2){
+       if(typeof(lat1) == 'undefind' || typeof(lat2) == 'undefind' || typeof(lon1) == 'undefind'|| typeof(lon2) == 'undefind' || lat1 == null || lat2 == null || lon1 == null || lon2 == null){
            throw 'Parameter missing';
        }
        if(isNaN(lat1) ||isNaN(lat2) || isNaN(lon1)|| isNaN(lon2)){

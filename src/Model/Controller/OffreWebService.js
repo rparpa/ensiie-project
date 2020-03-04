@@ -48,11 +48,11 @@ module.exports = class OffreWebService {
         res.end(JSON.stringify(response));
     }
 
-    static async getAllByArgs(req, res, titre, adresse, typecontrat, salaire, dateparution) {
+    static async getAllByArgs(req, res, titre, adresse, typecontrat, salaire, dateparution, dist) {
         let response;
         let codestatus;
         try {
-            response = await OffreRepository.getAllByArgs(titre, adresse, typecontrat, salaire, dateparution);
+            response = await OffreRepository.getAllByArgs(titre, adresse, typecontrat, salaire, dateparution, dist);
             codestatus = 200;
         }
         catch(e) {

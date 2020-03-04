@@ -1578,6 +1578,85 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "7c7b9351-dabe-4e22-a1e2-9a84cc562ea4",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([",
+											"    {",
+											"        \"id\": 1,",
+											"        \"identreprise\": {",
+											"            \"id\": 1,",
+											"            \"nom\": \"ENSIIE CORPO\",",
+											"            \"adressemail\": \"ensiie@ensiie.fr\",",
+											"            \"adressesiege\": \"ensiie\",",
+											"            \"logo\": \"nomLogo.png\",",
+											"            \"telephone\": \"0700000000\"",
+											"        },",
+											"        \"description\": \"Mission incroyable\",",
+											"        \"document\": \"document.pdf\",",
+											"        \"typecontrat\": \"CDI\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"Poste incroyable\",",
+											"        \"dateparution\": \"0\"",
+											"    },",
+											"    {",
+											"        \"id\": 3,",
+											"        \"identreprise\": {",
+											"            \"id\": 1,",
+											"            \"nom\": \"ENSIIE CORPO\",",
+											"            \"adressemail\": \"ensiie@ensiie.fr\",",
+											"            \"adressesiege\": \"ensiie\",",
+											"            \"logo\": \"nomLogo.png\",",
+											"            \"telephone\": \"0700000000\"",
+											"        },",
+											"        \"description\": \"Mission tranquille\",",
+											"        \"document\": \"document.pdf\",",
+											"        \"typecontrat\": \"CDD\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"Poste tranquille\",",
+											"        \"dateparution\": \"0\"",
+											"    },",
+											"    {",
+											"        \"id\": 2,",
+											"        \"identreprise\": {",
+											"            \"id\": 1,",
+											"            \"nom\": \"ENSIIE CORPO\",",
+											"            \"adressemail\": \"ensiie@ensiie.fr\",",
+											"            \"adressesiege\": \"ensiie\",",
+											"            \"logo\": \"nomLogo.png\",",
+											"            \"telephone\": \"0700000000\"",
+											"        },",
+											"        \"description\": \"cool\",",
+											"        \"document\": \"C...\",",
+											"        \"typecontrat\": \"CDI\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"titre\",",
+											"        \"dateparution\": \"819167040000\"",
+											"    }",
+											"])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -1590,7 +1669,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/offre/request?titre=t&adresse=EN&typecontrat=CDI&salaire=5&dateparution=8191670400",
+									"raw": "{{url}}/offre/request?titre=''&adresse=Paris&typecontrat=''&salaire=500&dateparution=''&dist=100",
 									"host": [
 										"{{url}}"
 									],
@@ -1601,23 +1680,27 @@
 									"query": [
 										{
 											"key": "titre",
-											"value": "t"
+											"value": "''"
 										},
 										{
 											"key": "adresse",
-											"value": "EN"
+											"value": "Paris"
 										},
 										{
 											"key": "typecontrat",
-											"value": "CDI"
+											"value": "''"
 										},
 										{
 											"key": "salaire",
-											"value": "5"
+											"value": "500"
 										},
 										{
 											"key": "dateparution",
-											"value": "8191670400"
+											"value": "''"
+										},
+										{
+											"key": "dist",
+											"value": "100"
 										}
 									]
 								}
