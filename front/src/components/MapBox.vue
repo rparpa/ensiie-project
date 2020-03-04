@@ -113,19 +113,19 @@ export default {
      EventBus.$on('staChanged', vehicle => {
       switch (vehicle) {
         case 'longitudinal':
-          this.routeOption = '&refine.typsta=Longitudinal';
+          this.routeOption = '?&refine.typsta=Longitudinal';
           this.getAllMarkers();
           break;        
         case 'epi':
-         this.routeOption = '&refine.typsta=Epi';
+         this.routeOption = '?&refine.typsta=Epi';
           this.getAllMarkers();
           break;
         case 'bataille':
-          this.routeOption = '&refine.typsta=Bataille';
+          this.routeOption = '?&refine.typsta=Bataille';
           this.getAllMarkers();
           break;            
         default:
-          this.routeOption = '&refine.typsta=Bataille';
+          this.routeOption = '';
           this.getAllMarkers();
           break;
       }
