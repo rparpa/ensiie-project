@@ -67,6 +67,18 @@ class OrderService
         }
         return $filteredOrders;
     }
+
+    public function getOrdersByClient($clientId) {
+        $this->resetErrors();
+        $filteredOrders = [];
+        $orders = $this->orderRepository->getAll();
+        foreach ($orders as $order) {
+            if($order->getClient() == $clientId) {
+                $filteredOrders[] = $order;
+            }
+        }
+        return $filteredOrders;
+    }
     
     public function getOrderById($orderId) {
         $this->resetErrors();
