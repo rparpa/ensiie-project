@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --https true",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e-headless": "vue-cli-service test:e2e --headless",
@@ -31,6 +31,7 @@
     "axios": "^0.19.2",
     "cypress": "^4.0.2",
     "mountebank": "^2.2.0",
+    "vue-places": "^2.1.3",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
