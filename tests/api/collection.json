@@ -74,6 +74,130 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Exception Create Particulier with a wrong object",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a1d1303b-5261-4a02-8057-8ed9a851c566",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "eae24901-8927-453b-a63c-8dd222a64c42",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Particulier object is missing information\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Particulier object is missing information');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"adressemail\": \"cocorico@gmail.com\",\n\t\"motdepasse\": \"project\",\n\t\"cv\": \"./cv/fkdofj.pdf\",\n\t\"nom\": \"Sisi\",\n\t\"prenom\": \"test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/particulier/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Create Particulier with email already used",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a1d1303b-5261-4a02-8057-8ed9a851c566",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "eae24901-8927-453b-a63c-8dd222a64c42",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Email already used\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Email already used');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"adressemail\": \"cocorico@gmail.com\",\n\t\"motdepasse\": \"project\",\n\t\"cv\": \"./cv/fkdofj.pdf\",\n\t\"nom\": \"Sisi\",\n\t\"prenom\": \"test\",\n\t\"telephone\": \"090000000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/particulier/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -293,6 +417,118 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Exception Update Particulier with incorrect Id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "be0ec4f7-70ff-4da6-99f8-54726a6781a0",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f6611fc5-83e0-40af-8bbe-7b553a67cc2b",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Invalid Id\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Invalid Id');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"89\",\n\t\"adressemail\": \"cocooo@gmail.com\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/particulier/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Update Particulier with email already used",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "be0ec4f7-70ff-4da6-99f8-54726a6781a0",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f6611fc5-83e0-40af-8bbe-7b553a67cc2b",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Email already used\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Email already used');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"1\",\n\t\"adressemail\": \"coco@gmail.com\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/particulier/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -374,6 +610,69 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Exception Delete Particulier with wrong id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "5136c025-77a6-4693-8721-0d4b858ab641",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "955ccee5-8617-4c6e-90e7-ef1b630f596a",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Invalid Id\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Invalid Id');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/particulier/request?id=10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"particulier",
+										"request"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "id",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -432,6 +731,118 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"nom\": \"toto\",\n    \"adressemail\": \"toto@gmail.com\",\n    \"adressesiege\": \"2 rue ensiie\",\n    \"motdepasse\": \"coucou\",\n    \"logo\": \"ici\",\n    \"telephone\": \"0000000\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/entreprise/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Create Entreprise with a wrong object",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a7cd1977-0f9b-4a4e-9c34-8c5b644f0b2d",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c3ac312a-ba55-4622-9b01-ebee9df6ae39",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Entreprise object is missing information\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Entreprise object is missing information');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nom\": \"toto\",\n    \"adressemail\": \"toto@gmail.com\",\n    \"adressesiege\": \"2 rue ensiie\",\n    \"motdepasse\": \"coucou\",\n    \"logo\": \"ici\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/entreprise/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Create Entreprise with email already used",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "a7cd1977-0f9b-4a4e-9c34-8c5b644f0b2d",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "c3ac312a-ba55-4622-9b01-ebee9df6ae39",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Email already used\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Email already used');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nom\": \"toto\",\n    \"adressemail\": \"ensiie@ensiie.fr\",\n    \"adressesiege\": \"2 rue ensiie\",\n    \"motdepasse\": \"coucou\",\n    \"logo\": \"ici\",\n    \"telephone\": \"09000000\"\n}"
 								},
 								"url": {
 									"raw": "{{url}}/entreprise/request",
@@ -664,6 +1075,118 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Exception Update Entreprise with wrong id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "75860cad-4ab7-462f-a03b-d907ef02eac7",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f43c0789-5afd-4aec-829d-5294b1388b7d",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Invalid Id\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Invalid Id');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"90\",\n    \"logo\": \"logo.pdf\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/entreprise/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Update Entreprise with wrong id Copy",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "75860cad-4ab7-462f-a03b-d907ef02eac7",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "f43c0789-5afd-4aec-829d-5294b1388b7d",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Email already used\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Email already used');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": \"1\",\n    \"adressemail\": \"ensiie@ensiie.fr\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/entreprise/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -741,6 +1264,64 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Exception Delete Entreprise with wrong id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "94df4e03-301f-43aa-b8d0-3c6fb1e60c21",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "01b83ca6-551b-4009-a2f2-49dd45c444b6",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Invalid Id\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Invalid Id');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/entreprise/request?id=10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -811,6 +1392,62 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\n    \"identreprise\": \"1\",\n    \"description\": \"cool\",\n    \"document\": \"C...\",\n    \"typecontrat\": \"CDI\",\n    \"adresse\": \"ici\",\n    \"latitude\": 90.090,\n    \"longitude\": 90.090,\n    \"salaire\": 50000,\n    \"titre\": \"titre\",\n    \"dateparution\": 819167040000\n}"
+								},
+								"url": {
+									"raw": "{{url}}/offre/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"offre",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Create Offre with wrong object",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "14ab1be8-7762-4354-8f4a-6f09cd7f7c33",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "986cbd4b-7b02-46cb-84f2-24d3a6ee8143",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Offre object is missing information\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Offre object is missing information');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identreprise\": \"1\",\n    \"description\": \"cool\",\n    \"document\": \"C...\",\n    \"typecontrat\": \"CDI\",\n    \"adresse\": \"ici\",\n    \"latitude\": 90.090,\n    \"longitude\": 90.090,\n    \"salaire\": 50000,\n    \"titre\": \"titre\"\n}"
 								},
 								"url": {
 									"raw": "{{url}}/offre/request",
@@ -1062,6 +1699,62 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Exception Update offre with wrong Id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "570e52d4-6c35-408d-963c-7f53562b2691",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "ffbe5671-f671-4a66-b717-b9ccf3e7b33c",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Invalid Id\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Invalid Id');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 20,\n    \"description\": \"ensiiiiiie\"\n}"
+								},
+								"url": {
+									"raw": "{{url}}/offre/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"offre",
+										"request"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -1107,6 +1800,64 @@
 											"    \"titre\": \"titre\",",
 											"    \"dateparution\": \"819167040000\"",
 											"})",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/offre/request?id=2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"offre",
+										"request"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Delete offre with wrong Id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "399f07bd-172f-4bfa-9eae-0713deaafca7",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "d670adef-59b0-4dac-bb35-b30853032c9e",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Invalid Id\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Invalid Id');",
 											"});"
 										],
 										"type": "text/javascript"
@@ -1196,6 +1947,62 @@
 										"key": "Content-Type",
 										"value": "application/json",
 										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idparticulier\": 1,\n\t\"idoffre\": 3\n}"
+								},
+								"url": {
+									"raw": "{{url}}/candidat/request",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"candidat",
+										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Create Candidat with Candidature already done",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "4222c489-fb66-4742-8ce1-e53c90ec8341",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "7eaa95e7-20fa-4c6b-affd-cb754bb54318",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Candidature already done\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Candidature already done');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
 									}
 								],
 								"body": {
@@ -1565,6 +2372,66 @@
 						"body": {
 							"mode": "raw",
 							"raw": " {\"identifiant\":\"admin\", \"mdp\":\"admin\" }"
+						},
+						"url": {
+							"raw": "{{url}}/login/request",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Unknown",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "06ddd133-6f24-4075-8d0d-6547ba4a73f5",
+								"exec": [
+									"pm.globals.set('url', 'http://0.0.0.0:3000')"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2cf0536e-b434-49c7-8c50-1d27e44df071",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Json bdy has information\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    pm.expect(jsonData).to.eql({",
+									"    \"type\": -1",
+									"})",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"identifiant\":\"admin\", \"mdp\":\"a\" }"
 						},
 						"url": {
 							"raw": "{{url}}/login/request",

@@ -6,6 +6,7 @@ const rollback = "ROLLBACK";
 
 const login = "SELECT id FROM particulier WHERE adressemail = $1 AND motdepasse = $2";
 
+const checkIdentifiant = "SELECT id FROM particulier WHERE adressemail = $1";
 
 const insert = "INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom, telephone) VALUES($1, $2, $3, $4, $5, $6) RETURNING id";
 const selectAll = "SELECT id , adressemail, cv, nom, prenom, telephone FROM particulier";
@@ -66,6 +67,12 @@ module.exports = class {
             await client.query(begin)
             .catch(err => {throw 'Error in transaction'});
 
+            result = await client.query(checkIdentifiant, [Particulier.adressemail]);
+
+            if(result.rows.length > 0) {
+                throw 'Email already used';
+            }
+
             result = await client.query(insert, values)
             .catch(e => {throw 'Error in the database'}); 
             
@@ -116,6 +123,10 @@ module.exports = class {
             result = await client.query(selectById, [id])
             .catch(e => {throw 'Error in the database'});
 
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
+
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
         }
@@ -144,6 +155,10 @@ module.exports = class {
 
             result = await client.query(updateNom, [nom, id])
             .catch(e => {throw 'Error in the database'});
+
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
@@ -174,6 +189,10 @@ module.exports = class {
             result = await client.query(updatePrenom, [prenom, id])
             .catch(e => {throw 'Error in the database'});
 
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
+
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
         }
@@ -202,6 +221,10 @@ module.exports = class {
 
             result = await client.query(updateMotdepasse, [motdepasse, id])
             .catch(e => {throw 'Error in the database'});
+
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
@@ -232,6 +255,10 @@ module.exports = class {
             result = await client.query(updateCv, [cv, id])
             .catch(e => {throw 'Error in the database'});
 
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
+
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
         }
@@ -258,8 +285,18 @@ module.exports = class {
             await client.query(begin)
             .catch(err => {throw 'Error in transaction'});
 
+            result = await client.query(checkIdentifiant, [adressemail]);
+
+            if(result.rows.length > 0) {
+                throw 'Email already used';
+            }
+
             result = await client.query(updateAdressemail, [adressemail, id])
             .catch(e => {throw 'Error in the database'});
+
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
@@ -290,6 +327,10 @@ module.exports = class {
             result = await client.query(updateTelephone, [telephone, id])
             .catch(e => {throw 'Error in the database'});
 
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
+
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});
         }
@@ -315,6 +356,10 @@ module.exports = class {
 
             result = await client.query(deleteOne, [id])
             .catch(e => {throw 'Error in the database'});
+
+            if(result.rows.length == 0) {
+                throw 'Invalid Id'
+            }
 
             await client.query(commit)
             .catch(err => {throw 'Error in transaction'});

@@ -16,14 +16,12 @@ module.exports = class EntrepriseWebService {
                 codestatus = 201;
             }
             catch(e) {
-                if (e == 'Entreprise object is missing information') {
-                    codestatus = 400;
-                    response = 'Entreprise object is missing information';
+                if (e == 'Error in the database' || e == 'Error in transaction') {
+                    codestatus = 500;
                 }
-                else if(e == 'Entreprise object is undefined') {
-                    codestatus = 400;
-                    response = 'Entreprise object is undefined';
-                }
+                else codestatus = 400;
+    
+                response = e;
             }
             
             res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -39,10 +37,12 @@ module.exports = class EntrepriseWebService {
             codestatus = 200;
         }
         catch(e) {
-            if (e == 'Error in the database') {
+            if (e == 'Error in the database' || e == 'Error in transaction') {
                 codestatus = 500;
-                response = 'Error in the database';
             }
+            else codestatus = 400;
+
+            response = e;
         }
         
         res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -57,10 +57,12 @@ module.exports = class EntrepriseWebService {
             codestatus = 200;
         }
         catch(e) {
-            if (e == 'Error in the database') {
+            if (e == 'Error in the database' || e == 'Error in transaction') {
                 codestatus = 500;
-                response = 'Error in the database';
             }
+            else codestatus = 400;
+
+            response = e;
         }
         
         res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -75,10 +77,12 @@ module.exports = class EntrepriseWebService {
             codestatus = 200;
         }
         catch(e) {
-            if (e == 'Error in the database') {
+            if (e == 'Error in the database' || e == 'Error in transaction') {
                 codestatus = 500;
-                response = 'Error in the database';
             }
+            else codestatus = 400;
+
+            response = e;
         }
         
         res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -128,8 +132,12 @@ module.exports = class EntrepriseWebService {
                 codestatus = 200;
             }
             catch(e) {
-                codestatus = 500;
-                response =  e;
+                if (e == 'Error in the database' || e == 'Error in transaction') {
+                    codestatus = 500;
+                }
+                else codestatus = 400;
+    
+                response = e;
             }
             
             res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -145,14 +153,12 @@ module.exports = class EntrepriseWebService {
             codestatus = 200;
         }
         catch(e) {
-            if(e == 'No id specified') {
-                response = 'No id specified';
-                codestatut = 400;
+            if (e == 'Error in the database' || e == 'Error in transaction') {
+                codestatus = 500;
             }
-            else if(e == 'Error in the database') {
-                response = 'Error in the database';
-                codestatut = 500;
-            }
+            else codestatus = 400;
+
+            response = e;
         }
         
         res.writeHead(codestatus, {'Content-Type': 'application/json'});

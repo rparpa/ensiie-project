@@ -15,14 +15,12 @@ module.exports = class CandidatWebService {
                 codestatus = 201;
             }
             catch(e) {
-                if (e == 'Candidat object is missing information') {
-                    codestatus = 400;
-                    response = 'Candidat object is missing information';
+                if (e == 'Error in the database' || e == 'Error in transaction') {
+                    codestatus = 500;
                 }
-                else if(e == 'Candidat object is undefined') {
-                    codestatus = 400;
-                    response = 'Candidat object is undefined';
-                }
+                else codestatus = 400;
+    
+                response = e;
             }
             
             res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -38,10 +36,12 @@ module.exports = class CandidatWebService {
             codestatus = 200;
         }
         catch(e) {
-            if (e == 'Error in the database') {
+            if (e == 'Error in the database' || e == 'Error in transaction') {
                 codestatus = 500;
-                response = 'Error in the database';
             }
+            else codestatus = 400;
+
+            response = e;
         }
         
         res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -56,10 +56,12 @@ module.exports = class CandidatWebService {
             codestatus = 200;
         }
         catch(e) {
-            if (e == 'Error in the database') {
+            if (e == 'Error in the database' || e == 'Error in transaction') {
                 codestatus = 500;
-                response = 'Error in the database';
             }
+            else codestatus = 400;
+
+            response = e;
         }
         
         res.writeHead(codestatus, {'Content-Type': 'application/json'});

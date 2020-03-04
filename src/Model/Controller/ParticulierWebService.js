@@ -17,14 +17,12 @@ module.exports = class ParticulierWebService {
                 codestatus = 201;
             }
             catch(e) {
-                if (e == 'Particulier object is missing information') {
-                    codestatus = 400;
-                    response = 'Particulier object is missing information';
+                if (e == 'Error in the database' || e == 'Error in transaction') {
+                    codestatus = 500;
                 }
-                else if(e == 'Particulier object is undefined') {
-                    codestatus = 400;
-                    response = 'Particulier object is undefined';
-                }
+                else codestatus = 400;
+    
+                response = e;
             }
             
             res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -40,10 +38,12 @@ module.exports = class ParticulierWebService {
             codestatus = 200;
         }
         catch(e) {
-            if (e == 'Error in the database') {
+            if (e == 'Error in the database' || e == 'Error in transaction') {
                 codestatus = 500;
-                response = 'Error in the database';
             }
+            else codestatus = 400;
+
+            response = e;
         }
         
         res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -58,10 +58,12 @@ module.exports = class ParticulierWebService {
             codestatus = 200;
         }
         catch(e) {
-            if (e == 'Error in the database') {
+            if (e == 'Error in the database' || e == 'Error in transaction') {
                 codestatus = 500;
-                response = 'Error in the database';
             }
+            else codestatus = 400;
+
+            response = e;
         }
         
         res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -111,7 +113,12 @@ module.exports = class ParticulierWebService {
                 codestatus = 200;
             }
             catch(e) {
-                throw e;
+                if (e == 'Error in the database' || e == 'Error in transaction') {
+                    codestatus = 500;
+                }
+                else codestatus = 400;
+    
+                response = e;
             }
             
             res.writeHead(codestatus, {'Content-Type': 'application/json'});
@@ -127,14 +134,12 @@ module.exports = class ParticulierWebService {
             codestatus = 200;
         }
         catch(e) {
-            if(e == 'No id specified') {
-                response = 'No id specified';
-                codestatut = 400;
+            if (e == 'Error in the database' || e == 'Error in transaction') {
+                codestatus = 500;
             }
-            else if(e == 'Error in the database') {
-                response = 'Error in the database';
-                codestatut = 500;
-            }
+            else codestatus = 400;
+
+            response = e;
         }
         
         res.writeHead(codestatus, {'Content-Type': 'application/json'});

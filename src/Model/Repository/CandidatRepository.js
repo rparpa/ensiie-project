@@ -4,6 +4,8 @@ const begin = "BEGIN";
 const commit = "COMMIT";
 const rollback = "ROLLBACK";
 
+const checkCandidature = "SELECT idoffre FROM candidat WHERE idoffre = $1 AND idparticulier = $2";
+
 const insert = "INSERT INTO candidat(idoffre, idparticulier) VALUES($1, $2) RETURNING *";
 
 const selectAllCandidatByOffre = "SELECT p.id, adressemail, cv, nom, prenom, telephone FROM candidat c, particulier p WHERE c.idparticulier = p.id AND c.idoffre = $1";
@@ -27,6 +29,12 @@ module.exports = class {
         try {
             await client.query(begin)
             .catch(err => {throw 'Error in transaction'});
+
+            result = await client.query(checkCandidature, [Candidat.idoffre, Candidat.idparticulier]);
+
+            if(result.rows.length > 0) {
+                throw 'Candidature already done';
+            }
 
             result = await client.query(insert, values)
             .catch(e => {throw 'Error in the database'}); 

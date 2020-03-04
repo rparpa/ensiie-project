@@ -38,14 +38,12 @@ module.exports = class AuthService {
                 codestatus = 200;
             }
             catch(e) {
-                if (e == 'Error in the database') {
+                if (e == 'Error in the database' || e == 'Error in transaction') {
                     codestatus = 500;
-                    response = e;
                 }
-                else {
-                    codestatus = 400;
-                    response = e;
-                }
+                else codestatus = 400;
+    
+                response = e;
             }
             
             res.writeHead(codestatus, {'Content-Type': 'application/json'});
