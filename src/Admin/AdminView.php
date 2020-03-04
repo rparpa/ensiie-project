@@ -25,10 +25,13 @@ class AdminView {
       <div class="tbox<?php echo $i+1; ?>">
         <div class="box-style box-style0<?php echo $i+1; ?>">
           <div class="content">
-            <h2><?php echo $location->getVoitureImmat(); ?></h2>
-            <p><?php echo $location->getUserEmail() . " " . $location->getKmMax() . "km max"; ?></p>
-            <p><?php echo $location->getDateDebut() . " " . $location->getDateFin() . " "; ?></p>
-            <a href="index.php?action=deleteLocation&location_id=<?php echo $location->getId();?>" class="button">Supprimer</a>  
+            <form action="index.php?action=deleteLocation" method="post">
+              <h2><?php echo $location->getVoitureImmat(); ?></h2>
+              <p><?php echo $location->getUserEmail() . " " . $location->getKmMax() . "km max"; ?></p>
+              <p><?php echo $location->getDateDebut() . " " . $location->getDateFin() . " "; ?></p>
+              <input type="hidden" id="location_id" name="location_id" value="<?php echo $location->getId();?>"> 
+              <input type="submit" value="Supprimer" class="button">
+            </form>
           </div>
         </div>
       </div>
@@ -62,11 +65,17 @@ class AdminView {
       <div class="tbox<?php echo $i+1; ?>">
         <div class="box-style box-style0<?php echo $i+1; ?>">
           <div class="content">
-            <div class="image"><a href="#"><img src="<?php echo $voiture->getImage(); ?>" width="324" height="200" alt="" /></a></div>
-            <h2><?php echo $voiture->getMarque() . " " . $voiture->getModele(); ?></h2>
-            <p><?php echo $voiture->getFinition() . " " . $voiture->getPuissance() . "ch"; ?></p>
-            <a href="index.php?action=modifVoiture&car_id=<?php echo $voiture->getId();?>" class="button">Modifier</a>
-            <a href="index.php?action=deleteVoiture&car_id=<?php echo $voiture->getId();?>" class="button">Supprimer</a>  
+              <div class="image"><a href="#"><img src="<?php echo $voiture->getImage(); ?>" width="324" height="200" alt="" /></a></div>
+              <h2><?php echo $voiture->getMarque() . " " . $voiture->getModele(); ?></h2>
+              <p><?php echo $voiture->getFinition() . " " . $voiture->getPuissance() . "ch"; ?></p>
+              <form action="index.php?action=modifVoiture" method="post">
+                <input type="hidden" id="car_id" name="car_id" value="<?php echo $voiture->getId();?>"> 
+                <input type="submit" value="Modifier" class="button">
+              </form>
+              <form action="index.php?action=deleteVoiture" method="post">
+                <input type="hidden" id="car_id" name="car_id" value="<?php echo $voiture->getId();?>"> 
+                <input type="submit" value="Supprimer" class="button">
+              </form>
           </div>
         </div>
       </div>
@@ -157,7 +166,7 @@ class AdminView {
       <div id="formContent">
         <form action="index.php">
           <h3 class="fadeIn first title">Suppression d'une voiture</h3>
-          <h7 class="fadeIn first">La suppression de la voiture numéro <b><?php echo $post; ?></b> a été prise en compte.</h7>
+          <h7 class="fadeIn first">La suppression de la voiture numéro <b><?php echo $post['car_id']; ?></b> a été prise en compte.</h7>
           <input id="accueil" type="submit" value="Retourner à l'accueil"/>
         </form>
       </div>

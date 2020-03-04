@@ -99,10 +99,10 @@ if (isset($_GET['api'])) {
             }
         }  else if ($_GET['action'] == 'deleteVoiture') {
                 $controller = new \Admin\AdminController(\Db\Connection::get());
-                $controller->deleteVoiture($_GET['car_id']);
+                $controller->deleteVoiture($_POST);
         }   else if ($_GET['action'] == 'deleteLocation') {
                 $controller = new \Admin\AdminController(\Db\Connection::get());
-                $controller->deleteLocation($_GET['id_location']);
+                $controller->deleteLocation($_POST);
         }
     } else {
         ?><link href="style.css" rel="stylesheet" type="text/css" media="screen" />

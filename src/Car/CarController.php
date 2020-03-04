@@ -31,43 +31,6 @@ class CarController {
 		}
 	}
 
-	public function createVoiture($post) {
-		try {
-			$this->carRepository->create($post['immat'],new \DateTimeImmutable($post['date_immat']),$post['id_marque'],$post['id_puissance'],$post['id_finition'],$post['lien_img'],$post['prix']);
-		} catch(Exception $e) {
-
-		}
-	}
-
-	public function supprimeVoiture($id) {
-		try {
-			$this->carRepository->delete($id);
-		} catch(Exception $e) {
-
-		}
-	}
-
-	public function updateVoiture($id, $post) {
-		$modifications;
-		if($post['immat'])
-			$modifications['immat'] = $post['immat'];
-		if($post['date_immat'])
-			$modifications['date_immat'] = $post['date_immat'];
-		/*if($post['id_marque'])
-		if($post['id_puissance'])
-		if($post['id_finition'])*/
-		if($post['lien_img'])
-			$modifications['lien_img'] = $post['lien_img'];
-		if($post['prix'])
-			$modifications['prix'] = $post['prix'];
-
-		try {
-			$voitures[] = $this->carRepository->update($id,$modifications);
-		} catch(Exception $e) {
-			//$this->connexionView->vue_erreur($e->getMessage());
-		}
-	}
-
 	public function afficheVoituresIndex() {
 		try {
 			$this->carView->afficheVoituresIndex($this->carRepository->fetchAll());

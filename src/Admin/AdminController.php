@@ -46,24 +46,37 @@ class AdminController {
 
 	public function ajoutVoiture($post) {
 		try {
-			$this->carRepository->ajoutVoiture($post);
+			$this->carRepository->create($post['immat'],new \DateTimeImmutable($post['date_immat']),$post['id_marque'],$post['id_puissance'],$post['id_finition'],$post['lien_img'],$post['prix']);
 			$this->adminView->afficheAjout($post);
 		} catch(Exception $e) {
-			//$this->connexionView->vue_erreur($e->getMessage());
+
 		}
 	}
 
-	public function afficheModifVoiture($post) {
+	public function afficheModifVoiture($car_id) {
 		try {
-			$this->adminView->afficheModifVoiture($post);
+			$this->adminView->afficheModifVoiture($car_id);
 		} catch(Exception $e) {
 			//$this->connexionView->vue_erreur($e->getMessage());
 		}
 	}
 
-	public function modifVoiture($post) {
+	public function modifVoiture($id, $post) {
+		$modifications;
+		if($post['immat'])
+			$modifications['immat'] = $post['immat'];
+		if($post['date_immat'])
+			$modifications['date_immat'] = $post['date_immat'];
+		/*if($post['id_marque'])
+		if($post['id_puissance'])
+		if($post['id_finition'])*/
+		if($post['lien_img'])
+			$modifications['lien_img'] = $post['lien_img'];
+		if($post['prix'])
+			$modifications['prix'] = $post['prix'];
+
 		try {
-			$this->carRepository->modifVoiture($post);
+			$voitures[] = $this->carRepository->update($id,$modifications);
 			$this->adminView->afficheModif($post);
 		} catch(Exception $e) {
 			//$this->connexionView->vue_erreur($e->getMessage());
@@ -72,10 +85,10 @@ class AdminController {
 
 	public function deleteVoiture($post) {
 		try {
-			$this->carRepository->deleteVoiture($post);
+			$this->carRepository->delete($post['car_id']);
 			$this->adminView->afficheDelete($post);
 		} catch(Exception $e) {
-			//$this->connexionView->vue_erreur($e->getMessage());
+			//echo $e;
 		}
 	}
 	

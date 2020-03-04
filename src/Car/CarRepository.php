@@ -69,7 +69,7 @@ class CarRepository
     }
 
     public function delete($id_voiture) {
-        $statement = $this->connection->prepare("DELETE FROM \"location\" WHERE id_voiture = :id_voiture");
+        $statement = $this->connection->prepare("DELETE FROM \"voiture\" WHERE id_voiture = :id_voiture");
         $statement->bindParam(":id_voiture", $id_voiture);
         $statement->execute();
     }
@@ -78,7 +78,7 @@ class CarRepository
         foreach($modifications as $titre => $modif) {
             $modifsPrepared = $modifsPrepared . $titre . " = :" . $titre . " ";
         }
-        $statement = $this->connection->prepare("UPDATE FROM \"voiture\" SET " . $modifsPrepared . "WHERE id_voiture = :id_voiture");
+        $statement = $this->connection->prepare("UPDATE \"voiture\" SET " . $modifsPrepared . "WHERE id_voiture = :id_voiture");
         foreach($modifications as $titre => $modif) {
             $statement->bindParam(":" . $titre, $modif);
         }
@@ -211,17 +211,4 @@ class CarRepository
 	public function deconnexion() {
 		session_destroy();
 	}
-
-    public function ajoutVoiture($post) {
-        // TODO
-    }
-
-    public function modifVoiture($post) {
-        // TODO
-    }
-
-    public function deleteVoiture($post) {
-        // TODO
-    }
-
 }
