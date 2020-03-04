@@ -46,8 +46,8 @@ class LocationRepository
 
         $statement->bindParam(":id_voiture", $id_voiture);
         $statement->bindParam(":id_user", $_SESSION["id_user"]);
-        $statement->bindParam(":date_debut", $date_debut->format('Y-m-d H:i:s'));
-        $statement->bindParam(":date_fin", $date_fin->format('Y-m-d H:i:s'));
+        @$statement->bindParam(":date_debut", $date_debut->format('Y-m-d H:i:s'));
+        @$statement->bindParam(":date_fin", $date_fin->format('Y-m-d H:i:s'));
         $statement->bindParam(":km_max", $km_max);
 
         $car = $this->carRepository->fetch($id_voiture);
@@ -188,8 +188,8 @@ class LocationRepository
     {
         $statement = $this->connection->prepare("SELECT FROM \"location\" WHERE id_voiture = :id_voiture AND ((date_debut >= :date_debut AND date_debut <= :date_fin) OR (:date_debut >= date_debut AND :date_debut <= date_fin))");
         $statement->bindParam(":id_voiture", $id_voiture);
-        $statement->bindParam(":date_debut", $date_debut->format('Y-m-d H:i:s'));
-        $statement->bindParam(":date_fin", $date_fin->format('Y-m-d H:i:s'));
+        @$statement->bindParam(":date_debut", $date_debut->format('Y-m-d H:i:s'));
+        @$statement->bindParam(":date_fin", $date_fin->format('Y-m-d H:i:s'));
         $statement->execute();
         return $statement->rowCount() == 0;
     }

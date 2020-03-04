@@ -55,7 +55,7 @@ class AdminController {
 
 	public function afficheModifVoiture($car_id) {
 		try {
-			$this->adminView->afficheModifVoiture($car_id);
+			$this->adminView->afficheModifVoiture($this->carRepository->fetch($car_id));
 		} catch(Exception $e) {
 			//$this->connexionView->vue_erreur($e->getMessage());
 		}
@@ -63,22 +63,23 @@ class AdminController {
 
 	public function modifVoiture($id, $post) {
 		$modifications;
-		if($post['immat'])
+		if(isset($post['immat']))
 			$modifications['immat'] = $post['immat'];
-		if($post['date_immat'])
+		if(isset($post['date_immat']))
 			$modifications['date_immat'] = $post['date_immat'];
 		/*if($post['id_marque'])
 		if($post['id_puissance'])
 		if($post['id_finition'])*/
-		if($post['lien_img'])
+		if(isset($post['lien_img']))
 			$modifications['lien_img'] = $post['lien_img'];
-		if($post['prix'])
+		if(isset($post['prix']))
 			$modifications['prix'] = $post['prix'];
 
 		try {
 			$voitures[] = $this->carRepository->update($id,$modifications);
 			$this->adminView->afficheModif($post);
 		} catch(Exception $e) {
+			echo $e;
 			//$this->connexionView->vue_erreur($e->getMessage());
 		}
 	}
@@ -102,7 +103,7 @@ class AdminController {
 	public function deleteLocation($post)
     {
         try {
-            $this->locationRepository->delete($post);
+            $this->locationRepository->delete($post['location_id']);
             $this->adminView->afficheDeleteLocation($post);
         } catch (Exception $e) {
             //$this->userView->vueErreur($e->getMessage());

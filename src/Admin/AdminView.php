@@ -7,13 +7,14 @@ class AdminView {
   }
 
   public function afficheLocations($locations) {
-    ?><div id="logo" class="container">
-    <h1><a href="#">Admin Panel</a></h1>
-    </div>
-    <div id="page" class="container">
-      <div class="entry">
+    ?>
+    <div class="row">
+    <div id="carpool-header" class="container">
+      <div>
+        <div class="entry">
         <h2 style="text-align: center">Liste des locations en cours</h2>
         <p style="text-align: center">Résumer des locations actuellement en cours, possibilité d'annuler la location.</p>
+        </div>
       </div>
     </div>
     <?php
@@ -28,7 +29,7 @@ class AdminView {
             <form action="index.php?action=deleteLocation" method="post">
               <h2><?php echo $location->getVoitureImmat(); ?></h2>
               <p><?php echo $location->getUserEmail() . " " . $location->getKmMax() . "km max"; ?></p>
-              <p><?php echo $location->getDateDebut() . " " . $location->getDateFin() . " "; ?></p>
+              <p><?php echo $location->getDateDebut()->format('Y-m-d H:i:s') . " " . $location->getDateFin()->format('Y-m-d H:i:s') . " "; ?></p>
               <input type="hidden" id="location_id" name="location_id" value="<?php echo $location->getId();?>"> 
               <input type="submit" value="Supprimer" class="button">
             </form>
@@ -41,6 +42,7 @@ class AdminView {
         ?></div><?php
       }
     }
+    ?></div><?php
   }
 
   public function afficheVoitures($voitures) {
@@ -125,22 +127,21 @@ class AdminView {
     <?php
   }
 
-  public function afficheModifVoiture($get) {
+  public function afficheModifVoiture($voiture) {
     ?>
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <h3 class="fadeIn first title">Modification d'une voiture</h3>
         <form id="form_modif" class="fadeIn first" action="index.php?action=modifVoiture" method="POST">
-          <input type="text" id="nom_modele" name="nom_modele" placeholder="Nom du modèle">
-          <input type="text" id="marque" name="marque" placeholder="Marque">
-          <input type="text" id="lien_img" name="lien_img" placeholder="Lien de l'image">
-          <input type="text" id="puissance_fisc" name="puissance_fisc" placeholder="Puissance fiscale">
-          <input type="text" id="" name="puissance_ch" placeholder="Puissance en chevaux">
-          <input type="text" id="nom_finition" name="nom_finition" placeholder="Nom de la finition">
-          <input type="text" id="immat" name="immat" placeholder="Numéro d'immatriculation">
-          <input type="date" id="date_immat" name="date_immat" placeholder="Date d'immatriculation">
-          <input type="text" id="prix" name="prix" placeholder="Prix à la journée">
-          <input type="hidden" name="car_id" value="<?php echo $get; ?>" />
+          <input type="text" id="nom_modele" name="nom_modele" value="<?php echo $voiture->getModele(); ?>" placeholder="Nom du modèle">
+          <input type="text" id="marque" name="marque" placeholder="Marque" value="<?php echo $voiture->getMarque(); ?>">
+          <!--<input type="text" id="lien_img" name="lien_img" value="<?php //echo $voiture->getImage(); ?>" placeholder="Lien de l'image">-->
+          <input type="text" id="" name="puissance_ch" value="<?php echo $voiture->getPuissance(); ?>" placeholder="Puissance en chevaux">
+          <input type="text" id="nom_finition" name="nom_finition" value="<?php echo $voiture->getFinition(); ?>" placeholder="Nom de la finition">
+          <input type="text" id="immat" name="immat" value="<?php echo $voiture->getImmat(); ?>" placeholder="Numéro d'immatriculation">
+          <!--<input type="date" id="date_immat" name="date_immat" value="<?php //echo $voiture->getDateImmat()->format('Y-m-d'); ?>" placeholder="Date d'immatriculation">-->
+          <input type="text" id="prix" name="prix" value="<?php echo $voiture->getPrix(); ?>" placeholder="Prix à la journée">
+          <input type="hidden" name="car_id" value="<?php echo $voiture->getId(); ?>" />
           <input type="submit" name="modifier" value="Modifier">
         </form>
       </div>
@@ -182,7 +183,7 @@ class AdminView {
       <div id="formContent">
         <form action="index.php">
           <h3 class="fadeIn first title">Suppression d'une location</h3>
-          <h7 class="fadeIn first">La suppression de la location numéro <b><?php echo $post; ?></b> a été prise en compte.</h7>
+          <h7 class="fadeIn first">La suppression de la location numéro <b><?php echo $post['location_id']; ?></b> a été prise en compte.</h7>
           <input id="accueil" type="submit" value="Retourner à l'accueil"/>
         </form>
       </div>

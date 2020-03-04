@@ -11,6 +11,18 @@ if (isset($_GET['api'])) {
     } else if($_GET['api'] == 'search' && isset($_POST)) {
         $service = new \Car\CarSearchService(\Db\Connection::get());
         $service->searchCar($_POST);
+    } else if($_GET['api'] == 'fetchBrands') {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->fetchBrands($_POST);
+    } else if($_GET['api'] == 'fetchModels' && isset($_POST['id_marque'])) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->fetchModels($_POST['id_marque']);
+    } else if($_GET['api'] == 'fetchPuissances' && isset($_POST['id_marque'])) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->fetchPuissances($_POST['id_marque']);
+    } else if($_GET['api'] == 'fetchFinitions' && isset($_POST['id_marque'])) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->fetchFinitions($_POST['id_marque']);
     }
 }
 ?>
@@ -86,7 +98,7 @@ if (isset($_GET['api'])) {
             }
         } else if ($_GET['action'] == 'admin') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
-            //$controller->afficheLocations(); A CORRIGER
+            $controller->afficheLocations();
             $controller->afficheVoitures();
         } else if ($_GET['action'] == 'ajouter') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
@@ -98,9 +110,9 @@ if (isset($_GET['api'])) {
         } else if ($_GET['action'] == 'modifVoiture') {
             $controller = new \Admin\AdminController(\Db\Connection::get());
             if(isset($_POST["nom_modele"])) {
-                $controller->modifVoiture($_POST);
+                $controller->modifVoiture($_POST['car_id'],$_POST);
             } else {
-                $controller->afficheModifVoiture($_GET['car_id']);
+                $controller->afficheModifVoiture($_POST['car_id']);
             }
         }  else if ($_GET['action'] == 'deleteVoiture') {
                 $controller = new \Admin\AdminController(\Db\Connection::get());

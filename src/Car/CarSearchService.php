@@ -58,6 +58,34 @@ class CarSearchService {
         die();
     }
 
+    public function fetchBrands() {
+        header("Content-Type: application/json");
+        $res = $this->carRepository->fetchBrands();
+        echo json_encode(array("status"=>1,"content"=>$res));
+        die();
+    }
+
+    public function fetchModels($brand) {
+        header("Content-Type: application/json");
+        $res = $this->carRepository->fetchModels($brand);
+        echo json_encode(array("status"=>1,"content"=>$res));
+        die();
+    }
+
+    public function fetchPuissances($puissance) {
+        header("Content-Type: application/json");
+        $res = $this->carRepository->fetchPuissances($brand);
+        echo json_encode(array("status"=>1,"content"=>$res));
+        die();
+    }
+
+    public function fetchFinitions($brand) {
+        header("Content-Type: application/json");
+        $res = $this->carRepository->fetchFinitions($brand);
+        echo json_encode(array("status"=>1,"content"=>$res));
+        die();
+    }
+
     public function searchCar($POST) {
         header("Content-Type: application/json");
         if($POST["budget"] == "" || $POST["budget"] == 0)

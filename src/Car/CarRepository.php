@@ -75,10 +75,24 @@ class CarRepository
     }
 
     public function update($id_voiture,$modifications) {
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $modifsPrepared = "";
+        $i = 0;
+        $len = count($modifications);
         foreach($modifications as $titre => $modif) {
-            $modifsPrepared = $modifsPrepared . $titre . " = :" . $titre . " ";
+            if($i < $len-1) {
+                $modifsPrepared = $modifsPrepared . $titre . " = :" . $titre . ",";
+            } else {
+                $modifsPrepared = $modifsPrepared . $titre . " = :" . $titre;
+            }
+            $i++;
         }
-        $statement = $this->connection->prepare("UPDATE \"voiture\" SET " . $modifsPrepared . "WHERE id_voiture = :id_voiture");
+        $statement = $this->connection->prepare("UPDATE \"voiture\" SET " . $modifsPrepared . " WHERE id_voiture = :id_voiture");
+
+        //echo "UPDATE \"voiture\" SET " . $modifsPrepared . " WHERE id_voiture = :id_voiture";
+        //die();
+
+        $statement->bindParam(":id_voiture",$id_voiture);
         foreach($modifications as $titre => $modif) {
             $statement->bindParam(":" . $titre, $modif);
         }
@@ -212,6 +226,64 @@ class CarRepository
         }
 
         return $voitures;
+    }
+
+    public function fetchBrands() {
+        $statement = $this->connection->prepare("SELECT * FROM marque");
+        $rows = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        $finalprod = [];
+        
+        foreach ($rows as $row) {
+            $finalprod[] = array("id"=>$row->id_marque,"nom"=>$row->nom_marque);
+        }
+
+        return $finalprod;
+    }
+
+    public function fetchModels($brand) {
+        $statement = $this->connection->prepare("SELECT * FROM modele WHERE id_marque = ?");
+
+        $statement->execute(array($brand));
+        $rows = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        $finalprod = [];
+        
+        foreach ($rows as $row) {
+            $finalprod[] = array("id"=>$row->id_modele,"nom"=>$row->nom_modele);
+        }
+
+        return $finalprod;
+    }
+
+    public function fetchPuissances($brand) {
+        $statement = $this->connection->prepare("SELECT * FROM puissance WHERE id_marque = ?");
+
+        $statement->execute(array($brand));
+        $rows = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        $finalprod = [];
+        
+        foreach ($rows as $row) {
+            $finalprod[] = array("id"=>$row->id_puissance,"nom"=>$row->puissance_ch);
+        }
+
+        return $finalprod;
+    }
+
+    public function fetchFinition($brand) {
+        $statement = $this->connection->prepare("SELECT * FROM finition WHERE id_marque = ?");
+
+        $statement->execute(array($brand));
+        $rows = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        $finalprod = [];
+        
+        foreach ($rows as $row) {
+            $finalprod[] = array("id"=>$row->id_finition,"nom"=>$row->nom_finition);
+        }
+
+        return $finalprod;
     }
 
     public function fetchEveryPossibleCar() {
