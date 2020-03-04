@@ -5,9 +5,12 @@ session_start();
 ob_start();
 
 if (isset($_GET['api'])) {
-    if ($_GET['api'] == 'search' && isset($_POST['string'])) {
+    if ($_GET['api'] == 'fetch' && isset($_POST['string'])) { // post string kept for backward compatibility with old system
         $service = new \Car\CarSearchService(\Db\Connection::get());
-        $service->searchCars($_POST['string']);
+        $service->fetchEveryPossibleCar($_POST['string']);
+    } else if($_GET['api'] == 'search' && isset($_POST)) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->searchCar($_POST);
     }
 }
 ?>
@@ -15,8 +18,10 @@ if (isset($_GET['api'])) {
 <html>
 <head>
   <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="autocomplete.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="autocomplete.js"></script>
   <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
@@ -128,13 +133,13 @@ if (isset($_GET['api'])) {
                 <div class="col-lg-4">
                     <dl class="param param-feature">
                         <dt>Marque, modèle ...</dt>
-                        <input type="text" id="voiture" name="voiture" placeholder="Marque, modele, ...">
+                        <input type="text" id="voiture" class="autocomplete" name="voiture" placeholder="Marque, modele, ...">
                     </dl>
                 </div>
                 <div class="col-lg-4">
                     <dl class="param param-feature">
                         <dt>Budget</dt>
-                        <input type="text" name="budget" placeholder="Budget">
+                        <input type="number" name="budget" placeholder="Budget">
                     </dl>
                 </div>
                 <div class="col-lg-8">

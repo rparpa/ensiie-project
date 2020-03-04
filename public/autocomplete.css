@@ -1,0 +1,47 @@
+:root {
+  --itemColor: #738a9a;
+  --selectedItemColor: #020814;
+  --popupBackground: #ffffff;
+  --popupBorderColor: #dee3ea;
+}
+
+.autocomplete {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+.autocomplete-list {
+  position: absolute;
+  width: 100%;
+  color: var(--itemColor);
+  background: var(--popupBackground);
+  border: 1px solid var(--popupBorderColor);
+  -webkit-box-shadow: 0 1px 3px rgba(2, 8, 20, 0.06), 0 1px 2px rgba(2, 8, 20, 0.04);
+  box-shadow: 0 1px 3px rgba(2, 8, 20, 0.06), 0 1px 2px rgba(2, 8, 20, 0.04);
+  padding: 0;
+  max-height: 10rem;
+  overflow: auto;
+  display: none;
+}
+
+.autocomplete-list.show {
+  display: block;
+}
+
+.autocomplete-list li {
+  cursor: pointer;
+  padding: 0.2rem 1rem;
+}
+
+.autocomplete-list li:hover,
+.autocomplete-list li:active {
+  background: #eee;
+  font-weight: 500;
+  color: var(--selectedItemColor);
+}
+
+.autocomplete-list li.selected {
+  font-weight: 500;
+  color: var(--selectedItemColor);
+}

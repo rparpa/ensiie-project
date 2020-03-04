@@ -75,6 +75,7 @@ INSERT INTO "marque"(id_marque,nom_marque) VALUES (0,'BMW');
 INSERT INTO "marque"(id_marque,nom_marque) VALUES (1,'Volvo');
 INSERT INTO "marque"(id_marque,nom_marque) VALUES (2,'Renault');
 INSERT INTO "marque"(id_marque,nom_marque) VALUES (3,'Peugeot');
+INSERT INTO "marque"(id_marque,nom_marque) VALUES (4,'Volskwagen');
 
 INSERT INTO "modele"(id_marque,id_modele,nom_modele, lien_img) VALUES (1,0,'S60', 'https://i.ytimg.com/vi/LNc6Bal1lR0/hqdefault.jpg');
 INSERT INTO "modele"(id_marque,id_modele,nom_modele) VALUES (1,1,'V60');
@@ -108,6 +109,7 @@ INSERT INTO "puissance"(id_puissance,id_marque,puissance_fisc,puissance_ch) VALU
 INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (0,1,'KINETIC');
 INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (1,1,'MOMENTUM');
 INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (2,1,'SUMMUM');
+INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (4,1,'SUMMUM LUXE');
 INSERT INTO "finition"(id_finition,id_marque,nom_finition) VALUES (3,1,'XENIUM');
 
 INSERT INTO "voiture"(immat,date_immat,id_marque,id_modele,id_puissance,id_finition,prix) VALUES ('FE-504-ZZ','01-05-2019',1,0,2,3,270);

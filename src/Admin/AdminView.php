@@ -56,6 +56,7 @@ class AdminView {
         </div>
       </div>
     </div>
+    <div id="columnsCars">
     <?php
     $i = 0;
     foreach($voitures as $voiture) {
@@ -85,6 +86,7 @@ class AdminView {
         ?></div><?php
       }
     }
+    ?></div><?php
   }
 
   public function afficheAjoutVoiture() {
