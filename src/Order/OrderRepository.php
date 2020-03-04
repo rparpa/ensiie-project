@@ -182,8 +182,9 @@ class OrderRepository
     /**
      * @param $orderId
      * @param $sandwichId
+     * @return bool
      */
-    private function addSandwich($orderId, $sandwichId)
+    public function addSandwich($orderId, $sandwichId)
     {
         $query = $this->connection->prepare(
             'INSERT INTO "order_sandwich"(order_id, sandwich_id) 
@@ -197,13 +198,15 @@ class OrderRepository
         {
             $query->errorInfo();
         }
+        return $result;
     }
 
     /**
      * @param $orderId
      * @param $sandwichId
+     * @return bool
      */
-    private function removeSandwich($orderId, $sandwichId)
+    public function removeSandwich($orderId, $sandwichId)
     {
         $query = $this->connection->prepare(
             'DELETE 
@@ -219,6 +222,7 @@ class OrderRepository
         {
             $query->errorInfo();
         }
+        return $result;
     }
 
     /**
