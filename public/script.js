@@ -61,7 +61,19 @@ $(document).ready(function() {
 	});
 
 	$('#form_modif').submit(function() {
-		alert("aaa");
+		var nom_modele = $("#nom_modele").val();
+		var marque = $("#marque").val();
+		var lien_img = $("#lien_img").val();
+		var puissance_fisc = $("#puissance_fisc").val();
+		var puissance_ch = $("#puissance_ch").val();
+		var nom_finition = $("#nom_finition").val();
+		var immat = $("#immat").val();
+		var date_immat = $("#date_immat").val();
+		var prix = $("#prix").val();
+		if(nom_modele=='' || marque=='' || lien_img=='' || puissance_fisc=='' || puissance_ch=='' || nom_finition=='' || immat=='' || date_immat=='' || prix=='') {
+			alert("Merci de remplir tous les champs.");
+			return false;
+		}
 	});
 });
 

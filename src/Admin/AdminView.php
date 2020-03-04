@@ -7,9 +7,8 @@ class AdminView {
   }
 
   public function afficheLocations($locations) {
-    ?> <link href="adminpanel.css" rel="stylesheet" type="text/css" media="screen" />
-    <div id="logo" class="container">
-      <h1><a href="#">Admin Panel</a></h1>
+    ?><div id="logo" class="container">
+    <h1><a href="#">Admin Panel</a></h1>
     </div>
     <div id="page" class="container">
       <div class="entry">

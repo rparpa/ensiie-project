@@ -38,7 +38,7 @@ if (isset($_GET['api'])) {
 <?php } ?>
 </form>
 </nav>
-
+<link href="adminpanel.css" rel="stylesheet" type="text/css" media="screen" />
 <div id="wrapper">
     <?php
     if (isset($_GET['action'])) {
@@ -108,7 +108,7 @@ if (isset($_GET['api'])) {
         ?><link href="style.css" rel="stylesheet" type="text/css" media="screen" />
         <div id="logo" class="container">
           <h1><a href="#">CookRental</a></h1>
-          <p>You are cooked and looking for a car quickly, we are the solution.</p>
+          <p>Vous êtes à la recherche d'une voiture rapidement, nous somme la solution.</p>
       </div>
       <div id="page" class="container">
           <div>
@@ -142,8 +142,7 @@ if (isset($_GET['api'])) {
                 </div>
             </div>
             <div class="entry">
-                <p>Below is our list of cars available for hire.<br>
-                You will find all the details by clicking on "More details".</p>
+                <p>Voici notre liste de voitures disponibles a la location, Vous trouverez tous les détails en cliquant sur le prix.</p>
             </div>
         </div>
         </div><?php
