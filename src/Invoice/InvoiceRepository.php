@@ -164,7 +164,7 @@ class InvoiceRepository
             {
                 foreach ($sandwich->getIngredients() as $ingredient)
                 {
-                   $result .= $ingredient.getLabel(). ' ';
+                   $result .= $ingredient->getLabel(). ' ';
                 }
             }
             $result .= ') ';

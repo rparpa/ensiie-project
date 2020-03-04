@@ -46,9 +46,11 @@ class OrderRepository
                 ->setId($row->id)
                 ->setDate(new DateTimeImmutable($row->order_date))
                 ->setApproval($row->approval)
-                ->setClient($this->fetchUser($row->client_id))
-                ->setValidator($this->fetchUser($row->validator_id));
-            
+                ->setClient($this->fetchUser($row->client_id));
+                        
+            if(isset($row->validator_id))
+                $order->setValidator($this->fetchUser($row->validator_id));
+
             $order->setSandwichs($this->fetchSandwichs($order->getId()));
 
             $orders[] = $order;
@@ -77,9 +79,12 @@ class OrderRepository
                 ->setId($row['id'])
                 ->setDate(new DateTimeImmutable($row['order_date']))
                 ->setApproval($row['approval'])
-                ->setClient($this->fetchUser($row['client_id']))
-                ->setValidator($this->fetchUser($row['validator_id']));
+                ->setClient($this->fetchUser($row['client_id']));
+                
+            if(isset($row['validator_id']))
+                $order->setValidator($this->fetchUser($row['validator_id']));
 
+            
             $order->setSandwichs($this->fetchSandwichs($order->getId()));
         } else {
             $order = null;
@@ -177,8 +182,9 @@ class OrderRepository
     /**
      * @param $orderId
      * @param $sandwichId
+     * @return bool
      */
-    private function addSandwich($orderId, $sandwichId)
+    public function addSandwich($orderId, $sandwichId)
     {
         $query = $this->connection->prepare(
             'INSERT INTO "order_sandwich"(order_id, sandwich_id) 
@@ -192,13 +198,15 @@ class OrderRepository
         {
             $query->errorInfo();
         }
+        return $result;
     }
 
     /**
      * @param $orderId
      * @param $sandwichId
+     * @return bool
      */
-    private function removeSandwich($orderId, $sandwichId)
+    public function removeSandwich($orderId, $sandwichId)
     {
         $query = $this->connection->prepare(
             'DELETE 
@@ -214,6 +222,7 @@ class OrderRepository
         {
             $query->errorInfo();
         }
+        return $result;
     }
 
     /**

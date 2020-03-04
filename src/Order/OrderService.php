@@ -138,6 +138,68 @@ class OrderService
         return $result;
     }
 
+    public function addSandwich(Order $order, Sandwich $sandwich)
+    {
+        $this->resetErrors();
+        $result = false;
+        if ($order == null)
+        {
+            $this->errors['order_null'] = 'Order shouldn\'t be null.';
+            return $result;
+        }
+        if ($sandwich == null)
+        {
+            $this->errors['sandwich_null'] = 'Sandwich shouldn\'t be null.';
+            return $result;
+        }
+        if ($order->getId() == null)
+        {
+            $this->errors['id'] = 'Order id shouldn\'t be null.';
+            return $result;
+        }
+        if ($sandwich->getId() == null)
+        {
+            $this->errors['id'] = 'Sandwich id shouldn\'t be null.';
+            return $result;
+        }
+        $result = $this->orderRepository->addSandwich($order->getId(), $sandwich->getId());
+        if ($result == false)
+            $this->errors['sandwich_add'] = 'Sandwich cannot be added';
+
+        return $result;
+    }
+
+    public function removeSandwich(Order $order, Sandwich $sandwich)
+    {
+        $this->resetErrors();
+        $result = false;
+        if ($order == null)
+        {
+            $this->errors['order_null'] = 'Order shouldn\'t be null.';
+            return $result;
+        }
+        if ($sandwich == null)
+        {
+            $this->errors['sandwich_null'] = 'Sandwich shouldn\'t be null.';
+            return $result;
+        }
+        if ($order->getId() == null)
+        {
+            $this->errors['id'] = 'Order id shouldn\'t be null.';
+            return $result;
+        }
+        if ($sandwich->getId() == null)
+        {
+            $this->errors['id'] = 'Sandwich id shouldn\'t be null.';
+            return $result;
+        }
+        $result = $this->orderRepository->removeSandwich($order->getId(), $sandwich->getId());
+        if ($result == false)
+            $this->errors['sandwich_add'] = 'Sandwich cannot be added';
+
+        return $result;
+    }
+
     private function validateOrder(Order $order) {
         $result = true;
 
