@@ -1,4 +1,5 @@
 const ClientSession = require('../Factory/ClientSession');
+const Geo = require('../../Utils/geo');
 
 const begin = "BEGIN";
 const commit = "COMMIT";
@@ -23,12 +24,15 @@ module.exports = class {
             throw 'Offre object is undefined';
         }
 
-        if (!Offre.identreprise || !Offre.description || !Offre.document || !Offre.typecontrat ||!Offre.adresse || !Offre.latitude || !Offre.longitude ||!Offre.salaire ||!Offre.titre || !Offre.dateparution) {
+        if (!Offre.identreprise || !Offre.description || !Offre.document || !Offre.typecontrat ||!Offre.adresse ||!Offre.salaire ||!Offre.titre || !Offre.dateparution) {
             throw 'Offre object is missing information';
         }
 
         let result;
-        let values = [Offre.identreprise, Offre.description, Offre.document, Offre.typecontrat, Offre.adresse, Offre.latitude, Offre.longitude, Offre.salaire, Offre.titre, Offre.dateparution];
+
+        let coord = await Geo.getCoordsByAddr(Offre.adresse);
+
+        let values = [Offre.identreprise, Offre.description, Offre.document, Offre.typecontrat, Offre.adresse, coord.lat, coord.lon, Offre.salaire, Offre.titre, Offre.dateparution];
 
         var client = ClientSession.getSession();
 
