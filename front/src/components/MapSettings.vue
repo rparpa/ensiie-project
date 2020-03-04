@@ -8,13 +8,12 @@
     }"
     :options="{ countries: ['fr'], language: 'fr' }"
   >
-  </places>
-
+  </places>  
 </template>
 
 <script>
   import Places from 'vue-places'
-  import { EventBus } from "./event-bus.js";
+  import { EventBus } from "../event-bus";
 
   export default {
 

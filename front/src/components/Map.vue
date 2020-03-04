@@ -39,7 +39,7 @@ import MapSettings from './MapSettings.vue'
 import MarkerInfo from './MarkerInfo.vue'
 import MapBox from './MapBox.vue'
 import MapOptions from "./MapOptions";
-import {EventBus} from "./event-bus";
+import {EventBus} from "../event-bus";
 
 export default {
   name: 'Map',
