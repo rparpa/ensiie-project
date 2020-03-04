@@ -14,23 +14,31 @@
         id="login-form-password"
         class="mr-3"
         type="password"
-        v-model="clearLogInPasswordHolder"
+        v-model="clearPasswords.clearLogInPasswordHolder"
         placeholder="Password"
       ></b-input>
-      <b-button class="mr-2" type="submit" variant="primary">Log-in</b-button>
+      <b-button class="mr-2" type="submit" variant="primary">Connexion</b-button>
       <div>
         <!-- Using modifiers -->
-        <b-button v-b-modal.signInModal @submit="onSignIn">Sign In</b-button>
+        <b-button v-b-modal.signInModal @submit="onSignIn">Inscription</b-button>
         <!-- The modal -->
-        <b-modal id="signInModal" title="Sign In" hide-footer>
-            <b-form @submit="onSignIn">
-            <label class="sr-only" for="signin-form-username">Username</label>
-            <b-input
-              id="signin-form-username"
-              class="mb-2"
-              v-model="signIn.username"
-              placeholder="Username"
-            ></b-input>
+        <b-modal id="signInModal" title="Inscription" hide-footer>
+            <b-form @submit.stop.prevent="onSignIn">
+              <b-form-group id="signin-form-group-username">
+                <b-form-input
+                  id="signin-form-input-username"
+                  placeholder="Nom d'utilisateur"
+                  class="mb-2"
+                  v-model="$v.signIn.username.$model"
+                  :state="validateSignInState('username')"
+                  aria-describedby="input-username-live-feedback"
+                ></b-form-input>
+
+                <b-form-invalid-feedback
+                  id="input-username-live-feedback"
+                  >Ce champ doit comporter au moins 5 caractères.
+                </b-form-invalid-feedback>
+              </b-form-group>
 
             <label class="sr-only" for="signin-form-email">Email</label>
             <b-input-group class="mb-2" prepend="@">
@@ -42,22 +50,30 @@
               ></b-input>
             </b-input-group>
 
-            <label class="sr-only" for="signin-form-password">Password</label>
-            <b-input
-              id="signin-form-password"
-              class="mb-3"
-              type="password"
-              v-model="clearSignInPasswordHolder"
-              placeholder="Password"
-            ></b-input>           
-            <b-button type="submit" variant="primary" >Create Account</b-button>
+            <b-form-group id="signin-form-group-password">
+              <b-form-input
+                id="signin-form-input-password"
+                placeholder="Mot de passe"
+                class="mb-3"
+                type="password"
+                v-model="$v.clearPasswords.clearSignInPasswordHolder.$model"
+                :state="validateClearPasswordState('clearSignInPasswordHolder')"
+                aria-describedby="input-password-live-feedback"
+              ></b-form-input>           
+
+            <b-form-invalid-feedback
+              id="input-password-live-feedback"
+              >Ce champ doit comporter au moins 6 caractères.
+            </b-form-invalid-feedback>
+            </b-form-group>
+            <b-button type="submit" variant="primary">Créer un compte</b-button>
           </b-form>
         </b-modal>
       </div>
     </b-form>
     <b-collapse id="errorMessageCollapsible" v-model="displayAuthenticationErrorAlert">
       <b-alert variant="warning" show>
-        Username or password incorrect!
+        Nom d'utilisateur ou mot de passe incorrect !
       </b-alert>
     </b-collapse>
     <div class= "my-1" id="userLoggedInContainer" v-if="currentUser">
@@ -87,7 +103,7 @@
               id="settings-form-pwd"
               class="mb-2"
               placeholder="New Password"
-              v-model="clearSettingsPasswordHolder"
+              v-model="clearPasswords.clearSettingsPasswordHolder"
             ></b-input>  
             <b-button type="submit" variant="primary">Mettre a jour</b-button>
           </b-form>
@@ -111,9 +127,13 @@
 import {HTTP} from '../http-constants'
 import User from '../entity/User'
 
+import { validationMixin } from "vuelidate";
+import { required, minLength } from "vuelidate/lib/validators";
+
 const sha256 = require('js-sha256');
 
 export default {
+  mixins: [validationMixin],
   data() {
     return {
       logIn: {
@@ -121,9 +141,9 @@ export default {
         password: ''
       },
       signIn: {
-        username: '',
-        email: '',
-        password: ''
+        username: null,
+        email: null,
+        password: null
       },
       settings: {
         username: '',
@@ -131,10 +151,26 @@ export default {
         password: ''
       },
       currentUser: undefined,
-      clearLogInPasswordHolder: '',
-      clearSignInPasswordHolder: '',
-      clearSettingsPasswordHolder: '',
+      clearPasswords: {
+        clearLogInPasswordHolder: null,
+        clearSignInPasswordHolder: null,
+        clearSettingsPasswordHolder: null,
+      },
       displayAuthenticationErrorAlert: false
+    }
+  },
+  validations: {
+    signIn: {
+      username: {
+        required,
+        minLength: minLength(5)
+      }
+    },
+    clearPasswords: {
+      clearSignInPasswordHolder: {
+        required,
+        minLength: minLength(6)
+      }
     }
   },
   watch: {
@@ -162,6 +198,14 @@ export default {
     }
   },
   methods: {
+    validateSignInState(name) {
+      const { $dirty, $error } = this.$v.signIn[name];
+      return $dirty ? !$error : null;
+    },
+    validateClearPasswordState(name) {
+      const { $dirty, $error } = this.$v.clearPasswords[name]
+      return $dirty ? !$error : null;
+    },
     onLogIn(evt) {
       evt.preventDefault();
 
@@ -180,6 +224,11 @@ export default {
       })
     },
     onSignIn(evt) {
+      this.$v.signIn.$touch();
+      if (this.$v.signIn.$anyError) {
+        return;
+      }
+
       evt.preventDefault()
       
       HTTP.post('registration'
@@ -208,8 +257,6 @@ export default {
       .catch(error => {      
         console.log(error);
       })
-
-
     }
   }
 }
