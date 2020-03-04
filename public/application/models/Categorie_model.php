@@ -34,5 +34,10 @@ class Categorie_model extends CI_Model
     public function getCategorie($id_categ)
     {
 		return $this->db->get_where('categorie',array('id_categorie' => $id_categ))->result_array();
+	}
+	
+	public function getCategorieByName($name_categ)
+    {
+		return $this->db->get_where('categorie',array('categorie' => $name_categ))->result_array();
     }
 }
