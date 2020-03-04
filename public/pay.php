@@ -40,11 +40,12 @@ $orderService = new OrderService(
         </div>
     </div>
     <?
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
-        $newOrder = $orderService->getOrderById($_POST['id']);
+    if (isset($_SESSION['order_id'])) {
+        $newOrder = $orderService->getOrderById($_SESSION['order_id']);
+        $str = ($newOrder->getApproval()) ? ("Approuvé") : ("En attente");
 
         echo "
-                                <p class=\"align-center\"> Merci pour votre commande #" . $newOrder->getId() . "<br>Etat de la commande : " . $newOrder->getApproval() . "<br>" . $newOrder->getDate()->format("Y-m-d") . "</p>
+                                <p class=\"align-center\"> Merci pour votre commande #" . $newOrder->getId() . "<br>Etat de la commande : " . $str . "<br>" . $newOrder->getDate()->format("Y-m-d") . "</p>
                                 ";
     }
     $fi = new FilesystemIterator('assets/gif', FilesystemIterator::SKIP_DOTS);
