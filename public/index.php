@@ -3,6 +3,13 @@
 require_once '../src/Bootstrap.php';
 session_start();
 ob_start();
+
+if (isset($_GET['api'])) {
+    if ($_GET['api'] == 'search' && isset($_POST['string'])) {
+        $service = new \Car\CarSearchService(\Db\Connection::get());
+        $service->searchCars($_POST['string']);
+    }
+}
 ?>
 
 <html>
@@ -121,7 +128,7 @@ ob_start();
                 <div class="col-lg-4">
                     <dl class="param param-feature">
                         <dt>Marque, modèle ...</dt>
-                        <input type="text" name="voiture" placeholder="Marque, modele, ...">
+                        <input type="text" id="voiture" name="voiture" placeholder="Marque, modele, ...">
                     </dl>
                 </div>
                 <div class="col-lg-4">
@@ -131,7 +138,7 @@ ob_start();
                     </dl>
                 </div>
                 <div class="col-lg-8">
-                    <a style="color:white;" type="button" class="btn btn-danger">Trouver la voiture de mes rêves</a>
+                    <a style="color:white;" id="sendRq" type="button" class="btn btn-danger">Trouver la voiture de mes rêves</a>
                 </div>
             </div>
             <div class="entry">

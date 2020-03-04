@@ -33,7 +33,7 @@ class UserController {
 
 	public function identification($post) {
 		try {
-			if(($rep=$this->userRepository->identification($post))!=false) {
+			if(($rep=$this->userRepository->identification($post['email'],$post['password']))!=false) {
 				$this->userView->vueConfirm("Vous êtes désormais connecté.");
 				header("Refresh:0; url=index.php");
 			} else {
@@ -48,7 +48,7 @@ class UserController {
 
 	public function enregistrement($post) {
 		try {
-			if(($rep=$this->userRepository->enregistrement($post))!==false) {
+			if(($rep=$this->userRepository->enregistrement($post['name'],$post['firstname'],$post['email'],$post['birthday'],$post['password']))!==false) {
 				$this->userView->vueConfirm("Vous êtes désormais inscrit.");
 				header("Refresh:0; url=index.php");
 			} else {
