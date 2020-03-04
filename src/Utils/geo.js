@@ -1,9 +1,9 @@
 const fetch = require("node-fetch");
-module.export = class {
+module.export = class geo{
     constructor() {
     }
 
-    async  getCoordsByAddr(input) { // fonction async necessite async contexte lors de l'appel
+    static async  getCoordsByAddr(input) { // fonction async necessite async contexte lors de l'appel
     if (!input) {
         throw 'Parameter missing'
     }
@@ -25,10 +25,8 @@ module.export = class {
         console.log(error);
     }
 }
-
-
-        
-        ComputeDistance(lat1,lat2,lon1,lon2){ // Formule de Haversine pour la distance à vol d'oiseau
+       
+        static ComputeDistance(lat1,lat2,lon1,lon2){ // Formule de Haversine pour la distance à vol d'oiseau
         // On travaille avec des radians donc tout nos angles sont convertis en radians en multipliant par pi / 180 
        if(!lat1 ||!lat2 || !lon1||!lon2){
            throw 'Parameter missing';
