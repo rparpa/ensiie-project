@@ -21,7 +21,7 @@ if (isset($logout_message)) {
 <?php
 if (isset($message_display)) {
     echo "<div class='message'>";
-    echo $message_display;
+    echo "<span style='margin-left: 35%'>$message_display</span>";
     echo "</div>";
 }
 ?>
