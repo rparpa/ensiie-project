@@ -10,10 +10,10 @@ CREATE TABLE "user" (
     isvalidator BOOLEAN
 );
 
-INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Marwan', 'GUERNOUG', '1997-12-18', 'Kart', 'marwan.guernoug@ensiie.fr', '1234', true);
-INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Mike', 'MALECOT', '1995-08-06', 'Adolf', 'mike.malecot@ensiie.fr', '1234', true);
-INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Nicolas', 'CHARLON', '1996-11-09', 'Kozak', 'nicolas.charlon@ensiie.fr', '1234', true);
-INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Rayan', 'BELMADANI', '1996-10-18', 'Greenns', 'rayan.belmadani@ensiie.fr', '1234', true);
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Marwan', 'GUERNOUG', '1997-12-18', 'Kart', 'marwan.guernoug@ensiie.fr', '3a103a4e57', true);
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Mike', 'MALECOT', '1995-08-06', 'Adolf', 'mike.malecot@ensiie.fr', '3a103a4e57', true);
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Nicolas', 'CHARLON', '1996-11-09', 'Kozak', 'nicolas.charlon@ensiie.fr', '3a103a4e57', true);
+INSERT INTO "user"(firstname, lastname, birthday, pseudo, mail, password, isvalidator) VALUES ('Rayan', 'BELMADANI', '1996-10-18', 'Greenns', 'rayan.belmadani@ensiie.fr', '3a103a4e57', true);
 
 DROP TABLE  "ingredient";
 CREATE TABLE "ingredient" (
