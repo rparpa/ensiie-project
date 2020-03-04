@@ -241,7 +241,7 @@ export default {
       , this.signIn
       )
       .then(response => {
-        this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email, undefined, undefined, response.data.role);)
+        this.currentUser = new User(response.data.username, response.data.encryptedPassword, response.data.email, undefined, undefined, response.data.role);
         this.$root.$data.user = this.currentUser;
         this.signIn.username = '';
         this.signIn.email = '';
