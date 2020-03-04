@@ -21,9 +21,14 @@ class CategorieAnnonce_model extends CI_Model
 
     }
 
-    public function delete()
-    {
-
+    /**
+     * Fonction permettant de supprimer les catégories d'une annonce
+     * 
+     * @param $id_annonce id de l'annonce
+     * 
+     */
+    public function delete($id_annonce){
+		$this->db->delete('categorie_annonce', array('id_annonce' => $id_annonce));
     }
 
     public function update()
