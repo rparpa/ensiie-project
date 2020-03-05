@@ -18,7 +18,8 @@ The next step is to set some environment variables in the `.env` file
     * DOCKER_USER_ID: to obtain the value of this variable you need to execute this command `$(echo id -u $USER)` on a Terminal. Copy and past the output.
     * REMOTE_HOST: For those who want to use the PHPStorm Debugger, put your IP address. Otherwise, skip this step.
 
-Now, let's begin the installation :
+Now, let's begin the installation of the front End & Back end:
+* `db install`.  This is specific to the front end
 * `make install`. This command may take time.  
 * That's it! Your website is running [http:localhost:8080](http:localhost:8080)
 
