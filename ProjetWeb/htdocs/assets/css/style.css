@@ -1,0 +1,172 @@
+
+body {
+	font-size: 16px;
+	font-family: 'Lato', sans-serif;
+}
+
+/****** HEADER *******/
+
+header {
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+
+/****** TAGS ******/
+.tag{
+	border: 1px solid white;
+	border-radius: 8px;
+	background-color: #68c965;
+	color: #ffffff;
+	padding: 3px;
+}
+.tag a{
+	color: #000000;
+	padding: 1%;
+}
+
+/*******************/
+
+.post-nav {
+	background-color: black;
+	padding: 20px 30px;
+}
+
+.ligne-post-nav {
+	line-height: 100px;
+}
+
+.titre-header {
+	text-align: center;
+	font-family: Lato, sans-serif;
+	font-weight: 900;
+	font-size: 50px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+	line-height: 60px;
+	text-shadow: 0 2px 3px rgba(0,0,0,0.30);
+	margin-top: 25px;
+}
+
+
+
+/****** TITRES *******/
+
+.title-style {
+/*	margin-top: 30px; */
+	font-size: 35px;
+	margin-bottom: 40px;
+	color: black;
+	font-weight: 700;
+}
+
+.title-style:after {
+	display: block;
+	width:100px;
+	height:4px;
+	content:" ";
+	margin-top: 10px;
+	background:  #F16E00;
+}
+
+.title-style-second {
+/*	margin-top: 30px; */
+	font-size: 25px;
+	margin-bottom: 30px;
+	color: #F16E00;
+	font-weight: 700;
+}
+
+.subtitle-style {
+	margin-top: 10px;
+	font-size: 25px;
+	margin-bottom: 40px;
+	color: black;
+	font-weight: 700;
+	border-bottom: 2px solid grey;
+}
+
+/****** FORMULAIRES *******/
+
+.form-style {
+	padding: 30px 60px;
+	border: 1px solid #FFE4C4;
+	border-radius: 25px;
+	background-color: #eff0f1;
+	margin-bottom: 50px;
+}
+
+.section-form-style {
+	margin-bottom: 50px;
+}
+
+.title-form {
+	font-size: 25px;
+	color: black;
+}
+
+/****** DATATABLE *******/
+
+
+/****** LIENS *******/
+
+.lien-style {
+	color: black;
+	font-weight: bold;
+}
+
+.lien-style:focus, .lien-style:hover {
+	color: #F16E00;
+}
+
+/****** BOUTON *******/
+
+.btn-style {
+	padding: 10px 10px;
+	font-size: 18px;
+	color:white;
+	background-color:#F16E00;
+	font-weight: bold;
+	border:none;
+}
+
+.btn-style:focus, .btn-style:hover {
+	background-color:black;
+}
+
+/****** MARGES ******/
+
+.mb10 { margin-bottom: 10px; }
+.mb15 { margin-bottom: 15px; }
+.mb20 { margin-bottom: 20px; }
+.mb25 { margin-bottom: 25px; }
+.mb30 { margin-bottom: 30px; }
+.mb35 { margin-bottom: 35px; }
+.mb40 { margin-bottom: 40px; }
+
+/****** IMAGES ******/
+
+.little {
+	width: 150px;
+	height: 150px;
+}
+.little:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+/*******************/
+
+.scroll_over {
+  width: 500px;
+  height: 600px;
+  overflow: scroll;
+}
+
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.table_delete {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
