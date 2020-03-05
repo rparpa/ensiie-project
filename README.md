@@ -1,4 +1,4 @@
-# ENSIIE Web Project Skeleton
+# AnnoncIIE Web Project Skeleton
 
 ## Install your application
 This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
@@ -9,7 +9,7 @@ The only packages you need to install right now are **docker** and **docker-comp
 * [Install Docker Compose](https://docs.docker.com/compose/install/)
 
 Then, clone the Web Project skeleton on your machine:
-* `git clone https://github.com/rparpa/ensiie-project.git`
+* `git clone https://github.com/MehdiAbdallaoui/ensiie-project`
 * `cd ensiie-project`
 
 The next step is to set some environment variables in the `.env` file
@@ -28,3 +28,6 @@ Below are some useful commands :
 * `make db.connect` Connect to th database
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
+
+## LAUNCH AnnoncIIE
+After the installation, our AnnoncIIE website is running on [http:localhost:8080](http:localhost:8080)
