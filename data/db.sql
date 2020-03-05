@@ -51,9 +51,9 @@ CREATE TABLE "candidat" (
     PRIMARY KEY (idoffre, idparticulier)
 );
 
-INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom, telephone) VALUES('test@gmail.com', 'mdp', 'nomCV.pdf', 'LENOM', 'LEPRENOM', '0600000000');
-INSERT INTO entreprise(nom, adressemail, adressesiege, motdepasse, logo, isvalid, telephone) VALUES('ENSIIE CORPO', 'ensiie@ensiie.fr', 'rue ensiie', 'mdp', 'nomLogo.png', FALSE, '0700000000');
-INSERT INTO offre(identreprise, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution) VALUES(1, 'Mission incroyable', 'document.pdf', 'CDI', 'rue ensiie', 90, 90, 50000, 'Poste incroyable', 0);
-INSERT INTO offre(id, identreprise, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution) VALUES(3, 1, 'Mission tranquille', 'document.pdf', 'CDD', 'rue ensiie', 90, 90, 50000, 'Poste tranquille', 0);
+INSERT INTO particulier(adressemail, motdepasse, cv, nom, prenom, telephone) VALUES('test@gmail.com', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'nomCV.pdf', 'LENOM', 'LEPRENOM', '0600000000');
+INSERT INTO entreprise(nom, adressemail, adressesiege, motdepasse, logo, isvalid, telephone) VALUES('ENSIIE CORPO', 'ensiie@ensiie.fr', 'ensiie', 'f4f263e439cf40925e6a412387a9472a6773c2580212a4fb50d224d3a817de17', 'nomLogo.png', FALSE, '0700000000');
+INSERT INTO offre(identreprise, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution) VALUES(1, 'Mission incroyable', 'document.pdf', 'CDI', 'ensiie', 48.6267621, 2.4324093, 50000, 'Poste incroyable', 0);
+INSERT INTO offre(id, identreprise, description, document, typecontrat, adresse, latitude, longitude, salaire, titre, dateparution) VALUES(3, 1, 'Mission tranquille', 'document.pdf', 'CDD', 'ensiie', 48.6267621, 2.4324093, 50000, 'Poste tranquille', 0);
 INSERT INTO candidat(idoffre, idparticulier) VALUES(1, 1);
 INSERT INTO administrateur(identifiant, motdepasse) VALUES('admin', 'admin');

@@ -906,7 +906,7 @@
 											"        \"id\": 1,",
 											"        \"nom\": \"ENSIIE CORPO\",",
 											"        \"adressemail\": \"ensiie@ensiie.fr\",",
-											"        \"adressesiege\": \"rue ensiie\",",
+											"        \"adressesiege\": \"ensiie\",",
 											"        \"logo\": \"nomLogo.png\",",
 											"        \"isvalid\": false,",
 											"        \"telephone\": \"0700000000\"",
@@ -999,6 +999,132 @@
 									"path": [
 										"entreprise",
 										"request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Entreprise By Id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7c9992e9-1168-49e8-a42d-d7c89043416a",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ea16496-600f-4ab9-a979-7a8a7206cc40",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([",
+											"    {",
+											"        \"nom\": \"ENSIIE CORPO\",",
+											"        \"adressemail\": \"ensiie@ensiie.fr\",",
+											"        \"adressesiege\": \"ensiie\",",
+											"        \"logo\": \"nomLogo.png\",",
+											"        \"telephone\": \"0700000000\"",
+											"    }",
+											"])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/entreprise/request?id=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Exception Get Entreprise with wrong Id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "7c9992e9-1168-49e8-a42d-d7c89043416a",
+										"exec": [
+											"pm.globals.set('url', 'http://0.0.0.0:3000')"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "0ea16496-600f-4ab9-a979-7a8a7206cc40",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"pm.test(\"Error message in html is Invalid Id\", function () {",
+											"    pm.expect(pm.response.text()).to.include('Invalid Id');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/entreprise/request?id=10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"entreprise",
+										"request"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "10"
+										}
 									]
 								}
 							},
@@ -1222,10 +1348,10 @@
 											"    ",
 											"    pm.expect(jsonData).to.eql(",
 											"  {",
+											"    \"id\": 2,",
 											"    \"nom\": \"toto\",",
 											"    \"adressemail\": \"toto@gmail.com\",",
 											"    \"adressesiege\": \"2 rue ensiie\",",
-											"    \"motdepasse\": \"coucou\",",
 											"    \"logo\": \"logo.pdf\",",
 											"    \"isvalid\": false,",
 											"    \"telephone\": \"0000000\"",
@@ -1391,7 +1517,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"identreprise\": \"1\",\n    \"description\": \"cool\",\n    \"document\": \"C...\",\n    \"typecontrat\": \"CDI\",\n    \"adresse\": \"ici\",\n    \"latitude\": 90.090,\n    \"longitude\": 90.090,\n    \"salaire\": 50000,\n    \"titre\": \"titre\",\n    \"dateparution\": 819167040000\n}"
+									"raw": "{\n    \"identreprise\": \"1\",\n    \"description\": \"cool\",\n    \"document\": \"C...\",\n    \"typecontrat\": \"CDI\",\n    \"adresse\": \"ensiie\",\n    \"salaire\": 50000,\n    \"titre\": \"titre\",\n    \"dateparution\": 819167040000\n}"
 								},
 								"url": {
 									"raw": "{{url}}/offre/request",
@@ -1500,9 +1626,9 @@
 											"        \"description\": \"Mission incroyable\",",
 											"        \"document\": \"document.pdf\",",
 											"        \"typecontrat\": \"CDI\",",
-											"        \"adresse\": \"rue ensiie\",",
-											"        \"latitude\": \"90\",",
-											"        \"longitude\": \"90\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
 											"        \"salaire\": \"50000\",",
 											"        \"titre\": \"Poste incroyable\",",
 											"        \"dateparution\": \"0\"",
@@ -1512,9 +1638,9 @@
 											"        \"description\": \"Mission tranquille\",",
 											"        \"document\": \"document.pdf\",",
 											"        \"typecontrat\": \"CDD\",",
-											"        \"adresse\": \"rue ensiie\",",
-											"        \"latitude\": \"90\",",
-											"        \"longitude\": \"90\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
 											"        \"salaire\": \"50000\",",
 											"        \"titre\": \"Poste tranquille\",",
 											"        \"dateparution\": \"0\"",
@@ -1524,9 +1650,9 @@
 											"        \"description\": \"cool\",",
 											"        \"document\": \"C...\",",
 											"        \"typecontrat\": \"CDI\",",
-											"        \"adresse\": \"ici\",",
-											"        \"latitude\": \"90.09\",",
-											"        \"longitude\": \"90.09\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
 											"        \"salaire\": \"50000\",",
 											"        \"titre\": \"titre\",",
 											"        \"dateparution\": \"819167040000\"",
@@ -1578,6 +1704,85 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"id": "7c7b9351-dabe-4e22-a1e2-9a84cc562ea4",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"Json bdy has information\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    ",
+											"    pm.expect(jsonData).to.eql([",
+											"    {",
+											"        \"id\": 1,",
+											"        \"identreprise\": {",
+											"            \"id\": 1,",
+											"            \"nom\": \"ENSIIE CORPO\",",
+											"            \"adressemail\": \"ensiie@ensiie.fr\",",
+											"            \"adressesiege\": \"ensiie\",",
+											"            \"logo\": \"nomLogo.png\",",
+											"            \"telephone\": \"0700000000\"",
+											"        },",
+											"        \"description\": \"Mission incroyable\",",
+											"        \"document\": \"document.pdf\",",
+											"        \"typecontrat\": \"CDI\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"Poste incroyable\",",
+											"        \"dateparution\": \"0\"",
+											"    },",
+											"    {",
+											"        \"id\": 3,",
+											"        \"identreprise\": {",
+											"            \"id\": 1,",
+											"            \"nom\": \"ENSIIE CORPO\",",
+											"            \"adressemail\": \"ensiie@ensiie.fr\",",
+											"            \"adressesiege\": \"ensiie\",",
+											"            \"logo\": \"nomLogo.png\",",
+											"            \"telephone\": \"0700000000\"",
+											"        },",
+											"        \"description\": \"Mission tranquille\",",
+											"        \"document\": \"document.pdf\",",
+											"        \"typecontrat\": \"CDD\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"Poste tranquille\",",
+											"        \"dateparution\": \"0\"",
+											"    },",
+											"    {",
+											"        \"id\": 2,",
+											"        \"identreprise\": {",
+											"            \"id\": 1,",
+											"            \"nom\": \"ENSIIE CORPO\",",
+											"            \"adressemail\": \"ensiie@ensiie.fr\",",
+											"            \"adressesiege\": \"ensiie\",",
+											"            \"logo\": \"nomLogo.png\",",
+											"            \"telephone\": \"0700000000\"",
+											"        },",
+											"        \"description\": \"cool\",",
+											"        \"document\": \"C...\",",
+											"        \"typecontrat\": \"CDI\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
+											"        \"salaire\": \"50000\",",
+											"        \"titre\": \"titre\",",
+											"        \"dateparution\": \"819167040000\"",
+											"    }",
+											"])",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -1590,7 +1795,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/offre/request?titre=t&adresse=EN&typecontrat=CDI&salaire=5&dateparution=8191670400",
+									"raw": "{{url}}/offre/request?titre=''&adresse=Paris&typecontrat=''&salaire=500&dateparution=''&dist=100",
 									"host": [
 										"{{url}}"
 									],
@@ -1601,23 +1806,27 @@
 									"query": [
 										{
 											"key": "titre",
-											"value": "t"
+											"value": "''"
 										},
 										{
 											"key": "adresse",
-											"value": "EN"
+											"value": "Paris"
 										},
 										{
 											"key": "typecontrat",
-											"value": "CDI"
+											"value": "''"
 										},
 										{
 											"key": "salaire",
-											"value": "5"
+											"value": "500"
 										},
 										{
 											"key": "dateparution",
-											"value": "8191670400"
+											"value": "''"
+										},
+										{
+											"key": "dist",
+											"value": "100"
 										}
 									]
 								}
@@ -1661,9 +1870,9 @@
 											"    \"identreprise\": 1,",
 											"    \"description\": \"ensiiiiiie\",",
 											"    \"typecontrat\": \"CDI\",",
-											"    \"adresse\": \"ici\",",
-											"    \"latitude\": \"90.09\",",
-											"    \"longitude\": \"90.09\",",
+											"    \"adresse\": \"ensiie\",",
+											"    \"latitude\": \"48.6267621\",",
+											"    \"longitude\": \"2.4324093\",",
 											"    \"salaire\": \"50000\",",
 											"    \"titre\": \"titre\",",
 											"    \"dateparution\": \"819167040000\"",
@@ -1793,9 +2002,9 @@
 											"    \"identreprise\": 1,",
 											"    \"description\": \"ensiiiiiie\",",
 											"    \"typecontrat\": \"CDI\",",
-											"    \"adresse\": \"ici\",",
-											"    \"latitude\": \"90.09\",",
-											"    \"longitude\": \"90.09\",",
+											"    \"adresse\": \"ensiie\",",
+											"    \"latitude\": \"48.6267621\",",
+											"    \"longitude\": \"2.4324093\",",
 											"    \"salaire\": \"50000\",",
 											"    \"titre\": \"titre\",",
 											"    \"dateparution\": \"819167040000\"",
@@ -2124,16 +2333,16 @@
 											"            \"id\": 1,",
 											"            \"nom\": \"ENSIIE CORPO\",",
 											"            \"adressemail\": \"ensiie@ensiie.fr\",",
-											"            \"adressesiege\": \"rue ensiie\",",
+											"            \"adressesiege\": \"ensiie\",",
 											"            \"logo\": \"nomLogo.png\",",
 											"            \"telephone\": \"0700000000\"",
 											"        },",
 											"        \"description\": \"Mission incroyable\",",
 											"        \"document\": \"document.pdf\",",
 											"        \"typecontrat\": \"CDI\",",
-											"        \"adresse\": \"rue ensiie\",",
-											"        \"latitude\": \"90\",",
-											"        \"longitude\": \"90\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
 											"        \"salaire\": \"50000\",",
 											"        \"titre\": \"Poste incroyable\",",
 											"        \"dateparution\": \"0\"",
@@ -2144,16 +2353,16 @@
 											"            \"id\": 1,",
 											"            \"nom\": \"ENSIIE CORPO\",",
 											"            \"adressemail\": \"ensiie@ensiie.fr\",",
-											"            \"adressesiege\": \"rue ensiie\",",
+											"            \"adressesiege\": \"ensiie\",",
 											"            \"logo\": \"nomLogo.png\",",
 											"            \"telephone\": \"0700000000\"",
 											"        },",
 											"        \"description\": \"Mission tranquille\",",
 											"        \"document\": \"document.pdf\",",
 											"        \"typecontrat\": \"CDD\",",
-											"        \"adresse\": \"rue ensiie\",",
-											"        \"latitude\": \"90\",",
-											"        \"longitude\": \"90\",",
+											"        \"adresse\": \"ensiie\",",
+											"        \"latitude\": \"48.6267621\",",
+											"        \"longitude\": \"2.4324093\",",
 											"        \"salaire\": \"50000\",",
 											"        \"titre\": \"Poste tranquille\",",
 											"        \"dateparution\": \"0\"",

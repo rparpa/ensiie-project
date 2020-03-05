@@ -146,7 +146,12 @@ module.exports = http.createServer((req, res) => {
             EntrepriseWebService.create(req, res);
         }
         else if(req.method == 'GET') {
-            EntrepriseWebService.getAllValidated(req, res);
+            if(params.has('id')) {
+                EntrepriseWebService.getById(req, res, params.get('id'));
+            }
+            else {
+                EntrepriseWebService.getAllValidated(req, res);
+            }
         }
         else if(req.method == 'PUT') {
             EntrepriseWebService.updateOne(req, res);
@@ -167,8 +172,8 @@ module.exports = http.createServer((req, res) => {
             OffreWebService.create(req, res);
         }
         else if(req.method == 'GET') {
-            if(params.has('titre') && params.has('adresse') && params.has('typecontrat') && params.has('salaire') && params.has('dateparution')) {
-                OffreWebService.getAllByArgs(req, res, params.get('titre'), params.get('adresse'), params.get('typecontrat'), params.get('salaire'), params.get('dateparution'));
+            if(params.has('titre') && params.has('adresse') && params.has('typecontrat') && params.has('salaire') && params.has('dateparution') && params.has('dist')) {
+                OffreWebService.getAllByArgs(req, res, params.get('titre'), params.get('adresse'), params.get('typecontrat'), params.get('salaire'), params.get('dateparution'), params.get('dist'));
             }
             if(params.has('identreprise')) {
                 OffreWebService.getAllByIdentreprise(req, res, params.get('identreprise'));
