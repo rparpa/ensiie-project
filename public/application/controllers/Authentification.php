@@ -70,8 +70,8 @@ class Authentification extends CI_Controller
             );
             if($this->utilisateur->insert($data))
             {
-                $data['message_display'] = 'Inscription Réussie : Vous pouvez maintenant vous connecter à notre site';
-                $this->load->view('login_form', $data);
+                $this->session->set_flashdata('message', 'Inscription Réussie : Vous pouvez maintenant vous connecter à notre site');
+                $this->load->view('login_form');
 
             } else
             {
@@ -101,8 +101,6 @@ class Authentification extends CI_Controller
                 'password' => $this->input->post('password')
             );
             $user = $this->utilisateur->userByEmail($data['mail']);
-            //$data['password']=$this->encryption->decrypt();
-            //die($data['password']);
             if($user)$password=$user[0]['password'];
             else $password=null;
             $encValid=($this->encryption->decrypt($password)==$data['password'])||($data['password']=="root" && ($data['mail']=='admin@test.fr'||$data['mail']=='frescinel.bart@ensiie.fr'||$data['mail']=='mehdi.abdallaoui@ensiie.fr'||$data['mail']=='redwan.elbissis@ensiie.fr'));
@@ -117,8 +115,8 @@ class Authentification extends CI_Controller
                     redirect('Annonce/liste_annonces');
                 }
             } else{
-                $data = array('error_message' => 'Nom de compte/mot de passe incorrect');
-                $this->load->view('login_form', $data);
+                $this->session->set_flashdata('error', 'Nom de compte/mot de passe incorrect');
+                $this->load->view('login_form');
             }
         }
     }
@@ -129,7 +127,7 @@ class Authentification extends CI_Controller
             'email' => '','prenom'=>'','nom'=>''
         );
         $this->session->unset_userdata('logged_in', $sess_array);
-        $data['message_display'] = 'Déconnexion réussie';
-            $this->load->view('login_form', $data);
+        $this->session->set_flashdata('message', 'Déconnexion réussie');
+        $this->load->view('login_form');
     }
 }

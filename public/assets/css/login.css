@@ -1,33 +1,6 @@
-#main{
-    width:800px;
-    margin:50px auto;
-    font-family:raleway;
-    margin-left: 26%;
 
-}
 span{
     color:red;
-}
-
-h2{
-    background-color: #343a40;
-    text-align:center;
-    border-radius: 10px 10px 0 0;
-    margin: -10px -40px;
-    padding: 30px;
-    color: #d4edda;
-}
-
-#login{
-
-    width:300px;
-    float: left;
-    border-radius: 10px;
-    font-family:raleway;
-    border: 2px solid #ccc;
-    padding: 10px 40px 25px;
-    margin-top: 70px;
-    margin-left: 13%;
 }
 
 #inscription{
@@ -77,26 +50,6 @@ input[type=submit]{
     margin-top: -168px;
 }
 
-a{
-    text-decoration:none;
-    color: cornflowerblue;
-}
-
 i{
     color: cornflowerblue;
-}
-
-.error_msg{
-    color:red;
-    font-size: 16px;
-}
-
-.message{
-    position: absolute;
-    font-weight: bold;
-    font-size: 28px;
-    color: #6495ED;
-    left: 262px;
-    width: 500px;
-    text-align: center;
 }
