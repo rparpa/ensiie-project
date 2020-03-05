@@ -20,7 +20,9 @@ The next step is to set some environment variables in the `.env` file
 
 Now, let's begin the installation of the front End & Back end:
 * `db install`.  This is specific to the front end
-* `make install`. This command may take time.  
+* `make install`. This command may take time. 
+* `make mountebank` . To start mountebank
+* `make watch` . To start watch
 * That's it! Your website is running [http:localhost:8080](http:localhost:8080)
 
 Below are some useful commands :
