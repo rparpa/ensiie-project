@@ -14,14 +14,26 @@ class Image_model extends CI_Model
       $this->db->insert('image', array('id_annonce'=>$id_annonce,'url'=>$lien_image));
     }
 
-    public function delete()
-    {
+    /**
+     * Fonction permettant de supprimer une image d'une annonce dans la base de données
+     * 
+     * @param $id_annonce Id de l'annonce
+     * 
+     */
+    public function delete($id_annonce){
+      $this->db->delete('image', array('id_annonce' => $id_annonce));
 
     }
 
-    public function update()
-    {
-
+    /**
+     * Fonction permettant de mettre une image dans la base de données
+     * 
+     * @param $id_annonce Id de l'annonce
+     * 
+     */
+    public function update($id_annonce,$image){
+      $this->db->where('id_annonce', $id_annonce);
+      $this->db->update('image',array('url'=>$image));
     }
 
     public function getAllImage()
