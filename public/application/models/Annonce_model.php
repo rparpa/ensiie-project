@@ -79,6 +79,8 @@ class Annonce_model extends CI_Model
    * @param $titre Titre de l'annonce
    * @param $description Description de l'annonce
    * @param @prix Prix de l'annonce
+   * @param @image Image de l'annonce
+   * @param @categories liste des catégories de l'annonce
    */
   public function insertAnnonce($user,$titre,$description,$prix,$etat,$image,$categories){
 
@@ -111,8 +113,10 @@ class Annonce_model extends CI_Model
 	* @param $titre Titre de l'annonce
 	* @param $description Description de l'annonce
 	* @param @prix Prix de l'annonce
+  	* @param @image Image de l'annonce
+   	* @param @categories liste des catégories de l'annonce
 	 */
-	public function updateAnnonce($id_annonce,$user,$titre,$description,$prix,$etat,$categories){
+	public function updateAnnonce($id_annonce,$user,$titre,$description,$prix,$etat,$image,$categories){
 
 		$data = array(
 			'id_user' => $user,
@@ -123,6 +127,14 @@ class Annonce_model extends CI_Model
 		);
 		$this->db->where('id_annonce', $id_annonce);
 		$this->db->update('annonce',$data);
+
+		//Gestion de l'image de l'annonce
+		if($image!='null' || file_exists('assets/images/'.$image)){
+			$old_image=$this->image->getImage($id_annonce)[0]['url'];
+			$this->image->update($id_annonce,$image);
+			if($old_image!="" & file_exists('assets/images/'.$image))
+				unlink('assets/images/'.$old_image);		
+		}
 
 		//Ajout du tuple dans la table Categorie_annonce
 		if($categories!=null){

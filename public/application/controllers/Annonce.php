@@ -142,6 +142,7 @@ class Annonce extends CI_Controller {
 				$this->input->post('description'),
 				$this->input->post('prix'),
 				$this->input->post('etat'),
+				$this->input->post('image'),
 				$cat_annonce);
 
 			redirect('Annonce/liste_annonces');
