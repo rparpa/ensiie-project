@@ -181,10 +181,18 @@ class Annonce extends CI_Controller {
 	}
 
 	public function getAnnoncesSignalees(){
-		$annonces=$this->annonce->get_annonces_signalees();
-		$this->load->view('elements/header',$this->data);
-		$this->load->view('annonceTable',['annonces'=>$annonces]);
-		$this->load->view('elements/footer');
+
+		if($this->data['admin_user']){
+			$annonces=$this->annonce->get_annonces_signalees();
+			$this->load->view('elements/header',$this->data);
+			$this->load->view('annonceTable',['annonces'=>$annonces]);
+			$this->load->view('elements/footer');
+		}
+		else{
+			$this->session->set_flashdata('error', 'Fonction non autorisée');
+			redirect('Annonce');
+		}
+
 	}
 
 	/**
