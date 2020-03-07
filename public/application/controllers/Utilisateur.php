@@ -24,32 +24,15 @@ class Utilisateur extends CI_Controller
 		}
     }
 
-    public function index()
-	{
+    public function index(){
         
 	}
-    /**
-     * Displays a single Utilisateur model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-
-    public function view($id)
-    {
-
-    }
 
     /**
-     * Updates an existing Utilisateur model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * Fonction permettant de mettre à jour les informations de l'utilisateur
      */
 
-    public function update()
-    {
+    public function update(){
         if($this->input->post())
         {
             unset($_POST['submit']);
@@ -89,29 +72,45 @@ class Utilisateur extends CI_Controller
     }
 
     /**
-     * Deletes an existing Utilisateur model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * Fonction permettant de supprimer un utilisateur
+     * 
+     * @param id_user id de l'utilisateur à supprimer
      */
 
-    public function delete($id_user)
-    {
-		$this->utilisateur->delete($id_user);
-		redirect('Annonce/liste_annonces');
+    public function delete($id_user){
+
+        if($this->data['admin_user']){
+            $this->utilisateur->delete($id_user);
+            redirect('Annonce/liste_annonces');
+        }
+        else{
+            $this->session->set_flashdata('error', 'Fonction non autorisée');
+			redirect('Annonce');
+        }
+
     }
     
-    public function AllUsers()
-    {
-        $users=$this->utilisateur->getAllUser();
-		$this->data += array("users"=>$users);
-        $this->load->view('elements/header',$this->data);
-        $this->load->view('userTable',$this->data);
-        $this->load->view('elements/footer');
+    /**
+     * Fonction permettant de lister l'ensemble des utilsateurs
+     */
+    public function AllUsers(){
+        if($this->data['admin_user']){
+            $users=$this->utilisateur->getAllUser();
+            $this->data += array("users"=>$users);
+            $this->load->view('elements/header',$this->data);
+            $this->load->view('userTable',$this->data);
+            $this->load->view('elements/footer');
+        }
+        else{
+            $this->session->set_flashdata('error', 'Fonction non autorisée');
+			redirect('Annonce');           
+        }
     }
-    public function profil()
-    {
+
+    /**
+     * Fonction permettant d'afficher les informations de l'utilisateur
+     */
+    public function profil(){
         if(isset($this->session->userdata['logged_in'])){
 
             $annonce=$infos=$this->annonce->getAnnonceByUser($this->session->userdata('logged_in')['id_user']);
