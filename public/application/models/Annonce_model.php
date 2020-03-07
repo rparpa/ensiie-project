@@ -97,12 +97,8 @@ class Annonce_model extends CI_Model
 		$id_annonce = $this->db->insert_id();
 
 		//Ajout du tuple dans la table image
-		#TODO : NE PAS INSERER DANS BDD SI AUCUNE IMAGE UPLOAD
-		//echo "ok ".$image;
 		if($image!=""){
-			echo "ok";
 			$this->image->insert($id_annonce,$image);
-
 		}
 		
 		//Ajout du tuple dans la table Categorie_annonce
@@ -152,13 +148,11 @@ class Annonce_model extends CI_Model
   }
 
 
-	public function getAnnonceByUser($id)
-	{
+	public function getAnnonceByUser($id){
 		return $this->db->get_where('annonce',array('id_user' => $id))->result_array();
 	}
 
-	public function get_annonces_signalees()
-	{
+	public function get_annonces_signalees(){
 		$this->db->select('*');
 		$this->db->from('annonce');
 		$this->db->where('nb_signal >', 0);
@@ -172,8 +166,7 @@ class Annonce_model extends CI_Model
 	 * en incrémentant l'attribut nb_signal
 	 * @param $id_annonce Id de l'annonce
 	 */
-	public function signaler($id_annonce)
-	{
+	public function signaler($id_annonce){
 		$this->db->where('id_annonce', $id_annonce);
 		$this->db->set('nb_signal', 'nb_signal+1', FALSE);
 		$this->db->update('annonce');
