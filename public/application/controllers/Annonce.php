@@ -36,8 +36,7 @@ class Annonce extends CI_Controller {
 		$this->load->view('elements/footer');
 	}
 
-	public function a_propos()
-	{
+	public function a_propos(){
 		$this->load->view('elements/header',$this->data);
 		$this->load->view('aProposTable');
 		$this->load->view('elements/footer');
@@ -86,8 +85,8 @@ class Annonce extends CI_Controller {
 								$this->input->post('image'),
 								$cat_annonce);
 				
-				redirect('Annonce/liste_annonces');
 				$this->session->set_flashdata('message', 'Annonce ajoutée');
+				redirect('Annonce/liste_annonces');
 	
 			}else{
 				$this->session->set_flashdata('error', 'Annonce non ajoutée, veuillez réessayer');
@@ -117,46 +116,55 @@ class Annonce extends CI_Controller {
 	 */
 	public function modifier_annonce($id_annonce){
 
-		$this->form_validation->set_error_delimiters('<p class="form_erreur">', '</p>');
-		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-		$this->form_validation->set_rules('titre', 'Titre', 'required');
-		$this->form_validation->set_rules('description', 'Description', 'required');
-		$this->form_validation->set_rules('prix', 'Prix', 'required|numeric');
+		$id_user_annonce=$this->annonce->getAnnonce($id_annonce)[0]['id_user'];
+		
+		if($this->data['id_user']==$id_user_annonce){
 
-		$etats=array_column($this->etat->getAllEtat(), 'etat');
-		$etats=array_combine(range(1, count($etats)), array_values($etats));
-		$this->data+=array("etats"=>$etats);
+			$this->form_validation->set_error_delimiters('<p class="form_erreur">', '</p>');
+			$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+			$this->form_validation->set_rules('titre', 'Titre', 'required');
+			$this->form_validation->set_rules('description', 'Description', 'required');
+			$this->form_validation->set_rules('prix', 'Prix', 'required|numeric');
 
-		$categories=array_column($this->categorie->getAllCategorie(),'categorie');
-		//$categories=array_combine(range(1, count($categories)), array_values($categories));
+			$etats=array_column($this->etat->getAllEtat(), 'etat');
+			$etats=array_combine(range(1, count($etats)), array_values($etats));
+			$this->data+=array("etats"=>$etats);
 
-		$this->data+=array("categories"=>$categories);
+			$categories=array_column($this->categorie->getAllCategorie(),'categorie');
+			//$categories=array_combine(range(1, count($categories)), array_values($categories));
 
-		if($this->form_validation->run()){
+			$this->data+=array("categories"=>$categories);
 
-			$cat_annonce = explode(",",$this->input->post('categorie'));
-			
-			$this->annonce->updateAnnonce($id_annonce,
-				$this->data['id_user'],
-				$this->input->post('titre'),
-				$this->input->post('description'),
-				$this->input->post('prix'),
-				$this->input->post('etat'),
-				$this->input->post('image'),
-				$cat_annonce);
+			if($this->form_validation->run()){
 
-			redirect('Annonce/liste_annonces');
-			$this->session->set_flashdata('message', 'Annonce modifiée');		  
+				$cat_annonce = explode(",",$this->input->post('categorie'));
+				
+				$this->annonce->updateAnnonce($id_annonce,
+					$this->data['id_user'],
+					$this->input->post('titre'),
+					$this->input->post('description'),
+					$this->input->post('prix'),
+					$this->input->post('etat'),
+					$this->input->post('image'),
+					$cat_annonce);
+
+				$this->session->set_flashdata('message', 'Annonce modifiée');		  
+				redirect('Annonce/liste_annonces');
+			}
+			else{
+			$annonce=$this->annonce->getAnnonce($id_annonce);
+			$mes_categories = array_column($this->categorieAnnonce->getAllCategorieAnnonce($id_annonce),'categorie');
+			$this->data+=array("annonce_modif"=>$annonce[0]);
+			$this->data+=array("categorie_modif"=>$mes_categories);
+			$this->load->view("elements/header",$this->data);
+			$this->load->view('gestion_annonce_view',$this->data);
+			$this->load->view("elements/footer");
+			}
+
+		}else{
+			$this->session->set_flashdata('error', 'Modification non autorisée');		  
+			redirect('Annonce/liste_annonces');			
 		}
-		else{
-		 $annonce=$this->annonce->getAnnonce($id_annonce);
-		 $mes_categories = array_column($this->categorieAnnonce->getAllCategorieAnnonce($id_annonce),'categorie');
-		 $this->data+=array("annonce_modif"=>$annonce[0]);
-		 $this->data+=array("categorie_modif"=>$mes_categories);
-		 $this->load->view("elements/header",$this->data);
-		 $this->load->view('gestion_annonce_view',$this->data);
-		 $this->load->view("elements/footer");
-	   }
  
 	 }
 
@@ -168,11 +176,11 @@ class Annonce extends CI_Controller {
 	public function signaler_annonce($id_annonce){
 
 		$this->annonce->signaler($id_annonce);
+		$this->session->set_flashdata('message', 'Annonce signalée');	  
 		redirect('Annonce/liste_annonces');
 	}
 
-	public function getAnnoncesSignalees()
-	{
+	public function getAnnoncesSignalees(){
 		$annonces=$this->annonce->get_annonces_signalees();
 		$this->load->view('elements/header',$this->data);
 		$this->load->view('annonceTable',['annonces'=>$annonces]);
@@ -185,8 +193,19 @@ class Annonce extends CI_Controller {
 	 * @param $id_annonce Id de l'annonce à supprimer
 	 */
 	public function supprimer_annonce($id_annonce){
-		$this->annonce->deleteAnnonce($id_annonce);
-		redirect('Annonce/mes_annonces');
+		$id_user_annonce=$this->annonce->getAnnonce($id_annonce)[0]['id_user'];
+		
+		if($this->data['id_user']==$id_user_annonce){
+			$this->annonce->deleteAnnonce($id_annonce);
+			$this->session->set_flashdata('message', 'Annonce supprimée');	  
+			redirect('Annonce/mes_annonces');
+		}
+		else{
+			$this->session->set_flashdata('error', 'Suppression non autorisée');
+			redirect('Annonce');
+		}
+
+	  
 	}
 
 	/**
@@ -195,8 +214,15 @@ class Annonce extends CI_Controller {
 	 * @param $id_annonce Id de l'annonce à supprimer
 	 */
 	public function supprimer_annonceSignale($id_annonce){
-		$this->annonce->deleteAnnonce($id_annonce);
-		redirect('Annonce/getAnnoncesSignalees');
+
+		if($this->data['admin_user']){
+			$this->session->set_flashdata('message', 'Annonce supprimée');	  
+			$this->annonce->deleteAnnonce($id_annonce);
+			redirect('Annonce/getAnnoncesSignalees');
+		}else{
+			$this->session->set_flashdata('error', 'Suppression non autorisée');
+			redirect('Annonce');
+		}
 	}
 
 	/**
