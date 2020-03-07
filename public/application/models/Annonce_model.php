@@ -97,7 +97,13 @@ class Annonce_model extends CI_Model
 		$id_annonce = $this->db->insert_id();
 
 		//Ajout du tuple dans la table image
-		$this->image->insert($id_annonce,$image);
+		#TODO : NE PAS INSERER DANS BDD SI AUCUNE IMAGE UPLOAD
+		//echo "ok ".$image;
+		if($image!=""){
+			echo "ok";
+			$this->image->insert($id_annonce,$image);
+
+		}
 		
 		//Ajout du tuple dans la table Categorie_annonce
 		if($categories!=null){
@@ -129,12 +135,14 @@ class Annonce_model extends CI_Model
 		$this->db->update('annonce',$data);
 
 		//Gestion de l'image de l'annonce
-		if($image!='null' || file_exists('assets/images/'.$image)){
-			$old_image=$this->image->getImage($id_annonce)[0]['url'];
-			$this->image->update($id_annonce,$image);
-			if($old_image!="" & file_exists('assets/images/'.$image))
-				unlink('assets/images/'.$old_image);		
-		}
+		$old_image=$this->image->getImage($id_annonce);
+		if($old_image!=null){
+			$this->image->delete($id_annonce);
+			unlink('assets/images/'.$old_image[0]['url']);
+			if($image!="")
+				$this->image->insert($id_annonce,$image);			
+		}else if($image!="")
+			$this->image->insert($id_annonce,$image);
 
 		//Ajout du tuple dans la table Categorie_annonce
 		if($categories!=null){

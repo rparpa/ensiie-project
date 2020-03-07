@@ -32,7 +32,9 @@ $date = new DateTime($details_annonce[0]['date_publication']);
                 </div>
                 <div class="col-md ">
                 <?php
-                    if(!($image[0]['url'])||$image[0]['url']==""|| !file_exists('assets/images/'.$image[0]['url']))
+                    if($image==null)
+                        echo '<a><img class="rounded float-right img-fluid" src="'.base_url().'/assets/images/default.jpg" alt=""></a>';           
+                    else if($image[0]['url']==""|| !file_exists('assets/images/'.$image[0]['url']))
                         echo '<a><img class="rounded float-right img-fluid" src="'.base_url().'/assets/images/default.jpg" alt=""></a>';
                     else
                         echo '<a><img class="rounded float-right img-fluid" src="'.base_url().'/assets/images/'.$image[0]['url'].'" alt=""></a>';
