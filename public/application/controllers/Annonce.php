@@ -31,6 +31,9 @@ class Annonce extends CI_Controller {
 		$annonces = $this->annonce->getAllAnnonce();
 		$this->data += array('annonces'=>$annonces, 'min'=>$min, 'max'=>$max);
 
+		$categories=array_column($this->categorie->getAllCategorie(),'categorie');
+		$this->data+=array('categories'=>$categories);
+
 		$this->load->view('elements/header',$this->data);
 		$this->load->view('annonces_view', $this->data);
 		$this->load->view('elements/footer');
@@ -51,6 +54,10 @@ class Annonce extends CI_Controller {
 		$max = $this->annonce->maxPrice();
 		$this->data += array('min'=>$min, 'max'=>$max);
 		$mes_annonces=$this->annonce->getUserAnnonce($this->data['id_user']);
+
+		$categories=array_column($this->categorie->getAllCategorie(),'categorie');
+		$this->data+=array('categories'=>$categories);
+		
 		$this->data+=array('mes_annonces'=>$mes_annonces);
 		$this->load->view('elements/header',$this->data);
 		$this->load->view('mes_annonces_view',$this->data);
