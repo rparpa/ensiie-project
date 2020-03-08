@@ -12,7 +12,7 @@
                         </div>
                         <div class="col-md-3 col-mb-3">
                             <select class="form-control search-slt" id="categorie" >
-                            <option value="" disabled selected>Filtrer par categorie ...</option>
+                            <option value="all" disabled selected>Filtrer par categorie ...</option>
                                 <?php
                                     foreach($categories as $categorie)
                                         echo '<option>'.$categorie.'</option>';
@@ -50,12 +50,15 @@
 
             //Gestion du filtrage des categoties
             $('#categorie').click(function(){
-                var categorie = $(this).val();
-
+                var categorie = $(this).val().toLowerCase();
+                $(".annonce").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(categorie) > -1)
+                });
             });
 
             //Gestion du bouton reset
             $("#reset").click(function(){
+                console.log($("#categorie")[0]['value']);
                 $('.annonce').show('1000');
                 $("#myInput").val()="";
             });
