@@ -19,7 +19,7 @@
 					$images = $this->image->getImage($id_ann);
 					echo '<div class="col-lg-3 col-md-6 mb-4 annonce">';
 					echo '<input type="hidden" value="'.$annonce["prix"].'">';
-					
+					echo '<p hidden class="categorie">'.implode(" ",$annonce["categories"]).' </p>';													
 
 						echo '<div class="card mb-4 box-shadow ">';
 						if($images==null)
@@ -32,7 +32,7 @@
 						echo '<div class="card-body">';
 								echo '<p class="card-title">';
 									echo '<a href="'.site_url('/Annonce/details_annonce/'.$annonce["id_annonce"]).'">'.$annonce["titre"].'</a>';
-								echo '</p>';									
+								echo '</p>';
 								echo '<div class="d-flex justify-content-between align-items-center">';
 										echo '<div class="btn-group">';
 										echo '</div>';

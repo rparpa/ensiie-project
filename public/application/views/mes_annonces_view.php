@@ -18,6 +18,8 @@
 					$images = $this->image->getImage($id_ann);
 					echo '<div class="col-lg-3 col-md-6 mb-4 annonce">';
 					echo '<input type="hidden" value="'.$annonce["prix"].'">';
+					echo '<p hidden class="categorie">'.implode(" ",$annonce["categories"]).' </p>';													
+
 
 						echo '<div class="card mb-4 box-shadow">';
 						if($images==null)
