@@ -19,7 +19,15 @@ class Annonce_model extends CI_Model
 	  $this->db->select('*');
 	  $this->db->from("annonce");
 	  $this->db->order_by("date_publication", "DESC");
-	  return $this->db->get()->result_array();
+	$annonce = $this->db->get()->result_array();
+
+	foreach($annonce as $key=>$value){
+		$cat=$this->categorieAnnonce->getAllCategorieAnnonce($value['id_annonce']);
+		$cat=array_column($cat,'categorie');
+		$annonce[$key]+=array('categories'=>$cat);
+	}
+
+	return $annonce; 
   }
 
 	public function totalAnnonces()
@@ -42,12 +50,20 @@ class Annonce_model extends CI_Model
 	* annonces de l'utilisateur sous forme d'un array
 	*/
 	public function getUserAnnonce($id_user){
-		return $this->db->select('*')
+		$annonce=$this->db->select('*')
 						->from('annonce')
 						->where('id_user', $id_user)
 						->order_by("date_publication", "DESC")
 						->get()
 						->result_array();
+
+		foreach($annonce as $key=>$value){
+			$cat=$this->categorieAnnonce->getAllCategorieAnnonce($value['id_annonce']);
+			$cat=array_column($cat,'categorie');
+			$annonce[$key]+=array('categories'=>$cat);
+		}		 
+
+		return $annonce; 
 	}
 	
   public function getFilteredAnnonce($min, $max,$id_user=null){
