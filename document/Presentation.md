@@ -57,7 +57,7 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 #### On aimera
 
 > * Toutes les bonnes pratiques citées sur http://www.phptherightway.com/
-> * PHP 7.1+
+> * PHP 7.4+
 > * Les tests automatisés (unitaires, fonctionnels, de sécurité, de performance, …)
 > * Une API REST bien faite
 > * Les animations CSS parcimonieuses qui profitent à l’UX
@@ -70,9 +70,10 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 ### Séances
 
-> * **05 février 2020** : choix du sujet, début des projets, présentation de cloud9 (documentation)
-> * **19 février 2020** : point d’avancement, échange sur les bonnes pratiques, analyse du code
-> * **04 mars 2020** : soutenance, livraison des sources
+> * **09 avril 2020** : choix du sujet, début des projets, présentation de la stack
+> * **23 avril 2020** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+> * **30 avril 2020** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+> * **07 mai 2020** : soutenance, livraison des sources
 
 ### La notation
 
@@ -134,7 +135,5 @@ Aussi, n’oubliez pas qu’on est là pour passer un bon moment, pas de lynchag
 * Remi Parpaillon : Tech lead chez Matters.
 
 ### Comment nous contacter
-
-Nous mettons un slack à votre disposition pour échanger avec nous. L'url vous sera communiqué lors du premier cours.
 
 Vous êtes également les bienvenus tous les jeudis après-midi dans nos locaux au 10 rue du Faubourg Poissonnière 75010 PARIS. Ce sera l’occasion de faire un peu plus connaissance, et d’assister à nos SteamLearn, les formations hebdo !
