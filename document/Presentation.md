@@ -93,11 +93,11 @@ Afin de s’affranchir de problème d’infrastructure, nous vous mettons à dis
 
 ### Le rendu des sources et du rapport
 
->Une merge request devra être créé sur ce [repository git](https://github.com/rparpa/ensiie-project). Vous devez forker le repository.
+Une pull request devra être créée sur ce [repository git](https://github.com/rparpa/ensiie-project).
 
 Aide : https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request
 
-**ATTENTION**: ce repo git n'as pas pour but d'être utilisé pendant le développement. Il s'agit de notre outil pour récupérer vos projets et pouvoir les utiliser. L'utilisation d'un git au cours du développement n'est pas obligatoire, mais nous vous encourageons à en utiliser un (github, arise, ensiie, bitbucket, gitlab etc)/
+**ATTENTION**: ce repo git n'a pas pour but d'être utilisé pendant le développement. Il s'agit de notre outil pour récupérer vos projets et pouvoir les utiliser. L'utilisation d'un git au cours du développement n'est pas obligatoire, mais nous vous encourageons à en utiliser un (github, arise, ensiie, bitbucket, gitlab etc)/
 
 > Le rapport doit être inclus dans les sources du projet, à la racine: ```/rapport.pdf```
 
