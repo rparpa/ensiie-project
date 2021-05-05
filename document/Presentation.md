@@ -1,6 +1,4 @@
-![matters](https://cdn-images-1.medium.com/max/2000/1*Pl-fB1X01RfcEbPP-FVlew.jpeg)
-
-Projet web ENSIIE 1A 2019
+Projet web ENSIIE 2021
 ======
 
 Objectif pédagogique
@@ -41,23 +39,22 @@ Must have
 > * au moins une jointure dans une requête
 > * des INSERT, DELETE, UPDATE, SELECT
 > * Un CRUD (Create Read Update Delete)
-> * Du javascript (au minimum validation JS des formulaires)
+> * Du javascript client (au minimum validation JS des formulaires)
 
-Du javascript (au minimum validation JS des formulaires).
 Nous attendons de la part des élèves une véritable appropriation du sujet. Il ne suffira pas de remplir des cases à cocher pour avoir la moyenne, nous voulons voir une démarche d’ingénieur, pas d’exécutant.
 
 ### Les technologies
 
 #### On oblige
 
-> * PHP 7.0
+> * PHP 7.0 ou node 14
 > * PostgreSQL
-> * JavaScript
+> * JavaScript client
 
 #### On aimera
 
 > * Toutes les bonnes pratiques citées sur http://www.phptherightway.com/
-> * PHP 7.4+
+> * PHP 8.0+
 > * Les tests automatisés (unitaires, fonctionnels, de sécurité, de performance, …)
 > * Une API REST bien faite
 > * Les animations CSS parcimonieuses qui profitent à l’UX
@@ -70,10 +67,10 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 ### Séances
 
-> * **09 avril 2020** : choix du sujet, début des projets, présentation de la stack
-> * **23 avril 2020** : point d’avancement, échange sur les bonnes pratiques, analyse du code
-> * **30 avril 2020** : point d’avancement, échange sur les bonnes pratiques, analyse du code
-> * **07 mai 2020** : soutenance, livraison des sources
+> * **06 mai** : choix du sujet, début des projets, présentation de la stack
+> * **20 mai** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+> * **3 juin** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+> * **18 juin** : soutenance, livraison des sources
 
 ### La notation
 
@@ -132,10 +129,10 @@ Aussi, n’oubliez pas qu’on est là pour passer un bon moment, pas de lynchag
 > * Expression
 > * Adaptabilité
 
-### Notre équipe
+### Présentation
 
-* Remi Parpaillon : Tech lead chez Matters.
+* Remi Parpaillon : Back-end engineer chez Tenable / Alsid
 
 ### Comment nous contacter
 
-Vous êtes également les bienvenus tous les jeudis après-midi dans nos locaux au 10 rue du Faubourg Poissonnière 75010 PARIS. Ce sera l’occasion de faire un peu plus connaissance, et d’assister à nos SteamLearn, les formations hebdo !
+* remi.parpaillon@protonmail.ch
