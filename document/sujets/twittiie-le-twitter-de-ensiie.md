@@ -1,5 +1,3 @@
-![matters](https://cdn-images-1.medium.com/max/2000/1*Pl-fB1X01RfcEbPP-FVlew.jpeg)
-
 Twitiie le twitter de l'ENSIIE
 =====
 
@@ -11,21 +9,7 @@ Je vous présente TwittIIe, l’application qui copie tout de twitter et qui va 
 
 ### Pré-requis
 
-Comme pour tous les sujets, on devra au moins retrouver dans l’application finale les parties suivantes :
-
-> * POO (design pattern, héritage)
-> * Une authentification
-> * Un compte administrateur donnant les droits à certaines fonctionnalités (au choix)
-> * Un profil utilisateur éditable
-> * Une base de données relationnelle :
-> * au moins 3 tables
-> * au moins une table de jointure ( n…n)
-> * au moins une jointure dans une requête
-> * des INSERT, DELETE, UPDATE, SELECT
-> * Un CRUD (Create Read Update Delete)
-> * Du javascript (au minimum validation JS des formulaires)
-
-Nous attendons de la part des élèves une véritable appropriation du sujet. Il ne suffira pas de remplir des cases à cocher pour avoir la moyenne, nous voulons voir une démarche d’ingénieur, pas d’exécutant.
+Voir présentation.
 
 ### Objectifs
 
