@@ -6,27 +6,27 @@ class User
     /**
      * @var int
      */
-    private $id;
+    private int $id;
 
     /**
      * @var string
      */
-    private $firstname;
+    private string $firstname;
 
     /**
      * @var string
      */
-    private $lastname;
+    private string $lastname;
 
     /**
      * @var \DateTimeInterface
      */
-    private $birthday;
+    private \DateTimeInterface $birthday;
 
     /**
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -35,7 +35,7 @@ class User
      * @param int $id
      * @return User
      */
-    public function setId($id)
+    public function setId(int $id): self
     {
         $this->id = $id;
         return $this;
@@ -44,7 +44,7 @@ class User
     /**
      * @return string
      */
-    public function getFirstname()
+    public function getFirstname(): string
     {
         return $this->firstname;
     }
@@ -53,7 +53,7 @@ class User
      * @param string $firstname
      * @return User
      */
-    public function setFirstname($firstname)
+    public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
         return $this;
@@ -62,7 +62,7 @@ class User
     /**
      * @return string
      */
-    public function getLastname()
+    public function getLastname(): string
     {
         return $this->lastname;
     }
@@ -71,7 +71,7 @@ class User
      * @param string $lastname
      * @return User
      */
-    public function setLastname($lastname)
+    public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
         return $this;
@@ -89,7 +89,7 @@ class User
      * @param \DateTimeInterface $birthday
      * @return User
      */
-    public function setBirthday(\DateTimeInterface $birthday)
+    public function setBirthday(\DateTimeInterface $birthday): self
     {
         $this->birthday = $birthday;
         return $this;

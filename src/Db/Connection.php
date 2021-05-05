@@ -6,9 +6,6 @@ use PDO;
 
 class Connection
 {
-    /**
-     * @var PDO | null
-     */
     private static ?PDO $pdo;
 
     public static function get(): PDO {

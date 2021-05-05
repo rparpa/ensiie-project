@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.0-fpm
 
 ARG DOCKER_USER
 ARG DOCKER_USER_ID
@@ -21,8 +21,8 @@ RUN apt-get update -qq \
         zlib1g-dev \
     && pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && docker-php-ext-install -j$(nproc) \
         pdo \
         pdo_pgsql \
@@ -30,18 +30,16 @@ RUN apt-get update -qq \
         xml \
         curl \
         zip \
-    && curl -sS http://getcomposer.org/installer | php -- --filename=composer \
-    && chmod a+x composer \
-    && mv composer /usr/local/bin/composer \
-    && composer -q global require "hirak/prestissimo:^0.3" \
-    && composer -q global require "phing/phing:^2.16" \
     && ln -s /root/.composer/vendor/phing/phing/bin/phing /usr/bin/phing \
     && apt-get clean \
     && mkdir /nginx \
     && rm -rf /var/lib/apt/lists/* \
     && cd -
 
-# Copy config
+# Install composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Copy config
 COPY ./config/ /docker/
 ADD config/custom-php.ini /usr/local/etc/php/conf.d/custom-php.ini
 

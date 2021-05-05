@@ -1,12 +1,10 @@
 <?php
 namespace User;
+use Exception;
 use PDO;
 
 class UserRepository
 {
-    /**
-     * @var \PDO
-     */
     private PDO $connection;
 
     /**
@@ -19,10 +17,10 @@ class UserRepository
     }
 
     /**
-     * @return array
-     * @throws \Exception
+     * @return User[]
+     * @throws Exception
      */
-    public function fetchAll()
+    public function fetchAll(): array
     {
         $rows = $this->connection->query('SELECT * FROM "user"')->fetchAll(PDO::FETCH_OBJ);
         $users = [];
