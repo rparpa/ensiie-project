@@ -47,7 +47,7 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 #### On oblige
 
-> * PHP 7.0 ou node 14
+> * PHP 7+ ou node 14
 > * PostgreSQL
 > * JavaScript client
 
