@@ -14,26 +14,27 @@ jQuery(document).ready(function($) {
 });
 
 
-function check_connection(){
+function verify_user(){
     let name = $("#username").val();
     let pwd =  $("#password").val();
 
-    alert(name + " " + pwd);
     $.ajax({
-        url: '../src/Controller/verify_user.php',
+        url: 'router.php',
         type: 'POST',
         data: {
+            url: "src/Controller/verify_user.php",
             username: name,
             pwd: pwd
         },
         dataType: 'json',
         success: function(data){
-            console.log('Connnected');
-            alert('success');
+            if(data.success == 1){
+                localStorage.setItem('username', name);
+                $("#affiche_name").html(name);
+                $(".onlyUser").show();
+                $(".notUser").hide();            
+            }
         }
-    })
-    alert('FAIL');
-
-    alert('r');
+    });
 
 }
