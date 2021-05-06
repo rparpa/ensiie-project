@@ -27,14 +27,14 @@
                     <a href="/index.html"><h2 id="title_Wikipediie">WikipedIIE</h2></a>
                 </span>
                 <div class="mdl-layout-spacer"></div>
-                <form onsubmit = "event.preventDefault(); check_connection();"  method="POST" id="connection_form">
+                <form onsubmit="check_connection();" id="connection_form">
                     <nav class="mdl-navigation">
                         <h2 id="affiche_name" class="connected"></h2>
                         <input placeholder="Username" class="mdl-textfield__input connection_input" type="text" id="username">
                         <input placeholder="Password" class="mdl-textfield__input connection_input" type="password" id="password">
                     </nav>
                 </form>
-                <button style="background-color: #424242;" type="submit" form="form" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="connection_btn">Connexion</button>
+                <button style="background-color: #424242;" type="submit" form="connection_form" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="connection_btn">Connexion</button>
                 <button style="background-color: #424242;" type="submit" form="form" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent onlyUser" id="new_article_btn">Ajouter un article</button>
                 <button style="background-color: #424242;" type="submit" form="form" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent onlyUser" id="deconnection_btn">Deconnexion</button>
             </div>
