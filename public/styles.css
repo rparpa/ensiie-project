@@ -40,14 +40,16 @@ body {
 }
 
 .icon-image {
-  height: 100px;
-  width: 160px;
+  height: 100%;
+  width: auto;
   background-color: #424242;
-  margin-left: 10px;
+  border-radius: 100px;
+  padding-left: 0px;
+  margin-top: 5px;
 }
 
 .mdl-layout-title {
-    background-color: #424242 ;
+    background-color: white ;
     border: 0px;
     margin: -1px;
 }
@@ -78,6 +80,8 @@ span.mdl-navigation__link {
     margin: 20px; 
     background-color: white; 
     text-indent: 10%;
+    color: black;
+    forced-color-adjust: black;
 }
 
 a {
@@ -111,7 +115,6 @@ div {
     .connection_input { 
         margin: 0.2vh 2vw;
         margin-left: 0;
-        background-color: #424242; 
         text-indent: 2vw;
         width: 20vw;
         font-size: 2.5vh;
