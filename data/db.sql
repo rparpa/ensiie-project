@@ -83,7 +83,7 @@ INSERT INTO Categorie (name) VALUES ('Rock');
 INSERT INTO Categorie (name) VALUES ('Jeux');
 INSERT INTO Categorie (name) VALUES ('Mythologie');
 
-INSERT INTO ADMIN VALUES ('admin');
+-- INSERT INTO ADMIN VALUES ('admin');
 
 -- INSERT INTO Page (title, url, author, date, validated, synopsis, id_admin, id_cat1, id_cat2) VALUES('TEST', '../vue/pages/test.php', 'Jeremie Henrion', '2021-01-29', 'FALSE', 'Ceci est la page de test !', NULL,  3, 4);
 -- INSERT INTO Page (title, url, author, date, validated, synopsis, id_admin, id_cat1, id_cat2) VALUES('Soleil', '../vue/pages/soleil.php', 'Mikael Ferreira', '2021-01-29', 'TRUE', 'Le Soleil est l étoile du Système solaire. Dans la classification astronomique, c est une étoile de type naine jaune d une masse d environ 1,989 1 × 1030 kg, composée d hydrogène (75 % de la masse ou 92 % du volume) et d hélium (25 % de la masse ou 8 % du volume)', NULL, 4, 1);
