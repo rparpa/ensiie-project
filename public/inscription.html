@@ -60,6 +60,51 @@
         </div>
         <div class="mdl-layout__content">
     </div>
+    <div class="demo-blog__posts mdl-grid" id="top">
+        <div class="mdl-cell--12-col"><h1>Inscription</h1></div>
+    
+        <form class="mdl-grid" onchange="before_submit()" method="POST" id="form_inscription" action="inscription.php">
+            <div class="mdl-cell--3-col">Nom:<span>*</span></div><div class="mdl-cell--9-col">
+                <input class="mdl-textfield__input inscription_input" type="text" id="nom" name="nom"  placeholder="Nom"></div>
+            
+            <div class="mdl-cell--12-col">&nbsp;</div>
+            <div class="mdl-cell--3-col">Prénom:<span>*</span></div><div class="mdl-cell--9-col">
+                <input class="mdl-textfield__input inscription_input" type="text" id="prenom" name="prenom"  placeholder="Prénom"></div>
+            
+            <div class="mdl-cell--12-col">&nbsp;</div>
+            <div class="mdl-cell--3-col">Pseudo:<span>*</span></div><div class="mdl-cell--9-col">
+                <input class="mdl-textfield__input inscription_input" type="text" name="pseudo_form" id="pseudo_form" placeholder="Pseudo"></div>
+            <div class="mdl-cell--12-col pseudo_used" style="color: red;">Ce pseudo est deja utilisé</div>
+    
+            
+            <div class="mdl-cell--12-col">&nbsp;</div>
+            <div class="mdl-cell--3-col">Email:<span>*</span></div><div class="mdl-cell--9-col">
+                <input class="mdl-textfield__input inscription_input" type="text"  id="email" pattern="^[0-9a-zA-Z-_.]+@[0-9a-zA-Z-_.]+\.[0-9a-zA-Z-_.]+$" name="email" placeholder="Email"></div>
+            
+            <div class="mdl-cell--12-col">&nbsp;</div>
+            <div class="mdl-cell--3-col">Mot de passe:<span>*</span></div><div class="mdl-cell--9-col">
+                <input class="mdl-textfield__input inscription_input" type="password" id="password1" name="password_form" placeholder="Mot de passe"></div>
+            
+            <div class="mdl-cell--12-col">&nbsp;</div>
+            <div class="mdl-cell--3-col">Vérification du mot de passe:<span>*</span></div><div class="mdl-cell--9-col">
+                <input class="mdl-textfield__input inscription_input" type="password" id="password2" name="password_verif" placeholder="Vérification du mot de passe"></div>
+            <div class="mdl-cell--12-col incorect_password" style="color: red;">Les mots de passe ne correspondent pas</div>
+                    
+            <div class="mdl-cell--12-col">&nbsp;</div>
+            <div class="mdl-cell--3-col">Date de naissance:<span>*</span></div><div class="mdl-cell--9-col">
+                <input class="mdl-textfield__input inscription_input" id="born_date" type="date" name="born_date" min="1900-01-01"></div>
+    
+            <div class="mdl-cell--12-col">&nbsp;</div>
+            <span style='color: red; font-size: 12px; font-weight: normal;'><b style="font-size: 16px;">Information :</b>Tous les mots de passe sont crypté.</span>
+        </form>
+        <div class="mdl-cell--6-col"></div>
+        <div class="mdl-cell--6-col">
+            <button style="background-color: #424242;" id="btn_submit" onclick="send_inscription()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn_insctiption">S'inscrire</button>
+        </div>
+
+
 </div>
+
+
 </body>
 </html>

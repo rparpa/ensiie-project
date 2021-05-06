@@ -40,12 +40,13 @@ body {
 }
 
 .icon-image {
-  height: 100%;
+  height: 150px;
   width: auto;
   background-color: #424242;
   border-radius: 100px;
-  padding-left: 0px;
   margin-top: 5px;
+  margin-left: 13px;
+  margin-right: 0;
 }
 
 .mdl-layout-title {
