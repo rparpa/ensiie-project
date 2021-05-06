@@ -8,9 +8,9 @@
 -- Table: Ingredient
 ------------------------------------------------------------
 CREATE TABLE public.Ingredient(
-	Id    SERIAL NOT NULL ,
+	id    SERIAL NOT NULL ,
 	nom   VARCHAR (64) NOT NULL  ,
-	CONSTRAINT Ingredient_PK PRIMARY KEY (Id)
+	CONSTRAINT Ingredient_PK PRIMARY KEY (id)
 )WITHOUT OIDS;
 
 
@@ -28,16 +28,14 @@ CREATE TABLE public.User(
 -- Table: Stocker
 ------------------------------------------------------------
 CREATE TABLE public.Stocker(
-	identifiant_User   VARCHAR (64) NOT NULL ,
-	Id                 INT  NOT NULL ,
 	quantite           INT   ,
 	date_stock         DATE   ,
-	Id_ingredient      INT  NOT NULL ,
-	identifiant        VARCHAR (64) NOT NULL  ,
-	CONSTRAINT Stocker_PK PRIMARY KEY (identifiant_User,Id)
+	id_ingredient      INT  NOT NULL ,
+    identifiant_user   VARCHAR (64) NOT NULL ,
+	CONSTRAINT Stocker_PK PRIMARY KEY (identifiant_user,id_ingredient)
 
-	,CONSTRAINT Stocker_User_FK FOREIGN KEY (identifiant_User) REFERENCES public.User(identifiant)
-	,CONSTRAINT Stocker_Ingredient0_FK FOREIGN KEY (Id) REFERENCES public.Ingredient(Id)
+	,CONSTRAINT Stocker_User_FK FOREIGN KEY (identifiant_user) REFERENCES public.User(identifiant)
+	,CONSTRAINT Stocker_Ingredient0_FK FOREIGN KEY (id_ingredient) REFERENCES public.Ingredient(id)
 )WITHOUT OIDS;
 
 
