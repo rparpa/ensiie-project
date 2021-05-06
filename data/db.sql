@@ -3,11 +3,11 @@
 ------------------------------------------------------------
 
 ------------------------------------------------------------
--- Table: Categorie
+-- Table: Category
 ------------------------------------------------------------
-CREATE TABLE public.Categorie(
+CREATE TABLE public.Category(
 	NAME   VARCHAR (20) NOT NULL  ,
-	CONSTRAINT Categorie_PK PRIMARY KEY (NAME)
+	CONSTRAINT Category_PK PRIMARY KEY (NAME)
 )WITHOUT OIDS;
 
 ------------------------------------------------------------
@@ -40,31 +40,43 @@ CREATE TABLE public.Admin(
 CREATE TABLE public.Page(
 	ID_PAGE             SERIAL NOT NULL ,
 	TITLE               VARCHAR (50) NOT NULL ,
-	URL                 VARCHAR (50) NOT NULL ,
 	CREATION_DATE       DATE  NOT NULL ,
 	MODIFICATION_DATE   DATE  NOT NULL ,
 	VALIDATED           BOOL  NOT NULL ,
-	SYNOPSIS            VARCHAR (200) NOT NULL ,
+	DESCRIPTION         VARCHAR (200) NOT NULL ,
 	ID_ADMIN            INT   ,
 	NAME                VARCHAR (20)  ,
-	NAME_Categorie      VARCHAR (20)   ,
+	NAME_Category       VARCHAR (20)   ,
 	CONSTRAINT Page_PK PRIMARY KEY (ID_PAGE)
 
 	,CONSTRAINT Page_Admin_FK FOREIGN KEY (ID_ADMIN) REFERENCES public.Admin(ID_ADMIN)
-	,CONSTRAINT Page_Categorie0_FK FOREIGN KEY (NAME) REFERENCES public.Categorie(NAME)
-	,CONSTRAINT Page_Categorie1_FK FOREIGN KEY (NAME_Categorie) REFERENCES public.Categorie(NAME)
+	,CONSTRAINT Page_Category0_FK FOREIGN KEY (NAME) REFERENCES public.Category(NAME)
+	,CONSTRAINT Page_Category1_FK FOREIGN KEY (NAME_Category) REFERENCES public.Category(NAME)
 )WITHOUT OIDS;
 
 ------------------------------------------------------------
--- Table: Maintient
+-- Table: Section
 ------------------------------------------------------------
-CREATE TABLE public.Maintient(
+CREATE TABLE public.Section(
+	ID_SECTION   SERIAL NOT NULL ,
+	TITLE        VARCHAR (100) NOT NULL ,
+	CONTENT      VARCHAR (2000)  NOT NULL ,
+	ID_PAGE      INT  NOT NULL  ,
+	CONSTRAINT Section_PK PRIMARY KEY (ID_SECTION)
+
+	,CONSTRAINT Section_Page_FK FOREIGN KEY (ID_PAGE) REFERENCES public.Page(ID_PAGE)
+)WITHOUT OIDS;
+
+------------------------------------------------------------
+-- Table: Maintains
+------------------------------------------------------------
+CREATE TABLE public.Maintains(
 	ID_PAGE    INT  NOT NULL ,
 	USERNAME   VARCHAR (30) NOT NULL  ,
-	CONSTRAINT Maintient_PK PRIMARY KEY (ID_PAGE,USERNAME)
+	CONSTRAINT Maintains_PK PRIMARY KEY (ID_PAGE,USERNAME)
 
-	,CONSTRAINT Maintient_Page_FK FOREIGN KEY (ID_PAGE) REFERENCES public.Page(ID_PAGE)
-	,CONSTRAINT Maintient_User0_FK FOREIGN KEY (USERNAME) REFERENCES public.User(USERNAME)
+	,CONSTRAINT Maintains_Page_FK FOREIGN KEY (ID_PAGE) REFERENCES public.Page(ID_PAGE)
+	,CONSTRAINT Maintains_User0_FK FOREIGN KEY (USERNAME) REFERENCES public.User(USERNAME)
 )WITHOUT OIDS;
 
 ------------------------------------------------------------
