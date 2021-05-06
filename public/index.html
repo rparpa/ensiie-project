@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Page d'accueil de WikipedIIE.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <link rel="icon" href="logo/icon.png">
+    <title>WikipedIIE H</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div class="mdl-layout__header mdl-layout__header--waterfall">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">
+                    <a href="/index.html"><h2 id="title_Wikipediie">WikipedIIE</h2></a>
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <form onsubmit = "event.preventDefault(); check_connection();"  method="POST" id="connection_form">
+                    <nav class="mdl-navigation">
+                        <h2 id="affiche_name" class="connected"></h2>
+                        <input placeholder="Username" class="mdl-textfield__input connection_input" type="text" id="username">
+                        <input placeholder="Password" class="mdl-textfield__input connection_input" type="password" id="password">
+                    </nav>
+                </form>
+                <button style="background-color: #424242;" type="submit" form="form" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent connection_button">Connexion</button>
+
+                <button style="background-color: #424242;" type="submit" form="form" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent deconnection_button">Deconnexion</button>
+            </div>
+        </div>
+
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">
+                <a href="/index.html"><img class="icon-image" src="logo/logo.png"></a>
+            </span>
+            <nav class="mdl-navigation">
+                <span class="mdl-navigation__link notUser">Information Section</span>
+                <a class="mdl-navigation__link notUser" href="/inscription.html">inscription</a>
+                <a class="mdl-navigation__link notUser" href="a_propos.html">A propos</a>
+                <div class="separator notUser"></div>
+                <span class="mdl-navigation__link userOnly">User Section</span>
+                <a class="mdl-navigation__link userOnly" href="/account.html">Account</a>
+                <a class="mdl-navigation__link userOnly" href="/deconnection.php">Deconnection</a>
+                <div class="separator userOnly"></div>
+                <span class="mdl-navigation__link adminOnly">Section admin</span>
+                <a class="mdl-navigation__link adminOnly" href="">Validation pages</a>
+                <div class="separator adminOnly"></div>
+            </nav>
+        </div>
+        <div class="mdl-layout__content">
+        </div>
+</div>
+</body>
+</html>

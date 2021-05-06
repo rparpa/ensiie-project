@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', Courier, monospace;
+  font-weight: 800;
+}
+
+#title_Wikipediie {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+}
+
+.inscription_input, .connection_input {
+    outline : none;
+}
+
+#more-button {
+    margin: 0.5vw
+}
+
+.mdl-layout__drawer {
+    border: 0px;
+}
+.mdl-layout__header {
+    background-color: #424242;
+}
+
+::-moz-selection {
+  background-color: #424242;
+  color: #fff;
+}
+
+::selection {
+  background-color: #424242;
+  color: #fff;
+}
+
+.logo-image {
+  width: 300px;
+  background-color: #424242;
+}
+
+.icon-image {
+  height: 100px;
+  width: 160px;
+  background-color: #424242;
+  margin-left: 10px;
+}
+
+.mdl-layout-title {
+    background-color: #424242 ;
+    border: 0px;
+    margin: -1px;
+}
+
+.separator {
+    height: 1px;
+    background-color: #424242;
+    margin: 8px 0;
+}
+
+.separator_content {
+    height: 4px;
+    background-color: #424242;
+    margin: 8px 0;
+}
+
+span.mdl-navigation__link {
+    color: #424242 !important;
+    font-weight: bold;
+}
+
+.mdl-mega-footer, .mdl-mega-footer--right-section, .mdl-typography--font-light {
+    margin: 0 !important;
+    padding: 1px;
+}
+
+.connection_input {
+    margin: 20px; 
+    background-color: white; 
+    text-indent: 10%;
+}
+
+a {
+    text-decoration: none;
+    color: #424242;
+}
+
+div {
+    line-height: normal;
+}
+
+#affiche_name {
+    font-size: 200%;
+}
+
+#form_inscription .mdl-cell--3-col span {
+    color: red;
+}
+
+/**** Mobile layout ****/
+@media (max-width: 900px) {
+
+    div.mdl-cell.mdl-cell--12-col {
+        font-size: 3vh;
+    }
+
+    #title_Wikipediie {
+        display: none;
+    }
+
+    .connection_input { 
+        margin: 0.2vh 2vw;
+        margin-left: 0;
+        background-color: #424242; 
+        text-indent: 2vw;
+        width: 20vw;
+        font-size: 2.5vh;
+        height: 3vh;
+    }
+
+    .connection_button {
+        margin-right: -5px;
+        height: 5.5vh;
+        width: 20vw;
+        padding: 0px 0.2vw 0px 0.2vh;
+        font-size: 2.5vh;
+        line-height: 2vh;
+    }
+}
