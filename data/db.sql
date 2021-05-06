@@ -82,18 +82,18 @@ CREATE TABLE public.Maintains(
 ------------------------------------------------------------
 -- Insert
 ------------------------------------------------------------
-INSERT INTO Categorie (name) VALUES ('');
-INSERT INTO Categorie (name) VALUES ('Aucune');
-INSERT INTO Categorie (name) VALUES ('Sport');
-INSERT INTO Categorie (name) VALUES ('Physique');
-INSERT INTO Categorie (name) VALUES ('Chimie');
-INSERT INTO Categorie (name) VALUES ('Financier');
-INSERT INTO Categorie (name) VALUES ('Juridique');
-INSERT INTO Categorie (name) VALUES ('Musique');
-INSERT INTO Categorie (name) VALUES ('Cinéma');
-INSERT INTO Categorie (name) VALUES ('Rock');
-INSERT INTO Categorie (name) VALUES ('Jeux');
-INSERT INTO Categorie (name) VALUES ('Mythologie');
+INSERT INTO Category (name) VALUES ('');
+INSERT INTO Category (name) VALUES ('Aucune');
+INSERT INTO Category (name) VALUES ('Sport');
+INSERT INTO Category (name) VALUES ('Physique');
+INSERT INTO Category (name) VALUES ('Chimie');
+INSERT INTO Category (name) VALUES ('Financier');
+INSERT INTO Category (name) VALUES ('Juridique');
+INSERT INTO Category (name) VALUES ('Musique');
+INSERT INTO Category (name) VALUES ('Cinéma');
+INSERT INTO Category (name) VALUES ('Rock');
+INSERT INTO Category (name) VALUES ('Jeux');
+INSERT INTO Category (name) VALUES ('Mythologie');
 
 -- INSERT INTO ADMIN VALUES ('admin');
 
