@@ -65,23 +65,23 @@
                     <div class="mdl-cell--12-col"><h1>Inscription</h1></div>
                     <div class="mdl-cell--12-col">&nbsp;</div>
 
-                    <div class="mdl-cell--3-col">Username:<span>*</span></div><div class="mdl-cell--9-col">
-                        <input class="mdl-textfield__input inscription_input" type="text" name="username_form" id="username_form" placeholder="Username"></div>
-                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertUsername">Ce nom d'utilisateur est déjà utilisé</div>
-                    
+                    <div class="mdl-cell--3-col">Nom d'utilisateur :<span>*</span></div><div class="mdl-cell--9-col">
+                        <input class="mdl-textfield__input inscription_input" type="text" name="username_form" id="username_form" placeholder="Username" maxlength="50" minlength="3"></div>
+                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertUsername">Ce nom d'utilisateur est déjà utilisé</span><span class="alertField" id="alertUsername_length">Le nom d'utilisateur doit faire 3 caractères minimum</span></div>
+
                     <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--3-col">Email:<span>*</span></div><div class="mdl-cell--9-col">
-                        <input class="mdl-textfield__input inscription_input" type="text"  id="email_form" name="email_form" placeholder="Email"></div>
-                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertMail">L'adresse email n'est pas valide</div>
-                    
+                    <div class="mdl-cell--3-col">Email :<span>*</span></div><div class="mdl-cell--9-col">
+                        <input class="mdl-textfield__input inscription_input" type="text"  id="email_form" name="email_form" placeholder="Email" maxlength="100" minlength="3"></div>
+                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertMail">L'adresse email n'est pas valide</span><span class="alertField" id="alertMailUse">L'adresse email est déjà utilisée</span></div>
+
                     <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--3-col">Mot de passe:<span>*</span></div><div class="mdl-cell--9-col">
-                        <input class="mdl-textfield__input inscription_input" type="password" id="password1" name="password_form" placeholder="Mot de passe"></div>
-                    
+                    <div class="mdl-cell--3-col">Mot de passe :<span>*</span></div><div class="mdl-cell--9-col">
+                        <input class="mdl-textfield__input inscription_input" type="password" id="password1" name="password_form" placeholder="Mot de passe" maxlength="50" minlength="6"></div>
+                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertPassword_length">Le mot de passe doit faire 6 caractères minimum</span></div>
+
                     <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--3-col">Vérification du mot de passe:<span>*</span></div><div class="mdl-cell--9-col">
-                        <input class="mdl-textfield__input inscription_input" type="password" id="password2" name="password_verif" placeholder="Vérification du mot de passe"></div>
+                    <div class="mdl-cell--3-col">Vérification du mot de passe :<span>*</span></div><div class="mdl-cell--9-col">
+                        <input class="mdl-textfield__input inscription_input" type="password" id="password2" name="password_verif" placeholder="Vérification du mot de passe" maxlength="50" minlength="6"></div>
                     <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertPassword">Les mots de passe ne correspondent pas</span></div>
                     
                     <div class="mdl-cell--12-col">&nbsp;</div>
