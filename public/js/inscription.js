@@ -1,12 +1,6 @@
 jQuery(document).ready(function($) {
 
-    $('.alertField, .onlyUser, .onlyAdmin').hide();
-
-    $("#username").change(function(){
-        localStorage.setItem("username", $("#username").val())
-    });
-
-    $("#username").val(localStorage.getItem("username"));
+    init();
 
     $(".inscription_input").change(function(){
         console.log($(this).attr('name'))
