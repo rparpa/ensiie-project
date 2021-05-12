@@ -25,8 +25,8 @@
         case "check_email":
             if(isset($_POST['email']))
                 check_email($conn);
-        else
-            echo json_encode(array('status' => 'Error check email', 'msg' => 'A fields is not set : \'email\''));
+            else
+                echo json_encode(array('status' => 'Error check email', 'msg' => 'A fields is not set : \'email\''));
         break;
     }
 
