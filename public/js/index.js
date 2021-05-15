@@ -1,16 +1,15 @@
-
 jQuery(document).ready(function($) {
+    init();
+});
 
-    $('.onlyUser').hide();
-    $('.onlyAdmin').hide();
+function init(){
+    $('.onlyUser, .onlyAdmin, .alertField').hide();
 
-    $(".inscription_input").change(function(){
-        localStorage.setItem($(this)[0].name, $("#"+$(this)[0].name).val())
+    $("#username").change(function(){
+        localStorage.setItem("username", $("#username").val())
     });
 
-    $(".inscription_input").each(function(){
-        $("#"+$(this)[0].name).val(localStorage.getItem($(this)[0].name));
-    });
+    $("#username").val(localStorage.getItem("username"));
 });
 
 
@@ -36,5 +35,4 @@ function verify_user(){
             }
         }
     });
-
 }

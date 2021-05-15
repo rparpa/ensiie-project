@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="/js/inscription.js"></script>
     <script src="/js/index.js"></script>
   </head>
 <body>
@@ -24,10 +25,9 @@
         <div class="mdl-layout__header mdl-layout__header--waterfall">
             <div class="mdl-layout__header-row">
                 <span>
-                    <a href="/index.html"><span id="title_Wikipediie">WikipedIIE</span></a>
+                    <a href="/index.html" id="title_Wikipediie">Wikiped<span style="color: #4998a7">IIE</span></a>
                 </span>
                 <div class="mdl-layout-spacer"></div>
-
                 <form id="connection_form">
                     <nav class="mdl-navigation">
                         <span id="affiche_name" class="onlyUser"></span>
@@ -36,10 +36,8 @@
                     </nav>
                 </form>
                 <button style="background-color: #424242;" onclick="verify_user();" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent notUser" id="connection_btn">Connexion</button>
-
                 <button style="background-color: #424242;" onclick="add_new_article()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent onlyUser" id="new_article_btn">Ajouter un article</button>
                 <button style="background-color: #424242;" onclick="deconnection()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent onlyUser" id="deconnection_btn">Deconnexion</button>
-
             </div>
         </div>
 
@@ -63,7 +61,39 @@
             </nav>
         </div>
         <div class="mdl-layout__content">
-    </div>
+            <div class="demo-blog__posts mdl-grid" id="top">
+                <div class="mdl-grid" id="form_inscription">
+                    <div class="mdl-cell--12-col"><h1>Inscription</h1></div>
+                    <div class="mdl-cell--12-col">&nbsp;</div>
+
+                    <div class="mdl-cell--3-col">Nom d'utilisateur :<span>*</span></div><div class="mdl-cell--9-col">
+                        <input class="mdl-textfield__input inscription_input" type="text" name="username_form" id="username_form" placeholder="Username" maxlength="50" minlength="3"></div>
+                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertUsername">Ce nom d'utilisateur est déjà utilisé</span><span class="alertField" id="alertUsername_length">Le nom d'utilisateur doit faire 3 caractères minimum</span></div>
+
+                    <div class="mdl-cell--12-col">&nbsp;</div>
+                    <div class="mdl-cell--3-col">Email :<span>*</span></div><div class="mdl-cell--9-col">
+                        <input class="mdl-textfield__input inscription_input" type="text"  id="email_form" name="email_form" placeholder="Email" maxlength="100" minlength="3"></div>
+                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertMail">L'adresse email n'est pas valide</span><span class="alertField" id="alertMailUse">L'adresse email est déjà utilisée</span></div>
+
+                    <div class="mdl-cell--12-col">&nbsp;</div>
+                    <div class="mdl-cell--3-col">Mot de passe :<span>*</span></div><div class="mdl-cell--9-col">
+                        <input class="mdl-textfield__input inscription_input" type="password" id="password1" name="password_form" placeholder="Mot de passe" maxlength="50" minlength="6"></div>
+                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertPassword_length">Le mot de passe doit faire 6 caractères minimum</span></div>
+
+                    <div class="mdl-cell--12-col">&nbsp;</div>
+                    <div class="mdl-cell--3-col">Vérification du mot de passe :<span>*</span></div><div class="mdl-cell--9-col">
+                        <input class="mdl-textfield__input inscription_input" type="password" id="password2" name="password_verif" placeholder="Vérification du mot de passe" maxlength="50" minlength="6"></div>
+                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertPassword">Les mots de passe ne correspondent pas</span></div>
+                    
+                    <div class="mdl-cell--12-col">&nbsp;</div>
+                    <div class="mdl-cell--12-col">&nbsp;</div>
+                    <div class="mdl-cell--12-col">&nbsp;</div>
+                    <div class="mdl-cell--12-col" id="div_inscription">
+                        <button id="btn_insctiption" onclick="send_inscription()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn_insctiption">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

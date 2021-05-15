@@ -7,14 +7,33 @@ body {
 #title_Wikipediie {
     font-family: 'Times New Roman', Times, serif;
     color: white;
+    font-size: 50px;
+}
+
+#affiche_name {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 30px;
 }
 
 .inscription_input, .connection_input {
     outline : none;
 }
 
-#more-button {
-    margin: 0.5vw
+.mdl-button, .connection_input{
+    border-radius: 50px;
+}
+
+#btn_insctiption {
+    background-color: #424242 !important;
+}
+
+#connection_btn {
+    border-color: white !important;
+    border-style: solid;
+    padding-bottom: 34px;
+    border-width: 2px;
+    padding-top: 0px;
 }
 
 .mdl-layout__drawer {
@@ -34,18 +53,15 @@ body {
   color: #fff;
 }
 
-.logo-image {
-  width: 300px;
-  background-color: #424242;
-}
-
+/* Icon dans la barre de gauche */
 .icon-image {
-  height: 100%;
+  height: 150px;
   width: auto;
   background-color: #424242;
   border-radius: 100px;
-  padding-left: 0px;
   margin-top: 5px;
+  margin-left: 13px;
+  margin-right: 0;
 }
 
 .mdl-layout-title {
@@ -71,17 +87,11 @@ span.mdl-navigation__link {
     font-weight: bold;
 }
 
-.mdl-mega-footer, .mdl-mega-footer--right-section, .mdl-typography--font-light {
-    margin: 0 !important;
-    padding: 1px;
-}
-
 .connection_input {
     margin: 20px; 
     background-color: white; 
     text-indent: 10%;
     color: black;
-    forced-color-adjust: black;
 }
 
 a {
@@ -93,13 +103,29 @@ div {
     line-height: normal;
 }
 
-#affiche_name {
-    font-size: 200%;
-}
-
-#form_inscription .mdl-cell--3-col span {
+#form_inscription .mdl-cell--3-col span, .alertField {
     color: red;
 }
+
+.shake {
+    animation: shake 0.5s ease-in-out 0s;
+}
+
+#form_inscription {
+    margin-left: 15vw;
+    margin-right: 15vw;
+}
+
+#div_inscription {
+    text-align: center;
+}
+
+@keyframes shake {
+    0% { margin-left: 0rem; }
+    25% { margin-left: 0.5rem; }
+    75% { margin-left: -0.5rem; }
+    100% { margin-left: 0rem; }
+  }
 
 /**** Mobile layout ****/
 @media (max-width: 900px) {
@@ -117,7 +143,7 @@ div {
         margin-left: 0;
         text-indent: 2vw;
         width: 20vw;
-        font-size: 2.5vh;
+        font-size: 100%;
         height: 3vh;
     }
 

@@ -16,9 +16,9 @@ CREATE TABLE public.Category(
 CREATE TABLE public.User(
 	USERNAME        VARCHAR (30) NOT NULL ,
 	EMAIL           VARCHAR (100) NOT NULL ,
-	PASSWORD        VARCHAR (50) NOT NULL ,
+	PASSWD          VARCHAR (60) NOT NULL ,
 	CREATION_DATE   DATE  NOT NULL ,
-	VALIDATE        BOOL  NOT NULL  ,
+	VALIDATE        BOOL  NOT NULL,
 	CONSTRAINT User_PK PRIMARY KEY (USERNAME)
 )WITHOUT OIDS;
 
@@ -94,6 +94,8 @@ INSERT INTO Category (name) VALUES ('Cinéma');
 INSERT INTO Category (name) VALUES ('Rock');
 INSERT INTO Category (name) VALUES ('Jeux');
 INSERT INTO Category (name) VALUES ('Mythologie');
+
+INSERT INTO public.User (USERNAME, EMAIL, PASSWD, CREATION_DATE, VALIDATE) VALUES ('demo', 'demo@test.fr', '123', '2000-10-10', TRUE);
 
 -- INSERT INTO ADMIN VALUES ('admin');
 
