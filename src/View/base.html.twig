@@ -1,0 +1,40 @@
+{% if current_page is not defined %}
+    {% set current_page = null %}
+{% endif %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{{ asset('media/favicons/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        {{ encore_entry_link_tags('global') }}
+    {% endblock %}
+</head>
+<body>
+<header>
+    {% if 'sign' not in current_page %}
+        {% if 'admin' in current_page %}
+            {{ include('admin/admin_global/admin_global_navbar.html.twig') }}
+        {% else %}
+            {{ include ('global/global_navbar/global_navbar.html.twig') }}
+        {% endif %}
+    {% endif %}
+</header>
+<main {% block mainParameters %}{% endblock %}>
+    {% block body %}{% endblock %}
+</main>
+{% if 'admin' not in current_page and 'sign' not in current_page %}
+    <footer class="page-footer z-depth-3 white">
+        {{ include('global/global_footer.html.twig') }}
+    </footer>
+{% endif %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    {{ encore_entry_script_tags('global') }}
+{% endblock %}
+</body>
+</html>
