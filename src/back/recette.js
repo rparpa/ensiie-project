@@ -3,7 +3,7 @@
 app.get('/edit/:id', (req, res) => {
   const edit_postId = req.params.id;
   // FIND POST BY ID
-  connection.query('SELECT * FROM posts WHERE id=?',[edit_postId] , (err, results) => {
+  Client.query('SELECT * FROM posts WHERE id=?',[edit_postId] , (err, results) => {
     if (err) throw err;
     res.render('edit',{
       post:results[0]
@@ -22,7 +22,7 @@ app.post('/', (req, res) => {
     author: author_name,
     created_at: new Date()
   }
-  connection.query('INSERT INTO posts SET ?', post, (err) => {
+  Client.query('INSERT INTO posts SET ?', post, (err) => {
     if (err) throw err;
     console.log('Data inserted');
     return res.redirect('/');
@@ -33,7 +33,7 @@ app.post('/', (req, res) => {
 app.get('/edit/:id', (req, res) => {
   const edit_postId = req.params.id;
   // FIND POST BY ID
-  connection.query('SELECT * FROM posts WHERE id=?',[edit_postId] , (err, results) => {
+  Client.query('SELECT * FROM posts WHERE id=?',[edit_postId] , (err, results) => {
     if (err) throw err;
     res.render('edit',{
       post:results[0]
@@ -47,7 +47,7 @@ app.post('/edit/:id', (req, res) => {
   const update_content = req.body.content;
   const update_author_name = req.body.author_name;
   const userId = req.params.id;
-  connection.query('UPDATE posts SET title = ?, content = ?, author = ? WHERE id = ?', [update_title, update_content, update_author_name, userId], (err, results) => {
+  Client.query('UPDATE posts SET title = ?, content = ?, author = ? WHERE id = ?', [update_title, update_content, update_author_name, userId], (err, results) => {
     if (err) throw err;
     if(results.changedRows === 1){
       console.log('Post Updated');
@@ -58,7 +58,7 @@ app.post('/edit/:id', (req, res) => {
 
 // POST DELETING
 app.get('/delete/:id', (req, res) => {
-  connection.query('DELETE FROM posts WHERE id = ?', [req.params.id], (err, results) => {
+  Client.query('DELETE FROM posts WHERE id = ?', [req.params.id], (err, results) => {
     if (err) throw err;
     res.redirect('/');
   });
@@ -67,8 +67,8 @@ app.get('/delete/:id', (req, res) => {
 app.use('/',(req,res) => {
   res.status(404).send('<h1>404 Page Not Found!</h1>');
 });
-// IF DATABASE CONNECTION IS SUCCESSFUL
-connection.connect((err) => {
+// IF DATABASE Client IS SUCCESSFUL
+Client.connect((err) => {
   if (err) throw err;
   app.listen(3000);
 });
