@@ -12,6 +12,13 @@ function init(){
     $("#username").val(localStorage.getItem("username"));
 }
 
+function shake(obj){
+    obj.removeClass('shake');
+    obj.css("borderColor","red");
+    setTimeout(function(){
+        obj.addClass('shake');
+    });
+}
 
 function verify_user(){
     let name = $("#username").val();

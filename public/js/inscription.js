@@ -34,6 +34,7 @@ function send_inscription(){
                     // TODO succes message
                     console.log(data.msg);                        
                     window.location.href = "/index.html";
+                    
                 }
                 else{
                     // TODO error message
