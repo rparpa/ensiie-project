@@ -4,5 +4,8 @@ vendor
 composer.lock
 .phpunit.result.cache
 .env
+node_modules*
 
 src/node_modules/
+
+src/package-lock.json
