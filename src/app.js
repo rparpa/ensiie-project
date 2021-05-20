@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+app.use(express.static('static'));
 const Twig = require('twig');
 var twig = Twig.twig;
 
@@ -27,7 +28,7 @@ app.get('/', (req, res) => {
   client.query(sqlReq, (err, resp) => {
     const result = err ? err.stack : resp.rows[0];
 
-    res.sendFile(path.join(__dirname + "/View", '/connect.html'));
+    res.render("connect.twig", {});
 
   })
 
@@ -35,9 +36,14 @@ app.get('/', (req, res) => {
 
 app.get('/ingredient', (req, res) => {
   var sqlReq = "SELECT * FROM Ingredient;"
+  var sqlReqUnites = "SELECT DISTINCT unite FROM Ingredient;"
   client.query(sqlReq, (err, resp) => {
-    var result = err ? err.stack : resp.rows;
-    res.render('ingredient/ingredient_index.html.twig', {data:result});
+    client.query(sqlReqUnites, (erru, respu) => {
+      var result = err ? err.stack : resp.rows;
+      var resultU = erru ? erru.stack : respu.rows;
+      console.log(resultU);
+      res.render('ingredient/ingredient_index.html.twig', {data:result, unites:resultU});
+    });
   })
 })
 
