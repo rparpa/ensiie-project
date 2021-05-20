@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const Twig = require('twig');
 const { Client } = require('pg');
@@ -22,9 +23,18 @@ const client = new Client({
 client.connect();
 
 app.use(express.static('static'));
+app.use(session({
+  secret: 'sessioninit',
+  resave: false,
+  saveUninitialized: true,
+}));
 
 app.get('/', (req, res) => {
-  res.render("home/home_index.html.twig", {});
+  if(!req.session.user || !request.session.password)
+    res.redirect("/login")
+  else {
+    res.render("home/home_index.html.twig", {});
+  }
 });
 
 app.get('/login', (req, res) => {
@@ -40,24 +50,32 @@ app.get('/register', (req, res) => {
 });
 
 app.get('/ingredient', (req, res) => {
-  var sqlReq = "SELECT * FROM Ingredient;"
-  var sqlReqUnites = "SELECT DISTINCT unite FROM Ingredient;"
-  client.query(sqlReq, (err, resp) => {
-    client.query(sqlReqUnites, (erru, respu) => {
-      var result = err ? err.stack : resp.rows;
-      var resultU = erru ? erru.stack : respu.rows;
+  if(!req.session.user || !request.session.password)
+    res.redirect("/login")
+  else {
+    var sqlReq = "SELECT * FROM Ingredient;"
+    var sqlReqUnites = "SELECT DISTINCT unite FROM Ingredient;"
+    client.query(sqlReq, (err, resp) => {
+      client.query(sqlReqUnites, (erru, respu) => {
+        var result = err ? err.stack : resp.rows;
+        var resultU = erru ? erru.stack : respu.rows;
 
-      res.render('ingredient/ingredient_index.html.twig', {data:result, unites:resultU});
+        res.render('ingredient/ingredient_index.html.twig', {data:result, unites:resultU});
+      });
     });
-  });
+  }
 });
 
 app.get('/recettes', (req, res) => {
-  var sqlReq = "SELECT * FROM Ingredient;"
-  client.query(sqlReq, (err, resp) => {
-    var result = err ? err.stack : resp.rows;
-    res.render('recipe/recipe_index.html.twig', {data:result});
-  })
+  if(!req.session.user || !request.session.password)
+    res.redirect("/login")
+  else {
+    var sqlReq = "SELECT * FROM Ingredient;"
+    client.query(sqlReq, (err, resp) => {
+      var result = err ? err.stack : resp.rows;
+      res.render('recipe/recipe_index.html.twig', {data:result});
+    });
+  }
 });
 
 // Handle 404 - Keep this as a last route
