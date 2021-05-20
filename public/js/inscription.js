@@ -16,7 +16,7 @@ jQuery(document).ready(function($) {
 });
 
 function send_inscription(){
-    if(before_submit())
+    if(before_submit()) {
         $.ajax({
             type:'POST',
             url:'router.php',
@@ -30,8 +30,10 @@ function send_inscription(){
             dataType: 'json',
             success: function(data, status, xml){
                 if(data.status == "success"){
+                    localStorage.setItem('username', $('#username_form').val());
                     // TODO succes message
-                    console.log(data.msg);
+                    console.log(data.msg);                        
+                    window.location.href = "/index.html";
                 }
                 else{
                     // TODO error message
@@ -39,6 +41,7 @@ function send_inscription(){
                 }
             }
         });
+    }
 };
 
 function before_submit() {
@@ -54,10 +57,14 @@ function before_submit() {
             $(this).css("borderColor","grey");
         }
     });
-    check_all &&= check_password($('#password1'), $('#password2'));;
-    check_all &&= check_email($('#email_form'));
-    check_all &&= check_username($('#username_form'))
-    return check_all;
+    if(!check_password($('#password1'), $('#password2')))
+        check_all = false;
+    if(!check_email($('#email_form')))
+        check_all = false;
+    if(!check_username($('#username_form')))
+        check_all = false;
+    
+        return check_all;
 };
 
 function check_password(obj1, obj2){
