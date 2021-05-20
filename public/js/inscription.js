@@ -21,7 +21,7 @@ function send_inscription(){
             type:'POST',
             url:'router.php',
             data:{
-                request: "inscription.php",
+                request: "Controller/inscription.php",
                 username: $('#username_form').val(),
                 password: $('#password1').val(),
                 email: $('#email_form').val(),
@@ -98,7 +98,7 @@ function check_email(obj){
             async: false,
             url:'router.php',
             data:{
-                request: "inscription.php",
+                request: "Controller/inscription.php",
                 email: obj.val(), 
                 to_do: "check_email"
             },
@@ -135,7 +135,7 @@ function check_username(obj){
             async : false,
             url:'router.php',
             data:{
-                request: "inscription.php",
+                request: "Controller/inscription.php",
                 username: obj.val(), 
                 to_do: "check_username"
             },
