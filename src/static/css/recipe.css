@@ -1,9 +1,15 @@
 .fav_recipe, .recipe_frigo{
     display: inline-grid;
     width: 40%;
-    margin: 10pt;
+    margin: 20pt;
 }
 
 p{
     text-align: justify;
+}
+
+.recipe{
+    background-color: lightslategray;
+    margin: 5pt;
+    padding: 5pt;
 }
