@@ -1,0 +1,53 @@
+footer {
+    overflow-x: hidden;
+    color: #fff
+}
+
+footer p {
+    font-size: 14px
+}
+
+footer .container-fluid {
+    background-color: #11832e
+}
+
+footer .top-part {
+    color: black;
+    background-color: #b7ecb7
+}
+
+footer .center-content {
+    margin-top: 120px;
+    margin-bottom: 120px
+}
+
+footer .btn-pink {
+    border-radius: 0;
+    background-color: #11832e;
+    color: #fff !important;
+    letter-spacing: 2px;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px
+}
+
+footer .btn-pink:hover {
+    background-color: #7dcf7d
+}
+
+footer .line {
+    border-top: 1px solid #ffffff;
+    width: 90% !important
+}
+
+footer .fa-mobile {
+    font-size: 20px
+}
+
+footer #contact {
+    font-size: 15px
+}
+
+footer .grey-text {
+    color: lightgrey
+}
