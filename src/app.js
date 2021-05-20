@@ -24,15 +24,19 @@ client.connect();
 app.use(express.static('static'));
 
 app.get('/', (req, res) => {
+  res.render("home/home_index.html.twig", {});
+});
+
+app.get('/login', (req, res) => {
   var sqlReq = "SELECT * FROM User;"
   client.query(sqlReq, (err, resp) => {
     const result = err ? err.stack : resp.rows[0];
-    res.render("connect.twig", {});
+    res.render("connection/connection_login.html.twig", {});
   });
 });
 
-app.get('/newaccount', (req, res) => {
-    res.render("new_account.twig", {});
+app.get('/register', (req, res) => {
+    res.render("connection/connection_register.twig", {});
 });
 
 app.get('/ingredient', (req, res) => {
