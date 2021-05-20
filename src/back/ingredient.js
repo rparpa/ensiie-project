@@ -1,18 +1,6 @@
 
-// EDIT PAGE
-app.get('/edit/:id', (req, res) => {
-  const edit_postId = req.params.id;
-  // FIND POST BY ID
-  Client.query('SELECT * FROM posts WHERE id=?',[edit_postId] , (err, results) => {
-    if (err) throw err;
-    res.render('edit',{
-      post:results[0]
-    });
-  });
-});
-
 // INSERTING POST
-app.post('/', (req, res) => {
+app.post('/ingredient', (req, res) => {
   const title = req.body.title;
   const content = req.body.content;
   const author_name = req.body.author_name;
@@ -22,7 +10,7 @@ app.post('/', (req, res) => {
     author: author_name,
     created_at: new Date()
   }
-  Client.query('INSERT INTO posts SET ?', post, (err) => {
+  Client.query('INSERT INTO ingredient SET ?', post, (err) => {
     if (err) throw err;
     console.log('Data inserted');
     return res.redirect('/');
@@ -30,10 +18,10 @@ app.post('/', (req, res) => {
 });
 
 // EDIT PAGE
-app.get('/edit/:id', (req, res) => {
+app.get('ingredient/edit/:id', (req, res) => {
   const edit_postId = req.params.id;
   // FIND POST BY ID
-  Client.query('SELECT * FROM posts WHERE id=?',[edit_postId] , (err, results) => {
+  Client.query('SELECT * FROM ingredient WHERE id=?',[edit_postId] , (err, results) => {
     if (err) throw err;
     res.render('edit',{
       post:results[0]
@@ -42,12 +30,12 @@ app.get('/edit/:id', (req, res) => {
 });
 
 // POST UPDATING
-app.post('/edit/:id', (req, res) => {
+app.post('ingredient/edit/:id', (req, res) => {
   const update_title = req.body.title;
   const update_content = req.body.content;
   const update_author_name = req.body.author_name;
   const userId = req.params.id;
-  Client.query('UPDATE posts SET title = ?, content = ?, author = ? WHERE id = ?', [update_title, update_content, update_author_name, userId], (err, results) => {
+  Client.query('UPDATE ingredient SET title = ?, content = ?, author = ? WHERE id = ?', [update_title, update_content, update_author_name, userId], (err, results) => {
     if (err) throw err;
     if(results.changedRows === 1){
       console.log('Post Updated');
@@ -57,16 +45,18 @@ app.post('/edit/:id', (req, res) => {
 });
 
 // POST DELETING
-app.get('/delete/:id', (req, res) => {
-  Client.query('DELETE FROM posts WHERE id = ?', [req.params.id], (err, results) => {
+app.get('ingredient/delete/:id', (req, res) => {
+  Client.query('DELETE FROM ingredient WHERE id = ?', [req.params.id], (err, results) => {
     if (err) throw err;
     res.redirect('/');
   });
 });
+
 // SET 404 PAGE
 app.use('/',(req,res) => {
   res.status(404).send('<h1>404 Page Not Found!</h1>');
 });
+
 // IF DATABASE Client IS SUCCESSFUL
 Client.connect((err) => {
   if (err) throw err;
