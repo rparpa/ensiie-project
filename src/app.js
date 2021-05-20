@@ -5,7 +5,6 @@ const Twig = require('twig');
 var twig = Twig.twig;
 
 const port = 3000
-const bodyParser = require('body-parser')
 const { Client } = require('pg')
 const path = require('path')
 const dotenv = require('dotenv');
