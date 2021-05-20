@@ -38,7 +38,7 @@ app.get('/ingredient', (req, res) => {
       var result = err ? err.stack : resp.rows;
       var resultU = erru ? erru.stack : respu.rows;
       console.log(resultU);
-      res.render('ingredient.twig', {data:result, unites:resultU});
+      res.render('ingredient/ingredient_index.html.twig', {data:result, unites:resultU});
     });
   })
 })

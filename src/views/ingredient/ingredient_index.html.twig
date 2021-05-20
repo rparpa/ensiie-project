@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Frigo | Ingrédients{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="ingredientsview">
+        <h1>Liste des ingredients</h1>
+        {% for d in data %}
+            <li>{{ d.nom }}</li>
+        {% endfor %}
+    </div>
+
+    <div class="ingredientsform">
+        <h1>Ajouter un ingredient</h1>
+        <form class="addingredientform" action="postingredient" method="post">
+            <label for="name">Nom de l'ingrédient</label>
+            <input type="text" name="name">
+            <select class="unite" name="unite">
+                {% for u in unites %}
+                <option value="{{u.unite}}">{{u.unite}}</li>
+                    {% endfor %}
+            </select>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

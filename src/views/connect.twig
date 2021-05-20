@@ -1,29 +1,13 @@
-{% include 'templates/header.twig' %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-        <!--img src="../assets/images/logo.png" height="30" class="d-inline-block align-top" alt="logo"/-->
-        Site
-    </a>
+{% extends 'base.html.twig' %}
 
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                1
-            </a>
-        </li>
+{% block title %}Frigo | Ingrédients{% endblock %}
 
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                2
-            </a>
-        </li>
-    </ul>
-</nav>
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 
-<div class="h1 text-center mt-2">
-    Bienvenue sur notre super site web
-</div>
 
+{% block body %}
 <div class="container p-5">
     <div class="h2 text-center">Connectez-vous</div>
     <form class="form-group">
@@ -60,4 +44,8 @@
     </form>
 </div>
 
-{% include 'templates/footer.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

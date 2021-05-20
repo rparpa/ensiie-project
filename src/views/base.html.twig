@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {# <link href="" rel="shortcut icon" type="image/x-icon"> #}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    {% endblock %}
+</head>
+<body>
+    <header>
+        {% include 'global/global_navbar.html.twig' %}
+    </header>
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+
+  <footer>
+      {% include 'global/global_footer.html.twig' %}
+  </footer>
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="/js/passwordStrengthFunctions.js"></script>
+
+    <!-- Boostrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>
