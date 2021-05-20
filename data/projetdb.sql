@@ -46,7 +46,7 @@ INSERT INTO "public".Utilisateur(identifiant, mdp, statut) VALUES ('Amelia', '9c
 INSERT INTO "public".Utilisateur(identifiant, mdp, statut) VALUES ('Manuel', '4804f6f27df0b734ca5c3b844b991a65fab05d6379e2711fc588eba4fa9f3a22', '0');
 INSERT INTO "public".Utilisateur(identifiant, mdp, statut) VALUES ('Alonzo', '005d980a72c3dc26d85181c343657a945fc36618493fb902833e1e248aa7de9f', '1');
 INSERT INTO "public".Utilisateur(identifiant, mdp, statut) VALUES ('Otis', '77e335c81d3d7248d36cb1303c207c992f3a473eeca1f365f0c3b1998c703449', '0');
-INSERT INTO "public".Utilisateur(identifiant, mdp, statut) VALUES ('Jaime', 'cc9a26f55d5b600d7a85124a13a5f4b32481c7dca8950209328c7bcd9ab03e67', '0');
+INSERT INTO "public".Utilisateur(identifiant, mdp, statut) VALUES ('Jaime', 'cc9a26f55d5b600d7a85124a13a5f4b32481c7dca8950209328c7bcd9ab03e67', '2');
 INSERT INTO "public".Utilisateur(identifiant, mdp, statut) VALUES ('Vicky', '2490aafc94e832a6c63194ea1db6f38aff6c94a1fa281686a368c2fa7cb62488', '0');
 INSERT INTO "public".Utilisateur(identifiant, mdp, statut) VALUES ('Silvia', 'a64a14377f3263b785732d1e5e43e237fa9032d3086e978dde4b4214e057519c', '0');
 INSERT INTO "public".Utilisateur(identifiant, mdp, statut) VALUES ('Brendan', '65924bf5809308bb84bf5a928a0019efcac1234fdee88d432fd6b12455f50c7f', '1');
