@@ -103,8 +103,15 @@ div {
     line-height: normal;
 }
 
-#form_inscription .mdl-cell--3-col span, .alertField {
-    color: red;
+#form_inscription .mdl-cell--3-col span, .alertField, .section_account .mdl-cell--2-col span {
+    color: red !important;
+}
+#SucessPassword {
+    color: greenyellow;
+}
+
+.section_account span {
+    color: #4998a7;
 }
 
 .shake {
@@ -116,9 +123,15 @@ div {
     margin-right: 15vw;
 }
 
-#div_inscription {
+#div_inscription  {
     text-align: center;
 }
+
+/* .section_account {
+    border-style: solid;
+    border-radius: 50px;
+}
+ */
 
 @keyframes shake {
     0% { margin-left: 0rem; }

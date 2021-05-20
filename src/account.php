@@ -1,23 +1,15 @@
 <?php
-    
-    date_default_timezone_set('UTC');
-
-
-    $dbName = getenv('DB_NAME');
-    $dbUser = getenv('DB_USER');
-    $dbPassword = getenv('DB_PASSWORD');
-
-    $conn = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    $conn = \Db\Connection::get();
 
     switch($_POST['to_do']){
         case "check_password":
-            if(isset($_POST['password']) and isset($_POST['usrername']))
+            if(isset($_POST['password']) and isset($_POST['username']))
                 check_password($conn);
             else
                 echo json_encode(array('status' => 'Error check Password', 'msg' => 'A fields is not set : \'password\' or \'username\''));
             break;
         case "change_password":
-            if(isset($_POST['new_password']) and isset($_POST['usrername']))
+            if(isset($_POST['new_password']) and isset($_POST['username']))
                 change_password($conn);
             else
                 echo json_encode(array('status' => 'Error change Password', 'msg' => 'A fields is not set : \'password\' or \'username\''));
