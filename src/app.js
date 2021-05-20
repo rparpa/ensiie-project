@@ -8,6 +8,8 @@ const dotenv = require('dotenv');
 const port = 3000;
 var twig = Twig.twig;
 
+dotenv.config();
+
 const dbPort = process.env.DB_PORT_EXTERNAL
 const dbuser = process.env.DB_USER
 const dbPassword = process.env.DB_PASSWORD
@@ -18,8 +20,8 @@ const client = new Client({
   port:dbPort
 });
 client.connect();
+
 app.use(express.static('static'));
-dotenv.config();
 
 app.get('/', (req, res) => {
   var sqlReq = "SELECT * FROM User;"
