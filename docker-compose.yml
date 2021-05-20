@@ -47,7 +47,7 @@ services:
     build:
       context: ./.docker/postgres
     ports:
-      - ${DB_PORT_EXTERNAL}
+      - ${DB_PORT_EXTERNAL}:5432
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
