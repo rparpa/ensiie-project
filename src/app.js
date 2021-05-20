@@ -1,14 +1,12 @@
-const express = require('express')
-const app = express()
-app.use(express.static('static'));
+const express = require('express');
+const app = express();
 const Twig = require('twig');
-var twig = Twig.twig;
-
-const port = 3000
-const { Client } = require('pg')
-const path = require('path')
+const { Client } = require('pg');
+const path = require('path');
 const dotenv = require('dotenv');
-dotenv.config();
+
+const port = 3000;
+var twig = Twig.twig;
 
 const dbPort = process.env.DB_PORT_EXTERNAL
 const dbuser = process.env.DB_USER
@@ -20,6 +18,8 @@ const client = new Client({
   port:dbPort
 });
 client.connect();
+app.use(express.static('static'));
+dotenv.config();
 
 app.get('/', (req, res) => {
   var sqlReq = "SELECT * FROM User;"
