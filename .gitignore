@@ -4,3 +4,4 @@ vendor
 composer.lock
 .phpunit.result.cache
 .env
+*node_modules*
