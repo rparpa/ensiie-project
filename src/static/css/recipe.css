@@ -1,0 +1,9 @@
+.fav_recipe, .recipe_frigo{
+    display: inline-grid;
+    width: 40%;
+    margin: 10pt;
+}
+
+p{
+    text-align: justify;
+}

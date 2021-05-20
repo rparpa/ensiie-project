@@ -1,14 +1,30 @@
-<!DOCTYPE html>
-<html lang = "fr" dir = "ltr">
-  <head>
-    <meta charset = "utf-8">
-    <title>Recettes</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel = "stylesheet" type="text/css" href = "views/style/recipe.css">
-  </head>
-  <body>
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes | Home{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel = "stylesheet" type = "text/css" href = "css/recipe.css">
+{% endblock %}
+
+{% block body %}
     <div class = "fav_recipe">
       <h4>Recettes favorites</h4>
+
+      <h6>Recette 1</h6>
+      <ul>
+        <li>Farine</li>
+        <li>Sucre</li>
+        <li>Lait</li>
+        <li>Oeufs</li>
+      </ul>
+      <p>
+        Mettre la farine dans une terrine et former un puits.
+        Y déposer les oeufs entiers, le sucre, l'huile et le beurre.
+        Mélanger délicatement avec un fouet en ajoutant au fur et à mesure le lait. La pâte ainsi obtenue doit avoir une consistance d'un liquide légèrement épais.
+        Parfumer de rhum.
+        Faire chauffer une poêle antiadhésive et la huiler très légèrement. Y verser une louche de pâte, la répartir dans la poêle puis attendre qu'elle soit cuite d'un côté avant de la retourner. Cuire ainsi toutes les crêpes à feu doux.
+      </p>
     </div>
 
     <div class = "recipe_frigo">
@@ -27,5 +43,8 @@
           -->
       {% endfor %}
     </div>
-  </body>
-</html>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
