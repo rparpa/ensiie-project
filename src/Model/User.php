@@ -68,6 +68,14 @@ class User{
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(1, $username);
         $stmt->execute();
+        return $stmt->rowCount();
+    }
+
+    public static function userIsAdmin($username, $pdo){
+        $sql = 'SELECT * FROM public.Admin WHERE username = ?';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(1, $username);
+        $stmt->execute();
         return $stmt->rowCount() == 1;
     }
 }
