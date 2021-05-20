@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Ingrédients</title>
@@ -14,11 +14,15 @@
 
     <div class="ingredientsform">
       <h1>Ajouter un ingredient</h1>
-      <form class="" action="index.html" method="post">
-          <input type="text" name="" value="">
+      <form class="addingredientform" action="postingredient" method="post">
+      <label for="name">Nom de l'ingrédient</label>
+          <input type="text" name="name">
+          <select class="unite" name="unite">
+            {% for u in unites %}
+                <option value="{{u.unite}}">{{u.unite}}</li>
+            {% endfor %}
+          </select>
       </form>
-      <select class="" name="">
-      </select>
     </div>
   </body>
 </html>
