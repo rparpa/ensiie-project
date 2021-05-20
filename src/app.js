@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
   const sqlReq = "SELECT * FROM User;"
   client.query(sqlReq, (err, resp) => {
-    var result = err ? err.stack : resp.rows[0];
+    const result = err ? err.stack : resp.rows[0];
 
     res.sendFile(path.join(__dirname + "/View", '/connect.html'));
     client.end();
