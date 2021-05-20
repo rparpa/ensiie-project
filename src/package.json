@@ -8,14 +8,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "package.json": "^2.0.1",
     "pg": "^8.6.0",
     "twig": "^1.15.4"
   },
-  "devDependencies": {},
   "keywords": [],
   "description": ""
 }

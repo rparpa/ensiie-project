@@ -1,15 +1,12 @@
-const express = require('express')
-const app = express()
-app.use(express.static('static'));
+const express = require('express');
+const app = express();
 const Twig = require('twig');
-var twig = Twig.twig;
-
-const port = 3000
-const bodyParser = require('body-parser')
-const { Client } = require('pg')
-const path = require('path')
+const { Client } = require('pg');
+const path = require('path');
 const dotenv = require('dotenv');
-dotenv.config();
+
+const port = 3000;
+var twig = Twig.twig;
 
 const dbPort = process.env.DB_PORT_EXTERNAL
 const dbuser = process.env.DB_USER
@@ -21,17 +18,15 @@ const client = new Client({
   port:dbPort
 });
 client.connect();
+app.use(express.static('static'));
+dotenv.config();
 
 app.get('/', (req, res) => {
-
   var sqlReq = "SELECT * FROM User;"
   client.query(sqlReq, (err, resp) => {
     const result = err ? err.stack : resp.rows[0];
-
     res.render("connect.twig", {});
-
   })
-
 })
 
 app.get('/newaccount', (req, res) => {
@@ -51,11 +46,20 @@ app.get('/ingredient', (req, res) => {
   })
 })
 
+
 // Handle 404 - Keep this as a last route
 app.use(function(req, res, next) {
   res.status(404);
   res.render('erreur/erreur_404.html.twig');
 });
+
+app.get('/recettes', (req, res) => {
+  var sqlReq = "SELECT * FROM Ingredient;"
+  client.query(sqlReq, (err, resp) => {
+    var result = err ? err.stack : resp.rows;
+    res.render('recipe.twig', {data:result});
+  })
+})
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
