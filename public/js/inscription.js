@@ -3,12 +3,10 @@ jQuery(document).ready(function($) {
     init();
 
     $(".inscription_input").change(function(){
-        console.log($(this).attr('name'))
         localStorage.setItem($(this).attr('name'), $(this).val())
     });
 
     $(".inscription_input").each(function() {
-        console.log($(this).attr('name'))
         $(this).val(localStorage.getItem($(this).attr('name')));
     });
 
@@ -18,7 +16,6 @@ jQuery(document).ready(function($) {
 });
 
 function send_inscription(){
-    console.log('inscription btn');
     if(before_submit())
         $.ajax({
             type:'POST',
@@ -33,9 +30,11 @@ function send_inscription(){
             dataType: 'json',
             success: function(data, status, xml){
                 if(data.status == "success"){
+                    // TODO succes message
                     console.log(data.msg);
                 }
                 else{
+                    // TODO error message
                     console.log(data.msg);
                 }
             }
@@ -55,10 +54,9 @@ function before_submit() {
             $(this).css("borderColor","grey");
         }
     });
-
-    check_all = check_password($('#password1'), $('#password2'));;
-    check_all = check_email($('#email_form'));
-    check_all = check_username($('#username_form'))
+    check_all &&= check_password($('#password1'), $('#password2'));;
+    check_all &&= check_email($('#email_form'));
+    check_all &&= check_username($('#username_form'))
     return check_all;
 };
 
@@ -68,6 +66,7 @@ function check_password(obj1, obj2){
         $('#alertPassword_length').show();
         shake(obj1);
         shake(obj2);
+        return false;
     }
     else{
         $('#alertPassword_length').hide();
@@ -93,8 +92,10 @@ function check_email(obj){
         return false;
     }else{
         $('#alertMail').hide();
+        let result;
         $.ajax({
             type:'POST',
+            async: false,
             url:'router.php',
             data:{
                 request: "inscription.php",
@@ -106,15 +107,16 @@ function check_email(obj){
                 if(data.status != "success"){
                     $('#alertMailUse').show();
                     shake(obj);
-                    return false;
+                    result = false;
                 }
                 else{
                     $(this).css("borderColor","grey");
                     $('#alertMailUse').hide();
-                    return true
+                    result = true;
                 }
             }
         });
+        return result;
     }
 }
 
@@ -127,8 +129,10 @@ function check_username(obj){
     }
     else{
         $('#alertUsername_length').hide();
+        let result;
         $.ajax({
             type:'POST',
+            async : false,
             url:'router.php',
             data:{
                 request: "inscription.php",
@@ -140,15 +144,16 @@ function check_username(obj){
                 if(data.status != "success"){
                     $('#alertUsername').show();
                     shake(obj);
-                    return false;
+                    result = false;
                 }
                 else{
                     $(this).css("borderColor","grey");
                     $('#alertUsername').hide();
-                    return true
+                    result = true
                 }
             }
         });
+        return result;
     }
 }
 
