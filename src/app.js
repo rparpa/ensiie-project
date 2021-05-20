@@ -10,9 +10,9 @@ var twig = Twig.twig;
 
 dotenv.config();
 
-const dbPort = process.env.DB_PORT_EXTERNAL
-const dbuser = process.env.DB_USER
-const dbPassword = process.env.DB_PASSWORD
+const dbPort = process.env.DB_PORT_EXTERNAL;
+const dbuser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
 
 const client = new Client({
   user:dbuser,
@@ -28,12 +28,12 @@ app.get('/', (req, res) => {
   client.query(sqlReq, (err, resp) => {
     const result = err ? err.stack : resp.rows[0];
     res.render("connect.twig", {});
-  })
-})
+  });
+});
 
 app.get('/newaccount', (req, res) => {
     res.render("new_account.twig", {});
-})
+});
 
 app.get('/ingredient', (req, res) => {
   var sqlReq = "SELECT * FROM Ingredient;"
@@ -45,14 +45,7 @@ app.get('/ingredient', (req, res) => {
 
       res.render('ingredient/ingredient_index.html.twig', {data:result, unites:resultU});
     });
-  })
-})
-
-
-// Handle 404 - Keep this as a last route
-app.use(function(req, res, next) {
-  res.status(404);
-  res.render('erreur/erreur_404.html.twig');
+  });
 });
 
 app.get('/recettes', (req, res) => {
@@ -61,8 +54,14 @@ app.get('/recettes', (req, res) => {
     var result = err ? err.stack : resp.rows;
     res.render('recipe.twig', {data:result});
   })
-})
+});
+
+// Handle 404 - Keep this as a last route
+app.use(function(req, res, next) {
+  res.status(404);
+  res.render('erreur/erreur_404.html.twig');
+});
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
-})
+});
