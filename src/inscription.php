@@ -1,13 +1,5 @@
 <?php
-    
-    date_default_timezone_set('UTC');
-
-
-    $dbName = getenv('DB_NAME');
-    $dbUser = getenv('DB_USER');
-    $dbPassword = getenv('DB_PASSWORD');
-
-    $conn = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+    $conn = \Db\Connection::get();
 
     switch($_POST['to_do']){
         case "check_username":
@@ -36,7 +28,7 @@
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $username);
         $stmt->execute();
-        $result = $stmt->fetchColumn();
+        $result = $stmt->rowCount();
         if($result < 1){
             echo json_encode(array('status' => 'success', 'msg' => 'Username not Used'));
         }
@@ -51,7 +43,7 @@
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $email);
         $stmt->execute();
-        $result = $stmt->fetchColumn();
+        $result = $stmt->rowCount();
         if($result < 1){
             echo json_encode(array('status' => 'success', 'msg' => 'Email not Used'));
         }
