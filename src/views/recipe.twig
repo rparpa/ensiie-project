@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang = "fr" dir = "ltr">
+  <head>
+    <meta charset = "utf-8">
+    <title>Recettes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel = "stylesheet" type="text/css" href = "views/style/recipe.css">
+  </head>
+  <body>
+    <div class = "fav_recipe">
+      <h4>Recettes favorites</h4>
+    </div>
+
+    <div class = "recipe_frigo">
+      <h4>Recettes à faire avec les ingrédients dans le réfrigérateur</h4>
+      {% for d in data %}
+          <li>{{ d.nom }}</li>
+          <!-- Affichage des recettes -->
+          <!--
+            <h6>{{ d.nom }}</h6>
+            <ul>
+              {% for i in ingredient %}
+                <li>{{ i.nom }}</li>
+              {% endfor %}
+            </ul>
+            <p>{{ d.description }}</p>
+          -->
+      {% endfor %}
+    </div>
+  </body>
+</html>

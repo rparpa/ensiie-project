@@ -22,15 +22,13 @@ const client = new Client({
 client.connect();
 
 app.get('/', (req, res) => {
-
   var sqlReq = "SELECT * FROM User;"
   client.query(sqlReq, (err, resp) => {
     const result = err ? err.stack : resp.rows[0];
 
-    res.sendFile(path.join(__dirname + "/View", '/connect.html'));
+    res.sendFile(path.join(__dirname + "/views", '/connect.html'));
 
   })
-
 })
 
 app.get('/ingredient', (req, res) => {
@@ -38,6 +36,14 @@ app.get('/ingredient', (req, res) => {
   client.query(sqlReq, (err, resp) => {
     var result = err ? err.stack : resp.rows;
     res.render('ingredient.twig', {data:result});
+  })
+})
+
+app.get('/recettes', (req, res) => {
+  var sqlReq = "SELECT * FROM Ingredient;"
+  client.query(sqlReq, (err, resp) => {
+    var result = err ? err.stack : resp.rows;
+    res.render('recipe.twig', {data:result});
   })
 })
 
