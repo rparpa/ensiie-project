@@ -1,4 +1,6 @@
 <?php
+
+require_once '../src/Bootstrap.php';
 date_default_timezone_set('UTC');
 
 $method = $_SERVER['REQUEST_METHOD'];
