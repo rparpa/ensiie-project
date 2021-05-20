@@ -7,6 +7,8 @@
 ------------------------------------------------------------
 -- Table: Ingredient
 ------------------------------------------------------------
+
+DROP TABLE Ingredient CASCADE;
 CREATE TABLE public.Ingredient(
 	id    SERIAL NOT NULL ,
 	nom   VARCHAR (64) NOT NULL  ,
@@ -18,6 +20,8 @@ CREATE TABLE public.Ingredient(
 ------------------------------------------------------------
 -- Table: User
 ------------------------------------------------------------
+
+DROP TABLE Utilisateur CASCADE;
 CREATE TABLE public.Utilisateur(
 	identifiant   VARCHAR (64) NOT NULL ,
 	mdp           VARCHAR (2000)  NOT NULL ,
@@ -29,6 +33,8 @@ CREATE TABLE public.Utilisateur(
 ------------------------------------------------------------
 -- Table: Stocker
 ------------------------------------------------------------
+
+DROP TABLE Stocker CASCADE;
 CREATE TABLE public.Stocker(
 	identifiant_utilisateur   VARCHAR (64) NOT NULL ,
     id_ingredient      INT  NOT NULL ,

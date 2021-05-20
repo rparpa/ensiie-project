@@ -1,3 +1,26 @@
+{% include 'twig/templates/header.twig' %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <!--img src="../assets/images/logo.png" height="30" class="d-inline-block align-top" alt="logo"/-->
+        Site
+    </a>
+
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                1
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                2
+            </a>
+        </li>
+    </ul>
+</nav>
+
 <div class="h1 text-center mt-2">
     Bienvenue sur notre super site web
 </div>
@@ -37,3 +60,5 @@
         </div>
     </form>
 </div>
+
+{% include 'twig/templates/footer.twig' %}
