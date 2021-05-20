@@ -28,7 +28,6 @@ app.get('/', (req, res) => {
     const result = err ? err.stack : resp.rows[0];
 
     res.sendFile(path.join(__dirname + "/View", '/connect.html'));
-    client.end();
 
   })
 
@@ -38,7 +37,7 @@ app.get('/ingredient', (req, res) => {
   var sqlReq = "SELECT * FROM Ingredient;"
   client.query(sqlReq, (err, resp) => {
     var result = err ? err.stack : resp.rows;
-    res.render('ingredient.twig', {data:JSON.stringify(result)});
+    res.render('ingredient.twig', {data:result});
   })
 })
 

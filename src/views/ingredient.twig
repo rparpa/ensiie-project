@@ -7,14 +7,18 @@
   <body>
     <div class="ingredientsview">
       <h1>Liste des ingredients</h1>
-      {{data}}
+      {% for d in data %}
+          <li>{{ d.nom }}</li>
+      {% endfor %}
     </div>
 
     <div class="ingredientsform">
       <h1>Ajouter un ingredient</h1>
       <form class="" action="index.html" method="post">
-
+          <input type="text" name="" value="">
       </form>
+      <select class="" name="">
+      </select>
     </div>
   </body>
 </html>
