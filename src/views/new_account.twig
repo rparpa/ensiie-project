@@ -1,5 +1,13 @@
-{% include 'twig/templates/header.twig' %}
+{% extends 'base.html.twig' %}
 
+{% block title %}Frigo | Register{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block body %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
         <!--img src="../assets/images/logo.png" height="30" class="d-inline-block align-top" alt="logo"/-->
@@ -63,5 +71,8 @@
         </div>
     </form>
 </div>
+{% endblock %}
 
-{% include 'twig/templates/footer.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
