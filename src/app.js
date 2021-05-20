@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+app.use(express.static('static'));
 const Twig = require('twig');
 var twig = Twig.twig;
 
