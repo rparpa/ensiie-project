@@ -3,12 +3,10 @@ jQuery(document).ready(function($) {
     init();
 
     $(".inscription_input").change(function(){
-        console.log($(this).attr('name'))
         localStorage.setItem($(this).attr('name'), $(this).val())
     });
 
     $(".inscription_input").each(function() {
-        console.log($(this).attr('name'))
         $(this).val(localStorage.getItem($(this).attr('name')));
     });
 
@@ -18,7 +16,6 @@ jQuery(document).ready(function($) {
 });
 
 function send_inscription(){
-    console.log('inscription btn');
     if(before_submit())
         $.ajax({
             type:'POST',
@@ -33,9 +30,11 @@ function send_inscription(){
             dataType: 'json',
             success: function(data, status, xml){
                 if(data.status == "success"){
+                    // TODO succes message
                     console.log(data.msg);
                 }
                 else{
+                    // TODO error message
                     console.log(data.msg);
                 }
             }
