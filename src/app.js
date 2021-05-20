@@ -8,6 +8,11 @@ const path = require('path')
 const dotenv = require('dotenv');
 dotenv.config();
 
+// SET VIEW ENGINE
+app.set('view engine','html');
+app.engine('html', twig.__express);
+app.set('views','views');
+
 const dbPort = process.env.DB_PORT_EXTERNAL
 const dbuser = process.env.DB_USER
 const dbPassword = process.env.DB_PASSWORD
