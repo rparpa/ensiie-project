@@ -5,7 +5,6 @@ const Twig = require('twig');
 var twig = Twig.twig;
 
 const port = 3000
-const bodyParser = require('body-parser')
 const { Client } = require('pg')
 const path = require('path')
 const dotenv = require('dotenv');
@@ -30,6 +29,10 @@ app.get('/', (req, res) => {
   })
 })
 
+app.get('/newaccount', (req, res) => {
+    res.render("new_account.twig", {});
+})
+
 app.get('/ingredient', (req, res) => {
   var sqlReq = "SELECT * FROM Ingredient;"
   var sqlReqUnites = "SELECT DISTINCT unite FROM Ingredient;"
@@ -37,7 +40,7 @@ app.get('/ingredient', (req, res) => {
     client.query(sqlReqUnites, (erru, respu) => {
       var result = err ? err.stack : resp.rows;
       var resultU = erru ? erru.stack : respu.rows;
-      console.log(resultU);
+
       res.render('ingredient/ingredient_index.html.twig', {data:result, unites:resultU});
     });
   })
