@@ -13,11 +13,12 @@ function connectedDisplay(){
 }
 
 function init(){
+    $('.alertField').hide();
     if(localStorage.getItem('connected') == 'true'){
         connectedDisplay();
         return;
     }
-    $('.onlyUser, .onlyAdmin, .alertField').hide();
+    $('.onlyUser, .onlyAdmin').hide();
 
     $("#username").change(function(){
         localStorage.setItem("username", $("#username").val())

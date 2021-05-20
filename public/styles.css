@@ -106,8 +106,8 @@ div {
 #form_inscription .mdl-cell--3-col span, .alertField, .section_account .mdl-cell--2-col span {
     color: red !important;
 }
-#SucessPassword {
-    color: greenyellow;
+#sucessPassword {
+    color: #72b312 !important;
 }
 
 .section_account span {

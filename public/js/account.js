@@ -3,8 +3,7 @@ jQuery(document).ready(function ($) {
 });
 
 function change_password() {
-
-    let check_all = true;
+    var check_all = true;
 
     $('.passwd_input').each(function () {
         $(this).css("borderColor", "red");
@@ -17,38 +16,51 @@ function change_password() {
         }
     });
 
-    current = $('#currentPassword')
+    current = $('#currentPassword');
     new_password = $('#passwordAccount');
     new_verif = $('#passwordAccountVerif');
+    console.log(current.val() + " :: " + new_password.val() + " :: " + new_verif.val())
 
     if (new_password.val().length < new_password.attr("minlength")) {
         $('#alertPassword_length').show();
         shake(new_password);
         shake(new_verif);
         check_all = false;
-    } else{
+    } else {
         $('#alertPassword_length').hide();
-
-        // Verification nouveau mot de passe
-
-        if (new_password.val() != new_verif.val() || new_password.val() == "") {
-            $('#alertPassword').show();
-            shake(new_password);
-            shake(new_verif);
-            check_all = false;
-        } else {
-            new_password.css("borderColor", "grey");
-            new_verif.css("borderColor", "grey");
-            $('#alertPassword').hide();
-        }
+        new_password.css("borderColor", "grey");
+        new_verif.css("borderColor", "grey");
     }
 
-    // verification ancien mot de passe
-    console.log("test ancien")
+    if (new_password.val() != new_verif.val() || new_password.val() == "") {
+        $('#alertPassword').show();
+        shake(new_password);
+        shake(new_verif);
+        check_all = false;
+    } else {
+        new_password.css("borderColor", "grey");
+        new_verif.css("borderColor", "grey");
+        $('#alertPassword').hide();
+    }
+
+    if (new_password.val() == current.val()) {
+        $('#alertSamePassword').show();
+        shake(current);
+        shake(new_password);
+        shake(new_verif);
+        check_all = false;
+    } else {
+        current.css("borderColor", "grey");
+        new_password.css("borderColor", "grey");
+        new_verif.css("borderColor", "grey");
+        $('#alertSamePassword').hide();
+    }
+
     if (current.val().length >= current.attr("minlength")) {
         $.ajax({
             type: 'POST',
             url: 'router.php',
+            async: true,
             data: {
                 request: "account.php",
                 username: localStorage.getItem('username'),
@@ -57,39 +69,46 @@ function change_password() {
             },
             dataType: 'json',
             success: function (data, status, xml) {
-                console.log("test")
-                if (data.status != "success") {
-                    check_all = false;
-                    $('#alertCurrentPassword').show();
-                    shake(current);
+                if (data.status == "success") {
+                    $('#alertCurrentPassword').hide();
+                    current.css("borderColor", "grey");
                 } else {
                     $('#alertCurrentPassword').show();
-                    current.css("borderColor", "grey");
+                    shake(current);
+                    check_all = false;
                 }
             }
         });
     }
-
-    if(check_all){
-        $.ajax({
-            type: 'POST',
-            url: 'router.php',
-            data: {
-                request: "account.php",
-                username: localStorage.getItem('username'),
-                password: new_password.val(),
-                to_do: "change_password"
-            },
-            dataType: 'json',
-            success: function (data, status, xml) {
-                $('#SucessPassword').show();
-                setTimeout(function(){
-                    $('#SucessPassword').hide();
-                }, 15);
-            }
-        });
+    else {
+        $('#alertCurrentPassword').show();
+        shake(current);
+        check_all = false;
     }
+
+    if (check_all)
+        send_new_password();
 };
+
+function send_new_password() {
+    $.ajax({
+        type: 'POST',
+        url: 'router.php',
+        data: {
+            request: "account.php",
+            username: localStorage.getItem('username'),
+            new_password: new_password.val(),
+            to_do: "change_password"
+        },
+        dataType: 'json',
+        success: function (data, status, xml) {
+            $('#sucessPassword').show();
+            setTimeout(function () {
+                $('#sucessPassword').hide();
+            }, 10000);
+        }
+    });
+}
 
 /* TODO
 function check_email(obj) {
