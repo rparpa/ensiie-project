@@ -52,7 +52,7 @@ app.get('/recettes', (req, res) => {
   var sqlReq = "SELECT * FROM Ingredient;"
   client.query(sqlReq, (err, resp) => {
     var result = err ? err.stack : resp.rows;
-    res.render('recipe.twig', {data:result});
+    res.render('recipe/recipe_index.html.twig', {data:result});
   })
 });
 
