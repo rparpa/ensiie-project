@@ -56,15 +56,18 @@ app.post('/login', (req, res) => {
     let values = [id];
 
     client.query(sqlReq, values, (err, resp) => {
-      const result = err ? err.stack : resp.rows[0];
+      const result = err ? err.stack : resp.rows;
 
-      if(result === undefined || result.mdp !== password)
-        res.render("connect.twig", {error:"Les informations rentrées sont incorrectes"});
-      else
+      if(result === undefined || result[0].mdp != password)
+        res.render("home/home_index.html.twig", {error:"Les informations rentrées sont incorrectes"});
+      else{
+        req.session.user = result[0].identifiant;
+        req.session.password = result[0].mdp;
         res.redirect("/ingredient");
+      }
     });
   } else
-    res.render("connect.twig", {error:"L'identifiant et le mot de passe doivent être définis"});
+    res.render("home/home_index.html.twig", {error:"L'identifiant et le mot de passe doivent être définis"});
 
 });
 
@@ -104,7 +107,7 @@ app.post('/register', (req, res) => {
 });
 
 app.get('/ingredient', (req, res) => {
-  if(!req.session.user || !request.session.password)
+  if(!req.session.user || !req.session.password)
     res.redirect("/login")
   else {
     var sqlReq = "SELECT * FROM Ingredient;"
@@ -121,7 +124,7 @@ app.get('/ingredient', (req, res) => {
 });
 
 app.get('/recettes', (req, res) => {
-  if(!req.session.user || !request.session.password)
+  if(!req.session.user || !req.session.password)
     res.redirect("/login")
   else {
     var sqlReq = "SELECT * FROM Ingredient;"
