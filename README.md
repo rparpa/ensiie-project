@@ -28,3 +28,8 @@ Below are some useful commands :
 * `make db.connect` Connect to th database
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
+
+To make this projet work:
+* Create a `.env` file in `src` directory, with user, password and db port (usually 5431)
+* At root project, `make install` and `make start` will set up database
+* finally, return to src, `npm install` will install all dependencies, and `node app.js` set up the project.
