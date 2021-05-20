@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
   client.query(sqlReq, (err, resp) => {
     const result = err ? err.stack : resp.rows[0];
 
-    res.render(__dirname + "/views/twig/connect.twig", {});
+    res.render("connect.twig", {});
 
   })
 

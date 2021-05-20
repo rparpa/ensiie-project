@@ -21,12 +21,8 @@
     </ul>
 </nav>
 
-<div class="h1 text-center mt-2">
-    Bienvenue sur notre super site web
-</div>
-
 <div class="container p-5">
-    <div class="h2 text-center">Connectez-vous</div>
+    <div class="h2 text-center">Inscrivez-vous</div>
     <form class="form-group">
         <div class="mb-3 d-flex justify-content-center">
             <div class="m-0 p-0 w-50">
@@ -39,9 +35,10 @@
             <div class="m-0 p-0 w-50">
                 <label for="password" class="form-label">Mot de passe :</label>
                 <div class="input-group">
-                    <input id="password" type="password" name="password" class="form-control" required="required"/>
+                    <input id="password" type="password" name="password" class="form-control" required="required" oninput="onPasswordChange(this, 'password-progress-bar')"/>
                     <div class="input-group-append">
-                        <button type="button" class="input-group-text bg-white" onclick="onPasswordVisibilityChange(this, 'password')">
+                        <button type="button" class="input-group-text bg-white"
+                            onclick="onPasswordVisibilityChange(this, 'password')">
                             <svg class="bi bi-eye-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                                 <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
@@ -49,13 +46,19 @@
                         </button>
                     </div>
                 </div>
+
+                <div class="container-fluid m-0 p-0 d-flex align-items-center text-danger">
+                    <div class="progress mt-1 w-100" style="height: 0.5em;">
+                        <div id="password-progress-bar" class="progress-bar bg-danger" style="width: 0%;"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="container-fluid m-0 p-0 text-center">
-            <button type="submit" class="btn btn-dark">Connexion</button>
+            <button type="submit" class="btn btn-dark">Inscription</button>
             <div class="mt-1">
-                Pas encore de compte ? <a href="">Créez-en un</a> !
+                Vous avez déjà un compte ? <a href="">Connectez-vous</a> !
             </div>
         </div>
     </form>
