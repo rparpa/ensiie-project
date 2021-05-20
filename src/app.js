@@ -37,7 +37,7 @@ app.get('/ingredient', (req, res) => {
   var sqlReq = "SELECT * FROM Ingredient;"
   client.query(sqlReq, (err, resp) => {
     var result = err ? err.stack : resp.rows;
-    res.render('ingredient.twig', {data:result});
+    res.render('ingredient/ingredient_index.html.twig', {data:result});
   })
 })
 
