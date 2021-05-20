@@ -95,7 +95,8 @@ INSERT INTO Category (name) VALUES ('Rock');
 INSERT INTO Category (name) VALUES ('Jeux');
 INSERT INTO Category (name) VALUES ('Mythologie');
 
-INSERT INTO public.User (USERNAME, EMAIL, PASSWD, CREATION_DATE, VALIDATE) VALUES ('demo', 'demo@test.fr', '123', '2000-10-10', TRUE);
+-- INSERT INTO public.User (USERNAME, EMAIL, PASSWD, CREATION_DATE, VALIDATE) VALUES ('demo', 'demo@test.fr', '123', '2000-10-10', TRUE);
+INSERT INTO public.User (USERNAME, EMAIL, PASSWD, CREATION_DATE, VALIDATE) VALUES ('demo', 'demo@demo.fr', '$2y$10$f17IfAAYhMiiTs30xgshkOqgZffYCsiHGszAsvzXQewEFBBhUTDJa', '2000-10-10', TRUE);
 
 -- INSERT INTO ADMIN VALUES ('admin');
 
