@@ -23,6 +23,7 @@ const client = new Client({
 client.connect();
 
 app.use(express.static('static'));
+app.use(express.urlencoded({ extended: true }));
 app.use(session({
   secret: 'sessioninit',
   resave: false,
@@ -45,8 +46,61 @@ app.get('/login', (req, res) => {
   });
 });
 
+app.post('/login', (req, res) => {
+  let errorMsg = "";
+  let id = req.body.id;
+  let password = req.body.password;
+
+  if(id !== "" && password !== "") {
+    let sqlReq = "SELECT * FROM Utilisateur WHERE identifiant=$1;";
+    let values = [id];
+
+    client.query(sqlReq, values, (err, resp) => {
+      const result = err ? err.stack : resp.rows[0];
+
+      if(result === undefined || result.mdp !== password)
+        res.render("connect.twig", {error:"Les informations rentrées sont incorrectes"});
+      else
+        res.redirect("/ingredient");
+    });
+  } else
+    res.render("connect.twig", {error:"L'identifiant et le mot de passe doivent être définis"});
+
+});
+
 app.get('/register', (req, res) => {
     res.render("connection/connection_register.twig", {});
+});
+
+app.post('/register', (req, res) => {
+  let errorMsg = "";
+  let id = req.body.id;
+  let password = req.body.password;
+
+  if(id !== "" && password !== "") {
+    let existsSqlReq = "SELECT * FROM Utilisateur WHERE identifiant=$1;";
+    let existsValues = [id];
+
+    client.query(existsSqlReq, existsValues, (err, resp) => {
+      const existsResult = err ? err.stack : resp.rows[0];
+
+      if(existsResult === undefined) {
+        let sqlReq = "INSERT INTO Utilisateur(identifiant, mdp, statut) values($1, $2, $3);";
+        let values = [id, password, 0];
+
+        client.query(sqlReq, values, (err, resp) => {
+          const result = err ? err.stack : resp.rows[0];
+
+          if(result === undefined)
+            res.redirect("/login");
+          else
+          res.render("new_account.twig", {error:"Impossible de créer le compte"});
+        });
+      } else
+        res.render("new_account.twig", {error:"L'utilisateur " + id + " existe déjà"});
+    });
+  } else
+    res.render("new_account.twig", {error:"L'identifiant et le mot de passe doivent être définis"});
 });
 
 app.get('/ingredient', (req, res) => {
