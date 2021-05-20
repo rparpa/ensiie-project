@@ -11,17 +11,17 @@ footer .container-fluid {
     background-color: #11832e
 }
 
-footer .top-part {
+.top-part {
     color: black;
     background-color: #b7ecb7
 }
 
-footer .center-content {
+.center-content {
     margin-top: 120px;
     margin-bottom: 120px
 }
 
-footer .btn-pink {
+.btn-pink {
     border-radius: 0;
     background-color: #11832e;
     color: #fff !important;
@@ -31,7 +31,7 @@ footer .btn-pink {
     padding-left: 20px
 }
 
-footer .btn-pink:hover {
+.btn-pink:hover {
     background-color: #7dcf7d
 }
 
