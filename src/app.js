@@ -46,6 +46,13 @@ app.get('/ingredient', (req, res) => {
   })
 })
 
+
+// Handle 404 - Keep this as a last route
+app.use(function(req, res, next) {
+  res.status(404);
+  res.render('erreur/erreur_404.html.twig');
+});
+
 app.get('/recettes', (req, res) => {
   var sqlReq = "SELECT * FROM Ingredient;"
   client.query(sqlReq, (err, resp) => {
