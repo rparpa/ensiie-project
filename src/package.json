@@ -1,7 +1,6 @@
 {
   "name": "src",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "mocha"
@@ -9,7 +8,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^9.0.2",
     "body-parser": "^1.18.3",
     "express": "^4.17.1"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
 }
