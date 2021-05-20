@@ -26,25 +26,25 @@ function change_password() {
         shake(new_password);
         shake(new_verif);
         check_all = false;
-    }
+    } else{
+        $('#alertPassword_length').hide();
 
-    $('#alertPassword_length').hide();
+        // Verification nouveau mot de passe
 
-    // Verification nouveau mot de passe
-
-    if (new_password.val() != new_verif.val() || new_password.val() == "") {
-        $('#alertPassword').show();
-        shake(new_password);
-        shake(new_verif);
-        check_all = false;
-    } else {
-        new_password.css("borderColor", "grey");
-        new_verif.css("borderColor", "grey");
-        $('#alertPassword').hide();
+        if (new_password.val() != new_verif.val() || new_password.val() == "") {
+            $('#alertPassword').show();
+            shake(new_password);
+            shake(new_verif);
+            check_all = false;
+        } else {
+            new_password.css("borderColor", "grey");
+            new_verif.css("borderColor", "grey");
+            $('#alertPassword').hide();
+        }
     }
 
     // verification ancien mot de passe
-    console.log("test")
+    console.log("test ancien")
     if (current.val().length >= current.attr("minlength")) {
         $.ajax({
             type: 'POST',
@@ -60,6 +60,11 @@ function change_password() {
                 console.log("test")
                 if (data.status != "success") {
                     check_all = false;
+                    $('#alertCurrentPassword').show();
+                    shake(current);
+                } else {
+                    $('#alertCurrentPassword').show();
+                    current.css("borderColor", "grey");
                 }
             }
         });
