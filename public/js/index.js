@@ -10,7 +10,7 @@ function init(){
     });
 
     $("#username").val(localStorage.getItem("username"));
-});
+}
 
 
 function verify_user(){
