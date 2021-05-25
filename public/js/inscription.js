@@ -120,6 +120,8 @@ function check_email(obj){
     }
 }
 
+
+
 function check_username(obj){
     if (obj.val().length < obj.attr("minlength")){
         $('#alertUsername_length').show();
@@ -157,6 +159,21 @@ function check_username(obj){
     }
 }
 
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  }
+  
+  /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    document.body.style.backgroundColor = "white";
+  }
+
+
 function shake(obj){
     obj.removeClass('shake');
     obj.css("borderColor","red");
@@ -164,3 +181,4 @@ function shake(obj){
         obj.addClass('shake');
     });
 }
+
