@@ -130,8 +130,21 @@ app.get('/recettes', (req, res) => {
     var sqlReq = "SELECT * FROM Ingredient;"
     client.query(sqlReq, (err, resp) => {
       var result = err ? err.stack : resp.rows;
-      res.render('recipe/recipe_index.html.twig', {data:result});
+      res.writeHead(301,{Location: 'recipe/recipe_index.html.twig'});
     });
+  }
+});
+
+app.get('/postingredient', (req, res) => {
+  if(!req.session.user || !req.session.password)
+    res.redirect("/login")
+
+  else {
+    var ingredient = req.body.name;
+    var quantity = req.body.quantity;
+    var unite = req.body.unite;
+    
+    var sqlReq = "INSERT INTO Stocker(identifiant_utilisateur, id_ingredient, quantite, date_stock) VALUES (req.session.user, id, quantity, Date.now()) WHERE EXISTS (SELECT id FROM Ingredient WHERE nom = ingredient)";
   }
 });
 
