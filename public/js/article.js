@@ -2,7 +2,8 @@
 function setCategories(categories){
     for(let i = 0; i < 2; i++){
         for(let id = 0; id < categories.length; id++){
-            $("#cat" + i).append("<option value=" + id + ">" + categories[id].name + "</option>");
+            let name = categories[id].name;
+            $("#cat" + i).append("<option value=" + name + ">" + name + "</option>");
         }
     }
 }
