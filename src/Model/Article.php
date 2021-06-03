@@ -39,7 +39,6 @@ class Article{
         return $article;
     }
 
-
     public function createArticle(){
         $sql = "INSERT INTO public.Article 
             (TITLE, CREATION_DATE, MODIFICATION_DATE, VALIDATED, SYNOPSIS, ID_ADMIN, CAT0, CAT1) 
@@ -60,7 +59,17 @@ class Article{
             $sect = new Section($this->pdo, $id, $v['title'], $v['content']);
             $sect->insertDatabase();
         }
-    }   
+    }
+
+    public static function exist($pdo, $value){
+        $sql = 'SELECT * FROM Article WHERE title = ?';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(1, $value);
+
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+
 }
 
 ?>

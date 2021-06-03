@@ -62,6 +62,30 @@ function article_valid(article){
     return true;
 }
 
+function articleExist(article){
+    let rval = true;
+    $.ajax({
+        url: 'router.php',
+        type: 'POST',
+        async: false,
+        data: {
+            request: "Controller/article_exist.php",
+            title: article.title
+        },
+        dataType: 'json',
+        success: function(data){
+            if(data.status == "success"){ 
+                alert("Un article du même nom existe déja");
+                rval =  true;
+            }
+            else{
+                rval = false;
+            }
+        }
+    }); 
+    return rval;
+}
+
 function postArticle(){
     let article = {};
 
@@ -79,9 +103,8 @@ function postArticle(){
         section.content = $("#content" + i).val();
         article.sections.push(section);
     }
-    console.log(article);
+    if(articleExist(article)) return;
 
-    console.log(article_valid(article));
     if(!article_valid(article)) {
         alert("DES CHAMPS SONT VIDE");
         return false;
