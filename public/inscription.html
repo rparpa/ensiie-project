@@ -26,75 +26,102 @@
 
 <body class="bg-light">
 
-  <nav class="navbar navbar-dark bg-dark ">
+  <nav class="navbar sticky-top navbar-dark bg-dark navbar-fixed-top">
     <div class="container-fluid">
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-
-    <a class="navbar-brand" href="#">
-      <a href="/index.html" id="title_Wikipediie">Wikiped<span style="color: #4998a7">IIE</span></a>
+    <span class="logo">
+    <a class="navbar-brand " href="#">
+      <a href="/index.html" id="title_Wikipediie">Wikiped<span style="color: #4998a7" class="d-inline-block align-text-top">IIE</span></a>
     </a>
+  </span>
+  
       <form>
-          <div class="form-inline">
-             <div class="form-group mx-sm-2 mb-2">
-                <input style="height:20px; width:150px" type="text" class="form-control input-sm" id="inputsm" placeholder="Username ">
+      <div class="form-inline">
+            <span id="affiche_name" class=" mx-sm-5 onlyUser"></span>
+             <div class="form-group mx-sm-1 mb-1">
+                <input style="height:25px; width:150px" type="text" class="form-control input-sm notUser" id="username" placeholder="Username">
              </div>
-          <div class="form-group mb-2">
-            <input style="height:20px; width:150px" type="text" class="form-control input-sm" id="inputsm" placeholder="Password">
-          </div>
-         <div class="form-group mx-sm-2 ">
-            <button onclick="verify_user();" type="button" class="btn btn-secondary btn-sm mb-2">Connexion</button>
-           </div>
-          <div class="form-group mx-sm-1 ">
-             <button onclick="add_new_article()" type="button" class="btn btn-secondary btn-sm mb-2 onlyUser">Ajouter un article</button>
-             <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-2 onlyUser ">Deconnexion</button>
-          </div>
-          <div class="form-group ">
-             <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-2 notUser">Inscription</button>
-          </div>
+          <div class="form-group mb-1 mx-sm-2 ">
+            <input style="height:25px; width:150px" type="password" class="form-control input-sm notUser" id="password" placeholder="Password">
           </div>
         </form>
-    </div>
-  </nav>
-  <nav>
-  <div class=" sidenav row vh-100 overflow-auto collapse " id="navbarToggleExternalContent">
-    <div class="col-12 col-sm-3 col-xl-2  px-0  bg-dark d-flex ">
-        <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
-            <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
-                <li class="nav-item">
-                    <a href="#" class=" px-sm-0 px-2">
-                        <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline "></span>Home</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
-                        <i class="fs-5 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">About</span> </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link px-sm-0 px-2">
-                        <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">Registration</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link px-sm-0 px-2">
-                        <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Pages Validation</span></a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link px-sm-0 px-2">
-                        <i class="fs-5 bi-people"></i><span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                </li>
-            </ul>
+        <div   >
+            <button onclick="verify_user();" type="button" class="btn btn-secondary btn-sm mb-1 notUser">Connexion</button>
         </div>
+        <div class="form-group  ">
+             <button onclick="add_new_article()" type="button" class="btn btn-secondary btn-sm mb-1 onlyUser">Ajouter un article</button>
+            </div >
+            <div class="form-group mx-sm-1 ">
+            <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-1 onlyUser ">Deconnexion</button> 
+        </div>
+        <div class="form-group mx-sm-1 ">
+             <button onclick="window.location.replace('index.html')" type="button" class="btn btn-secondary btn-sm mb-1 notUser">Inscription</button>  
+        </div>
+      </div>
+    </form>
+  </div>
+
+  </nav>
+  
+
+
+<div id="navbar" class="navbar-collapse collapse bg-dark min-vh-100">
+<div id="wrapper" class="toggled ">
+  <div class="container-fluid ">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper" class="bg-dark">
+          <ul class="sidebar-nav">
+           
+
+              <li >
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span><font color="#4998a7"> INFORMATIONS</font>
+              </li>
+              <li>
+                  <a href="/index.html"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Acceuil</a>
+              </li>
+              <li>
+                  <a href="/inscription.html"><span class="glyphicon glyphicon-stats notUser" aria-hidden="true"></span> Inscription</a>
+              </li>
+              <li>
+                <a href="a_propos.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> A propos</a>
+            </li>
+              <li>
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span><font color="#4998a7"> UTILISATEUR</font>
+              </li>
+              <li>
+                  <a href="/account.html"><span class="glyphicon glyphicon-user onlyUser" aria-hidden="true"></span> Compte </a>
+              </li>
+              <li>
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span><font color="#4998a7"> ADMINISTRATION</font>
+            </li>
+            <li>
+                <a href="#"><span class="glyphicon glyphicon-user onlyAdmin" aria-hidden="true"></span> Valider un article </a>
+            </li>
+          </ul>
+      </div>
     </div>
   </div>
-</nav>
+</div>
 
-<div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px">
-    <div class="card-header bg-info text-white">
-        <h3>Inscription</h3>
+    <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:150px"> 
+      <div class="card-header bg-info text-white">
+            Create Account
+      </div>
+      <div class="card-body"></div>
+    <form>
+     <div class="d-flex h-100">
+      <div class="m-auto">
+      <div class="form-group">
+      <label for="validationServerUsername" class="form-label">Username :</label>
+    <div class="input-group has-validation">
+      <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Enter a username" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+      <div id="validationServerUsernameFeedback" class="invalid-feedback">
+        Please choose a username.
+      </div>
     </div>
     <div class="card-body"></div>
     <h3 class="sucessField alertField SuccessInscription" id="SuccessInscription">Bravo, votre inscription a bien été prise en compte !</h3>

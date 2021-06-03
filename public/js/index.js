@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
 });
 
 function connectedDisplay(){
-    $("#affiche_name").html(localStorage.getItem("username"));
+    $("#affiche_name").html("Bonjour " + localStorage.getItem("username") + " !");
     $(".onlyUser").show();
 
     $(".notUser").hide();
@@ -50,10 +50,11 @@ function verify_user(){
             if(data.status == "success"){
                 localStorage.setItem('username', name);
                 localStorage.setItem('connected', true);
-                //if(data.isadmin){
-                //    localStorage.setItem('isadmin', true);
-                //}
+                if(data.isadmin){
+                    localStorage.setItem('isadmin', true);
+                }
                 connectedDisplay();
+                window.location.replace('index.html');
             }
             else{
                 // TODO show error somewhere
