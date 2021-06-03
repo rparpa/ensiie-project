@@ -1,0 +1,34 @@
+
+  <nav class="navbar navbar-dark bg-dark ">
+    <div class="container-fluid">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+     
+    
+    <a class="navbar-brand" href="#">
+      <a href="/index.html" id="title_Wikipediie">Wikiped<span style="color: #4998a7">IIE</span></a>
+    </a>  
+      <form>
+          <div class="form-inline">
+             <div class="form-group mx-sm-2 mb-2">
+                <input style="height:20px; width:150px" type="text" class="form-control input-sm" id="inputsm" placeholder="Username ">
+             </div>
+          <div class="form-group mb-2">
+            <input style="height:20px; width:150px" type="password" class="form-control input-sm" id="inputsm" placeholder="Password">
+          </div>
+         <div class="form-group mx-sm-2 ">
+            <button onclick="verify_user();" type="button" class="btn btn-secondary btn-sm mb-2">Connexion</button>
+           </div>
+          <div class="form-group mx-sm-1 ">
+             <button onclick="add_new_article()" type="button" class="btn btn-secondary btn-sm mb-2 onlyUser">Ajouter un article</button>
+             <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-2 onlyUser ">Deconnexion</button> 
+          </div>
+          <div class="form-group ">
+             <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-2 notUser">Inscription</button>  
+          </div>
+          </div>
+        </form>
+    </div>
+  </nav>
