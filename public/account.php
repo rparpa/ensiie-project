@@ -1,46 +1,9 @@
 <!doctype html>
 
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Page d'accueil de WikipedIIE.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-
-    <link rel="icon" href="logo/icon.png">
-    <title>WikipedIIE</title>
-
-    <!-- Page styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="/js/account.js"></script>
-    <script src="/js/index.js"></script>
-  </head>
+<?php include("header.html"); ?>
 <body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <div class="mdl-layout__header mdl-layout__header--waterfall">
-            <div class="mdl-layout__header-row">
-                <span>
-                    <a href="/index.html" id="title_Wikipediie">Wikiped<span style="color: #4998a7">IIE</span></a>
-                </span>
-                <div class="mdl-layout-spacer"></div>
-                <form id="connection_form">
-                    <nav class="mdl-navigation">
-                        <span id="affiche_name" class="onlyUser"></span>
-                        <input placeholder="Username" class="mdl-textfield__input connection_input notUser" type="text" id="username">
-                        <input placeholder="Password" class="mdl-textfield__input connection_input notUser" type="password" id="password">
-                    </nav>
-                </form>
-                <button style="background-color: #424242;" onclick="verify_user();" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent notUser" id="connection_btn">Connexion</button>
-                <button style="background-color: #424242;" onclick="add_new_article()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent onlyUser" id="new_article_btn">Ajouter un article</button>
-                <button style="background-color: #424242;" onclick="deconnection()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent onlyUser" id="deconnection_btn">Deconnexion</button>
-            </div>
-        </div>
-
+    <?php include("navbar.html"); ?>
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">
                 <a href="/index.html"><img class="icon-image" src="logo/logo.png" alt="logo.png"></a>
@@ -75,17 +38,15 @@
                     
                     <div class="mdl-cell--12-col">&nbsp;</div>
                     <div class="mdl-cell--3-col"></div>
-                    <div class="mdl-cell--6-col"><h5>Nom d'utilisateur : <span id="account_username">ERROR</span></h5></div>
+                    <div class="mdl-cell--6-col"><h5>Nom d'utilisateur : <span id="account_username">Test</span></h5></div>
                     <div class="mdl-cell--3-col"></div>
                     
                     
                     <div class="mdl-cell--3-col"></div>
-                    <div class="mdl-cell--6-col"><h5>Email : <span id="account_email">ERROR</span></h5></div>
+                    <div class="mdl-cell--6-col"><h5>Email : <span id="account_email">Test@gmail.com</span></h5></div>
                     <div class="mdl-cell--3-col"></div>
                     <div class="mdl-cell--12-col">&nbsp;</div>
-                    <button id="btn_change_password" onclick="delete_account()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn_insctiption">Supprimer mon compte</button>
                     <div class="mdl-cell--12-col">&nbsp;</div>
-                    
                 </div>
                 <div class="mdl-cell--12-col">&nbsp;</div>
                 <div class="mdl-grid section_account" id="form_account">
@@ -103,6 +64,7 @@
                     <div class="mdl-cell--4-col"></div>
 
                     <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertCurrentPassword">Mot de passe incorrect</span></div>
+
                     <div class="mdl-cell--12-col">&nbsp;</div>
                     <div class="mdl-cell--12-col">&nbsp;</div>
                     <div class="mdl-cell--3-col"></div><div class="mdl-cell--2-col">
@@ -125,35 +87,10 @@
                         <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertPassword">Les mots de passe ne correspondent pas</span></div>
 
                    <div class="mdl-cell--12-col" id="div_inscription">
-                        <button id="btn_change_password" onclick="send_new_password()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn_insctiption">Changer mon mot de passe</button>
+                        <button id="btn_change_password" onclick="change_password()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn_insctiption">Changer mon mot de passe</button>
                     </div>
-                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField sucessField" id="sucessPassword">Votre mot de passe a été changé avec succes !</span><span class="alertField" id="alertSamePassword">Les mots de passes sont les mêmes !</span></div>
-                    
-                    
-                </div>
+                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="SucessPassword">Les mots a été changé avec succes !</span></div>
 
-                <div class="mdl-grid section_account" id="form_account">
-
-                    <div class="mdl-cell--3-col"></div>
-                    <div class="mdl-cell--6-col"><h5><h4>Changer votre adresse email</h4></div>
-                    <div class="mdl-cell--3-col"></div>
-                    <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--12-col">&nbsp;</div>
-
-                    <div class="mdl-cell--3-col"></div><div class="mdl-cell--2-col">
-                        Nouvel email<span>*</span> :</div>
-                        <div class="mdl-cell--3-col">
-                        <input class="mdl-textfield__input" type="text" id="emailAccount" name="emailAccount" placeholder="Nouvelle adresse email"></div>
-                        <div class="mdl-cell--4-col"></div>
-                        <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertMail">L'adresse email n'est pas valide</span><span class="alertField" id="alertMailUse">L'adresse email est déjà utilisée</span></div>
-                    
-                   <div class="mdl-cell--12-col" id="div_inscription">
-                        <button id="btn_change_password" onclick="send_new_email()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn_insctiption">Changer votre adresse email</button>
-                    </div>
-                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField sucessField" id="sucessEmail">Votre email a été changé avec succes !</span></div>
-
-                    
-                    
                 </div>
 
                 

@@ -7,17 +7,18 @@ function connectedDisplay(){
     $(".onlyUser").show();
 
     $(".notUser").hide();
-    
+
     if(localStorage.getItem('isadmin') == 'true')   $(".onlyAdmin").show();
     else $(".onlyAdmin").hide();
 }
 
 function init(){
+    $('.alertField').hide();
     if(localStorage.getItem('connected') == 'true'){
         connectedDisplay();
         return;
     }
-    $('.onlyUser, .onlyAdmin, .alertField').hide();
+    $('.onlyUser, .onlyAdmin').hide();
 
     $("#username").change(function(){
         localStorage.setItem("username", $("#username").val())
@@ -49,10 +50,10 @@ function verify_user(){
             if(data.status == "success"){
                 localStorage.setItem('username', name);
                 localStorage.setItem('connected', true);
-                if(data.isadmin){
-                    localStorage.setItem('isadmin', true);
-                }
-                connectedDisplay();      
+                //if(data.isadmin){
+                //    localStorage.setItem('isadmin', true);
+                //}
+                connectedDisplay();
             }
             else{
                 // TODO show error somewhere
@@ -65,6 +66,5 @@ function deconnection(){
     localStorage.setItem('username', '');
     localStorage.setItem('connected', null);
     localStorage.setItem('isadmin', null);
-    
     window.location.replace('index.html');
 }

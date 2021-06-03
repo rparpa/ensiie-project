@@ -31,14 +31,11 @@ function send_inscription(){
             success: function(data, status, xml){
                 if(data.status == "success"){
                     localStorage.setItem('username', $('#username_form').val());
-                    // TODO succes message
-                    console.log(data.msg);                        
-                    window.location.href = "/index.html";
-                    
-                }
-                else{
-                    // TODO error message
-                    console.log(data.msg);
+                    $(".SuccessInscription").show();
+                    setTimeout(function(){
+                        window.location.replace("index.html");
+                    }, 5000);
+                    window.location.replace("#SuccessInscription");
                 }
             }
         });
@@ -53,19 +50,20 @@ function before_submit() {
         if(!$(this).val()){
             shake($(this))
             check_all = false;
+            console.log($(this));
         }
         else{
             $(this).css("borderColor","grey");
         }
     });
+
     if(!check_password($('#password1'), $('#password2')))
         check_all = false;
     if(!check_email($('#email_form')))
         check_all = false;
     if(!check_username($('#username_form')))
         check_all = false;
-    
-        return check_all;
+    return check_all;
 };
 
 function check_password(obj1, obj2){
@@ -89,7 +87,7 @@ function check_password(obj1, obj2){
             $('#alertPassword').hide();
             return true;
         }
-    }   
+    }
 }
 
 function check_email(obj){
@@ -107,7 +105,7 @@ function check_email(obj){
             url:'router.php',
             data:{
                 request: "Controller/inscription.php",
-                email: obj.val(), 
+                email: obj.val(),
                 to_do: "check_email"
             },
             dataType: 'json',
@@ -128,8 +126,6 @@ function check_email(obj){
     }
 }
 
-
-
 function check_username(obj){
     if (obj.val().length < obj.attr("minlength")){
         $('#alertUsername_length').show();
@@ -146,7 +142,7 @@ function check_username(obj){
             url:'router.php',
             data:{
                 request: "Controller/inscription.php",
-                username: obj.val(), 
+                username: obj.val(),
                 to_do: "check_username"
             },
             dataType: 'json',
@@ -173,20 +169,10 @@ function openNav() {
     document.getElementById("main").style.marginLeft = "250px";
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
   }
-  
+
   /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
   function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
     document.body.style.backgroundColor = "white";
   }
-
-
-function shake(obj){
-    obj.removeClass('shake');
-    obj.css("borderColor","red");
-    setTimeout(function(){
-        obj.addClass('shake');
-    });
-}
-

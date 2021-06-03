@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---        Script Postgre 
+--        Script Postgre
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -37,21 +37,21 @@ CREATE TABLE public.Admin(
 ------------------------------------------------------------
 -- Table: Page
 ------------------------------------------------------------
-CREATE TABLE public.Page(
+CREATE TABLE public.Article(
 	ID_PAGE             SERIAL NOT NULL ,
 	TITLE               VARCHAR (50) NOT NULL ,
 	CREATION_DATE       DATE  NOT NULL ,
 	MODIFICATION_DATE   DATE  NOT NULL ,
 	VALIDATED           BOOL  NOT NULL ,
-	DESCRIPTION         VARCHAR (200) NOT NULL ,
+	SYNOPSIS         VARCHAR (200) NOT NULL ,
 	ID_ADMIN            INT   ,
-	NAME                VARCHAR (20)  ,
-	NAME_Category       VARCHAR (20)   ,
+	CAT0                VARCHAR (20)  ,
+	CAT1       VARCHAR (20)   ,
 	CONSTRAINT Page_PK PRIMARY KEY (ID_PAGE)
 
 	,CONSTRAINT Page_Admin_FK FOREIGN KEY (ID_ADMIN) REFERENCES public.Admin(ID_ADMIN)
-	,CONSTRAINT Page_Category0_FK FOREIGN KEY (NAME) REFERENCES public.Category(NAME)
-	,CONSTRAINT Page_Category1_FK FOREIGN KEY (NAME_Category) REFERENCES public.Category(NAME)
+	,CONSTRAINT Page_Category0_FK FOREIGN KEY (CAT0) REFERENCES public.Category(NAME)
+	,CONSTRAINT Page_Category1_FK FOREIGN KEY (CAT1) REFERENCES public.Category(NAME)
 )WITHOUT OIDS;
 
 ------------------------------------------------------------

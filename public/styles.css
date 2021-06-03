@@ -20,13 +20,14 @@ html,body {
 .inscription_input, .connection_input {
     outline : none;
 }
+input.inscription_input {
+    width: 370px !important;
+    margin-left: 1rem;
+    margin-right: 1rem
+}
 
 .mdl-button, .connection_input{
     border-radius: 50px;
-}
-
-#btn_insctiption {
-    background-color: #424242 !important;
 }
 
 #connection_btn {
@@ -89,8 +90,8 @@ span.mdl-navigation__link {
 }
 
 .connection_input {
-    margin: 20px; 
-    background-color: white; 
+    margin: 20px;
+    background-color: white;
     text-indent: 10%;
     color: black;
 }
@@ -107,8 +108,8 @@ div {
 #form_inscription .mdl-cell--3-col span, .alertField, .section_account .mdl-cell--2-col span {
     color: red !important;
 }
-#SucessPassword {
-    color: greenyellow;
+.sucessField {
+    color: #72b312 !important;
 }
 
 .section_account span {
@@ -116,12 +117,7 @@ div {
 }
 
 .shake {
-    animation: shake 0.5s ease-in-out 0s;
-}
-
-#form_inscription {
-    margin-left: 15vw;
-    margin-right: 15vw;
+    animation: shake 0.7s ease-in-out 0s;
 }
 
 #div_inscription  {
@@ -135,11 +131,13 @@ div {
  */
 
 @keyframes shake {
-    0% { margin-left: 0rem; }
-    25% { margin-left: 0.5rem; }
-    75% { margin-left: -0.5rem; }
-    100% { margin-left: 0rem; }
-  }
+    0% { margin-left: 0rem; margin-right: 0rem; }
+    20% { margin-left: 1rem; margin-right: -1rem; }
+    40% { margin-left: -1rem; margin-right: 1rem; }
+    60% { margin-left: 1rem; margin-right: -1rem; }
+    80% { margin-left: -1rem; margin-right: 1rem; }
+    100% { margin-left: 0rem; margin-right: 0rem; }
+}
 
 /**** Mobile layout ****/
 @media (max-width: 900px) {
@@ -152,7 +150,7 @@ div {
         display: none;
     }
 
-    .connection_input { 
+    .connection_input {
         margin: 0.2vh 2vw;
         margin-left: 0;
         text-indent: 2vw;
