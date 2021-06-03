@@ -68,11 +68,8 @@ div {
     line-height: normal;
 }
 
-
-
-#form_inscription {
-    margin-left: 15vw;
-    margin-right: 15vw;
+.alertField {
+    color: red !important;
 }
 
 #div_inscription  {
