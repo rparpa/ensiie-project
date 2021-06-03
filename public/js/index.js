@@ -1,5 +1,15 @@
 jQuery(document).ready(function($) {
     init();
+
+    $("body").click(function (e){
+        let nav = $("#navbar");
+        console.log((e.target.className == 'navbar-toggler-icon' || e.target.className == 'navbar-toggler collapsed') && !nav.is(':visible'))
+        if ((e.target.className == 'navbar-toggler-icon' || e.target.className == 'navbar-toggler collapsed') && !nav.is(':visible'))
+            nav.show();
+        else
+            nav.hide();
+        console.log(e);
+    })
 });
 
 function init(){
