@@ -112,7 +112,7 @@ app.get('/ingredient', (req, res) => {
     res.redirect("/login")
   else {
     var userId = req.session.user;
-    var sqlReq = "SELECT Ingredient.nom FROM Ingredient WHERE Ingredient.id in (SELECT id_ingredient FROM Stocker WHERE identifiant_utilisateur=$1);"
+    var sqlReq = "SELECT DISTINCT Ingredient.nom, Ingredient.unite, Stocker.quantite FROM Ingredient, Stocker WHERE Ingredient.id IN (SELECT id_ingredient FROM Stocker WHERE identifiant_utilisateur=$1) AND Stocker.quantite = (SELECT DISTINCT quantite from Stocker where id_ingredient = Ingredient.id);"
     var sqlReqUnites = "SELECT DISTINCT unite FROM Ingredient;"
 
     var sqlIngParam = [req.session.user];

@@ -10,18 +10,25 @@
 
 {% block body %}
     <div class="ingredientsview">
-        <h1>Liste des ingredients</h1>
-        {% for d in data %}
-            <li>{{ d.nom }}</li>
-        {% endfor %}
+    <h3>Liste des ingredients</h3>
+    <table class="table">
+    <tr>
+    <th>Nom</th>  <th>Quantité</th>
+    </tr>
+    {% for d in data %}
+      <tr>
+      <td>{{d.nom}}</td><td>{{d.quantite}} {% if d.unite != 'u    ' %} {{d.unite}} {% endif %}</td>
+      </tr>
+      {% endfor %}
+    </table>
     </div>
 
     <div class="ingredientsform">
-        <h1>Ajouter un ingredient</h1>
+        <h3>Ajouter un ingredient</h3>
         <form class="addingredientform" action="/ingredient" method="post">
             <label for="name">Nom de l'ingrédient</label>
             <input type="text" name="name">
-            
+
             <label for="name">Quantité</label>
             <input type="number" name="quantity" min="0">
             <select class="unite" name="unite">
