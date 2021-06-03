@@ -33,7 +33,7 @@ function send_inscription(){
                     localStorage.setItem('username', $('#username_form').val());
                     $(".SuccessInscription").show();
                     setTimeout(function(){
-                        window.location.replace("index.html");
+                        window.location.replace("index.php");
                     }, 5000);
                     window.location.replace("#SuccessInscription");
                 }
