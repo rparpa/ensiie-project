@@ -59,7 +59,7 @@ app.post('/login', (req, res) => {
       const result = err ? err.stack : resp.rows;
 
       if(result === undefined || result[0] == undefined || result[0].mdp != password)
-        res.render("connection/connection_login.html.twig", {error:"Les informations rentrées sont incorrectes"});
+        res.render("connection/connection_login.html.twig", {error:"Identifiant ou mot de passe incorrect"});
       else{
         req.session.user = result[0].identifiant;
         req.session.password = result[0].mdp;
@@ -130,7 +130,7 @@ app.get('/recettes', (req, res) => {
     var sqlReq = "SELECT * FROM Ingredient;"
     client.query(sqlReq, (err, resp) => {
       var result = err ? err.stack : resp.rows;
-      res.writeHead(301,{Location: 'recipe/recipe_index.html.twig'});
+      res.render('recipe/recipe_index.html.twig',{data:result});
     });
   }
 });
@@ -143,10 +143,19 @@ app.get('/postingredient', (req, res) => {
     var ingredient = req.body.name;
     var quantity = req.body.quantity;
     var unite = req.body.unite;
-    
+
     var sqlReq = "INSERT INTO Stocker(identifiant_utilisateur, id_ingredient, quantite, date_stock) VALUES (req.session.user, id, quantity, Date.now()) WHERE EXISTS (SELECT id FROM Ingredient WHERE nom = ingredient)";
   }
 });
+
+app.get("/logout",(req,res) =>{
+  if(!req.session.user || !req.session.password)
+    res.redirect("/login")
+
+  req.session.destroy(function(err) {});
+  res.redirect("/")
+
+})
 
 // Handle 404 - Keep this as a last route
 app.use(function(req, res, next) {

@@ -1,0 +1,16 @@
+.logout{
+  color:rgba(255,255,255,.5);
+}
+.logout:hover{
+  color:rgba(255,255,255,.75);
+  text-decoration: none;
+}
+.error{
+  color:red;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: center;
+  background-color: rgba(255,0,0,.3);
+  margin: 2rem 0;
+}

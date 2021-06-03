@@ -10,6 +10,9 @@
 {% block body %}
 <div class="container p-5">
     <div class="h2 text-center">Connectez-vous</div>
+    <div class="error">
+      {{error}}
+    </div>
     <form class="form-group" method="POST" action="/login">
         <div class="mb-3 d-flex justify-content-center">
             <div class="m-0 p-0 w-50">
