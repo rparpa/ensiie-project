@@ -1,6 +1,5 @@
 jQuery(document).ready(function($) {
     init();
-    get_all_article();
 });
 
 function init(){
@@ -31,7 +30,7 @@ function deconnection(){
     localStorage.setItem('username', '');
     localStorage.setItem('connected', null);
     localStorage.setItem('isadmin', null);
-    window.location.replace('index.html');
+    window.location.replace('index.php');
 }
 
 function shake(obj){
@@ -62,7 +61,7 @@ function verify_user(){
                     localStorage.setItem('isadmin', true);
                 }
                 connectedDisplay();
-                window.location.replace('index.html');
+                window.location.replace('index.php');
             }
         }
     });
@@ -108,7 +107,7 @@ function load_all_article(data){
         
         let html = `
         <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px;">
-            <a href="index.html">
+            <a href="index.php">
                 <div class="card-header bg-info text-white display_list_article"><h4><span class="glyphicon glyphicon-star"></span>` + e.title + `</h4></div>
             </a>
             <br>

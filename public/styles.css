@@ -91,9 +91,11 @@ div {
     color: #4998a7;
 }
 
-.card a {
-    font-color:#424242 !important;
+a {
     text-decoration: none !important;
+}
+.card a {
+    color:#424242 !important;
 }
 
 .card a:hover {
