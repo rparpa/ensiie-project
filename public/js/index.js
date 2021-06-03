@@ -62,6 +62,25 @@ function verify_user(){
     });
 }
 
+function get_all_article(){
+    $.ajax({
+        url: 'router.php',
+        type: 'POST',
+        data: {
+            request: "Controller/article.php"
+        },
+        dataType: 'json',
+        success: function(data){
+            if(data.status == "error"){
+                console.log(data.msg)
+            }
+            else{
+                console.log(data);
+            }
+        }
+    });
+}
+
 function deconnection(){
     localStorage.setItem('username', '');
     localStorage.setItem('connected', null);
