@@ -5,6 +5,7 @@ const Twig = require('twig');
 const { Client } = require('pg');
 const path = require('path');
 const dotenv = require('dotenv');
+const passwordHash = require('password-hash');
 
 const port = 3000;
 var twig = Twig.twig;
@@ -58,7 +59,7 @@ app.post('/login', (req, res) => {
     client.query(sqlReq, values, (err, resp) => {
       const result = err ? err.stack : resp.rows;
 
-      if(result === undefined || result[0] == undefined || result[0].mdp != password)
+      if(result === undefined || result[0] == undefined || !passwordHash.verify(password, result[0].mdp))
         res.render("connection/connection_login.html.twig", {error:"Identifiant ou mot de passe incorrect"});
       else{
         req.session.user = result[0].identifiant;
@@ -89,7 +90,7 @@ app.post('/register', (req, res) => {
 
       if(existsResult === undefined) {
         let sqlReq = "INSERT INTO Utilisateur(identifiant, mdp, statut) values($1, $2, $3);";
-        let values = [id, password, 0];
+        let values = [id, passwordHash.generate(password), 0];
 
         client.query(sqlReq, values, (err, resp) => {
           const result = err ? err.stack : resp.rows[0];
@@ -97,7 +98,7 @@ app.post('/register', (req, res) => {
           if(result === undefined)
             res.redirect("/login");
           else
-          res.render("new_account.twig", {error:"Impossible de créer le compte"});
+            res.render("new_account.twig", {error:"Impossible de créer le compte"});
         });
       } else
         res.render("new_account.twig", {error:"L'utilisateur " + id + " existe déjà"});
