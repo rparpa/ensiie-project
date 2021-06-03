@@ -92,7 +92,14 @@ app.post('/register', (req, res) => {
         let sqlReq = "INSERT INTO Utilisateur(identifiant, mdp, statut) values($1, $2, $3);";
         let values = [id, passwordHash.generate(password), 0];
 
-        
+        client.query(sqlReq, values, (err, resp) => {
+          const result = err ? err.stack : resp.rows[0];
+
+          if(result === undefined)
+            res.redirect("/login");
+          else
+            res.render("connection/connection_register.twig", {error:"Impossible de créer le compte"});
+        });
       } else
         res.render("connection/connection_register.twig", {error:"L'utilisateur " + id + " existe déjà"});
     });
@@ -127,8 +134,8 @@ app.post('/ingredient', (req, res) => {
     var quantity = req.body.quantity;
     var unite = req.body.unite;
 
-    var sqlReq = "INSERT INTO Stocker(identifiant_utilisateur, id_ingredient, quantite, date_stock) VALUES($1, $2, $3, &4)";
-    var values = [req.session.user, id, quantiry, Date.now()];
+    var sqlReq = "INSERT INTO Stocker(identifiant_utilisateur, id_ingredient, quantite, date_stock) VALUES($1, (SELECT id FROM Ingredient WHERE nom=$2), $3, $4)";
+    var values = [req.session.user, ingredient, quantity, Date.now()];
     
     client.query(sqlReq, values, (err, resp) => {
       const result = err ? err.stack : resp.rows[0];
