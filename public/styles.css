@@ -1,4 +1,5 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Numans');
+html,body {
   margin: 0;
   font-family: 'Roboto', Courier, monospace;
   font-weight: 800;
@@ -168,4 +169,6 @@ div {
         font-size: 2.5vh;
         line-height: 2vh;
     }
+
+
 }
