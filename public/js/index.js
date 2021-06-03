@@ -1,16 +1,7 @@
 jQuery(document).ready(function($) {
     init();
+    get_all_article();
 });
-
-function connectedDisplay(){
-    $("#affiche_name").html("Bonjour " + localStorage.getItem("username") + " !");
-    $(".onlyUser").show();
-
-    $(".notUser").hide();
-
-    if(localStorage.getItem('isadmin') == 'true')   $(".onlyAdmin").show();
-    else $(".onlyAdmin").hide();
-}
 
 function init(){
     $('.alertField').hide();
@@ -24,6 +15,23 @@ function init(){
         localStorage.setItem("username", $("#username").val())
     });
     $("#username").val(localStorage.getItem("username"));
+}
+
+function connectedDisplay(){
+    $("#affiche_name").html("Bonjour " + localStorage.getItem("username") + " !");
+    $(".onlyUser").show();
+
+    $(".notUser").hide();
+
+    if(localStorage.getItem('isadmin') == 'true')   $(".onlyAdmin").show();
+    else $(".onlyAdmin").hide();
+}
+
+function deconnection(){
+    localStorage.setItem('username', '');
+    localStorage.setItem('connected', null);
+    localStorage.setItem('isadmin', null);
+    window.location.replace('index.html');
 }
 
 function shake(obj){
@@ -56,9 +64,6 @@ function verify_user(){
                 connectedDisplay();
                 window.location.replace('index.html');
             }
-            else{
-                // TODO show error somewhere
-            }
         }
     });
 }
@@ -68,7 +73,7 @@ function get_all_article(){
         url: 'router.php',
         type: 'POST',
         data: {
-            request: "Controller/article.php"
+            request: "Controller/article.php",
         },
         dataType: 'json',
         success: function(data){
@@ -82,9 +87,5 @@ function get_all_article(){
     });
 }
 
-function deconnection(){
-    localStorage.setItem('username', '');
-    localStorage.setItem('connected', null);
-    localStorage.setItem('isadmin', null);
-    window.location.replace('index.html');
-}
+
+
