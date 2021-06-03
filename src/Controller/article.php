@@ -8,6 +8,7 @@ $conn = Connection::get();
 file_put_contents('php://stderr', print_r($_POST, TRUE));
 
 
+
 function get_all($conn) {
     //if (!isset($_POST['username'])){
     //    echo json_encode(array('status' => 'Error get user information Password', 'msg' => 'A fields is not set :\'username\''));
@@ -27,5 +28,7 @@ function get_all($conn) {
         echo json_encode(array('status' => 'error', 'msg' => 'Une erreur est survenu, merci de recharger la page.'));
     }
 }
+
+get_all($conn);
 
 ?>
