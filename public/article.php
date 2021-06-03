@@ -1,12 +1,11 @@
 <html lang="fr">
 <head>
-  <?php require("utils/header.html"); ?>
+  <?php require("header.html"); ?>
   <script src="/js/article.js"></script>
 </head>
 <body>
-    <?php require("utils/navbar.html"); ?>
+    <?php require("navbar.html"); ?>
     <br><br>
-
 
     <div style="margin: 5%;">
       <h1> Ecrire un article </h1>
@@ -24,7 +23,6 @@
           <label for=synopsis> Synopsis </label>
           <textarea id="synopsis" maxlength="256" row="3" name="synopsis" required></textarea> 
           <br>
-
 
           <label for=categories> Catégories </label>
           <select name="categories" id=cat0></select>
