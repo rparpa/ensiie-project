@@ -16,12 +16,12 @@ jQuery(document).ready(function($) {
 });
 
 function send_inscription(){
-    if(before_submit()) {
+    if(before_submit())
         $.ajax({
             type:'POST',
             url:'router.php',
             data:{
-                request: "Controller/inscription.php",
+                request: "inscription.php",
                 username: $('#username_form').val(),
                 password: $('#password1').val(),
                 email: $('#email_form').val(),
@@ -39,7 +39,6 @@ function send_inscription(){
                 }
             }
         });
-    }
 };
 
 function before_submit() {
@@ -163,16 +162,10 @@ function check_username(obj){
     }
 }
 
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-  }
-
-  /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-    document.body.style.backgroundColor = "white";
-  }
+function shake(obj){
+    obj.removeClass('shake');
+    obj.css("borderColor","red");
+    setTimeout(function(){
+        obj.addClass('shake');
+    });
+}
