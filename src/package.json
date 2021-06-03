@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "package.json": "^2.0.1",
+    "password-hash": "^1.2.2",
     "pg": "^8.6.0",
     "twig": "^1.15.4"
   },
