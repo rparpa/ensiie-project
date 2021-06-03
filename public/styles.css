@@ -72,6 +72,10 @@ div {
     color: red !important;
 }
 
+.sucessField {
+    color: #72b312 !important;
+}
+
 #div_inscription  {
     text-align: center;
 }

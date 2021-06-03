@@ -21,7 +21,7 @@ function send_inscription(){
             type:'POST',
             url:'router.php',
             data:{
-                request: "inscription.php",
+                request: "Controller/inscription.php",
                 username: $('#username_form').val(),
                 password: $('#password1').val(),
                 email: $('#email_form').val(),
@@ -49,7 +49,6 @@ function before_submit() {
         if(!$(this).val()){
             shake($(this))
             check_all = false;
-            console.log($(this));
         }
         else{
             $(this).css("borderColor","grey");
