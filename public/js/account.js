@@ -10,7 +10,7 @@ function delete_account(){
             url: 'router.php',
             async: false,
             data: {
-                request: "account.php",
+                request: "Controller/account.php",
                 username: localStorage.getItem('username'),
                 to_do: "delete_user"
             },
@@ -28,7 +28,7 @@ function affichage_info_user(){
         url: 'router.php',
         async: false,
         data: {
-            request: "account.php",
+            request: "Controller/account.php",
             username: localStorage.getItem('username'),
             to_do: "user_info"
         },
@@ -104,7 +104,7 @@ function change_password() {
             url: 'router.php',
             async: false,
             data: {
-                request: "account.php",
+                request: "Controller/account.php",
                 username: localStorage.getItem('username'),
                 password: current.val(),
                 to_do: "check_password"
@@ -137,7 +137,7 @@ function send_new_password() {
             url: 'router.php',
             async: false,
             data: {
-                request: "account.php",
+                request: "Controller/account.php",
                 username: localStorage.getItem('username'),
                 new_password: new_password.val(),
                 to_do: "change_password"
@@ -166,7 +166,7 @@ function check_new_mail(){
             async: false,
             url:'router.php',
             data:{
-                request: "inscription.php",
+                request: "Controller/inscription.php",
                 email: obj.val(),
                 to_do: "check_email"
             },
@@ -195,7 +195,7 @@ function send_new_email(){
             async: false,
             url:'router.php',
             data:{
-                request: "account.php",
+                request: "Controller/account.php",
                 username: localStorage.getItem("username"),
                 new_email: obj.val(),
                 to_do: "change_email"
