@@ -1,7 +1,5 @@
 jQuery(document).ready(function($) {
 
-    init();
-
     $(".inscription_input").change(function(){
         localStorage.setItem($(this).attr('name'), $(this).val())
     });

@@ -219,6 +219,10 @@ a {
     100% { margin-left: 0rem; margin-right: 0rem; }
 }
 
+.sidebar-nav li .side_title {
+    color:#4998a7;
+}
+
 /**** Mobile layout ****/
 @media (max-width: 900px) {
 
