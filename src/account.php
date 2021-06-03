@@ -32,8 +32,6 @@ switch ($_POST['to_do']) {
     else
         echo json_encode(array('status' => 'Error delete user', 'msg' => 'A fields is not set :\'username\''));
     break;
-
-    
 }
 
 function get_user_info($conn) {

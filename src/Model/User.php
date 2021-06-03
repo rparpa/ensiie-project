@@ -8,8 +8,7 @@ class User{
     private string $username;
     private string $mail;
     private bool $admin;
-    
-    
+
     public function getUsername(): string{
         return $this->username;
     }

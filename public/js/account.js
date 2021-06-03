@@ -1,7 +1,6 @@
 jQuery(document).ready(function ($) {
     init();
     affichage_info_user();
-    
 });
 
 function delete_account(){
@@ -168,7 +167,7 @@ function check_new_mail(){
             url:'router.php',
             data:{
                 request: "inscription.php",
-                email: obj.val(), 
+                email: obj.val(),
                 to_do: "check_email"
             },
             dataType: 'json',
@@ -210,5 +209,5 @@ function send_new_email(){
                 }, 5000);
             }
         });
- 
+
 }
