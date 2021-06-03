@@ -48,10 +48,6 @@ input.inscription_input {
   margin-right: 0;
 }
 
-
-
-
-
 .connection_input {
     margin: 20px;
     background-color: white;
@@ -74,6 +70,34 @@ div {
 
 .sucessField {
     color: #72b312 !important;
+}
+
+.display_list_article {
+    text-align: left;
+    color: #424242
+}
+
+.display_list_article h5 a {
+    color: #4998a7 !important;
+}
+.row {
+    padding-left: 15px;
+}
+
+.black_text {
+    color: black;
+}
+.blue_text {
+    color: #4998a7;
+}
+
+.card a {
+    font-color:#424242 !important;
+    text-decoration: none !important;
+}
+
+.card a:hover {
+    color:#424242 !important;
 }
 
 #div_inscription  {

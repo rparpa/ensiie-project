@@ -81,11 +81,51 @@ function get_all_article(){
                 console.log(data.msg)
             }
             else{
+                load_all_article(data);
                 console.log(data);
             }
         }
     });
 }
 
+
+function load_all_article(data){
+    console.log("display");
+    var body = $("body")
+
+    data.forEach(e => {
+        let cat = "";
+        if ((e.cat0 == '' || e.cat0 == 'Aucune') && (e.cat1 == '' || e.cat1 == 'Aucune'))
+            cat = `<a class='black_text'> Aucune </a>`;
+        else {
+            if (e.cat0 != '' && e.cat0 != 'Aucune')
+                cat = `<a class='black_text'>` + e.cat0 + `</a>`;
+            if (e.cat1 != '' && e.cat1 != 'Aucune' && cat != "")
+                cat += ` et <a class='black_text'>` + e.cat1 + `</a>`;
+            else
+                cat += `<a class='black_text'>` + e.cat1 + `</a>`;
+        }
+        
+        let html = `
+        <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px;">
+            <a href="index.html">
+                <div class="card-header bg-info text-white display_list_article"><h4><span class="glyphicon glyphicon-star"></span>` + e.title + `</h4></div>
+            </a>
+            <br>
+            <div class="row">
+                <div id="synopsis" class="col-12 display_list_article"><p class="black_text">` + e.synopsis + `</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-5 display_list_article"><h5 class="black_text">Categories: ` + cat + `</h5></div>       
+                <div class="col-3 display_list_article"><h6>Création: <span class="blue_text">` + e.creation_date + `</span></h6></div>
+                <div class="col-4 display_list_article"><h6>Dernière modification: <span class="blue_text">` + e.modification_date + `</span></h6></div>
+            </div>
+        </div>`
+        
+        body.append(html);
+    });
+}
 
 
