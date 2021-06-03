@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
   if(!req.session.user || !req.session.password)
     res.redirect("/login")
   else {
-    res.render("home/home_index.html.twig", {});
+    res.render("home/home_index.html.twig", {login:req.session.user});
   }
 });
 
@@ -121,7 +121,7 @@ app.get('/ingredient', (req, res) => {
         var result = err ? err.stack : resp.rows;
         var resultU = erru ? erru.stack : respu.rows;
 
-        res.render('ingredient/ingredient_index.html.twig', {data:result, unites:resultU});
+        res.render('ingredient/ingredient_index.html.twig', {login:req.session.user, data:result, unites:resultU});
       });
     });
   }
@@ -138,7 +138,7 @@ app.post('/ingredient', (req, res) => {
 
     var sqlReq = "INSERT INTO Stocker(identifiant_utilisateur, id_ingredient, quantite, date_stock) VALUES($1, (SELECT id FROM Ingredient WHERE nom=$2), $3, $4)";
     var values = [req.session.user, ingredient, quantity, Date.now()];
-    
+
     client.query(sqlReq, values, (err, resp) => {
       const result = err ? err.stack : resp.rows[0];
 
@@ -154,7 +154,7 @@ app.get('/recettes', (req, res) => {
     var sqlReq = "SELECT * FROM Ingredient;"
     client.query(sqlReq, (err, resp) => {
       var result = err ? err.stack : resp.rows;
-      res.render('recipe/recipe_index.html.twig',{data:result});
+      res.render('recipe/recipe_index.html.twig',{login:req.session.user, data:result});
     });
   }
 });
