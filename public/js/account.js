@@ -1,5 +1,4 @@
 jQuery(document).ready(function ($) {
-    init();
     affichage_info_user();
 });
 
