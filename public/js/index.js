@@ -1,16 +1,7 @@
 jQuery(document).ready(function($) {
     init();
+    get_all_article();
 });
-
-function connectedDisplay(){
-    $("#affiche_name").html("Bonjour " + localStorage.getItem("username") + " !");
-    $(".onlyUser").show();
-
-    $(".notUser").hide();
-
-    if(localStorage.getItem('isadmin') == 'true')   $(".onlyAdmin").show();
-    else $(".onlyAdmin").hide();
-}
 
 function init(){
     $('.alertField').hide();
@@ -24,6 +15,23 @@ function init(){
         localStorage.setItem("username", $("#username").val())
     });
     $("#username").val(localStorage.getItem("username"));
+}
+
+function connectedDisplay(){
+    $("#affiche_name").html("Bonjour " + localStorage.getItem("username") + " !");
+    $(".onlyUser").show();
+
+    $(".notUser").hide();
+
+    if(localStorage.getItem('isadmin') == 'true')   $(".onlyAdmin").show();
+    else $(".onlyAdmin").hide();
+}
+
+function deconnection(){
+    localStorage.setItem('username', '');
+    localStorage.setItem('connected', null);
+    localStorage.setItem('isadmin', null);
+    window.location.replace('index.html');
 }
 
 function shake(obj){
@@ -56,9 +64,6 @@ function verify_user(){
                 connectedDisplay();
                 window.location.replace('index.html');
             }
-            else{
-                // TODO show error somewhere
-            }
         }
     });
 }
@@ -68,7 +73,7 @@ function get_all_article(){
         url: 'router.php',
         type: 'POST',
         data: {
-            request: "Controller/article.php"
+            request: "Controller/article.php",
         },
         dataType: 'json',
         success: function(data){
@@ -76,15 +81,51 @@ function get_all_article(){
                 console.log(data.msg)
             }
             else{
+                load_all_article(data);
                 console.log(data);
             }
         }
     });
 }
 
-function deconnection(){
-    localStorage.setItem('username', '');
-    localStorage.setItem('connected', null);
-    localStorage.setItem('isadmin', null);
-    window.location.replace('index.html');
+
+function load_all_article(data){
+    console.log("display");
+    var body = $("body")
+
+    data.forEach(e => {
+        let cat = "";
+        if ((e.cat0 == '' || e.cat0 == 'Aucune') && (e.cat1 == '' || e.cat1 == 'Aucune'))
+            cat = `<a class='black_text'> Aucune </a>`;
+        else {
+            if (e.cat0 != '' && e.cat0 != 'Aucune')
+                cat = `<a class='black_text'>` + e.cat0 + `</a>`;
+            if (e.cat1 != '' && e.cat1 != 'Aucune' && cat != "")
+                cat += ` et <a class='black_text'>` + e.cat1 + `</a>`;
+            else
+                cat += `<a class='black_text'>` + e.cat1 + `</a>`;
+        }
+        
+        let html = `
+        <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px;">
+            <a href="index.html">
+                <div class="card-header bg-info text-white display_list_article"><h4><span class="glyphicon glyphicon-star"></span>` + e.title + `</h4></div>
+            </a>
+            <br>
+            <div class="row">
+                <div id="synopsis" class="col-12 display_list_article"><p class="black_text">` + e.synopsis + `</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-5 display_list_article"><h5 class="black_text">Categories: ` + cat + `</h5></div>       
+                <div class="col-3 display_list_article"><h6>Création: <span class="blue_text">` + e.creation_date + `</span></h6></div>
+                <div class="col-4 display_list_article"><h6>Dernière modification: <span class="blue_text">` + e.modification_date + `</span></h6></div>
+            </div>
+        </div>`
+        
+        body.append(html);
+    });
 }
+
+
