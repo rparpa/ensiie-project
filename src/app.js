@@ -123,6 +123,20 @@ app.get('/ingredient', (req, res) => {
   }
 });
 
+app.post('/ingredient', (req, res) => {
+  if(!req.session.user || !req.session.password)
+    res.redirect("/login")
+
+  else {
+    var ingredient = req.body.name;
+    var quantity = req.body.quantity;
+    var unite = req.body.unite;
+
+    var sqlReq = "INSERT INTO Stocker(identifiant_utilisateur, id_ingredient, quantite, date_stock) VALUES (req.session.user, id, quantity, Date.now())";
+    res.redirect('/ingredient');
+  }
+});
+
 app.get('/recettes', (req, res) => {
   if(!req.session.user || !req.session.password)
     res.redirect("/login")
@@ -132,19 +146,6 @@ app.get('/recettes', (req, res) => {
       var result = err ? err.stack : resp.rows;
       res.render('recipe/recipe_index.html.twig',{data:result});
     });
-  }
-});
-
-app.get('/postingredient', (req, res) => {
-  if(!req.session.user || !req.session.password)
-    res.redirect("/login")
-
-  else {
-    var ingredient = req.body.name;
-    var quantity = req.body.quantity;
-    var unite = req.body.unite;
-
-    var sqlReq = "INSERT INTO Stocker(identifiant_utilisateur, id_ingredient, quantite, date_stock) VALUES (req.session.user, id, quantity, Date.now()) WHERE EXISTS (SELECT id FROM Ingredient WHERE nom = ingredient)";
   }
 });
 
