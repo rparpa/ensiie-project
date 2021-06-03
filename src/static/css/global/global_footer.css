@@ -13,7 +13,8 @@ footer .container-fluid {
 
 .top-part {
     color: black;
-    background-color: #b7ecb7
+    background-color: #b7ecb7;
+    margin-top: 50px;
 }
 
 .center-content {

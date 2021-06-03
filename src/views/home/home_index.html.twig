@@ -4,26 +4,120 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel = "stylesheet" type = "text/css" href = "css/home/home_index.css">
 {% endblock %}
 
 {% block body %}
     <section>
-        <div class="h1 text-center mt-2">
-            Bienvenue sur notre super site web
-        </div>
-        <img class="rounded mx-auto d-block" src="https://cdn.dribbble.com/users/228367/screenshots/3783181/boil-boil-dribbble.gif" alt="panda">
-        <div class="container-fluid mx-auto">
-            <div class="row justify-content-center top-part">
-                <div class="col-md-6 text-center center-content">
-                    <div class="d-flex-inline">
-                        <h3 class="footer-heading">Remplissez votre FRIGO dès maintenant !</h3>
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="first-slide" src="https://www.lanutrition.fr/sites/default/files/styles/article_large/public/ressources/dlc.jpg?itok=46cNrT2z" alt="First slide">
+                    <div class="container">
+                        <div class="carousel-caption text-left">
+                            <h1>v0.2.5 : Nouvelle version !</h1>
+                            <p>Une nouvelle version va bientôt faire surface, elle vous permettra de pouvoir éviter le gaspillage en vous avertissant lors de l'approche de dates de péremptions.</p>
+                            <p><a class="btn btn-lg btn-primary" href="/ingredient" role="button">Commencer maintenant</a></p>
+                        </div>
                     </div>
-                    <div class="d-flex-inline">
-                        <p>Commencez dès maintenant à remplir votre frigo et recevez des recommandations de recettes personnalisées ! Pour cela, rien de plus simple. Il suffit de se rendre sur la page "Ingrédient" et y renseigner la totalité du contenu de vos aliments.</p>
+                </div>
+                <div class="carousel-item">
+                    <img class="second-slide" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnlGp00s-TQZdek5UOnXUMKz9cws_IPmuFAA&usqp=CAU" alt="Second slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Nous vous demandez plus ce que vous avez dans le frigo !</h1>
+                            <p>Avec FRIGO, plus besoin de se demander ce que vous avez dans vos rangements. Ce dernier regroupe tout ce dont vous avez besoin !</p>
+                            <p><a class="btn btn-lg btn-primary" href="/register" role="button">S'inscrire</a></p>
+                        </div>
                     </div>
-                    <div class="d-flex-inline pt-2"> <a href="/ingredient" class="btn-pink btn">REMPLIR MON FRIGO</a> </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="third-slide" src="https://www.foodette.fr/wp-content/uploads/2019/11/1910_Poulet_miel_sesame_HD-copie-1.jpg" alt="Third slide">
+                    <div class="container">
+                        <div class="carousel-caption text-right">
+                            <h1>Nous vous conseillons des recettes en fonction des aliments que vous possédez !</h1>
+                            <p>Choisir son repas n'a jamais été aussi simple, en quelques clics il vous est désormais possible de choisir une recette et de mettre à jour vos stocks.</p>
+                            <p><a class="btn btn-lg btn-primary" href="/recettes" role="button">Accéder aux recettes</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+            </a>
+        </div>
+
+        <div class="container marketing">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="https://www.lanutrition.fr/sites/default/files/styles/article_large/public/ressources/dlc.jpg?itok=46cNrT2z" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Anti-Gaspi</h2>
+                    <p>Disposez d'une liste de vos aliments et soyez prévenus lorsque l'approche de la date de péremption. De plus, les recettes vous seront proposées en fonction de toutes les informations à disposition.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">BIENTOT DISPONIBLE »</a></p>
+                </div>
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnlGp00s-TQZdek5UOnXUMKz9cws_IPmuFAA&usqp=CAU" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Renseignez vos ingrédients</h2>
+                    <p>Avec FRIGO, plus besoin de se demander ce que vous avez dans vos rangements. Ce dernier regroupe tout ce dont vous avez besoin !</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">Ingrédients »</a></p>
+                </div>
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="https://www.foodette.fr/wp-content/uploads/2019/11/1910_Poulet_miel_sesame_HD-copie-1.jpg" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Recevez des recettes</h2>
+                    <p>Choisir son repas n'a jamais été aussi simple, en quelques clics il vous est désormais possible de choisir une recette et de mettre à jour vos stocks.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">Recettes »</a></p>
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_179d0fae4aa%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_179d0fae4aa%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.13333129882812%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_179d0fae4b6%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_179d0fae4b6%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.13333129882812%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_179d0fae4c1%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_179d0fae4c1%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.13333129882812%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
         </div>
     </section>
 {% endblock %}
