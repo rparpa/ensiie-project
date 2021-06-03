@@ -94,17 +94,18 @@ app.post('/register', (req, res) => {
 
         
       } else
-        res.render("new_account.twig", {error:"L'utilisateur " + id + " existe déjà"});
+        res.render("connection/connection_register.twig", {error:"L'utilisateur " + id + " existe déjà"});
     });
   } else
-    res.render("new_account.twig", {error:"L'identifiant et le mot de passe doivent être définis"});
+    res.render("connection/connection_register.twig", {error:"L'identifiant et le mot de passe doivent être définis"});
 });
 
 app.get('/ingredient', (req, res) => {
   if(!req.session.user || !req.session.password)
     res.redirect("/login")
   else {
-    var sqlReq = "SELECT * FROM Ingredient;"
+    var userId = req.session.user;
+    var sqlReq = "SELECT Ingredient.nom, Stocker.quantite FROM Ingredient, Stocker, Utilisateur WHERE Stocker.identifiant_utilisateur = Utilisateur.identifiant;"
     var sqlReqUnites = "SELECT DISTINCT unite FROM Ingredient;"
     client.query(sqlReq, (err, resp) => {
       client.query(sqlReqUnites, (erru, respu) => {
