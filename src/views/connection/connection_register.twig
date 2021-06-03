@@ -10,9 +10,11 @@
 {% block body %}
 <div class="container p-5">
     <div class="h2 text-center">Inscrivez-vous</div>
-    <div class="error">
-      {{error}}
-    </div>
+    {% if error is defined %}
+      <div class="error">
+        {{error}}
+      </div>
+    {% endif %}
     <form class="form-group" method="POST" action="/register">
         <div class="mb-3 d-flex justify-content-center">
             <div class="m-0 p-0 w-50">
