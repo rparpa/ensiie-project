@@ -107,7 +107,7 @@ INSERT INTO public.Admin (ID_ADMIN, USERNAME) VALUES (1, 'admin');
 -- INSERT INTO ADMIN VALUES ('admin');
 
 INSERT INTO public.Article (TITLE, CREATION_DATE, MODIFICATION_DATE, VALIDATED, SYNOPSIS, CAT0, CAT1) VALUES('TEST ARTICLE', '2000-10-10', '2000-10-10', FALSE, 'Ceci est la page de test !', 'Sport', 'Musique');
-INSERT INTO public.Article (TITLE, CREATION_DATE, MODIFICATION_DATE, VALIDATED, SYNOPSIS, CAT0, CAT1) VALUES('TEST ARTICLE 2', '2000-10-11', '2000-10-12', TRUE, 'It is a long established fact that a reader will be distracted by the readable content of a page whesed to using, making it look like readable English. Many deskto uncover many web sites still in their infancy. ', 'Aucune', 'Musique');
+INSERT INTO public.Article (TITLE, CREATION_DATE, MODIFICATION_DATE, VALIDATED, SYNOPSIS, CAT0, CAT1) VALUES('TEST ARTICLE 2', '2000-10-11', '2000-10-12', TRUE, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for will uncover many web sites still in their infancy. ', 'Aucune', 'Musique');
 
 
 

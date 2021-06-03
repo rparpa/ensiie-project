@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css";
+
 html,body {
   margin: 0;
   font-family: 'Roboto', Courier, monospace;
@@ -204,6 +206,27 @@ a {
 .sidebar-nav > .sidebar-brand a:hover {
     background: none;
     color: #fff;
+}
+
+button.title_index {
+    border: none;
+    padding: 0px;
+    cursor: pointer;
+    outline: none;
+}
+
+button.title_index:focus {
+    outline: none;
+}
+
+.card-header h4:hover {
+    color:#424242;
+}
+
+span .fa-check-square{
+    color: #424242;
+    margin-left: 1vw;
+    font-size: 25px;
 }
 
 .shake {
