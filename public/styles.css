@@ -68,27 +68,11 @@ div {
     line-height: normal;
 }
 
-<<<<<<< HEAD
 
 
 #form_inscription {
     margin-left: 15vw;
     margin-right: 15vw;
-=======
-#form_inscription .mdl-cell--3-col span, .alertField, .section_account .mdl-cell--2-col span {
-    color: red !important;
-}
-.sucessField {
-    color: #72b312 !important;
-}
-
-.section_account span {
-    color: #4998a7;
-}
-
-.shake {
-    animation: shake 0.7s ease-in-out 0s;
->>>>>>> fe74753f1fff4a7a741c2ab39d472ea92fbc7cc7
 }
 
 #div_inscription  {

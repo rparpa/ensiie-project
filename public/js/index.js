@@ -50,18 +50,11 @@ function verify_user(){
             if(data.status == "success"){
                 localStorage.setItem('username', name);
                 localStorage.setItem('connected', true);
-<<<<<<< HEAD
                 if(data.isadmin){
                     localStorage.setItem('isadmin', true);
                 }
                 connectedDisplay();
                 window.location.replace('index.html');
-=======
-                //if(data.isadmin){
-                //    localStorage.setItem('isadmin', true);
-                //}
-                connectedDisplay();
->>>>>>> fe74753f1fff4a7a741c2ab39d472ea92fbc7cc7
             }
             else{
                 // TODO show error somewhere
