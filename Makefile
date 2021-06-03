@@ -39,6 +39,12 @@ db.connect:
 db.install:
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER -h localhost -f data/db.sql'
 
+db.export:
+	docker-compose exec postgres /bin/bash -c 'pg_dump -U $$POSTGRES_USER ensiie > dbexport.pgsql'
+
+db.import:
+	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER ensiie < dbexport.pgsql'
+
 php.connect:
 	docker-compose exec php /bin/bash
 

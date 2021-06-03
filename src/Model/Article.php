@@ -1,10 +1,10 @@
 <?php
 namespace Model;
 
-use DateTime;
+use DateTimeInterface;
 use PDO;
-use PhpParser\Node\Arg;
 
+use \Model\Section;
 
 class Article{
 
@@ -12,8 +12,8 @@ class Article{
 
     private int $id;
     private string $title;
-    private DateTime $creationDate;
-    private DateTime $modificationDate;
+    private string $creationDate;
+    private string $modificationDate;
     private bool $validated;
     private string $synopsis;
     private int $idAdmin;
@@ -22,37 +22,54 @@ class Article{
     private array $sections;    
 
     public function __construct($pdo){
-        $this->pdo = $pdo;
-        
+        $this->pdo = $pdo; 
     }
 
-
-    public static function fromDict($pdo, $array_article){
+    public static function fromDict($pdo, $dict){
         $article = new Article($pdo);
-        //title, author, synopsis, cat0, cat1, sections(not good)
-        $article->set_object_vars($array_article);
-        
+        $article->title = $dict['title'];
+        $article->synopsis = $dict['synopsis'];
+        $article->cat0 = $dict['cat0'];
+        $article->cat1 = $dict['cat1'];
+        $article->sections = $dict['sections'];
         $article->creationDate = date("Y-m-d");
         $article->modificationDate = date("Y-m-d");
-        $article->validated = date("Y-m-d");
+        $article->validated = False;
         $article->idAdmin = -1;
-        
         return $article;
     }
 
-
     public function createArticle(){
-        $sql = "INSERT INTO public.Article";
-    }
-    
-    function set_object_vars(array $vars){
-        $has = get_object_vars($this);
-        foreach($has as $name => $oldVal){
-            $this->$name = isset($vars[$name]) ? $vars[$name] : NULL;
+        $sql = "INSERT INTO public.Article 
+            (TITLE, CREATION_DATE, MODIFICATION_DATE, VALIDATED, SYNOPSIS, ID_ADMIN, CAT0, CAT1) 
+            VALUES (?, ?, ?, FALSE, ?, 1, ?, ?)";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(1, $this->title);
+        $stmt->bindParam(2, $this->creationDate);
+        $stmt->bindParam(3, $this->modificationDate);
+        $stmt->bindParam(4, $this->synopsis);
+        $stmt->bindParam(5, $this->cat0);
+        $stmt->bindParam(6, $this->cat1);
+ 
+        $stmt->execute();
+        $id = $this->pdo->lastInsertId();
+        
+        foreach($this->sections as $k => $v){
+            $sect = new Section($this->pdo, $id, $v['title'], $v['content']);
+            $sect->insertDatabase();
         }
     }
 
-}
+    public static function exist($pdo, $value){
+        $sql = 'SELECT * FROM Article WHERE title = ?';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(1, $value);
 
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+
+}
 
 ?>
