@@ -13,7 +13,7 @@ html,body {
 
 #affiche_name {
     font-family: 'Times New Roman', Times, serif;
-    color: white;
+    color: #4998a7;
     font-size: 30px;
 }
 
@@ -26,9 +26,7 @@ input.inscription_input {
     margin-right: 1rem
 }
 
-.mdl-button, .connection_input{
-    border-radius: 50px;
-}
+
 
 #connection_btn {
     border-color: white !important;
@@ -38,22 +36,6 @@ input.inscription_input {
     padding-top: 0px;
 }
 
-.mdl-layout__drawer {
-    border: 0px;
-}
-.mdl-layout__header {
-    background-color: #424242;
-}
-
-::-moz-selection {
-  background-color: #424242;
-  color: #fff;
-}
-
-::selection {
-  background-color: #424242;
-  color: #fff;
-}
 
 /* Icon dans la barre de gauche */
 .icon-image {
@@ -66,28 +48,9 @@ input.inscription_input {
   margin-right: 0;
 }
 
-.mdl-layout-title {
-    background-color: white ;
-    border: 0px;
-    margin: -1px;
-}
 
-.separator {
-    height: 1px;
-    background-color: #424242;
-    margin: 8px 0;
-}
 
-.separator_content {
-    height: 4px;
-    background-color: #424242;
-    margin: 8px 0;
-}
 
-span.mdl-navigation__link {
-    color: #424242 !important;
-    font-weight: bold;
-}
 
 .connection_input {
     margin: 20px;
@@ -105,30 +68,118 @@ div {
     line-height: normal;
 }
 
-#form_inscription .mdl-cell--3-col span, .alertField, .section_account .mdl-cell--2-col span {
-    color: red !important;
-}
-.sucessField {
-    color: #72b312 !important;
-}
 
-.section_account span {
-    color: #4998a7;
-}
 
-.shake {
-    animation: shake 0.7s ease-in-out 0s;
+#form_inscription {
+    margin-left: 15vw;
+    margin-right: 15vw;
 }
 
 #div_inscription  {
     text-align: center;
 }
 
-/* .section_account {
-    border-style: solid;
-    border-radius: 50px;
+.navbar{
+    height:65px;
 }
- */
+.logo {
+    position: fixed;
+    margin-left:5vw;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    position: fixed;
+    left: 250px;
+    z-index: 1000;
+    overflow-y: auto;
+    margin-left: -250px;
+    width: 0;
+    height: 100%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    padding: 15px;
+    width: 100%;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: relative;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    display: block;
+    list-style: none;
+    margin-top: 20%;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #999999;
+    text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+    float:none;
+    margin-left: 50%;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    background: none;
+    color: #fff;
+}
+
+
 
 @keyframes shake {
     0% { margin-left: 0rem; margin-right: 0rem; }
@@ -166,6 +217,30 @@ div {
         padding: 0px 0.2vw 0px 0.2vh;
         font-size: 2.5vh;
         line-height: 2vh;
+    }
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
     }
 
 
