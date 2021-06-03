@@ -136,8 +136,14 @@ app.post('/ingredient', (req, res) => {
     var quantity = req.body.quantity;
     var unite = req.body.unite;
 
-    var sqlReq = "INSERT INTO Stocker(identifiant_utilisateur, id_ingredient, quantite, date_stock) VALUES (req.session.user, id, quantity, Date.now())";
-    res.redirect('/ingredient');
+    var sqlReq = "INSERT INTO Stocker(identifiant_utilisateur, id_ingredient, quantite, date_stock) VALUES($1, (SELECT id FROM Ingredient WHERE nom=$2), $3, $4)";
+    var values = [req.session.user, ingredient, quantity, Date.now()];
+    
+    client.query(sqlReq, values, (err, resp) => {
+      const result = err ? err.stack : resp.rows[0];
+
+      res.redirect('/ingredient');
+    });
   }
 });
 
