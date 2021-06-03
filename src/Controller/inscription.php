@@ -19,7 +19,7 @@ switch ($_POST['to_do']) {
         checkEmail($conn);
         break;
     default:
-        file_put_contents('php://stderr', print_r("Unknown action 'to_do':".$_POST['to_do']."\n", TRUE));
+        file_put_contents('php://stderr', print_r("Unknown action 'to_do':".$_POST['to_do']." inscription.php\n", TRUE));
 }
 
 

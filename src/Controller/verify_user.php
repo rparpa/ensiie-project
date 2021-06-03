@@ -4,6 +4,10 @@ use \Model\User;
 
 $pdo = \Db\Connection::get();
 
+if(!isset($_POST['username']) or !isset($_POST['pwd'])){
+    echo json_encode(array('status' => 'Error', 'msg' => 'A fields is not set :\'username\' or \'pwd\' '));
+}
+
 $username = $_POST['username'];
 
 $exist = User::verifyPassword($username, $_POST['pwd'], $pdo);
