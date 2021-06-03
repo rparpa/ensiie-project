@@ -176,7 +176,9 @@ div {
     color: #fff;
 }
 
-
+.shake {
+    animation: shake 0.7s ease-in-out 0s;
+}
 
 @keyframes shake {
     0% { margin-left: 0rem; margin-right: 0rem; }
