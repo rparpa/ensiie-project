@@ -6,15 +6,14 @@
 <body class="bg-light">
 
 <?php include("navbar.html"); ?>
- 
 <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px">
     <div class="card-header bg-info text-white">
         <h3>Inscription</h3>
     </div>
-    <div class="card-body"></div>
+    <div class="card-body text-center"></div>
     <h3 class="sucessField alertField SuccessInscription" id="SuccessInscription">Bravo, votre inscription a bien été prise en compte !</h3>
     <h6 class="sucessField alertField SuccessInscription">(redirection dans 5s...)</h6>
-    
+
     <br>
     <form id="form_inscription" class="col-sm-12" method="POST" onsubmit="return false;">
         <div class="d-flex h-100">
