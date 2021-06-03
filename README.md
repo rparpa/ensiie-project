@@ -1,7 +1,7 @@
 # ENSIIE Web Project Skeleton
 
 ## Install your application
-This tutorial will guide you through the installation procedure of the Web Project Skeleton.   
+This tutorial will guide you through the installation procedure of the Web Project Skeleton.
 
 The only packages you need to install right now are **docker** and **docker-compose**
 * [Install Docker](https://docs.docker.com/install/)
@@ -19,7 +19,7 @@ The next step is to set some environment variables in the `.env` file
     * REMOTE_HOST: For those who want to use the PHPStorm Debugger, put your IP address. Otherwise, skip this step.
 
 Now, let's begin the installation :
-* `make install`. This command may take time.  
+* `make install`. This command may take time.
 * That's it! Your website is running [http:localhost:8080](http:localhost:8080)
 
 Below are some useful commands :
