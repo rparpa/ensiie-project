@@ -50,6 +50,9 @@ function verify_user(){
             if(data.status == "success"){
                 localStorage.setItem('username', name);
                 localStorage.setItem('connected', true);
+                if(data.isadmin){
+                    localStorage.setItem('isadmin', true);
+                }
                 connectedDisplay();      
             }
             else{

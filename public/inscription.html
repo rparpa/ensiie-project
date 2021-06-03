@@ -12,88 +12,138 @@
 
     <!-- Page styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <script src="/js/inscription.js"></script>
     <script src="/js/index.js"></script>
   </head>
-<body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <div class="mdl-layout__header mdl-layout__header--waterfall">
-            <div class="mdl-layout__header-row">
-                <span>
-                    <a href="/index.html" id="title_Wikipediie">Wikiped<span style="color: #4998a7">IIE</span></a>
-                </span>
-                <div class="mdl-layout-spacer"></div>
-                <form id="connection_form">
-                    <nav class="mdl-navigation">
-                        <span id="affiche_name" class="onlyUser"></span>
-                        <input placeholder="Username" class="mdl-textfield__input connection_input notUser" type="text" id="username">
-                        <input placeholder="Password" class="mdl-textfield__input connection_input notUser" type="password" id="password">
-                    </nav>
-                </form>
-                <button style="background-color: #424242;" onclick="verify_user();" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent notUser" id="connection_btn">Connexion</button>
-                <button style="background-color: #424242;" onclick="add_new_article()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent onlyUser" id="new_article_btn">Ajouter un article</button>
-                <button style="background-color: #424242;" onclick="deconnection()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent onlyUser" id="deconnection_btn">Deconnexion</button>
-            </div>
-        </div>
 
-        <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">
-                <a href="/index.html"><img class="icon-image" src="logo/logo.png" alt="logo.png"></a>
-            </span>
-            <nav class="mdl-navigation">
-                <div class="separator"></div>
-                <span class="mdl-navigation__link">Information Section</span>
-                <a class="mdl-navigation__link" href="/">Accueil</a>
-                <a class="mdl-navigation__link notUser" href="/inscription.html">inscription</a>
-                <a class="mdl-navigation__link" href="a_propos.html">A propos</a>
-                <div class="separator onlyUser"></div>
-                <span class="mdl-navigation__link onlyUser">User Section</span>
-                <a class="mdl-navigation__link onlyUser" href="/account.html">Account</a>
-                <a class="mdl-navigation__link onlyUser" href="/deconnection.php">Deconnection</a>
-                <div class="separator onlyAdmin"></div>
-                <span class="mdl-navigation__link onlyAdmin">Section admin</span>
-                <a class="mdl-navigation__link onlyAdmin" href="">Validation pages</a>
-            </nav>
-        </div>
-        <div class="mdl-layout__content">
-            <div class="demo-blog__posts mdl-grid" id="top">
-                <div class="mdl-grid" id="form_inscription">
-                    <div class="mdl-cell--12-col"><h1>Inscription</h1></div>
-                    <div class="mdl-cell--12-col">&nbsp;</div>
+<body class="bg-light">
 
-                    <div class="mdl-cell--3-col">Nom d'utilisateur :<span>*</span></div><div class="mdl-cell--9-col">
-                        <input class="mdl-textfield__input inscription_input" type="text" name="username_form" id="username_form" placeholder="Username" maxlength="50" minlength="3"></div>
-                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertUsername">Ce nom d'utilisateur est déjà utilisé</span><span class="alertField" id="alertUsername_length">Le nom d'utilisateur doit faire 3 caractères minimum</span></div>
+  <nav class="navbar navbar-dark bg-dark ">
+    <div class="container-fluid">
 
-                    <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--3-col">Email :<span>*</span></div><div class="mdl-cell--9-col">
-                        <input class="mdl-textfield__input inscription_input" type="text"  id="email_form" name="email_form" placeholder="Email" maxlength="100" minlength="3"></div>
-                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertMail">L'adresse email n'est pas valide</span><span class="alertField" id="alertMailUse">L'adresse email est déjà utilisée</span></div>
-
-                    <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--3-col">Mot de passe :<span>*</span></div><div class="mdl-cell--9-col">
-                        <input class="mdl-textfield__input inscription_input" type="password" id="password1" name="password_form" placeholder="Mot de passe" maxlength="50" minlength="6"></div>
-                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertPassword_length">Le mot de passe doit faire 6 caractères minimum</span></div>
-
-                    <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--3-col">Vérification du mot de passe :<span>*</span></div><div class="mdl-cell--9-col">
-                        <input class="mdl-textfield__input inscription_input" type="password" id="password2" name="password_verif" placeholder="Vérification du mot de passe" maxlength="50" minlength="6"></div>
-                    <div class="mdl-cell--12-col">&nbsp;<span class="alertField" id="alertPassword">Les mots de passe ne correspondent pas</span></div>
-                    
-                    <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--12-col">&nbsp;</div>
-                    <div class="mdl-cell--12-col" id="div_inscription">
-                        <button id="btn_insctiption" onclick="send_inscription()" class="mdl-button mdl-js- mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn_insctiption">S'inscrire</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+     
+    
+    <a class="navbar-brand" href="#">
+      <a href="/index.html" id="title_Wikipediie">Wikiped<span style="color: #4998a7">IIE</span></a>
+    </a>  
+      <form>
+          <div class="form-inline">
+             <div class="form-group mx-sm-2 mb-2">
+                <input style="height:20px; width:150px" type="text" class="form-control input-sm" id="inputsm" placeholder="Username ">
+             </div>
+          <div class="form-group mb-2">
+            <input style="height:20px; width:150px" type="text" class="form-control input-sm" id="inputsm" placeholder="Password">
+          </div>
+         <div class="form-group mx-sm-2 ">
+            <button onclick="verify_user();" type="button" class="btn btn-secondary btn-sm mb-2">Connexion</button>
+           </div>
+          <div class="form-group mx-sm-1 ">
+             <button onclick="add_new_article()" type="button" class="btn btn-secondary btn-sm mb-2 onlyUser">Ajouter un article</button>
+             <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-2 onlyUser ">Deconnexion</button> 
+          </div>
+          <div class="form-group ">
+             <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-2 notUser">Inscription</button>  
+          </div>
+          </div>
+        </form>
     </div>
+  </nav>
+  <nav>
+  <div class=" sidenav row vh-100 overflow-auto collapse " id="navbarToggleExternalContent">
+    <div class="col-12 col-sm-3 col-xl-2  px-0  bg-dark d-flex ">
+        <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
+            <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
+                <li class="nav-item">
+                    <a href="#" class=" px-sm-0 px-2">
+                        <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline "></span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2">
+                        <i class="fs-5 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">About</span> </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-sm-0 px-2">
+                        <i class="fs-5 bi-table"></i><span class="ms-1 d-none d-sm-inline">Registration</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-sm-0 px-2">
+                        <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Pages Validation</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-sm-0 px-2">
+                        <i class="fs-5 bi-people"></i><span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                </li>
+            </ul>
+        </div>
+    </div>   
+  </div>
+</nav>
+
+
+
+    <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:150px"> 
+      <div class="card-header bg-info text-white">
+            Create Account
+      </div>
+      <div class="card-body"></div>
+    <form>
+     <div class="d-flex h-100">
+      <div class="m-auto">
+      <div class="form-group">
+      <label for="validationServerUsername" class="form-label">Username :</label>
+    <div class="input-group has-validation">
+      <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Enter a username" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+      <div id="validationServerUsernameFeedback" class="invalid-feedback">
+        Please choose a username.
+      </div>
+    </div>
+      </div>
+      <div class="form-group">
+      <label for="validationServerUsername" class="form-label">Email :</label>
+
+    <div class="input-group has-validation">
+      <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Enter your email" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+      <div id="validationServerUsernameFeedback" class="invalid-feedback">
+        Please enter a valid email.
+      </div>
+    </div>
+  </div>
+    <div class="form-group">
+       <label for="validationServerUsername" class="form-label">Password :</label>
+         <div class="input-group has-validation">
+           <input type="password" class="form-control is-invalid" id="validationServerUsername" placeholder="Enter a password" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                  Please choose a valid password.
+                </div>
+              </div></div>
+            <div class="form-group">
+              <label for="validationServerUsername" class="form-label">Password validation :</label>
+              <div class="input-group has-validation">
+                <input type="password" class="form-control is-invalid" id="validationServerUsername" placeholder="Validate the password"  aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+                <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                  Please validate the password.
+                </div>
+              </div></div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-info text-white" onclick="send_inscription()">Register</button>
+            </div>
+          </div>
+           </form>
+      </div> </div></div>
+
 </body>
 </html>
