@@ -246,6 +246,10 @@ span .fa-check-square{
     animation: shake 0.7s ease-in-out 0s;
 }
 
+.info {
+    font-size: 18px;
+}
+
 @keyframes shake {
     0% { margin-left: 0rem; margin-right: 0rem; }
     20% { margin-left: 1rem; margin-right: -1rem; }
