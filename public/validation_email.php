@@ -9,7 +9,6 @@
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(1, $username);
     $stmt->execute();
-    $result = $stmt->rowCount();
 ?>
 
 <!doctype html>
