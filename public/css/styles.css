@@ -38,6 +38,18 @@ input.inscription_input {
     padding-top: 0px;
 }
 
+#btn_remove_account {
+    background-color: red;
+    border-color: #424242;
+    border-width: 2px;
+}
+
+#btn_remove_account:hover {
+    background-color: #424242;
+    color: #4998a7 !important;
+    border-color: #4998a7;
+}
+
 
 /* Icon dans la barre de gauche */
 .icon-image {
