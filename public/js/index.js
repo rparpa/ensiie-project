@@ -1,7 +1,12 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     init();
 
-    $("body").click(function (e){
+    // Permet d'avoir un affichage au bon niveau lors des href sur les ID de la page
+    window.addEventListener("hashchange", function () {
+        window.scrollTo(window.scrollX, window.scrollY - 100);
+    });
+
+    $("body").click(function (e) {
         let nav = $("#navbar");
         if ((e.target.className == 'navbar-toggler-icon' || e.target.className == 'navbar-toggler collapsed') && !nav.is(':visible'))
             nav.show();
@@ -10,46 +15,46 @@ jQuery(document).ready(function($) {
     })
 });
 
-function init(){
+function init() {
     $('.alertField').hide();
-    if(localStorage.getItem('connected') == 'true'){
+    if (localStorage.getItem('connected') == 'true') {
         connectedDisplay();
         return;
     }
     $('.onlyUser, .onlyAdmin').hide();
 
-    $("#username").change(function(){
+    $("#username").change(function () {
         localStorage.setItem("username", $("#username").val())
     });
     $("#username").val(localStorage.getItem("username"));
 }
 
-function connectedDisplay(){
+function connectedDisplay() {
     $("#affiche_name").html("Bonjour " + localStorage.getItem("username") + " !");
     $(".onlyUser").show();
 
     $(".notUser").hide();
 
-    if(localStorage.getItem('isadmin') == 'true')   $(".onlyAdmin").show();
+    if (localStorage.getItem('isadmin') == 'true') $(".onlyAdmin").show();
     else $(".onlyAdmin").hide();
 }
 
-function deconnection(){
+function deconnection() {
     localStorage.setItem('username', '');
     localStorage.setItem('connected', null);
     localStorage.setItem('isadmin', null);
     window.location.replace('index.php');
 }
 
-function shake(obj){
+function shake(obj) {
     obj.removeClass('shake');
-    obj.css("borderColor","red");
-    setTimeout(function(){
+    obj.css("borderColor", "red");
+    setTimeout(function () {
         obj.addClass('shake');
     });
 }
 
-function verify_user(){
+function verify_user() {
     let name = $("#username").val();
 
     $.ajax({
@@ -61,11 +66,11 @@ function verify_user(){
             pwd: $("#password").val()
         },
         dataType: 'json',
-        success: function(data){
-            if(data.status == "success"){
+        success: function (data) {
+            if (data.status == "success") {
                 localStorage.setItem('username', name);
                 localStorage.setItem('connected', true);
-                if(data.isadmin){
+                if (data.isadmin) {
                     localStorage.setItem('isadmin', true);
                 }
                 connectedDisplay();
@@ -75,7 +80,7 @@ function verify_user(){
     });
 }
 
-function get_all_article(){
+function get_all_article() {
     $.ajax({
         url: 'router.php',
         type: 'POST',
@@ -84,38 +89,42 @@ function get_all_article(){
             to_do: "get_all",
         },
         dataType: 'json',
-        success: function(data){
-            if(data.status == "error"){
+        success: function (data) {
+            if (data.status == "error") {
                 console.log(data.msg);
             }
-            else{
+            else {
                 load_all_article(data);
             }
         }
     });
 }
+function get_cat_text(page){
+    let cat = "";
+    
+    if ((page.cat0 == '' || page.cat0 == 'Aucune') && (page.cat1 == '' || page.cat1 == 'Aucune'))
+            cat = `<a class='black_link'> Aucune </a>`;
+        else {
+            if (page.cat0 != '' && page.cat0 != 'Aucune')
+                cat = `<a class='black_link'>` + page.cat0 + `</a>`;
+            if (page.cat1 != '' && page.cat1 != 'Aucune')
+                if(cat != "")
+                    cat += ` et <a class='black_link'>` + page.cat1 + `</a>`;
+                else
+                    cat += `<a class='black_link'>` + page.cat1 + `</a>`;
+        }
+    return cat;
+}
 
-function load_all_article(data){
+function load_all_article(data) {
     let content = $("#content")
 
     data.forEach(e => {
-        let cat = "";
-        if ((e.cat0 == '' || e.cat0 == 'Aucune') && (e.cat1 == '' || e.cat1 == 'Aucune'))
-            cat = `<a class='black_text'> Aucune </a>`;
-        else {
-            if (e.cat0 != '' && e.cat0 != 'Aucune')
-                cat = `<a class='black_text'>` + e.cat0 + `</a>`;
-            if (e.cat1 != '' && e.cat1 != 'Aucune' && cat != "")
-                cat += ` et <a class='black_text'>` + e.cat1 + `</a>`;
-            else
-                cat += `<a class='black_text'>` + e.cat1 + `</a>`;
-        }
-
         let valide = "";
-        if(e.validated)
+        if (e.validated)
             valide = `<span><i class="fas fa-check-square"></i></span>`;
 
-        
+
         let html = `
         <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px;">
             <button class="title_index" onclick="get_article(`+ e.id_page + `)">
@@ -128,17 +137,17 @@ function load_all_article(data){
             </div>
             <br>
             <div class="row">
-                <div class="col-5 display_list_article"><h5 class="black_text">Categories: ` + cat + `</h5></div>       
+                <div class="col-5 display_list_article"><h5 class="black_text">Categories: ` + get_cat_text(e) + `</h5></div>       
                 <div class="col-3 display_list_article"><h6>Création: <span class="blue_text">` + e.creation_date + `</span></h6></div>
                 <div class="col-4 display_list_article"><h6>Dernière modification: <span class="blue_text">` + e.modification_date + `</span></h6></div>
             </div>
         </div>`
-        
+
         content.append(html);
     });
 }
 
-function get_article(id){
+function get_article(id) {
     $.ajax({
         url: 'router.php',
         type: 'POST',
@@ -148,22 +157,48 @@ function get_article(id){
             id_article: id,
         },
         dataType: 'json',
-        success: function(data){
-            if(data.status == "error"){
+        success: function (data) {
+            if (data.status == "error") {
                 console.log(data.msg)
             }
-            else{
+            else {
                 load_article(data);
             }
         }
     });
 }
 
+function load_article_content(sections) {
+    sections.forEach(s => {
+        // menu de l'article
+        $("#nav_article").append(`<a href="#` + s.title + `">` + s.title + `</a>`);
+        // ajout des sections
+        $("#section_container").append(`<div class="row section_article"><div class="col-12"><h1 id="` + s.title + `" class="section_title">` + s.title + `</h1></div></div><div class="row"><div class="col-12 section_content">` + s.content + `</div></div>`);
+    });
+}
+
+function load_article_intro(page) {
+    $("#article_title").html(page.title);
+    $("#article_cat").append(get_cat_text(page));
+
+    $("#article_date_crea").append(`<span class="black_text">` + page.creation_date + `</span>`)
+    $("#article_date_modif").append(`<span class="black_text">` + page.modification_date + `</span>`)
+
+    $("#synopsis_content").html(page.synopsis);
+
+    //$(".section_content").html(page.content);
+
+}
+
 function load_article(data) {
     console.log(data);
-    
-    let content = $("#content");
-    content.html(`<p>` +data.page.title + `</p>`);
+
+    $('html').ajaxStop($("#content").load('article.html', function () {
+        load_article_content(data.sections);
+        load_article_intro(data.page);
+    }));
+
+    //content.html(`<p>` +data.page.title + `</p>`);
 
     //ajouter la partie titre et categories ...
 
@@ -171,8 +206,8 @@ function load_article(data) {
     <div class="page affichePage"><div id="titre"><h1>Hadès</h1>
     <p>Hades est un jeu vidéo roguelike action-RPG développé et publié par Supergiant Games, sorti le 17 septembre 2020 sur Microsoft Windows et Nintendo Switch.</p>
     `
-    autre = 
-    `
+    autre =
+        `
     </div><div class="section">
     <h2>Système de jeu</h2>
     <p>Le joueur incarne Zagreus, le prince des enfers, qui tente de fuir le royaume des morts pour découvrir ses origines et réunifier sa famille. Lors de sa quête, les autres divinités olympiennes lui accordent des cadeaux pour l'aider à combattre toutes les entités des Enfers pensant que Zagreus souhaite les rejoindre.
@@ -195,10 +230,6 @@ function load_article(data) {
         // ajouter les sections
     });
 
-    // ajouter les auteurs
-
-
-    
-    content.html(titre);
+    //content.html(titre);
 }
 
