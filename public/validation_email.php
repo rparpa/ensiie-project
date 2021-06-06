@@ -1,0 +1,27 @@
+<?php
+    if(!isset($_GET['username'])){
+        header('Location: http://www.example.com/');
+    }
+    require_once '../src/Bootstrap.php';
+    $conn = \Db\Connection::get();
+    $username = $_GET['username'];
+    $sql = 'UPDATE public.User SET VALIDATE = TRUE WHERE username = ?';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1, $username);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+?>
+
+<!doctype html>
+
+<html lang="fr">
+ <?php include("header.html"); ?>
+<body>
+    <?php include("navbar.html");?>
+    <div id="email_message1" class="col-12">Merci d'avoir validé votre adresse email !</div>
+    <div id="email_message2" class="col-12">Vous pouvez desormais vous connecter</div>
+    <div id="email_text_pseudo" class="col-12">Votre Pseudo: <?php echo "<span id='email_username'>".$username."</span>"; ?></div>
+    <div class="col-12 btn_back_from_validation"><button onclick='window.location.replace("/index.php");' type="button" class="btn btn-secondary btn-sm mb-1">Retourner à la page d'accueil</button></div>
+</body>
+
+</html>

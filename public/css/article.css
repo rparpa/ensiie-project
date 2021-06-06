@@ -64,9 +64,41 @@
     color:#4998a7 !important;
 }
 
+#email_message1, #email_message2, #email_username {
+    text-align: center;
+}
+
+#email_message1 {
+    margin-top: 10vh;
+    font-size: 80px;
+}
+
+#email_message2, #email_text_pseudo  {
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+#email_username {
+    color: #4998a7;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.btn_back_from_validation{
+    font-size: 50px;
+    text-align: center;
+}
+
+#email_text_pseudo{
+    text-align: center;
+    color: #424242;
+}
+
 @media (max-width: 900px) {
 
     .sidepanel {
         width: 0vw;
     }
 }
+
