@@ -12,7 +12,7 @@
   <p>Ce projet a pour but un wikipédia consacré pour les élèves de l'école.</p>
 </div>
     
-<link rel="stylesheet" href="style_about_us.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/style_about_us.css" type="text/css" media="screen" />
 
 <h2 style="text-align:center">Notre équipe</h2>
 <div class="row">
