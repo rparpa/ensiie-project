@@ -1,10 +1,9 @@
 <!doctype html>
 
 <html lang="fr">
-<?php include("header.html"); ?>
-
+<?php include("template/header.html"); ?>
 <body>
-    <?php include("navbar.html"); ?>
+    <?php include("template/navbar.html"); ?>
     <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px">
         <div class="card-header bg-info text-white">
             <h3>Mon profile utilisateur</h3>

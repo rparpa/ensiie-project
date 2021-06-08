@@ -64,9 +64,71 @@
     color:#4998a7 !important;
 }
 
+#email_message1, #email_message2, #email_username {
+    text-align: center;
+}
+
+#email_message1 {
+    margin-top: 10vh;
+    font-size: 80px;
+}
+
+#email_message2, #email_text_pseudo  {
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+#email_username {
+    color: #4998a7;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.div_btn_back{
+    text-align: center;
+}
+
+.btn_back_from_validation{
+    font-size: 25px !important;
+    margin-top: 40px;
+    background-color: #424242;
+    color: #4998a7;
+    border-width: 2px !important;
+}
+
+.btn_back_from_validation:hover{
+    background-color: #ffffff;
+    color: #424242;
+    border-color: #424242 !important;
+}
+
+#email_text_pseudo{
+    text-align: center;
+    color: #424242;
+}
+
+.star_article {
+    color: #4998a7;
+    font-size: 50%;
+    vertical-align: middle !important;
+    padding-bottom: 0.8%;
+    margin-left: 15px;
+}
+
+.star_index{
+    color: #424242;
+    font-size: 80%;
+    vertical-align: middle !important;
+    padding-bottom: 0.8%;
+    margin-left: 5px;
+
+}
+
 @media (max-width: 900px) {
 
     .sidepanel {
         width: 0vw;
     }
 }
+

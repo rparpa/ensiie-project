@@ -1,11 +1,11 @@
 <!doctype html>
 
 <html lang="fr">
-<?php include("header.html"); ?>
+<?php include("template/header.html"); ?>
 
 <body class="bg-light">
 
-<?php include("navbar.html"); ?>
+<?php include("template/navbar.html"); ?>
 <div class="about-section">
   <h1>A propos de nous </h1>
   <p>Nous sommes des étudiants en 1re année d'école d'ingénieurs à l'ENSIIE.</p>

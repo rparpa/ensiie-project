@@ -30,6 +30,7 @@ function send_inscription(){
                 if(data.status == "success"){
                     localStorage.setItem('username', $('#username_form').val());
                     $(".SuccessInscription").show();
+                    send_mail($('#username_form').val(), $('#email_form').val());
                     setTimeout(function(){
                         window.location.replace("index.php");
                     }, 5000);
@@ -38,6 +39,18 @@ function send_inscription(){
             }
         });
 };
+
+function send_mail(username, mail){
+    $.ajax({
+        type:'POST',
+        url:'mail.php',
+        data:{
+            username: username,
+            email: mail,
+        },
+        dataType: 'json'
+    });
+}
 
 function before_submit() {
 
