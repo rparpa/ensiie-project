@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css";
+
 html,body {
   margin: 0;
   font-family: 'Roboto', Courier, monospace;
@@ -34,6 +36,18 @@ input.inscription_input {
     padding-bottom: 34px;
     border-width: 2px;
     padding-top: 0px;
+}
+
+#btn_remove_account {
+    background-color: red;
+    border-color: #424242;
+    border-width: 2px;
+}
+
+#btn_remove_account:hover {
+    background-color: #424242;
+    color: #4998a7 !important;
+    border-color: #4998a7;
 }
 
 
@@ -84,9 +98,10 @@ div {
     padding-left: 15px;
 }
 
-.black_text {
-    color: black;
+.black_link, .black_text {
+    color: black !important;
 }
+
 .blue_text {
     color: #4998a7;
 }
@@ -116,10 +131,10 @@ a {
 
 #wrapper {
     padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    -webkit-transition: all 0s ease;
+    -moz-transition: all 0s ease;
+    -o-transition: all 0s ease;
+    transition: all 0s ease;
 }
 
 #wrapper.toggled {
@@ -133,11 +148,11 @@ a {
     overflow-y: auto;
     margin-left: -250px;
     width: 0;
-    height: 100%;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    height: 100vh;
+    -webkit-transition: all 0s ease;
+    -moz-transition: all 0s ease;
+    -o-transition: all 0s ease;
+    transition: all 0s ease;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -204,6 +219,27 @@ a {
 .sidebar-nav > .sidebar-brand a:hover {
     background: none;
     color: #fff;
+}
+
+button.title_index {
+    border: none;
+    padding: 0px;
+    cursor: pointer;
+    outline: none;
+}
+
+button.title_index:focus {
+    outline: none;
+}
+
+.card-header h4:hover {
+    color:#424242;
+}
+
+span .fa-check-square{
+    color: #424242;
+    margin-left: 1vw;
+    font-size: 25px;
 }
 
 .shake {

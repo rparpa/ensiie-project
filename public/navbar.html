@@ -1,48 +1,39 @@
 <nav class="navbar sticky-top navbar-dark bg-dark navbar-fixed-top">
-  <div class="container-fluid">
-
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-  <span class="logo">
-  <a class="navbar-brand " href="#">
-    <a href="index.php" id="title_Wikipediie">Wikiped<span style="color: #4998a7" class="d-inline-block align-text-top">IIE</span></a>
-  </a>
-</span>
-
-    <form>
-    <div class="form-inline">
-          <span id="affiche_name" class=" mx-sm-5 onlyUser"></span>
-           <div class="form-group mx-sm-1 mb-1">
-              <input style="height:25px; width:150px" type="text" class="form-control input-sm notUser" id="username" placeholder="Username">
-           </div>
-        <div class="form-group mb-1 mx-sm-2 ">
-          <input style="height:25px; width:150px" type="password" class="form-control input-sm notUser" id="password" placeholder="Password">
+    <div class="container-fluid">
+        <button id="nav_btn" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="logo">
+            <a href="index.php" id="title_Wikipediie">Wikiped<span style="color: #4998a7" class="d-inline-block align-text-top">IIE</span></a>
+        </span>
+        <div class="form-inline">
+            <span id="affiche_name" class=" mx-sm-5 onlyUser"></span>
+            <div class="form-group mx-sm-1 mb-1">
+                <input style="height:25px; width:150px" type="text" class="form-control input-sm notUser" id="username" placeholder="Username">
+            </div>
+            <div class="form-group mb-1 mx-sm-2 ">
+                <input style="height:25px; width:150px" type="password" class="form-control input-sm notUser" id="password" placeholder="Password">
+            </div>
+            <div>
+                <button onclick="verify_user();" type="button" class="btn btn-secondary btn-sm mb-1 notUser">Connexion</button>
+            </div>
+            <div class="form-group">
+                <button onclick="window.location.replace('article.php')" type="button" class="btn btn-secondary btn-sm mb-1 onlyUser">Ajouter un article</button>
+            </div >
+            <div class="form-group mx-sm-1">
+                <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-1 onlyUser ">Deconnexion</button> 
+            </div>
+            <div class="form-group mx-sm-1 ">
+                <button onclick="window.location.replace('index.php')" type="button" class="btn btn-secondary btn-sm mb-1 notUser">Inscription</button>  
+            </div>
         </div>
-      </form>
-      <div   >
-          <button onclick="verify_user();" type="button" class="btn btn-secondary btn-sm mb-1 notUser">Connexion</button>
-      </div>
-      <div class="form-group  ">
-           <button onclick="window.location.replace('article.php')" type="button" class="btn btn-secondary btn-sm mb-1 onlyUser">Ajouter un article</button>
-          </div >
-          <div class="form-group mx-sm-1 ">
-          <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-1 onlyUser ">Deconnexion</button> 
-      </div>
-      <div class="form-group mx-sm-1 ">
-           <button onclick="window.location.replace('index.php')" type="button" class="btn btn-secondary btn-sm mb-1 notUser">Inscription</button>  
-      </div>
     </div>
-  </form>
-</div>
-
 </nav>
 
 
 
 <div id="navbar" class="navbar-collapse collapse bg-dark min-vh-100">
-    <div id="wrapper" class="toggled ">
+    <div id="wrapper" class="toggled">
         <div class="container-fluid ">
             <div id="sidebar-wrapper" class="bg-dark">
                 <ul class="sidebar-nav">
