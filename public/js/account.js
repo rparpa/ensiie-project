@@ -1,7 +1,3 @@
-jQuery(document).ready(function ($) {
-    affichage_info_user();
-});
-
 function delete_account(){
     if (confirm("Etes vous sur de vouloir supprimer votre compte ?")){
         $.ajax({
@@ -43,7 +39,7 @@ function change_password() {
     let check_all = true;
 
     // check empty fields
-    $('.passwd_input').each(function () {
+    $('.account_passwd_input').each(function () {
         $(this).css("borderColor", "red");
         if (!$(this).val()) {
             shake($(this))
@@ -143,9 +139,9 @@ function send_new_password() {
             },
             dataType: 'json',
         });
-        $('#sucessPassword').show();
+        $('#SucessPassword').show();
         setTimeout(function () {
-            $('#sucessPassword').fadeOut();
+            $('#SucessPassword').fadeOut();
         }, 5000);
     }
 }
