@@ -108,6 +108,23 @@
     color: #424242;
 }
 
+.star_article {
+    color: #4998a7;
+    font-size: 50%;
+    vertical-align: middle !important;
+    padding-bottom: 0.8%;
+    margin-left: 15px;
+}
+
+.star_index{
+    color: #424242;
+    font-size: 80%;
+    vertical-align: middle !important;
+    padding-bottom: 0.8%;
+    margin-left: 5px;
+
+}
+
 @media (max-width: 900px) {
 
     .sidepanel {

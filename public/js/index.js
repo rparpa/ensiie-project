@@ -117,33 +117,23 @@ function get_cat_text(page){
 }
 
 function load_all_article(data) {
-    let content = $("#content")
-    //TODO - Templaitiser et faire un Jquery.load("template") voir load d'un article /!\ utiliser append pour ne pas suppr le contenue de du div
     data.forEach(e => {
         let valide = "";
         if (e.validated)
-            valide = `<span><i class="fas fa-check-square"></i></span>`;
+            valide = `<span><i class="fas fa-star star_index"></i></span>`;
 
-
-        let html = `
-        <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px;">
-            <button class="title_index" onclick="get_article(`+ e.id_page + `)">
-                <div class="card-header bg-info text-white display_list_article"><h4>` + e.title + valide + `</h4></div>
-            </button>
-            <br>
-            <div class="row">
-                <div id="synopsis" class="col-12 display_list_article"><p class="black_text">` + e.synopsis + `</p>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-5 display_list_article"><h5 class="black_text">Categories: ` + get_cat_text(e) + `</h5></div>       
-                <div class="col-3 display_list_article"><h6>Création: <span class="blue_text">` + e.creation_date + `</span></h6></div>
-                <div class="col-4 display_list_article"><h6>Dernière modification: <span class="blue_text">` + e.modification_date + `</span></h6></div>
-            </div>
-        </div>`
-
-        content.append(html);
+        fetch('template/list_article.html')
+            .then(response => response.text())
+            .then(function(data){
+                data = data.replace("%%ID_PAGE%%", e.id_page);
+                data = data.replace("%%TITLE%%", e.title);
+                data = data.replace("%%VALIDATE%%", valide);
+                data = data.replace("%%SYNOPSIS%%", e.synopsis);
+                data = data.replace("%%CATEGORIE%%", get_cat_text(e));
+                data = data.replace("%%CREATION_DATE%%", e.creation_date);
+                data = data.replace("%%MODIF_DATE%%", e.modification_date);
+                $("#content").append(data);
+            });
     });
 }
 
@@ -180,25 +170,23 @@ function load_article_content(sections) {
 
 function load_article_intro(page) {
     $("#article_title").html(page.title);
+    if(page.validated)
+    $("#article_title").append(`<span><i class="fas fa-star star_article"></i></span>`);
+
+    
     $("#article_cat").append(get_cat_text(page));
 
     $("#article_date_crea").append(`<span class="black_text">` + page.creation_date + `</span>`)
     $("#article_date_modif").append(`<span class="black_text">` + page.modification_date + `</span>`)
 
     $("#synopsis_content").html(page.synopsis);
-
-    //TODO
-    // Ajouter message de validation ou juste logo je sais pas encore ce qui est le mieux
-
-
 }
 
 function load_article(data) {
     $("#content").load('article.html', function () {
-        console.log("test1")
         load_article_content(data.sections);
         load_article_intro(data.page);
     });
-    console.log(data);
+    // TODO GARDER LE DERNIER ARTICLE VISITÉ EN MEMOIR PR PAS RETOURNER A INDEX QUAND ON RELOAD
 }
 

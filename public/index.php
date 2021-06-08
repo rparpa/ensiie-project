@@ -1,9 +1,9 @@
 <!doctype html>
 
 <html lang="fr">
-<?php include("header.html"); ?>
+<?php include("template/header.html"); ?>
 <body>
-    <?php include("navbar.html"); ?>
+    <?php include("template/navbar.html"); ?>
     <div id="content">
         <script> get_all_article(); </script>
     </div>

@@ -1,17 +1,18 @@
 <!doctype html>
 
 <html lang="fr">
-<?php include("header.html"); ?>
+<?php include("template/header.html"); ?>
 
 <body class="bg-light">
 
-<?php include("navbar.html"); ?>
+<?php include("template/navbar.html"); ?>
 <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px">
     <div class="card-header bg-info text-white">
         <h3>Inscription</h3>
     </div>
     <div class="card-body text-center"></div>
     <h3 class="sucessField alertField SuccessInscription" id="SuccessInscription">Bravo, votre inscription a bien été prise en compte !</h3>
+    <h3 class="sucessField alertField SuccessInscription" id="SuccessInscription2">Un email de confirmation vient de vous êtres envoyé.</h3>
     <h6 class="sucessField alertField SuccessInscription">(redirection dans 5s...)</h6>
 
     <br>
