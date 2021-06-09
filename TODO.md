@@ -1,0 +1,3 @@
+- [ ] Pas de retour a index lors de reload de d'un article
+- [ ] Message d'erreur lors d'une connection raté
+- [ ] Faire toute la partie admin

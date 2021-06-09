@@ -39,15 +39,15 @@ input.inscription_input {
 }
 
 #btn_remove_account {
-    background-color: red;
-    border-color: #424242;
-    border-width: 2px;
+    background-color: red !important;
+    border-color: #424242 !important;
+    border-width: 2px !important;
 }
 
 #btn_remove_account:hover {
-    background-color: #424242;
-    color: #4998a7 !important;
-    border-color: #4998a7;
+    background-color: #4998a7 !important;
+    color: #ffffff !important;
+    border-color: #424242 !important;
 }
 
 
