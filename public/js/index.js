@@ -151,6 +151,7 @@ function get_article(id) {
         }
         else {
             load_article(data);
+            window.history.pushState('', 'Load article', "?id="+id);
         }
     });
 }

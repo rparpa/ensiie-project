@@ -118,7 +118,7 @@ function postArticle(){
     }).done(function(data){
         if(data.status == "success"){ 
             console.log(data);
-            // window.location.replace("index.html");
+            // window.location.replace("index.php");
         }
         else{
             // TODO show error somewhere
