@@ -65,19 +65,18 @@ function verify_user() {
             username: name,
             pwd: $("#password").val()
         },
-        dataType: 'json',
-        success: function (data) {
-            if (data.status == "success") {
-                localStorage.setItem('username', name);
-                localStorage.setItem('connected', true);
-                if (data.isadmin) {
-                    localStorage.setItem('isadmin', true);
-                }
-                connectedDisplay();
-                window.location.replace('index.php');
+        dataType: 'json'
+    }).done(function (data) {
+        if (data.status == "success") {
+            localStorage.setItem('username', name);
+            localStorage.setItem('connected', true);
+            if (data.isadmin) {
+                localStorage.setItem('isadmin', true);
             }
+            connectedDisplay();
+            window.location.replace('index.php');
         }
-    });
+    })
 }
 
 function get_all_article() {
@@ -88,16 +87,15 @@ function get_all_article() {
             request: "Controller/get_article.php",
             to_do: "get_all",
         },
-        dataType: 'json',
-        success: function (data) {
-            if (data.status == "error") {
-                console.log(data.msg);
-            }
-            else {
-                load_all_article(data);
-            }
+        dataType: 'json'
+    }).done(function (data) {
+        if (data.status == "error") {
+            console.log(data.msg);
         }
-    });
+        else {
+            load_all_article(data);
+        }
+    })
 }
 function get_cat_text(page){
     let cat = "";
@@ -146,14 +144,13 @@ function get_article(id) {
             to_do: "get_article",
             id_article: id,
         },
-        dataType: 'json',
-        success: function (data) {
-            if (data.status == "error") {
-                console.log(data.msg)
-            }
-            else {
-                load_article(data);
-            }
+        dataType: 'json'
+    }).done(function (data) {
+        if (data.status == "error") {
+            console.log(data.msg)
+        }
+        else {
+            load_article(data);
         }
     });
 }
@@ -183,7 +180,7 @@ function load_article_intro(page) {
 }
 
 function load_article(data) {
-    $("#content").load('article.html', function () {
+    $("#content").load('template/article.html', function () {
         load_article_content(data.sections);
         load_article_intro(data.page);
     });

@@ -15,18 +15,16 @@ function loadCategories(){
         data: {
             request: "Controller/get_categories.php"
         },
-        async: false,
-        dataType: 'json',
-        success: function(data){
-            if(data.status == "success"){
-                setCategories(data.categories);  
-            }
-            else{
-                // TODO show error somewhere
-                alert("LOADING ERROR");
-            }
+        dataType: 'json'
+    }).done(function(data){
+        if(data.status == "success"){
+            setCategories(data.categories);  
         }
-    });  
+        else{
+            // TODO show error somewhere
+            alert("LOADING ERROR");
+        }
+    })
 }
 
 function addSection(){
@@ -116,18 +114,15 @@ function postArticle(){
             request: "Controller/add_article.php",
             article: article
         },
-        async: true,
-        dataType: 'json',
-        success: function(data){
-            if(data.status == "success"){ 
-                console.log(data);
-                // window.location.replace("index.html");
-            }
-            else{
-                // TODO show error somewhere
-                alert("LOADING ERROR");
-            }
+        dataType: 'json'
+    }).done(function(data){
+        if(data.status == "success"){ 
+            console.log(data);
+            // window.location.replace("index.html");
         }
-    }); 
-
+        else{
+            // TODO show error somewhere
+            alert("LOADING ERROR");
+        }
+    });
 }
