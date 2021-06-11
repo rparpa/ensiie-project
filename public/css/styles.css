@@ -98,6 +98,9 @@ div {
     border-radius: 0;
 }
 
+.fa-exclamation-triangle{
+    margin-right: 10px;
+}
 
 .display_list_article {
     text-align: left;
