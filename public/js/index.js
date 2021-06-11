@@ -76,6 +76,14 @@ function verify_user() {
             connectedDisplay();
             window.location.replace('index.php');
         }
+        else{
+            $("#connection_failed").show();
+            $("#div_alert").css('background-color', 'rgba(255,0,0,0.5)');
+            setTimeout(function () {
+                $('#connection_failed').fadeOut();
+                $("#div_alert").css('background-color', '#ffffff');
+            }, 5000);
+        }
     })
 }
 

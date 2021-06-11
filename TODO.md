@@ -1,4 +1,4 @@
-- [ ] Pas de retour a index lors de reload de d'un article
-- [ ] Message d'erreur lors d'une connection raté
+- [x] Pas de retour a index lors de reload de d'un article
+- [x] Message d'erreur lors d'une connection raté
 - [ ] Faire toute la partie admin
 - [x] Dans les fonction ajax changer successs par fonction done
