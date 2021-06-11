@@ -2,3 +2,4 @@
 - [x] Message d'erreur lors d'une connection raté
 - [ ] Faire toute la partie admin
 - [x] Dans les fonction ajax changer successs par fonction done
+- [ ] rendre navbar responsive (proposition: mettre connection dans side bar quand trop petit/ ou crée page de connection)
