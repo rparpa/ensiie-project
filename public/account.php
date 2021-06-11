@@ -48,15 +48,16 @@
                                 <input type="password" class="form-control passwd_input" type="password" id="passwordAccount" name="passwordAccount" placeholder="Nouveau mot de passe" maxlength="50" minlength="6">
                             </div>
                             <br>
-                            <span class="alertField" id="alertPassword_length">Le mot de passe doit faire 6 caractères minimum</span>
+                            <span class="alertField" id="alertPassword_length">Le mot de passe doit faire 6 caractères minimum<br></span>
+                            <span class="alertField" id="alertSamePassword">Le nouveau mot de passe est identique à l'ancien</span>
                         </div>
                         <div class="form-group">
                             <label for="email_form" class="form-label">Confirmation du nouveau mot de passe :</label>
                             <div class="input-group">
-                                <input type="password" class="form-control passwd_input " type="password" id="passwordAccountVerif" name="passwordAccountVerif" placeholder="Confirmation du nouveau mot de passe" maxlength="50" minlength="6">
+                                <input type="password" class="form-control passwd_input" type="password" id="passwordAccountVerif" name="passwordAccountVerif" placeholder="Confirmation du nouveau mot de passe" maxlength="50" minlength="6">
                             </div>
                             <br>
-                            <span class="alertField" id="alertPassword">Les mots de passe ne correspondent pas</span>
+                            <span class="alertField" id="alertPassword">Les mots de passe ne correspondent pas<br></span>
                             <span class="alertField sucessField" id="SucessPassword">Votre mot de passe a été changé avec succes !</span>
                         </div>
                         <div class="form-group" id="div_inscription">

@@ -86,6 +86,22 @@ div {
     color: #72b312 !important;
 }
 
+#connection_failed {
+    right: auto;
+    color: white !important;
+}
+
+#div_alert {
+    background-color: #ffffff;
+    text-align: right;
+    border-width: 0px;
+    border-radius: 0;
+}
+
+.fa-exclamation-triangle{
+    margin-right: 10px;
+}
+
 .display_list_article {
     text-align: left;
     color: #424242
