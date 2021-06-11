@@ -162,6 +162,7 @@ a {
     left: 250px;
     z-index: 1000;
     overflow-y: auto;
+    top: 65px;
     margin-left: -250px;
     width: 0;
     height: 100vh;
@@ -329,4 +330,7 @@ span .fa-check-square{
     }
 
 
+}
+
+@media (max-width: 636px) {
 }
