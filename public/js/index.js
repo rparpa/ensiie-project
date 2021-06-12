@@ -186,6 +186,8 @@ function load_article_intro(page) {
     $("#article_date_modif").append(`<span class="black_text">` + page.modification_date + `</span>`)
 
     $("#synopsis_content").html(page.synopsis);
+
+    init();
 }
 
 function load_article(data) {
@@ -195,4 +197,3 @@ function load_article(data) {
     });
     // TODO GARDER LE DERNIER ARTICLE VISITÉ EN MEMOIR PR PAS RETOURNER A INDEX QUAND ON RELOAD
 }
-
