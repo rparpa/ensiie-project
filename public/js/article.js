@@ -35,11 +35,13 @@ function addSection(){
         "<div id=sect" + id +  " class='section'>"
     );
     $("#sect" + id).append(
-        "<label for=section" + id + "> Section  </label> <br>",
-        "<input type=text maxlength=128 id=section" + id + ">",  
+        "<label for=section" + id + " class='text-info'> <b> Section "+ (id+1) +" </b> </label>",
+        "</br>",
+        "<input type=text maxlength=128 id=section required> ",
+        "<br>",
         "<br>",
         "<label for=content" + id + "> Contenu </label><br>",
-        "<textarea id=content" + id + " rows=10 ></textarea>",
+        "<textarea id=content" + id + " class='w-100' rows='10' ></textarea>",
     );
 
 }
