@@ -5,7 +5,6 @@
 <body>
     <?php include("template/navbar.html"); ?>
     <div id="nav_article" class="sidepanel">
-        <span class="categories">Catégories</span>
     </div>
     <div id="content">
         <script> <?php

@@ -72,6 +72,7 @@ input.inscription_input {
 a {
     text-decoration: none;
     color: #424242;
+    cursor: pointer;
 }
 
 div {
@@ -116,14 +117,6 @@ div {
 
 .black_link, .black_text {
     color: black !important;
-}
-
-.blue_link {
-    color:#4998a7 !important;
-}
-
-.blue_link:hover {
-    color:#ffffff !important;
 }
 
 .blue_text {

@@ -2,21 +2,21 @@
 $conn = \Db\Connection::get();
 
 switch ($_POST['to_do']) {
-    case "check_password":
-        check_password($conn); break;
-    case "change_password":
-        change_password($conn); break;
-    case "user_info":
-        get_user_info($conn); break;
-    case "change_email":
-        change_email($conn); break;
-    case "delete_user":
-        delete_user($conn); break;
+    case "checkPassword":
+        checkPassword($conn); break;
+    case "changePassword":
+        changePassword($conn); break;
+    case "userInfo":
+        getUserInfo($conn); break;
+    case "changeEmail":
+        changeEmail($conn); break;
+    case "deleteUser":
+        deleteUser($conn); break;
     default:
         file_put_contents('php://stderr', print_r("Unknown action 'to_do':".$_POST['to_do']." in account.php\n", TRUE));
 }
 
-function get_user_info($conn) {
+function getUserInfo($conn) {
     if (!isset($_POST['username'])){
         echo json_encode(array('status' => 'Error get user information Password', 'msg' => 'A fields is not set :\'username\''));
         return;
@@ -36,7 +36,7 @@ function get_user_info($conn) {
     }
 }
 
-function check_password($conn)
+function checkPassword($conn)
 {
     if (!isset($_POST['password']) or !isset($_POST['username'])){
         echo json_encode(array('status' => 'Error check Password', 'msg' => 'A fields is not set : \'password\' or \'username\''));
@@ -60,7 +60,7 @@ function check_password($conn)
     }
 }
 
-function change_password($conn)
+function changePassword($conn)
 {
     if (!isset($_POST['new_password']) or !isset($_POST['username'])){
         echo json_encode(array('status' => 'Error change Password', 'msg' => 'A fields is not set : \'new_password\' or \'username\''));
@@ -82,7 +82,7 @@ function change_password($conn)
     }
 }
 
-function change_email($conn){
+function changeEmail($conn){
     if (!isset($_POST['username']) or !isset($_POST['new_email'])){
         echo json_encode(array('status' => 'Error change Email', 'msg' => 'A fields is not set :\'username\' or \'email\''));
         return;
@@ -103,7 +103,7 @@ function change_email($conn){
     }
 }
 
-function delete_user($conn){
+function deleteUser($conn){
     if (!isset($_POST['username'])){
         echo json_encode(array('status' => 'Error delete user', 'msg' => 'A fields is not set :\'username\''));
         return;

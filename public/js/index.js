@@ -111,10 +111,11 @@ function loadCategories(){
     let dataC = "";
     $.ajax({
         url: 'router.php',
-        type: 'GET',
+        type: 'POST',
         async: false,
         data: {
-            request: "Controller/get_categories.php"
+            request: "Controller/get_categories.php",
+            to_do: "get_all"
         },
         dataType: 'json'
     }).done(function(data){
@@ -130,8 +131,33 @@ function loadCategories(){
 }
 
 function setIndexCategories(){
+    $("#nav_article").empty();
+    $("#nav_article").append(`<span class="categories">Catégories</span>`);
+    $("#nav_article").append(`<a onclick="get_all_article();"><i class="fas fa-eraser"></i>Nettoyer filtre</a>`);
     loadCategories().forEach(e => {
-            $("#nav_article").append("<a class='blue_link' onclick='test()'><i class='fas fa-circle'></i>" + e.name + "</a>");
+        $("#nav_article").append(`<a onclick="loadArticleByCategories('` + e.name + `')"><i class='fas fa-circle'></i>` + e.name + `</a>`);
+    });
+}
+
+function loadArticleByCategories(cat){
+    $.ajax({
+        url: 'router.php',
+        type: 'POST',
+        async: false,
+        data: {
+            request: "Controller/get_categories.php",
+            to_do: "get_by_cat",
+            cat: cat
+        },
+        dataType: 'json'
+    }).done(function(data){
+        if(data.status == "success"){
+            
+            load_all_article(data.articles);
+        }
+        else{
+            alert("LOADING ERROR");
+        }
     });
 }
 
@@ -139,20 +165,21 @@ function get_cat_text(page){
     let cat = "";
     
     if ((page.cat0 == '' || page.cat0 == 'Aucune') && (page.cat1 == '' || page.cat1 == 'Aucune'))
-            cat = `<a class='black_link'> Aucune </a>`;
+            cat = `<a class='black_link' onclick="loadArticleByCategories('` + page.cat0 + `')"> Aucune </a>`;
         else {
             if (page.cat0 != '' && page.cat0 != 'Aucune')
-                cat = `<a class='black_link'>` + page.cat0 + `</a>`;
+                cat = `<a class='black_link' onclick="loadArticleByCategories('` + page.cat0 + `')">` + page.cat0 + `</a>`;
             if (page.cat1 != '' && page.cat1 != 'Aucune')
                 if(cat != "")
-                    cat += ` et <a class='black_link'>` + page.cat1 + `</a>`;
+                    cat += ` et <a class='black_link' onclick="loadArticleByCategories('` + page.cat1 + `')">` + page.cat1 + `</a>`;
                 else
-                    cat += `<a class='black_link'>` + page.cat1 + `</a>`;
+                    cat += `<a class='black_link' onclick="loadArticleByCategories('` + page.cat1 + `')">` + page.cat1 + `</a>`;
         }
     return cat;
 }
 
 function load_all_article(data) {
+    $("#content").empty();
     data.forEach(e => {
         let valide = "";
         if (e.validated)
@@ -211,7 +238,7 @@ function load_article_content(sections) {
 function load_article_intro(page) {
     $("#article_title").html(page.title);
     if(page.validated)
-    $("#article_title").append(`<span><i class="fas fa-star star_article"></i></span>`);
+        $("#article_title").append(`<span><i class="fas fa-star star_article"></i></span>`);
 
     
     $("#article_cat").append(get_cat_text(page));
