@@ -1,30 +1,8 @@
-
-function setCategories(categories){
-    for(let i = 0; i < 2; i++){
-        for(let id = 0; id < categories.length; id++){
-            let name = categories[id].name;
-            $("#cat" + i).append("<option value=" + name + ">" + name + "</option>");
-        }
-    }
-}
-
-function loadCategories(){
-    $.ajax({
-        url: 'router.php',
-        type: 'GET',
-        data: {
-            request: "Controller/get_categories.php"
-        },
-        dataType: 'json'
-    }).done(function(data){
-        if(data.status == "success"){
-            setCategories(data.categories);  
-        }
-        else{
-            // TODO show error somewhere
-            alert("LOADING ERROR");
-        }
-    })
+function setCategories(){
+    loadCategories().forEach(e => {
+        $("#cat0").append("<option value=" + e.name + ">" + e.name + "</option>");
+        $("#cat1").append("<option value=" + e.name + ">" + e.name + "</option>");
+    });
 }
 
 function addSection(){

@@ -44,7 +44,7 @@
 
     </div>
     <script>
-      loadCategories();
+        setCategories();
     </script>
 </body>
 </html>
