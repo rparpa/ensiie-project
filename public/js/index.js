@@ -102,9 +102,39 @@ function get_all_article() {
         }
         else {
             load_all_article(data);
+            setIndexCategories();
         }
     })
 }
+
+function loadCategories(){
+    let dataC = "";
+    $.ajax({
+        url: 'router.php',
+        type: 'GET',
+        async: false,
+        data: {
+            request: "Controller/get_categories.php"
+        },
+        dataType: 'json'
+    }).done(function(data){
+        if(data.status == "success"){
+            dataC = data.categories;
+        }
+        else{
+            // TODO show error somewhere
+            alert("LOADING ERROR");
+        }
+    });
+    return dataC;
+}
+
+function setIndexCategories(){
+    loadCategories().forEach(e => {
+            $("#nav_article").append("<a class='blue_link' onclick='test()'><i class='fas fa-circle'></i>" + e.name + "</a>");
+    });
+}
+
 function get_cat_text(page){
     let cat = "";
     
@@ -166,6 +196,10 @@ function get_article(id) {
 
 function load_article_content(sections) {
     
+    $("#nav_article").empty();
+    $("#nav_article").append(`<span class="sommaire">Sommaire</span>`);
+    $("#nav_article").append(`<a href="#Synopsis"><i class="fas fa-circle"></i>Synopsis</a>`);
+
     sections.forEach(s => {
         // Ajout dans le mini menu
         $("#nav_article").append(`<a href="#` + s.title + `"><i class="fas fa-circle"></i>` + s.title + `</a>`);
@@ -193,6 +227,5 @@ function load_article(data) {
         load_article_content(data.sections);
         load_article_intro(data.page);
     });
-    // TODO GARDER LE DERNIER ARTICLE VISITÉ EN MEMOIR PR PAS RETOURNER A INDEX QUAND ON RELOAD
 }
 

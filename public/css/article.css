@@ -23,7 +23,7 @@
     color: #4998a7;
 }
 
-.sommaire {
+.sommaire, .categories {
     padding-top: 30px;
     padding-left: 30px;
     color: #4998a7 !important; 
@@ -143,6 +143,11 @@
 
 #article_content {
     margin-left: 20vw;
+    margin-right: 5vw;
+}
+
+#content {
+    margin-left: 0;
     margin-right: 5vw;
 }
 
