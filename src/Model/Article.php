@@ -70,6 +70,45 @@ class Article{
         return $stmt->rowCount() > 0;
     }
 
+    public static function get_all($conn) {
+        $sql = 'SELECT * FROM public.Article';
+        $stmt = $conn->prepare($sql);
+        if($stmt->execute()){
+                $row = $stmt->fetchAll();
+                echo json_encode($row);
+        }
+        else {
+            echo json_encode(array('status' => 'error', 'msg' => 'Une erreur est survenu, merci de recharger la page.'));
+        }
+    }
+    
+    public static function get_article($conn, $id){
+        $sql = 'SELECT * FROM public.Article WHERE ID_PAGE = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        $result = $stmt->rowCount();
+        if ($result == 1) {
+            $page = $stmt->fetch();
+        } else {
+            echo json_encode(array('status' => 'error', 'msg' => 'Une erreur est survenu, merci de retourner a la page d\'accueil.'));
+        }
+    
+    
+        $sql = 'SELECT * FROM public.Section WHERE ID_PAGE = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        $result = $stmt->rowCount();
+        
+        if ($stmt->execute()) {
+            $sections = $stmt->fetchAll();
+            echo json_encode(array('page' => $page, 'sections' => $sections));
+        } else {
+            echo json_encode(array('status' => 'error', 'msg' => 'Une erreur est survenu, merci de retourner a la page d\'accueil.'));
+        }
+    }
+
 }
 
 ?>

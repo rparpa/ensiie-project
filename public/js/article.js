@@ -1,32 +1,8 @@
-
-function setCategories(categories){
-    for(let i = 0; i < 2; i++){
-        for(let id = 0; id < categories.length; id++){
-            let name = categories[id].name;
-            $("#cat" + i).append("<option value=" + name + ">" + name + "</option>");
-        }
-    }
-}
-
-function loadCategories(){
-    $.ajax({
-        url: 'router.php',
-        type: 'GET',
-        data: {
-            request: "Controller/get_categories.php"
-        },
-        async: false,
-        dataType: 'json',
-        success: function(data){
-            if(data.status == "success"){
-                setCategories(data.categories);  
-            }
-            else{
-                // TODO show error somewhere
-                alert("LOADING ERROR");
-            }
-        }
-    });  
+function setCategories(){
+    loadCategories().forEach(e => {
+        $("#cat0").append("<option value=" + e.name + ">" + e.name + "</option>");
+        $("#cat1").append("<option value=" + e.name + ">" + e.name + "</option>");
+    });
 }
 
 function addSection(){
@@ -118,18 +94,15 @@ function postArticle(){
             request: "Controller/add_article.php",
             article: article
         },
-        async: true,
-        dataType: 'json',
-        success: function(data){
-            if(data.status == "success"){ 
-                console.log(data);
-                // window.location.replace("index.html");
-            }
-            else{
-                // TODO show error somewhere
-                alert("LOADING ERROR");
-            }
+        dataType: 'json'
+    }).done(function(data){
+        if(data.status == "success"){ 
+            console.log(data);
+            // window.location.replace("index.php");
         }
-    }); 
-
+        else{
+            // TODO show error somewhere
+            alert("LOADING ERROR");
+        }
+    });
 }

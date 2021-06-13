@@ -1,10 +1,10 @@
 <html lang="fr">
 <head>
-  <?php require("header.html"); ?>
+  <?php require("template/header.html"); ?>
   <script src="/js/article.js"></script>
 </head>
 <body>
-    <?php require("navbar.html"); ?>
+    <?php require("template/navbar.html"); ?>
     <br><br>
 
     <div class="card mx-auto bg-light" style="width: 900px; margin-top:50px ">
@@ -60,7 +60,7 @@
 
     </div>
     <script>
-      loadCategories();
+        setCategories();
     </script>
   </div>
 </body>

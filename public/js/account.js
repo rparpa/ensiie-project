@@ -3,17 +3,15 @@ function delete_account(){
         $.ajax({
             type: 'POST',
             url: 'router.php',
-            async: false,
             data: {
                 request: "Controller/account.php",
                 username: localStorage.getItem('username'),
                 to_do: "delete_user"
             },
-            dataType: 'json',
-            success: function (data, status, xml) {
-                deconnection();
-            }
-        });
+            dataType: 'json'
+        }).done(function (data, status, xml) {
+            deconnection();
+        })
     };
 }
 
@@ -21,17 +19,15 @@ function affichage_info_user(){
     $.ajax({
         type: 'POST',
         url: 'router.php',
-        async: false,
         data: {
             request: "Controller/account.php",
             username: localStorage.getItem('username'),
             to_do: "user_info"
         },
-        dataType: 'json',
-        success: function (data, status, xml) {
-            $('#account_username').html(localStorage.getItem('username')),
-            $('#account_email').html(data.email);
-        }
+        dataType: 'json'
+    }).done(function (data, status, xml) {
+        $('#account_username').html(localStorage.getItem('username')),
+        $('#account_email').html(data.email);
     });
 }
 
@@ -78,20 +74,6 @@ function change_password() {
         $('#alertPassword').hide();
     }
 
-    // verif si ancien et nouv passwd sont egaux
-    if (new_password.val() == current.val()) {
-        $('#alertSamePassword').show();
-        shake(current);
-        shake(new_password);
-        shake(new_verif);
-        check_all = false;
-    } else {
-        current.css("borderColor", "grey");
-        new_password.css("borderColor", "grey");
-        new_verif.css("borderColor", "grey");
-        $('#alertSamePassword').hide();
-    }
-
     // verif la taille du current passwd
     if (current.val().length >= current.attr("minlength")) {
         $.ajax({
@@ -107,8 +89,21 @@ function change_password() {
             dataType: 'json',
             success: function (data, status, xml) {
                 if (data.status == "success") {
-                    $('#alertCurrentPassword').hide();
-                    current.css("borderColor", "grey");
+                     // verif si ancien et nouv passwd sont egaux
+                    if (new_password.val() == current.val()) {
+                        $('#alertSamePassword').show();
+                        shake(new_password);
+                        shake(new_verif);
+                        check_all = false;
+                    } else {
+                        $('#alertCurrentPassword').hide();
+                        $('#alertSamePassword').hide();
+                        current.css("borderColor", "grey");
+                        if(check_all){
+                            new_password.css("borderColor", "grey");
+                            new_verif.css("borderColor", "grey");
+                        }
+                    }
                 } else {
                     $('#alertCurrentPassword').show();
                     shake(current);
@@ -130,7 +125,6 @@ function send_new_password() {
         $.ajax({
             type: 'POST',
             url: 'router.php',
-            async: false,
             data: {
                 request: "Controller/account.php",
                 username: localStorage.getItem('username'),
@@ -138,11 +132,12 @@ function send_new_password() {
                 to_do: "change_password"
             },
             dataType: 'json',
+        }).done(function(){
+            $('#SucessPassword').show();
+            setTimeout(function () {
+                $('#SucessPassword').fadeOut();
+            }, 5000);
         });
-        $('#SucessPassword').show();
-        setTimeout(function () {
-            $('#SucessPassword').fadeOut();
-        }, 5000);
     }
 }
 
@@ -155,7 +150,7 @@ function check_new_mail(){
         return false;
     }else{
         $('#alertMail').hide();
-        let result
+        let result;
         $.ajax({
             type:'POST',
             async: false,
@@ -187,7 +182,6 @@ function send_new_email(){
     if (check_new_mail())
         $.ajax({
             type:'POST',
-            async: false,
             url:'router.php',
             data:{
                 request: "Controller/account.php",
@@ -195,14 +189,12 @@ function send_new_email(){
                 new_email: obj.val(),
                 to_do: "change_email"
             },
-            dataType: 'json',
-            success: function(data, status, xml){
-                affichage_info_user();
-                $('#sucessEmail').show();
-                setTimeout(function () {
-                    $('#sucessEmail').fadeOut();
-                }, 5000);
-            }
+            dataType: 'json'
+        }).done(function(data, status, xml){
+            affichage_info_user();
+            $('#sucessEmail').show();
+            setTimeout(function () {
+                $('#sucessEmail').fadeOut();
+            }, 5000);
         });
-
 }

@@ -14,9 +14,9 @@
 <!doctype html>
 
 <html lang="fr">
- <?php include("header.html"); ?>
+ <?php include("template/header.html"); ?>
 <body>
-    <?php include("navbar.html");?>
+    <?php include("template/navbar.html");?>
     <div id="email_message1" class="col-12">Merci d'avoir validé votre adresse email !</div>
     <div id="email_message2" class="col-12">Vous pouvez desormais vous connecter</div>
     <div id="email_text_pseudo" class="col-12"><b>Votre pseudo: </b><?php echo "<span id='email_username'>".$username."</span>"; ?></div>
