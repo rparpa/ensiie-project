@@ -95,7 +95,7 @@ class Article{
         }
     
     
-        $sql = 'SELECT * FROM public.Section WHERE ID_PAGE = ?';
+        $sql = 'SELECT * FROM public.Section WHERE ID_PAGE = ? ORDER BY id_section';
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $id);
         $stmt->execute();
@@ -137,7 +137,7 @@ class Article{
     }
 
     public function fetchSections(){
-        $sql = 'SELECT * FROM public.Section WHERE ID_PAGE = ?';
+        $sql = 'SELECT * FROM public.Section WHERE ID_PAGE = ? ORDER By id_section';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(1, $this->id);
         $stmt->execute();

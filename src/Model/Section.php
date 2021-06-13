@@ -31,6 +31,19 @@ class Section{
         $this->id = $this->pdo->lastInsertId();
     }
 
+    public function updateSection(){
+        $sql = "UPDATE public.Section
+                SET title = ?, content = ?
+                WHERE id_page = ?
+                AND id_section = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(1, $this->title);
+        $stmt->bindParam(2, $this->content);
+        $stmt->bindParam(3, $this->pageId);
+        $stmt->bindParam(4, $this->id);
+        $stmt->execute();
+    }
+
     public function getId(){ return $this->id; }
     public function getTitle(){ return $this->title; }
     public function getContent(){ return $this->content; }

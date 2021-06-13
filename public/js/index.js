@@ -197,3 +197,13 @@ function load_article(data) {
     });
     // TODO GARDER LE DERNIER ARTICLE VISITÉ EN MEMOIR PR PAS RETOURNER A INDEX QUAND ON RELOAD
 }
+
+function editArticle(){
+
+    let query = window.location.search;
+    let urlParams = new URLSearchParams(query);
+
+    let id = urlParams.get('id');
+    console.log('/edition.php?id=' + id);
+    window.location = '/edition.php?id=' + id;
+}

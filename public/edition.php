@@ -14,7 +14,7 @@
     $pdo = Connection::get();
     $article = Article::getArticleObject($pdo, $_GET['id']);
     ?>
-    <div id="article_content">
+    <div id="article_content" style="margin: 5%;">
         <div id="article_title" class="col-12"><?php echo $article->getTitle(); ?></div>
         <div id="intro_container" class="container">
             <div class="row">
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-12">
                     <h1 id="Synopsis">Synopsis</h1>
-                    <textarea class="w-100" rows="10"> <?php echo $article->getSynopsis(); ?> </textarea>
+                    <textarea class="w-100 form-control"> <?php echo $article->getSynopsis(); ?> </textarea>
                 </div>
             </div>
             <div class="row">
@@ -43,41 +43,29 @@
                 <div disabled id="<?php echo "section".$section->getId(); ?>" class="form-group">
                     <span class="content">
                         <div class="row section_article">
-                            <input disabled class="form-control w-100" type="text" value="<?php echo $section->getTitle(); ?>">
+                            <input disabled class="sectionTitle form-control w-100" type="text" value="<?php echo $section->getTitle(); ?>">
                         </div>
                         <div class="row">
-                            <textarea disabled class="w-100 form-control" rows="10"><?php echo $section->getContent(); ?> </textarea>
+                            <textarea disabled class="sectionContent w-100 form-control"><?php echo $section->getContent(); ?> </textarea>
                         </div>
                     </span>
                     <div class="row buttons">
-                        <button onclick=<?php echo "unlock(".$article->getId().")"; ?> type="button" class="col-2 btn btn-info edit">Editer</button>
-                        <button onclick=<?php echo "unlock(".$article->getId().")"; ?> disabled type="button" class="col-2 btn btn-danger" disabled>Annuler</button>
-                        <button disabled type="button" class="col-2 btn btn-success" disabled>Valider</button>
+                        <button onclick=<?php echo "unlock(".$section->getId().")"; ?> type="button" class="col-2 btn btn-info edit">Editer</button>
+                        <button onclick=<?php echo "unlock(".$section->getId().")"; ?> disabled type="button" class="col-2 btn btn-danger" disabled>Annuler</button>
+                        <button onclick=<?php echo "updateSection(".$article->getId().",".$section->getId().")"; ?> disabled type="button" class="col-2 btn btn-success" disabled>Valider</button>
                     </div>
                 </div>
             <?php } ?>
         </div>    
     </div>
-    <?php
-    
-    return 5;
-    // if (!isset($_GET['id'])){
-    //     return;
-    // }
-    // $articleId = $_GET['id'];
-    // $article = Article::getArticle($article);
-
-    $doc = new DOMDocument();
-    $doc->loadHTMLFile("article.html");
-
-    $doc->getElementById('article_title')->textContent = "Titre"; //$article->getTitle();
-    $date = "2021 01 05";
-
-    $ele = $doc->createElement("span", $date);
-    $ele->setAttribute('class', 'black_text');
-    $doc->getElementById('article_date_crea')->appendChild($ele);
-
-    echo $doc->saveHTML();
-    ?>
+    <script>
+        $("textarea").each(function () {
+            this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+        })
+        .on("input", function () {
+            this.style.height = "auto";
+            this.style.height = (this.scrollHeight) + "px";
+        });
+    </script>
 </body>
 </html>
