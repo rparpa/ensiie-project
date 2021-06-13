@@ -65,7 +65,7 @@ function before_submit() {
         }
     });
 
-    if(!check_password($('#password1'), $('#password2')))
+    if(!checkPassword($('#password1'), $('#password2')))
         check_all = false;
     if(!check_email($('#email_form')))
         check_all = false;
@@ -74,7 +74,7 @@ function before_submit() {
     return check_all;
 };
 
-function check_password(obj1, obj2){
+function checkPassword(obj1, obj2){
 
     if(obj1.val().length < obj1.attr("minlength")){
         $('#alertPassword_length').show();

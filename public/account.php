@@ -27,7 +27,7 @@
                             <br>
                             <br>
                             <div class="form-group" id="div_inscription">
-                                <button id="btn_remove_account" class="btn btn-info text-white" onclick="delete_account()">Supprimer mon compte</button>
+                                <button id="btn_remove_account" class="btn btn-info text-white" onclick="deleteAccount()">Supprimer mon compte</button>
                             </div>
                             <br>
                             <br>
@@ -61,7 +61,7 @@
                             <span class="alertField sucessField" id="SucessPassword">Votre mot de passe a été changé avec succes !</span>
                         </div>
                         <div class="form-group" id="div_inscription">
-                            <button id="btn_change_password" class="btn btn-info text-white" onclick="send_new_password()">Changer mon mot de passe</button>
+                            <button id="btn_changePassword" class="btn btn-info text-white" onclick="sendNewPassword()">Changer mon mot de passe</button>
                         </div>
                         <br>
                         <br>
@@ -77,14 +77,14 @@
                             <span class="alertField sucessField" id="sucessEmail">Votre adresse email a été changé avec succes !<br></span>
                         </div>
                         <div class="form-group" id="div_inscription">
-                            <button id="btn_change_password" class="btn btn-info text-white" onclick="send_new_email()">Changer mon adresse email</button>
+                            <button id="btn_changePassword" class="btn btn-info text-white" onclick="sendNewEmail()">Changer mon adresse email</button>
                         </div>
             </form>
         </div>
     </div>
     </div>
     </div>
-    <script>affichage_info_user();</script>
+    <script>affichageInfoUser();</script>
 </body>
 
 </html>
