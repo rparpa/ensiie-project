@@ -15,13 +15,13 @@
                     <div class="m-auto">
                         <h3 class="text-info"> Informations personnelles</h3>
                         <br>
-                        <div class="form-group">
+                        <div class="form-group info">
                             <div>
-                                <h7 class="col-sm-2">Nom d'utilisateur : </h7>
+                                <h7 class="col-sm-2"> <b> Nom d'utilisateur : </b></h7>
                                 <span class="col-sm-10" id="account_username">ERROR</span>
                             </div>
                             <div>
-                                <h7 class="col-sm-2">Email : </h7>
+                                <h7 class="col-sm-2"> <b> Email : </b></h7>
                                 <span class="col-sm-10" id="account_email">ERROR</span>
                             </div>
                             <br>
