@@ -140,6 +140,50 @@ function sendNewPassword() {
         });
     }
 }
+function checkModo(){
+    let val = false;
+    $.ajax({
+        type: 'POST',
+        url: 'router.php',
+        async: false,
+        data: {
+            request: "Controller/account.php",
+            username: localStorage.getItem('username'),
+            to_do: "checkModo"
+        },
+        dataType: 'json',
+    }).done(function(data){
+        if(data.data == "true"){
+            val = true;
+        } 
+        else{
+            val = false;
+        } 
+    });
+    return val;
+}
+
+function demandeModo() {
+    if(!checkModo()){
+        $.ajax({
+            type: 'POST',
+            url: 'router.php',
+            async: false,
+            data: {
+                request: "Controller/account.php",
+                username: localStorage.getItem('username'),
+                msg: $("#msgModo").val(),
+                to_do: "demandeModo"
+            },
+            dataType: 'json'
+        }).done(function(data){
+            $('#sucessDemandeModo').show();
+            setTimeout(function () {
+                $("#divModo").fadeOut();
+            }, 5000)
+        });
+    }
+}
 
 function checkNewMail(){
     obj = $('#emailAccount');

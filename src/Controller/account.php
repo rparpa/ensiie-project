@@ -12,8 +12,46 @@ switch ($_POST['to_do']) {
         changeEmail($conn); break;
     case "deleteUser":
         deleteUser($conn); break;
+    case "demandeModo":
+        demandeModo($conn); break;
+    case "checkModo":
+        checkModo($conn); break;
+        
     default:
         file_put_contents('php://stderr', print_r("Unknown action 'to_do':".$_POST['to_do']." in account.php\n", TRUE));
+}
+
+function checkModo($conn){
+    if (!isset($_POST['username'])){
+        echo json_encode(array('status' => 'Error get username', 'msg' => 'A fields is not set :\'username\' '));
+        return;
+    }
+
+    $username = $_POST['username'];
+    $sql = 'SELECT * FROM public.Moderation WHERE USERNAME = ?';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1, $username);
+    $stmt->execute();
+    if($stmt->rowCount() >= 1)
+        echo json_encode(array('status' => 'Success', 'data' => 'true'));
+    else
+        echo json_encode(array('status' => 'Success', 'data' => 'false'));
+}
+
+function demandeModo($conn){
+    if (!isset($_POST['username']) || !isset($_POST['msg'])){
+        echo json_encode(array('status' => 'Error get username or msg', 'msg' => 'A fields is not set :\'username\' or \'msg\''));
+        return;
+    }
+
+    $username = $_POST['username'];
+    $msg = $_POST['msg'];
+    $sql = 'INSERT INTO public.Moderation (USERNAME, MSG) VALUES (?,?)';
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(1, $username);
+    $stmt->bindParam(2, $msg);
+    $stmt->execute();
+    echo json_encode(array('status' => 'Success'));
 }
 
 function getUserInfo($conn) {

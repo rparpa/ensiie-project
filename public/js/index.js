@@ -180,6 +180,7 @@ function get_cat_text(page){
 
 function load_all_article(data) {
     $("#content").empty();
+    window.history.pushState('', 'Load article', "/index.php");
     data.forEach(e => {
         let valide = "";
         if (e.validated)
@@ -188,22 +189,24 @@ function load_all_article(data) {
         fetch('template/list_article.html')
             .then(response => response.text())
             .then(function(data){
-                data = data.replace("%%ID_PAGE%%", e.id_page);
-                data = data.replace("%%TITLE%%", e.title);
-                data = data.replace("%%VALIDATE%%", valide);
-                data = data.replace("%%SYNOPSIS%%", e.synopsis);
-                data = data.replace("%%CATEGORIE%%", get_cat_text(e));
-                data = data.replace("%%CREATION_DATE%%", e.creation_date);
-                data = data.replace("%%MODIF_DATE%%", e.modification_date);
+                data = data.replaceAll("%%ID_PAGE%%", e.id_page);
+                data = data.replaceAll("%%TITLE%%", e.title);
+                data = data.replaceAll("%%VALIDATE%%", valide);
+                data = data.replaceAll("%%SYNOPSIS%%", e.synopsis);
+                data = data.replaceAll("%%CATEGORIE%%", get_cat_text(e));
+                data = data.replaceAll("%%CREATION_DATE%%", e.creation_date);
+                data = data.replaceAll("%%MODIF_DATE%%", e.modification_date);
                 $("#content").append(data);
             });
     });
 }
 
 function get_article(id) {
+    let e;
     $.ajax({
         url: 'router.php',
         type: 'POST',
+        async: false,
         data: {
             request: "Controller/get_article.php",
             to_do: "get_article",
@@ -215,10 +218,10 @@ function get_article(id) {
             console.log(data.msg)
         }
         else {
-            load_article(data);
-            window.history.pushState('', 'Load article', "?id="+id);
+            e =  data;
         }
     });
+    return e;
 }
 
 function load_article_content(sections) {
@@ -249,7 +252,9 @@ function load_article_intro(page) {
     $("#synopsis_content").html(page.synopsis);
 }
 
-function load_article(data) {
+function load_article(id) {
+    data = get_article(id);
+    window.history.pushState('', 'Load article', "?id="+id);
     $("#content").load('template/article.html', function () {
         load_article_content(data.sections);
         load_article_intro(data.page);

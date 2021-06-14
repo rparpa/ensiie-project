@@ -9,7 +9,7 @@
     <div id="content">
         <script> <?php
         if(isset($_GET['id']))
-            echo "get_article(".$_GET['id'].")";
+            echo "load_article(".$_GET['id'].")";
         else
             echo "get_all_article();"; ?>
         </script>
