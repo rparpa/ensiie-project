@@ -71,7 +71,7 @@ class Article{
     }
 
     public static function get_all($conn) {
-        $sql = 'SELECT * FROM public.Article';
+        $sql = 'SELECT * FROM public.Article ORDER BY ID_PAGE';
         $stmt = $conn->prepare($sql);
         if($stmt->execute()){
                 $row = $stmt->fetchAll();
@@ -95,11 +95,10 @@ class Article{
         }
     
     
-        $sql = 'SELECT * FROM public.Section WHERE ID_PAGE = ?';
+        $sql = 'SELECT * FROM public.Section WHERE ID_PAGE = ? ORDER BY ID_SECTION';
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $id);
         $stmt->execute();
-        $result = $stmt->rowCount();
         
         if ($stmt->execute()) {
             $sections = $stmt->fetchAll();
@@ -109,6 +108,20 @@ class Article{
         }
     }
 
+    public static function getArticleToValidate($pdo){
+        $sql = 'SELECT * FROM public.Article WHERE VALIDATED = FALSE ORDER BY ID_PAGE';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        echo json_encode(array('status' => 'Success', 'articles' => $result));
+    }
+
+    public static function validateArticle($pdo, $id){
+        $sql = 'UPDATE public.Article SET VALIDATED = TRUE WHERE ID_PAGE = ?';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+    }
 }
 
 ?>

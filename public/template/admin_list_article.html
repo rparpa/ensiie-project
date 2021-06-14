@@ -1,6 +1,6 @@
 <div class="card text-center mx-auto bg-light mb-3" style="width: auto; margin-top:50px;">
-    <button class="title_index" onclick="load_article('%%ID_PAGE%%')">
-        <div class="card-header bg-info text-white display_list_article"><h4>%%TITLE%%%%VALIDATE%%</h4></div>
+    <button class="title_index" onclick="load_admin_article('%%ID_PAGE%%')">
+        <div class="card-header bg-info text-white display_list_article"><h4>%%TITLE%%</h4></div>
     </button>
     <br>
     <div class="row">
@@ -12,5 +12,10 @@
         <div class="col-5 display_list_article"><h5 class="black_text">Categories: %%CATEGORIE%%</h5></div>       
         <div class="col-3 display_list_article"><h6>Création: <span class="blue_text">%%CREATION_DATE%%</span></h6></div>
         <div class="col-4 display_list_article"><h6>Dernière modification: <span class="blue_text">%%MODIF_DATE%%</span></h6></div>
+    </div>
+    <br>
+    <div class="row">
+        <button class="btn btn_admin" onclick="validateArticle('%%ID_PAGE%%')">Valider l'article</button>
+        <button class="btn btn_admin_remove" onclick="removeArticle('%%ID_PAGE%%')">Supprimer l'article</button>
     </div>
 </div>

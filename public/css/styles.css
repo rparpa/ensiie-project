@@ -268,6 +268,57 @@ span .fa-check-square{
     font-size: 18px;
 }
 
+.btn_admin {
+    border-radius: 0 !important;
+    background-color: #17b908;
+    color: #ffffff;
+    font-weight: bold !important;
+    border-width: 2px;
+    position: absolute; 
+    left: 0;
+    width: 50%;
+    margin-top: -3px;
+}
+
+.btn_admin:hover {
+    background-color: #ffffff;
+    color: #17b908;
+    border-color: #17b908; 
+}
+
+.btn_back{
+    border-radius: 0;
+    background-color: #4998a7;
+    color: #ffffff;
+    font-weight: bold !important;
+    border-width: 2px;
+    margin-top: 1vh;
+}
+
+.btn_back:hover{
+    background-color: #ffffff;
+    color: #4998a7;
+    border-color: #4998a7; 
+}
+
+.btn_admin_remove {
+    border-radius: 0 !important;
+    background-color: red;
+    color: #ffffff;
+    font-weight: bold !important;
+    border-width: 2px;
+    position: absolute; 
+    right: 0;
+    width: 50%;
+    margin-top: -3px;
+}
+
+.btn_admin_remove:hover {
+    background-color: #ffffff;
+    color: red;
+    border-color: red; 
+}
+
 @keyframes shake {
     0% { margin-left: 0rem; margin-right: 0rem; }
     20% { margin-left: 1rem; margin-right: -1rem; }

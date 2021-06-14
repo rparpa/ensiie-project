@@ -155,7 +155,7 @@
     margin-right: 5vw;
 }
 
-#content {
+#content, #content_admin {
     margin-left: 20vw;
     margin-right: 5vw;
 }
@@ -177,7 +177,7 @@
         margin-right: 0;
     }
 
-    #content {
+    #content, #content_admin {
         margin-left: 5vw;
         margin-right: 5vw;
     }
