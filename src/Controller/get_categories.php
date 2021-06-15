@@ -6,7 +6,7 @@ use SebastianBergmann\Environment\Console;
 $pdo = Connection::get();
 
 switch ($_POST['to_do']) {
-    case "get_all":
+    case "getAll":
         $result = Category::getAll($pdo);
         echo json_encode(array('status' => "success", 'categories' => $result)); break;
     case "get_by_cat":

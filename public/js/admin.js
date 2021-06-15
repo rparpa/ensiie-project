@@ -1,6 +1,6 @@
 function loadArticleToValidate(){
     $("#content_admin").empty();
-    load_menu_admin();
+    loadMenuAdmin();
     window.history.pushState('', 'Load article', "/admin.php?va=1");
     getArticleToValidate().forEach(e => {
         fetch('template/admin_list_article.html')
@@ -9,7 +9,7 @@ function loadArticleToValidate(){
                 data = data.replaceAll("%%ID_PAGE%%", e.id_page);
                 data = data.replaceAll("%%TITLE%%", e.title);
                 data = data.replaceAll("%%SYNOPSIS%%", e.synopsis);
-                data = data.replaceAll("%%CATEGORIE%%", get_cat_text(e));
+                data = data.replaceAll("%%CATEGORIE%%", getCatText(e));
                 data = data.replaceAll("%%CREATION_DATE%%", e.creation_date);
                 data = data.replaceAll("%%MODIF_DATE%%", e.modification_date);
                 $("#content_admin").append(data);
@@ -17,17 +17,17 @@ function loadArticleToValidate(){
     })
 }
 
-function load_admin_article(id) {
-    data = get_article(id);
+function loadAdminArticle(id) {
+    data = getArticle(id);
     window.history.pushState('', 'Load article', "?id="+id);
     $("#content_admin").load('template/admin_article.html', function () {
-        load_menu_admin();
-        load_admin_article_content(data.sections);
-        load_article_intro(data.page);
+        loadMenuAdmin();
+        loadAdminArticleContent(data.sections);
+        loadArticleIntro(data.page);
     });
 }
 
-function load_menu_admin(){
+function loadMenuAdmin(){
     $("#nav_admin").empty();
     $("#nav_admin").append(`<span class="sommaire">Admin</span>`);
     $("#nav_admin").append(`<a onclick="loadArticleToValidate();"><i class='fas fa-circle'></i>Articles à valider</a>`);
@@ -35,7 +35,7 @@ function load_menu_admin(){
 
 }
 
-function load_admin_article_content(sections) {
+function loadAdminArticleContent(sections) {
 
     $("#nav_admin").append(`<span class="sommaire">Sommaire</span>`);
     $("#nav_admin").append(`<a href="#Synopsis"><i class="fas fa-circle"></i>Synopsis</a>`);
@@ -61,14 +61,13 @@ function getArticleToValidate(){
         dataType: 'json',
     }).done(function(data){
         dataA = data.articles;
-        console.log(dataA);
     });
     return dataA;
 }
 
 function loadDemandeModo(){
     $("#content_admin").empty();
-    load_menu_admin();
+    loadMenuAdmin();
     window.history.pushState('', 'Load article', "?mo=1");
     getDemandeModo().forEach(e => {
         fetch('template/demande_modo.html')
@@ -94,7 +93,6 @@ function getDemandeModo(){
         dataType: 'json',
     }).done(function(data){
         dataM = data.demande;
-        console.log(dataM);
     });
     return dataM;
 }

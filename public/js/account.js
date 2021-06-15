@@ -202,7 +202,7 @@ function checkNewMail(){
             data:{
                 request: "Controller/inscription.php",
                 email: obj.val(),
-                to_do: "check_email"
+                to_do: "checkEmail"
             },
             dataType: 'json',
             success: function(data, status, xml){

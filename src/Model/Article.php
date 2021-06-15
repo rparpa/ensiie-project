@@ -8,18 +8,18 @@ use \Model\Section;
 
 class Article{
 
-    private PDO $pdo;
+    private $pdo;
 
-    private int $id;
-    private string $title;
-    private string $creationDate;
-    private string $modificationDate;
-    private bool $validated;
-    private string $synopsis;
-    private int $idAdmin;
-    private string $cat0;
-    private string $cat1;
-    private array $sections;    
+    private $id;
+    private $title;
+    private $creationDate;
+    private $modificationDate;
+    private $validated;
+    private $synopsis;
+    private $idAdmin;
+    private $cat0;
+    private $cat1;
+    private $sections;    
 
     public function __construct($pdo){
         $this->pdo = $pdo; 
@@ -70,7 +70,7 @@ class Article{
         return $stmt->rowCount() > 0;
     }
 
-    public static function get_all($conn) {
+    public static function getAll($conn) {
         $sql = 'SELECT * FROM public.Article ORDER BY ID_PAGE';
         $stmt = $conn->prepare($sql);
         if($stmt->execute()){
@@ -82,7 +82,7 @@ class Article{
         }
     }
     
-    public static function get_article($conn, $id){
+    public static function getArticle($conn, $id){
         $sql = 'SELECT * FROM public.Article WHERE ID_PAGE = ?';
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $id);

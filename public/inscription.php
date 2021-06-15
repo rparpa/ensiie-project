@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button id="btn_insctiption" class="btn btn-info text-white" onclick="send_inscription()">S'inscrire</button>
+                    <button id="btn_insctiption" class="btn btn-info text-white" onclick="sendInscription()">S'inscrire</button>
                 </div>
             </div>
         </form>

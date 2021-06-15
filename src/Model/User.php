@@ -5,9 +5,9 @@ namespace Model;
 
 class User{
 
-    private string $username;
-    private string $mail;
-    private bool $admin;
+    private $username;
+    private $mail;
+    private $admin;
 
     public function getUsername(): string{
         return $this->username;

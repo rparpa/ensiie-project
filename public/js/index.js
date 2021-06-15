@@ -54,7 +54,7 @@ function shake(obj) {
     });
 }
 
-function verify_user() {
+function verifyser() {
     let name = $("#username").val();
 
     $.ajax({
@@ -87,13 +87,13 @@ function verify_user() {
     })
 }
 
-function get_all_article() {
+function getAllArticle() {
     $.ajax({
         url: 'router.php',
         type: 'POST',
         data: {
             request: "Controller/get_article.php",
-            to_do: "get_all",
+            to_do: "getAll",
         },
         dataType: 'json'
     }).done(function (data) {
@@ -101,7 +101,7 @@ function get_all_article() {
             console.log(data.msg);
         }
         else {
-            load_all_article(data);
+            loadAllArticle(data);
             setIndexCategories();
         }
     })
@@ -115,7 +115,7 @@ function loadCategories(){
         async: false,
         data: {
             request: "Controller/get_categories.php",
-            to_do: "get_all"
+            to_do: "getAll"
         },
         dataType: 'json'
     }).done(function(data){
@@ -133,7 +133,7 @@ function loadCategories(){
 function setIndexCategories(){
     $("#nav_article").empty();
     $("#nav_article").append(`<span class="categories">Catégories</span>`);
-    $("#nav_article").append(`<a onclick="get_all_article();"><i class="fas fa-eraser"></i>Nettoyer filtre</a>`);
+    $("#nav_article").append(`<a onclick="getAllArticle();"><i class="fas fa-eraser"></i>Nettoyer filtre</a>`);
     loadCategories().forEach(e => {
         $("#nav_article").append(`<a onclick="loadArticleByCategories('` + e.name + `')"><i class='fas fa-circle'></i>` + e.name + `</a>`);
     });
@@ -153,7 +153,7 @@ function loadArticleByCategories(cat){
     }).done(function(data){
         if(data.status == "success"){
             
-            load_all_article(data.articles);
+            loadAllArticle(data.articles);
         }
         else{
             alert("LOADING ERROR");
@@ -161,7 +161,7 @@ function loadArticleByCategories(cat){
     });
 }
 
-function get_cat_text(page){
+function getCatText(page){
     let cat = "";
     
     if ((page.cat0 == '' || page.cat0 == 'Aucune') && (page.cat1 == '' || page.cat1 == 'Aucune'))
@@ -178,7 +178,7 @@ function get_cat_text(page){
     return cat;
 }
 
-function load_all_article(data) {
+function loadAllArticle(data) {
     $("#content").empty();
     window.history.pushState('', 'Load article', "/index.php");
     data.forEach(e => {
@@ -193,7 +193,7 @@ function load_all_article(data) {
                 data = data.replaceAll("%%TITLE%%", e.title);
                 data = data.replaceAll("%%VALIDATE%%", valide);
                 data = data.replaceAll("%%SYNOPSIS%%", e.synopsis);
-                data = data.replaceAll("%%CATEGORIE%%", get_cat_text(e));
+                data = data.replaceAll("%%CATEGORIE%%", getCatText(e));
                 data = data.replaceAll("%%CREATION_DATE%%", e.creation_date);
                 data = data.replaceAll("%%MODIF_DATE%%", e.modification_date);
                 $("#content").append(data);
@@ -201,7 +201,7 @@ function load_all_article(data) {
     });
 }
 
-function get_article(id) {
+function getArticle(id) {
     let e;
     $.ajax({
         url: 'router.php',
@@ -209,7 +209,7 @@ function get_article(id) {
         async: false,
         data: {
             request: "Controller/get_article.php",
-            to_do: "get_article",
+            to_do: "getArticle",
             id_article: id,
         },
         dataType: 'json'
@@ -224,7 +224,7 @@ function get_article(id) {
     return e;
 }
 
-function load_article_content(sections) {
+function loadArticleContent(sections) {
     
     $("#nav_article").empty();
     $("#nav_article").append(`<span class="sommaire">Sommaire</span>`);
@@ -238,13 +238,13 @@ function load_article_content(sections) {
     });
 }
 
-function load_article_intro(page) {
+function loadArticleIntro(page) {
     $("#article_title").html(page.title);
     if(page.validated)
         $("#article_title").append(`<span><i class="fas fa-star star_article"></i></span>`);
 
     
-    $("#article_cat").append(get_cat_text(page));
+    $("#article_cat").append(getCatText(page));
 
     $("#article_date_crea").append(`<span class="black_text">` + page.creation_date + `</span>`)
     $("#article_date_modif").append(`<span class="black_text">` + page.modification_date + `</span>`)
@@ -253,11 +253,11 @@ function load_article_intro(page) {
 }
 
 function load_article(id) {
-    data = get_article(id);
+    data = getArticle(id);
     window.history.pushState('', 'Load article', "?id="+id);
     $("#content").load('template/article.html', function () {
-        load_article_content(data.sections);
-        load_article_intro(data.page);
+        loadArticleContent(data.sections);
+        loadArticleIntro(data.page);
     });
 }
 

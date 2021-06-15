@@ -9,12 +9,12 @@ jQuery(document).ready(function($) {
     });
 
     $("#form_inscription").change(function () {
-        before_submit();
+        beforeSubmit();
     });
 });
 
-function send_inscription(){
-    if(before_submit())
+function sendInscription(){
+    if(beforeSubmit())
         $.ajax({
             type:'POST',
             url:'router.php',
@@ -30,7 +30,7 @@ function send_inscription(){
             if(data.status == "success"){
                 localStorage.setItem('username', $('#username_form').val());
                 $(".SuccessInscription").show();
-                send_mail($('#username_form').val(), $('#email_form').val());
+                sendMail($('#username_form').val(), $('#email_form').val());
                 setTimeout(function(){
                     window.location.replace("index.php");
                 }, 5000);
@@ -39,7 +39,7 @@ function send_inscription(){
         });
 };
 
-function send_mail(username, mail){
+function sendMail(username, mail){
     $.ajax({
         type:'POST',
         url:'mail.php',
@@ -51,7 +51,7 @@ function send_mail(username, mail){
     });
 }
 
-function before_submit() {
+function beforeSubmit() {
 
     let check_all = true;
     $('.inscription_input').each(function() {
@@ -67,9 +67,9 @@ function before_submit() {
 
     if(!checkPassword($('#password1'), $('#password2')))
         check_all = false;
-    if(!check_email($('#email_form')))
+    if(!checkEmail($('#email_form')))
         check_all = false;
-    if(!check_username($('#username_form')))
+    if(!checkUsername($('#username_form')))
         check_all = false;
     return check_all;
 };
@@ -98,7 +98,7 @@ function checkPassword(obj1, obj2){
     }
 }
 
-function check_email(obj){
+function checkEmail(obj){
     if (!obj.val().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)){
         $('#alertMailUse').hide();
         $('#alertMail').show();
@@ -114,7 +114,7 @@ function check_email(obj){
             data:{
                 request: "Controller/inscription.php",
                 email: obj.val(),
-                to_do: "check_email"
+                to_do: "checkEmail"
             },
             dataType: 'json',
             success: function(data, status, xml){
@@ -134,7 +134,7 @@ function check_email(obj){
     }
 }
 
-function check_username(obj){
+function checkUsername(obj){
     if (obj.val().length < obj.attr("minlength")){
         $('#alertUsername_length').show();
         $('#alertUsername').hide();
@@ -151,7 +151,7 @@ function check_username(obj){
             data:{
                 request: "Controller/inscription.php",
                 username: obj.val(),
-                to_do: "check_username"
+                to_do: "checkUsername"
             },
             dataType: 'json',
             success: function(data, status, xml){

@@ -11,7 +11,7 @@
         if(isset($_GET['id']))
             echo "load_article(".$_GET['id'].")";
         else
-            echo "get_all_article();"; ?>
+            echo "getAllArticle();"; ?>
         </script>
     </div>
 </body>
