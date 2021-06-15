@@ -9,13 +9,13 @@ file_put_contents('php://stderr', print_r($_POST, TRUE));
 
 
 switch ($_POST['to_do']) {
-    case "check_username":
+    case "checkUsername":
         checkUsername($conn);
         break;
     case "inscription":
         inscription($conn);
         break;
-    case "check_email":
+    case "checkEmail":
         checkEmail($conn);
         break;
     default:

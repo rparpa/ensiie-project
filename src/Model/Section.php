@@ -5,11 +5,11 @@ use PDO;
 
 class Section{
 
-    private PDO $pdo;
+    private $pdo;
 
-    private string $title;
-    private string $content;
-    private int $pageId;
+    private $title;
+    private $content;
+    private $pageId;
 
     public function __construct($pdo, $pageId, $title, $content){
         $this->pdo = $pdo;

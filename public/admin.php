@@ -12,7 +12,7 @@ if (!(localStorage.getItem('isadmin') == 'true'))
     <div id="content_admin">
     <script> <?php
         if(isset($_GET['id']))
-            echo "load_admin_article(".$_GET['id'].")";
+            echo "loadAdminArticle(".$_GET['id'].")";
         else
             if(isset($_GET['va']))
                 echo "loadArticleToValidate();"; 
