@@ -15,31 +15,28 @@
     $article = Article::getArticleObject($pdo, $_GET['id']);
     ?>
     <div id="article_content" style="margin: 5%;">
-        <div id="article_title" class="col-12"><?php echo $article->getTitle(); ?></div>
+        <div id="article_title" class="container"><?php echo $article->getTitle(); ?></div>
         <div id="intro_container" class="container">
-            <div class="row">
-                <div id="article_cat" class="col-10">
-                    <b>Catégories:</b> 
-                    <span class="black_link">
-                        <?php echo $article->getCat0(); echo " "; echo $article->getCat1();?>
-                    </span>
-                </div>
+            <div id="article_cat">
+                <b>Catégories:</b> 
+                <span class="black_link">
+                    <?php echo $article->getCat0(); echo " "; echo $article->getCat1();?>
+                </span>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <h1 id="Synopsis">Synopsis</h1>
-                    <textarea class="w-100 form-control"> <?php echo $article->getSynopsis(); ?> </textarea>
+            <div disabled id="section0" class="form-group">
+                <h3 id="Synopsis">Synopsis</h3>
+                <span class="content">
+                    <textarea disabled id="<?php echo "synopsis".$article->getId();?>" class="w-100 form-control"> <?php echo $article->getSynopsis(); ?></textarea>
+                </span>
+                <div class="row buttons">
+                    <button onclick=unlock(0) type="button" class="col-1 btn btn-info edit">Editer</button>
+                    <button onclick=unlock(0) disabled type="button" class="col-1 btn btn-danger" disabled>Annuler</button>
+                    <button onclick=<?php echo "updateArticle(".$article->getId().")"; ?> disabled type="button" class="col-1 btn btn-success" disabled>Valider</button>
                 </div>
-            </div>
-            <div class="row">
-                <div id="synopsis_content" class="col-12"></div>
             </div>
         </div>
-        <div class="container">
-            <?php foreach($article->getSections() as $section){ 
-                file_put_contents('php://stderr', print_r($section->getTitle()."\n", TRUE));
-                
-                ?>
+        <div id="sections" class="container">
+            <?php foreach($article->getSections() as $section){ ?>
                 <div disabled id="<?php echo "section".$section->getId(); ?>" class="form-group">
                     <span class="content">
                         <div class="row section_article">
@@ -50,22 +47,19 @@
                         </div>
                     </span>
                     <div class="row buttons">
-                        <button onclick=<?php echo "unlock(".$section->getId().")"; ?> type="button" class="col-2 btn btn-info edit">Editer</button>
-                        <button onclick=<?php echo "unlock(".$section->getId().")"; ?> disabled type="button" class="col-2 btn btn-danger" disabled>Annuler</button>
-                        <button onclick=<?php echo "updateSection(".$article->getId().",".$section->getId().")"; ?> disabled type="button" class="col-2 btn btn-success" disabled>Valider</button>
+                        <button onclick=<?php echo "unlock(".$section->getId().")"; ?> type="button" class="col-1 btn btn-info edit">Editer</button>
+                        <button onclick=<?php echo "unlock(".$section->getId().")"; ?> disabled type="button" class="col-1 btn btn-danger" disabled>Annuler</button>
+                        <button onclick=<?php echo "updateSection(".$article->getId().",".$section->getId().")"; ?> disabled type="button" class="col-1 btn btn-success" disabled>Valider</button>
                     </div>
                 </div>
             <?php } ?>
         </div>    
-    </div>
+        <div class="container form-group">   
+            <button onclick=<?php echo "addSectionInput(".$article->getId().")"; ?> type="button" class="btn btn-info col-12 form-control"> Ajouter une section </button>
+        </div>
+     </div>
     <script>
-        $("textarea").each(function () {
-            this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
-        })
-        .on("input", function () {
-            this.style.height = "auto";
-            this.style.height = (this.scrollHeight) + "px";
-        });
+        autosize();
     </script>
 </body>
 </html>

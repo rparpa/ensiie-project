@@ -204,6 +204,5 @@ function editArticle(){
     let urlParams = new URLSearchParams(query);
 
     let id = urlParams.get('id');
-    console.log('/edition.php?id=' + id);
     window.location = '/edition.php?id=' + id;
 }
