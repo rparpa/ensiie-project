@@ -19,9 +19,10 @@
         <div id="intro_container" class="container">
             <div id="article_cat">
                 <b>Catégories:</b> 
-                <span class="black_link">
-                    <?php echo $article->getCat0(); echo " "; echo $article->getCat1();?>
-                </span>
+                <script> 
+                    let x = getCatText(<?php echo json_encode(array('cat0' => $article->getCat0(), 'cat1' => $article->getCat1())) ?>); 
+                    $("#article_cat").append(x);
+                </script> 
             </div>
             <div disabled id="section0" class="form-group">
                 <h3 id="Synopsis">Synopsis</h3>
