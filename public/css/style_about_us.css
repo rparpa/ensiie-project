@@ -7,62 +7,74 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
-
 .about-section {
-  padding: 50px;
+  padding: 30px 0 20px 0;
   text-align: center;
   background-color: #474e5d;
   color: white;
+  font-size: 20px;
 }
 
-.container {
-  padding: 0 16px;
+.spacer {
+    background-color: #ffffff;
+    height: 10vh;
 }
 
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
+h1.about-title {
+    color: #ffffff;
+    font-size: 50px !important;
+    text-align: center;
+    padding-bottom: 50px;
 }
 
-.title {
-  color: grey;
+h1.team-title {
+    text-align:center;
+    padding-top: 40px;
+    font-size: 50px !important;
+    padding-bottom: 0;
+    margin-bottom: -45px;
 }
 
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #555;
-}
-
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
+.card {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5vh;
   }
-}
+  .card-body .card-title {
+    font-weight: bold;
+    color: #4998a7;
+    font-size: 40px;
+    margin-bottom: 5vh;
+  }
+  .card img {
+    width: 30%;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: calc(0.25rem - 1px);
+  }
+
+  .second-title{
+    font-weight: bold !important;
+  }
+
+  .card-text {
+    font-size: 20px;
+  }
+  @media only screen and (max-width: 768px) {
+    a {
+      display: none;
+    }
+    .card-body {
+      padding: 0.5em 1.2em;
+    }
+    .card-body .card-text {
+      margin: 0;
+    }
+    .card img {
+      width: 50%;
+    }
+  }
+  @media only screen and (max-width: 1200px) {
+    .card img {
+      width: 40%;
+    }
+  }

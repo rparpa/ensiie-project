@@ -14,6 +14,15 @@ switch ($_POST['to_do']) {
             return;
         }
         Article::getArticle($conn, $_POST['id_article']); break;
+    case "getTitles":
+        Article::getTitles($conn); break;
+
+    case "getArticleByTitle":
+        if (!isset($_POST['title'])){
+            echo json_encode(array('status' => 'Error get article title', 'msg' => 'A fields is not set :\'title\''));
+            return;
+        }
+        Article::getArticleByTitle($conn, $_POST['title']);
     default:
         file_put_contents('php://stderr', print_r("Unknown action 'to_do':".$_POST['to_do']." in getArticle.php\n", TRUE));
 }

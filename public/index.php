@@ -4,8 +4,7 @@
 <?php include("template/header.html"); ?>
 <body>
     <?php include("template/navbar.html"); ?>
-    <div id="nav_article" class="sidepanel">
-    </div>
+    <div id="nav_article" class="sidepanel"></div>
     <div id="content">
         <script> <?php
         if(isset($_GET['id']))
@@ -14,5 +13,6 @@
             echo "getAllArticle();"; ?>
         </script>
     </div>
+<script src="js/search.js"></script>
 </body>
 </html>

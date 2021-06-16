@@ -81,7 +81,7 @@ function verifyser() {
             $("#div_alert").css('background-color', 'rgba(255,0,0,0.5)');
             setTimeout(function () {
                 $('#connection_failed').fadeOut();
-                $("#div_alert").css('background-color', '#ffffff');
+                $("#div_alert").css('background-color', '#f8f9fb');
             }, 5000);
         }
     })
@@ -181,6 +181,7 @@ function getCatText(page){
 function loadAllArticle(data) {
     $("#content").empty();
     window.history.pushState('', 'Load article', "/index.php");
+    loadSearch();
     data.forEach(e => {
         let valide = "";
         if (e.validated)
@@ -260,4 +261,3 @@ function load_article(id) {
         loadArticleIntro(data.page);
     });
 }
-
