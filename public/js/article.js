@@ -8,16 +8,17 @@ function setCategories(){
 function addSection(){
     let id = $(".section").length;
     $("#sections").append(
-        "<div id=sect" + id +  " class='section'>"
+        "<br><div id=sect" + id +  " class='section card'>"
     );
     $("#sect" + id).append(
-        "<label for=section" + id + " class='text-info'> <b> Section "+ (id+1) +" </b> </label>",
-        "</br>",
-        "<input type=text maxlength=128 id=section required> ",
-        "<br>",
-        "<br>",
-        "<label for=content" + id + "> Contenu </label><br>",
-        "<textarea id=content" + id + " class='w-100' rows='10' ></textarea>",
+        `<div class="card-header text-info"> Section ` + (id + 1) + ` </div>`,
+        `<div class="card-body">
+            <label for=section`+ id + `> <b> Titre de la section </b> </label>
+            <input type="text" maxlength="100" id="section` + id + `" class="form-control" required>
+            <br>
+            <label for="content`+ id + `"> <b> Contenu de la section </b> </label><br>
+            <textarea id="content`+ id + `" class="form-control" rows=7 required></textarea>
+        </div>`
     );
 
 }
@@ -97,8 +98,7 @@ function postArticle(){
         dataType: 'json'
     }).done(function(data){
         if(data.status == "success"){ 
-            console.log(data);
-            // window.location.replace("index.php");
+            window.location.replace("index.php?id=" + data.articleID);
         }
         else{
             // TODO show error somewhere

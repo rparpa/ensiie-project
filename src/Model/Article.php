@@ -52,10 +52,10 @@ class Article{
         $stmt->bindParam(6, $this->cat1);
  
         $stmt->execute();
-        $id = $this->pdo->lastInsertId();
+        $this->id = $this->pdo->lastInsertId();
         
         foreach($this->sections as $k => $v){
-            $sect = new Section($this->pdo, 0, $id, $v['title'], $v['content']);
+            $sect = new Section($this->pdo, 0, $this->id, $v['title'], $v['content']);
             $sect->insertDatabase();
         }
     }
