@@ -5,7 +5,7 @@ use PDO;
 
 class Section{
 
-    private PDO $pdo;
+    private $pdo;
 
     private int $id;
     private string $title;

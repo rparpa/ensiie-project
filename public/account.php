@@ -27,7 +27,7 @@
                             <br>
                             <br>
                             <div class="form-group" id="div_inscription">
-                                <button id="btn_remove_account" class="btn btn-info text-white" onclick="delete_account()">Supprimer mon compte</button>
+                                <button id="btn_remove_account" class="btn btn-info text-white" onclick="deleteAccount()">Supprimer mon compte</button>
                             </div>
                             <br>
                             <br>
@@ -35,7 +35,7 @@
                         <h3 class="text-info"> Changer mon mot de passe</h3>
                         <br>
                         <div class="form-group">
-                            <label for="email_form" class="form-label">Mot de passe actuel :</label>
+                            <label class="form-label">Mot de passe actuel :</label>
                             <div class="input-group">
                                 <input type="password" class="form-control passwd_input" type="password" id="currentPassword" name="currentPassword" placeholder="Mot de passe actuel" maxlength="50" minlength="6">
                             </div>
@@ -43,7 +43,7 @@
                             <span class="alertField" id="alertCurrentPassword">Mot de passe incorrect</span>
                         </div>
                         <div class="form-group">
-                            <label for="email_form" class="form-label">Nouveau mot de passe :</label>
+                            <label class="form-label">Nouveau mot de passe :</label>
                             <div class="input-group">
                                 <input type="password" class="form-control passwd_input" type="password" id="passwordAccount" name="passwordAccount" placeholder="Nouveau mot de passe" maxlength="50" minlength="6">
                             </div>
@@ -52,7 +52,7 @@
                             <span class="alertField" id="alertSamePassword">Le nouveau mot de passe est identique à l'ancien</span>
                         </div>
                         <div class="form-group">
-                            <label for="email_form" class="form-label">Confirmation du nouveau mot de passe :</label>
+                            <label class="form-label">Confirmation du nouveau mot de passe :</label>
                             <div class="input-group">
                                 <input type="password" class="form-control passwd_input" type="password" id="passwordAccountVerif" name="passwordAccountVerif" placeholder="Confirmation du nouveau mot de passe" maxlength="50" minlength="6">
                             </div>
@@ -61,14 +61,14 @@
                             <span class="alertField sucessField" id="SucessPassword">Votre mot de passe a été changé avec succes !</span>
                         </div>
                         <div class="form-group" id="div_inscription">
-                            <button id="btn_change_password" class="btn btn-info text-white" onclick="send_new_password()">Changer mon mot de passe</button>
+                            <button id="btn_changePassword" class="btn btn-info text-white" onclick="sendNewPassword()">Changer mon mot de passe</button>
                         </div>
                         <br>
                         <br>
                         <h3 class="text-info"> Changer mon adresse email</h3>
                         <br>
                         <div class="form-group">
-                            <label for="email_form" class="form-label">Email :</label>
+                            <label class="form-label">Email :</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" type="text" id="emailAccount" name="emailAccount" placeholder="Nouvelle adresse email" maxlength="50" minlength="3">
                             </div>
@@ -77,14 +77,33 @@
                             <span class="alertField sucessField" id="sucessEmail">Votre adresse email a été changé avec succes !<br></span>
                         </div>
                         <div class="form-group" id="div_inscription">
-                            <button id="btn_change_password" class="btn btn-info text-white" onclick="send_new_email()">Changer mon adresse email</button>
+                            <button class="btn btn-info text-white" onclick="sendNewEmail()">Changer mon adresse email</button>
+                        </div>
+                        <div id="divModo" class="form-group">
+                            <br>
+                            <h3 class="text-info">Demander à devenir Moderateur</h3>
+                            <br>
+                            <label for="modo_form" class="form-label">Message :</label>
+                            <div class="input-group">
+                                <textarea class="form-control"  rows="4" id="msgModo" name="msgModo" maxlength="200"></textarea>
+                            </div>
+                            <br>
+                            <span class="alertField sucessField" id="sucessDemandeModo">Votre demande pour devenir moderateur a bien été prise en compte !<br><br></span>
+                            <div class="form-group" id="div_inscription">
+                                <button class="btn btn-info text-white" onclick="demandeModo()">Envoyer ma demande</button>
+                            </div>
                         </div>
             </form>
         </div>
     </div>
     </div>
     </div>
-    <script>affichage_info_user();</script>
+    <script>
+    affichageInfoUser();
+    if(checkModo() || localStorage.getItem('isadmin') == "true"){
+        $("#divModo").hide();
+    }
+    </script>
 </body>
 
 </html>

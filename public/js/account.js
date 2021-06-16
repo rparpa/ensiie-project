@@ -1,4 +1,4 @@
-function delete_account(){
+function deleteAccount(){
     if (confirm("Etes vous sur de vouloir supprimer votre compte ?")){
         $.ajax({
             type: 'POST',
@@ -6,7 +6,7 @@ function delete_account(){
             data: {
                 request: "Controller/account.php",
                 username: localStorage.getItem('username'),
-                to_do: "delete_user"
+                to_do: "deleteUser"
             },
             dataType: 'json'
         }).done(function (data, status, xml) {
@@ -15,14 +15,14 @@ function delete_account(){
     };
 }
 
-function affichage_info_user(){
+function affichageInfoUser(){
     $.ajax({
         type: 'POST',
         url: 'router.php',
         data: {
             request: "Controller/account.php",
             username: localStorage.getItem('username'),
-            to_do: "user_info"
+            to_do: "userInfo"
         },
         dataType: 'json'
     }).done(function (data, status, xml) {
@@ -31,7 +31,7 @@ function affichage_info_user(){
     });
 }
 
-function change_password() {
+function changePassword() {
     let check_all = true;
 
     // check empty fields
@@ -84,7 +84,7 @@ function change_password() {
                 request: "Controller/account.php",
                 username: localStorage.getItem('username'),
                 password: current.val(),
-                to_do: "check_password"
+                to_do: "checkPassword"
             },
             dataType: 'json',
             success: function (data, status, xml) {
@@ -120,8 +120,8 @@ function change_password() {
     return check_all
 };
 
-function send_new_password() {
-    if (change_password()) {
+function sendNewPassword() {
+    if (changePassword()) {
         $.ajax({
             type: 'POST',
             url: 'router.php',
@@ -129,7 +129,7 @@ function send_new_password() {
                 request: "Controller/account.php",
                 username: localStorage.getItem('username'),
                 new_password: new_password.val(),
-                to_do: "change_password"
+                to_do: "changePassword"
             },
             dataType: 'json',
         }).done(function(){
@@ -140,8 +140,52 @@ function send_new_password() {
         });
     }
 }
+function checkModo(){
+    let val = false;
+    $.ajax({
+        type: 'POST',
+        url: 'router.php',
+        async: false,
+        data: {
+            request: "Controller/account.php",
+            username: localStorage.getItem('username'),
+            to_do: "checkModo"
+        },
+        dataType: 'json',
+    }).done(function(data){
+        if(data.data == "true"){
+            val = true;
+        } 
+        else{
+            val = false;
+        } 
+    });
+    return val;
+}
 
-function check_new_mail(){
+function demandeModo() {
+    if(!checkModo()){
+        $.ajax({
+            type: 'POST',
+            url: 'router.php',
+            async: false,
+            data: {
+                request: "Controller/account.php",
+                username: localStorage.getItem('username'),
+                msg: $("#msgModo").val(),
+                to_do: "demandeModo"
+            },
+            dataType: 'json'
+        }).done(function(data){
+            $('#sucessDemandeModo').show();
+            setTimeout(function () {
+                $("#divModo").fadeOut();
+            }, 5000)
+        });
+    }
+}
+
+function checkNewMail(){
     obj = $('#emailAccount');
     if (!obj.val().match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)){
         $('#alertMailUse').hide();
@@ -158,7 +202,7 @@ function check_new_mail(){
             data:{
                 request: "Controller/inscription.php",
                 email: obj.val(),
-                to_do: "check_email"
+                to_do: "checkEmail"
             },
             dataType: 'json',
             success: function(data, status, xml){
@@ -178,8 +222,8 @@ function check_new_mail(){
     }
 }
 
-function send_new_email(){
-    if (check_new_mail())
+function sendNewEmail(){
+    if (checkNewMail())
         $.ajax({
             type:'POST',
             url:'router.php',
@@ -187,11 +231,11 @@ function send_new_email(){
                 request: "Controller/account.php",
                 username: localStorage.getItem("username"),
                 new_email: obj.val(),
-                to_do: "change_email"
+                to_do: "changeEmail"
             },
             dataType: 'json'
         }).done(function(data, status, xml){
-            affichage_info_user();
+            affichageInfoUser();
             $('#sucessEmail').show();
             setTimeout(function () {
                 $('#sucessEmail').fadeOut();

@@ -22,7 +22,7 @@ function addSection(){
 
 }
 
-function article_valid(article){
+function articleValid(article){
     let fields = ['title', 'author', 'synopsis'];
     
     for(let i = 0; i < fields.length; i++){
@@ -83,7 +83,7 @@ function postArticle(){
     }
     if(articleExist(article)) return;
 
-    if(!article_valid(article)) {
+    if(!articleValid(article)) {
         alert("DES CHAMPS SONT VIDE");
         return false;
     }
