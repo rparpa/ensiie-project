@@ -251,6 +251,8 @@ function loadArticleIntro(page) {
     $("#article_date_modif").append(`<span class="black_text">` + page.modification_date + `</span>`)
 
     $("#synopsis_content").html(page.synopsis);
+
+    init();
 }
 
 function load_article(id) {
@@ -260,4 +262,14 @@ function load_article(id) {
         loadArticleContent(data.sections);
         loadArticleIntro(data.page);
     });
+
+}
+
+function editArticle(){
+
+    let query = window.location.search;
+    let urlParams = new URLSearchParams(query);
+
+    let id = urlParams.get('id');
+    window.location = '/edition.php?id=' + id;
 }
