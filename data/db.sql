@@ -80,6 +80,19 @@ CREATE TABLE public.Maintains(
 )WITHOUT OIDS;
 
 ------------------------------------------------------------
+-- Table: Moderation
+------------------------------------------------------------
+CREATE TABLE public.Moderation(
+	ID_MODO   SERIAL NOT NULL ,
+    USERNAME   VARCHAR (30) NOT NULL  ,
+	MSG        VARCHAR (200) NOT NULL ,
+	CONSTRAINT Moderation_PK PRIMARY KEY (ID_MODO)
+
+	,CONSTRAINT Moderation_User0_FK FOREIGN KEY (USERNAME) REFERENCES public.User(USERNAME)
+    ,CONSTRAINT Moderation_User_AK UNIQUE (USERNAME)
+)WITHOUT OIDS;
+
+------------------------------------------------------------
 -- Insert
 ------------------------------------------------------------
 INSERT INTO Category (name) VALUES ('Aucune');

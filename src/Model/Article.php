@@ -7,18 +7,18 @@ use \Model\Section;
 
 class Article{
 
-    private PDO $pdo;
+    private $pdo;
 
-    private int $id;
-    private string $title;
-    private string $creationDate;
-    private string $modificationDate;
-    private bool $validated;
-    private string $synopsis;
-    private int $idAdmin;
-    private string $cat0;
-    private string $cat1;
-    private array $sections;    
+    private $id;
+    private $title;
+    private $creationDate;
+    private $modificationDate;
+    private $validated;
+    private $synopsis;
+    private $idAdmin;
+    private $cat0;
+    private $cat1;
+    private $sections;    
 
     public function __construct($pdo){
         $this->pdo = $pdo; 
@@ -69,8 +69,9 @@ class Article{
         return $stmt->rowCount() > 0;
     }
 
-    public static function get_all($conn) {
-        $sql = 'SELECT * FROM public.Article ORDER BY id_page';
+
+    public static function getAll($conn) {
+        $sql = 'SELECT * FROM public.Article ORDER BY ID_PAGE';
         $stmt = $conn->prepare($sql);
         if($stmt->execute()){
                 $row = $stmt->fetchAll();
@@ -81,7 +82,7 @@ class Article{
         }
     }
     
-    public static function get_article($conn, $id){
+    public static function getArticle($conn, $id){
         $sql = 'SELECT * FROM public.Article WHERE ID_PAGE = ?';
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $id);
@@ -94,11 +95,10 @@ class Article{
         }
     
     
-        $sql = 'SELECT * FROM public.Section WHERE ID_PAGE = ? ORDER BY id_section';
+        $sql = 'SELECT * FROM public.Section WHERE ID_PAGE = ? ORDER BY ID_SECTION';
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $id);
         $stmt->execute();
-        $result = $stmt->rowCount();
         
         if ($stmt->execute()) {
             $sections = $stmt->fetchAll();
@@ -193,7 +193,21 @@ class Article{
     public function getCat0(){ return $this->cat0; }
     public function getCat1(){ return $this->cat1; }
     public function getSections(){ return $this->sections; }
-    
+
+    public static function getArticleToValidate($pdo){
+        $sql = 'SELECT * FROM public.Article WHERE VALIDATED = FALSE ORDER BY ID_PAGE';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        echo json_encode(array('status' => 'Success', 'articles' => $result));
+    }
+
+    public static function validateArticle($pdo, $id){
+        $sql = 'UPDATE public.Article SET VALIDATED = TRUE WHERE ID_PAGE = ?';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+    }
 }
 
 ?>

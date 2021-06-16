@@ -72,6 +72,7 @@ input.inscription_input {
 a {
     text-decoration: none;
     color: #424242;
+    cursor: pointer;
 }
 
 div {
@@ -116,14 +117,6 @@ div {
 
 .black_link, .black_text {
     color: black !important;
-}
-
-.blue_link {
-    color:#4998a7 !important;
-}
-
-.blue_link:hover {
-    color:#ffffff !important;
 }
 
 .blue_text {
@@ -273,6 +266,57 @@ span .fa-check-square{
 
 .info {
     font-size: 18px;
+}
+
+.btn_admin {
+    border-radius: 0 !important;
+    background-color: #17b908;
+    color: #ffffff;
+    font-weight: bold !important;
+    border-width: 2px;
+    position: absolute; 
+    left: 0;
+    width: 50%;
+    margin-top: -3px;
+}
+
+.btn_admin:hover {
+    background-color: #ffffff;
+    color: #17b908;
+    border-color: #17b908; 
+}
+
+.btn_back{
+    border-radius: 0;
+    background-color: #4998a7;
+    color: #ffffff;
+    font-weight: bold !important;
+    border-width: 2px;
+    margin-top: 1vh;
+}
+
+.btn_back:hover{
+    background-color: #ffffff;
+    color: #4998a7;
+    border-color: #4998a7; 
+}
+
+.btn_admin_remove {
+    border-radius: 0 !important;
+    background-color: red;
+    color: #ffffff;
+    font-weight: bold !important;
+    border-width: 2px;
+    position: absolute; 
+    right: 0;
+    width: 50%;
+    margin-top: -3px;
+}
+
+.btn_admin_remove:hover {
+    background-color: #ffffff;
+    color: red;
+    border-color: red; 
 }
 
 @keyframes shake {
