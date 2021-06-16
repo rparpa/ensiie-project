@@ -4,64 +4,58 @@
   <script src="/js/article.js"></script>
 </head>
 <body>
-    <?php require("template/navbar.html"); ?>
-    <br><br>
+  <?php require("template/navbar.html"); ?>
+  <br><br>
 
-    <div class="card mx-auto bg-light" style="width: 900px; margin-top:50px ">
-    <div class="card-header bg-info text-white text-center">
-        <h3>Ecrire un article</h3>
-    </div>
-    <div class="card-body " ></div>
-    <h3 class="sucessField alertField SuccessInscription" id="SuccessInscription">Bravo, votre inscription a bien été prise en compte !</h3>
-    <h6 class="sucessField alertField SuccessInscription">(redirection dans 5s...)</h6>
 
-    <br>
-      <form action="" id="newarticle" method="post">
-        <div id='firstForm'>
-          <label for=title>  Titre </label>
-          <input id="title" type="text" maxlength="50" name="title" required>    
-          <br>
-
-          <label for=author>  Auteur </label>
-          <input id="author" type="text" maxlength="20" name="author" required>   
-          <br>
-          <br>
-
-          <label for=synopsis>  Synopsis </label><br>
-          <textarea id="synopsis" maxlength="128" class="w-50" name="synopsis" required></textarea> 
-          <br>
-          <br>
-
-          <label for=categories>  Catégories </label>
-          <select name="categories" id=cat0></select>
-          <select name="categories" id=cat1></select>
+  <form action="" id="newarticle" class="mx-auto" method="post" style="width:75%; margin-top:5%">
+    <div class="card bg-light" >
+      <div class="card-header bg-info text-white text-center">
+          <h3>Ecrire un article</h3>
+      </div>
+      <div id='firstForm' class="card-body">
+        <div class="form-group">
+          <label for=title>  Titre de l'article </label>
+          <input id="title" type="text" maxlength="50" name="title" class="form-control" required>    
         </div>
-        <br>
-        <div id="sections">
-          <div id="sect0" class="section">
-            <label for=section0 class="text-info"> <b> Section 1</b>  </label> <br>
-            <input type="text" maxlength="128" id="section0" required>
-            <br>
-            <br>
-            <label for="content0"> Contenu </label><br>
-            <textarea id="content0" class="w-100" rows="10" required></textarea>
-            <br> 
-            <br> 
+        <div class="form-group">
+          <label for=synopsis>  Synopsis </label><br>
+          <textarea id="synopsis" maxlength="500" rows=5 class="form-control" name="synopsis" style="color: black;" required></textarea> 
+        </div>
+        <div class="form-group">
+          <label for=categories>  Catégories </label>
+          <div class="row">
+            <div class="col-3">
+              <select name="categories" class="form-control" id=cat0></select>
+            </div>  
+            <div class="col-3">
+              <select name="categories" class="form-control" id=cat1></select>
+            </div>  
           </div>
         </div>
-        <br>
-        <div class="form-group">
-           <button class="btn btn-info text-white" onclick="addSection()">Ajouter une section</button>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-info text-white" onclick="postArticle()">Publier l'article</button>
-        </div>
-      </form>
-
+      </div>
     </div>
-    <script>
-        setCategories();
-    </script>
-  </div>
+    <br>
+    <div id="sections">
+      <div id="sect0" class="section card">
+        <div class="card-header text-info"> Section 1 </div>
+        <div class="card-body">
+          <label for=section0> <b> Titre de la section </b> </label>
+          <input type="text" maxlength="100" id="section0" class="form-control" required>
+          <br>
+          <label for="content0"> <b> Contenu de la section </b> </label><br>
+          <textarea id="content0" class="form-control" rows=7 required></textarea>
+        </div>
+      </div>
+    </div>   
+    <br>   
+    <div class="form-group row">
+        <button class="btn btn-primary text-white col" onclick="addSection()" style="padding: 0%; ">Ajouter une section</button>
+        <span></span>
+        <button class="btn btn-success text-white col" onclick="postArticle()" style="padding: 0%; margin-left:1%">Publier l'article</button>
+        <span class="col"></span>
+      </div>
+  </form>
+  <script> setCategories(); </script>
 </body>
 </html>
