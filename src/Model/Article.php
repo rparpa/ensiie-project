@@ -18,9 +18,9 @@ class Article{
     private $idAdmin;
     private $cat0;
     private $cat1;
-    private $sections;    
+    private $sections;
 
-    public function __construct($pdo){
+    public function __construct(PDO $pdo){
         $this->pdo = $pdo; 
     }
 
@@ -207,6 +207,23 @@ class Article{
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(1, $id);
         $stmt->execute();
+    }
+
+    public static function getTitles($pdo){
+        $sql = 'SELECT TITLE FROM public.Article ORDER BY TITLE';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        echo json_encode(array('status' => 'Success', 'titles' => $result));
+    }
+
+    public static function getArticleByTitle($pdo, $title){
+        $sql = 'SELECT * FROM public.Article WHERE TITLE ~* ? ORDER BY TITLE';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(1, $title);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        echo json_encode(array('status' => 'Success', 'articles' => $result));
     }
 }
 

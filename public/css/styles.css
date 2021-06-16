@@ -5,6 +5,7 @@ html,body {
   margin: 0;
   font-family: 'Roboto', Courier, monospace;
   font-weight: 800;
+  background-color: #f8f9fb !important;
 }
 
 #title_Wikipediie {
@@ -89,11 +90,11 @@ div {
 
 #connection_failed {
     right: auto;
-    color: white !important;
+    color: #f8f9fb !important;
 }
 
 #div_alert {
-    background-color: #ffffff;
+    background-color: #f8f9fb;
     text-align: right;
     border-width: 0px;
     border-radius: 0;
@@ -332,6 +333,60 @@ span .fa-check-square{
     color:#4998a7;
 }
 
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+  
+.search input, .search span{
+      border-color: transparent;
+      background: none;
+      color: #ffffff !important;
+}
+.search span{
+      border: 1px solid transparent!important;
+}
+  
+.search span:hover{
+      background-color: rgb(73, 152, 167, 0.5) !important;
+      border-radius: 10em;
+}
+
+.div_search input::placeholder{
+    color: #ffffff;
+}
+  
+.input-group>.form-control:focus {
+      border-color: transparent;
+      box-shadow: inset 0 0 0 1px transparent;
+}
+  
+.autocomplete-items {
+    position: absolute;
+    border: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+  
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4 !important;
+    border: none;
+}
+  
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+
+.div_search{
+    border-radius: 10em; 
+    background: linear-gradient(to right, #4998a7, #343a40);
+}
+
 /**** Mobile layout ****/
 @media (max-width: 900px) {
 
@@ -384,9 +439,4 @@ span .fa-check-square{
         position: relative;
         margin-right: 0;
     }
-
-
-}
-
-@media (max-width: 636px) {
 }
