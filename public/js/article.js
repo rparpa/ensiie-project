@@ -1,30 +1,8 @@
-
-function setCategories(categories){
-    for(let i = 0; i < 2; i++){
-        for(let id = 0; id < categories.length; id++){
-            let name = categories[id].name;
-            $("#cat" + i).append("<option value=" + name + ">" + name + "</option>");
-        }
-    }
-}
-
-function loadCategories(){
-    $.ajax({
-        url: 'router.php',
-        type: 'GET',
-        data: {
-            request: "Controller/get_categories.php"
-        },
-        dataType: 'json'
-    }).done(function(data){
-        if(data.status == "success"){
-            setCategories(data.categories);  
-        }
-        else{
-            // TODO show error somewhere
-            alert("LOADING ERROR");
-        }
-    })
+function setCategories(){
+    loadCategories().forEach(e => {
+        $("#cat0").append("<option value=" + e.name + ">" + e.name + "</option>");
+        $("#cat1").append("<option value=" + e.name + ">" + e.name + "</option>");
+    });
 }
 
 function addSection(){
@@ -33,11 +11,13 @@ function addSection(){
         "<div id=sect" + id +  " class='section'>"
     );
     $("#sect" + id).append(
-        "<label for=section" + id + "> Section  </label> <br>",
-        "<input type=text maxlength=128 id=section" + id + ">",  
+        "<label for=section" + id + " class='text-info'> <b> Section "+ (id+1) +" </b> </label>",
+        "</br>",
+        "<input type=text maxlength=128 id=section required> ",
+        "<br>",
         "<br>",
         "<label for=content" + id + "> Contenu </label><br>",
-        "<textarea id=content" + id + " rows=10 ></textarea>",
+        "<textarea id=content" + id + " class='w-100' rows='10' ></textarea>",
     );
 
 }

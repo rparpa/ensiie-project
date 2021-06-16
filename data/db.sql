@@ -82,7 +82,6 @@ CREATE TABLE public.Maintains(
 ------------------------------------------------------------
 -- Insert
 ------------------------------------------------------------
-INSERT INTO Category (name) VALUES ('');
 INSERT INTO Category (name) VALUES ('Aucune');
 INSERT INTO Category (name) VALUES ('Sport');
 INSERT INTO Category (name) VALUES ('Physique');

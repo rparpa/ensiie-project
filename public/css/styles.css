@@ -118,6 +118,14 @@ div {
     color: black !important;
 }
 
+.blue_link {
+    color:#4998a7 !important;
+}
+
+.blue_link:hover {
+    color:#ffffff !important;
+}
+
 .blue_text {
     color: #4998a7;
 }
@@ -261,6 +269,10 @@ span .fa-check-square{
 
 .shake {
     animation: shake 0.7s ease-in-out 0s;
+}
+
+.info {
+    font-size: 18px;
 }
 
 @keyframes shake {
