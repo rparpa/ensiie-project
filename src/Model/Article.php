@@ -1,7 +1,6 @@
 <?php
 namespace Model;
 
-use DateTimeInterface;
 use PDO;
 
 use \Model\Section;
@@ -71,7 +70,7 @@ class Article{
     }
 
     public static function get_all($conn) {
-        $sql = 'SELECT * FROM public.Article';
+        $sql = 'SELECT * FROM public.Article ORDER BY id_page';
         $stmt = $conn->prepare($sql);
         if($stmt->execute()){
                 $row = $stmt->fetchAll();
@@ -110,7 +109,7 @@ class Article{
     }
 
     public static function getArticleObject($pdo, $id){
-        $sql = 'SELECT * FROM public.Article WHERE ID_PAGE = ?';
+        $sql = 'SELECT * FROM public.Article WHERE ID_PAGE = ?' ;
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(1, $id);
         $stmt->execute();
@@ -148,6 +147,30 @@ class Article{
             $section = new Section($this->pdo, $row->id_section, $row->id_section, $row->title, $row->content);
             $this->sections[] = $section;
         }
+    }
+
+    public function updateArticle(){
+        $sql = 'UPDATE public.Article 
+                SET synopsis = ?, modification_date = ?, validated = False
+                WHERE id_page = ?';
+        $stmt = $this->pdo->prepare($sql);
+        
+        $date = date("Y-m-d");
+        $stmt->bindParam(1, $this->synopsis);
+        $stmt->bindParam(2, $date);
+        $stmt->bindParam(3, $this->id);
+        $stmt->execute();
+    }
+
+    public function updateArticleDate(){
+        $sql = "UPDATE public.Article 
+                SET modification_date = ?, validated = False
+                WHERE id_page = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $date = date("Y-m-d");
+        $stmt->bindParam(1, $date); 
+        $stmt->bindParam(2, $this->id);
+        $stmt->execute();
     }
 
     public function setId($id){ $this->id = $id; return $this; }

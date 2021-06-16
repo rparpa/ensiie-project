@@ -8,14 +8,14 @@ $pdo = Connection::get();
 $newSection = $_POST['section'];
 
 $section = new Section(
-    $pdo, $newSection['sectionID'], $newSection['articleID'],
+    $pdo, 0, $newSection['articleID'],
     $newSection['title'], $newSection['content']
 );
+$section->insertDatabase();
+
 $article = new Article($pdo);
 $article->setId($newSection['articleID']);
-
-$section->updateSection();
 $article->updateArticleDate();
 
-echo json_encode(array('status' => "success"));
+echo json_encode(array('status' => 'success'));
 ?>
