@@ -7,5 +7,5 @@ $pdo = Connection::get();
 $art = Article::fromDict($pdo, $article);
 $art->createArticle();
 
-echo json_encode(array('status' => "success"));
+echo json_encode(array('status' => "success", 'articleID' => $art->getId()));
 ?>
