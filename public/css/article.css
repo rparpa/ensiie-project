@@ -69,20 +69,23 @@
 .section_title {
     color: #4998a7;
     margin-bottom: 8px;
+    font-size: 30px;
 }
 
 .section_article{
-    margin-top: 30px ;
+    margin-top: 25px ;
 }
 
 #Synopsis {
+    margin-top: 20px;
     color: #4998a7;
+    font-size: 30px;
 }
 
 #article_cat, #article_date_crea, #article_date_modif {
     color: #4998a7;
     text-align: left;
-    font-size: 30px;
+    font-size: 20px;
     margin-bottom: 15px;
 }
 
