@@ -218,9 +218,10 @@ class Article{
     }
 
     public static function getArticleByTitle($pdo, $title){
-        $sql = 'SELECT * FROM public.Article WHERE TITLE ~* ? ORDER BY TITLE';
+        $sql = 'SELECT * FROM public.Article WHERE TITLE LIKE ? ORDER BY TITLE';
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(1, $title);
+        $u = "%".$title."%";
+        $stmt->bindParam(1, $u);
         $stmt->execute();
         $result = $stmt->fetchAll();
         echo json_encode(array('status' => 'Success', 'articles' => $result));
