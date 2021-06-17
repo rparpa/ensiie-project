@@ -92,6 +92,15 @@ CREATE TABLE public.Moderation(
     ,CONSTRAINT Moderation_User_AK UNIQUE (USERNAME)
 )WITHOUT OIDS;
 
+
+------------------------------------------------------------
+-- Table: NewCategory
+------------------------------------------------------------
+CREATE TABLE public.NewCategory(
+    NAME   VARCHAR (20) NOT NULL  ,
+    CONSTRAINT NewCategory_PK PRIMARY KEY (NAME)
+)WITHOUT OIDS;
+
 ------------------------------------------------------------
 -- Insert
 ------------------------------------------------------------
@@ -106,17 +115,6 @@ INSERT INTO Category (name) VALUES ('Cinéma');
 INSERT INTO Category (name) VALUES ('Rock');
 INSERT INTO Category (name) VALUES ('Jeux');
 INSERT INTO Category (name) VALUES ('Mythologie');
-INSERT INTO Category (name) VALUES ('tt');
-INSERT INTO Category (name) VALUES ('ee');
-INSERT INTO Category (name) VALUES ('eer');
-INSERT INTO Category (name) VALUES ('Chazeeimie');
-INSERT INTO Category (name) VALUES ('rty');
-INSERT INTO Category (name) VALUES ('Juridique');
-INSERT INTO Category (name) VALUES ('Muszique');
-INSERT INTO Category (name) VALUES ('Cinzéma');
-INSERT INTO Category (name) VALUES ('Roczk');
-INSERT INTO Category (name) VALUES ('Jezux');
-INSERT INTO Category (name) VALUES ('Mytheologie');
 
 -- INSERT INTO public.User (USERNAME, EMAIL, PASSWD, CREATION_DATE, VALIDATE) VALUES ('demo', 'demo@test.fr', '123', '2000-10-10', TRUE);
 

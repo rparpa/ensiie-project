@@ -26,7 +26,7 @@
 }
 
 .sommaire, .categories {
-    padding-top: 30px;
+    margin-top: 30px;
     padding-left: 30px;
     color: #4998a7 !important; 
     text-align: center !important;
@@ -187,7 +187,7 @@
     }
 
     #content, #content_admin {
-        margin-left: clamp(220px, 10vw, 500px);
+        margin-left: clamp(260px, 10vw, 500px);
         margin-right: 5vw;
     }
 }
