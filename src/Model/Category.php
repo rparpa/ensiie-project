@@ -2,13 +2,27 @@
 
 namespace Model;
 
+use PDO;
 class Category{
+    private PDO $pdo;
+    private string $name;
 
+    public function __construct($pdo, $name){
+        $this->pdo = $pdo;
+        $this->name = $name;
+    }
     public static function getAll($pdo){
         $sql = "SELECT name FROM Category";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    public function insertDatabase(){
+        $sql = "INSERT INTO public.Category (NAME) VALUES (?)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(1, $this->name);
+        $stmt->execute();
     }
 
     public static function getByName($pdo, $name){
