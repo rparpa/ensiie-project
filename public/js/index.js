@@ -296,6 +296,7 @@ function helperCat(){
         $('#cat_send').fadeOut();
         $("#div_send_cat_success").css('background-color', '#f8f9fb');
     }, 5000);
+}
 
 function proposeCat(){
     $.ajax({
@@ -308,5 +309,5 @@ function proposeCat(){
         },
         dataType: 'json'
     });
-    name: $("#newCat").val('');
+    $("#newCat").val('');
 }
