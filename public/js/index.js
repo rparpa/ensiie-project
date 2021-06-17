@@ -287,17 +287,6 @@ function editArticle(){
     window.location = '/edition.php?id=' + id;
 }
 
-
-function helperCat(){
-    
-    $("#cat_send").show();
-    $("#div_send_cat_success").css('background-color', 'rgba(40, 167, 69, 0.5)');
-    setTimeout(function () {
-        $('#cat_send').fadeOut();
-        $("#div_send_cat_success").css('background-color', '#f8f9fb');
-    }, 5000);
-}
-
 function proposeCat(){
     $.ajax({
         url: 'router.php',
@@ -309,5 +298,13 @@ function proposeCat(){
         },
         dataType: 'json'
     });
+    console.log("test")
     $("#newCat").val('');
+    $("#div_alert, #cat_send").show();
+    $()
+    $("#div_alert").css('background-color', 'rgba(40, 167, 69, 0.5)');
+    setTimeout(function () {
+        $('#div_alert').fadeOut();
+        $("#div_alert").css('background-color', '#f8f9fb');
+    }, 5000);
 }

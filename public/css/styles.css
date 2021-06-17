@@ -86,7 +86,7 @@ div {
     color: #72b312 !important;
 }
 
-#connection_failed {
+#connection_failed, #cat_send {
     right: auto;
     color: #f8f9fb !important;
 }
@@ -96,6 +96,7 @@ div {
     text-align: right;
     border-width: 0px;
     border-radius: 0;
+    margin-bottom: 0;
 }
 
 .fa-exclamation-triangle{
@@ -358,6 +359,13 @@ span .fa-check-square{
       border-color: transparent;
       box-shadow: inset 0 0 0 1px transparent;
 }
+
+#newCat {
+    border-radius: 10em;
+    border: none;
+    padding-left: 10px !important;
+    outline: transparent;
+}
   
 .autocomplete-items {
     position: absolute;
@@ -385,6 +393,7 @@ span .fa-check-square{
 .div_search{
     border-radius: 10em; 
     background: linear-gradient(to right, #4998a7, #343a40);
+    margin-top: 30px;
 }
 
 *::-webkit-scrollbar  {
@@ -452,10 +461,6 @@ span .fa-check-square{
 
     .div_search {
         margin-top: 25px;
-    }
-
-    .side-br {
-        display: none !important;
     }
 
     .sidebar-nav {
