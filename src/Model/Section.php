@@ -44,6 +44,19 @@ class Section{
         $stmt->execute();
     }
 
+    public function removeSection(){
+        $sql = "DELETE FROM public.Section
+                WHERE id_section = ?
+                AND id_page = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(array($this->id, $this->pageId));
+
+        $article = new Article($this->pdo);
+        $article->setId($this->pageId);
+        $article->updateArticleDate();
+
+    }
+
     public function getId(){ return $this->id; }
     public function getTitle(){ return $this->title; }
     public function getContent(){ return $this->content; }
