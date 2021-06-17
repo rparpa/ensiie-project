@@ -9,6 +9,7 @@ function autocomplete(inp, arr) {
         a = document.createElement("DIV");
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
+        a.setAttribute("onclick", "loadArticleByTitle()");
         this.parentNode.appendChild(a);
 
         let matching = [];
@@ -72,10 +73,15 @@ function autocomplete(inp, arr) {
       if (currentFocus >= x.length) currentFocus = 0;
       if (currentFocus < 0) currentFocus = (x.length - 1);
       x[currentFocus].classList.add("autocomplete-active");
+      x[currentFocus].style.backgroundColor = "#4998a7";
+      x[currentFocus].style.color = "#ffffff";
+      $("#SearchArticle").val(x[currentFocus].getElementsByTagName("input")[0].value)
     }
     function removeActive(x) {
       for (var i = 0; i < x.length; i++) {
         x[i].classList.remove("autocomplete-active");
+        x[i].style.backgroundColor = "#ffffff";
+        x[i].style.color = "#000000";
       }
     }
     function closeAllLists(elmnt) {

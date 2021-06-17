@@ -27,6 +27,17 @@ function init() {
         localStorage.setItem("username", $("#username").val())
     });
     $("#username").val(localStorage.getItem("username"));
+
+    $('#password').keypress(function (e) {
+        if (e.key === 'Enter') {
+            verifyser();
+        }
+    });
+    $("#username").keypress(function (e) {
+        if (e.key === 'Enter') {
+            verifyser();
+        }
+    });
 }
 
 function connectedDisplay() {
