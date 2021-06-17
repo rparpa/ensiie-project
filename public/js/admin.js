@@ -19,6 +19,7 @@ function getCategoriesToValidate(){
 }
 
 function setCategoriesToValidate(categories){
+    $("#content_admin").append('<div id="article_title" class="col-12" style="margin-bottom: 3%; margin-top:2%;" >Catégorie à valider</div>');
     $("#content_admin").append('<table class="table table-striped w-50 mx-auto"><tbody id="tableBody"></tbody></table>');    
     let nb = 1;
     categories.forEach(cat => {
@@ -60,6 +61,7 @@ function decisionCat(keep, name, id){
 
 function loadArticleToValidate(){
     $("#content_admin").empty();
+    $("#content_admin").append('<div id="article_title" class="col-12" style="margin-bottom: 3%; margin-top:2%;" >Articles à valider</div>');
     loadMenuAdmin();
     window.history.pushState('', 'Load article', "/admin.php?va=1");
     getArticleToValidate().forEach(e => {
@@ -134,6 +136,7 @@ function getArticleToValidate(){
 
 function loadDemandeModo(){
     $("#content_admin").empty();
+    $("#content_admin").append('<div id="article_title" class="col-12" style="margin-bottom: 3%; margin-top:2%;">Modérateurs</div>');
     loadMenuAdmin();
     window.history.pushState('', 'Load article', "?mo=1");
     getDemandeModo().forEach(e => {

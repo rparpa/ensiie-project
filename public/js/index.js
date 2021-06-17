@@ -12,13 +12,18 @@ jQuery(document).ready(function ($) {
             nav.show();
         else
             nav.hide();
-    })
+    });
 });
 
 function init() {
     $('.alertField, .sucessField').hide();
     if (localStorage.getItem('connected') == 'true') {
         connectedDisplay();
+        $("#newCat").keypress(function (e) {
+            if (e.key === 'Enter') {
+                proposeCat();
+            }
+        });
         return;
     }
     $('.onlyUser, .onlyAdmin').hide();
@@ -27,12 +32,7 @@ function init() {
     });
     $("#username").val(localStorage.getItem("username"));
 
-    $('#password').keypress(function (e) {
-        if (e.key === 'Enter') {
-            verifyser();
-        }
-    });
-    $("#username").keypress(function (e) {
+    $('#password, #username').keypress(function (e) {
         if (e.key === 'Enter') {
             verifyser();
         }
@@ -40,7 +40,7 @@ function init() {
 }
 
 function connectedDisplay() {
-    $("#affiche_name").html("Bonjour " + localStorage.getItem("username") + " !");
+    $("#affiche_name").html("Bonjour <span style='color: #ffffff'>" + localStorage.getItem("username") + "</span> !");
     $(".onlyUser").show();
 
     $(".notUser").hide();
