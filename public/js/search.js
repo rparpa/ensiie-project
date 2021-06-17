@@ -1,6 +1,7 @@
 function autocomplete(inp, arr) {
     var currentFocus;
     inp.addEventListener("input", function(e) {
+        var arrCopy = [...arr];
         var a, b, i, val = this.value;
         closeAllLists();
         if (!val) { return false;}
@@ -10,28 +11,45 @@ function autocomplete(inp, arr) {
         a.setAttribute("class", "autocomplete-items");
         a.setAttribute("onclick", "loadArticleByTitle()");
         this.parentNode.appendChild(a);
-        let re = new RegExp(".*" + val.toUpperCase() + ".*", "i");
-        for (i = 0; i < arr.length; i++) {
+
+        let matching = [];
+        // match beging of a word
+        let re = new RegExp(val.toUpperCase() + ".*", "i");
+        for (i = arr.length - 1 ; i >= 0 && matching.length < 5; i--) {
           if(re.test(arr[i])){
-            b = document.createElement("DIV");
-            let pos = 0;
-            for(let x = 0 ; x < arr[i].length && stop; x++){
-              if(re.test(arr[i].substr(pos, val.length))){
-                break;
-              }
-              pos += 1;
-            }
-            b.innerHTML = arr[i].substr(0, pos);
-            b.innerHTML += "<strong>" + arr[i].substr(pos, val.length) + "</strong>";
-            b.innerHTML += arr[i].substr(pos + val.length);
-            b.innerHTML += "<input type='hidden' id='search_value' value='" + arr[i] + "'>";
-                b.addEventListener("click", function(e) {
-                inp.value = this.getElementsByTagName("input")[0].value;
-                closeAllLists();
-            });
-            a.appendChild(b);
+            matching.push(arr[i]);
+            arr.splice(i, 1);
           }
         }
+        // match in of a title
+        re = new RegExp( ".*" + val.toUpperCase() + ".*", "i");
+        for(i = arr.length - 1 ; i >= 0 && matching.length < 5; i--) {
+          if(re.test(arr[i])){
+            matching.push(arr[i]);
+            arr.splice(i, 1);
+          }
+        }
+        for (i = matching.length - 1 ; i >= 0; i--){
+          b = document.createElement("DIV");
+          let pos = 0;
+          for(let x = 0 ; x < matching[i].length && stop; x++){
+            if(re.test(matching[i].substr(pos, val.length))){
+              break;
+            }
+            pos += 1;
+          }
+          b.innerHTML = matching[i].substr(0, pos);
+          b.innerHTML += "<strong>" + matching[i].substr(pos, val.length) + "</strong>";
+          b.innerHTML += matching[i].substr(pos + val.length);
+          b.innerHTML += "<input type='hidden' value='" + matching[i] + "'>";
+              b.addEventListener("click", function(e) {
+              inp.value = this.getElementsByTagName("input")[0].value;
+              closeAllLists();
+          });
+          a.appendChild(b);
+          
+        }
+        arr = [...arrCopy];
     });
     inp.addEventListener("keydown", function(e) {
         var x = document.getElementById(this.id + "autocomplete-list");
