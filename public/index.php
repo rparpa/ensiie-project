@@ -4,7 +4,7 @@
 <?php include("template/header.html"); ?>
 <body>
     <?php include("template/navbar.html"); ?>
-    <div id="nav_article" class="sidepanel">
+    <div id="nav_article" class="sidepanel scrollbar scrollbar-lips"></div>
         <label class="text-white ml-4 onlyUser"> Proposer une catégorie : </label>
         <div class="d-flex onlyUser">
             <input id="newCat" class="w-75 ml-4 onlyUser" style="padding: 2% 0% 2% 0%;" type=text>

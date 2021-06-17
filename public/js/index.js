@@ -16,13 +16,12 @@ jQuery(document).ready(function ($) {
 });
 
 function init() {
-    $('.alertField').hide();
+    $('.alertField, .sucessField').hide();
     if (localStorage.getItem('connected') == 'true') {
         connectedDisplay();
         return;
     }
     $('.onlyUser, .onlyAdmin').hide();
-
     $("#username").change(function () {
         localStorage.setItem("username", $("#username").val())
     });
@@ -144,6 +143,7 @@ function loadCategories(){
 }
 
 function setIndexCategories(){
+
     // $("#nav_article").empty();
     $("#nav_article").append(`<span class="categories">Catégories</span>`);
     $("#nav_article").append(`<a onclick="getAllArticle('article');"><i class="fas fa-eraser"></i>Nettoyer filtre</a>`);
@@ -286,6 +286,16 @@ function editArticle(){
     let id = urlParams.get('id');
     window.location = '/edition.php?id=' + id;
 }
+
+
+function helperCat(){
+    
+    $("#cat_send").show();
+    $("#div_send_cat_success").css('background-color', 'rgba(40, 167, 69, 0.5)');
+    setTimeout(function () {
+        $('#cat_send').fadeOut();
+        $("#div_send_cat_success").css('background-color', '#f8f9fb');
+    }, 5000);
 
 function proposeCat(){
     $.ajax({

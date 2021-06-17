@@ -29,8 +29,6 @@ input.inscription_input {
     margin-right: 1rem
 }
 
-
-
 #connection_btn {
     border-color: white !important;
     border-style: solid;
@@ -389,6 +387,15 @@ span .fa-check-square{
     background: linear-gradient(to right, #4998a7, #343a40);
 }
 
+*::-webkit-scrollbar  {
+    width: 6px;
+    background-color: #343a40; 
+}
+
+*::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to top, #343a40 0%, #4998a7 40%, #343a40 100%); 
+}
+
 /**** Mobile layout ****/
 @media (max-width: 900px) {
 
@@ -426,15 +433,42 @@ span .fa-check-square{
     }
 
     #sidebar-wrapper {
-        width: 250px;
+        padding-top: 0px !important;
+        height: auto;
+        position: inherit;
+        text-align: center;
+        content: center;
+        margin-left: auto;
+        margin-top: 0 !important;
+        padding-bottom: 5% ;
+    }
+    .sidebar-nav li a {
+        padding: 0 !important;
+    }
+
+    .sidebar-nav {
+        width: auto !important;
+    }
+
+    .div_search {
+        margin-top: 25px;
+    }
+
+    .side-br {
+        display: none !important;
+    }
+
+    .sidebar-nav {
+        margin-top: 10px;
     }
 
     #wrapper.toggled #sidebar-wrapper {
-        width: 0;
+        width: 100%;
     }
 
     #page-content-wrapper {
         padding: 20px;
+        position: inherit;
     }
 
     #wrapper.toggled #page-content-wrapper {
