@@ -9,8 +9,7 @@ function autocomplete(inp, arr) {
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
         this.parentNode.appendChild(a);
-        let re = new RegExp(".*" + val.toUpperCase() + ".*");
-        re.ignoreCase = true;
+        let re = new RegExp(".*" + val.toUpperCase() + ".*", "i");
         for (i = 0; i < arr.length; i++) {
           if(re.test(arr[i])){
             b = document.createElement("DIV");
@@ -117,7 +116,6 @@ function searchByTitle(title){
         dataType: 'json'
     }).done(function (data) {
         dataA = data.articles;
-        console.log(dataA)
     });
     return dataA;
 }

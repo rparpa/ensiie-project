@@ -4,7 +4,6 @@ function editArticle(){
     let urlParams = new URLSearchParams(query);
 
     let id = urlParams.get('id');
-    console.log('/edition.php?id=' + id);
     window.location = '/edition.php?id=' + id;
 }
 
@@ -51,7 +50,6 @@ function updateSection(articleId, sectionId){
         dataType: 'json'
     })
     .done(function(data){
-        console.log("FINISH SECTION");
         window.location.reload();
     });
 }
@@ -73,7 +71,6 @@ function updateArticle(articleId){
         dataType: 'json'
     })
     .done(function(data){
-        console.log("FINISH3 Artic" + data);
         window.location.reload();
     });
 }
@@ -90,7 +87,6 @@ function addSectionInput(articleID){
         "<textarea class='form-control w-100' id='content" + id + "'></textarea>",
         "<button onclick=addSection(" + articleID +"," + id +") class='btn-success col-2 form-control'> Ajouter la section </button>"
     );
-    console.log(articleID);
     autosize();
 }
 
@@ -109,7 +105,6 @@ function addSection(articleID, secID){
         },
         dataType: 'json'
     }).done(function(data){
-        console.log("FINIS ADD" + data);
         window.location.reload();
     });   
 }
