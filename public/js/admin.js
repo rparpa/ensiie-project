@@ -22,7 +22,7 @@ function loadAdminArticle(id) {
     window.history.pushState('', 'Load article', "?id="+id);
     $("#content_admin").load('template/admin_article.html', function () {
         loadMenuAdmin();
-        loadAdminArticleContent(data.sections);
+        loadAdminArticleContent(data.sections, data.page.id_page);
         loadArticleIntro(data.page);
     });
 }
@@ -35,16 +35,17 @@ function loadMenuAdmin(){
 
 }
 
-function loadAdminArticleContent(sections) {
+function loadAdminArticleContent(sections, articleID) {
 
     $("#nav_admin").append(`<span class="sommaire">Sommaire</span>`);
     $("#nav_admin").append(`<a href="#Synopsis"><i class="fas fa-circle"></i>Synopsis</a>`);
-
+    console.log(sections);
     sections.forEach(s => {
         // Ajout dans le mini menu
         $("#nav_admin").append(`<a href="#` + s.title + `"><i class="fas fa-circle"></i>` + s.title + `</a>`);
         // ajoute la sections a la page
         $("#section_container").append(`<div class="row section_article"><div class="col-12"><h1 id="` + s.title + `" class="section_title">` + s.title + `</h1></div></div><div class="row"><div class="col-12 section_content">` + s.content + `</div></div>`);
+        $("#section_container").append(`<button class="btn btn-sm btn-danger col-3 float-right" onclick="removeSection(` + s.id_section+ `,` + articleID + `)"> Supprimer la section </button>`);
     });
 }
 
@@ -151,4 +152,22 @@ function removeModo(id){
         },
         dataType: 'json',
     }).done(loadDemandeModo())
+}
+
+function removeSection(sectionID, articleID){
+    console.log(sectionID + " --- " +  articleID);
+    $.ajax({
+        type: 'POST',
+        url: 'router.php',
+        async: false,
+        data: {
+            request: "Controller/remove_section.php",
+            sectionID: sectionID,
+            articleID: articleID
+        },
+        dataType: 'json',
+    }).done(function(param) {  
+        console.log(param);
+        window.location.reload();
+    })
 }

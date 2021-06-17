@@ -1,7 +1,6 @@
 <?php
 use \Model\Category;
 use \Db\Connection;
-use SebastianBergmann\Environment\Console;
 
 $pdo = Connection::get();
 
