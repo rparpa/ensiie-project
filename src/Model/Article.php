@@ -30,7 +30,7 @@ class Article{
         $article->synopsis = $dict['synopsis'];
         $article->cat0 = $dict['cat0'];
         $article->cat1 = $dict['cat1'];
-        $article->sections = $dict['sections'];
+        $article->sections = isset($dict['sections']) ?  $dict['sections'] : [];
         $article->creationDate = date("Y-m-d");
         $article->modificationDate = date("Y-m-d");
         $article->validated = False;
