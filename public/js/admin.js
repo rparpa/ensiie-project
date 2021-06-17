@@ -45,7 +45,7 @@ function loadAdminArticleContent(sections, articleID) {
         $("#nav_admin").append(`<a href="#` + s.title + `"><i class="fas fa-circle"></i>` + s.title + `</a>`);
         // ajoute la sections a la page
         $("#section_container").append(`<div class="row section_article"><div class="col-12"><h1 id="` + s.title + `" class="section_title">` + s.title + `</h1></div></div><div class="row"><div class="col-12 section_content">` + s.content + `</div></div>`);
-        $("#section_container").append(`<button class="btn btn-sm btn-danger col-3 float-right" onclick="removeSection(` + s.id_section+ `,` + articleID + `)"> Supprimer la section </button>`);
+        $("#section_container").append(`<button class="btn btn-sm btn-danger col-3 float-right" onclick="removeSection(` + s.id_section+ `,` + articleID + `)"> Supprimer la section </button><br>`);
     });
 }
 

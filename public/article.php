@@ -8,7 +8,7 @@
   <br><br>
 
 
-  <form action="" id="newarticle" class="mx-auto" method="post" style="width:75%; margin-top:5%">
+  <div action="" id="newarticle" class="mx-auto" method="post" style="width:75%; margin-top:5%">
     <div class="card bg-light" >
       <div class="card-header bg-info text-white text-center">
           <h3>Ecrire un article</h3>
@@ -20,16 +20,16 @@
         </div>
         <div class="form-group">
           <label for=synopsis>  Synopsis </label><br>
-          <textarea id="synopsis" maxlength="500" rows=5 class="form-control" name="synopsis" style="color: black;" required></textarea> 
+          <textarea id="syno" maxlength="500" rows=5 class="form-control" name="synopsis" required></textarea> 
         </div>
         <div class="form-group">
           <label for=categories>  Catégories </label>
           <div class="row">
             <div class="col-3">
-              <select name="categories" class="form-control" id=cat0></select>
+              <select class="form-control" id=cat0></select>
             </div>  
             <div class="col-3">
-              <select name="categories" class="form-control" id=cat1></select>
+              <select class="form-control" id=cat1></select>
             </div>  
           </div>
         </div>
@@ -55,7 +55,7 @@
         <button class="btn btn-success text-white col" onclick="postArticle()" style="padding: 0%; margin-left:1%">Publier l'article</button>
         <span class="col"></span>
       </div>
-  </form>
-  <script> setCategories(); </script>
+  </div>
+  <script> setCategories(); changeButton();</script>
 </body>
 </html>
