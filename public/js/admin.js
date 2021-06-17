@@ -1,3 +1,63 @@
+function loadCategoriesToValidate(){
+    window.history.pushState('', 'Load article', "/admin.php?ca=1");
+    $("#content_admin").empty();
+    loadMenuAdmin();
+    getCategoriesToValidate();
+}
+function getCategoriesToValidate(){
+    $.ajax({
+        type: 'POST',
+        url: 'router.php',
+        async: false,
+        data: {
+            request: "Controller/get_proposed_categories.php",
+        },
+        dataType: 'json',
+    }).done(function(data){
+        setCategoriesToValidate(data.categories);
+    });
+}
+
+function setCategoriesToValidate(categories){
+    $("#content_admin").append('<table class="table table-striped w-50 mx-auto"><tbody id="tableBody"></tbody></table>');    
+    let nb = 1;
+    categories.forEach(cat => {
+        $("#tableBody").append(
+            `<tr class="row" id="` + cat.name + `">
+                <td class="col">`+ nb + `</td>
+                <td class="col">` + cat.name + `</td>
+                <td class="col">
+                    <div>
+                        <button onclick='decisionCat(1, "` + cat.name + `")' class="btn btn-success"> <i class="fas fa-check"></i> </button>
+                        <button onclick='decisionCat(0, "` + cat.name + `")' class="btn btn-danger"> <i class="fas fa-ban"></i> </button>
+                    </div>
+                </td>
+            </tr>`
+        );
+
+        nb++;
+    });
+}
+function decisionCat(keep, name){
+    $.ajax({
+        type: 'POST',
+        url: 'router.php',
+        async: false,
+        data: {
+            request: "Controller/decision_proposed_categories.php",
+            keep: keep,
+            name: name
+        },
+        dataType: 'json',
+    }).done(function(data){
+        $("#" + name).find("button").attr('disabled', true);
+        if(keep){ $("#" + name).find("button").removeClass('btn-danger');  }
+        else{ $("#" + name).find("button").removeClass('btn-success');}
+        $("#" + name).find("button").addClass('btn-secondary');
+        
+    });
+}
+
 function loadArticleToValidate(){
     $("#content_admin").empty();
     loadMenuAdmin();
@@ -31,6 +91,7 @@ function loadMenuAdmin(){
     $("#nav_admin").empty();
     $("#nav_admin").append(`<span class="sommaire">Admin</span>`);
     $("#nav_admin").append(`<a onclick="loadArticleToValidate();"><i class='fas fa-circle'></i>Articles à valider</a>`);
+    $("#nav_admin").append(`<a onclick="loadCategoriesToValidate();"><i class='fas fa-circle'></i>Catégories à valider</a>`);
     $("#nav_admin").append(`<a onclick="loadDemandeModo();"><i class='fas fa-circle'></i></i>Moderateurs</a><br><br>`);
 
 }
