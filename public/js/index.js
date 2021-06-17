@@ -40,7 +40,7 @@ function init() {
 }
 
 function connectedDisplay() {
-    $("#affiche_name").html("Bonjour " + localStorage.getItem("username") + " !");
+    $("#affiche_name").html("Bonjour <span style='color: #ffffff'>" + localStorage.getItem("username") + "</span> !");
     $(".onlyUser").show();
 
     $(".notUser").hide();

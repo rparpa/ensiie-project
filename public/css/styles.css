@@ -9,13 +9,12 @@ html,body {
 }
 
 #title_Wikipediie {
-    font-family: 'Times New Roman', Times, serif;
     color: white;
     font-size: 50px;
+    margin-left: 20px;
 }
 
 #affiche_name {
-    font-family: 'Times New Roman', Times, serif;
     color: #4998a7;
     font-size: 30px;
 }
@@ -479,5 +478,33 @@ span .fa-check-square{
     #wrapper.toggled #page-content-wrapper {
         position: relative;
         margin-right: 0;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    div.form-group{
+        margin-bottom: 0;
+    }
+
+    #btnAddArticle{
+        margin-right: 5px ;
+    }
+
+    #affiche_name {
+        margin-right: 15px;
+    }
+
+    *{
+        font-size: 15px !important;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    #affiche_name {
+        display: none !important;
     }
 }
