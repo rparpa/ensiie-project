@@ -12,7 +12,7 @@
     </div>
     <div class="card-body text-center"></div>
     <h3 class="sucessField alertField SuccessInscription" id="SuccessInscription">Bravo, votre inscription a bien été prise en compte !</h3>
-    <h3 class="sucessField alertField SuccessInscription" id="SuccessInscription2">Un email de confirmation vient de vous êtres envoyé.</h3>
+    <h3 class="sucessField alertField SuccessInscription" id="SuccessInscription2">Un email de confirmation vient de vous être envoyé.</h3>
     <h6 class="sucessField alertField SuccessInscription">(redirection dans 5s...)</h6>
 
     <br>
@@ -26,7 +26,7 @@
                     </div>
                     <br>
                     <span class="alertField" id="alertUsername">Ce nom d'utilisateur est déjà utilisé</span>
-                    <span class="alertField" id="alertUsername_length">Le nom d'utilisateur doit faire 3 caractères minimum</span>
+                    <span class="alertField" id="alertUsername_length">Le nom d'utilisateur doit faire au moins 3 caractères</span>
                 </div>
 
                 <div class="form-group">
@@ -44,7 +44,7 @@
                         <input type="password" class="form-control inscription_input" id="password1" name="password_form" placeholder="Mot de passe" maxlength="50" minlength="6">
                     </div>
                     <br>
-                    <span class="alertField" id="alertPassword_length">Le mot de passe doit faire 6 caractères minimum</span>
+                    <span class="alertField" id="alertPassword_length">Le mot de passe doit faire au moins 6 caractères </span>
                 </div>
 
                 <div class="form-group">
