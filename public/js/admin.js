@@ -23,13 +23,13 @@ function setCategoriesToValidate(categories){
     let nb = 1;
     categories.forEach(cat => {
         $("#tableBody").append(
-            `<tr class="row" id="` + cat.name + `">
+            `<tr class="row" id="` + nb + `">
                 <td class="col">`+ nb + `</td>
                 <td class="col">` + cat.name + `</td>
                 <td class="col">
                     <div>
-                        <button onclick='decisionCat(1, "` + cat.name + `")' class="btn btn-success"> <i class="fas fa-check"></i> </button>
-                        <button onclick='decisionCat(0, "` + cat.name + `")' class="btn btn-danger"> <i class="fas fa-ban"></i> </button>
+                        <button onclick='decisionCat(1, "` + cat.name + `",` + nb + ` )' class="btn btn-success"> <i class="fas fa-check"></i> </button>
+                        <button onclick='decisionCat(0, "` + cat.name + `",` + nb + `)' class="btn btn-danger"> <i class="fas fa-ban"></i> </button>
                     </div>
                 </td>
             </tr>`
@@ -38,7 +38,7 @@ function setCategoriesToValidate(categories){
         nb++;
     });
 }
-function decisionCat(keep, name){
+function decisionCat(keep, name, id){
     $.ajax({
         type: 'POST',
         url: 'router.php',
@@ -50,10 +50,10 @@ function decisionCat(keep, name){
         },
         dataType: 'json',
     }).done(function(data){
-        $("#" + name).find("button").attr('disabled', true);
-        if(keep){ $("#" + name).find("button").removeClass('btn-danger');  }
-        else{ $("#" + name).find("button").removeClass('btn-success');}
-        $("#" + name).find("button").addClass('btn-secondary');
+        $("#" + id).find("button").attr('disabled', true);
+        if(keep){ $("#" + id).find("button").removeClass('btn-danger');  }
+        else{ $("#" + id).find("button").removeClass('btn-success');}
+        $("#" + id).find("button").addClass('btn-secondary');
         
     });
 }
@@ -105,8 +105,13 @@ function loadAdminArticleContent(sections, articleID) {
         // Ajout dans le mini menu
         $("#nav_admin").append(`<a href="#` + s.title + `"><i class="fas fa-circle"></i>` + s.title + `</a>`);
         // ajoute la sections a la page
-        $("#section_container").append(`<div class="row section_article"><div class="col-12"><h1 id="` + s.title + `" class="section_title">` + s.title + `</h1></div></div><div class="row"><div class="col-12 section_content">` + s.content + `</div></div>`);
-        $("#section_container").append(`<button class="btn btn-sm btn-danger col-3 float-right" onclick="removeSection(` + s.id_section+ `,` + articleID + `)"> Supprimer la section </button><br>`);
+        $("#section_container").append(`
+            <div class="row section_article">
+                <div class="col-12">
+                    <h1 id="` + s.title + `" class="section_title">` + s.title + `<button style="margin-left:7px;" class="btn btn-sm btn-danger" onclick="removeSection(` + s.id_section+ `,` + articleID + `)"> <i class="fas fa-trash" style="font-size:140%;"></i></button><br></h1>
+                </div>
+            </div>
+            <div class="row"><div class="col-12 section_content">` + s.content + `</div></div><br>`);
     });
 }
 
