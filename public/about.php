@@ -6,10 +6,10 @@
 <body>
 <?php include("template/navbar.html"); ?>
     <div class="about-section">
-      <h1 class="about-title">Bienvenu(e)s sur Wikiped<span style="color: #4998a7">IIE</h1>
-      <p>Les articles sont créés par la communautée, puis validé par notre équipe de modération. L'équipe est également présente pour supprimer les articles inadéquats.</p>
-      <p>Les articles validés sont représenté par une petite étoile. Cela signifie qu'ils ont été vérifié par notre incroyable équipe de modération.</p>
-      <p>Les sujets publiés sur cette encyclopédie sont très riches et variés. Afin de trouver plus facilement les articles que vous souhaitez, vous pouvez utiliser le système de filtre par catégories.</p>
+      <h1 class="about-title">Bienvenue sur Wikiped<span style="color: #4998a7">IIE</h1>
+      <p>Les articles sont créés par la communauté, puis validés par notre équipe de modération. L'équipe est également présente pour supprimer les articles inadéquats.</p>
+      <p>Les articles validés sont représentés par une petite étoile. Cela signifie qu'ils ont été vérifiés par notre incroyable équipe de modération.</p>
+      <p>Les sujets publiés sur cette encyclopédie sont très riches et variés. Afin de trouver plus facilement les articles que vous souhaitez, vous pouvez utiliser le système de filtre par catégorie.</p>
     </div>
 
     <div class="spacer"></div>
