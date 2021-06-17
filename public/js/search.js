@@ -8,6 +8,7 @@ function autocomplete(inp, arr) {
         a = document.createElement("DIV");
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
+        a.setAttribute("onclick", "loadArticleByTitle()");
         this.parentNode.appendChild(a);
         let re = new RegExp(".*" + val.toUpperCase() + ".*");
         re.ignoreCase = true;
@@ -24,7 +25,7 @@ function autocomplete(inp, arr) {
             b.innerHTML = arr[i].substr(0, pos);
             b.innerHTML += "<strong>" + arr[i].substr(pos, val.length) + "</strong>";
             b.innerHTML += arr[i].substr(pos + val.length);
-            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            b.innerHTML += "<input type='hidden' id='search_value' value='" + arr[i] + "'>";
                 b.addEventListener("click", function(e) {
                 inp.value = this.getElementsByTagName("input")[0].value;
                 closeAllLists();
@@ -55,10 +56,15 @@ function autocomplete(inp, arr) {
       if (currentFocus >= x.length) currentFocus = 0;
       if (currentFocus < 0) currentFocus = (x.length - 1);
       x[currentFocus].classList.add("autocomplete-active");
+      x[currentFocus].style.backgroundColor = "#4998a7";
+      x[currentFocus].style.color = "#ffffff";
+      $("#SearchArticle").val(x[currentFocus].getElementsByTagName("input")[0].value)
     }
     function removeActive(x) {
       for (var i = 0; i < x.length; i++) {
         x[i].classList.remove("autocomplete-active");
+        x[i].style.backgroundColor = "#ffffff";
+        x[i].style.color = "#000000";
       }
     }
     function closeAllLists(elmnt) {
