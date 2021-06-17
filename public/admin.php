@@ -16,6 +16,8 @@ if (!(localStorage.getItem('isadmin') == 'true'))
         else
             if(isset($_GET['va']))
                 echo "loadArticleToValidate();"; 
+            if(isset($_GET['ca']))
+                echo "loadCategoriesToValidate();"; 
             else
                 echo "loadDemandeModo();"; 
         ?>

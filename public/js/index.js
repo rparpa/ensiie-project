@@ -98,7 +98,7 @@ function verifyser() {
     })
 }
 
-function getAllArticle() {
+function getAllArticle(arg) {
     $.ajax({
         url: 'router.php',
         type: 'POST',
@@ -112,8 +112,10 @@ function getAllArticle() {
             console.log(data.msg);
         }
         else {
+            if(arg === "full"){
+                setIndexCategories();
+            }
             loadAllArticle(data);
-            setIndexCategories();
         }
     })
 }
@@ -142,9 +144,9 @@ function loadCategories(){
 }
 
 function setIndexCategories(){
-    $("#nav_article").empty();
+    // $("#nav_article").empty();
     $("#nav_article").append(`<span class="categories">Catégories</span>`);
-    $("#nav_article").append(`<a onclick="getAllArticle();"><i class="fas fa-eraser"></i>Nettoyer filtre</a>`);
+    $("#nav_article").append(`<a onclick="getAllArticle('article');"><i class="fas fa-eraser"></i>Nettoyer filtre</a>`);
     loadCategories().forEach(e => {
         $("#nav_article").append(`<a onclick="loadArticleByCategories('` + e.name + `')"><i class='fas fa-circle'></i>` + e.name + `</a>`);
     });
@@ -283,4 +285,18 @@ function editArticle(){
 
     let id = urlParams.get('id');
     window.location = '/edition.php?id=' + id;
+}
+
+function proposeCat(){
+    $.ajax({
+        url: 'router.php',
+        type: 'POST',
+        async: false,
+        data: {
+            request: "Controller/propose_category.php",
+            name: $("#newCat").val()
+        },
+        dataType: 'json'
+    });
+    name: $("#newCat").val('');
 }

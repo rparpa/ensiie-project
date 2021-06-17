@@ -5,6 +5,12 @@ function setCategories(){
     });
 }
 
+function changeButton(){
+    $("#btnAddArticle").attr("onclick", "postArticle()");
+    $("#btnAddArticle").text("Publier l'article");
+    $("#btnAddArticle").addClass("btn-success");
+}
+
 function addSection(){
     let id = $(".section").length;
     $("#sections").append(
@@ -24,7 +30,7 @@ function addSection(){
 }
 
 function articleValid(article){
-    let fields = ['title', 'author', 'synopsis'];
+    let fields = ['title', 'author', 'syno'];
     
     for(let i = 0; i < fields.length; i++){
         if(article[fields[i]] === "") return false;
@@ -70,7 +76,7 @@ function postArticle(){
 
     article.title = $("#title").val();
     article.author = localStorage.getItem("username");
-    article.synopsis = $("#synopsis").val();
+    article.synopsis = $("#syno").val();
     article.cat0 = $("#cat0").val();
     article.cat1 =  $("#cat1").val();
     article.sections = [];
@@ -78,11 +84,20 @@ function postArticle(){
     let size = $(".section").length;
     for(let i = 0; i < size; i++){
         let section = {};
+        if($("#section" + i).val() == "" || $("#content" + i).val() == ""){
+            if(confirm('Une section est vide. Voulez-vous continuer?')){
+                article.sections.push(section);
+                continue;
+            }
+            else{
+                return false;
+            }
+        }        
         section.title = $("#section" + i).val();
         section.content = $("#content" + i).val();
         article.sections.push(section);
     }
-    if(articleExist(article)) return;
+    if(articleExist(article)) return false;
 
     if(!articleValid(article)) {
         alert("DES CHAMPS SONT VIDE");

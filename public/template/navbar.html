@@ -18,7 +18,7 @@
                 <button onclick="verifyser();" type="button" class="btn btn-secondary btn-sm mb-1 notUser">Connexion</button>
             </div>
             <div class="form-group">
-                <button onclick="window.location.replace('article.php')" type="button" class="btn btn-secondary btn-sm mb-1 onlyUser">Ajouter un article</button>
+                <button id="btnAddArticle" onclick="window.location.replace('article.php')" type="button" class="btn btn-secondary btn-sm mb-1 onlyUser">Ajouter un article</button>
             </div >
             <div class="form-group mx-sm-1">
                 <button onclick="deconnection()" type="button" class="btn btn-secondary btn-sm mb-1 onlyUser ">Deconnexion</button> 
@@ -49,6 +49,7 @@
                     <li class="onlyUser"><a href="/account.php"><span aria-hidden="true"></span> Compte </a></li>
                     <li class="onlyAdmin"><span class="side_title" aria-hidden="true">ADMINISTRATION</span></li>
                     <li class="onlyAdmin"><a href="/admin.php?va=1"><span aria-hidden="true"></span>Valider un article </a></li>
+                    <li class="onlyAdmin"><a href="/admin.php?ca=1"><span aria-hidden="true"></span>Valider une catégorie </a></li>
                     <li class="onlyAdmin"><a href="/admin.php?mo=1"><span aria-hidden="true"></span>Moderateurs</a></li>
                 </ul>
             </div>
