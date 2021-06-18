@@ -12,6 +12,11 @@ help:
 	@echo "${bold}db.connect${normal}\n\t Connects to the database.\n"
 	@echo "${bold}phpunit.run${normal}\n\t Runs the unit tests.\n"
 
+
+up:
+	docker-compose up --build
+	sleep 3
+
 start:
 	docker-compose up --build -d
 	sleep 3
@@ -34,6 +39,12 @@ db.connect:
 db.install:
 	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER -h localhost -f data/db.sql'
 
+db.export:
+	docker-compose exec postgres /bin/bash -c 'pg_dump -U $$POSTGRES_USER ensiie > dbexport.pgsql'
+
+db.import:
+	docker-compose exec postgres /bin/bash -c 'psql -U $$POSTGRES_USER ensiie < dbexport.pgsql'
+
 php.connect:
 	docker-compose exec php /bin/bash
 
@@ -42,3 +53,4 @@ phpunit.run:
 
 composer.install:
 	docker-compose exec php composer install || exit 0
+

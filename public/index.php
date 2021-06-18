@@ -1,39 +1,37 @@
-<?php
+<!doctype html>
 
-require_once '../src/Bootstrap.php';
-
-$userRepository = new \User\UserRepository(\Db\Connection::get());
-$users = $userRepository->fetchAll();
-?>
-
-<html>
-<head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
-</head>
+<html lang="fr">
+<?php include("template/header.html"); ?>
 <body>
-
-<div class="container">
-    <h3><?php echo 'Hello world from Docker! php' . PHP_VERSION; ?></h3>
-
-    <table class="table table-bordered table-hover table-striped">
-        <thead style="font-weight: bold">
-            <td>#</td>
-            <td>Firstname</td>
-            <td>Lastname</td>
-            <td>Age</td>
-        </thead>
-        <?php /** @var \User\User $user */
-        foreach ($users as $user) : ?>
-            <tr>
-                <td><?php echo $user->getId() ?></td>
-                <td><?php echo $user->getFirstname() ?></td>
-                <td><?php echo $user->getLastname() ?></td>
-                <td><?php echo $user->getAge() ?> years</td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
-</div>
+    <?php include("template/navbar.html"); ?>
+    <div id="nav_article" class="sidepanel scrollbar scrollbar-lips">
+        <label class="text-white ml-4 onlyUser"> Proposer une catégorie : </label>
+        <div class="d-flex onlyUser">
+            <input id="newCat" class="w-75 ml-4 onlyUser" type=text>
+            <a href="javascript:proposeCat();" style="padding: 0px 0px 0px 3%;"><i class="onlyUser fas fa-paper-plane" ></i></a>
+        </div>
+        <br>
+    </div>
+    <div class="search" id="div_search" >
+        <div class="mask d-flex align-items-center h-100">
+            <div class="container">
+                <div class="autocomplete form-outline input-group input-group-lg div_search">
+                    <input type="text" class="form-control form-control-lg rounde bg-transparent text-white" id="SearchArticle" name="SearchArticle" maxlength="30" placeholder="Chercher un Article"/>
+                    <span class="input-group-text border-0" onclick="loadArticleByTitle()">
+                        <i class="fas fa-search fa-lg text-white"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <script> <?php
+        if(isset($_GET['id']))
+            echo "load_article(".$_GET['id'].")";
+        else
+            echo "getAllArticle('full');"; ?>
+        </script>
+    </div>
+<script src="js/search.js"></script>
 </body>
 </html>
