@@ -165,7 +165,6 @@ function loadArticleByCategories(cat){
         dataType: 'json'
     }).done(function(data){
         if(data.status == "success"){
-            
             loadAllArticle(data.articles);
         }
         else{
@@ -192,9 +191,9 @@ function getCatText(page){
 }
 
 function loadAllArticle(data) {
+    $("#div_search").show();
     $("#content").empty();
     window.history.pushState('', 'Load article', "/index.php");
-    loadSearch();
     data.forEach(e => {
         let valide = "";
         if (e.validated)
@@ -263,7 +262,7 @@ function loadArticleIntro(page) {
     $("#article_date_crea").append(`<span class="black_text">` + page.creation_date + `</span>`)
     $("#article_date_modif").append(`<span class="black_text">` + page.modification_date + `</span>`)
 
-    $("#synopsis_content").html(page.synopsis);
+    $("#synopsis_content").html(page.synopsis.replace(/(?:\r\n|\r|\n)/g, '<br>'));
 
     init();
 }
@@ -272,6 +271,7 @@ function load_article(id) {
     data = getArticle(id);
     window.history.pushState('', 'Load article', "?id="+id);
     $("#content").load('template/article.html', function () {
+        $("#div_search").hide();
         loadArticleContent(data.sections);
         loadArticleIntro(data.page);
     });

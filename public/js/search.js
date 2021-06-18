@@ -117,15 +117,6 @@ function loadSuggestion(){
   return suggestion;
 }
 
-function loadSearch(){
-    fetch('template/search.html')
-        .then(response => response.text())
-        .then(function(data){
-            $("#content").append(data);
-            autocomplete(document.getElementById("SearchArticle"), loadSuggestion());
-        });
-}
-
 function searchByTitle(title){
     let dataA;
     $.ajax({
@@ -149,3 +140,5 @@ function loadArticleByTitle() {
     data = searchByTitle(title);
     loadAllArticle(data);
 }
+
+autocomplete(document.getElementById("SearchArticle"), loadSuggestion())
