@@ -205,7 +205,7 @@ function loadAllArticle(data) {
                 data = data.replaceAll("%%ID_PAGE%%", e.id_page);
                 data = data.replaceAll("%%TITLE%%", e.title);
                 data = data.replaceAll("%%VALIDATE%%", valide);
-                data = data.replaceAll("%%SYNOPSIS%%", e.synopsis);
+                data = data.replaceAll("%%SYNOPSIS%%", e.synopsis.replaceAll("\\n", '<br>'));
                 data = data.replaceAll("%%CATEGORIE%%", getCatText(e));
                 data = data.replaceAll("%%CREATION_DATE%%", e.creation_date);
                 data = data.replaceAll("%%MODIF_DATE%%", e.modification_date);
@@ -247,7 +247,7 @@ function loadArticleContent(sections) {
         // Ajout dans le mini menu
         $("#nav_article").append(`<a href="#` + s.title + `"><i class="fas fa-circle"></i>` + s.title + `</a>`);
         // ajoute la sections a la page
-        $("#section_container").append(`<div class="row section_article"><div class="col-12"><h1 id="` + s.title + `" class="section_title">` + s.title + `</h1></div></div><div class="row"><div class="col-12 section_content">` + s.content + `</div></div>`);
+        $("#section_container").append(`<div class="row section_article"><div class="col-12"><h1 id="` + s.title + `" class="section_title">` + s.title + `</h1></div></div><div class="row"><div class="col-12 section_content">` + s.content.replaceAll("\\n", '<br>') + `</div></div>`);
     });
 }
 
@@ -262,7 +262,7 @@ function loadArticleIntro(page) {
     $("#article_date_crea").append(`<span class="black_text">` + page.creation_date + `</span>`)
     $("#article_date_modif").append(`<span class="black_text">` + page.modification_date + `</span>`)
 
-    $("#synopsis_content").html(page.synopsis.replace(/(?:\r\n|\r|\n)/g, '<br>'));
+    $("#synopsis_content").html(page.synopsis.replaceAll("\\n", '<br>'));
 
     init();
 }

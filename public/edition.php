@@ -27,7 +27,7 @@
             <div disabled id="section0" class="form-group">
                 <h3 id="Synopsis">Synopsis</h3>
                 <span class="content">
-                    <textarea disabled id="<?php echo "synopsis".$article->getId();?>" class="w-100 form-control"> <?php echo $article->getSynopsis(); ?></textarea>
+                    <textarea disabled id="<?php echo "synopsis".$article->getId();?>" class="w-100 form-control" spellcheck="true"> <?php echo str_replace('\n', "\n", $article->getSynopsis()); ?></textarea>
                 </span>
                 <div class="row buttons">
                     <button onclick=unlock(0) type="button" class="col-1 btn btn-info edit">Editer</button>
@@ -44,7 +44,7 @@
                             <input disabled class="sectionTitle form-control w-100" type="text" value="<?php echo $section->getTitle(); ?>">
                         </div>
                         <div class="row">
-                            <textarea disabled class="sectionContent w-100 form-control"><?php echo $section->getContent(); ?> </textarea>
+                            <textarea disabled class="sectionContent w-100 form-control" spellcheck="true"><?php echo str_replace('\n', "\n", $section->getContent()); ?></textarea>
                         </div>
                     </span>
                     <div class="row buttons">
