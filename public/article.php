@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
           <label for=synopsis>  Synopsis </label><br>
-          <textarea id="syno" maxlength="500" rows=5 class="form-control" name="synopsis" required></textarea> 
+          <textarea id="syno" maxlength="500" rows=5 class="form-control" name="synopsis" spellcheck="true" required></textarea> 
         </div>
         <div class="form-group">
           <label for=categories>  Catégories </label>
@@ -44,7 +44,7 @@
           <input type="text" maxlength="100" id="section0" class="form-control" required>
           <br>
           <label for="content0"> <b> Contenu de la section </b> </label><br>
-          <textarea id="content0" class="form-control" rows=7 required></textarea>
+          <textarea id="content0" class="form-control" rows=7 spellcheck="true" required></textarea>
         </div>
       </div>
     </div>   

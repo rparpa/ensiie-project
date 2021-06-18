@@ -85,7 +85,7 @@
                             <br>
                             <label for="modo_form" class="form-label">Message :</label>
                             <div class="input-group">
-                                <textarea class="form-control"  rows="4" id="msgModo" name="msgModo" maxlength="200"></textarea>
+                                <textarea class="form-control"  rows="4" id="msgModo" name="msgModo" maxlength="200" spellcheck="true"></textarea>
                             </div>
                             <br>
                             <span class="alertField sucessField" id="sucessDemandeModo">Votre demande pour devenir moderateur a bien été prise en compte !<br><br></span>

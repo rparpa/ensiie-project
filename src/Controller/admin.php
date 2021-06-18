@@ -60,7 +60,7 @@ function removeFromModaration($conn){
 }
 
 function updateUserAdmin($conn, $username){
-    $sql = 'UPDATE public.User SET VALIDATED = true WHERE username = ?';
+    $sql = 'UPDATE public.User SET VALIDATE = TRUE WHERE username = ?';
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(1, $username);
     $stmt->execute();

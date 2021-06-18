@@ -16,7 +16,7 @@
         <div class="mask d-flex align-items-center h-100">
             <div class="container">
                 <div class="autocomplete form-outline input-group input-group-lg div_search">
-                    <input type="text" class="form-control form-control-lg rounde bg-transparent text-white" id="SearchArticle" name="SearchArticle" placeholder="Chercher un Article"/>
+                    <input type="text" class="form-control form-control-lg rounde bg-transparent text-white" id="SearchArticle" name="SearchArticle" maxlength="30" placeholder="Chercher un Article"/>
                     <span class="input-group-text border-0" onclick="loadArticleByTitle()">
                         <i class="fas fa-search fa-lg text-white"></i>
                     </span>

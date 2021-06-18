@@ -23,7 +23,7 @@ function addSection(){
             <input type="text" maxlength="100" id="section` + id + `" class="form-control" required>
             <br>
             <label for="content`+ id + `"> <b> Contenu de la section </b> </label><br>
-            <textarea id="content`+ id + `" class="form-control" rows=7 required></textarea>
+            <textarea id="content`+ id + `" class="form-control" rows=7 spellcheck="true" required></textarea>
         </div>`
     );
 
@@ -76,7 +76,7 @@ function postArticle(){
 
     article.title = $("#title").val();
     article.author = localStorage.getItem("username");
-    article.synopsis = $("#syno").val();
+    article.synopsis = $("#syno").val().replaceAll('\n', '\\n');
     article.cat0 = $("#cat0").val();
     article.cat1 =  $("#cat1").val();
     article.sections = [];
@@ -94,7 +94,7 @@ function postArticle(){
             }
         }        
         section.title = $("#section" + i).val();
-        section.content = $("#content" + i).val();
+        section.content = $("#content" + i).val().replaceAll('\n', '\\n');
         article.sections.push(section);
     }
     if(articleExist(article)) return false;

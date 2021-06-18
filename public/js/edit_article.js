@@ -26,8 +26,7 @@ function unlock(id){
         current.find(".content *").prop("disabled", true);
         current.find("button").prop("disabled", true);
         current.find(".edit").prop("disabled", false);
-
-        current.find("textarea").val(current.find("textarea").text());
+        current.find("textarea").val(current.find("textarea").text().replaceAll('\\n', '\n'));
     }
 }
 
@@ -38,7 +37,7 @@ function updateSection(articleId, sectionId){
     newSection.articleID = articleId;
     newSection.sectionID = sectionId;
     newSection.title = section.find(".sectionTitle").val();
-    newSection.content = section.find(".sectionContent").val();
+    newSection.content = section.find(".sectionContent").val().replaceAll(/\n/g, '\\n');
 
     $.ajax({
         url: 'router.php',
@@ -59,7 +58,7 @@ function updateArticle(articleId){
     let newArticle = {};
 
     newArticle.articleID = articleId;
-    newArticle.synopsis = article.val();
+    newArticle.synopsis = article.val().replaceAll(/\n/g, '\\n');
 
     $.ajax({
         url: 'router.php',
@@ -84,7 +83,7 @@ function addSectionInput(articleID){
     $("#" + newSec).append(
         "<label for=section" + id + "> Nouvelle Section </label>",
         "<input class='form-control w-100' type=text maxlength=128 id='title" + id + "'>",  
-        "<textarea class='form-control w-100' id='content" + id + "'></textarea>",
+        "<textarea class='form-control w-100' id='content" + id + "' spellcheck='true'></textarea>",
         "<button onclick=addSection(" + articleID +"," + id +") class='btn-success col-2 form-control'> Ajouter la section </button>"
     );
     autosize();
