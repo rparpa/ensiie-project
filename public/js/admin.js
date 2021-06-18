@@ -113,7 +113,7 @@ function loadAdminArticleContent(sections, articleID) {
                     <h1 id="` + s.title + `" class="section_title">` + s.title + `<button style="margin-left:7px;" class="btn btn-sm btn-danger" onclick="removeSection(` + s.id_section+ `,` + articleID + `)"> <i class="fas fa-trash" style="font-size:140%;"></i></button><br></h1>
                 </div>
             </div>
-            <div class="row"><div class="col-12 section_content">` + s.content + `</div></div><br>`);
+            <div class="row"><div class="col-12 section_content">` + s.content.replace(/(?:\r\n|\r|\n)/g, '<br>') + `</div></div><br>`);
     });
 }
 
@@ -144,7 +144,7 @@ function loadDemandeModo(){
             .then(response => response.text())
             .then(function(data){
                 data = data.replaceAll("%%USERNAME%%", e.username);
-                data = data.replaceAll("%%MSG%%", e.msg);
+                data = data.replaceAll("%%MSG%%", e.msg.replace(/(?:\r\n|\r|\n)/g, '<br>'));
                 $("#content_admin").append(data);
             });
     })

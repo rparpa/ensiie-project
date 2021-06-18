@@ -161,7 +161,7 @@
     margin-right: 5vw;
 }
 
-#content, #content_admin {
+#content, #content_admin, #div_search {
     margin-left: 20vw;
     margin-right: 5vw;
 }
@@ -186,9 +186,8 @@
         margin-right: 0;
     }
 
-    #content, #content_admin {
+    #content, #content_admin, #div_search {
         margin-left: clamp(260px, 10vw, 500px);
         margin-right: 5vw;
     }
 }
-

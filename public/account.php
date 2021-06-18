@@ -6,7 +6,7 @@
     <?php include("template/navbar.html"); ?>
     <div class="card text-center mx-auto bg-light mb-3" style="width: 1000px; margin-top:50px">
         <div class="card-header bg-info text-white">
-            <h3>Mon profile utilisateur</h3>
+            <h3>Mon profil utilisateur</h3>
         </div>
         <div class="card-body text-center">
             <br>
