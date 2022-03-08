@@ -1,4 +1,4 @@
-Projet web ENSIIE 2021
+Projet web ENSIIE 2022
 ======
 
 Objectif pédagogique
@@ -47,17 +47,18 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 #### On oblige
 
-> * PHP 7+ ou node 14
+> * PHP 8+ ou node 16
 > * PostgreSQL
 > * JavaScript client
 
 #### On aimera
 
-> * Toutes les bonnes pratiques citées sur http://www.phptherightway.com/
-> * PHP 8.0+
-> * Les tests automatisés (unitaires, fonctionnels, de sécurité, de performance, …)
-> * Une API REST bien faite
-> * Les animations CSS parcimonieuses qui profitent à l’UX
+* Toutes les bonnes pratiques citées sur http://www.phptherightway.com/
+* PHP 8.0+
+* Les tests automatisés (unitaires, fonctionnels, de sécurité, de performance, …)
+* Une API REST bien faite
+* Les animations CSS parcimonieuses qui profitent à l’UX
+* Typescript
 
 #### On n’aimera pas
 
@@ -67,10 +68,11 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 
 ### Séances
 
-> * **06 mai** : choix du sujet, début des projets, présentation de la stack
-> * **20 mai** : point d’avancement, échange sur les bonnes pratiques, analyse du code
-> * **3 juin** : point d’avancement, échange sur les bonnes pratiques, analyse du code
-> * **18 juin** : soutenance, livraison des sources
+* **09 mars** : choix du sujet, début des projets, présentation de la stack
+* **23 mars** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+* **7 avril** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+* **15 avril (matin, à distance)** : point d’avancement, échange sur les bonnes pratiques, analyse du 
+* **6 mai (matin, sur place)** : Soutenances
 
 ### La notation
 
@@ -87,6 +89,8 @@ Une partie de la note sera attribuée par groupe, une autre réservée à l’in
 
 Afin de s’affranchir de problème d’infrastructure, nous vous mettons à disposition un environnement de développement pour ce projet.
 >Lors du premier cours nous vous présenterons l'utilisation du git que nous avons mis à votre disposition ainsi que le fonctionnement d'un Docker entièrement configuré et prêt à être utilisé pour développer votre projet.
+
+L'environnement de développement existe également sous [node/typescript](https://github.com/rparpa/ensiie-project-ts). 
 
 ### Le rendu des sources et du rapport
 

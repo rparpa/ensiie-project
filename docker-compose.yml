@@ -2,7 +2,7 @@ version: '3'
 services:
 
   nginx:
-    build: ./.docker/nginx-php
+    build: docker/nginx-php
     restart: "no"
     depends_on:
       - php
@@ -19,7 +19,7 @@ services:
 
   php:
     build:
-      context: ./.docker/php-fpm/
+      context: docker/php-fpm/
       args:
         DOCKER_USER: ${DOCKER_USER}
         DOCKER_USER_ID: ${DOCKER_USER_ID}
@@ -45,14 +45,13 @@ services:
 
   postgres:
     build:
-      context: ./.docker/postgres
+      context: docker/postgres
     ports:
       - ${DB_PORT_EXTERNAL}:5432
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
       - .:/var/www/html
     working_dir: /var/www/html
     networks:

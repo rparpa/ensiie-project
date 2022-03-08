@@ -1,4 +1,4 @@
-FROM nginx:1.19
+FROM nginx:1.21
 
 COPY ./config /tmp
 RUN mv /tmp/site.conf /etc/nginx/conf.d/default.conf \

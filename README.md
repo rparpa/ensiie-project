@@ -14,9 +14,10 @@ Then, clone the Web Project skeleton on your machine:
 
 The next step is to set some environment variables in the `.env` file
 * Open this Skeleton on your favorite IDE : PHPStorm or VSCode.
-* Open the file .env
+* Create an .env file `cp env.dist .env` & edit it with your own values:
     * DOCKER_USER_ID: to obtain the value of this variable you need to execute this command `$(echo id -u $USER)` on a Terminal. Copy and past the output.
-    * REMOTE_HOST: For those who want to use the PHPStorm Debugger, put your IP address. Otherwise, skip this step.
+    * DOCKER_USER: your current user which you can get with `whoami`.
+    * REMOTE_HOST: (optional) For those who want to use the PHPStorm Debugger, put your IP address. Otherwise, skip this step.
 
 Now, let's begin the installation :
 * `make install`. This command may take time.  
@@ -28,3 +29,7 @@ Below are some useful commands :
 * `make db.connect` Connect to th database
 * `make phpunit.run` Run the PHPUnit tests
 * `make install` Reinstall all containers
+
+## Node/typescript version
+
+https://github.com/rparpa/ensiie-project-ts
