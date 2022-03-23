@@ -153,3 +153,92 @@ main {
         margin-left: 0px;
     }
 }
+
+.my-card .my-card-header {
+    font-size: 16px;
+    padding: 10px 10px;
+    font-weight: 600;
+}
+
+.my-card .my-card-header img {
+    height: 18px;
+    margin-right: 10px;
+}
+
+.my-card .my-card-body {
+    padding: 35px 20px;
+    border-top: solid 2px var(--main-color);
+    background: var(--dark-color);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.my-card .my-card-body .roll {
+    display: flex;
+    gap: 50px;
+}
+
+.my-card-100 {
+    width: 100%;
+}
+
+.swap {
+    text-align: center;
+    padding: 0px 50px;
+}
+
+.swap svg {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.swap .information {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+    justify-content: center;
+}
+
+.swap .information .objects {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.swap .objects .images img {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+}
+
+.swap .me img {
+    border: solid 2px var(--main-color);
+}
+
+.swap .me {
+    color: var(--main-color);
+}
+
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-470px * 5))
+    }
+}
+
+.slider {
+    overflow: hidden;
+    position: relative;
+}
+
+
+.slide-track {
+    animation: scroll 30s linear infinite;
+    display: flex;
+    width: calc(470px * 10);
+}
+
+
