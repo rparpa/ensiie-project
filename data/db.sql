@@ -1,37 +1,37 @@
 CREATE TABLE "tc_user" (
 
-    us_mail VARCHAR PRIMARY KEY ,
-    us_firstname VARCHAR NOT NULL ,
-    us_lastname VARCHAR NOT NULL ,
-    us_pseudo VARCHAR NOT NULL ,
-    us_password VARCHAR NOT NULL ,
-    us_picture VARCHAR NOT NULL ,
+    us_mail TEXT PRIMARY KEY ,
+    us_firstname TEXT NOT NULL ,
+    us_lastname TEXT NOT NULL ,
+    us_pseudo TEXT NOT NULL ,
+    us_password TEXT NOT NULL ,
+    us_picture TEXT NOT NULL ,
     us_zipcode INT NOT NULL ,
-    us_street VARCHAR NOT NULL ,
-    us_city VARCHAR NOT NULL ,
+    us_street TEXT NOT NULL ,
+    us_city TEXT NOT NULL ,
     us_is_super_user BOOLEAN NOT NULL ,
     us_is_banned BOOLEAN NOT NULL
 );
 
 CREATE TABLE "tc_wish" (
     wi_id SERIAL PRIMARY KEY ,
-    wi_mail VARCHAR REFERENCES tc_user (us_mail) NOT NULL,
-    wi_label VARCHAR NOT NULL
+    wi_mail TEXT REFERENCES tc_user (us_mail) NOT NULL,
+    wi_label TEXT NOT NULL
 );
 
 CREATE TABLE "tc_category" (
     ca_id SERIAL PRIMARY KEY ,
-    ca_name VARCHAR NOT NULL ,
+    ca_name TEXT NOT NULL ,
     ca_number_swap INT DEFAULT 0 NOT NULL
 );
 
 CREATE TABLE "tc_object" (
     ob_id SERIAL PRIMARY KEY ,
-    ob_proprietary VARCHAR NOT NULL REFERENCES tc_user (us_mail) ,
-    ob_picture VARCHAR NOT NULL ,
-    ob_description VARCHAR NOT NULL ,
+    ob_proprietary TEXT NOT NULL REFERENCES tc_user (us_mail) ,
+    ob_picture TEXT NOT NULL ,
+    ob_description TEXT NOT NULL ,
     ob_creation_date DATE NOT NULL ,
-    ob_is_swapable BOOLEAN NOT NULL
+    ob_is_swappable BOOLEAN NOT NULL
 );
 
 CREATE TABLE "tc_troc" (
@@ -57,6 +57,6 @@ CREATE TABLE "tc_object_troc" (
 
 CREATE TABLE "notification" (
     no_id SERIAL PRIMARY KEY,
-    no_content VARCHAR NOT NULL ,
+    no_content TEXT NOT NULL ,
     no_creation_date DATE NOT NULL
 );
