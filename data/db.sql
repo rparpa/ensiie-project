@@ -1,19 +1,62 @@
-CREATE TABLE "user" (
-    id SERIAL PRIMARY KEY ,
-    firstname VARCHAR NOT NULL ,
-    lastname VARCHAR NOT NULL ,
-    birthday date
+CREATE TABLE "tc_user" (
+
+    us_mail VARCHAR PRIMARY KEY ,
+    us_firstname VARCHAR NOT NULL ,
+    us_lastname VARCHAR NOT NULL ,
+    us_pseudo VARCHAR NOT NULL ,
+    us_password VARCHAR NOT NULL ,
+    us_picture VARCHAR NOT NULL ,
+    us_zipcode INT NOT NULL ,
+    us_street VARCHAR NOT NULL ,
+    us_city VARCHAR NOT NULL ,
+    us_is_super_user BOOLEAN NOT NULL ,
+    us_is_banned BOOLEAN NOT NULL
 );
 
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('John', 'Doe', '1967-11-22');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Yvette', 'Angel', '1932-01-24');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Amelia', 'Waters', '1981-12-01');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Manuel', 'Holloway', '1979-07-25');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Alonzo', 'Erickson', '1947-11-13');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Otis', 'Roberson', '1995-01-09');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jaime', 'King', '1924-05-30');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Vicky', 'Pearson', '1982-12-12)');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Silvia', 'Mcguire', '1971-03-02');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Brendan', 'Pena', '1950-02-17');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Jackie', 'Cohen', '1967-01-27');
-INSERT INTO "user"(firstname, lastname, birthday) VALUES ('Delores', 'Williamson', '1961-07-19');
+CREATE TABLE "tc_wish" (
+    wi_id SERIAL PRIMARY KEY ,
+    wi_mail VARCHAR REFERENCES tc_user (us_mail) NOT NULL,
+    wi_label VARCHAR NOT NULL
+);
+
+CREATE TABLE "tc_category" (
+    ca_id SERIAL PRIMARY KEY ,
+    ca_name VARCHAR NOT NULL ,
+    ca_number_swap INT DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE "tc_object" (
+    ob_id SERIAL PRIMARY KEY ,
+    ob_proprietary VARCHAR NOT NULL REFERENCES tc_user (us_mail) ,
+    ob_picture VARCHAR NOT NULL ,
+    ob_description VARCHAR NOT NULL ,
+    ob_creation_date DATE NOT NULL ,
+    ob_is_swapable BOOLEAN NOT NULL
+);
+
+CREATE TABLE "tc_troc" (
+    tr_id SERIAL PRIMARY KEY ,
+    tr_creation_date DATE NOT NULL ,
+    tr_end_date DATE NOT NULL ,
+    tr_is_done BOOLEAN NOT NULL
+);
+
+CREATE TABLE "tc_object_category" (
+    id_object INT NOT NULL REFERENCES tc_object (ob_id),
+    id_category INT NOT NULL REFERENCES tc_category (ca_id),
+    PRIMARY KEY (id_object, id_category)
+);
+
+CREATE TABLE "tc_object_troc" (
+    id_object INT NOT NULL REFERENCES tc_object (ob_id),
+    id_troc INT NOT NULL REFERENCES tc_troc (tr_id),
+    PRIMARY KEY (id_object, id_troc)
+);
+
+
+
+CREATE TABLE "notification" (
+    no_id SERIAL PRIMARY KEY,
+    no_content VARCHAR NOT NULL ,
+    no_creation_date DATE NOT NULL
+);
