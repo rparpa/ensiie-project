@@ -1,0 +1,155 @@
+:root {
+    --background-color: #474447;
+    --dark-color: #221F22;
+    --main-color: #FFD866;
+    --font-color: white;
+    --validation-color: #A4DB6A;
+    --refusal-color: #DE453E;
+    --sidebar-width: 180px;
+    --header-height: 80px;
+    font-family: "Roboto Thin";
+}
+
+body {
+    background: var(--background-color);
+    color: var(--font-color);
+    margin: 0 !important;
+}
+
+/*
+HEADER
+ */
+.header {
+    width: 100%;
+    background: var(--dark-color);
+    height: var(--header-height);
+    border-bottom: var(--main-color) solid 4px;
+    padding: 0 30px;
+    position: fixed;
+}
+
+.header .actions {
+    float: right;
+    display: flex;
+    gap: 30px;
+    margin: 22px 0;
+}
+
+.menu-displayer {
+    margin: 22px 15px 22px 0;
+    display: none;
+}
+
+.header .logo {
+    height: 60px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+.header .actions img, .header .actions svg, .header .menu-displayer {
+    height: 35px;
+}
+
+.header .actions img:hover, .header .actions svg:hover, .header .menu-displayer:hover {
+    cursor: pointer;
+}
+
+.header .actions svg:hover path, .header .menu-displayer:hover path {
+    fill: var(--main-color);
+}
+
+.header .actions .photo {
+    width: 35px;
+    border-radius: 20px;
+}
+
+.header .actions .photo:hover {
+    border: solid 2px var(--main-color);
+}
+
+/*
+SIDE BAR
+ */
+
+nav {
+    width: var(--sidebar-width);;
+    height: 100%;
+    position: fixed;
+    background: var(--dark-color);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: var(--header-height);
+}
+
+nav a {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: var(--font-color);
+    font-weight: 500;
+}
+
+nav a svg {
+    height: 36px;
+}
+
+nav a svg path {
+    fill: var(--font-color);
+}
+
+nav .link {
+    padding: 20px 0;
+    transition: background-color 400ms ease-in-out;
+}
+
+nav .link:hover {
+    cursor: pointer;
+    color: var(--main-color);
+}
+
+nav .link:hover svg path {
+    fill: var(--main-color);
+}
+
+.active-link {
+    border-right: solid 5px var(--main-color);
+}
+
+nav .active-link svg path {
+    fill: var(--main-color);
+    transition: fill 300ms ease-in-out;
+
+}
+
+nav .active-link {
+    color: var(--main-color);
+}
+
+main {
+    height: 100%;
+    margin-left: var(--sidebar-width);
+    padding: calc(var(--header-height) + 40px) 30px 40px 30px;
+}
+
+.display {
+    display: initial !important;
+}
+
+@media screen and (max-width: 815px) {
+    nav {
+        display: none;
+    }
+
+    .menu-displayer {
+        display: initial !important;
+    }
+
+    main {
+        margin-left: 0px;
+    }
+}
