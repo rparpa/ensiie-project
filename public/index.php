@@ -1,10 +1,4 @@
-<?php
 
-require_once '../src/Bootstrap.php';
-
-$userRepository = new \User\UserRepository(\Db\Connection::get());
-$users = $userRepository->fetchAll();
-?>
 
 <html lang="fr">
 <head>
@@ -29,15 +23,15 @@ include "../src/templates/structure.php";
                 <section class="slide-track">
                     <?php require_once "../src/templates/template-factory.php";
                     templateSwap(1);
-                    templateSwap(1);
-                    templateSwap(1);
-                    templateSwap(1);
-                    templateSwap(1);
-                    templateSwap(1);
-                    templateSwap(1);
-                    templateSwap(1);
-                    templateSwap(1);
-                    templateSwap(1);
+                    templateSwap(2);
+                    templateSwap(3);
+                    templateSwap(4);
+                    templateSwap(5);
+                    templateSwap(6);
+                    templateSwap(7);
+                    templateSwap(8);
+                    templateSwap(9);
+                    templateSwap(10);
                     ?>
                 </section>
             </section>

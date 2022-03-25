@@ -81,6 +81,7 @@ nav {
     flex-direction: column;
     gap: 15px;
     margin-top: var(--header-height);
+    z-index: 10;
 }
 
 nav a {

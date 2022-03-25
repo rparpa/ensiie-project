@@ -3,7 +3,7 @@
 function templateSwap($s)
 {
     echo "<div class='swap'>";
-    echo "<span class='date'>05/01/2002</span>";
+    echo "<span class='date'>".$s."</span>";
     echo "<div class='information'>";
 
     echo "<div class='objects'/>";
