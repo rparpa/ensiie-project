@@ -8,7 +8,7 @@ function templateSwap($s)
 
     echo "<div class='objects'/>";
     echo "<div class='images'>";
-    echo "<img src='static/assets/op.png'/>";
+    echo "<img src='../static/assets/op.png'/>";
     echo "</div>";
     echo "<span class='pseudo'>YANIS</span>";
     echo "</div>";
@@ -18,7 +18,7 @@ function templateSwap($s)
 </svg>";
     echo "<div class='objects me'/>";
     echo "<div class='images'>";
-    echo "<img src='static/assets/stylo.jpg'/>";
+    echo "<img src='../static/assets/stylo.jpg'/>";
     echo "</div>";
     echo "<span class='pseudo'>JONATHAN</span>";
     echo "</div>";
