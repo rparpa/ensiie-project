@@ -3,7 +3,7 @@
 function templateSwap($s)
 {
     echo "<div class='swap'>";
-    echo "<span class='date'>".$s."</span>";
+    echo "<span class='date'>" . $s . "</span>";
     echo "<div class='information'>";
 
     echo "<div class='objects'/>";
@@ -23,5 +23,31 @@ function templateSwap($s)
     echo "<span class='pseudo'>JONATHAN</span>";
     echo "</div>";
     echo "</div>";
+    echo "</div>";
+}
+
+function templateItem($item)
+{
+    echo "<div class='item'>";
+    echo "<button class='delete'>";
+    echo "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'>
+            <path d='M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z'/>
+            </svg>";
+    echo "</button>";
+    echo "<div class='image'>";
+    echo "<img class='logo' src='../static/assets/stylo.jpg'/>";
+    echo "<div class='categories'>
+    <span class='category'>EDUCATION</span>
+    <span class='category'>CHEAT CODE</span>
+    </div>";
+    echo "</div>";
+    echo "<div class='information'>";
+    echo "<h3> Stylo Frixion bleu sans cartouche </h3>";
+
+    echo "<span class='date'>Date d'ajout: 04/01/2002</span>";
+    echo "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+
+    echo "</div>";
+
     echo "</div>";
 }

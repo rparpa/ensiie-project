@@ -26,6 +26,7 @@ HEADER
     border-bottom: var(--main-color) solid 4px;
     padding: 0 30px;
     position: fixed;
+    z-index: 15;
 }
 
 .header .actions {
@@ -132,7 +133,6 @@ nav .active-link {
 }
 
 main {
-    height: 100%;
     margin-left: var(--sidebar-width);
     padding: calc(var(--header-height) + 40px) 30px 40px 30px;
 }
@@ -243,3 +243,114 @@ main {
 }
 
 
+/*
+Page objets
+ */
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+}
+
+.item {
+    background: var(--dark-color);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+    width: fit-content;
+    position: relative;
+}
+
+.item .image {
+    flex-direction: column;
+    display: flex;
+    gap: 15px;
+}
+
+.item .image .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.item .image .categories .category {
+    padding: 5px;
+    border: solid 2px;
+    border-radius: 15px;
+}
+
+.item .image img {
+    max-height: 200px;
+}
+
+.item .information {
+    max-width: 500px;
+}
+
+.item .information h3 {
+    color: var(--main-color);
+}
+
+.item .information .date {
+    font-style: italic;
+}
+
+.item .information p {
+    margin-top: 15px;
+}
+
+.item button {
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--refusal-color);
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    border: none;
+}
+
+.item button svg {
+    height: 22px;
+}
+
+.item button path {
+    fill: var(--font-color);
+}
+
+.item button:hover path {
+    fill: var(--refusal-color);
+}
+
+.item button:hover {
+    background: var(--font-color);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 18px;
+    background-color: var(--dark-color);
+    margin-left: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    height: 7px;
+    background-color: var(--main-color);;
+    border-radius: 20px;
+    border: 2px solid #263141
+
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
