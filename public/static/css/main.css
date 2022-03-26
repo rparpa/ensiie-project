@@ -7,6 +7,7 @@
     --refusal-color: #DE453E;
     --sidebar-width: 180px;
     --header-height: 80px;
+    --disable-color: lightgrey;
     font-family: "Roboto Thin";
 }
 
@@ -329,6 +330,103 @@ Page objets
 .item button:hover {
     background: var(--font-color);
 }
+
+.search-form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.search-form .search-bar {
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-form .search-bar input[type="text"] {
+    width: 300px;
+    background: none;
+    border-bottom: solid 2px var(--main-color);
+    border-right: none;
+    color: var(--main-color);
+    font-size: 20px;
+}
+
+.search-form .search-bar input[type="text"]:focus {
+    outline: none;
+}
+
+.search-form .search-bar input[type="text"]::placeholder {
+    color: var(--font-color);
+    font-style: italic;
+}
+
+.search-form .search-bar svg {
+    height: 30px;
+}
+
+.search-form .search-bar svg path {
+    fill: var(--main-color);
+}
+
+.search-form .search-category {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.search-form .search-category button {
+    background: none;
+    padding: 5px;
+    border: solid 2px;
+    border-radius: 15px;
+    color: var(--disable-color);
+}
+
+
+.search-form .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-form .actions button {
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-weight: 500;
+}
+
+.search-form .actions button[type="submit"] {
+    border: solid 1px var(--font-color);
+    background: var(--validation-color);
+    color: var(--font-color);
+}
+
+.search-form .actions button[type="submit"]:hover {
+    border-color: var(--validation-color);
+    background: var(--font-color);
+    color: var(--validation-color);
+}
+
+.search-form .actions button[type="reset"] {
+    border: solid 1px var(--font-color);
+    background: var(--refusal-color);
+    color: var(--font-color);
+}
+
+.search-form .actions button[type="reset"]:hover {
+    border-color: var(--refusal-color);
+    background: var(--font-color);
+    color: var(--refusal-color);
+}
+
+
 
 ::-webkit-scrollbar {
     width: 12px;
