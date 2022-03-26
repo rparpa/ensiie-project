@@ -2,13 +2,20 @@
 
 namespace models;
 
-
-use Cassandra\Date;
-use DateTime;
 use phpDocumentor\Reflection\DocBlock\Description;
 
-class ObjectU
+
+class Item
 {
+
+    function __construct(int $id, string $proprietary, int $picture, string $description,string $creation_date,bool $is_swappable) {
+        $this->id = $id;
+        $this->proprietary=$proprietary;
+        $this->picture=$picture;
+        $this->description=$description;
+        $this->creation_date=$creation_date;
+        $this->is_swappable=$is_swappable;
+    }
 
     /**
     /**
@@ -33,9 +40,9 @@ class ObjectU
     private string $description;
 
     /**
-     * @var DateTime date de creation
+     * @var string date de creation
      */
-    private DateTime $creation_date;
+    private string $creation_date;
 
     /**
      * @var boolean est échangeable
@@ -97,17 +104,17 @@ class ObjectU
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
-    public function getCreationDate():DateTime
+    public function getCreationDate():string
     {
         return $this->creation_date;
     }
 
     /**
-     * @param DateTime $creation_date
+     * @param string $creation_date
      */
-    public function setCreationDate(DateTime $creation_date):void
+    public function setCreationDate(string $creation_date):void
     {
         $this->creation_date = $creation_date;
     }
@@ -115,7 +122,7 @@ class ObjectU
     /**
      * @return bool
      */
-    public function isSwappable():void
+    public function getIsSwappable():bool
     {
         return $this->is_swappable;
     }
@@ -136,8 +143,6 @@ class ObjectU
     {
         return $this->id;
     }
-
-
 
 
 }

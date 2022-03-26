@@ -25,13 +25,13 @@ CREATE TABLE "tc_category" (
     ca_number_swap INT DEFAULT 0 NOT NULL
 );
 
-CREATE TABLE "tc_object" (
-    ob_id SERIAL PRIMARY KEY ,
-    ob_proprietary TEXT NOT NULL REFERENCES tc_user (us_mail) ,
-    ob_picture TEXT NOT NULL ,
-    ob_description TEXT NOT NULL ,
-    ob_creation_date DATE NOT NULL ,
-    ob_is_swappable BOOLEAN NOT NULL
+CREATE TABLE "tc_item" (
+    it_id SERIAL PRIMARY KEY ,
+    it_proprietary TEXT NOT NULL REFERENCES tc_user (us_mail) ,
+    it_picture TEXT NOT NULL ,
+    it_description TEXT NOT NULL ,
+    it_creation_date DATE NOT NULL ,
+    it_is_swappable BOOLEAN NOT NULL
 );
 
 CREATE TABLE "tc_troc" (
