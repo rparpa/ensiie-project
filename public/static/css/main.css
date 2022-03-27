@@ -476,6 +476,7 @@ Page objets
 
 .results .item-list .item-link img {
     height: 150px;
+    border-radius: 10px;
 }
 
 .results .item-list .item-link .information {
