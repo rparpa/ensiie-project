@@ -145,4 +145,9 @@ class Item
     }
 
 
+    function __toString() {
+        return ("ID: $this->id \t Propri: $this->proprietary \t Picture: $this->picture \t Description: $this->description \t Creation : $this->creation_date \t Swappable: $this->is_swappable");
+    }
+
+
 }

@@ -27,7 +27,7 @@ class ItemManager
         $dbName = getenv('DB_NAME');
         $dbUser = getenv('DB_USER');
         $dbPassword = getenv('DB_PASSWORD');
-        $this->pdo=new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
+        $this->pdo = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
 
     }
 
@@ -44,23 +44,24 @@ class ItemManager
         /**
          * id NULL car il est en auto_increment
          */
-        $this->pdoStatement=$this->pdo->prepare('INSERT INTO it_item VALUES(NULL, :proprietary, :picture, :description, :creation_date, :is_swappable)');
+        $this->pdoStatement = $this->pdo->prepare('INSERT INTO tc_item VALUES(NULL, :proprietary, :picture, :description, :creation_date, :is_swappable)');
 
-        $this->pdoStatement->bindValue(':proprietary',$item->getProprietary(),PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':picture',$item->getPicture(),PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':description',$item->getDescription(),PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':creation_date',$item->getCreationDate(),PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':is_swappable',$item->getIsSwappable(),PDO::PARAM_BOOL);
+        $this->pdoStatement->bindValue(':proprietary', $item->getProprietary(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':picture', $item->getPicture(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':description', $item->getDescription(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':creation_date', $item->getCreationDate(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':is_swappable', $item->getIsSwappable(), PDO::PARAM_BOOL);
 
         $execute = $this->pdoStatement->execute();
 
-        if(!$execute){
+        if (!$execute) {
             return false;
-        }
-
-        else {
-            $id=$this->pdo->lastInsertId();
-            $item=$this->select($id);
+        } else {
+            /*
+             * recuperer l'objet inserer et l'affecter a item et pour ça il faut recup l'identifiant créé
+             */
+            $id = $this->pdo->lastInsertId();
+            $item = $this->select($id);
             return true;
         }
     }
@@ -73,20 +74,19 @@ class ItemManager
      * @return  item|bool retourne objet si tout va bien, false si erreur, null si il n y a pas d'objet a retourner
      */
 
-    public function select(int $id){
+    public function select(int $id)
+    {
 
-        $this->pdoStatement=$this->pdo->prepare('SELECT * FROM tc_item WHERE id = :$id');
-        $this->pdoStatement->bindValue(':id',$id,PDO::PARAM_INT);
-        $execute=$this->pdoStatement->execute();
+        $this->pdoStatement = $this->pdo->prepare('SELECT * FROM tc_item WHERE id = :$id');
+        $this->pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $execute = $this->pdoStatement->execute();
 
-        if($execute){
+        if ($execute) {
             $item = $this->pdoStatement->fetchObject('..\models\Item');
 
-            if($item===false){
+            if ($item === false) {
                 return null;
-             }
-
-            else {
+            } else {
                 return $item;
             }
 
@@ -101,11 +101,11 @@ class ItemManager
      */
     public function selectAll(): array
     {
-        $this->pdoStatement=$this->pdo->query('SELECT * FROM tc_item');
-        $items=[];
+        $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_item');
+        $items = [];
 
-        while($item=$this->pdoStatement->fetchObject('indiquez chemin')){
-            $items[]=$item;
+        while ($item = $this->pdoStatement->fetchObject('..\models\Item')) {
+            $items[] = $item;
         }
         return $items;
     }
@@ -114,16 +114,17 @@ class ItemManager
      * Met un jour un objet
      * @return bool
      */
-    private function update(Item $item){
+    private function update(Item $item)
+    {
 
-        $this->pdoStatement=$this->pdo->prepare('UPDATE tc_item set it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id LIMIT 1');
+        $this->pdoStatement = $this->pdo->prepare('UPDATE tc_item set it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id LIMIT 1');
 
-        $this->pdoStatement->bindValue(':proprietary',$item->getProprietary(),PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':picture',$item->getPicture(),PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':description',$item->getDescription(),PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':creation_date',$item->getCreationDate(),PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':is_swappable',$item->getIsSwappable(),PDO::PARAM_BOOL);
-        $this->pdoStatement->bindValue(':id',$item->getId(),PDO::PARAM_INT);
+        $this->pdoStatement->bindValue(':proprietary', $item->getProprietary(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':picture', $item->getPicture(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':description', $item->getDescription(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':creation_date', $item->getCreationDate(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':is_swappable', $item->getIsSwappable(), PDO::PARAM_BOOL);
+        $this->pdoStatement->bindValue(':id', $item->getId(), PDO::PARAM_INT);
 
         return $this->pdoStatement->execute();
 
@@ -136,12 +137,11 @@ class ItemManager
      */
     public function save(Item &$item): bool
     {
-        if(is_null($item->getId())){
+        if (is_null($item->getId())) {
             return $this->insert($item);
-        }
-        else {
+        } else {
             return $this->update($item);
-       }
+        }
     }
 
 
@@ -153,10 +153,22 @@ class ItemManager
 
     public function delete(Item $item): bool
     {
-        $this->pdoStatement=$this->pdo->prepare('DELETE FROM tc_item WHERE it_id = :id LIMIT 1');
-        $this->pdoStatement->bindValue(':id',$item->getId(),PDO::PARAM_INT);
+        $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id = :id LIMIT 1');
+        $this->pdoStatement->bindValue(':id', $item->getId(), PDO::PARAM_INT);
 
         return $this->pdoStatement->execute();
     }
+
+    public function getItemByProprietary($proprietary)
+    {
+        $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_item WHERE tc_proprietary = :proprietary');
+        $items = [];
+
+        while ($item = $this->pdoStatement->fetchObject('..\models\Item')) {
+            $items[] = $item;
+        }
+        return $items;
+    }
+
 
 }
