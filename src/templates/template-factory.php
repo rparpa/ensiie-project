@@ -36,7 +36,7 @@ function templateItem($item)
     echo "</button>";
     echo "<div class='image'>";
     echo "<img class='logo' src='../static/assets/stylo.jpg'/>";
-    echo "<div class='categories'>
+    echo "<div class='categories' id='cat-container'>
     <span class='category'>EDUCATION</span>
     <span class='category'>CHEAT CODE</span>
     </div>";

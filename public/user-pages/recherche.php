@@ -5,13 +5,14 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/display-nav.js"></script>
+    <script src="../static/js/apply-category-color.js"></script>
     <script src="../static/js/search-form.js"></script>
 </head>
 <body>
 <?php
 include "../../src/templates/structure.php";
 ?>
-<main>
+<main class="search">
     <section class="my-card my-card-100">
         <section class="my-card-header">
             <img src="../static/assets/filter-solid.svg"/>
@@ -26,19 +27,235 @@ include "../../src/templates/structure.php";
                     </svg>
                     <input type="text" placeholder="Entrez le nom de l'objet">
                 </div>
-                <div class="search-category">
-                    <button class="category" type="button" value="1" onclick="clickCategory(this)">EDUCATION</button>
-                    <button class="category" type="button" value="2" onclick="clickCategory(this)">CHEAT CODE</button>
-                    <button class="category" type="button" value="3" onclick="clickCategory(this)">MANGA</button>
-                    <button class="category" type="button" value="4" onclick="clickCategory(this)">SCIENCE FICTION</button>
-                    <button class="category" type="button" value="5" onclick="clickCategory(this)">INUTILE</button>
-                    <button class="category" type="button" value="6" onclick="clickCategory(this)">TECHNOLOGIE</button>
+                <div class="search-category" id="button-container">
+                    <button class="category-button" type="button" value="1" onclick="clickCategory(this)">EDUCATION</button>
+                    <button class="category-button" type="button" value="2" onclick="clickCategory(this)">CHEAT CODE</button>
+                    <button class="category-button" type="button" value="3" onclick="clickCategory(this)">MANGA</button>
+                    <button class="category-button" type="button" value="4" onclick="clickCategory(this)">SCIENCE FICTION
+                    </button>
+                    <button class="category-button" type="button" value="5" onclick="clickCategory(this)">INUTILE</button>
+                    <button class="category-button" type="button" value="6" onclick="clickCategory(this)">TECHNOLOGIE</button>
                 </div>
                 <div class="actions">
                     <button type="reset" onclick="deselectCategories()">EFFACER</button>
                     <button type="submit">RECHERCHER</button>
                 </div>
             </form>
+        </section>
+    </section>
+    <section class="results">
+        <span class="number-result">14 objet(s) trouvé(s)</span>
+        <section class="item-list">
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
+            <a class="item-link">
+                <img src="../static/assets/stylo.jpg"/>
+                <div class="information">
+                    <h3>Stylo Frixion Bleu sans Cartouche</h3>
+                    <span class="date">Date d'ajout: 04/01/2002</span>
+                    <div class="categories" id="cat-container">
+                        <span class="category">CHEAT CODE</span>
+                        <span class="category">EDUCATION</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <img src="../static/assets/zoro.jpg"/>
+                    <span>Jonathan</span>
+                </div>
+            </a>
         </section>
     </section>
 

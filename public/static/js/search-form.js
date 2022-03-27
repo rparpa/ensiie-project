@@ -21,7 +21,7 @@ colors = [
 isCategorySelectedMap = new Map();
 
 document.addEventListener("DOMContentLoaded", function () {
-    const categories = document.getElementsByClassName('category');
+    const categories = document.getElementById('button-container').getElementsByClassName('category-button');
     for (let i = 0; i < categories.length; i++) {
         isCategorySelectedMap.set(categories[i].value, false);
     }
@@ -47,7 +47,7 @@ function getColorOfCategory(category) {
 }
 
 function deselectCategories() {
-    const categories = document.getElementsByClassName('category');
+    const categories = document.getElementById('button-container').getElementsByClassName('category-button');
     for (let i = 0; i < categories.length; i++) {
         isCategorySelectedMap.set(categories[i].value, false);
         categories[i].style.color = 'var(--disable-color)';

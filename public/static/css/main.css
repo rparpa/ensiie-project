@@ -3,7 +3,7 @@
     --dark-color: #221F22;
     --main-color: #FFD866;
     --font-color: white;
-    --validation-color: #A4DB6A;
+    --validation-color: #88B04B;
     --refusal-color: #DE453E;
     --sidebar-width: 180px;
     --header-height: 80px;
@@ -271,17 +271,18 @@ Page objets
     gap: 15px;
 }
 
-.item .image .categories {
+.categories {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
 }
 
-.item .image .categories .category {
+.categories .category {
     padding: 5px;
     border: solid 2px;
     border-radius: 15px;
+    color: var(--font-color);
 }
 
 .item .image img {
@@ -292,12 +293,13 @@ Page objets
     max-width: 500px;
 }
 
-.item .information h3 {
+.information h3 {
     color: var(--main-color);
 }
 
-.item .information .date {
+.date {
     font-style: italic;
+    color: var(--font-color);
 }
 
 .item .information p {
@@ -329,6 +331,13 @@ Page objets
 
 .item button:hover {
     background: var(--font-color);
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
 }
 
 .search-form {
@@ -426,7 +435,76 @@ Page objets
     color: var(--refusal-color);
 }
 
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
 
+.results .number-result {
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--main-color);
+}
+
+.results .item-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.results .item-list .item-link {
+    background: var(--dark-color);
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    gap: 20px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+
+
+.results .item-list .item-link:hover {
+    border: 1px solid var(--main-color);
+    cursor: pointer;
+}
+
+.results .item-list .item-link img {
+    height: 150px;
+}
+
+.results .item-list .item-link .information {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 440px;
+}
+
+.results .item-list .item-link .information .categories {
+    justify-content: left;
+}
+
+.results .item-list .item-link .user {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.results .item-list .item-link .user img {
+    height: 130px;
+    width: 130px;
+    border-radius: 65px;
+}
+
+.results .item-list .item-link .user span {
+    color: var(--font-color);
+    font-weight: 500;
+}
 
 ::-webkit-scrollbar {
     width: 12px;
