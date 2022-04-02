@@ -41,16 +41,16 @@ CREATE TABLE "tc_troc" (
     tr_is_done BOOLEAN NOT NULL
 );
 
-CREATE TABLE "tc_object_category" (
-    id_object INT NOT NULL REFERENCES tc_object (ob_id),
+CREATE TABLE "tc_item_category" (
+    id_item INT NOT NULL REFERENCES tc_item (it_id),
     id_category INT NOT NULL REFERENCES tc_category (ca_id),
-    PRIMARY KEY (id_object, id_category)
+    PRIMARY KEY (id_item, id_category)
 );
 
-CREATE TABLE "tc_object_troc" (
-    id_object INT NOT NULL REFERENCES tc_object (ob_id),
+CREATE TABLE "tc_item_troc" (
+    id_item INT NOT NULL REFERENCES tc_imtem (it_id),
     id_troc INT NOT NULL REFERENCES tc_troc (tr_id),
-    PRIMARY KEY (id_object, id_troc)
+    PRIMARY KEY (id_item, id_troc)
 );
 
 

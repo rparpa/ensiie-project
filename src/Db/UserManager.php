@@ -58,7 +58,7 @@ class UserManager
         $status = $this->getIsBanned();
         $status = $status == 1 ? 0 : 1;
 
-        $this->pdoStatement = $this->pdo->prepare('UPDATE tc_item set it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id LIMIT 1');
+        $this->pdoStatement = $this->pdo->prepare('UPDATE tc_user set us_is_banned=:status WHERE us_email=:email LIMIT 1');
 
         $this->pdoStatement->bindValue(':status', $status, PDO::PARAM_BOOL);
         $this->pdoStatement->bindValue(':email', $email, PDO::PARAM_INT);
@@ -70,6 +70,7 @@ class UserManager
     }
 
     public function edit(){
+
 
     }
 
