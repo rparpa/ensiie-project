@@ -24,7 +24,7 @@ HEADER
     width: 100%;
     background: var(--dark-color);
     height: var(--header-height);
-    border-bottom: var(--main-color) solid 4px;
+    border-bottom: var(--main-color) solid 6px;
     padding: 0 30px;
     position: fixed;
     z-index: 15;
@@ -34,7 +34,8 @@ HEADER
     float: right;
     display: flex;
     gap: 30px;
-    margin: 22px 0;
+    height: 100%;
+    align-items: center;
 }
 
 .menu-displayer {
@@ -50,6 +51,7 @@ HEADER
 
 .header .actions img, .header .actions svg, .header .menu-displayer {
     height: 35px;
+    transition: height 300ms;
 }
 
 .header .actions img:hover, .header .actions svg:hover, .header .menu-displayer:hover {
@@ -60,13 +62,23 @@ HEADER
     fill: var(--main-color);
 }
 
+.header .actions svg:hover {
+    height: 42px;
+}
+
 .header .actions .photo {
-    width: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 20px;
+    transition: width 300ms, height 300ms, border-radius 300ms;
 }
 
 .header .actions .photo:hover {
     border: solid 2px var(--main-color);
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+
 }
 
 /*
@@ -99,7 +111,9 @@ nav a {
 
 nav a svg {
     height: 36px;
+    transition: height 300ms;
 }
+
 
 nav a svg path {
     fill: var(--font-color);
@@ -113,8 +127,13 @@ nav .link {
 nav .link:hover {
     cursor: pointer;
     color: var(--main-color);
+    font-size: 18px;
+    transition: font-size 300ms;
 }
 
+nav .link:hover svg {
+    height: 42px;
+}
 nav .link:hover svg path {
     fill: var(--main-color);
 }
@@ -157,13 +176,13 @@ main {
 }
 
 .my-card .my-card-header {
-    font-size: 16px;
+    font-size: 20px;
     padding: 10px 10px;
     font-weight: 600;
 }
 
 .my-card .my-card-header img {
-    height: 18px;
+    height: 22px;
     margin-right: 10px;
 }
 
