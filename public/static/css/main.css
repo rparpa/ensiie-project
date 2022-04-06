@@ -550,3 +550,11 @@ Page objets
 ::-webkit-scrollbar-corner {
     background-color: transparent;
 }
+
+main .stats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+}
