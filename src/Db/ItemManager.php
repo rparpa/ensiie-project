@@ -35,13 +35,12 @@ class ItemManager
      *
      *
      */
-    private function insert(Item &$item): bool
+    public function insert(Item &$item): bool
     {
         /**
          * id NULL car il est en auto_increment
          */
-        $this->pdoStatement = $this->pdo->prepare('INSERT INTO tc_item VALUES(NULL, :proprietary, :picture, :description, :creation_date, :is_swappable)');
-
+        $this->pdoStatement = $this->pdo->prepare('INSERT INTO tc_item(it_proprietary,it_picture,it_description,it_creation_date,it_is_swappable) VALUES(:proprietary,:picture,:description,:creation_date,:is_swappable)');
         $this->pdoStatement->bindValue(':proprietary', $item->getProprietary(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':picture', $item->getPicture(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':description', $item->getDescription(), PDO::PARAM_STR);
