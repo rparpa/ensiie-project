@@ -48,11 +48,10 @@ CREATE TABLE "tc_item_category" (
 );
 
 CREATE TABLE "tc_item_troc" (
-    id_item INT NOT NULL REFERENCES tc_imtem (it_id),
+    id_item INT NOT NULL REFERENCES tc_item (it_id),
     id_troc INT NOT NULL REFERENCES tc_troc (tr_id),
     PRIMARY KEY (id_item, id_troc)
 );
-
 
 
 CREATE TABLE "notification" (
