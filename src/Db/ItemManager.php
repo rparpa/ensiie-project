@@ -82,7 +82,7 @@ class ItemManager
             if ($dbarray === false) {
                 return null;
             } else {
-                print_r($dbarray);
+                #print_r($dbarray);
                 return new Item($dbarray[0], $dbarray[1], $dbarray[2], $dbarray[3], $dbarray[4], $dbarray[5]);
             }
 
