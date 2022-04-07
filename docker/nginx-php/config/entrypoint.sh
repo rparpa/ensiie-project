@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -e;
 
 if [ -z ${TZ+x} ]; then
   echo "Warning : TimeZone is unset !";
