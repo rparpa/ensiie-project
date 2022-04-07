@@ -55,8 +55,8 @@ class ItemManager
             /*
              * recuperer l'objet inserer et l'affecter a item et pour ça il faut recup l'identifiant créé
              */
-            $id = $this->pdo->lastInsertId();
-            $item = $this->select($id);
+            //$id = $this->pdo->lastInsertId();
+            //$item = $this->select($id);
             return true;
         }
     }
@@ -72,12 +72,12 @@ class ItemManager
     public function select(int $id)
     {
 
-        $this->pdoStatement = $this->pdo->prepare('SELECT * FROM tc_item WHERE id = :$id');
-        $this->pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $this->pdoStatement = $this->pdo->prepare('SELECT * FROM tc_item WHERE it_id=:id LIMIT 1');
+        $this->pdoStatement->bindValue(':id',$id, PDO::PARAM_INT);
         $execute = $this->pdoStatement->execute();
 
         if ($execute) {
-            $item = $this->pdoStatement->fetchObject('..\models\Item');
+            $item = $this->pdoStatement->fetchObject('models\Item');
 
             if ($item === false) {
                 return null;
@@ -99,7 +99,7 @@ class ItemManager
         $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_item');
         $items = [];
 
-        while ($item = $this->pdoStatement->fetchObject('..\models\Item')) {
+        while ($item = $this->pdoStatement->fetchObject('models\Item')) {
             $items[] = $item;
         }
         return $items;
@@ -159,7 +159,7 @@ class ItemManager
         $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_item WHERE tc_proprietary = :proprietary');
         $items = [];
 
-        while ($item = $this->pdoStatement->fetchObject('..\models\Item')) {
+        while ($item = $this->pdoStatement->fetchObject('models\Item')) {
             $items[] = $item;
         }
         return $items;

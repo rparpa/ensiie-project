@@ -19,11 +19,18 @@ if(isset($_GET['prop'])){
 
     echo 'je rentre';
 
-    $item = new Item(7,$_GET['prop'],$_GET['pic'],$_GET['des'],$_GET['date'],$_GET['swap']);
+    $item = new Item(1,'samy_750@hotmail.fr','photo.png','salslalsallasa','08-10-21',true);
 
     $itemManager = new ItemManager(Connection::get());
 
-    $saveisOk=$itemManager->save($item);
+    $saveisOk=$itemManager->insert($item);
+
+    $item = $itemManager->select(12);
+
+    echo($item->getCreationDate());
+
+    echo($item->getIsSwappable());
+    echo($item->getPicture());
 
     if($saveisOk){
         echo('ok');
