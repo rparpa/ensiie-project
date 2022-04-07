@@ -11,6 +11,7 @@
 </head>
 <body>
 <?php
+require_once '../../vendor/autoload.php';
 include "../../src/templates/structure.php";
 ?>
 <main class="search">
@@ -24,7 +25,8 @@ include "../../src/templates/structure.php";
             <span>Créer un objet</span>
         </section>
         <section class="my-card-body">
-            <form class="form" onsubmit="applyValueCategories();return checkForm()" method="POST" action="../actions/create-swap.php"
+            <form class="form" onsubmit="applyValueCategories();return checkForm()" method="POST"
+                  action="../actions/create-swap.php"
                   enctype="multipart/form-data">
                 <div class="input">
                     <label for="item-name">Nom</label>
@@ -44,26 +46,25 @@ include "../../src/templates/structure.php";
                     <textarea name="description" id="description"></textarea>
                 </div>
                 <div class="input">
+
                     <label>Catégories</label>
                     <div class="search-category" id="button-container">
-                        <button class="category-button" type="button" value="1" name="1" onclick="clickCategory(this)">
-                            EDUCATION
-                        </button>
-                        <button class="category-button" type="button" value="2" name="2" onclick="clickCategory(this)">
-                            CHEAT CODE
-                        </button>
-                        <button class="category-button" type="button" value="3" name="3" onclick="clickCategory(this)">
-                            MANGA
-                        </button>
-                        <button class="category-button" type="button" value="4" name="4" onclick="clickCategory(this)">
-                            SCIENCE FICTION
-                        </button>
-                        <button class="category-button" type="button" value="5" name="5" onclick="clickCategory(this)">
-                            INUTILE
-                        </button>
-                        <button class="category-button" type="button" value="6" name="6" onclick="clickCategory(this)">
-                            TECHNOLOGIE
-                        </button>
+                        <?php
+
+                        use Db\Connection;
+                        use Db\CategoryManager;
+                        use models\Category;
+
+                        $categoryManager = new CategoryManager(Connection::get());
+                        $categories = $categoryManager->selectAll();
+                        foreach ($categories as $category) {
+                            echo "<button class='category-button' type='button' value="
+                                .htmlspecialchars($category->getId(), ENT_QUOTES, 'UTF-8').
+                                " onclick='clickCategory(this)'>"
+                                .htmlspecialchars($category->getName(), ENT_QUOTES, 'UTF-8').
+                                "</button>";
+                        }
+                        ?>
                     </div>
                 </div>
                 <input type="hidden" id="category-selected" name="categories-selected"/>
