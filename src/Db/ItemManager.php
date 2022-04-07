@@ -8,27 +8,23 @@ namespace Db;
 use PDO;
 
 
-require_once '../models/Item.php';
+#require_once '../models/Item.php';
 
+use models\Item;
 
 class ItemManager
 {
 
-
-    private $pdo;
+    private PDO $pdo;
     private $pdoStatement;
 
 
-    public function __construct()
+    public function __construct(PDO $connection)
     {
         /**
          * initialisation de la connexion à la base de données
          */
-        $dbName = getenv('DB_NAME');
-        $dbUser = getenv('DB_USER');
-        $dbPassword = getenv('DB_PASSWORD');
-        $this->pdo = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
-
+        $this->pdo=$connection;
     }
 
     /**
@@ -117,7 +113,7 @@ class ItemManager
     private function update(Item $item)
     {
 
-        $this->pdoStatement = $this->pdo->prepare('UPDATE tc_item set it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id LIMIT 1');
+        $this->pdoStatement = $this->pdo->prepare('UPDATE tc_item set it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id');
 
         $this->pdoStatement->bindValue(':proprietary', $item->getProprietary(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':picture', $item->getPicture(), PDO::PARAM_STR);
@@ -153,7 +149,7 @@ class ItemManager
 
     public function delete(Item $item): bool
     {
-        $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id = :id LIMIT 1');
+        $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id = :id');
         $this->pdoStatement->bindValue(':id', $item->getId(), PDO::PARAM_INT);
 
         return $this->pdoStatement->execute();

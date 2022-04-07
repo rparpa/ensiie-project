@@ -8,7 +8,7 @@ use phpDocumentor\Reflection\DocBlock\Description;
 class Item
 {
 
-    function __construct(int $id, string $proprietary, int $picture, string $description,string $creation_date,bool $is_swappable) {
+    function __construct(int $id, string $proprietary, string $picture, string $description,string $creation_date,bool $is_swappable) {
         $this->id = $id;
         $this->proprietary=$proprietary;
         $this->picture=$picture;

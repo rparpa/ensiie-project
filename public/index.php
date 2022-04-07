@@ -1,8 +1,11 @@
 <?php
 
+use Db\Connection;
+use User\UserRepository;
+
 require_once '../src/Bootstrap.php';
 
-$userRepository = new \User\UserRepository(\Db\Connection::get());
+$userRepository = new UserRepository(Connection::get());
 $users = $userRepository->fetchAll();
 ?>
 
