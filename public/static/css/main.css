@@ -49,7 +49,7 @@ HEADER
     margin-bottom: 10px;
 }
 
-.header .actions .hidden {
+.header .actions .hidden, .hidden {
     display: none;
 }
 
@@ -374,14 +374,14 @@ Page objets
     justify-content: center;
 }
 
-.search-form {
+.form {
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
 
-.search-form .search-bar {
+.form .search-bar {
     height: 50px;
     padding: 10px;
     display: flex;
@@ -390,7 +390,7 @@ Page objets
     gap: 15px;
 }
 
-.search-form .search-bar input[type="text"] {
+.form .search-bar input[type="text"] {
     width: 300px;
     background: none;
     border-bottom: solid 2px var(--main-color);
@@ -401,31 +401,31 @@ Page objets
     font-size: 20px;
 }
 
-.search-form .search-bar input[type="text"]:focus {
+.form .search-bar input[type="text"]:focus {
     outline: none;
 }
 
-.search-form .search-bar input[type="text"]::placeholder {
+.form .search-bar input[type="text"]::placeholder {
     color: var(--font-color);
     font-style: italic;
 }
 
-.search-form .search-bar svg {
+.form .search-bar svg {
     height: 30px;
 }
 
-.search-form .search-bar svg path {
+.form .search-bar svg path {
     fill: var(--main-color);
 }
 
-.search-form .search-category {
+.search-category {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
 }
 
-.search-form .search-category button {
+.search-category button, .search-category input[type="button"] {
     background: none;
     padding: 5px;
     border: solid 2px;
@@ -434,38 +434,38 @@ Page objets
 }
 
 
-.search-form .actions {
+.form .actions {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
 
-.search-form .actions button {
+.form .actions button {
     border-radius: 5px;
     padding: 8px 12px;
     font-weight: 500;
 }
 
-.search-form .actions button[type="submit"] {
+.form .actions button[type="submit"] {
     border: solid 1px var(--font-color);
     background: var(--validation-color);
     color: var(--font-color);
 }
 
-.search-form .actions button[type="submit"]:hover {
+.form .actions button[type="submit"]:hover {
     border-color: var(--validation-color);
     background: var(--font-color);
     color: var(--validation-color);
 }
 
-.search-form .actions button[type="reset"] {
+.form .actions button[type="reset"] {
     border: solid 1px var(--font-color);
     background: var(--refusal-color);
     color: var(--font-color);
 }
 
-.search-form .actions button[type="reset"]:hover {
+.form .actions button[type="reset"]:hover {
     border-color: var(--refusal-color);
     background: var(--font-color);
     color: var(--refusal-color);
@@ -631,4 +631,64 @@ path.domain {
 
 .rank .line svg {
     height: 25px;
+}
+
+.form .input {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 6px;
+}
+
+.form .image-input img{
+    max-height: 200px;
+    object-fit: contain;
+    width: fit-content;
+    border: solid 2px var(--main-color);
+    border-radius: 5px;
+}
+
+.form .input label {
+    font-style: italic;
+    font-weight: 600;
+}
+
+.form .input input[type="text"], .form .input textarea {
+    padding: 5px;
+    background: none;
+    border: 2px solid var(--font-color);
+    border-radius: 5px;
+    outline: none;
+    color: var(--font-color)
+}
+
+.form .input textarea {
+    resize: none;
+    height: 100px;
+}
+
+.form .input input[type="text"]:focus, .form .input textarea:focus {
+    border-color: var(--main-color);
+}
+
+.form .input input[type="button"] {
+    width: fit-content;
+    padding: 6px 20px;
+    background: none;
+    border: solid 2px var(--font-color);
+    border-radius: 5px;
+    color: var(--font-color);
+    font-weight: 500;
+}
+
+.form .input input[type="button"]:hover {
+    cursor: pointer;
+    border-color: var(--main-color);
+}
+
+.error {
+    font-style: italic;
+    color: var(--refusal-color);
+    font-weight: 500;
+    margin-top: -10px;
 }

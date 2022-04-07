@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/display-nav.js"></script>
     <script src="../static/js/apply-category-color.js"></script>
-    <script src="../static/js/search-form.js"></script>
+    <script src="../static/js/categories-form.js"></script>
 </head>
 <body>
 <?php
@@ -22,7 +22,7 @@ include "../../src/templates/structure.php";
             <span>Critères de recherche</span>
         </section>
         <section class="my-card-body">
-            <form class="search-form">
+            <form class="form">
                 <div class="search-bar">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 512 512">

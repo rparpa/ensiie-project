@@ -53,4 +53,17 @@ function deselectCategories() {
         categories[i].style.color = 'var(--disable-color)';
         categories[i].style.borderColor = 'var(--disable-color)';
     }
+    if (document.getElementById('result')) {
+        document.getElementById('result').classList.add('hidden');
+    }
+}
+
+function applyValueCategories() {
+    var stringValue = "";
+    isCategorySelectedMap.forEach((val, key) => {
+        if (val) {
+            stringValue+= key + "/";
+        }
+    });
+    document.getElementById('category-selected').value = stringValue;
 }
