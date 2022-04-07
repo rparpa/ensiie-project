@@ -72,7 +72,7 @@ class ItemManager
     public function select(int $id)
     {
 
-        $this->pdoStatement = $this->pdo->prepare('SELECT * FROM tc_item WHERE it_id=:id LIMIT 1');
+        $this->pdoStatement = $this->pdo->prepare('SELECT * FROM tc_item WHERE it_id=:id');
         $this->pdoStatement->bindValue(':id',$id, PDO::PARAM_INT);
         $execute = $this->pdoStatement->execute();
 

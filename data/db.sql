@@ -27,6 +27,7 @@ CREATE TABLE "tc_category" (
 
 CREATE TABLE "tc_item" (
     it_id SERIAL PRIMARY KEY ,
+    it_name VARCHAR(50) NOT NULL ,
     it_proprietary TEXT NOT NULL REFERENCES tc_user (us_mail) ,
     it_picture TEXT NOT NULL ,
     it_description TEXT NOT NULL ,

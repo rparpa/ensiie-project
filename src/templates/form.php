@@ -18,26 +18,44 @@ echo'
 if(isset($_GET['prop'])){
 
     echo 'je rentre';
-
-    $item = new Item(1,'samy_750@hotmail.fr','photo.png','salslalsallasa','08-10-21',true);
-
     $itemManager = new ItemManager(Connection::get());
+    $item = array();
 
-    $saveisOk=$itemManager->insert($item);
+    $item12 = $itemManager->select(12);
 
-    $item = $itemManager->select(12);
+    $item = $itemManager->selectAll();
 
+
+
+    echo("<br/>");
+    print_r($item12);
+
+    echo("<br/>");
+
+    echo("<br/>");
+
+
+    print_r($item);
+
+
+
+
+    /*
+    $item->setProprietary('samy_750@hotmail.fr');
+    $item->setPicture('photo.png');
+    $item->setDescription('salslalsallasa');
+    $item->setCreationDate('08-10-21');
+    $item->setIsSwappable('true');
+    */
+
+    #$saveisOk=$itemManager->insert($item);
+
+    /*
     echo($item->getCreationDate());
-
     echo($item->getIsSwappable());
     echo($item->getPicture());
 
-    if($saveisOk){
-        echo('ok');
-    }
-    else{
-        echo('pas ok');
-    }
+    */
 }
 
 ?>
