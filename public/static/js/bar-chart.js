@@ -16,59 +16,132 @@ window.onload = createBarChart;
 window.onresize = destroyBarChart;
 
 function createBarChart() {
-    console.log(maxTotal);
-    svgHeight = 70 * formatedStats.length;
-    svgWidth = document.getElementById("graph").offsetWidth;
-    stepWidth = (svgWidth - 50) / maxTotal;
-    formatedStats.columns = formatedStats.map(formatedStat => formatedStat.rank);
-    var svg = d3.select("#graph").append("svg").attr("height", svgHeight).attr("width", svgWidth);
-    margin = {top: 40, right: 20, bottom: 30, left: 40};
-    width = +svg.attr("width") - margin.left - margin.right;
-    height = +svg.attr("height") - margin.top - margin.bottom;
-    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    var margin = {top: 20, right: 30, bottom: 35, left: 30};
+    var width = Math.max(388, (document.getElementById("container-bar-chart").offsetWidth - 40)) - margin.left - margin.right,
+        height = 360 - margin.top - margin.bottom;
 
-    var y = d3.scaleBand()            // x = d3.scaleBand()
-        .rangeRound([0, height])    // .rangeRound([0, width])
-        .paddingInner(0.05)
-        .align(0.1);
+    var svg = d3.select("#graph")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+     //   .attr('viewBox', '0 0 ' + height + ' ' + width)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    const colors = ['var(--validation-color)', 'var(--refusal-color)'];
+    var data = [
+        {date: "01/04", validate: "100", cancel: "18"},
+        {date: "02/04", validate: "05", cancel: "20"},
+        {date: "03/04", validate: "01", cancel: "15"},
+        {date: "04/04", validate: "02", cancel: "10"},
+        {date: "05/04", validate: "03", cancel: "12"},
+        {date: "06/04", validate: "04", cancel: "15"},
+        {date: "07/04", validate: "06", cancel: "11"},
+    ];
 
-    var keys = formatedStats.columns;
-
-    formatedStats.sort(function (a, b) {
-        return b.rank - a.rank;
-    });
-    y.domain(formatedStats.map(function (d) {
-        return d.rank;
+    var dataset = d3.layout.stack()(["validate", "cancel"].map(function (type) {
+        return data.map(function (d) {
+            return {x: d.date, y: +d[type], type: type};
+        });
     }));
-    g.append("g")
-        .selectAll("g")
-        .data(d3.stack().keys(['victory', 'defeat'])(formatedStats))
+    console.log(dataset);
+
+    var x = d3.scale.ordinal()
+        .domain(dataset[0].map(function (d) {
+            return d.x;
+        }))
+        .rangeRoundBands([10, width - 10], 0.02);
+
+    var y = d3.scale.linear()
+        .domain([0, d3.max(dataset, function (d) {
+            return d3.max(d, function (d) {
+                return d.y0 + d.y;
+            });
+        })])
+        .range([height, 0]);
+
+    var colors = ["var(--validation-color)", "var(--refusal-color)"];
+
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .ticks(5)
+        .tickSize(-width, 0, 0)
+        .tickFormat(function (d) {
+            return d
+        });
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+
+    var groups = svg.selectAll("g.cost")
+        .data(dataset)
         .enter().append("g")
-        .attr("fill", function (d) {
-            return colors[d.index];
-        })
-        .selectAll("rect")
+        .attr("class", "cost")
+        .style("fill", function (d, i) {
+            return colors[i];
+        });
+
+    var rect = groups.selectAll("rect")
         .data(function (d) {
             return d;
         })
-        .enter().append("rect")
-        .attr("y", function (d) {
-            return y(d.data.rank);
-        })
+        .enter()
+        .append("rect")
         .attr("x", function (d) {
-            return d[0] * stepWidth;
+            return x(d.x) + (width * (width > 600 ? 0.055: 0.04));
         })
-        .attr("width", function (d) {
-            return (d[1] - d[0]) * stepWidth;
+        .attr("y", function (d) {
+            return y(d.y0 + d.y);
         })
-        .attr("height", "20px");
+        .attr("height", function (d) {
+            return y(d.y0) - y(d.y0 + d.y);
+        })
+        .attr("width", 25)
+        .on("mouseover", function (d) {
+            console.log(d);
+            tooltip.style("display", null);
+        })
+        .on("mouseout", function () {
+            tooltip.style("display", "none");
+        })
+        .on("mousemove", function (d) {
+            var xPosition = d3.mouse(this)[0] - 15;
+            var yPosition = d3.mouse(this)[1] - 25;
+            tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+            tooltip.select("text").text(d.y + (d.type == 'validate' ? ' trocs réussis': ' trocs avortés'));
+        });
 
-    g.append("g")
-        .attr("class", "axis")
-        .attr("transform", "translate(0, " + (formatedStats.length == 1 ? 10 : -15) + ")")
-        .call(d3.axisLeft(y));
+    var tooltip = svg.append("g")
+        .attr("class", "tooltip")
+        .style("display", "none");
+
+    tooltip.append("rect")
+        .attr("width", 100)
+        .attr("height", 20)
+        .attr("fill", "var(--background-color)")
+        .attr('text-anchor', 'middle')
+        .style("opacity", 1);
+
+    tooltip.append("text")
+        .attr("x", 50)
+        .attr("dy", "1.2em")
+        .style("text-anchor", "middle")
+        .attr("font-size", "12px")
+        .attr("fill", "var(--font-color)")
+        .attr("font-weight", "bold");
+
 }
 
 

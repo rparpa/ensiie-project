@@ -49,6 +49,10 @@ HEADER
     margin-bottom: 10px;
 }
 
+.header .actions .hidden {
+    display: none;
+}
+
 .header .actions img, .header .actions svg, .header .menu-displayer {
     height: 35px;
     transition: height 300ms;
@@ -56,6 +60,10 @@ HEADER
 
 .header .actions img:hover, .header .actions svg:hover, .header .menu-displayer:hover {
     cursor: pointer;
+}
+
+.header .actions svg path, .header .menu-displayer path {
+    fill: var(--font-color);
 }
 
 .header .actions svg:hover path, .header .menu-displayer:hover path {
@@ -134,6 +142,7 @@ nav .link:hover {
 nav .link:hover svg {
     height: 42px;
 }
+
 nav .link:hover svg path {
     fill: var(--main-color);
 }
@@ -175,13 +184,19 @@ main {
     }
 }
 
-.my-card .my-card-header {
+@media screen and (max-width: 600px) {
+    #logo-trocOn {
+        display: none;
+    }
+}
+
+    .my-card .my-card-header {
     font-size: 20px;
     padding: 10px 10px;
     font-weight: 600;
 }
 
-.my-card .my-card-header img {
+.my-card .my-card-header img, .my-card .my-card-header svg {
     height: 22px;
     margin-right: 10px;
 }
@@ -297,7 +312,7 @@ Page objets
     justify-content: center;
 }
 
-.categories .category {
+.category {
     padding: 5px;
     border: solid 2px;
     border-radius: 15px;
@@ -380,6 +395,8 @@ Page objets
     background: none;
     border-bottom: solid 2px var(--main-color);
     border-right: none;
+    border-left: none;
+    border-top: none;
     color: var(--main-color);
     font-size: 20px;
 }
@@ -487,7 +504,6 @@ Page objets
 }
 
 
-
 .results .item-list .item-link:hover {
     border: 1px solid var(--main-color);
     cursor: pointer;
@@ -557,4 +573,62 @@ main .stats {
     flex-wrap: wrap;
     gap: 40px;
     width: 100%;
+}
+
+path.domain {
+    fill: var(--main-color);
+}
+
+.tick {
+    fill: var(--font-color);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tooltip {
+    opacity: 1;
+}
+
+.stats {
+    justify-content: space-between;
+}
+
+.stats .my-card:first-of-type {
+    min-width: 30%;
+}
+
+.stats .my-card:last-of-type {
+    min-width: 65%;
+}
+
+@media screen and (max-width: 1220px) {
+    .stats .my-card {
+        width: 100%;
+    }
+}
+
+.rank {
+    width: 100%;
+}
+
+.rank .line {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+
+.rank .line .count, .rank .line .number{
+    font-size: 20px;
+
+    padding: 20px 10px;
+}
+
+.rank .line :nth-child(2) {
+    width: 65%;
+}
+
+.rank .line svg {
+    height: 25px;
 }
