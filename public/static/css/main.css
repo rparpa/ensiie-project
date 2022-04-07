@@ -49,7 +49,7 @@ HEADER
     margin-bottom: 10px;
 }
 
-.header .actions .hidden, .hidden {
+.header .actions .hidden {
     display: none;
 }
 
@@ -709,4 +709,90 @@ path.domain {
     color: var(--refusal-color);
     font-weight: 500;
     margin-top: -10px;
+}
+
+
+/* Page de connexion */
+
+.login-form-container {
+    max-width: 440px;
+    min-height: 100vh;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    background: var(--background-color);
+}
+
+.login-form-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.login-form-header {
+    height: 40px;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form-wrapper form {
+    padding: 30px 25px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.login-form-wrapper form .login-form-item {
+    height: 45px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.login-form-wrapper form .login-form-item input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 12px;
+    border-radius: 24px;
+    border: 1px solid lightgrey;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.login-form-wrapper form .pass {
+    margin: -8px 0 20px 0;
+}
+
+.login-form-wrapper form .pass a {
+    color: #16a085;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.login-form-wrapper form .button-connexion input {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 0px;
+    background: #16a085;
+    cursor: pointer;
+}
+
+.login-form-wrapper form .signup-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+@media screen and (max-width: 270px) {
+    .login-form-header {
+        font-size: 20px;
+    }
 }
