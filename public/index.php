@@ -1,3 +1,11 @@
+<?php
+
+require_once '../src/Bootstrap.php';
+
+$userRepository = new \User\UserRepository(\Db\Connection::get());
+$users = $userRepository->fetchAll();
+?>
+
 <html lang="fr">
 <head>
     <!-- Latest compiled and minified CSS -->
