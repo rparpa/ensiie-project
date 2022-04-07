@@ -7,7 +7,7 @@ use phpDocumentor\Reflection\DocBlock\Description;
 
 class Item
 {
-    /*
+
     function __construct(int $id=null, string $proprietary, string $picture, string $description,string $creation_date,bool $is_swappable) {
         $this->id = $id;
         $this->proprietary=$proprietary;
@@ -16,7 +16,7 @@ class Item
         $this->creation_date=$creation_date;
         $this->is_swappable=$is_swappable;
     }
-    */
+
 
     /**
     /**
@@ -43,13 +43,6 @@ class Item
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
 
     /**
      * @var string adresse de la photo

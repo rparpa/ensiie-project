@@ -17,15 +17,22 @@ echo'
 
 if(isset($_GET['prop'])){
 
-    echo 'je rentre';
     $itemManager = new ItemManager(Connection::get());
+
+    $item= $itemManager->select(12);
+
+
+    echo($item->getPicture());
+
+
     $item = array();
 
     $item12 = $itemManager->select(12);
 
+    echo($item12->getPicture());
+
+
     $item = $itemManager->selectAll();
-
-
 
     echo("<br/>");
     print_r($item12);
@@ -34,9 +41,13 @@ if(isset($_GET['prop'])){
 
     echo("<br/>");
 
+    echo("----------------------------------------------------------------------------------------");
 
-    print_r($item);
+    $items = $itemManager->selectAll();
 
+
+
+    print_r($items);
 
 
 
