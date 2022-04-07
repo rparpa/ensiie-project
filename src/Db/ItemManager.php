@@ -24,7 +24,7 @@ class ItemManager
         /**
          * initialisation de la connexion à la base de données
          */
-        $this->pdo=$connection;
+        $this->pdo = $connection;
     }
 
     /**
@@ -73,16 +73,17 @@ class ItemManager
     {
 
         $this->pdoStatement = $this->pdo->prepare('SELECT * FROM tc_item WHERE it_id=:id');
-        $this->pdoStatement->bindValue(':id',$id, PDO::PARAM_INT);
+        $this->pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
         $execute = $this->pdoStatement->execute();
 
         if ($execute) {
-            $item = $this->pdoStatement->fetchObject('models\Item');
+            $dbarray = $this->pdoStatement->fetchAll()[0];
 
-            if ($item === false) {
+            if ($dbarray === false) {
                 return null;
             } else {
-                return $item;
+                print_r($dbarray);
+                return new Item($dbarray[0], $dbarray[1], $dbarray[2], $dbarray[3], $dbarray[4], $dbarray[5]);
             }
 
         }
@@ -99,9 +100,12 @@ class ItemManager
         $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_item');
         $items = [];
 
-        while ($item = $this->pdoStatement->fetchObject('models\Item')) {
-            $items[] = $item;
+        $dbarray = $this->pdoStatement->fetchAll();
+
+        foreach ($dbarray as $db_row) {
+            $items[] = new Item($db_row[0], $db_row[1], $db_row[2], $db_row[3], $db_row[4], $db_row[5]);
         }
+
         return $items;
     }
 
@@ -154,16 +158,22 @@ class ItemManager
         return $this->pdoStatement->execute();
     }
 
+
+
+    /*
     public function getItemByProprietary($proprietary)
     {
+
         $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_item WHERE tc_proprietary = :proprietary');
         $items = [];
 
-        while ($item = $this->pdoStatement->fetchObject('models\Item')) {
+        $this->pdoStatement->fetchObject('models\Item')) {
             $items[] = $item;
         }
         return $items;
     }
+    */
+
 
 
 }
