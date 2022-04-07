@@ -72,7 +72,7 @@ Nous attendons de la part des élèves une véritable appropriation du sujet. Il
 * **23 mars** : point d’avancement, échange sur les bonnes pratiques, analyse du code
 * **7 avril** : point d’avancement, échange sur les bonnes pratiques, analyse du code
 * **15 avril (matin, à distance)** : point d’avancement, échange sur les bonnes pratiques, analyse du 
-* **6 mai (matin, sur place)** : Soutenances
+* **6 mai (après midi, sur place)** : Soutenances
 
 ### La notation
 
