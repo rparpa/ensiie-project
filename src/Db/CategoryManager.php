@@ -3,7 +3,6 @@
 namespace Db;
 
 use models\Category;
-use models\Item;
 use PDO;
 
 class CategoryManager extends Manager
@@ -40,6 +39,22 @@ class CategoryManager extends Manager
         return $category;
     }
 
+    public function create($object)
+    {
+        // TODO: Implement create() method.
+    }
+
+    public function update($object)
+    {
+
+        // TODO: Implement update() method.
+    }
+
+    public function delete($object)
+    {
+        // TODO: Implement delete() method.
+    }
+
 
     /**
      * Récupère la liste des 5 premières catégories selon le nombre de trocs les concernant
@@ -60,19 +75,4 @@ class CategoryManager extends Manager
         return $categories;
     }
 
-
-    public function create($object)
-    {
-        // TODO: Implement create() method.
-    }
-
-    public function update($object)
-    {
-        // TODO: Implement update() method.
-    }
-
-    public function delete($object)
-    {
-        // TODO: Implement delete() method.
-    }
 }
