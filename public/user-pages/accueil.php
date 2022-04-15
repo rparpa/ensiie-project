@@ -65,7 +65,7 @@ include "../../src/templates/structure.php";
                     use models\Category;
 
                     $categoryManager = new CategoryManager(Connection::get());
-                    $categories = $categoryManager->selectFiveBestCategories();
+                    $categories = $categoryManager->findAllOrderByNumberSwapTop5();
                     foreach ($categories as $key => $category) {
                         echo "<tr class='line'>";
                         if ($key == 0) {
@@ -78,7 +78,6 @@ include "../../src/templates/structure.php";
                         } else {
                             echo "<td class='number'>" . ($key + 1) . "</td>";
                         }
-
                         echo "<td> <span class='category'>" . htmlspecialchars($category->getName(), ENT_QUOTES, 'UTF-8') . "</span> </td>";
                         echo "<td class='count'>" . htmlspecialchars($category->getNumberSwap(), ENT_QUOTES, 'UTF-8') . " trocs </td>";
                         echo "</tr>";

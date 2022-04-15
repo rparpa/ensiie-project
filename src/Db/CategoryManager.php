@@ -1,79 +1,78 @@
 <?php
 
 namespace Db;
+
 use models\Category;
 use models\Item;
 use PDO;
 
-class CategoryManager
+class CategoryManager extends Manager
 {
 
-    private PDO $pdo;
-    private $pdoStatement;
 
-
-    public function __construct(PDO $connection)
+    /**
+     * Récupère toutes les catégories contenues dans la base de données ordonnées par le nom
+     * @return array la liste de toutes les catégories
+     */
+    public function findAll(): array
     {
-        /**
-         * initialisation de la connexion à la base de données
-         */
-        $this->pdo = $connection;
+        $pdoStatement = $this->pdo->query('SELECT * FROM tc_category ORDER BY ca_name ASC');
+        return $this->convertRowsToCategoriesArray($pdoStatement->fetchAll());
     }
 
     /**
-     *
-     * recupere un objet a partir de son identifiant
-     * @param int $id
-     * @return  item|bool retourne objet si tout va bien, false si erreur, null si il n y a pas d'objet a retourner
+     * Récupère la catégorie qui a la clé primaire passée en paramètre
+     * @param $id
+     * @return Category|null
      */
-
-    public function select(int $id)
+    public function findById($id): ?Category
     {
-
-        $this->pdoStatement = $this->pdo->prepare('SELECT * FROM tc_item WHERE it_id=:id');
-        $this->pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
-        $execute = $this->pdoStatement->execute();
-
+        $pdoStatement = $this->pdo->prepare('SELECT * FROM tc_category WHERE ca_id=:id');
+        $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $execute = $pdoStatement->execute();
+        $category = null;
         if ($execute) {
-            $item = $this->pdoStatement->fetchObject('models\Item');
-
-            if ($item === false) {
-                return null;
-            } else {
-                return $item;
+            $db_row = $pdoStatement->fetch();
+            if ($db_row !== false) {
+                $category = new Category($db_row[0], $db_row[1], $db_row[2]);
             }
-
         }
-        return false;
+        return $category;
     }
 
 
     /**
-     * recupere ous les objets de la base
-     * @return Category[] qui est un tableau d'objet
+     * Récupère la liste des 5 premières catégories selon le nombre de trocs les concernant
+     * @return array la liste de toutes les catégories
      */
-    public function selectAll(): array
+    public function findAllOrderByNumberSwapTop5(): array
     {
-        $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_category ORDER BY ca_name ASC');
-        return $this->convertRowsToCategoriesArray($this->pdoStatement->fetchAll());
-    }
-
-    /**
-     * recupere ous les objets de la base
-     * @return Category[] qui est un tableau d'objet
-     */
-    public function selectFiveBestCategories(): array
-    {
-        $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_category ORDER BY ca_number_swap DESC LIMIT 5');
-        return $this->convertRowsToCategoriesArray($this->pdoStatement->fetchAll());
+        $pdoStatement = $this->pdo->query('SELECT * FROM tc_category ORDER BY ca_number_swap DESC LIMIT 5');
+        return $this->convertRowsToCategoriesArray($pdoStatement->fetchAll());
     }
 
     private function convertRowsToCategoriesArray($dbarray): array
     {
+        $categories = [];
         foreach ($dbarray as $db_row) {
             $categories[] = new Category($db_row[0], $db_row[1], $db_row[2]);
         }
         return $categories;
     }
 
+
+    public function create($object)
+    {
+        // TODO: Implement create() method.
+    }
+
+    public function update($object)
+    {
+        // TODO: Implement update() method.
+    }
+
+    public function delete($object)
+    {
+        // TODO: Implement delete() method.
+    }
 }
