@@ -8,6 +8,7 @@ class User {
     protected string $firstname;
     protected string $lastname;
     protected string $pseudo;
+    protected string $password;
     protected string $picture;
     protected int $zipcode;
     protected string $street;
@@ -15,13 +16,15 @@ class User {
     protected bool $is_super_user;
     protected bool $is_banned;
 
-    function __construct($mail, $firstname, $lastname, $pseudo, $picture,
+
+    function __construct($mail, $firstname, $lastname, $pseudo, $password, $picture,
                          $zipcode, $street, $city, $is_super_user, $is_banned) {
 
         $this->mail = $mail;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->pseudo = $pseudo;
+        $this->password = $password;
         $this->picture = $picture;
         $this->zipcode = $zipcode;
         $this->street = $street;
@@ -93,6 +96,20 @@ class User {
     public function setPseudo(string $pseudo): void
     {
         $this->pseudo = $pseudo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(){
+        return $this->password;
+    }
+
+    /**
+     * @param $password
+     */
+    public function setPassword($password) {
+        $this->password = $password;
     }
 
     /**
@@ -190,6 +207,7 @@ class User {
     {
         $this->is_banned = $is_banned;
     }
+
 
 
 }
