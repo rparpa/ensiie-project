@@ -26,7 +26,7 @@ include "../../src/templates/structure.php";
         </section>
         <section class="my-card-body">
             <form class="form" onsubmit="applyValueCategories();return checkForm()" method="POST"
-                  action="../actions/create-swap.php"
+                  action="../actions/create-item.php"
                   enctype="multipart/form-data">
                 <div class="input">
                     <label for="item-name">Nom</label>

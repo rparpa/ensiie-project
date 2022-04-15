@@ -2,25 +2,24 @@
 
 namespace models;
 
-use phpDocumentor\Reflection\DocBlock\Description;
-
 
 class Item
 {
 
-    function __construct(int $id,string $name, string $proprietary, string $picture, string $description,string $creation_date,bool $is_swappable) {
+    function __construct(int $id, string $name, string $proprietary, string $picture, string $description, string $creation_date, bool $is_swappable)
+    {
         $this->id = $id;
-        $this->name=$name;
-        $this->proprietary=$proprietary;
-        $this->picture=$picture;
-        $this->description=$description;
-        $this->creation_date=$creation_date;
-        $this->is_swappable=$is_swappable;
+        $this->name = $name;
+        $this->proprietary = $proprietary;
+        $this->picture = $picture;
+        $this->description = $description;
+        $this->creation_date = $creation_date;
+        $this->is_swappable = $is_swappable;
     }
 
 
     /**
-    /**
+     * /**
      * @var int id identifiant de l'objet
      * remarque : pas de setter pour l'identifiant
      */
@@ -121,7 +120,7 @@ class Item
     /**
      * @return string
      */
-    public function getCreationDate():string
+    public function getCreationDate(): string
     {
         return $this->creation_date;
     }
@@ -129,7 +128,7 @@ class Item
     /**
      * @param string $creation_date
      */
-    public function setCreationDate(string $creation_date):void
+    public function setCreationDate(string $creation_date): void
     {
         $this->creation_date = $creation_date;
     }
@@ -137,7 +136,7 @@ class Item
     /**
      * @return bool
      */
-    public function getIsSwappable():bool
+    public function getIsSwappable(): bool
     {
         return $this->is_swappable;
     }
@@ -145,7 +144,7 @@ class Item
     /**
      * @param bool $is_swappable
      */
-    public function setIsSwappable($is_swappable):void
+    public function setIsSwappable($is_swappable): void
     {
         $this->is_swappable = $is_swappable;
     }
@@ -154,13 +153,14 @@ class Item
     /**
      * @return int
      */
-    public function getId():int
+    public function getId(): int
     {
         return $this->id;
     }
 
 
-    function __toString() {
+    function __toString()
+    {
         return ("ID: $this->id \t Propri: $this->proprietary \t Picture: $this->picture \t Description: $this->description \t Creation : $this->creation_date \t Swappable: $this->is_swappable");
     }
 

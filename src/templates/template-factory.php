@@ -1,5 +1,7 @@
 <?php
 
+use models\Item;
+
 function templateSwap($s)
 {
     echo "<div class='swap'>";
@@ -26,7 +28,7 @@ function templateSwap($s)
     echo "</div>";
 }
 
-function templateItem($item)
+function templateItem(Item $item)
 {
     echo "<div class='item'>";
     echo "<button class='delete'>";
@@ -35,17 +37,17 @@ function templateItem($item)
             </svg>";
     echo "</button>";
     echo "<div class='image'>";
-    echo "<img class='logo' src='../static/assets/stylo.jpg'/>";
+    echo "<img class='logo' src='/images/items/" . htmlspecialchars($item->getPicture(), ENT_QUOTES, 'UTF-8') . "'/>";
     echo "<div class='categories' id='cat-container'>
     <span class='category'>EDUCATION</span>
     <span class='category'>CHEAT CODE</span>
     </div>";
     echo "</div>";
     echo "<div class='information'>";
-    echo "<h3> Stylo Frixion bleu sans cartouche </h3>";
+    echo "<h3> " . htmlspecialchars($item->getName(), ENT_QUOTES, 'UTF-8') . " </h3>";
 
-    echo "<span class='date'>Date d'ajout: 04/01/2002</span>";
-    echo "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+    echo "<span class='date'>Date d'ajout: " . htmlspecialchars($item->getCreationDate(), ENT_QUOTES, 'UTF-8') . "</span>";
+    echo "<p>". htmlspecialchars($item->getDescription(), ENT_QUOTES, 'UTF-8') . "</p>";
 
     echo "</div>";
 

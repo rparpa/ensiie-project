@@ -9,17 +9,22 @@
 </head>
 <body>
 <?php
+
+use Db\Connection;
+use Db\ItemManager;
+use models\User;
+
+include "../../vendor/autoload.php";
 include "../../src/templates/structure.php";
 ?>
 <main>
     <section class="grid">
         <?php
         require_once "../../src/templates/template-factory.php";
-        templateItem(1);
-        templateItem(1);
-        templateItem(1);
-        templateItem(1);
-        templateItem(1);
+        $items = (new ItemManager(Connection::get()))->findAllByProprietary(new User("toto","toto", "toto", "toto", "toto", "toto", 131, "toto", "toto", false, false));
+        foreach ($items as $item) {
+            templateItem($item);
+        }
         ?>
     </section>
 </main>

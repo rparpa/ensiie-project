@@ -24,7 +24,7 @@ require_once "../../src/templates/template-factory.php";
     templateItem(1);
     if (isset($_GET["id"])) {
         $itemManager = new ItemManager(Connection::get());
-        $item = $itemManager->select($_GET["id"]);
+        $item = $itemManager->findById($_GET["id"]);
         if ($item !== null) {
             templateItem(1);
         } else {

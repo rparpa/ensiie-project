@@ -7,8 +7,6 @@ use PDO;
 
 class CategoryManager extends Manager
 {
-
-
     /**
      * Récupère toutes les catégories contenues dans la base de données ordonnées par le nom
      * @return array la liste de toutes les catégories
