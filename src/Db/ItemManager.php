@@ -40,7 +40,8 @@ class ItemManager
         /**
          * id NULL car il est en auto_increment
          */
-        $this->pdoStatement = $this->pdo->prepare('INSERT INTO tc_item(it_proprietary,it_picture,it_description,it_creation_date,it_is_swappable) VALUES(:proprietary,:picture,:description,:creation_date,:is_swappable)');
+        $this->pdoStatement = $this->pdo->prepare('INSERT INTO tc_item(it_name,it_proprietary,it_picture,it_description,it_creation_date,it_is_swappable) VALUES(:name,:proprietary,:picture,:description,:creation_date,:is_swappable)');
+        $this->pdoStatement->bindValue(':name', $item->getName(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':proprietary', $item->getProprietary(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':picture', $item->getPicture(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':description', $item->getDescription(), PDO::PARAM_STR);
@@ -55,8 +56,8 @@ class ItemManager
             /*
              * recuperer l'objet inserer et l'affecter a item et pour ça il faut recup l'identifiant créé
              */
-            //$id = $this->pdo->lastInsertId();
-            //$item = $this->select($id);
+            $id = $this->pdo->lastInsertId();
+            $item = $this->select($id);
             return true;
         }
     }
@@ -83,7 +84,7 @@ class ItemManager
                 return null;
             } else {
                 #print_r($dbarray);
-                return new Item($dbarray[0], $dbarray[1], $dbarray[2], $dbarray[3], $dbarray[4], $dbarray[5]);
+                return new Item($dbarray[0], $dbarray[1], $dbarray[2], $dbarray[3], $dbarray[4], $dbarray[5], $dbarray[6]);
             }
 
         }
@@ -103,7 +104,7 @@ class ItemManager
         $dbarray = $this->pdoStatement->fetchAll();
 
         foreach ($dbarray as $db_row) {
-            $items[] = new Item($db_row[0], $db_row[1], $db_row[2], $db_row[3], $db_row[4], $db_row[5]);
+            $items[] = new Item($db_row[0], $db_row[1], $db_row[2], $db_row[3], $db_row[4], $db_row[5], $dbarray[6]);
         }
 
         return $items;
@@ -116,8 +117,8 @@ class ItemManager
     private function update(Item $item)
     {
 
-        $this->pdoStatement = $this->pdo->prepare('UPDATE tc_item set it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id');
-
+        $this->pdoStatement = $this->pdo->prepare('UPDATE tc_item set it_name=:name,it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id');
+        $this->pdoStatement->bindValue(':name', $item->getName(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':proprietary', $item->getProprietary(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':picture', $item->getPicture(), PDO::PARAM_STR);
         $this->pdoStatement->bindValue(':description', $item->getDescription(), PDO::PARAM_STR);
@@ -158,21 +159,29 @@ class ItemManager
         return $this->pdoStatement->execute();
     }
 
-
-
-    /*
-    public function getItemByProprietary($proprietary)
+/*
+    public function getItemByProprietary(string $proprietary)
     {
+        $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_item WHERE it_proprietary=:proprietary');
+        $this->pdoStatement->bindValue(':proprietary', 'test', PDO::PARAM_STR);
+        $execute = $this->pdoStatement->execute();
 
-        $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_item WHERE tc_proprietary = :proprietary');
-        $items = [];
+        if ($execute){
+            $dbarray = $this->pdoStatement->fetchAll()[0];
 
-        $this->pdoStatement->fetchObject('models\Item')) {
-            $items[] = $item;
+            if ($dbarray === false) {
+                return null;
+            } else {
+                return new Item($dbarray[0], $dbarray[1], $dbarray[2], $dbarray[3], $dbarray[4], $dbarray[5], $dbarray[6]);
+            }
         }
-        return $items;
+        return false;
     }
-    */
+
+*/
+
+
+
 
 
 

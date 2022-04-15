@@ -8,8 +8,9 @@ use phpDocumentor\Reflection\DocBlock\Description;
 class Item
 {
 
-    function __construct(int $id=null, string $proprietary, string $picture, string $description,string $creation_date,bool $is_swappable) {
+    function __construct(int $id,string $name, string $proprietary, string $picture, string $description,string $creation_date,bool $is_swappable) {
         $this->id = $id;
+        $this->name=$name;
         $this->proprietary=$proprietary;
         $this->picture=$picture;
         $this->description=$description;
@@ -31,7 +32,7 @@ class Item
     private string $proprietary;
 
     /**
-     * @var string proprietaire de l'objet
+     * @var string nom de l'objet
      */
     private string $name;
 
@@ -42,7 +43,6 @@ class Item
     {
         return $this->name;
     }
-
 
     /**
      * @var string adresse de la photo

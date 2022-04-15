@@ -53,7 +53,6 @@ class UserManager
     }
 
     public function lock(){
-
         $email=$this->getMail();
         $status = $this->getIsBanned();
         $status = $status == 1 ? 0 : 1;
@@ -64,9 +63,6 @@ class UserManager
         $this->pdoStatement->bindValue(':email', $email, PDO::PARAM_INT);
 
         return $this->pdoStatement->execute();
-
-
-
     }
 
     public function edit(){
