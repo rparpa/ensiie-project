@@ -8,6 +8,10 @@ class Category
     private string $name;
     private int $number_swap;
 
+    function __construct_2($name) {
+        $this->name = $name;
+    }
+
     function __construct($id,$name,$number_swap){
         $this->id=$id;
         $this->name=$name;

@@ -10,6 +10,7 @@
 </head>
 <body>
 <?php
+require_once '../../vendor/autoload.php';
 include "../../src/templates/structure.php";
 ?>
 <main class="search">
@@ -17,7 +18,8 @@ include "../../src/templates/structure.php";
         <section class="my-card-header">
             <svg xmlns="http://www.w3.org/2000/svg"
                  viewBox="0 0 512 512">
-                <path fill="var(--font-color)" d="M3.853 54.87C10.47 40.9 24.54 32 40 32H472C487.5 32 501.5 40.9 508.1 54.87C514.8 68.84 512.7 85.37 502.1 97.33L320 320.9V448C320 460.1 313.2 471.2 302.3 476.6C291.5 482 278.5 480.9 268.8 473.6L204.8 425.6C196.7 419.6 192 410.1 192 400V320.9L9.042 97.33C-.745 85.37-2.765 68.84 3.854 54.87L3.853 54.87z"/>
+                <path fill="var(--font-color)"
+                      d="M3.853 54.87C10.47 40.9 24.54 32 40 32H472C487.5 32 501.5 40.9 508.1 54.87C514.8 68.84 512.7 85.37 502.1 97.33L320 320.9V448C320 460.1 313.2 471.2 302.3 476.6C291.5 482 278.5 480.9 268.8 473.6L204.8 425.6C196.7 419.6 192 410.1 192 400V320.9L9.042 97.33C-.745 85.37-2.765 68.84 3.854 54.87L3.853 54.87z"/>
             </svg>
             <span>Critères de recherche</span>
         </section>
@@ -31,13 +33,22 @@ include "../../src/templates/structure.php";
                     <input type="text" placeholder="Entrez le nom de l'objet">
                 </div>
                 <div class="search-category" id="button-container">
-                    <button class="category-button" type="button" value="1" onclick="clickCategory(this)">EDUCATION</button>
-                    <button class="category-button" type="button" value="2" onclick="clickCategory(this)">CHEAT CODE</button>
-                    <button class="category-button" type="button" value="3" onclick="clickCategory(this)">MANGA</button>
-                    <button class="category-button" type="button" value="4" onclick="clickCategory(this)">SCIENCE FICTION
-                    </button>
-                    <button class="category-button" type="button" value="5" onclick="clickCategory(this)">INUTILE</button>
-                    <button class="category-button" type="button" value="6" onclick="clickCategory(this)">TECHNOLOGIE</button>
+                    <?php
+
+                    use Db\Connection;
+                    use Db\CategoryManager;
+                    use models\Category;
+
+                    $categoryManager = new CategoryManager(Connection::get());
+                    $categories = $categoryManager->findAll();
+                    foreach ($categories as $category) {
+                        echo "<button class='category-button' type='button' value="
+                            . htmlspecialchars($category->getId(), ENT_QUOTES, 'UTF-8') .
+                            " onclick='clickCategory(this)'>"
+                            . htmlspecialchars($category->getName(), ENT_QUOTES, 'UTF-8') .
+                            "</button>";
+                    }
+                    ?>
                 </div>
                 <div class="actions">
                     <button type="reset" onclick="deselectCategories()">EFFACER</button>
@@ -49,7 +60,7 @@ include "../../src/templates/structure.php";
     <section class="results">
         <span class="number-result">14 objet(s) trouvé(s)</span>
         <section class="item-list">
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -64,7 +75,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -79,7 +90,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -94,7 +105,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -109,7 +120,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -124,7 +135,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -139,7 +150,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -154,7 +165,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -169,7 +180,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -184,7 +195,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -199,7 +210,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -214,7 +225,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -229,7 +240,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>
@@ -244,7 +255,7 @@ include "../../src/templates/structure.php";
                     <span>Jonathan</span>
                 </div>
             </a>
-            <a class="item-link">
+            <a class="item-link" href="objet.php?id=1">
                 <img src="../static/assets/stylo.jpg"/>
                 <div class="information">
                     <h3>Stylo Frixion Bleu sans Cartouche</h3>

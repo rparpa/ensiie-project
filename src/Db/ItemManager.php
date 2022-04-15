@@ -77,7 +77,7 @@ class ItemManager
         $execute = $this->pdoStatement->execute();
 
         if ($execute) {
-            $dbarray = $this->pdoStatement->fetchAll()[0];
+            $dbarray = $this->pdoStatement->fetch();
 
             if ($dbarray === false) {
                 return null;

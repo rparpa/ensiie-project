@@ -53,10 +53,9 @@ include "../../src/templates/structure.php";
 
                         use Db\Connection;
                         use Db\CategoryManager;
-                        use models\Category;
 
                         $categoryManager = new CategoryManager(Connection::get());
-                        $categories = $categoryManager->selectAll();
+                        $categories = $categoryManager->findAll();
                         foreach ($categories as $category) {
                             echo "<button class='category-button' type='button' value="
                                 .htmlspecialchars($category->getId(), ENT_QUOTES, 'UTF-8').
