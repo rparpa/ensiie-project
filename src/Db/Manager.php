@@ -21,7 +21,7 @@ abstract class Manager
 
     public abstract function findById($id);
 
-    public abstract function create($object);
+    public abstract function create($category);
 
     public abstract function update($object);
 

@@ -3,7 +3,6 @@
 namespace Db;
 
 use models\Category;
-use models\Item;
 use PDO;
 
 class CategoryManager extends Manager
@@ -40,6 +39,49 @@ class CategoryManager extends Manager
         return $category;
     }
 
+    public function create($category): ?Category
+    {
+        $categoryCreated = null;
+        if ($category instanceof Category) {
+            $pdoManagement = $this->pdo->prepare('INSERT INTO tc_category(ca_name) VALUES (:name)');
+            $pdoManagement->bindValue(':name', $category->getName());
+            $isSuccess = $pdoManagement->execute();
+            if ($isSuccess) {
+                $categoryCreated = $this->findById($this->pdo->lastInsertId());
+            }
+        }
+        return $categoryCreated;
+    }
+
+    public function update($object): ?Category
+    {
+        $categoryUpdated = null;
+        if ($object instanceof Category) {
+            $currentCategory = $this->findById($object->getId());
+            if ($currentCategory != null) {
+                $currentCategory->setName($object->getName());
+                $pdoManagement = $this->pdo->prepare('UPDATE tc_category SET ca_name=:name WHERE ca_id=:id');
+                $pdoManagement->bindValue(':name', $currentCategory->getName());
+                $pdoManagement->bindValue(':id', $currentCategory->getId());
+                $isSuccess = $pdoManagement->execute();
+                if ($isSuccess) {
+                    $categoryUpdated = $this->findById($currentCategory->getId());
+                }
+            }
+        }
+        return $categoryUpdated;
+    }
+
+    /**
+     * IL est impossible de supprimer une catégorie
+     * @param $object
+     * @return false
+     */
+    public function delete($object): bool
+    {
+        return false;
+    }
+
 
     /**
      * Récupère la liste des 5 premières catégories selon le nombre de trocs les concernant
@@ -60,19 +102,4 @@ class CategoryManager extends Manager
         return $categories;
     }
 
-
-    public function create($object)
-    {
-        // TODO: Implement create() method.
-    }
-
-    public function update($object)
-    {
-        // TODO: Implement update() method.
-    }
-
-    public function delete($object)
-    {
-        // TODO: Implement delete() method.
-    }
 }

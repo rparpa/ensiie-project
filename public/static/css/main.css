@@ -209,6 +209,12 @@ main {
     border-bottom-right-radius: 10px;
 }
 
+.my-card .my-card-body.no-line {
+    border-top: none !important;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
 .my-card .my-card-body .roll {
     display: flex;
     gap: 50px;
@@ -372,6 +378,7 @@ Page objets
     flex-direction: column;
     gap: 25px;
     justify-content: center;
+    align-items: center;
 }
 
 .form {
@@ -684,6 +691,17 @@ path.domain {
 .form .input input[type="button"]:hover {
     cursor: pointer;
     border-color: var(--main-color);
+}
+
+.error-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.error-div svg {
+    height: 50px;
 }
 
 .error {
