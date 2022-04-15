@@ -69,7 +69,7 @@ include "../../src/templates/structure.php";
                 <input type="hidden" id="category-selected" name="categories-selected"/>
                 <div class="actions">
                     <button type="reset" onclick="deselectCategories();clearErrors()">EFFACER</button>
-                    <button type="submit">RECHERCHER</button>
+                    <button type="submit">AJOUTER</button>
                 </div>
             </form>
         </section>
