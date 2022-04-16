@@ -308,6 +308,7 @@ Page objets
 .item .image {
     flex-direction: column;
     display: flex;
+    max-width: 200px;
     gap: 15px;
 }
 
@@ -326,7 +327,8 @@ Page objets
 }
 
 .item .image img {
-    max-height: 200px;
+    width: 200px;
+    object-fit: contain;
 }
 
 .item .information {

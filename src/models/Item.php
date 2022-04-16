@@ -6,7 +6,14 @@ namespace models;
 class Item
 {
 
-    function __construct(int $id, string $name, string $proprietary, string $picture, string $description, string $creation_date, bool $is_swappable)
+    function __construct(int    $id,
+                         string $name,
+                         string $proprietary,
+                         string $picture,
+                         string $description,
+                         string $creation_date,
+                         bool   $is_swappable,
+                         array  $categories)
     {
         $this->id = $id;
         $this->name = $name;
@@ -15,6 +22,7 @@ class Item
         $this->description = $description;
         $this->creation_date = $creation_date;
         $this->is_swappable = $is_swappable;
+        $this->categories = $categories;
     }
 
 
@@ -62,6 +70,8 @@ class Item
      * @var boolean est échangeable
      */
     private bool $is_swappable;
+
+    private array $categories;
 
 
     /**
@@ -149,6 +159,9 @@ class Item
         $this->is_swappable = $is_swappable;
     }
 
+    public function getCategories(): array {
+        return $this->categories;
+    }
 
     /**
      * @return int

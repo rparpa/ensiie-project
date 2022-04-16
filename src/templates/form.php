@@ -24,7 +24,7 @@ if(isset($_GET['prop'])){
 
     //$saveisOk=$itemManager->insert($item);
 
-    $item2=$itemManager->findAllByProprietary('test');
+    $item2=$itemManager->findAllByProprietaryMail('test');
     print_r($item2);
 
 

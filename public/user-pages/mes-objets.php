@@ -21,7 +21,7 @@ include "../../src/templates/structure.php";
     <section class="grid">
         <?php
         require_once "../../src/templates/template-factory.php";
-        $items = (new ItemManager(Connection::get()))->findAllByProprietary(new User("toto","toto", "toto", "toto", "toto", "toto", 131, "toto", "toto", false, false));
+        $items = (new ItemManager(Connection::get()))->findAllByProprietaryMail("toto");
         foreach ($items as $item) {
             templateItem($item);
         }

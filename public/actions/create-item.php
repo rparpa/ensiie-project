@@ -1,7 +1,9 @@
 <?php
 require_once '../../vendor/autoload.php';
+
 use Db\Connection;
 use Db\ItemManager;
+use models\Category;
 use models\Item;
 
 if (isset($_POST["item-name"])
@@ -20,7 +22,12 @@ if (isset($_POST["item-name"])
         $uniqueName = uniqid('', true);
         $file = $uniqueName . "." . $extension;
         move_uploaded_file($tmpName, $imagesLocation . $file);
-        $item = new Item(0, $_POST["item-name"], "toto", $file, $_POST["description"], "", true);
+        $categories = [];
+        $idCategories = substr($_POST["categories-selected"], 0, -1);
+        foreach (explode("/", $idCategories) as $idCat) {
+            $categories[] = new Category($idCat, "", 0);
+        }
+        $item = new Item(0, $_POST["item-name"], "toto", $file, $_POST["description"], "", true, $categories);
         $itemManager = new ItemManager(Connection::get());
         $itemManager->create($item);
         header('Location: ../user-pages/mes-objets.php');

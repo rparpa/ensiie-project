@@ -70,6 +70,26 @@ class CategoryManager extends Manager
         return $categoryUpdated;
     }
 
+    public function findAllByItemId($itemId): array {
+        $pdostatement = $this->pdo->prepare('SELECT * FROM tc_category WHERE ca_id IN (SELECT id_category FROM tc_item_category WHERE id_item = :itemId)');
+        $pdostatement->bindValue(':itemId', $itemId);
+        $pdostatement->execute();
+        $categories = [];
+        $dbarray = $pdostatement->fetchAll();
+        foreach ($dbarray as $db_row) {
+            $categories[] = new Category($db_row[0], $db_row[1], $db_row[2]);
+        }
+        return $categories;
+    }
+
+    public function addCategoryToItemId($categoryId, $itemId): void {
+        $pdostatement = $this->pdo->prepare('INSERT INTO tc_item_category(id_category, id_item) VALUES (:categoryId, :itemId)');
+        $pdostatement->bindValue(':itemId', $itemId);
+        $pdostatement->bindValue(':categoryId', $categoryId);
+        $pdostatement->execute();
+    }
+
+
     /**
      * IL est impossible de supprimer une catégorie
      * @param $object
