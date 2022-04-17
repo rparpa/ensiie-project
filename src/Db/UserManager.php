@@ -138,7 +138,7 @@ class UserManager extends Manager {
         }
     }
 
-    public function delete($user) {
+    public function deleteById($user) {
         if ($user instanceof User) {
             $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_user WHERE us_mail=:mail');
             $this->pdoStatement->bindValue(':mail', $user->getMail(), PDO::PARAM_INT);

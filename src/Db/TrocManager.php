@@ -148,7 +148,7 @@ class TrocManager extends Manager {
         return $trocs;
     }
 
-    public function delete($troc) {
+    public function deleteById($troc) {
         if ($troc instanceof Troc) {
             $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_troc WHERE tr_id =:id');
             $this->pdoStatement->bindValue(':id', $troc->getId(), PDO::PARAM_INT);

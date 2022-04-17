@@ -25,6 +25,6 @@ abstract class Manager
 
     public abstract function update($object);
 
-    public abstract function delete($object);
+    public abstract function deleteById($id);
 
 }

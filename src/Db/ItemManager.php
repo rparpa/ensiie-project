@@ -170,8 +170,10 @@ class ItemManager extends Manager
         // TODO: Implement update() method.
     }
 
-    public function delete($object)
+    public function deleteById($id)
     {
-        // TODO: Implement delete() method.
+        $pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id=:id');
+        $pdoStatement->bindValue(':id', $id);
+        $pdoStatement->execute();
     }
 }

@@ -95,7 +95,7 @@ class CategoryManager extends Manager
      * @param $object
      * @return false
      */
-    public function delete($object): bool
+    public function deleteById($object): bool
     {
         return false;
     }

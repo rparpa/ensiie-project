@@ -49,8 +49,8 @@ CREATE TABLE "tc_troc"
 
 CREATE TABLE "tc_item_category"
 (
-    id_item     INT NOT NULL REFERENCES tc_item (it_id),
-    id_category INT NOT NULL REFERENCES tc_category (ca_id),
+    id_item     INT NOT NULL REFERENCES tc_item (it_id) ON DELETE CASCADE,
+    id_category INT NOT NULL REFERENCES tc_category (ca_id) ON DELETE CASCADE,
     PRIMARY KEY (id_item, id_category)
 );
 
@@ -74,3 +74,15 @@ VALUES ('LITTERATURE'),
        ('FOURNITURE SCOLAIRE'),
        ('DVD'),
        ('GOODIES');
+
+INSERT INTO tc_user VALUES ('toto',
+                            'toto',
+                            'toto',
+                            'toto',
+                            'toto',
+                            'toto',
+                            12,
+                            'toto',
+                            'toto',
+                            false,
+                            false)

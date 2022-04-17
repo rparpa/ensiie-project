@@ -4,9 +4,9 @@ namespace models;
 
 class Category
 {
-    private int $id;
-    private string $name;
-    private int $number_swap;
+    public int $id;
+    public string $name;
+    public int $number_swap;
 
     function __construct_2($name) {
         $this->name = $name;

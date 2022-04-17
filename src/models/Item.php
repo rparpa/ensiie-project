@@ -31,17 +31,17 @@ class Item
      * @var int id identifiant de l'objet
      * remarque : pas de setter pour l'identifiant
      */
-    private int $id;
+    public int $id;
 
     /**
      * @var string proprietaire de l'objet
      */
-    private string $proprietary;
+    public string $proprietary;
 
     /**
      * @var string nom de l'objet
      */
-    private string $name;
+    public string $name;
 
     /**
      * @return string
@@ -54,24 +54,24 @@ class Item
     /**
      * @var string adresse de la photo
      */
-    private string $picture;
+    public string $picture;
 
     /**
      * @var string description de l'objet
      */
-    private string $description;
+    public string $description;
 
     /**
      * @var string date de creation
      */
-    private string $creation_date;
+    public string $creation_date;
 
     /**
      * @var boolean est échangeable
      */
-    private bool $is_swappable;
+    public bool $is_swappable;
 
-    private array $categories;
+    public array $categories;
 
 
     /**

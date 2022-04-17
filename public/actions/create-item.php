@@ -24,8 +24,10 @@ if (isset($_POST["item-name"])
         move_uploaded_file($tmpName, $imagesLocation . $file);
         $categories = [];
         $idCategories = substr($_POST["categories-selected"], 0, -1);
-        foreach (explode("/", $idCategories) as $idCat) {
-            $categories[] = new Category($idCat, "", 0);
+        if ($idCategories !== "") {
+            foreach (explode("/", $idCategories) as $idCat) {
+                $categories[] = new Category($idCat, "", 0);
+            }
         }
         $item = new Item(0, $_POST["item-name"], "toto", $file, $_POST["description"], "", true, $categories);
         $itemManager = new ItemManager(Connection::get());
