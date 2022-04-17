@@ -484,6 +484,7 @@ Page objets
     display: flex;
     flex-direction: column;
     gap: 40px;
+    width: 100%;
 }
 
 .results .number-result {
@@ -729,7 +730,7 @@ input:-webkit-autofill:focus {
 }
 input[data-autocompleted] {
     background-color: transparent !important;
-    color: var(--font-color);
+    color: var(--font-color)!important;
 }
 
 .label {
