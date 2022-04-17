@@ -172,8 +172,11 @@ class ItemManager extends Manager
 
     public function deleteById($id)
     {
-        $pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id=:id');
-        $pdoStatement->bindValue(':id', $id);
-        $pdoStatement->execute();
+        $item = $this->findById($id);
+        if ($item instanceof Item && $item->getIsSwappable()) {
+            $pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id=:id');
+            $pdoStatement->bindValue(':id', $id);
+            $pdoStatement->execute();
+        }
     }
 }
