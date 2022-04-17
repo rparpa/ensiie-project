@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/escapeHtml.js"></script>
     <script src="../static/js/display-nav.js"></script>
-    <script src="../static/js/mes-objets.js"></script>
+    <script src="../static/js/my-items.js"></script>
     <script src="../static/js/apply-category-color.js"></script>
 </head>
 <body>

@@ -32,16 +32,13 @@ function displayItems(items) {
         itemsHTML += "</div>";
     });
     document.getElementById('items-container').innerHTML = itemsHTML;
-    const categories = document.getElementsByClassName('category');
-    for (let i = 0; i < categories.length; i++) {
-        categories[i].style.borderColor = getColorOfCategory(categories[i].firstChild.nodeValue);
-    }
+    applyCategoriesColor();
 }
 
 function deleteItem(idItem) {
     fetch('/api/objets/delete.php?id=' + idItem, {
         method: 'DELETE'
-    }).then(data => {
+    }).then(() => {
         loadItems();
     });
 }

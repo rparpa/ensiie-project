@@ -534,19 +534,28 @@ Page objets
     justify-content: left;
 }
 
-.results .item-list .item-link .user {
+.all-info {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+
+.user {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.results .item-list .item-link .user img {
-    height: 130px;
-    width: 130px;
-    border-radius: 65px;
+.user img {
+    height: 130px!important;
+    width: 130px!important;
+    border-radius: 65px!important;
 }
 
-.results .item-list .item-link .user span {
+.user span {
     color: var(--font-color);
     font-weight: 500;
 }
@@ -711,4 +720,35 @@ path.domain {
     color: var(--refusal-color);
     font-weight: 500;
     margin-top: -10px;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+input[data-autocompleted] {
+    background-color: transparent !important;
+    color: var(--font-color);
+}
+
+.label {
+    font-weight: normal !important;
+}
+
+.user-profile {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.adress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.adress span {
+    font-weight: 500;
 }

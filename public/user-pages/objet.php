@@ -21,12 +21,11 @@ require_once "../../src/templates/template-factory.php";
     use Db\ItemManager;
 
     $noResult = false;
-    templateItem(1);
     if (isset($_GET["id"])) {
         $itemManager = new ItemManager(Connection::get());
         $item = $itemManager->findById($_GET["id"]);
         if ($item !== null) {
-            templateItem(1);
+            templateItem($item);
         } else {
             $noResult = true;
         }

@@ -7,7 +7,6 @@ colors = [
     '#0000ff',
     '#9400d3',
     '#330066',
-    '#f7e7ce',
     '#c21e56',
     '#cc338b',
     '#dc143c',
@@ -18,10 +17,7 @@ colors = [
 ];
 
 document.addEventListener("DOMContentLoaded", function () {
-    const categories = document.getElementsByClassName('category');
-    for (let i = 0; i < categories.length; i++) {
-        categories[i].style.borderColor = getColorOfCategory(categories[i].firstChild.nodeValue);
-    }
+    applyCategoriesColor();
 });
 
 
@@ -31,4 +27,11 @@ function getColorOfCategory(category) {
         value += category.charAt(i).charCodeAt(0);
     }
     return colors[value % colors.length];
+}
+
+function applyCategoriesColor() {
+    const categories = document.getElementsByClassName('category');
+    for (let i = 0; i < categories.length; i++) {
+        categories[i].style.borderColor = getColorOfCategory(categories[i].firstChild.nodeValue);
+    }
 }

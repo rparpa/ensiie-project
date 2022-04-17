@@ -7,7 +7,7 @@ class User {
     protected string $mail;
     protected string $firstname;
     protected string $lastname;
-    protected string $pseudo;
+    public string $pseudo;
     protected string $password;
     protected string $picture;
     protected int $zipcode;
