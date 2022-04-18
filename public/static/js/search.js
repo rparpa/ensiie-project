@@ -2,7 +2,7 @@
 
 
 function search() {
-    let categoriesSelectedString = getValueItemsSelected();
+    let categoriesSelectedString = getValueCategoriesSelected();
     categoriesSelectedString = categoriesSelectedString.substring(0, categoriesSelectedString.length - 1);
     console.log(categoriesSelectedString);
     let query = '/api/objets/search.php?';
