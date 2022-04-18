@@ -1,47 +1,47 @@
 <?php
 
 use Db\Connection;
-use Db\TrocManager;
-use models\Troc;
+use Db\SwapManager;
+use models\Swap;
 
-$trocManager = new TrocManager(Connection::get());
+$trocManager = new SwapManager(Connection::get());
 
 if (isset($_GET['createTroc'])) {
-    $troc = new Troc(1, date('d-m-Y'),'01-01-9999', false);
+    $troc = new Swap(1, date('d-m-Y'),'01-01-9999', false);
 
     $trocManager->insertTroc($troc);
 }
 
 
 if (isset($_GET['refuseTroc'])) {
-    $troc = new Troc(1, date('d-m-Y'),'01-01-9999', false);
+    $troc = new Swap(1, date('d-m-Y'),'01-01-9999', false);
 
     $troc->setEndDate(date('d-m-Y'));
     $troc->setIsDone(true);
-    $troc->setIsAccepted(false);
+    $troc->setStatus(false);
 
     $trocManager->refuseTroc($troc);
 }
 
 if (isset($_GET['acceptTroc'])) {
-    $troc = new Troc(1, date('d-m-Y'),'01-01-9999', false);
+    $troc = new Swap(1, date('d-m-Y'),'01-01-9999', false);
 
 
     $troc->setEndDate(date('d-m-Y'));
     $troc->setIsDone(true);
-    $troc->setIsAccepted(true);
+    $troc->setStatus(true);
 
     $trocManager->acceptTroc($troc);
 }
 
 echo '<form method="GET"> 
         <input type="submit" name="createTroc"
-                value="Create Troc"/> 
+                value="Create Swap"/> 
         
         <input type="submit" name="refuseTroc"
-                value="Refuse Troc"/> 
+                value="Refuse Swap"/> 
                 
         <input type="submit" name="acceptTroc"
-                value="Accept Troc"/> 
+                value="Accept Swap"/> 
     </form>';
 

@@ -29,7 +29,7 @@ if (isset($_POST["item-name"])
                 $categories[] = new Category($idCat, "", 0);
             }
         }
-        $item = new Item(0, $_POST["item-name"], "toto", $file, $_POST["description"], "", true, $categories);
+        $item = new Item(0, $_POST["item-name"], "titi", $file, $_POST["description"], "", true, $categories);
         $itemManager = new ItemManager(Connection::get());
         $itemManager->create($item);
         header('Location: ../user-pages/mes-objets.php');

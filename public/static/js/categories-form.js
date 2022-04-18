@@ -59,11 +59,15 @@ function deselectCategories() {
 }
 
 function applyValueCategories() {
-    var stringValue = "";
+    document.getElementById('category-selected').value = getValueCategoriesSelected();
+}
+
+function getValueCategoriesSelected() {
+    let stringValue = "";
     isCategorySelectedMap.forEach((val, key) => {
         if (val) {
             stringValue+= key + "/";
         }
     });
-    document.getElementById('category-selected').value = stringValue;
+    return stringValue;
 }

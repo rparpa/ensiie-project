@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/display-nav.js"></script>
     <script src="../static/js/apply-category-color.js"></script>
+    <script src="../static/js/swap-form.js"></script>
 </head>
 <body>
 <?php
@@ -19,6 +20,7 @@ require_once "../../src/templates/template-factory.php";
 
     use Db\Connection;
     use Db\ItemManager;
+    use Db\CategoryManager;
 
     $noResult = false;
     if (isset($_GET["id"])) {
@@ -37,14 +39,44 @@ require_once "../../src/templates/template-factory.php";
                     <span>Proposer un échange</span>
                 </section>
                 <section class="my-card-body">
-                            <?php require_once "../../src/templates/template-factory.php";
-                            ?>
-                    </section>
+                    <form class="form" onsubmit="applyValueItems();return checkForm()" method="POST"
+                          action="../actions/create-swap.php">
+                        <div class="input">
+                            <label>Vos objets</label>
+                            <span class="error hidden"
+                                  id="error-item">Vous devez séléctionner au moins un objet</span>
+                            <div id="button-item-container">
+                                <?php
+
+                                $items = $itemManager->findAllByProprietaryMail("toto");
+                                foreach ($items as $item) {
+                                    echo "<button class='item-button' type='button' value="
+                                        . htmlspecialchars($item->getId(), ENT_QUOTES, 'UTF-8') .
+                                        " onclick='clickItem(this)'>"
+                                        . "<span class='name'>" . htmlspecialchars($item->getName(), ENT_QUOTES, 'UTF-8') . "</span>"
+                                        . "<img src='/images/items/" . htmlspecialchars($item->getPicture(), ENT_QUOTES, 'UTF-8') . "'/>";
+                                    echo "<div class='categories' id='cat-container'>";
+                                    foreach ($item->getCategories() as $category) {
+                                        echo "<span class='category'>" . htmlspecialchars($category->getName(), ENT_QUOTES, 'UTF-8') . "</span>";
+                                    }
+                                    echo "</div>";
+                                    echo "</button>";
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <input type="hidden" id="items-selected" name="categories-selected"/>
+                        <div class="actions">
+                            <button type="reset" onclick="deselectCategories();clearErrors()">EFFACER</button>
+                            <button type="submit">DEMANDER UN TROC</button>
+                        </div>
+                    </form>
                 </section>
+            </section>
             </section>
 
 
-    <?php
+            <?php
         } else {
             $noResult = true;
         }

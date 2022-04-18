@@ -190,7 +190,7 @@ main {
     }
 }
 
-    .my-card .my-card-header {
+.my-card .my-card-header {
     font-size: 20px;
     padding: 10px 10px;
     font-weight: 600;
@@ -550,9 +550,9 @@ Page objets
 }
 
 .user img {
-    height: 130px!important;
-    width: 130px!important;
-    border-radius: 65px!important;
+    height: 130px !important;
+    width: 130px !important;
+    border-radius: 65px !important;
 }
 
 .user span {
@@ -636,8 +636,7 @@ path.domain {
 }
 
 
-
-.rank .line .count, .rank .line .number{
+.rank .line .count, .rank .line .number {
     font-size: 20px;
 
     padding: 20px 10px;
@@ -658,7 +657,7 @@ path.domain {
     gap: 6px;
 }
 
-.form .image-input img{
+.form .image-input img {
     max-height: 200px;
     object-fit: contain;
     width: fit-content;
@@ -727,15 +726,17 @@ input:-webkit-autofill,
 input:-webkit-autofill:focus {
     transition: background-color 600000s 0s, color 600000s 0s;
 }
+
 input[data-autocompleted] {
     background-color: transparent !important;
-    color: var(--font-color)!important;
+    color: var(--font-color) !important;
 }
 
 .label {
     font-weight: normal !important;
 }
 
+/* Tout le page objet.php */
 .user-profile {
     display: flex;
     gap: 20px;
@@ -760,4 +761,47 @@ input[data-autocompleted] {
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+}
+
+.item-button {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray; /* IE 6-9 */
+    background: none;
+    outline: none;
+    border: solid 2px var(--main-color);
+    border-radius: 10px;
+    padding: 8px;
+    color: var(--font-color);
+}
+
+.item-button.selected {
+    -webkit-filter: none;
+    -moz-filter: none;
+    -ms-filter: none;
+    filter: none;
+}
+
+.item-button img {
+    max-height: 130px;
+    object-fit: contain;
+}
+
+.item-button span.name {
+    font-size: 18px;
+}
+
+#button-item-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
 }

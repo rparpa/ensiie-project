@@ -31,7 +31,7 @@ include "../../src/templates/structure.php";
                 <div class="input">
                     <label for="item-name">Nom</label>
                     <span class="error hidden" id="error-name">Vous devez renseigner un nom</span>
-                    <input type="text" id="item-name" name="item-name"/>
+                    <input type="text" id="item-name" name="item-name" maxlength="50"/>
                 </div>
                 <div class="input image-input">
                     <label for="file">Photo de l'objet</label>
@@ -43,7 +43,7 @@ include "../../src/templates/structure.php";
                 <div class="input">
                     <label for="description">Description</label>
                     <span class="error hidden" id="error-description">Vous devez renseigner une description</span>
-                    <textarea name="description" id="description"></textarea>
+                    <textarea name="description" id="description" maxlength="240"></textarea>
                 </div>
                 <div class="input">
 

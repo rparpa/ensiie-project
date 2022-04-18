@@ -36,7 +36,7 @@ class ItemManager extends Manager
                 $db_row[3],
                 $db_row[4],
                 $db_row[5],
-                $dbarray[6],
+                $db_row[6],
                 $this->categoryManager->findAllByItemId($db_row[0]));
         }
         return $items;
@@ -46,20 +46,7 @@ class ItemManager extends Manager
     {
         $pdostatement = $this->pdo->prepare('SELECT * FROM tc_item WHERE it_proprietary = :proprietary');
         $pdostatement->bindValue(':proprietary', $mail);
-        $pdostatement->execute();
-        $items = [];
-        $dbarray = $pdostatement->fetchAll();
-        foreach ($dbarray as $db_row) {
-            $items[] = new Item($db_row[0],
-                $db_row[1],
-                $db_row[2],
-                $db_row[3],
-                $db_row[4],
-                $db_row[5],
-                true,
-                $this->categoryManager->findAllByItemId($db_row[0]));
-        }
-        return $items;
+        return $this->executeQueryAndReturnItems($pdostatement);
     }
 
     /**
@@ -91,6 +78,13 @@ class ItemManager extends Manager
         return $item;
     }
 
+    public function findAllBySwapId($idSwap): array
+    {
+        $pdostatement = $this->pdo->prepare('SELECT * FROM tc_item WHERE it_id IN (SELECT id_item FROM tc_swap_item WHERE id_swap=:swapId)');
+        $pdostatement->bindValue(':swapId', $idSwap, PDO::PARAM_INT);
+        return $this->executeQueryAndReturnItems($pdostatement);
+    }
+
     public function create($object)
     {
         $createdItem = null;
@@ -112,6 +106,31 @@ class ItemManager extends Manager
             }
         }
         return $createdItem;
+    }
+
+    public function searchByNameAndCategoriesId(string $recherche, $categoriesId): array
+    {
+        $req = "";
+        $prep = array(); // tableau associatif : permet de sauvegarder les paramètre de bind value ex :id , val
+        $i = 1;
+        $req .= "SELECT * FROM tc_item as it WHERE LOWER(it_name) like LOWER(:recherche)";
+
+        /*construction de la requete en fonction du nombre d'id*/
+        foreach ($categoriesId as $id) {
+            $req .= "AND :id$i in (select id_category from tc_item_category where id_item=it.it_id)";
+            $prep[":id$i"] = $id;
+            $i++;
+        }
+
+        $pdoStatement = $this->pdo->prepare($req);
+        $pdoStatement->bindValue(':recherche', '%' . $recherche . '%', PDO::PARAM_STR);
+
+        /*execution du bindValue a partir du tableau associatif $prep*/
+        foreach ($categoriesId as $id) {
+            $pdoStatement->bindValue(key($prep), $id, PDO::PARAM_STR);
+            next($prep);//passe a la clé suivante
+        }
+        return $this->executeQueryAndReturnItems($pdoStatement);
     }
 
 
@@ -178,5 +197,27 @@ class ItemManager extends Manager
             $pdoStatement->bindValue(':id', $id);
             $pdoStatement->execute();
         }
+    }
+
+    /**
+     * @param $pdostatement
+     * @return array
+     */
+    public function executeQueryAndReturnItems($pdostatement): array
+    {
+        $pdostatement->execute();
+        $items = [];
+        $dbarray = $pdostatement->fetchAll();
+        foreach ($dbarray as $db_row) {
+            $items[] = new Item($db_row[0],
+                $db_row[1],
+                $db_row[2],
+                $db_row[3],
+                $db_row[4],
+                $db_row[5],
+                $db_row[6],
+                $this->categoryManager->findAllByItemId($db_row[0]));
+        }
+        return $items;
     }
 }

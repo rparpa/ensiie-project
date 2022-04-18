@@ -39,12 +39,26 @@ CREATE TABLE "tc_item"
     it_is_swappable  BOOLEAN     NOT NULL DEFAULT TRUE
 );
 
-CREATE TABLE "tc_troc"
+CREATE TABLE "tc_swap_status"
 (
-    tr_id            SERIAL PRIMARY KEY,
-    tr_creation_date DATE    NOT NULL,
-    tr_end_date      DATE    NOT NULL,
-    tr_is_done       BOOLEAN NOT NULL
+    tss_id   NUMERIC PRIMARY KEY,
+    tss_name TEXT
+);
+
+INSERT INTO "tc_swap_status"
+VALUES (0, 'EN ATTENTE'),
+       (1, 'VALIDE'),
+       (2, 'REFUSE');
+
+CREATE TABLE "tc_swap"
+(
+    ts_id            SERIAL PRIMARY KEY,
+    ts_creation_date DATE    NOT NULL                                    DEFAULT CURRENT_DATE,
+    ts_end_date      DATE,
+    ts_is_done       BOOLEAN NOT NULL                                    DEFAULT FALSE,
+    ts_tss_id        NUMERIC NOT NULL REFERENCES tc_swap_status (tss_id) DEFAULT 0,
+    ts_us_mail_from  TEXT    NOT NULL REFERENCES tc_user (us_mail) ON DELETE CASCADE,
+    ts_us_mail_to    TEXT    NOT NULL REFERENCES tc_user (us_mail) ON DELETE CASCADE
 );
 
 CREATE TABLE "tc_item_category"
@@ -54,11 +68,11 @@ CREATE TABLE "tc_item_category"
     PRIMARY KEY (id_item, id_category)
 );
 
-CREATE TABLE "tc_item_troc"
+CREATE TABLE "tc_swap_item"
 (
     id_item INT NOT NULL REFERENCES tc_item (it_id),
-    id_troc INT NOT NULL REFERENCES tc_troc (tr_id),
-    PRIMARY KEY (id_item, id_troc)
+    id_swap INT NOT NULL REFERENCES tc_swap (ts_id),
+    PRIMARY KEY (id_item, id_swap)
 );
 
 
@@ -75,14 +89,28 @@ VALUES ('LITTERATURE'),
        ('DVD'),
        ('GOODIES');
 
-INSERT INTO tc_user VALUES ('toto',
-                            'toto',
-                            'toto',
-                            'toto',
-                            'toto',
-                            'toto',
-                            12,
-                            'toto',
-                            'toto',
-                            false,
-                            false)
+INSERT INTO tc_user
+VALUES ('toto',
+        'toto',
+        'toto',
+        'toto',
+        'toto',
+        'toto',
+        12,
+        'toto',
+        'toto',
+        false,
+        false);
+
+INSERT INTO tc_user
+VALUES ('titi',
+        'titi',
+        'titi',
+        'titi',
+        'titi',
+        'titi',
+        12,
+        'titi',
+        'titi',
+        false,
+        false)
