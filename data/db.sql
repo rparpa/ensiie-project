@@ -60,3 +60,10 @@ CREATE TABLE "notification" (
     no_content TEXT NOT NULL ,
     no_creation_date DATE NOT NULL
 );
+
+CREATE TABLE "tc_token" (
+    id_token INT NOT NULL,
+    tr_token TEXT NOT NULL,
+    id_user TEXT NOT NULL REFERENCES tc_user (us_mail),
+    PRIMARY KEY (id_token)
+);

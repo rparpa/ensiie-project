@@ -1,7 +1,7 @@
 <?php
-require_once '../vendor/autoload.php';
-include_once '../src/auth/generate.php';
-require_once '../src/Bootstrap.php';
+require_once './vendor/autoload.php';
+include_once 'generate.php';
+require_once '../Bootstrap.php';
 
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
