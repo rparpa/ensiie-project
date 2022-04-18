@@ -92,7 +92,7 @@ class ItemManager
 
 
     /**
-     * recupere ous les objets de la base
+     * recupere tous les objets de la base
      * @return Item[] qui est un tableau d'objet
      */
     public function selectAll(): array
@@ -103,7 +103,7 @@ class ItemManager
         $dbarray = $this->pdoStatement->fetchAll();
 
         foreach ($dbarray as $db_row) {
-            $items[] = new Item($db_row[0], $db_row[1], $db_row[2], $db_row[3], $db_row[4], $db_row[5], $dbarray[6]);
+            $items[] = new Item($db_row[0], $db_row[1], $db_row[2], $db_row[3], $db_row[4], $db_row[5], $db_row[6]);
         }
 
         return $items;
@@ -183,4 +183,43 @@ class ItemManager
         return false;
     }
 
+    public function rechercheItemCat(string $recherche,$liste_id){
+        $arrayId = explode(" ",$liste_id);
+        $req="";
+        $prep=array(); // tableau associatif : permet de sauvegarder les paramètre de bind value ex :id , val
+        $i=1;
+        $req.="SELECT * FROM tc_item as it WHERE it_name like :recherche ";
+
+        /*construction de la requete en fonction du nombre d'id*/
+        foreach($arrayId as $id){
+            $req.="AND :id$i in (select id_category from tc_item_category where id_item=it.it_id)";
+            $prep[":id$i"]=$id;
+            $i++;
+        }
+
+        $this->pdoStatement = $this->pdo->prepare($req);
+        $this->pdoStatement->bindValue(':recherche', '%'.$recherche.'%', PDO::PARAM_STR);
+
+        /*execution du bindValue a partir du tableau associatif $prep*/
+        foreach($arrayId as $id){
+            $this->pdoStatement->bindValue(key($prep),$id,PDO::PARAM_STR);
+            next($prep);//passe a la clé suivante
+        }
+        $execute = $this->pdoStatement->execute();
+
+        if($execute){
+            $dbarray = $this->pdoStatement->fetchAll();
+
+            foreach ($dbarray as $db_row) {
+                $items[] = new Item($db_row[0], $db_row[1], $db_row[2], $db_row[3], $db_row[4], $db_row[5], $db_row[6]);
+            }
+
+            if(!isset($items)){
+                return false;
+            }
+
+            return $items;
+        }
+        return false;
+    }
 }

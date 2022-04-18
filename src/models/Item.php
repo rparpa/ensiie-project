@@ -36,13 +36,6 @@ class Item
      */
     private string $name;
 
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
 
     /**
      * @var string adresse de la photo
@@ -69,6 +62,14 @@ class Item
      * ajouté un constructeur
      */
 
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
 
     /**
      * @return string
