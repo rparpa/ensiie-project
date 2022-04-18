@@ -543,7 +543,6 @@ Page objets
 }
 
 
-
 .user {
     display: flex;
     flex-direction: column;
@@ -752,4 +751,13 @@ input[data-autocompleted] {
 
 .adress span {
     font-weight: 500;
+}
+
+.wishes ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
 }

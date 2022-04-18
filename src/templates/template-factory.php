@@ -32,6 +32,12 @@ function templateSwap($s)
 function templateItem(Item $item)
 {
     echo "<div class='all-info'>";
+    echo "<section class='my-card'>";
+    echo "<section class='my-card-header'>";
+    echo "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='var(--font-color)' d='M50.73 58.53C58.86 42.27 75.48 32 93.67 32H208V160H0L50.73 58.53zM240 160V32H354.3C372.5 32 389.1 42.27 397.3 58.53L448 160H240zM448 416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V192H448V416z'/></svg>";
+    echo "<span>L'objet</span>";
+    echo "</section>";
+    echo "<section class='my-card-body'>";
     echo "<div class='item'>";
     echo "<div class='image'>";
     echo "<img class='logo' src='/images/items/" . htmlspecialchars($item->getPicture(), ENT_QUOTES, 'UTF-8') . "'/>";
@@ -44,29 +50,49 @@ function templateItem(Item $item)
     echo "</div>";
     echo "</div>";
     echo "<div class='information'>";
-    echo "<h3> " . htmlspecialchars($item->getName(), ENT_QUOTES, 'UTF-8') . " </h3>";
+    echo "<h3>" . htmlspecialchars($item->getName(), ENT_QUOTES, 'UTF-8') . " </h3>";
 
-    echo "<span class='date'>Date d'ajout: " . htmlspecialchars($item->getCreationDate(), ENT_QUOTES, 'UTF-8') . "</span>";
-    echo "<p>" . htmlspecialchars($item->getDescription(), ENT_QUOTES, 'UTF-8') . "</p>";
+    echo "<span class='date'>Date d'ajout: " . htmlspecialchars($item->getCreationDate(), ENT_QUOTES, 'UTF-8') . " </span > ";
+    echo "<p>" . htmlspecialchars($item->getDescription(), ENT_QUOTES, 'UTF-8') . "</p > ";
 
     echo "</div>";
     echo "</div>";
+    echo "</section>";
+    echo "</section>";
+
+    echo "<section class='my-card'>";
+    echo "<section class='my-card-header'>";
+    echo "<svg xmlns='http://www.w3.org/2000/svg'
+     viewBox='0 0 448 512'>
+    <path fill='var(--font-color)' d='M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z'/>
+    </svg>";
+    echo "<span>Le propriétaire</span>";
+    echo "</section>";
+    echo "<section class='my-card-body'>";
     echo "<div class='item'>";
     echo "<div class='user-profile'>";
 
-    echo "<div class='adress'>";
-    echo "<span> <span class='label'> Nom et prénom : </span> JUSSEAUME Jonathan </span>";
-    echo "<span> <span class='label'>Adresse : </span> 10 rue du con de la ciudad, PARIS (75007)</span>";
-    echo "</div>";
-    echo "<div class='user'>";
-    echo "<img src='../static/assets/zoro.jpg'/>";
-    echo "<span>" . htmlspecialchars($item->getProprietary(), ENT_QUOTES, 'UTF-8') . "</span>";
-    echo "</div>";
-    echo "</div>";
+    echo "<div class='adress'> ";
+    echo "<span > <span class='label' > Nom et prénom : </span > JUSSEAUME Jonathan </span > ";
+    echo "<span > <span class='label' > Adresse : </span > 10 rue du con de la ciudad, PARIS(75007) </span > ";
     echo "<div class='wishes'>";
-
+    echo "<span> Souhaits : </span>";
+    echo "<ul>";
+    echo "<li> Stylo </li>";
+    echo "<li class='category'>DVD</li>";
+    echo "<li class='category'>LITTERATURE</li>";
+    echo "</ul>";
+    echo "</div > ";
+    echo "</div > ";
+    echo "<div class='user' > ";
+    echo "<img src = '../static/assets/zoro.jpg' />";
+    echo "<span>" . htmlspecialchars($item->getProprietary(), ENT_QUOTES, 'UTF-8') . "</span > ";
+    echo "</div>";
     echo "</div>";
 
-    echo "</div>";
-    echo "</div>";
+
+    echo "</div > ";
+    echo "</section>";
+    echo "</section>";
+    echo "</div > ";
 }
