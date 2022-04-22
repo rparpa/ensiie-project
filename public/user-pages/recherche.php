@@ -5,8 +5,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/display-nav.js"></script>
-    <script src="../static/js/no-result.js"></script>
-    <script src="../static/js/escapeHtml.js"></script>
+    <script src="../static/js/templates.js"></script>
     <script src="../static/js/apply-category-color.js"></script>
     <script src="../static/js/categories-form.js"></script>
     <script src="../static/js/search.js"></script>

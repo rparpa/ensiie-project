@@ -1,6 +1,5 @@
 isItemSelectedMap = new Map();
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const items = document.getElementById('button-item-container').getElementsByClassName('item-button');
     for (let i = 0; i < items.length; i++) {

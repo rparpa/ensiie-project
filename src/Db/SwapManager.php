@@ -24,6 +24,22 @@ class SwapManager extends Manager
         $this->itemManager = new ItemManager($connection);
     }
 
+    public function findAll(): array
+    {
+        $swaps = [];
+        $pdoStatement = $this->pdo->query('SELECT * FROM tc_swap');
+        return $this->executeQueryAndReturnSwaps($pdoStatement, $swaps);
+    }
+
+    public function findAllByIsDoneAndUserMail($userMail, $isDone): array
+    {
+        $pdoStatement = $this->pdo->prepare("SELECT * FROM tc_swap WHERE ts_is_done=:isDone AND (ts_us_mail_from=:userMail OR ts_us_mail_to=:userMail) ");
+        $pdoStatement->bindValue(':userMail', $userMail, \PDO::PARAM_STR);
+        $pdoStatement->bindValue(':isDone', $isDone, \PDO::PARAM_BOOL);
+        $swaps = [];
+        return $this->executeQueryAndReturnSwaps($pdoStatement, $swaps);
+    }
+
     /**
      * Ajoute un troc dans la base de données.
      * @param Swap $swap
@@ -148,19 +164,7 @@ class SwapManager extends Manager
 
     }
 
-    public function findAll(): array
-    {
-        $this->pdoStatement = $this->pdo->query('SELECT * FROM tc_troc');
-        $trocs = [];
 
-        $dbarray = $this->pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($dbarray as $db_row) {
-            $trocs[] = new Swap($db_row[0], $db_row[1], $db_row[2], $db_row[3]);
-        }
-
-        return $trocs;
-    }
 
     public function deleteById($troc)
     {
@@ -178,6 +182,28 @@ class SwapManager extends Manager
         $pdostatement->bindValue(':itemId', $itemId);
         $pdostatement->bindValue(':swapId', $swapId);
         $pdostatement->execute();
+    }
+
+    /**
+     * @param $pdoStatement
+     * @param array $swaps
+     * @return array
+     */
+    public function executeQueryAndReturnSwaps($pdoStatement, array $swaps): array
+    {
+        $pdoStatement->execute();
+        $dbarray = $pdoStatement->fetchAll();
+        foreach ($dbarray as $db_row) {
+            $swaps[] = new Swap($db_row[0],
+                $db_row[1],
+                $db_row[2],
+                $db_row[3],
+                $db_row[4],
+                $db_row[5],
+                $db_row[6],
+                $this->itemManager->findAllBySwapId($db_row[0]));
+        }
+        return $swaps;
     }
 
 

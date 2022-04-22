@@ -5,16 +5,14 @@ namespace models;
 
 class Swap
 {
-    private int $id;
-    private string $creation_date;
-    private string $end_date;
-    private bool $is_done;
-    private int $status; // 0 = en attente, 1 = accepté, 2 = refusé
-    private string $user_from;
-
-
-    private string $user_to;
-    private array $items;
+    public int $id;
+    public string $creation_date;
+    public string $end_date;
+    public bool $is_done;
+    public int $status; // 0 = en attente, 1 = accepté, 2 = refusé
+    public string $user_from;
+    public string $user_to;
+    public array $items;
 
     function __construct($id, $creation_date, $end_date, $is_done, $status, $user_from, $user_to, $items)
     {
