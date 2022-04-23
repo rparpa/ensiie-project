@@ -31,7 +31,7 @@ function templateSwap($s)
 
 function templateItem(Item $item)
 {
-    echo "<div class='all-info'>";
+    echo "<div class='grid'>";
     echo "<section class='my-card'>";
     echo "<section class='my-card-header'>";
     echo "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='var(--font-color)' d='M50.73 58.53C58.86 42.27 75.48 32 93.67 32H208V160H0L50.73 58.53zM240 160V32H354.3C372.5 32 389.1 42.27 397.3 58.53L448 160H240zM448 416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V192H448V416z'/></svg>";
@@ -69,7 +69,6 @@ function templateItem(Item $item)
     echo "<span>Le propriétaire originel</span>";
     echo "</section>";
     echo "<section class='my-card-body'>";
-    echo "<div class='item'>";
     echo "<div class='user-profile'>";
 
     echo "<div class='adress'> ";
@@ -82,15 +81,14 @@ function templateItem(Item $item)
     echo "<li class='category'>DVD</li>";
     echo "<li class='category'>LITTERATURE</li>";
     echo "</ul>";
-    echo "</div > ";
-    echo "</div > ";
+    echo "</div>";
+    echo "</div>";
     echo "<div class='user' > ";
     echo "<img src = '../static/assets/zoro.jpg' />";
-    echo "<span>" . htmlspecialchars($item->getProprietary(), ENT_QUOTES, 'UTF-8') . "</span > ";
-    echo "</div>";
-    echo "</div>";
-    echo "</div>";
+    echo "<span>" . htmlspecialchars($item->getProprietary(), ENT_QUOTES, 'UTF-8') . "</span>";
+    echo "</div> ";
+    echo "</div> ";
     echo "</section>";
     echo "</section>";
-    echo "</div > ";
+    echo "</div> ";
 }

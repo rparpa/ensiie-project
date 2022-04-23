@@ -16,7 +16,7 @@
 include "../../src/templates/structure.php";
 ?>
 <main>
-    <section id="swaps-container" class="grid">
+    <section id="swaps-container">
     </section>
 </main>
 </body>

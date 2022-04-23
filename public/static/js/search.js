@@ -19,7 +19,7 @@ function displayFoundItems(items) {
     let resultHTML = "";
     if (items.length) {
         resultHTML += "<span class='number-result'>" + escapeHtml(items.length) + " objet(s) trouvé(s) </span>";
-        resultHTML += "<section class='item-list'>";
+        resultHTML += "<section class='grid'>";
         items.forEach(item => {
             resultHTML += itemTemplateShort(item);
         });

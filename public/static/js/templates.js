@@ -105,7 +105,7 @@ function swapTemplateAllInformation(swap) {
     if (!swap['is_done']) {
         swapTemplateHTML += "<div class='form'>";
         swapTemplateHTML += "<div class='actions'/>";
-        if (swap['user_from'] == 'toto') {
+        if (swap['user_from'] == 'titi') {
             swapTemplateHTML += "<button class='wait' disabled>EN ATTENTE</button>"
         } else {
             swapTemplateHTML += "<button class='refusal' onclick='updateSwap(" + swap['id'] + ", 2)'>REFUSER</button>";
@@ -157,8 +157,12 @@ function templateItemsSwapped(swap) {
     itemsSwappedTemplateHTML += "<div class='information'>";
     itemsSwappedTemplateHTML += "<div class='objects me'/>";
     itemsSwappedTemplateHTML += "<div class='images'>";
-    getItemsUserFrom(swap)?.forEach(item => {
-        itemsSwappedTemplateHTML += "<a href='objet.php?id=" + item['id'] + "'>";
+    let sizeUserFrom = getItemsUserFrom(swap).length;
+    let baseDeltaLeft = Math.max(0, 40 / Math.pow(2, sizeUserFrom - 1));
+    let deltaLeft = (200 - (baseDeltaLeft * 2) - 120) / (Math.max(1, sizeUserFrom - 1));
+    getItemsUserFrom(swap)?.forEach((item, index) => {
+        const leftValue = baseDeltaLeft + (index * deltaLeft);
+        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + (index == 0 ? "z-index:3" : "") +"' href='objet.php?id=" + item['id'] + "'>";
         itemsSwappedTemplateHTML += "<img src='/images/items/" + item['picture'] + "'/>";
         itemsSwappedTemplateHTML += "</a>";
     })
@@ -170,8 +174,12 @@ function templateItemsSwapped(swap) {
         "        </svg>";
     itemsSwappedTemplateHTML += "<div class='objects'/>";
     itemsSwappedTemplateHTML += "<div class='images'>";
-    getItemsUserTo(swap)?.forEach(item => {
-        itemsSwappedTemplateHTML += "<a href='objet.php?id=" + item['id'] + "'>";
+    sizeUserFrom = getItemsUserTo(swap).length;
+    baseDeltaLeft = Math.max(0, 40 / Math.pow(2, sizeUserFrom - 1));
+    deltaLeft = (200 - (baseDeltaLeft * 2) - 120) / (Math.max(1, sizeUserFrom - 1));
+    getItemsUserTo(swap)?.forEach((item, index) => {
+        const leftValue = baseDeltaLeft + (index * deltaLeft);
+        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + (index == 0 ? "z-index:3" : "") +"' href='objet.php?id=" + item['id'] + "'>";
         itemsSwappedTemplateHTML += "<img src='/images/items/" + item['picture'] + "'/>";
         itemsSwappedTemplateHTML += "</a>";
     })

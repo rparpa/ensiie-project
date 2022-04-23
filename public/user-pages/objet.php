@@ -29,7 +29,7 @@ require_once "../../src/templates/template-factory.php";
         if ($item !== null) {
             templateItem($item);
             ?>
-            <section class="my-card">
+            <section class="my-card my-card-100">
                 <section class="my-card-header">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 512 512">
