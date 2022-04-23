@@ -247,10 +247,41 @@ main {
     gap: 10px;
 }
 
+.swap .objects .images {
+    height: 130px;
+    position: relative;
+}
+
 .swap .objects .images img {
     width: 120px;
     height: 120px;
     border-radius: 60px;
+    position: absolute;
+    transition: all ease 0.5s;
+}
+
+.swap .objects .images a:hover img {
+    z-index: 3;
+    width: 130px;
+    height: 130px;
+    border-radius: 65px;
+}
+
+.swap .objects .images a:nth-of-type(1) img {
+    left: 0px;
+    z-index: 2;
+}
+
+.swap .objects .images a:nth-of-type(2) img {
+    left: 50px;
+}
+
+.swap .objects .images a:nth-of-type(3) img {
+    left: 100px;
+}
+
+.swap .objects .images a:nth-of-type(4) img {
+    left: 150px;
 }
 
 .swap .me img {
@@ -286,7 +317,7 @@ main {
 
 /*
 Page objets
- */
+*/
 
 .grid {
     display: flex;
@@ -348,7 +379,7 @@ Page objets
     margin-top: 15px;
 }
 
-.item button {
+.item button.trash {
     border-radius: 20px;
     width: 40px;
     height: 40px;
@@ -371,7 +402,7 @@ Page objets
     fill: var(--refusal-color);
 }
 
-.item button:hover {
+.item button.trash:hover {
     background: var(--font-color);
 }
 
@@ -456,25 +487,31 @@ Page objets
     font-weight: 500;
 }
 
-.form .actions button[type="submit"] {
+.form .actions button[type="submit"], button.accept {
     border: solid 1px var(--font-color);
     background: var(--validation-color);
     color: var(--font-color);
 }
 
-.form .actions button[type="submit"]:hover {
+.form .actions button[type="submit"]:hover, button.accept:hover {
     border-color: var(--validation-color);
     background: var(--font-color);
     color: var(--validation-color);
 }
 
-.form .actions button[type="reset"] {
+.form .actions button[type="reset"], button.refusal {
     border: solid 1px var(--font-color);
     background: var(--refusal-color);
     color: var(--font-color);
 }
 
-.form .actions button[type="reset"]:hover {
+button.wait {
+    color: var(--background-color);
+    background: var(--main-color);
+    color: var(--background-color);
+}
+
+.form .actions button[type="reset"]:hover, button.refusal:hover {
     border-color: var(--refusal-color);
     background: var(--font-color);
     color: var(--refusal-color);
@@ -619,7 +656,7 @@ path.domain {
     min-width: 65%;
 }
 
-@media screen and (max-width: 1220px) {
+@media screen and (max-width: 1340px) {
     .stats .my-card {
         width: 100%;
     }
@@ -804,4 +841,17 @@ input[data-autocompleted] {
     justify-content: center;
     flex-wrap: wrap;
     gap: 25px;
+}
+
+.swap-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.swap-content .swap-info {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
 }

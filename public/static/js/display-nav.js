@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
             links[i].classList.add('active-link');
         }
     }
-    if (sessionStorage.getItem('theme') == null ||
-        sessionStorage.getItem('theme') == '') {
-        sessionStorage.setItem('theme', 'dark');
+    if (localStorage.getItem('theme') == null ||
+        localStorage.getItem('theme') == '') {
+        localStorage.setItem('theme', 'dark');
     }
     applyTheme();
 });
@@ -26,14 +26,14 @@ function displayNav() {
 }
 
 function applyTheme() {
-    if (sessionStorage.getItem('theme') == 'dark') {
+    if (localStorage.getItem('theme') == 'dark') {
         document.getElementById('moon').classList.add('hidden');
         document.getElementById('sun').classList.remove('hidden');
         document.documentElement.style.setProperty('--background-color', '#474447');
         document.documentElement.style.setProperty('--dark-color', '#221F22');
         document.documentElement.style.setProperty('--font-color', 'white');
         document.documentElement.style.setProperty('--main-color', '#FFD866');
-    } else if (sessionStorage.getItem('theme') == 'light') {
+    } else if (localStorage.getItem('theme') == 'light') {
         document.getElementById('sun').classList.add('hidden');
         document.getElementById('moon').classList.remove('hidden');
         document.documentElement.style.setProperty('--background-color', 'white');
@@ -44,11 +44,11 @@ function applyTheme() {
 }
 
 function goDarkMode() {
-    sessionStorage.setItem('theme', 'dark');
+    localStorage.setItem('theme', 'dark');
     applyTheme();
 }
 
 function goLightMode() {
-    sessionStorage.setItem('theme', 'light');
+    localStorage.setItem('theme', 'light');
     applyTheme();
 }

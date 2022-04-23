@@ -48,7 +48,7 @@ require_once "../../src/templates/template-factory.php";
                             <div id="button-item-container">
                                 <?php
 
-                                $items = $itemManager->findAllByProprietaryMail("toto");
+                                $items = $itemManager->findAllByProprietaryMail("titi");
                                 foreach ($items as $item) {
                                     echo "<button class='item-button' type='button' value="
                                         . htmlspecialchars($item->getId(), ENT_QUOTES, 'UTF-8') .

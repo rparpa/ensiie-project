@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/templates.js"></script>
     <script src="../static/js/display-nav.js"></script>
+    <script src="../static/js/apply-category-color.js"></script>
+    <script src="../static/js/history-swaps.js"></script>
 </head>
 <body>
 <?php
 include "../../src/templates/structure.php";
 ?>
 <main>
-    Historique
+    <section id="swaps-container" class="grid">
+    </section>
 </main>
 </body>
 </html>

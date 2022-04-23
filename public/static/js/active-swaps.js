@@ -1,13 +1,17 @@
 window.onload = loadSwaps;
 
+let swaps = null;
+
 function loadSwaps() {
     fetch('/api/trocs/findAll.php?mail=toto&is_done=false').then(data => {
         return data.json()
-    }).then(res => displaySwaps(res));
+    }).then(res => {
+        swaps = res;
+        displaySwaps(res);
+    });
 }
 
 function displaySwaps(swaps) {
-    console.log(swaps);
     let swapsHTML = "";
     if (swaps.length) {
         swaps.forEach(swap => {
@@ -18,4 +22,18 @@ function displaySwaps(swaps) {
     }
     document.getElementById('swaps-container').innerHTML = swapsHTML;
     applyCategoriesColor();
+}
+
+
+function updateSwap(idSwap, newValue) {
+    let updateSwap = swaps.find(s => s['id'] == idSwap);
+    updateSwap['status'] = newValue;
+    console.log(updateSwap);
+    fetch('/api/trocs/update.php',
+        {
+            method: 'POST',
+            body: JSON.stringify(updateSwap)
+        }).then(data => {
+        return data.json()
+    }).then(res => loadSwaps());
 }

@@ -100,70 +100,24 @@ class SwapManager extends Manager
     }
 
 
-    /**
-     * DEPRECIE
-     * Refuser un troc
-     * @param Swap $troc
-     * @return bool
-     */
-    /*
-        public function refuseTroc(Swap $troc) {
-
-            $this->pdoStatement = $this->pdo->prepare("UPDATE tc_troc SET tr_is_done = TRUE, tr_is_accepted = FALSE WHERE tr_id = :id");
-            $this->pdoStatement->bindValue(':id', $troc->getId(), \PDO::PARAM_INT);
-            $execute = $this->pdoStatement->execute();
-
-            if ($execute) {
-                return true;
-            }
-
-            return false;
-        }
-
-     */
-    /**
-     *  DEPRECIE
-     *  Accepter un troc
-     * @param Swap $troc
-     * @return bool
-     */
-    /*
-    public function acceptTroc(Swap $troc) {
-
-        $this->pdoStatement = $this->pdo->prepare("UPDATE tc_troc SET tr_is_done = TRUE, tr_is_accepted = TRUE WHERE tr_id = :id");
-        $this->pdoStatement->bindValue(':id', $troc->getId(), \PDO::PARAM_INT);
-        $execute = $this->pdoStatement->execute();
-
-        if ($execute) {
-            return true;
-        }
-
-        return false;
-    }
-    */
-
     public function update($object)
     {
+        $swap = null;
         if ($object instanceof Swap) {
-            $this->pdoStatement = $this->pdo->prepare("UPDATE tc_troc SET tr_creation_date = :creationdate, tr_end_date = :enddate, tr_is_done = :isdone, tr_is_accepted = :isaccepted WHERE tr_id = :id");
-
-            $this->pdoStatement->bindValue(':creationdate', $object->getCreationDate(), \PDO::PARAM_STR);
-            $this->pdoStatement->bindValue(':enddate', $object->getEndDate(), \PDO::PARAM_STR);
-            $this->pdoStatement->bindValue(':isdone', $object->getIsDone(), \PDO::PARAM_BOOL);
-            $this->pdoStatement->bindValue(':isaccepted', $object->getStatus(), \PDO::PARAM_BOOL);
-            $this->pdoStatement->bindValue(':id', $object->getId(), \PDO::PARAM_INT);
-
-            $execute = $this->pdoStatement->execute();
-
-            if ($execute) {
-                return true;
-            } else {
-                return false;
+            $swap = $this->findById($object->getId());
+            if ($swap != null) {
+                $swap->setStatus($object->getStatus());
+                $pdoStatement = $this->pdo->prepare("UPDATE tc_swap SET ts_tss_id = :new_status WHERE ts_id = :id");
+                $pdoStatement->bindParam(':new_status', $swap->status, PDO::PARAM_INT);
+                $pdoStatement->bindParam(':id', $swap->id, PDO::PARAM_INT);
+                $execute = $pdoStatement->execute();
+                if ($execute) {
+                    $swap = $this->findById($swap->id);
+                }
             }
         }
-
+        return $swap;
     }
-
 
 
     public function deleteById($troc)

@@ -22,7 +22,7 @@ if (isset($_POST["categories-selected"])) {
     foreach ($idItems as $idItem) {
         $items[] = new Item($idItem, "", "", "", "", "", true, array());
     }
-    $swap = new Swap(0, "", "", false, 0, "toto", $itemManager->findById($idItemWanted)->getProprietary(), $items);
+    $swap = new Swap(0, "", "", false, 0, "titi", $itemManager->findById($idItemWanted)->getProprietary(), $items);
     $swapManager->create($swap);
     header('Location: ../user-pages/mes-trocs.php');
     die();

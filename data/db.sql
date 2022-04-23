@@ -113,4 +113,56 @@ VALUES ('titi',
         'titi',
         'titi',
         false,
-        false)
+        false);
+
+CREATE FUNCTION item_not_swappable() RETURNS trigger
+    LANGUAGE plpgsql
+AS
+$$
+DECLARE
+BEGIN
+    UPDATE tc_item SET it_is_swappable= FALSE WHERE it_id = new.id_item;
+    RETURN new;
+END;
+$$;
+
+CREATE TRIGGER tr_item_not_swappable
+    AFTER INSERT
+    ON tc_swap_item
+    FOR EACH ROW
+EXECUTE PROCEDURE item_not_swappable();
+
+
+CREATE FUNCTION update_status_swap() RETURNS trigger
+    LANGUAGE plpgsql
+AS
+$$
+DECLARE
+    cur_items_in_swap CURSOR (id_s INTEGER)
+        FOR SELECT id_item as id_item
+            FROM tc_swap_item
+            WHERE id_swap = id_s;
+    rec_items_id RECORD;
+BEGIN
+    new.ts_is_done = TRUE;
+    new.ts_end_date = CURRENT_DATE;
+    IF new.ts_tss_id = 1 OR new.ts_tss_id = 2 THEN
+        IF new.ts_tss_id = 2 THEN
+            OPEN cur_items_in_swap(new.ts_id);
+            LOOP
+                FETCH cur_items_in_swap INTO rec_items_id;
+                EXIT WHEN NOT found;
+                UPDATE tc_item SET it_is_swappable= TRUE WHERE it_id = rec_items_id.id_item;
+            END LOOP;
+        END IF;
+    END IF;
+
+    RETURN new;
+END;
+$$;
+
+CREATE TRIGGER tr_swap_status_changed
+    BEFORE UPDATE
+    ON tc_swap
+    FOR EACH ROW
+EXECUTE PROCEDURE update_status_swap();

@@ -1,5 +1,3 @@
-
-
 <html lang="fr">
 <head>
     <!-- Latest compiled and minified CSS -->
@@ -8,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/templates.js"></script>
     <script src="../static/js/display-nav.js"></script>
+    <script src="../static/js/apply-category-color.js"></script>
     <script src="../static/js/active-swaps.js"></script>
 </head>
 <body>
