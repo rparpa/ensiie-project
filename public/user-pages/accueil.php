@@ -10,6 +10,7 @@
     <script src="../static/js/display-nav.js"></script>
     <script src="../static/js/apply-category-color.js"></script>
     <script src="../static/js/bar-chart.js"></script>
+
 </head>
 <body>
 <?php
@@ -28,19 +29,7 @@ include "../../src/templates/structure.php";
         </section>
         <section class="my-card-body">
             <section class="slider">
-                <section class="slide-track">
-                    <?php require_once "../../src/templates/template-factory.php";
-                    templateSwap(1);
-                    templateSwap(2);
-                    templateSwap(3);
-                    templateSwap(4);
-                    templateSwap(5);
-                    templateSwap(6);
-                    templateSwap(7);
-                    templateSwap(8);
-                    templateSwap(9);
-                    templateSwap(10);
-                    ?>
+                <section class="slide-track" id="slide">
                 </section>
             </section>
         </section>

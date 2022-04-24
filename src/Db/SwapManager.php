@@ -9,6 +9,7 @@ namespace Db;
 use models\Item;
 use models\Swap;
 use Db\Manager;
+use models\SwapStatistique;
 use models\User;
 use PDO;
 
@@ -28,6 +29,13 @@ class SwapManager extends Manager
     {
         $swaps = [];
         $pdoStatement = $this->pdo->query('SELECT * FROM tc_swap');
+        return $this->executeQueryAndReturnSwaps($pdoStatement, $swaps);
+    }
+
+    public function findAllOrderByEndDateDescLimit10(): array
+    {
+        $swaps = [];
+        $pdoStatement = $this->pdo->query('SELECT * FROM tc_swap WHERE ts_end_date IS NOT NULL ORDER BY ts_end_date DESC LIMIT 10');
         return $this->executeQueryAndReturnSwaps($pdoStatement, $swaps);
     }
 
@@ -117,6 +125,26 @@ class SwapManager extends Manager
             }
         }
         return $swap;
+    }
+
+
+    public function getStatistiquesLastSevenDays(): array
+    {
+        $pdoStatement = $this->pdo->query("SELECT date as date, sum(case when ts_tss_id = 1 then 1 else 0 end) validate, 
+                                        sum(case when ts_tss_id = 2 then 1 else 0 end) cancel
+                                        FROM CALENDAR_LAST_SEVEN_DAYS
+                                        LEFT JOIN tc_swap tsi on CALENDAR_LAST_SEVEN_DAYS.date = tsi.ts_end_date
+                                        AND ts_is_done=true
+                                        GROUP BY date ORDER BY date");
+        $statistiques = [];
+        $pdoStatement->execute();
+        $dbarray = $pdoStatement->fetchAll();
+        foreach ($dbarray as $db_row) {
+            $statistiques[] = new SwapStatistique($db_row[0],
+                $db_row[1],
+                $db_row[2]);
+        }
+        return $statistiques;
     }
 
 

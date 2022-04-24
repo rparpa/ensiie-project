@@ -1,19 +1,28 @@
-const stats = [
-    [14, 10, 2],
-    [15, 12, 2],
-];
-
-let formatedStats = [];
-let maxTotal = 0;
-stats.forEach(stat => {
-    formatedStats.push({rank: stat[0], victory: stat[1], defeat: stat[2], total: stat[1] + stat[2]})
-    if (stat[1] + stat[2] > maxTotal) {
-        maxTotal = stat[1] + stat[2];
-    }
-});
-
-window.onload = createBarChart;
+window.onload = sendRequestStats;
 window.onresize = destroyBarChart;
+
+let data;
+
+function sendRequestStats() {
+    fetch('/api/trocs/stats.php').then(data => {
+        return data.json()
+    }).then(res => {
+        data = res;
+        data.forEach(stats => {
+            stats['date'] = stats['date'].substring(5, stats['date'].length);
+            const tab = stats['date'].split('-');
+            stats['date'] = tab[1] + '-' + tab[0];
+        })
+        createBarChart();
+    });
+    fetch('/api/trocs/findAll.php?last-10=true').then(data => {
+        return data.json()
+    }).then(res => {
+        createCarousel(res);
+    });
+
+}
+
 
 function createBarChart() {
     var margin = {top: 20, right: 30, bottom: 35, left: 30};
@@ -24,26 +33,16 @@ function createBarChart() {
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
-     //   .attr('viewBox', '0 0 ' + height + ' ' + width)
+        //   .attr('viewBox', '0 0 ' + height + ' ' + width)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var data = [
-        {date: "01/04", validate: "100", cancel: "18"},
-        {date: "02/04", validate: "05", cancel: "20"},
-        {date: "03/04", validate: "01", cancel: "15"},
-        {date: "04/04", validate: "02", cancel: "10"},
-        {date: "05/04", validate: "03", cancel: "12"},
-        {date: "06/04", validate: "04", cancel: "15"},
-        {date: "07/04", validate: "06", cancel: "11"},
-    ];
 
     var dataset = d3.layout.stack()(["validate", "cancel"].map(function (type) {
         return data.map(function (d) {
             return {x: d.date, y: +d[type], type: type};
         });
     }));
-    console.log(dataset);
 
     var x = d3.scale.ordinal()
         .domain(dataset[0].map(function (d) {
@@ -100,7 +99,7 @@ function createBarChart() {
         .enter()
         .append("rect")
         .attr("x", function (d) {
-            return x(d.x) + (width * (width > 600 ? 0.055: 0.04));
+            return x(d.x) + (width * (width > 600 ? 0.055 : 0.04));
         })
         .attr("y", function (d) {
             return y(d.y0 + d.y);
@@ -120,7 +119,7 @@ function createBarChart() {
             var xPosition = d3.mouse(this)[0] - 15;
             var yPosition = d3.mouse(this)[1] - 25;
             tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-            tooltip.select("text").text(d.y + (d.type == 'validate' ? ' trocs réussis': ' trocs avortés'));
+            tooltip.select("text").text(d.y + (d.type == 'validate' ? ' trocs réussis' : ' trocs avortés'));
         });
 
     var tooltip = svg.append("g")
@@ -146,6 +145,18 @@ function createBarChart() {
 
 
 function destroyBarChart() {
-    document.getElementById("graph").innerHTML = '';
-    createBarChart();
+    if (data) {
+        document.getElementById("graph").innerHTML = '';
+        createBarChart();
+    }
+}
+
+function createCarousel(swaps) {
+    let carouselHTML = '';
+    if (swaps) {
+        swaps.forEach(swap => {
+            carouselHTML += templateItemsSwapped(swap, true);
+        })
+    }
+    document.getElementById('slide').innerHTML = carouselHTML;
 }

@@ -166,3 +166,6 @@ CREATE TRIGGER tr_swap_status_changed
     ON tc_swap
     FOR EACH ROW
 EXECUTE PROCEDURE update_status_swap();
+
+CREATE VIEW CALENDAR_LAST_SEVEN_DAYS AS SELECT  (current_date - (n || 'days')::INTERVAL)::DATE date
+                                        FROM generate_series(0, 6) n ORDER BY date;
