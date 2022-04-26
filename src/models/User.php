@@ -2,12 +2,16 @@
 
 namespace models;
 
-class User {
+use JsonSerializable;
+
+class User implements JsonSerializable
+{
 
     protected string $mail;
     protected string $firstname;
     protected string $lastname;
     protected string $pseudo;
+    protected string $password;
     protected string $picture;
     protected int $zipcode;
     protected string $street;
@@ -15,13 +19,16 @@ class User {
     protected bool $is_super_user;
     protected bool $is_banned;
 
-    function __construct($mail, $firstname, $lastname, $pseudo, $picture,
-                         $zipcode, $street, $city, $is_super_user, $is_banned) {
+
+    function __construct($mail, $firstname, $lastname, $pseudo, $password, $picture,
+                         $zipcode, $street, $city, $is_super_user, $is_banned)
+    {
 
         $this->mail = $mail;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->pseudo = $pseudo;
+        $this->password = $password;
         $this->picture = $picture;
         $this->zipcode = $zipcode;
         $this->street = $street;
@@ -93,6 +100,22 @@ class User {
     public function setPseudo(string $pseudo): void
     {
         $this->pseudo = $pseudo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
     }
 
     /**
@@ -192,5 +215,21 @@ class User {
     }
 
 
+    public function jsonSerialize()
+    {
+        return [
+            'email' => $this->mail,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'pseudo' => $this->pseudo,
+            'password' => $this->password,
+            'picture' => $this->picture,
+            'zipcode' => $this->zipcode,
+            'street' => $this->street,
+            'city' => $this->city,
+            'is_super_user' => $this->is_super_user,
+            'is_banned' => $this->is_banned
+        ];
+    }
 }
 
