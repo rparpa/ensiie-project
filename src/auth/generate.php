@@ -24,6 +24,5 @@ function createPayload(string $email): array{
 
 function generateUserInfosArraysJWT(string $email): string{
     $jwt = new JWT();
-    $token = $jwt->generateJWT(createHeader(), createPayload($email), SECRET);
-    return $token;
+    return $jwt->generateJWT(createHeader(), createPayload($email), SECRET);
 }

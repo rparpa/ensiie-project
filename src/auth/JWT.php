@@ -18,7 +18,7 @@ class JWT
             $payload['exp'] = $expiration;
         }
 
-        // On encode en base64
+        // On encode en base64 le header et le payload du token
         $base64Header = base64_encode(json_encode($header));
         $base64Payload = base64_encode(json_encode($payload));
 
@@ -27,7 +27,7 @@ class JWT
         $base64Header = str_replace(['+', '/', '='], ['-', '_', ''], $base64Header);
         $base64Payload = str_replace(['+', '/', '='], ['-', '_', ''], $base64Payload);
 
-        // On génère la signature
+        // On génère la signature (partie secrète chiffrée) du token
         $secret = base64_encode($secret);
         $signature = hash_hmac('sha256', $base64Header . '.' . $base64Payload, $secret, true);
 
@@ -35,14 +35,12 @@ class JWT
 
         $signature = str_replace(['+', '/', '='], ['-', '_', ''], $base64Signature);
 
-        // On crée le token
-        $jwt = $base64Header . '.' . $base64Payload . '.' . $signature;
-
-        return $jwt;
+        // On crée le token et on le renvoie
+        return $base64Header . '.' . $base64Payload . '.' . $signature;
     }
 
     /**
-     * Vérification du token
+     * Vérification du token, fonction à utiliser pour vérifier que le token en session est le bon
      * @param string $token Token à vérifier
      * @param string $secret Clé secrète
      * @return bool Vérifié ou non
@@ -60,7 +58,7 @@ class JWT
     }
 
     /**
-     * Récupère le header
+     * Récupère le header du token
      * @param string $token Token
      * @return array Header
      */
@@ -76,7 +74,7 @@ class JWT
     }
 
     /**
-     * Retourne le payload
+     * Retourne le payload du token
      * @param string $token Token
      * @return array Payload
      */

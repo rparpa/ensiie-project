@@ -91,21 +91,21 @@ require_once '../src/auth/JWT.php';
 function everyCheckOnToken(string $token)
 {
     $jwt = new JWT();
-    // On vérifie que le token est bien une string bien formatée
+    // On vérifie que le token est une string bien formatée
     if (!$jwt->isValid($token)) {
         http_response_code(400);
         echo json_encode(['message' => 'Token invalide']);
         exit;
     }
 
-    // On vérifie la signature
+    // On vérifie la signature du token
     if (!$jwt->check($token, SECRET)) {
         http_response_code(403);
         echo json_encode(['message' => 'Le token est invalide']);
         exit;
     }
 
-    // On vérifie l'expiration
+    // On vérifie la date d'expiration du token
     if ($jwt->isExpired($token)) {
         http_response_code(403);
         echo json_encode(['message' => 'Le token a expiré']);
