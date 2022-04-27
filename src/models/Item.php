@@ -18,6 +18,7 @@ class Item implements JsonSerializable
                          bool   $is_swappable,
                          array  $categories)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->proprietary = $proprietary;
         $this->picture = $picture;
@@ -198,7 +199,8 @@ class Item implements JsonSerializable
             'picture' => $this->picture,
             'description' => $this->description,
             'creation_date' => $this->creation_date,
-            'is_swappable' => $this->is_swappable
+            'is_swappable' => $this->is_swappable,
+            'categories' => $this->categories
         ];
     }
 

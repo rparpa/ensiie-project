@@ -2,6 +2,8 @@
 
 namespace models;
 
+use ReturnTypeWillChange;
+
 class SwapStatistique
 {
 
@@ -16,6 +18,15 @@ class SwapStatistique
         $this->date = $date;
         $this->validate = $validate;
         $this->cancel = $cancel;
+    }
+
+    #[ReturnTypeWillChange] public function jsonSerialize()
+    {
+        return [
+            'date' => $this->date,
+            'validate' => $this->validate,
+            'cancel' => $this->cancel
+        ];
     }
 
 }

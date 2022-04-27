@@ -2,6 +2,8 @@
 
 namespace models;
 
+use ReturnTypeWillChange;
+
 class ItemTroc
 {
 
@@ -34,8 +36,11 @@ class ItemTroc
         return $this->id_troc;
     }
 
-
-
-
-
+    #[ReturnTypeWillChange] public function jsonSerialize()
+    {
+        return [
+            'idItem' => $this->id_item,
+            'idTroc' => $this->id_troc
+        ];
+    }
 }

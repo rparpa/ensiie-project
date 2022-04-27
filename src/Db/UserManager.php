@@ -10,21 +10,15 @@ require_once '../models/User.php';
 
 class UserManager extends Manager
 {
-    public function __construct()
+    public function __construct(PDO $connection)
     {
-        /**
-         * initialisation de la connexion à la base de données
-         */
-        $dbName = getenv('DB_NAME');
-        $dbUser = getenv('DB_USER');
-        $dbPassword = getenv('DB_PASSWORD');
-        $this->pdo = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
-
+        parent::__construct($connection);
     }
 
 
     public function create($user): ?User
     {
+        $createdUser = null;
         if ($user instanceof User) {
 
             $pdoStatement = $this->pdo->prepare('INSERT INTO tc_user VALUES(:mail, :firstname, :lastname, :pseudo, :password, :picture, :zipcode, :street, :city, :super_user, :is_banned)');
@@ -65,7 +59,6 @@ class UserManager extends Manager
     }
 
 
-
     public function lock(User &$user): bool
     {
         $email = $user->getMail();
@@ -73,7 +66,7 @@ class UserManager extends Manager
         $status = $status == 1 ? 0 : 1;
         $user->setIsBanned($status);
 
-        $pdoStatement = $this->pdo->prepare('UPDATE tc_user set us_is_banned=:status WHERE us_email=:email LIMIT 1');
+        $pdoStatement = $this->pdo->prepare('UPDATE tc_user set us_is_banned=:status WHERE us_mail=:email');
 
         $pdoStatement->bindValue(':status', $status, PDO::PARAM_BOOL);
         $pdoStatement->bindValue(':email', $email, PDO::PARAM_INT);
@@ -134,9 +127,10 @@ class UserManager extends Manager
 
             }
         }
+        return false;
     }
 
-    public function delete($user)
+    public function delete($user): bool
     {
         if ($user instanceof User) {
             $pdoStatement = $this->pdo->prepare('DELETE FROM tc_user WHERE us_mail=:mail');
@@ -144,6 +138,7 @@ class UserManager extends Manager
 
             return $pdoStatement->execute();
         }
+        return false;
     }
 
     public function findAll(): array
@@ -158,5 +153,11 @@ class UserManager extends Manager
         }
 
         return $users;
+    }
+
+    // Suppression d'un utilisateur impossible
+    public function deleteById($id)
+    {
+        return false;
     }
 }

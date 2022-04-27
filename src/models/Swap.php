@@ -3,6 +3,8 @@
 namespace models;
 
 
+use ReturnTypeWillChange;
+
 class Swap
 {
     public int $id;
@@ -149,5 +151,18 @@ class Swap
         $this->items = $items;
     }
 
+    #[ReturnTypeWillChange] public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'creation_date' => $this->creation_date,
+            'end_date' => $this->end_date,
+            'is_done' => $this->is_done,
+            'status' => $this->status,
+            'userFrom' => $this->user_from,
+            'userTo' => $this->user_to,
+            'items' => $this->items
+        ];
+    }
 
 }

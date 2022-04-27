@@ -143,18 +143,18 @@ class ItemManager extends Manager
      * Met un jour un objet
      * @return bool
      */
-    private function update(Item $item)
+    public function update($object): bool
     {
 
         $this->pdoStatement = $this->pdo->prepare('UPDATE tc_item set it_name=:item_name,it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id');
 
-        $this->pdoStatement->bindValue(':item_name', $item->getName(), PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':proprietary', $item->getProprietary(), PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':picture', $item->getPicture(), PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':description', $item->getDescription(), PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':creation_date', $item->getCreationDate(), PDO::PARAM_STR);
-        $this->pdoStatement->bindValue(':is_swappable', $item->getIsSwappable(), PDO::PARAM_BOOL);
-        $this->pdoStatement->bindValue(':id', $item->getId(), PDO::PARAM_INT);
+        $this->pdoStatement->bindValue(':item_name', $object->getName(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':proprietary', $object->getProprietary(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':picture', $object->getPicture(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':description', $object->getDescription(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':creation_date', $object->getCreationDate(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':is_swappable', $object->getIsSwappable(), PDO::PARAM_BOOL);
+        $this->pdoStatement->bindValue(':id', $object->getId(), PDO::PARAM_INT);
 
         return $this->pdoStatement->execute();
 
@@ -168,7 +168,7 @@ class ItemManager extends Manager
     public function save(Item &$item): bool
     {
         if (is_null($item->getId())) {
-            return $this->insert($item);
+            return $this->create($item);
         } else {
             return $this->update($item);
         }
@@ -222,8 +222,5 @@ class ItemManager extends Manager
         }
         return $items;
     }
-    */
-
-
 
 }
