@@ -5,6 +5,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="../static/js/templates.js"></script>
     <script src="../static/js/display-nav.js"></script>
@@ -16,6 +17,9 @@
 <?php
 require_once '../../vendor/autoload.php';
 include "../../src/templates/structure.php";
+use Db\Connection;
+use Db\CategoryManager;
+
 ?>
 <main class="search">
     <section class="my-card my-card-100">
@@ -49,9 +53,6 @@ include "../../src/templates/structure.php";
                     <tbody>
 
                     <?php
-
-                    use Db\Connection;
-                    use Db\CategoryManager;
 
                     $categoryManager = new CategoryManager(Connection::get());
                     $category = new \models\Category(7, 'GOAT', 0);

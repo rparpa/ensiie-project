@@ -17,11 +17,11 @@
                 <span class="signup-text"> Inscription : </span>
             </div>
             <div class="signup-form-body">
-                <div class="signup-form-item prenom">
-                    <input type="text" name="prenom" placeholder="Prenom" required>
-                </div>
                 <div class="signup-form-item nom">
                     <input type="text" name="nom" placeholder="Nom" required>
+                </div>
+                <div class="signup-form-item prenom">
+                    <input type="text" name="prenom" placeholder="Prenom" required>
                 </div>
                 <div class="signup-form-item pseudo">
                     <input type="text" name="pseudo" placeholder="Pseudo" required>

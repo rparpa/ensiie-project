@@ -20,12 +20,11 @@ if (isset($_GET['login'])) {
             if ($doUserExists->getPassword() === $password_hashed) {
                 if (empty($_SESSION['token'])) {
                     try {
-                        $_SESSION['token'] = generateUserInfosArraysJWT($email);
-                        // Remplacer le token existant -> UPDATE token manager
-                        // Idée d'avoir 2 tokens, le JWT pour l'API stocké en session, et un uniqId stocké en BD et en session
+                        echo '<script type="text/javascript">';
+                        echo 'localStorage.setItem("token","' . generateUserInfosArraysJWT($email) . '");';
+                        echo 'document.location.href="user-pages/accueil.php";';
+                        echo '</script>';
 
-                        // Redirection vers l'accueil du site
-                        header('Location: user-pages/accueil.php');
                     } catch (Exception $e) {
                     }
                 }

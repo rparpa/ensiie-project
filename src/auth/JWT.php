@@ -1,6 +1,10 @@
 <?php
 class JWT
 {
+
+    function __construct() {
+
+    }
     /**
      * Génération JWT
      * @param array $header Header du token
@@ -66,7 +70,7 @@ class JWT
     {
         // Démontage token
         $array = explode('.', $token);
-
+        var_dump($array);
         // On décode le header
         $header = json_decode(base64_decode($array[0]), true);
 

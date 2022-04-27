@@ -6,7 +6,6 @@ namespace Db;
 use models\User;
 use PDO;
 
-require_once '../models/User.php';
 
 
 class UserManager extends Manager
@@ -38,23 +37,23 @@ class UserManager extends Manager
     }
 
 
-    public function create($user): ?User
+    public function create($object): ?User
     {
         $createdUser = null;
-        if ($user instanceof User) {
+        if ($object instanceof User) {
 
             $pdoStatement = $this->pdo->prepare('INSERT INTO tc_user VALUES(:mail, :firstname, :lastname, :pseudo, :password, :picture, :zipcode, :street, :city, :super_user, :is_banned)');
-            $pdoStatement->bindValue(':mail', $user->getMail(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':firstname', $user->getFirstname(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':lastname', $user->getLastname(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':pseudo', $user->getPseudo(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':password', $user->getPassword(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':picture', $user->getPicture(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':zipcode', $user->getZipcode(), PDO::PARAM_INT);
-            $pdoStatement->bindValue(':street', $user->getStreet(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':city', $user->getCity(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':super_user', $user->getIsSuperUser(), PDO::PARAM_BOOL);
-            $pdoStatement->bindValue(':is_banned', $user->getIsBanned(), PDO::PARAM_BOOL);
+            $pdoStatement->bindValue(':mail', $object->getMail(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':firstname', $object->getFirstname(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':lastname', $object->getLastname(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':pseudo', $object->getPseudo(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':password', $object->getPassword(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':picture', $object->getPicture(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':zipcode', $object->getZipcode(), PDO::PARAM_INT);
+            $pdoStatement->bindValue(':street', $object->getStreet(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':city', $object->getCity(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':super_user', $object->getIsSuperUser(), PDO::PARAM_BOOL);
+            $pdoStatement->bindValue(':is_banned', $object->getIsBanned(), PDO::PARAM_BOOL);
             $execute = $pdoStatement->execute();
 
             if ($execute) {
@@ -160,6 +159,8 @@ class UserManager extends Manager
     }
 
 
-
-
+    public function deleteById($id)
+    {
+        // TODO: Implement deleteById() method.
+    }
 }
