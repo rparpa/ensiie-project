@@ -9,41 +9,41 @@ use ReturnTypeWillChange;
 class Item implements JsonSerializable
 {
 
-    function __construct(int $id=null, string $name, string $proprietary, string $picture, string $description,string $creation_date,bool $is_swappable) {
-        $this->id = $id;
+    function __construct(int    $id,
+                         string $name,
+                         string $proprietary,
+                         string $picture,
+                         string $description,
+                         string $creation_date,
+                         bool   $is_swappable,
+                         array  $categories)
+    {
         $this->name = $name;
-        $this->proprietary=$proprietary;
-        $this->picture=$picture;
-        $this->description=$description;
-        $this->creation_date=$creation_date;
-        $this->is_swappable=$is_swappable;
+        $this->proprietary = $proprietary;
+        $this->picture = $picture;
+        $this->description = $description;
+        $this->creation_date = $creation_date;
+        $this->is_swappable = $is_swappable;
+        $this->categories = $categories;
     }
 
 
     /**
-    /**
+     * /**
      * @var int id identifiant de l'objet
      * remarque : pas de setter pour l'identifiant
      */
-    private int $id;
+    public int $id;
 
     /**
      * @var string proprietaire de l'objet
      */
-    private string $proprietary;
+    public string $proprietary;
 
     /**
-     * @var string proprietaire de l'objet
+     * @var string nom de l'objet
      */
-    private string $name;
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
+    public string $name;
 
     /**
      * @param string $name
@@ -58,28 +58,38 @@ class Item implements JsonSerializable
     /**
      * @var string adresse de la photo
      */
-    private string $picture;
+    public string $picture;
 
     /**
      * @var string description de l'objet
      */
-    private string $description;
+    public string $description;
 
     /**
      * @var string date de creation
      */
-    private string $creation_date;
+    public string $creation_date;
 
     /**
      * @var boolean est échangeable
      */
-    private bool $is_swappable;
+    public bool $is_swappable;
+
+    public array $categories;
 
 
     /**
      * ajouté un constructeur
      */
 
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
 
     /**
      * @return string
@@ -132,7 +142,7 @@ class Item implements JsonSerializable
     /**
      * @return string
      */
-    public function getCreationDate():string
+    public function getCreationDate(): string
     {
         return $this->creation_date;
     }
@@ -140,7 +150,7 @@ class Item implements JsonSerializable
     /**
      * @param string $creation_date
      */
-    public function setCreationDate(string $creation_date):void
+    public function setCreationDate(string $creation_date): void
     {
         $this->creation_date = $creation_date;
     }
@@ -148,7 +158,7 @@ class Item implements JsonSerializable
     /**
      * @return bool
      */
-    public function getIsSwappable():bool
+    public function getIsSwappable(): bool
     {
         return $this->is_swappable;
     }
@@ -156,22 +166,26 @@ class Item implements JsonSerializable
     /**
      * @param bool $is_swappable
      */
-    public function setIsSwappable($is_swappable):void
+    public function setIsSwappable($is_swappable): void
     {
         $this->is_swappable = $is_swappable;
     }
 
+    public function getCategories(): array {
+        return $this->categories;
+    }
 
     /**
      * @return int
      */
-    public function getId():int
+    public function getId(): int
     {
         return $this->id;
     }
 
 
-    function __toString() {
+    function __toString()
+    {
         return ("ID: $this->id \t Propri: $this->proprietary \t Picture: $this->picture \t Description: $this->description \t Creation : $this->creation_date \t Swappable: $this->is_swappable");
     }
 

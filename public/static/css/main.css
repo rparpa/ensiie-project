@@ -1,7 +1,8 @@
 :root {
     --background-color: #474447;
     --dark-color: #221F22;
-    --main-color: #FFD866;
+    --main-color: #ffd866;
+    --clicked-link-color: #9f8118;
     --font-color: white;
     --validation-color: #88B04B;
     --refusal-color: #DE453E;
@@ -190,7 +191,7 @@ main {
     }
 }
 
-    .my-card .my-card-header {
+.my-card .my-card-header {
     font-size: 20px;
     padding: 10px 10px;
     font-weight: 600;
@@ -245,12 +246,36 @@ main {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 200px;
+}
+
+.swap .objects .images {
+    height: 130px;
+    position: relative;
+
+}
+
+.swap .objects a {
+    z-index: 2;
+    position: absolute;
 }
 
 .swap .objects .images img {
     width: 120px;
     height: 120px;
     border-radius: 60px;
+
+    transition: all ease 0.5s;
+}
+
+.swap .objects .images a:hover {
+    z-index: 3;
+}
+
+.swap .objects .images a:hover img {
+    width: 130px;
+    height: 130px;
+    border-radius: 65px;
 }
 
 .swap .me img {
@@ -289,10 +314,22 @@ Page objets
  */
 
 .grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     justify-content: center;
-    gap: 50px;
+    grid-gap: 50px;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media screen and (max-width: 1180px) {
+    .grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+.grid .item {
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .item {
@@ -303,11 +340,13 @@ Page objets
     gap: 20px;
     width: fit-content;
     position: relative;
+
 }
 
 .item .image {
     flex-direction: column;
     display: flex;
+    max-width: 200px;
     gap: 15px;
 }
 
@@ -318,6 +357,10 @@ Page objets
     justify-content: center;
 }
 
+.grid .my-card-body {
+    height: 85%;
+}
+
 .category {
     padding: 5px;
     border: solid 2px;
@@ -326,7 +369,9 @@ Page objets
 }
 
 .item .image img {
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
 }
 
 .item .information {
@@ -344,9 +389,10 @@ Page objets
 
 .item .information p {
     margin-top: 15px;
+    word-break: break-word;
 }
 
-.item button {
+.item button.trash {
     border-radius: 20px;
     width: 40px;
     height: 40px;
@@ -369,7 +415,7 @@ Page objets
     fill: var(--refusal-color);
 }
 
-.item button:hover {
+.item button.trash:hover {
     background: var(--font-color);
 }
 
@@ -454,25 +500,31 @@ Page objets
     font-weight: 500;
 }
 
-.form .actions button[type="submit"] {
+.form .actions button[type="submit"], button.accept {
     border: solid 1px var(--font-color);
     background: var(--validation-color);
     color: var(--font-color);
 }
 
-.form .actions button[type="submit"]:hover {
+.form .actions button[type="submit"]:hover, button.accept:hover {
     border-color: var(--validation-color);
     background: var(--font-color);
     color: var(--validation-color);
 }
 
-.form .actions button[type="reset"] {
+.form .actions button[type="reset"], button.refusal {
     border: solid 1px var(--font-color);
     background: var(--refusal-color);
     color: var(--font-color);
 }
 
-.form .actions button[type="reset"]:hover {
+button.wait {
+    color: var(--background-color);
+    background: var(--main-color);
+    color: var(--background-color);
+}
+
+.form .actions button[type="reset"]:hover, button.refusal:hover {
     border-color: var(--refusal-color);
     background: var(--font-color);
     color: var(--refusal-color);
@@ -482,6 +534,7 @@ Page objets
     display: flex;
     flex-direction: column;
     gap: 40px;
+    width: 100%;
 }
 
 .results .number-result {
@@ -491,15 +544,11 @@ Page objets
     color: var(--main-color);
 }
 
-.results .item-list {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+.results .grid {
+    grid-gap: 20px;
 }
 
-.results .item-list .item-link {
+.results .grid .item-link {
     background: var(--dark-color);
     padding: 20px;
     display: flex;
@@ -508,43 +557,60 @@ Page objets
     gap: 20px;
     border-radius: 10px;
     justify-content: center;
+    align-items: center;
+}
+
+.my-card-body .item {
+    background: none!important;
+    padding: 0!important;
 }
 
 
-.results .item-list .item-link:hover {
-    border: 1px solid var(--main-color);
+.results .grid .item-link:hover {
+    outline: 1px solid var(--main-color);
     cursor: pointer;
 }
 
-.results .item-list .item-link img {
+.results .grid .item-link img {
     height: 150px;
+    width: 150px;
+    object-fit: contain;
     border-radius: 10px;
 }
 
-.results .item-list .item-link .information {
+.results .grid .item-link .information {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-width: 440px;
+    width: 50%;
 }
 
-.results .item-list .item-link .information .categories {
+.results .grid .item-link .information .categories {
     justify-content: left;
 }
 
-.results .item-list .item-link .user {
+.all-info {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.user {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.results .item-list .item-link .user img {
-    height: 130px;
-    width: 130px;
-    border-radius: 65px;
+.user img {
+    height: 130px !important;
+    width: 130px !important;
+    border-radius: 65px !important;
+    object-fit: fill !important;
 }
 
-.results .item-list .item-link .user span {
+.user span {
     color: var(--font-color);
     font-weight: 500;
 }
@@ -608,7 +674,7 @@ path.domain {
     min-width: 65%;
 }
 
-@media screen and (max-width: 1220px) {
+@media screen and (max-width: 1340px) {
     .stats .my-card {
         width: 100%;
     }
@@ -625,8 +691,7 @@ path.domain {
 }
 
 
-
-.rank .line .count, .rank .line .number{
+.rank .line .count, .rank .line .number {
     font-size: 20px;
 
     padding: 20px 10px;
@@ -647,7 +712,7 @@ path.domain {
     gap: 6px;
 }
 
-.form .image-input img{
+.form .image-input img {
     max-height: 200px;
     object-fit: contain;
     width: fit-content;
@@ -709,4 +774,487 @@ path.domain {
     color: var(--refusal-color);
     font-weight: 500;
     margin-top: -10px;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+input[data-autocompleted] {
+    background-color: transparent !important;
+    color: var(--font-color) !important;
+}
+
+.label {
+    font-weight: normal !important;
+}
+
+/* Tout le page objet.php */
+.user-profile {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.adress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.adress span {
+    font-weight: 500;
+}
+
+.wishes ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.item-button {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray; /* IE 6-9 */
+    background: none;
+    outline: none;
+    width: 200px;
+    border: solid 2px var(--main-color);
+    border-radius: 10px;
+    padding: 8px;
+    color: var(--font-color);
+}
+
+.item-button.selected {
+    -webkit-filter: none;
+    -moz-filter: none;
+    -ms-filter: none;
+    filter: none;
+}
+
+.item-button img {
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+}
+
+.item-button span.name {
+    font-size: 18px;
+}
+
+#button-item-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.swap-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.swap-content .swap-info {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+
+/* Page d'inscription */
+
+.prenom {
+    grid-area: prenom;
+}
+
+.nom {
+    grid-area: nom;
+}
+
+.pseudo {
+    grid-area: pseudo;
+}
+
+.email {
+    grid-area: email;
+}
+
+.password {
+    grid-area: password;
+}
+
+.photo-de-profil {
+    grid-area: PDP;
+}
+
+.adresse {
+    grid-area: adresse;
+}
+
+.code-postal {
+    grid-area: CP;
+}
+
+.ville {
+    grid-area: ville;
+}
+
+
+.signup-form-container {
+    max-width: 600px;
+    min-height: 100vh;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.1);
+    outline: 2px solid var(--main-color);
+    background: var(--dark-color);
+}
+
+.signup-form-header, .login-form-header {
+    height: 40px;
+    border-radius: 5px 5px 0 0;
+    color: var(--font-color);
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-form-wrapper form {
+    padding: 30px 25px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.signup-form-wrapper form .signup-form-body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+    'nom nom nom prenom prenom prenom'
+    'pseudo pseudo pseudo pseudo pseudo pseudo'
+    'email email email email PDP PDP'
+    'password password password password PDP PDP'
+    'adresse adresse adresse adresse CP CP'
+    'ville ville ville ville ville ville';
+    column-gap: 12px;
+}
+
+.signup-form-item {
+    height: 45px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.signup-form-item-file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.signup-form-item input {
+    height: 100%;
+    width: 100%;
+    color: var(--dark-color);
+    outline: none;
+    padding-left: 12px;
+    border-radius: 24px;
+    border: 1px solid var(--background-color);
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.signup-form-item-file input[type=button] {
+    width: 100%;
+    padding: 6px 0;
+    background: none;
+    border: solid 2px var(--font-color);
+    border-radius: 6px;
+    color: var(--font-color);
+    font-weight: 500;
+}
+
+.signup-form-item-file input[type=button]:hover {
+    cursor: pointer;
+    border-color: var(--main-color);
+    color: var(--main-color);
+}
+
+.signup-form-wrapper form .button-inscription {
+    transition: all 500ms ease;
+    border-radius: 24px;
+    outline: 1px solid transparent; /* Pour avoir un outline par défaut, sinon on voit le changement de couleur */
+}
+
+.signup-form-wrapper form .button-inscription:hover {
+    transform: scale(1.08);
+    border-radius: 24px;
+    outline: 1px solid var(--main-color);
+}
+
+.signup-form-wrapper form .button-inscription input {
+    color: var(--font-color);
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 0;
+    background-color: var(--background-color);
+    cursor: pointer;
+    transition: font-size 500ms ease;
+}
+
+
+.signup-form-wrapper form .button-inscription input:hover {
+    color: var(--main-color);
+    font-size: 22px;
+}
+
+@media screen and (max-width: 408px) {
+    .signup-form-wrapper form .signup-form-body {
+        column-gap: 8px;
+    }
+
+    .signup-form-wrapper form .signup-form-body {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas:
+    'nom nom nom nom nom nom'
+    'prenom prenom prenom prenom prenom prenom'
+    'pseudo pseudo pseudo pseudo pseudo pseudo'
+    'email email email email email email'
+    'password password password password password password'
+    'PDP PDP PDP PDP PDP PDP'
+    'adresse adresse adresse adresse adresse adresse'
+    'CP CP CP CP CP CP'
+    'ville ville ville ville ville ville';
+    }
+}
+
+.signup-form-wrapper form .connect-link {
+    text-align: center;
+    font-size: 18px;
+}
+
+.signup-form-wrapper form .connect-link .link {
+    transition: font-size 500ms;
+    white-space: nowrap;
+    font-size: 20px;
+}
+
+.signup-form-wrapper form .connect-link .link:link {
+    color: var(--main-color);
+    border-right: none; /* Pour lutter contre le .active-link du JS de Jonathan */
+}
+
+.signup-form-wrapper form .connect-link .link:visited {
+    color: var(--clicked-link-color);
+}
+
+
+.signup-form-wrapper form .connect-link .link:hover {
+    font-size: 24px;
+}
+
+@media screen and (max-width: 282px) {
+    .signup-form-header {
+        font-size: 28px;
+    }
+
+    .signup-text {
+        white-space: nowrap;
+    }
+}
+
+/* Page de connexion */
+
+.login-form-container {
+    max-width: 440px;
+    min-height: 100vh;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.1);
+    outline: 2px solid var(--main-color);
+    background: var(--dark-color);
+}
+
+.login-form-wrapper form {
+    padding: 30px 25px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.login-form-wrapper form .login-form-item.last-item {
+    margin-bottom: 0;
+}
+
+.login-form-wrapper form .login-form-item {
+    height: 45px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.login-form-wrapper form .login-form-item input {
+    height: 100%;
+    width: 100%;
+    color: var(--dark-color);
+    outline: none;
+    padding-left: 12px;
+    border-radius: 24px;
+    border: 1px solid var(--background-color);
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.login-form-wrapper form .pass {
+    margin: -8px 0 20px 0;
+}
+
+.login-form-wrapper form .pass a {
+    color: var(--font-color);
+    font-size: 16px;
+    text-decoration: none;
+    transition: font-size 500ms ease;
+}
+
+.login-form-wrapper form .pass a:hover {
+    color: var(--main-color);
+    font-size: 20px;
+}
+
+.login-form-wrapper form .button-connexion {
+    transition: all 500ms ease;
+    border-radius: 24px;
+    outline: 1px solid transparent;
+}
+
+.login-form-wrapper form .button-connexion:hover {
+    transform: scale(1.1);
+    outline: 1px solid var(--main-color);
+}
+
+.login-form-wrapper form .button-connexion input {
+    color: var(--font-color);
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 0;
+    background-color: var(--background-color);
+    cursor: pointer;
+    transition: font-size 500ms ease;
+}
+
+
+.login-form-wrapper form .button-connexion input:hover {
+    color: var(--main-color);
+    font-size: 22px;
+}
+
+.login-form-wrapper form .signup-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.login-form-wrapper form .signup-link .link {
+    transition: font-size 500ms;
+    white-space: nowrap;
+    font-size: 20px;
+}
+
+.login-form-wrapper form .signup-link .link:link, .login-form-wrapper form .signup-link .link:visited {
+    color: var(--main-color);
+    border-right: none; /* Pour lutter contre le .active-link du JS de Jonathan */
+}
+
+.login-form-wrapper form .signup-link .link:hover {
+    font-size: 24px;
+}
+
+.error-login {
+    margin: 0;
+    text-align: center;
+    color: red;
+}
+
+@media screen and (max-width: 282px) {
+    .login-form-header {
+        font-size: 28px;
+    }
+
+    .connect-text {
+        white-space: nowrap;
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+.slide-out {
+    animation: slide-out 1000ms ease;
+}
+
+.modal-wrap {
+    background-color: white;
+    opacity: 80%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.modal {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    width: 400px;
+    padding: 50px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+}
+
+.display-none {
+    display: none;
 }

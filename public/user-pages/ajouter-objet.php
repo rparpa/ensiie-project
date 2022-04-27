@@ -4,6 +4,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/main.css">
+    <script src="../static/js/templates.js"></script>
     <script src="../static/js/display-nav.js"></script>
     <script src="../static/js/categories-form.js"></script>
     <script src="../static/js/display-img.js"></script>
@@ -26,12 +27,12 @@ include "../../src/templates/structure.php";
         </section>
         <section class="my-card-body">
             <form class="form" onsubmit="applyValueCategories();return checkForm()" method="POST"
-                  action="../actions/create-swap.php"
+                  action="../actions/create-item.php"
                   enctype="multipart/form-data">
                 <div class="input">
                     <label for="item-name">Nom</label>
                     <span class="error hidden" id="error-name">Vous devez renseigner un nom</span>
-                    <input type="text" id="item-name" name="item-name"/>
+                    <input type="text" id="item-name" name="item-name" maxlength="50"/>
                 </div>
                 <div class="input image-input">
                     <label for="file">Photo de l'objet</label>
@@ -43,7 +44,7 @@ include "../../src/templates/structure.php";
                 <div class="input">
                     <label for="description">Description</label>
                     <span class="error hidden" id="error-description">Vous devez renseigner une description</span>
-                    <textarea name="description" id="description"></textarea>
+                    <textarea name="description" id="description" maxlength="240"></textarea>
                 </div>
                 <div class="input">
 
@@ -69,7 +70,7 @@ include "../../src/templates/structure.php";
                 <input type="hidden" id="category-selected" name="categories-selected"/>
                 <div class="actions">
                     <button type="reset" onclick="deselectCategories();clearErrors()">EFFACER</button>
-                    <button type="submit">RECHERCHER</button>
+                    <button type="submit">AJOUTER</button>
                 </div>
             </form>
         </section>

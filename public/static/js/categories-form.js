@@ -7,7 +7,6 @@ colors = [
     '#0000ff',
     '#9400d3',
     '#330066',
-    '#f7e7ce',
     '#c21e56',
     '#cc338b',
     '#dc143c',
@@ -59,11 +58,15 @@ function deselectCategories() {
 }
 
 function applyValueCategories() {
-    var stringValue = "";
+    document.getElementById('category-selected').value = getValueCategoriesSelected();
+}
+
+function getValueCategoriesSelected() {
+    let stringValue = "";
     isCategorySelectedMap.forEach((val, key) => {
         if (val) {
             stringValue+= key + "/";
         }
     });
-    document.getElementById('category-selected').value = stringValue;
+    return stringValue;
 }

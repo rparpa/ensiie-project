@@ -57,5 +57,5 @@ services:
       - "ensiie"
 
 networks:
-    ensiie:
-        driver: bridge
+  ensiie:
+    driver: bridge

@@ -10,13 +10,13 @@ function checkForm() {
     clearErrors();
     // Check id_license
     const description = document.getElementById('description').value;
-    if (description.length == 0 || description.length > 240) {
+    if (description.length === 0 || description.length > 240) {
         document.getElementById('error-description').classList.remove('hidden');
         isValid = false;
     }
 
     const name = document.getElementById('item-name').value;
-    if (name.length == 0 || name.length > 50) {
+    if (name.length === 0 || name.length > 50) {
         document.getElementById('error-name').classList.remove('hidden');
         isValid = false;
     }

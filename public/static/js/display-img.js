@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById('imgInput').onchange = evt => {
+    document.getElementById('imgInput').onchange = () => {
         const [file] = document.getElementById('imgInput').files;
         document.getElementById('result').classList.add('hidden');
         if (file) {

@@ -22,8 +22,7 @@ class User implements JsonSerializable
 
 
     function __construct($mail, $firstname, $lastname, $pseudo, $password, $picture,
-                         $zipcode, $street, $city, $is_super_user, $is_banned)
-    {
+                         $zipcode, $street, $city, $is_super_user, $is_banned) {
 
         $this->mail = $mail;
         $this->firstname = $firstname;

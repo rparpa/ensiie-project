@@ -17,6 +17,20 @@ echo'
 
 if(isset($_GET['prop'])){
 
+
+    $item = new Item(1,'sam','sam@hotmail.fr','photo.png','salslalsallasa','08-10-21',true);
+
+    $itemManager = new ItemManager(Connection::get());
+
+    //$saveisOk=$itemManager->insert($item);
+
+    $item2=$itemManager->findAllByProprietaryMail('test');
+    print_r($item2);
+
+
+
+    /*
+
     $itemManager = new ItemManager(Connection::get());
 
     $item= $itemManager->select(12);
@@ -48,7 +62,7 @@ if(isset($_GET['prop'])){
 
 
     print_r($items);
-
+    */
 
 
     /*
