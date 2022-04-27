@@ -7,7 +7,7 @@ class User {
     protected string $mail;
     protected string $firstname;
     protected string $lastname;
-    public string $pseudo;
+    protected string $pseudo;
     protected string $password;
     protected string $picture;
     protected int $zipcode;
@@ -207,7 +207,6 @@ class User {
     {
         $this->is_banned = $is_banned;
     }
-
 
 
 }
