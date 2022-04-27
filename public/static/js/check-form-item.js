@@ -1,3 +1,17 @@
+window.onload = loadPage;
+
+function loadPage() {
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(isConnected => {
+           if (!isConnected) {
+               document.location.href = "/index.php";
+           }
+        });
+}
+
 function clearErrors() {
     document.getElementById('error-name').classList.add('hidden');
     document.getElementById('error-photo').classList.add('hidden');

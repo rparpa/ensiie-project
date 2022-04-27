@@ -1,8 +1,7 @@
 <?php
 
-require_once 'key.php';
-require_once 'JWT.php';
-
+use auth\JWT;
+use const auth\SECRET;
 
 
 // On crée le header

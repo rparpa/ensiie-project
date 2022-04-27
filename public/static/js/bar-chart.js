@@ -4,22 +4,33 @@ window.onresize = destroyBarChart;
 let data;
 
 function sendRequestStats() {
-    fetch('/api/trocs/stats.php').then(data => {
-        return data.json()
-    }).then(res => {
-        data = res;
-        data.forEach(stats => {
-            stats['date'] = stats['date'].substring(5, stats['date'].length);
-            const tab = stats['date'].split('-');
-            stats['date'] = tab[1] + '-' + tab[0];
+    checkAuth()
+        .then(response => {
+            return response.json();
         })
-        createBarChart();
+        .then(isConnected => {
+        if (isConnected) {
+            fetch('/api/trocs/stats.php').then(data => {
+                return data.json()
+            }).then(res => {
+                data = res;
+                data.forEach(stats => {
+                    stats['date'] = stats['date'].substring(5, stats['date'].length);
+                    const tab = stats['date'].split('-');
+                    stats['date'] = tab[1] + '-' + tab[0];
+                })
+                createBarChart();
+            });
+            fetch('/api/trocs/findAll.php?last-10=true').then(data => {
+                return data.json()
+            }).then(res => {
+                createCarousel(res);
+            });
+        } else {
+            document.location.href = "/index.php"
+        }
     });
-    fetch('/api/trocs/findAll.php?last-10=true').then(data => {
-        return data.json()
-    }).then(res => {
-        createCarousel(res);
-    });
+
 
 }
 

@@ -1,7 +1,9 @@
 <?php
 
 use Db\Connection;
+use Db\TokenManager;
 use Db\UserManager;
+use models\Token;
 use models\User;
 
 require_once '../vendor/autoload.php';
@@ -18,15 +20,16 @@ if (isset($_GET['login'])) {
             $password_hashed = hash("sha384", $_POST['password']); // Ne peut normalement pas renvoyer false car on lui donne bien une string
             // et pas autre chosee et ne peut pas renvoyer null puisque l'algorithme donné en paramètre est valide
             if ($doUserExists->getPassword() === $password_hashed) {
-                if (empty($_SESSION['token'])) {
-                    try {
-                        echo '<script type="text/javascript">';
-                        echo 'localStorage.setItem("token","' . generateUserInfosArraysJWT($email) . '");';
-                        echo 'document.location.href="user-pages/accueil.php";';
-                        echo '</script>';
 
-                    } catch (Exception $e) {
-                    }
+                $tokenManager = new TokenManager(Connection::get());
+                $result = $tokenManager->create(new Token(generateUserInfosArraysJWT($email), $email));
+                if ($result != null) {
+                    echo '<script type="text/javascript">';
+                    echo 'localStorage.setItem("token","' . $result->getToken() . '");';
+                    echo 'document.location.href="user-pages/accueil.php";';
+                    echo '</script>';
+                } else {
+                    header('Location: index.php?unknownUser');
                 }
             }
         } else {

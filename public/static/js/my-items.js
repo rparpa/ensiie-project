@@ -1,9 +1,20 @@
 window.onload = loadItems;
 
 function loadItems() {
-    fetch('/api/objets/findAll.php').then(data => {
-        return data.json()
-    }).then(res => displayItems(res));
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(isConnected => {
+            if (!isConnected) {
+                document.location.href = "/index.php";
+            } else {
+                fetch('/api/objets/findAll.php').then(data => {
+                    return data.json()
+                }).then(res => displayItems(res));
+            }
+        });
+
 }
 
 function displayItems(items) {

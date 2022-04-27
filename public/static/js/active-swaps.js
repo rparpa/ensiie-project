@@ -3,12 +3,22 @@ window.onload = loadSwaps;
 let swaps = null;
 
 function loadSwaps() {
-    fetch('/api/trocs/findAll.php?mail=toto&is_done=false').then(data => {
-        return data.json()
-    }).then(res => {
-        swaps = res;
-        displaySwaps(res);
-    });
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(isConnected => {
+            if (!isConnected) {
+                document.location.href = "/index.php";
+            } else {
+                fetch('/api/trocs/findAll.php?mail=toto&is_done=false').then(data => {
+                    return data.json()
+                }).then(res => {
+                    swaps = res;
+                    displaySwaps(res);
+                });
+            }
+        });
 }
 
 function displaySwaps(swaps) {

@@ -169,3 +169,10 @@ EXECUTE PROCEDURE update_status_swap();
 
 CREATE VIEW CALENDAR_LAST_SEVEN_DAYS AS SELECT  (current_date - (n || 'days')::INTERVAL)::DATE date
                                         FROM generate_series(0, 6) n ORDER BY date;
+
+CREATE TABLE "tc_token"
+(
+    tr_token           TEXT     NOT NULL,
+    id_user            TEXT    NOT NULL REFERENCES tc_user (us_mail),
+    PRIMARY KEY (id_user, tr_token)
+);

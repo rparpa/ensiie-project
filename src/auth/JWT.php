@@ -1,6 +1,12 @@
 <?php
+namespace auth;
+
+use DateTime;
+const SECRET = 'ArrêtezDeJouerTeemoTop,REMI';
 class JWT
 {
+
+
 
     function __construct() {
 
