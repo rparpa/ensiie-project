@@ -3,13 +3,15 @@
 namespace models;
 
 use phpDocumentor\Reflection\DocBlock\Description;
+use JsonSerializable;
+use ReturnTypeWillChange;
 
-
-class Item
+class Item implements JsonSerializable
 {
 
-    function __construct(int $id=null, string $proprietary, string $picture, string $description,string $creation_date,bool $is_swappable) {
+    function __construct(int $id=null, string $name, string $proprietary, string $picture, string $description,string $creation_date,bool $is_swappable) {
         $this->id = $id;
+        $this->name = $name;
         $this->proprietary=$proprietary;
         $this->picture=$picture;
         $this->description=$description;
@@ -41,6 +43,15 @@ class Item
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return void
+     */
+    public function setName(string $name)
+    {
+        $this->name = $name;
     }
 
 
@@ -164,5 +175,17 @@ class Item
         return ("ID: $this->id \t Propri: $this->proprietary \t Picture: $this->picture \t Description: $this->description \t Creation : $this->creation_date \t Swappable: $this->is_swappable");
     }
 
+    #[ReturnTypeWillChange] public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'proprietary' => $this->proprietary,
+            'picture' => $this->picture,
+            'description' => $this->description,
+            'creation_date' => $this->creation_date,
+            'is_swappable' => $this->is_swappable
+        ];
+    }
 
 }

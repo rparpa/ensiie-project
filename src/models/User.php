@@ -3,6 +3,7 @@
 namespace models;
 
 use JsonSerializable;
+use ReturnTypeWillChange;
 
 class User implements JsonSerializable
 {
@@ -215,7 +216,7 @@ class User implements JsonSerializable
     }
 
 
-    public function jsonSerialize()
+    #[ReturnTypeWillChange] public function jsonSerialize()
     {
         return [
             'email' => $this->mail,
