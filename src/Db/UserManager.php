@@ -7,7 +7,6 @@ use models\User;
 use PDO;
 
 
-
 class UserManager extends Manager
 {
     public function __construct()
@@ -27,7 +26,7 @@ class UserManager extends Manager
         $pdoStatement = $this->pdo->query('SELECT * FROM tc_user');
         $users = [];
 
-        $dbarray = $this->pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+        $dbarray = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($dbarray as $db_row) {
             $users[] = new User($db_row[0], $db_row[1], $db_row[2], $db_row[3], $db_row[4], $db_row[5], $db_row[6], $db_row[7], $db_row[8], $db_row[9], $db_row[10]);

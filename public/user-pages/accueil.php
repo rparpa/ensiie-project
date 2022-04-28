@@ -82,8 +82,6 @@ use Db\CategoryManager;
 
                     </tbody>
                 </table>
-
-
             </section>
         </section>
         <section class="my-card">

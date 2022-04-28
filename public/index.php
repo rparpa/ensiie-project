@@ -27,22 +27,12 @@ session_start();
                 </div>
             </div>
             <div class="error-login hidden">
-                <div class="unknownUserError">
-                    <?php
-                    if (isset($_GET['unknownUser'])) {
-                        echo "<script src='./static/js/login.js'></script>";
-                        echo "Vous n'êtes pas inscrit !";
-                    }
-                    ?>
-                </div>
-                <!--<div class="wrongInputError">
-                    <?php /*
-                    if (isset($_GET['wrongInputs'])) {
-                        echo "<script src='./static/js/login.js'></script>";
-                        echo "Veuillez entrer un mot de passe !";
-                    }*/
-                    ?>
-                </div>-->
+                <?php
+                if (isset($_GET['unknownUser'])) {
+                    echo "<script src='./static/js/login.js'></script>";
+                    echo "Vous n'êtes pas inscrit !";
+                }
+                ?>
             </div>
             <div class="pass"><a href="#">Mot de passe oublié ?</a></div>
             <div class="login-form-item button-connexion">

@@ -36,14 +36,15 @@
                     <label class="label-image-sign-up" for="file">Photo de Profil :</label>
                     <span class="error hidden" id="error-photo-sign-up">Vous devez insérer une photo</span>
                     <input type="file" accept="image/*" name="photo-de-profil" id="imgInputSignUp" class="hidden"/>
-                    <input type="button" value="Parcourir" onclick="document.getElementById('imgInputSignUp').click();"/>
+                    <input type="button" value="Parcourir"
+                           onclick="document.getElementById('imgInputSignUp').click();"/>
                     <img id="resultImgSignUp" class="hidden" src="#" alt="your image"/>
                 </div>
                 <div class="signup-form-item adresse">
                     <input type="text" name="adresse" placeholder="Adresse" required>
                 </div>
                 <div class="signup-form-item code-postal">
-                    <input type="text" name="code-postal" placeholder="Code Postal" required>
+                    <input type="number" name="code-postal" placeholder="Code Postal" required>
                 </div>
                 <div class="signup-form-item ville">
                     <input type="text" name="ville" placeholder="Nom de la ville" required>
@@ -51,6 +52,14 @@
             </div>
             <div class="signup-form-item button-inscription">
                 <input type="submit" value="Inscription">
+            </div>
+            <div class="error-login hidden">
+                <?php
+                if (isset($_GET['alreadyExists'])) {
+                    echo "<script src='./static/js/login.js'></script>";
+                    echo "Votre email a déjà été inscrite !";
+                }
+                ?>
             </div>
             <div class="form-signup-footer">
                 <div class="connect-link">Déjà membre ? <br> <a class="link" href="index.php">Connectez-vous !</a></div>

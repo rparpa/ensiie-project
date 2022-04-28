@@ -7,7 +7,7 @@ namespace Db;
 use auth\JWT;
 use models\Token;
 use PDO;
-require_once '../auth/key.php';
+use const auth\SECRET;
 
 class TokenManager extends Manager
 {
