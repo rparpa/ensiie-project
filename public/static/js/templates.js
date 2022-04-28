@@ -80,8 +80,8 @@ function itemTemplateShort(item) {
     resultHTML += "</div>";
     resultHTML += "</div>";
     resultHTML += "<div class='user'>";
-    resultHTML += "<img src='../static/assets/zoro.jpg'/>";
-    resultHTML += "<span>" + escapeHtml(item['proprietary']) + "</span>";
+    resultHTML += "<img src='../images/users/" + escapeHtml(item['proprietary']['picture']) +"'/>";
+    resultHTML += "<span>" + escapeHtml(item['proprietary']['pseudo']) + "</span>";
     resultHTML += "</div>";
     resultHTML += "</a>";
     return resultHTML;
@@ -131,7 +131,7 @@ function templateUserInformation(user) {
     userTemplateHTML += templateWishesUser(user);
     userTemplateHTML += "</div>";
     userTemplateHTML += "<div class='user'>";
-    userTemplateHTML += "<img src='../static/assets/zoro.jpg'/>";
+    userTemplateHTML += "<img src='../images/users/" +  user['picture'] + "'/>";
     userTemplateHTML += "<span>" + user + "</span>";
     userTemplateHTML += "</div>";
     userTemplateHTML += "</div>";

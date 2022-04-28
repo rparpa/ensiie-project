@@ -72,8 +72,8 @@ function templateItem(Item $item)
     echo "<div class='user-profile'>";
 
     echo "<div class='adress'> ";
-    echo "<span > <span class='label' > Nom et prénom : </span > JUSSEAUME Jonathan </span > ";
-    echo "<span > <span class='label' > Adresse : </span > 10 rue du con de la ciudad, PARIS(75007) </span > ";
+    echo "<span > <span class='label' > Nom et prénom : </span > " . htmlspecialchars(strtoupper($item->getProprietary()->getLastname()) . " " . $item->getProprietary()->getFirstname(), ENT_QUOTES, 'UTF-8') . "</span > ";
+    echo "<span > <span class='label' > Adresse : </span > " . htmlspecialchars($item->getProprietary()->getStreet() . ", " . $item->getProprietary()->getCity() . " (" . $item->getProprietary()->getZipcode() . ")") . " </span > ";
     echo "<div class='wishes'>";
     echo "<span> Souhaits : </span>";
     echo "<ul>";
@@ -84,8 +84,8 @@ function templateItem(Item $item)
     echo "</div>";
     echo "</div>";
     echo "<div class='user' > ";
-    echo "<img src = '../static/assets/zoro.jpg' />";
-    echo "<span>" . htmlspecialchars($item->getProprietary(), ENT_QUOTES, 'UTF-8') . "</span>";
+    echo "<img src = '../images/users/" . htmlspecialchars($item->getProprietary()->getPicture(), ENT_QUOTES, 'UTF-8') . "'/>";
+    echo "<span>" . htmlspecialchars($item->getProprietary()->getPseudo(), ENT_QUOTES, 'UTF-8') . "</span>";
     echo "</div> ";
     echo "</div> ";
     echo "</section>";

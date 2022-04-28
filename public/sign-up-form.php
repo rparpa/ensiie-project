@@ -8,11 +8,12 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/main.css">
     <script src="static/js/display-nav.js"></script>
+    <script src="static/js/display-img.js"></script>
 </head>
 <body>
 <main class="signup-form-container">
     <div class="signup-form-wrapper">
-        <form class="signup" action="form-data.php?signup" method="post">
+        <form class="signup" action="form-data.php?signup" method="POST" enctype="multipart/form-data">
             <div class="signup-form-header">
                 <span class="signup-text"> Inscription : </span>
             </div>
@@ -35,10 +36,10 @@
                 <div class="signup-form-item-file input image-input photo-de-profil">
                     <label class="label-image-sign-up" for="file">Photo de Profil :</label>
                     <span class="error hidden" id="error-photo-sign-up">Vous devez insérer une photo</span>
-                    <input type="file" accept="image/*" name="photo-de-profil" id="imgInputSignUp" class="hidden"/>
+                    <input type="file" accept="image/*" name="file" id="imgInput" class="hidden"/>
                     <input type="button" value="Parcourir"
-                           onclick="document.getElementById('imgInputSignUp').click();"/>
-                    <img id="resultImgSignUp" class="hidden" src="#" alt="your image"/>
+                           onclick="document.getElementById('imgInput').click();"/>
+                    <img id="result" class="hidden" src="#" alt="your image"/>
                 </div>
                 <div class="signup-form-item adresse">
                     <input type="text" name="adresse" placeholder="Adresse" required>

@@ -76,7 +76,6 @@ class JWT
     {
         // Démontage token
         $array = explode('.', $token);
-        var_dump($array);
         // On décode le header
         $header = json_decode(base64_decode($array[0]), true);
 

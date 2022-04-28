@@ -1,3 +1,17 @@
+window.onload = loadPage;
+
+function loadPage() {
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(isConnected => {
+            if (!isConnected) {
+                document.location.href = "/index.php";
+            }
+        });
+}
+
 function search() {
     let categoriesSelectedString = getValueCategoriesSelected();
     categoriesSelectedString = categoriesSelectedString.substring(0, categoriesSelectedString.length - 1);
@@ -10,7 +24,11 @@ function search() {
         query += 'name=' + document.getElementById('search-name').value + '&';
     }
     query = query.substring(0, query.length - 1);
-    fetch(query).then(data => {
+    fetch(query, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(data => {
         return data.json()
     }).then(res => displayFoundItems(res));
 }

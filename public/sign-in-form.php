@@ -11,6 +11,7 @@ session_start();
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/main.css">
     <script src="static/js/display-nav.js"></script>
+
 </head>
 <body>
 <main class="login-form-container">

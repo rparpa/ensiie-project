@@ -4,17 +4,18 @@ namespace models;
 
 class User {
 
-    protected string $mail;
-    protected string $firstname;
-    protected string $lastname;
-    protected string $pseudo;
-    protected string $password;
-    protected string $picture;
-    protected int $zipcode;
-    protected string $street;
-    protected string $city;
-    protected bool $is_super_user;
-    protected bool $is_banned;
+    public string $mail;
+    public string $firstname;
+    public string $lastname;
+    public string $pseudo;
+    public string $password;
+    public string $picture;
+    public int $zipcode;
+    public string $street;
+    public string $city;
+    public bool $is_super_user;
+    public bool $is_banned;
+
 
 
     function __construct($mail, $firstname, $lastname, $pseudo, $password, $picture,
@@ -33,6 +34,8 @@ class User {
         $this->is_banned = $is_banned;
 
     }
+
+
 
     /**
      * @return string

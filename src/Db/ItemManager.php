@@ -14,10 +14,13 @@ class ItemManager extends Manager
 {
     private CategoryManager $categoryManager;
 
+    private UserManager $userManager;
+
     public function __construct(PDO $connection)
     {
         parent::__construct($connection);
         $this->categoryManager = new CategoryManager($connection);
+        $this->userManager = new UserManager($connection);
     }
 
     /**
@@ -67,7 +70,7 @@ class ItemManager extends Manager
             if ($db_row !== false) {
                 $item = new Item($db_row[0],
                     $db_row[1],
-                    $db_row[2],
+                    $this->userManager->findById($db_row[2]),
                     $db_row[3],
                     $db_row[4],
                     $db_row[5],
@@ -91,7 +94,7 @@ class ItemManager extends Manager
         if ($object instanceof Item) {
             $pdoStatement = $this->pdo->prepare('INSERT INTO tc_item(it_name,it_proprietary,it_picture,it_description) VALUES(:name,:proprietary,:picture,:description)');
             $pdoStatement->bindValue(':name', $object->getName());
-            $pdoStatement->bindValue(':proprietary', $object->getProprietary());
+            $pdoStatement->bindValue(':proprietary', $object->getProprietary()->getMail());
             $pdoStatement->bindValue(':picture', $object->getPicture());
             $pdoStatement->bindValue(':description', $object->getDescription());
             $execute = $pdoStatement->execute();
@@ -211,7 +214,7 @@ class ItemManager extends Manager
         foreach ($dbarray as $db_row) {
             $items[] = new Item($db_row[0],
                 $db_row[1],
-                $db_row[2],
+                $this->userManager->findById($db_row[2]),
                 $db_row[3],
                 $db_row[4],
                 $db_row[5],

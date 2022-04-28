@@ -9,16 +9,12 @@ use PDO;
 
 class UserManager extends Manager
 {
-    public function __construct()
+    public function __construct(PDO $connection)
     {
         /**
          * initialisation de la connexion à la base de données
          */
-        $dbName = getenv('DB_NAME');
-        $dbUser = getenv('DB_USER');
-        $dbPassword = getenv('DB_PASSWORD');
-        $this->pdo = new PDO("pgsql:host=postgres user=$dbUser dbname=$dbName password=$dbPassword");
-
+        $this->pdo = $connection;
     }
 
     public function findAll(): array
@@ -56,8 +52,7 @@ class UserManager extends Manager
             $execute = $pdoStatement->execute();
 
             if ($execute) {
-                $id = $this->pdo->lastInsertId();
-                $createdUser = $this->findById($id);
+                $createdUser = $this->findById($object->getMail());
             }
         }
         return $createdUser;
@@ -96,15 +91,15 @@ class UserManager extends Manager
     {
         if ($user instanceof User) {
 
-            // Récupérer les champs dans l'user de la base de données, ayant pour id le même que l'objet sur lequel il est appelé
+            // Récupérer les champs dans l'users de la base de données, ayant pour id le même que l'objet sur lequel il est appelé
             $user_db = $this->findById($user->getMail());
 
-            // Si l'user n'existe pas dans la base de données, on ne peut pas faire de mise à jour
+            // Si l'users n'existe pas dans la base de données, on ne peut pas faire de mise à jour
             if ($user_db === null) {
                 return false;
-            } // Si l'user existe dans la base de données, on peut faire la mise à jour
+            } // Si l'users existe dans la base de données, on peut faire la mise à jour
             else {
-                // On récupère les champs de l'objet user
+                // On récupère les champs de l'objet users
                 $mail = $user->getMail();
                 $firstname = $user->getFirstname();
                 $lastname = $user->getLastname();

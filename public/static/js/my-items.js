@@ -9,7 +9,11 @@ function loadItems() {
             if (!isConnected) {
                 document.location.href = "/index.php";
             } else {
-                fetch('/api/objets/findAll.php').then(data => {
+                fetch('/api/objets/findAll.php', {
+                    headers: {
+                        'Authorization': localStorage.getItem('token')
+                    }
+                }).then(data => {
                     return data.json()
                 }).then(res => displayItems(res));
             }
@@ -25,6 +29,7 @@ function displayItems(items) {
         });
     } else {
         itemsHTML += noResultContent("Vous n'avez pas d'objets");
+        document.getElementById('items-container').classList.remove('grid');
     }
     document.getElementById('items-container').innerHTML = itemsHTML;
     applyCategoriesColor();

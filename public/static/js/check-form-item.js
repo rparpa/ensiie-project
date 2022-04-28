@@ -39,5 +39,6 @@ function checkForm() {
         document.getElementById('error-photo').classList.remove('hidden');
         isValid = false;
     }
+    document.getElementById('token').value = localStorage.getItem('token');
     return isValid;
 }

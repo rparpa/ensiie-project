@@ -1,15 +1,20 @@
 <?php
 require_once '../../vendor/autoload.php';
 
+use auth\JWT;
 use Db\Connection;
 use Db\ItemManager;
+use Db\TokenManager;
 use models\Category;
 use models\Item;
+use models\User;
 
 if (isset($_POST["item-name"])
     && isset($_POST["description"])
     && isset($_POST["categories-selected"])
-    && isset($_FILES['file'])) {
+    && isset($_FILES['file'])
+    && isset($_POST["token"])
+    && (new TokenManager(Connection::get()))->findByToken($_POST['token']) != null) {
     $imagesLocation = '../images/items/';
     $tmpName = $_FILES['file']['tmp_name'];
     $name = $_FILES['file']['name'];
@@ -29,7 +34,15 @@ if (isset($_POST["item-name"])
                 $categories[] = new Category($idCat, "", 0);
             }
         }
-        $item = new Item(0, $_POST["item-name"], "titi", $file, $_POST["description"], "", true, $categories);
+        $jwt = new JWT();
+        $item = new Item(0,
+            $_POST["item-name"],
+            new User($jwt->getPayload($_POST["token"])["email"], "", "", "", "", "", 1, "", "", false, false),
+            $file,
+            $_POST["description"],
+            "",
+            true,
+            $categories);
         $itemManager = new ItemManager(Connection::get());
         $itemManager->create($item);
         header('Location: ../user-pages/mes-objets.php');

@@ -11,7 +11,11 @@ function loadSwaps() {
             if (!isConnected) {
                 document.location.href = "/index.php";
             } else {
-                fetch('/api/trocs/findAll.php?mail=toto&is_done=true').then(data => {
+                fetch('/api/trocs/findAll.php?mail=toto&is_done=true', {
+                    headers: {
+                        'Authorization': localStorage.getItem('token')
+                    }
+                }).then(data => {
                     return data.json()
                 }).then(res => {
                     swaps = res;

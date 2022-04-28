@@ -1,5 +1,6 @@
 <?php
 
+use Db\Connection;
 use Db\UserManager;
 use models\User;
 
@@ -10,7 +11,7 @@ include_once '../src/auth/generate.php';
 if (isset($_GET['login'])) {
     if (isset($_POST['email']) && isset($_POST['password'])) {
         $email = $_POST['email'];
-        $userManager = new UserManager();
+        $userManager = new UserManager(Connection::get());
         $doUserExists = $userManager->findById($email);
         if ($doUserExists != null) {
             $password_hashed = hash("sha384", $_POST['password']); // Ne peut normalement pas renvoyer false car on lui donne bien une string
@@ -27,7 +28,22 @@ if (isset($_GET['login'])) {
 }
 if (isset($_GET['signup'])) {
     if (isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password'])
-        && isset($_POST['photo-de-profil']) && isset($_POST['adresse']) && isset($_POST['code-postal']) && isset($_POST['ville'])) {
+        && isset($_POST['adresse']) && isset($_POST['code-postal']) && isset($_POST['ville'])
+        && isset($_FILES['file'])) {
+        $imagesLocation = 'images/users/';
+        $tmpName = $_FILES['file']['tmp_name'];
+        $name = $_FILES['file']['name'];
+        $size = $_FILES['file']['size'];
+        $error = $_FILES['file']['error'];
+        $tabExtension = explode('.', $name);
+        $extension = strtolower(end($tabExtension));
+        $extensions = ['jpg', 'png', 'jpeg', 'gif'];
+        $file = "";
+        if (in_array($extension, $extensions)) {
+            $uniqueName = uniqid('', true);
+            $file = $uniqueName . "." . $extension;
+            move_uploaded_file($tmpName, $imagesLocation . $file);
+        }
         $prenom = $_POST['prenom'];
         $nom = $_POST['nom'];
         $pseudo = $_POST['pseudo'];
@@ -38,9 +54,8 @@ if (isset($_GET['signup'])) {
         $ville = $_POST['ville'];
         $codePostal = $_POST['code-postal'];
         $adresse = $_POST['adresse'];
-        $PDP = $_POST['photo-de-profil'];
 
-        $userManager = new UserManager();
+        $userManager = new UserManager(Connection::get());
 
         //Ne pas oublier de faire la manip du chemin pour la photo de profil
 
@@ -48,7 +63,7 @@ if (isset($_GET['signup'])) {
         if ($doUserExists != null) {
             header('Location: sign-up-form.php?alreadyExists');
         } else {
-            $createdUser = $userManager->create(new User($email, $prenom, $nom, $pseudo, $password_hashed, $PDP, $codePostal, $adresse, $ville, false, false));
+            $createdUser = $userManager->create(new User($email, $prenom, $nom, $pseudo, $password_hashed, $file, $codePostal, $adresse, $ville, false, false));
             header('Location: actions/create-token.php?email=' . $_POST["email"]);
         }
     }

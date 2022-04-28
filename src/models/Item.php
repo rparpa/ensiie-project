@@ -8,7 +8,7 @@ class Item
 
     function __construct(int    $id,
                          string $name,
-                         string $proprietary,
+                         User $proprietary,
                          string $picture,
                          string $description,
                          string $creation_date,
@@ -33,10 +33,7 @@ class Item
      */
     public int $id;
 
-    /**
-     * @var string proprietaire de l'objet
-     */
-    public string $proprietary;
+    public User $proprietary;
 
     /**
      * @var string nom de l'objet
@@ -67,6 +64,8 @@ class Item
     public array $categories;
 
 
+
+
     /**
      * ajouté un constructeur
      */
@@ -80,10 +79,8 @@ class Item
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
-    public function getProprietary(): string
+
+    public function getProprietary(): User
     {
         return $this->proprietary;
     }

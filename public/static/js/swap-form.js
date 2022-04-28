@@ -1,4 +1,21 @@
+
+
+window.onload = loadPage;
+
+function loadPage() {
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(isConnected => {
+            if (!isConnected) {
+                document.location.href = "/index.php";
+            }
+        });
+}
+
 isItemSelectedMap = new Map();
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const items = document.getElementById('button-item-container').getElementsByClassName('item-button');
