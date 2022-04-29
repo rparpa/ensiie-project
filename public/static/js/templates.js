@@ -8,7 +8,7 @@ serveur
 Fonction permettant d'éviter les problèmes d'injection HTML
  */
 function escapeHtml(text) {
-    return new String(text)
+    return String(text)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
@@ -63,6 +63,97 @@ function itemTemplateAllInformation(item) {
     return itemsHTML;
 }
 
+function goToUserProfile(user) {
+    console.log(user);
+    //userProfileTemplateAllInformation(user);
+    //document.location.href = "/user-pages/user-profile.php";
+}
+
+/*
+Générer le code HTML pour un panneau utilisateur avec quelques unes de ses informations
+ */
+function userListTemplateInformation(user) {
+    let userHTML = "";
+    console.log(user); // OK
+    userHTML += '<div class="all-users-item" onclick="goToUserProfile(user)">' + // Problème ici, même avec une concaténation
+        '<div class="user-item-image">' +
+        '<img class="logo" class="photo" src="/images/users/' + escapeHtml(user['picture']) + '"/>' +
+        '</div>' +
+        '<div class="user-item-infos">' +
+        '<div class="all-user-item-info user-item-email">' +
+        '<p> Email : ' + escapeHtml(user["mail"]) + '</p>' +
+        '</div>' +
+        '<div class="all-user-item-info user-item-username">' +
+        '<p>Pseudo : ' + escapeHtml(user["pseudo"]) + '</p>' +
+        '</div>' +
+        '<div class="all-user-item-info user-item-firstname">' +
+        '<p> Prénom : ' + escapeHtml(user["firstname"]) + '</p>' +
+        '</div>' +
+        '<div class="all-user-item-info user-item-lastname">' +
+        '<p>  Nom : ' + escapeHtml(user["lastname"]) + '</p>' +
+        '</div>' +
+        '</div>' +
+        '<div class="button-ban" onclick="banUser()">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->' +
+        '</div>';
+    return userHTML;
+}
+
+/*
+Générer le code HTML pour un panneau utilisateur avec quelques unes de ses informations
+ */
+function userProfileTemplateAllInformation(user) {
+    let userHTML = "";
+    userHTML += '<div class="user-profile-header">' +
+        '<div class="user-profile-page-title">' +
+        '<h2>Profil utilisateur :</h2>' +
+        '</div>' +
+        '<div class="user-profile-image">' +
+        '<img class="logo" class="photo" src="/images/users/' + escapeHtml(user['picture']) + '"/>' +
+        '</div>' +
+        '<div class="user-profile-header-email">' +
+        '<h4>Email :</h4>' +
+        user['mail'] +
+        '</div>' +
+        '<div class="user-profile-header-username">' +
+        '<h4>Pseudo :</h4>' +
+        user['pseudo'] +
+        '</div>' +
+        '</div>' +
+        '<div class="user-profile-infos">' +
+        '<div class="user-profile-identite">' +
+        '<div class="user-profile-infos-header">' +
+        '<h4>Identité :</h4>' +
+        '</div>' +
+        '<div class="user-profile-infos-identite">' +
+        '<div class="all-user-item-info user-item-firstname">Prénom : ' +
+        user['firstname'] +
+        '</div>' +
+        '<div class="all-user-item-info user-item-lastname">Nom : ' +
+        user['lastname'] +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="user-profile-location">' +
+        '<div class="user-profile-infos-header">' +
+        '<h4>Localisation :</h4>' +
+        '</div>' +
+        '<div class="user-profile-street">' +
+        '<p>Adresse : ' + user['street'] + '</p>' +
+        '</div>' +
+        '<div class="user-profile-infos-location">' +
+        '<div class="user-item-city"> Ville : ' +
+        user['city'] +
+        '</div>' +
+        '<div class="user-item-zipcode"> Code Postal : ' +
+        user['zipcode'] +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="user-profile-button-ban" onclick="banUser()">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+    return userHTML;
+}
+
 /*
 Génére le code HTML pour un objet avec quelques informations
  */
@@ -80,7 +171,7 @@ function itemTemplateShort(item) {
     resultHTML += "</div>";
     resultHTML += "</div>";
     resultHTML += "<div class='user'>";
-    resultHTML += "<img src='../images/users/" + escapeHtml(item['proprietary']['picture']) +"'/>";
+    resultHTML += "<img src='../images/users/" + escapeHtml(item['proprietary']['picture']) + "'/>";
     resultHTML += "<span>" + escapeHtml(item['proprietary']['pseudo']) + "</span>";
     resultHTML += "</div>";
     resultHTML += "</a>";
@@ -131,7 +222,7 @@ function templateUserInformation(user) {
     userTemplateHTML += templateWishesUser(user);
     userTemplateHTML += "</div>";
     userTemplateHTML += "<div class='user'>";
-    userTemplateHTML += "<img src='../images/users/" +  user['picture'] + "'/>";
+    userTemplateHTML += "<img src='../images/users/" + user['picture'] + "'/>";
     userTemplateHTML += "<span>" + user + "</span>";
     userTemplateHTML += "</div>";
     userTemplateHTML += "</div>";
@@ -162,7 +253,7 @@ function templateItemsSwapped(swap, wantsPseudo) {
     let deltaLeft = (200 - (baseDeltaLeft * 2) - 120) / (Math.max(1, sizeUserFrom - 1));
     getItemsUserFrom(swap)?.forEach((item, index) => {
         const leftValue = baseDeltaLeft + (index * deltaLeft);
-        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + (index == 0 ? "z-index:3" : "") +"' href='objet.php?id=" + item['id'] + "'>";
+        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + (index == 0 ? "z-index:3" : "") + "' href='objet.php?id=" + item['id'] + "'>";
         itemsSwappedTemplateHTML += "<img src='/images/items/" + item['picture'] + "'/>";
         itemsSwappedTemplateHTML += "</a>";
     })
@@ -183,7 +274,7 @@ function templateItemsSwapped(swap, wantsPseudo) {
     deltaLeft = (200 - (baseDeltaLeft * 2) - 120) / (Math.max(1, sizeUserFrom - 1));
     getItemsUserTo(swap)?.forEach((item, index) => {
         const leftValue = baseDeltaLeft + (index * deltaLeft);
-        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + (index == 0 ? "z-index:3" : "") +"' href='objet.php?id=" + item['id'] + "'>";
+        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + (index == 0 ? "z-index:3" : "") + "' href='objet.php?id=" + item['id'] + "'>";
         itemsSwappedTemplateHTML += "<img src='/images/items/" + item['picture'] + "'/>";
         itemsSwappedTemplateHTML += "</a>";
     })

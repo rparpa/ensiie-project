@@ -14,7 +14,7 @@ class UserManager extends Manager
         /**
          * initialisation de la connexion à la base de données
          */
-        $this->pdo = $connection;
+        parent::__construct($connection);
     }
 
     public function findAll(): array
@@ -22,12 +22,11 @@ class UserManager extends Manager
         $pdoStatement = $this->pdo->query('SELECT * FROM tc_user');
         $users = [];
 
-        $dbarray = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+        $dbarray = $pdoStatement->fetchAll();
 
         foreach ($dbarray as $db_row) {
             $users[] = new User($db_row[0], $db_row[1], $db_row[2], $db_row[3], $db_row[4], $db_row[5], $db_row[6], $db_row[7], $db_row[8], $db_row[9], $db_row[10]);
         }
-
         return $users;
     }
 
@@ -73,13 +72,12 @@ class UserManager extends Manager
         return $user;
     }
 
-    public function lock(User &$user): bool
+    public function lockByEmail(string $email): bool
     {
-        $email = $user->getMail();
-        $status = $user->getIsBanned();
+        $status = $this->findById($email)->getIsBanned();
         $status = $status == 1 ? 0 : 1;
 
-        $pdoStatement = $this->pdo->prepare('UPDATE tc_user set us_is_banned=:status WHERE us_email=:email LIMIT 1');
+        $pdoStatement = $this->pdo->prepare('UPDATE tc_user set us_is_banned=:status WHERE us_mail=:email');
 
         $pdoStatement->bindValue(':status', $status, PDO::PARAM_BOOL);
         $pdoStatement->bindValue(':email', $email, PDO::PARAM_INT);
