@@ -1,6 +1,3 @@
-<?php
-?>
-
 <html lang="fr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -28,7 +25,7 @@
                     <input type="text" name="pseudo" placeholder="Pseudo" required>
                 </div>
                 <div class="signup-form-item email">
-                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="Email" maxlength="50" required>
                 </div>
                 <div class="signup-form-item password">
                     <input type="password" name="password" placeholder="Mot de passe" required>

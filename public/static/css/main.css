@@ -9,7 +9,7 @@
     --sidebar-width: 180px;
     --header-height: 80px;
     --disable-color: lightgrey;
-    font-family: "Roboto Thin";
+    font-family: "Roboto Thin", sans-serif;
 }
 
 body {
@@ -181,11 +181,11 @@ main {
     }
 
     main {
-        margin-left: 0px;
+        margin-left: 0;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 642px) {
     #logo-trocOn {
         display: none;
     }
@@ -561,8 +561,8 @@ button.wait {
 }
 
 .my-card-body .item {
-    background: none!important;
-    padding: 0!important;
+    background: none !important;
+    padding: 0 !important;
 }
 
 
@@ -1264,4 +1264,167 @@ input[data-autocompleted] {
 
 .display-none {
     display: none;
+}
+
+/* Page Administrateur : Tous les utilisateurs */
+
+.user-item-image {
+    grid-area: img;
+}
+
+.user-item-infos {
+    grid-area: infos;
+}
+
+.button-ban {
+    grid-area: btn-ban;
+}
+
+
+.all-users-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.all-users-item {
+    display: grid;
+    background: var(--dark-color);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    grid-column-gap: 12px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+    'img infos infos infos btn-ban'
+}
+
+.user-item-image, .user-item-image img {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    border-radius: 60px;
+}
+
+.user-item-email p, .user-item-username p, .user-item-firstname p, .user-item-lastname p {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.button-ban {
+    max-width: 100%;
+    max-height: 92px;
+    color: white;
+    padding: 24px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #791111;
+    border-radius: 12px;
+    border: none;
+    transition: all 200ms ease;
+    outline: 3px solid white;
+}
+
+.button-ban:hover {
+    transform: scale(1.1);
+    background-color: red;
+    outline: 3px solid var(--main-color);
+}
+
+@media screen and (max-width: 525px) {
+    .all-users-item {
+        grid-row-gap: 12px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            'img btn-ban'
+            'infos infos'
+    }
+}
+
+.user-profile-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+}
+
+.user-profile-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 16px;
+}
+
+.user-profile-image, .user-profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 80px;
+
+}
+
+/* align-self: center;
+    justify-self: center;
+ */
+.user-profile-infos {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.user-profile-infos-header, .user-profile-header-email, .user-profile-header-username {
+    text-align: center;
+}
+
+.user-profile-header-email, .user-profile-header-username, .user-profile-identite, .user-profile-location {
+    background-color: var(--dark-color);
+    padding: 12px;
+    border-radius: 18px;
+    width: 100%;
+}
+
+.user-profile-infos-header h4, .user-profile-header-email h4, .user-profile-header-username h4 {
+    margin-bottom: 12px;
+}
+
+.user-profile-street {
+    text-align: center;
+}
+
+.user-profile-infos-identite, .user-profile-infos-location  {
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.user-profile-button-ban {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+    max-width: 80%;
+    min-width: 50%;
+    max-height: 100px;
+    color: white;
+    padding: 24px 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #791111;
+    border-radius: 12px;
+    border: none;
+    transition: all 200ms ease;
+    outline: 3px solid white;
+}
+
+.user-profile-button-ban:hover {
+    transform: scale(1.1);
+    background-color: red;
+    outline: 3px solid var(--main-color);
 }
