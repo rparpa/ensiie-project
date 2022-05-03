@@ -21,7 +21,7 @@ include "../../src/templates/structure.php";
     <div>
         Barre de recherche
     </div>
-    <section class="all-swaps-container">
+    <section class="all-categories-container">
     </section>
 </main>
 </body>
