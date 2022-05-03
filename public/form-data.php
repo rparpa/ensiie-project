@@ -1,7 +1,9 @@
 <?php
 
 use Db\Connection;
+use Db\TokenManager;
 use Db\UserManager;
+use models\Token;
 use models\User;
 
 require_once '../vendor/autoload.php';
@@ -17,7 +19,14 @@ if (isset($_GET['login'])) {
             $password_hashed = hash("sha384", $_POST['password']); // Ne peut normalement pas renvoyer false car on lui donne bien une string
             // et pas autre chosee et ne peut pas renvoyer null puisque l'algorithme donné en paramètre est valide
             if ($doUserExists->getPassword() === $password_hashed) {
-                header('Location: actions/create-token.php?email=' . $_POST["email"]);
+                $tokenManager = new TokenManager(Connection::get());
+                $result = $tokenManager->create(new Token(generateUserInfosArraysJWT($_POST["email"]), $_POST["email"]));
+                if ($result != null) {
+                    echo '<script type="text/javascript">';
+                    echo 'localStorage.setItem("token","' . $result->getToken() . '");';
+                    echo 'document.location.href="../user-pages/accueil.php";';
+                    echo '</script>';
+                }
             } else {
                 header('Location: index.php?unknownUser');
             }
@@ -57,14 +66,19 @@ if (isset($_GET['signup'])) {
 
         $userManager = new UserManager(Connection::get());
 
-        //Ne pas oublier de faire la manip du chemin pour la photo de profil
-
         $doUserExists = $userManager->findById($email);
         if ($doUserExists != null) {
             header('Location: sign-up-form.php?alreadyExists');
         } else {
             $createdUser = $userManager->create(new User($email, $prenom, $nom, $pseudo, $password_hashed, $file, $codePostal, $adresse, $ville, false, false));
-            header('Location: actions/create-token.php?email=' . $_POST["email"]);
+            $tokenManager = new TokenManager(Connection::get());
+            $result = $tokenManager->create(new Token(generateUserInfosArraysJWT($_POST["email"]), $_POST["email"]));
+            if ($result != null) {
+                echo '<script type="text/javascript">';
+                echo 'localStorage.setItem("token","' . $result->getToken() . '");';
+                echo 'document.location.href="../user-pages/accueil.php";';
+                echo '</script>';
+            }
         }
     }
     // On ne peut pas avoir une erreur de champ non rempli puisque j'ai mis des required dans le html
