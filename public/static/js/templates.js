@@ -164,6 +164,45 @@ function userProfileTemplateAllInformation(user) {
 }
 
 /*
+Générer le code HTML pour un écran avec tous les noms de catégories et leur couleur associée
+*/
+
+colors = [
+    '#009966',
+    '#8fbc8f',
+    '#3cb371',
+    '#00b140',
+    '#6699cc',
+    '#0000ff',
+    '#9400d3',
+    '#330066',
+    '#c21e56',
+    '#cc338b',
+    '#dc143c',
+    '#cd5b45',
+    '#eee600',
+    '#ed9121',
+    '#c39953'
+];
+
+function getColorOfCategory(categoryName) {
+    let value = 0;
+    for (let i = 0; i < categoryName.length; i++) {
+        value += categoryName.charAt(i).charCodeAt(0);
+    }
+    return colors[value % colors.length];
+}
+
+function templateAllCategories(category) {
+    let userHTML = "";
+    let color = getColorOfCategory(category["name"]);
+    userHTML += '<div class="all-categories-item" style="background-color:' + color + '">' +
+        '<div class="category-title">' + category['name'] + '</div>' +
+        '</div>';
+    return userHTML;
+}
+
+/*
 Génére le code HTML pour un objet avec quelques informations
  */
 function itemTemplateShort(item) {

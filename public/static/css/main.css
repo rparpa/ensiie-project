@@ -1429,3 +1429,26 @@ input[data-autocompleted] {
     background-color: red;
     outline: 3px solid var(--main-color);
 }
+
+.all-categories-container {
+    display: grid;
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.all-categories-item {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    min-width: 189px;
+    padding: 32px 0;
+    border-radius: 24px;
+    transition: all 300ms ease;
+}
+
+.category-title {
+    font-size: 20px;
+    white-space: nowrap;
+}

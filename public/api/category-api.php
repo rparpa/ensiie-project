@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET["email"])) {
         $categoryById = $categoryManager->findById($_GET["id"]);
         if ($categoryById === null) {
-            echo json_encode(['CategoryIdNotFound' => "true", 'Message' => "La categorie recherche n'est pas trouve"]);
+            echo json_encode(['CategoryIdNotFound' => "true", 'Message' => "La categorie recherche n'est pas trouvee"]);
         }
         echo json_encode($categoryById);
     } else {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_GET["categoryName"])) {
-        $categoryManager->create(new Category(NULL, $_GET["categoryName"], NULL));
+        $categoryManager->create(new Category(NULL, $_GET["categoryName"], 0));
     }
 } else {
     http_response_code(405);
