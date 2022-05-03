@@ -16,7 +16,8 @@ include "../../src/templates/structure.php";
     <script src="../static/js/check-form-item.js"></script>
     <script src="../static/js/request-user.js"></script>
 </head>
-<body">
+<?php $test = $_GET["email"]; ?>
+<?php echo "<body onload='getUser($test;)'>" ?> PUTAIN JE COMPRENDS RIEN POURQUOI CA MARCHE PAS
 <main>
     <!-- Au clic  sur le logo "accéder page admin", le menu à gauche change pour donner la possibilité de choisir des
     menus admin, et si on reclic sur ce logo, on revient en mode "utilisateur" -->

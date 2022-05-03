@@ -40,7 +40,7 @@ function displaySwaps(swaps) {
 
 
 function updateSwap(idSwap, newValue) {
-    let updateSwap = swaps.find(s => s['id'] == idSwap);
+    let updateSwap = swaps.find(s => s['id'] === idSwap);
     updateSwap['status'] = newValue;
     console.log(updateSwap);
     fetch('/api/trocs/update.php',

@@ -21,21 +21,19 @@ function displayAllUsers(users) {
     document.getElementsByClassName('all-users-container')[0].innerHTML = usersHTML;
 }
 
-/*function getUser() {
-    fetch('/api/user-api.php', {
-        method: 'GET',
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
+function getUser(email) {
+    fetch('/api/user-api.php?email=' + email, {
+        method: 'GET'
     }).then(response => {
         return response.json();
     }).then(res => displayUserProfile(res));
-}*/
+}
 
 function displayUserProfile(user) {
+    // On reçoit le bon user
     let userHTML = "";
     if (user != null) {
-        userHTML += userProfileTemplateAllInformation(user);
+        userHTML = userProfileTemplateAllInformation(user); // Renvoie le bon template pour le profil, avec les bonnes données
     } else {
         userHTML = noResultContent("Vous n'avez pas d'utilisateur");
     }

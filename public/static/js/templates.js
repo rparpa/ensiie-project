@@ -63,19 +63,16 @@ function itemTemplateAllInformation(item) {
     return itemsHTML;
 }
 
-function goToUserProfile(user) {
-    console.log(user);
-    //userProfileTemplateAllInformation(user);
-    //document.location.href = "/user-pages/user-profile.php";
+function goToUserProfile(email) {
+    document.location.href = "/user-pages/user-profile.php?email=" + email;
 }
 
 /*
 Générer le code HTML pour un panneau utilisateur avec quelques unes de ses informations
  */
 function userListTemplateInformation(user) {
-    let userHTML = "";
-    console.log(user); // OK
-    userHTML += '<div class="all-users-item" onclick="goToUserProfile(user)">' + // Problème ici, même avec une concaténation
+    let usersHTML = "";
+    usersHTML += '<div class="all-users-item" onclick="goToUserProfile(\'' + user['mail'] + '\')">' + // Mieux, passer directement le user, ça éviterait une requête pour rien
         '<div class="user-item-image">' +
         '<img class="logo" class="photo" src="/images/users/' + escapeHtml(user['picture']) + '"/>' +
         '</div>' +
@@ -93,9 +90,9 @@ function userListTemplateInformation(user) {
         '<p>  Nom : ' + escapeHtml(user["lastname"]) + '</p>' +
         '</div>' +
         '</div>' +
-        '<div class="button-ban" onclick="banUser()">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->' +
+        '<div class="button-ban" onclick="banUser(\'' + user['mail'] + '\')">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->' +
         '</div>';
-    return userHTML;
+    return usersHTML;
 }
 
 /*
@@ -150,7 +147,7 @@ function userProfileTemplateAllInformation(user) {
         '</div>' +
         '</div>' +
         '</div>' +
-        '<div class="user-profile-button-ban" onclick="banUser()">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+        '<div class="user-profile-button-ban" onclick="banUser(\'' + user['mail'] + '\')">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
     return userHTML;
 }
 

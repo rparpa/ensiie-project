@@ -1,0 +1,33 @@
+<?php
+
+use Db\Connection;
+use Db\CategoryManager;
+use models\Category;
+
+require_once '../../vendor/autoload.php';
+
+header('Content-Type: application/json');
+
+// Ci-desous une liste de fonctions à utliser pour les fichiers API pour autoriser la réception de certaines méthodes d'appel aux endpoints.
+
+$categoryManager = new CategoryManager(Connection::get());
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_GET["email"])) {
+        $categoryById = $categoryManager->findById($_GET["id"]);
+        if ($categoryById === null) {
+            echo json_encode(['CategoryIdNotFound' => "true", 'Message' => "La categorie recherche n'est pas trouve"]);
+        }
+        echo json_encode($categoryById);
+    } else {
+        echo json_encode($categoryManager->findAll(), JSON_PRETTY_PRINT);
+    }
+} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_GET["categoryName"])) {
+        $categoryManager->create(new Category(NULL, $_GET["categoryName"], NULL));
+    }
+} else {
+    http_response_code(405);
+    echo json_encode(['message' => 'Méthode non autorisée']);
+    exit;
+}

@@ -19,8 +19,7 @@ if (isset($_GET["mail"]) && isset($_GET["is_done"]) && $_GET["mail"] === $jwt->g
     $result = $swapManager->findAllByIsDoneAndUserMail($_GET["mail"], $_GET["is_done"]);
 } else if (isset($_GET["last-10"])) {
     $result = $swapManager->findAllOrderByEndDateDescLimit10();
-}
-else {
+} else {
     $result = $swapManager->findAll();
 }
 echo json_encode($result, JSON_UNESCAPED_UNICODE);

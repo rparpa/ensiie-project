@@ -10,6 +10,7 @@ function loadItems() {
                 document.location.href = "/index.php";
             } else {
                 fetch('/api/objets/findAll.php', {
+                    method: 'GET',
                     headers: {
                         'Authorization': localStorage.getItem('token')
                     }

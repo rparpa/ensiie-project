@@ -1,6 +1,5 @@
 <?php
 
-use auth\JWT;
 use Db\UserManager;
 use Db\Connection;
 
@@ -14,21 +13,18 @@ $userManager = new UserManager(Connection::get());
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET["email"])) {
-        $userFromDBById = $userManager->findById($_GET["email"]);
-        if ($userFromDBById === null) {
+        $userById = $userManager->findById($_GET["email"]);
+        if ($userById === null) {
             echo json_encode(['UserIdNotFound' => "true", 'Message' => "L'utilisateur recherche n'est pas trouve"]);
         }
-        echo json_encode($userFromDBById);
+        echo json_encode($userById);
     } else {
         echo json_encode($userManager->findAll(), JSON_PRETTY_PRINT);
     }
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_GET["token"])) {
-        $jwt = new JWT();
-        $email = $jwt->getPayload($_GET["token"])['email'];
-        $userManager->lockByEmail($email);
+    if (isset($_GET["email"])) {
+        $userManager->lockByEmail($_GET["email"]);
     }
-
 } else if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
 
 } else {
