@@ -1,6 +1,5 @@
 <?php
 require_once '../../vendor/autoload.php';
-include "../../src/templates/structure.php";
 ?>
 
 <html lang="fr">
@@ -15,13 +14,14 @@ include "../../src/templates/structure.php";
     <script src="../static/js/display-img.js"></script>
     <script src="../static/js/check-form-item.js"></script>
     <script src="../static/js/request-admin.js"></script>
+    <script src="../static/js/structure.js"></script>
 </head>
 <body onload="getAllCategories()">
 <main>
     <div>
         Barre de recherche
     </div>
-    <section class="all-categories-container">
+    <section id="structure" class="all-categories-container">
     </section>
 </main>
 </body>

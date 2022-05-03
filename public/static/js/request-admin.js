@@ -32,6 +32,17 @@ function displayAllCategories(categories) {
     document.getElementsByClassName('all-categories-container')[0].innerHTML = categoriesHTML;
 }
 
+function addCategory() {
+    fetch('/api/category-api.php', {
+        method: 'POST',
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    }).then(response => {
+        return response.json();
+    });
+}
+
 function banUser(email) {
     fetch('/api/user-api.php?email=' + email, {
         method: 'POST',

@@ -8,8 +8,6 @@ require_once '../../vendor/autoload.php';
 
 header('Content-Type: application/json');
 
-// Ci-desous une liste de fonctions à utliser pour les fichiers API pour autoriser la réception de certaines méthodes d'appel aux endpoints.
-
 $categoryManager = new CategoryManager(Connection::get());
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -24,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_GET["categoryName"])) {
-        $categoryManager->create(new Category(NULL, $_GET["categoryName"], 0));
+        echo json_encode($categoryManager->create(new Category(0, $_GET["categoryName"], 0)));
     }
 } else {
     http_response_code(405);
