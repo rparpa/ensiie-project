@@ -4,6 +4,16 @@ serveur
  */
 
 
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+};
+
 /*
 Fonction permettant d'éviter les problèmes d'injection HTML
  */
@@ -192,12 +202,16 @@ function swapTemplateAllInformation(swap) {
     swapTemplateHTML += "<div class='swap-content'/>";
     swapTemplateHTML += "<div class='swap-info'/>";
     swapTemplateHTML += templateItemsSwapped(swap, false);
-    swapTemplateHTML += templateUserInformation(swap['user_to']);
+    if (swap['user_from']['email'] == parseJwt(localStorage.getItem('token'))["email"]) {
+        swapTemplateHTML += templateUserInformation(swap['user_to']);
+    } else {
+        swapTemplateHTML += templateUserInformation(swap['user_from']);
+    }
     swapTemplateHTML += "</div>";
     if (!swap['is_done']) {
         swapTemplateHTML += "<div class='form'>";
         swapTemplateHTML += "<div class='actions'/>";
-        if (swap['user_from'] == 'toto') {
+        if (swap['user_from']['email'] == parseJwt(localStorage.getItem('token'))["email"]) {
             swapTemplateHTML += "<button class='wait' disabled>EN ATTENTE</button>"
         } else {
             swapTemplateHTML += "<button class='refusal' onclick='updateSwap(" + swap['id'] + ", 2)'>REFUSER</button>";
@@ -218,13 +232,13 @@ function templateUserInformation(user) {
     let userTemplateHTML = "";
     userTemplateHTML += "<div class='user-profile'>";
     userTemplateHTML += "<div class='adress'>";
-    userTemplateHTML += "<span> <span class='label'> Nom et prénom : </span> JUSSEAUME Jonathan </span>";
-    userTemplateHTML += "<span> <span class='label'> Adresse : </span> 10 rue du con de la ciudad, PARIS(75007) </span>";
+    userTemplateHTML += "<span> <span class='label'> Nom et prénom : </span> " + escapeHtml(user['lastname']) + " " + escapeHtml(user['firstname']) + "</span>";
+    userTemplateHTML += "<span> <span class='label'> Adresse : </span> " + escapeHtml(user['street']) + ", " + escapeHtml(user['city']) + "(" + escapeHtml(user['zipcode']) + ")" + " </span>";
     userTemplateHTML += templateWishesUser(user);
     userTemplateHTML += "</div>";
     userTemplateHTML += "<div class='user'>";
-    userTemplateHTML += "<img src='../images/users/" + user['picture'] + "'/>";
-    userTemplateHTML += "<span>" + user + "</span>";
+    userTemplateHTML += "<img src='../images/users/" + escapeHtml(user['picture']) + "'/>";
+    userTemplateHTML += "<span>" + escapeHtml(user['pseudo']) + "</span>";
     userTemplateHTML += "</div>";
     userTemplateHTML += "</div>";
     return userTemplateHTML;
@@ -260,9 +274,9 @@ function templateItemsSwapped(swap, wantsPseudo) {
     })
     itemsSwappedTemplateHTML += "</div>";
     if (wantsPseudo) {
-        itemsSwappedTemplateHTML += "<span class='pseudo'>" + escapeHtml(swap['user_from']) + "</span>";
+        itemsSwappedTemplateHTML += "<span class='pseudo'>" + escapeHtml(swap['user_from']['email']) + "</span>";
     } else {
-        itemsSwappedTemplateHTML += "<span class='pseudo'>" + getItemsUserTo(swap)?.map(s => escapeHtml(s['name']))?.join(", ") + "</span>";
+        itemsSwappedTemplateHTML += "<span class='pseudo'>" + getItemsUserFrom(swap)?.map(s => escapeHtml(s['name']))?.join(", ") + "</span>";
     }
     itemsSwappedTemplateHTML += "</div>";
     itemsSwappedTemplateHTML += "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='var(--font-color)'\n" +
@@ -281,7 +295,7 @@ function templateItemsSwapped(swap, wantsPseudo) {
     })
     itemsSwappedTemplateHTML += "</div>";
     if (wantsPseudo) {
-        itemsSwappedTemplateHTML += "<span class='pseudo'>" + escapeHtml(swap['user_to']) + "</span>";
+        itemsSwappedTemplateHTML += "<span class='pseudo'>" + escapeHtml(swap['user_to']['email']) + "</span>";
     } else {
         itemsSwappedTemplateHTML += "<span class='pseudo'>" + getItemsUserTo(swap)?.map(s => escapeHtml(s['name']))?.join(", ") + "</span>";
     }
@@ -299,29 +313,29 @@ function getTitleSwap(swap) {
             "d=\"M32 160h319.9l.0791 72c0 9.547 5.652 18.19 14.41 22c8.754 3.812 18.93 2.078 25.93-4.406l112-104c10.24-9.5 10.24-25.69 0-35.19l-112-104c-6.992-6.484-17.17-8.217-25.93-4.408c-8.758 3.816-14.41 12.46-14.41 22L351.9 96H32C14.31 96 0 110.3 0 127.1S14.31 160 32 160zM480 352H160.1L160 279.1c0-9.547-5.652-18.19-14.41-22C136.9 254.2 126.7 255.9 119.7 262.4l-112 104c-10.24 9.5-10.24 25.69 0 35.19l112 104c6.992 6.484 17.17 8.219 25.93 4.406C154.4 506.2 160 497.5 160 488L160.1 416H480c17.69 0 32-14.31 32-32S497.7 352 480 352z\"/>\n" +
             "</svg>";
         title += "<span style='color: var(--refusal-color)'>"
-        title += "Troc refusé par " + swap['user_to'] + " le: " + swap['end_date'];
+        title += "Troc refusé par " + escapeHtml(swap['user_to']['pseudo']) + " le: " + escapeHtml(swap['end_date']);
     } else if (swap['status'] == 1) {
         title +=
             "<path fill=\"var(--validation-color)\"\n" +
             " d=\"M32 160h319.9l.0791 72c0 9.547 5.652 18.19 14.41 22c8.754 3.812 18.93 2.078 25.93-4.406l112-104c10.24-9.5 10.24-25.69 0-35.19l-112-104c-6.992-6.484-17.17-8.217-25.93-4.408c-8.758 3.816-14.41 12.46-14.41 22L351.9 96H32C14.31 96 0 110.3 0 127.1S14.31 160 32 160zM480 352H160.1L160 279.1c0-9.547-5.652-18.19-14.41-22C136.9 254.2 126.7 255.9 119.7 262.4l-112 104c-10.24 9.5-10.24 25.69 0 35.19l112 104c6.992 6.484 17.17 8.219 25.93 4.406C154.4 506.2 160 497.5 160 488L160.1 416H480c17.69 0 32-14.31 32-32S497.7 352 480 352z\"/>\n" +
             "</svg>";
         title += "<span style='color: var(--validation-color)'>"
-        title += "Troc accepté par " + swap['user_to'] + " le: " + swap['end_date'];
+        title += "Troc accepté par " + escapeHtml(swap['user_to']['pseudo']) + " le: " + escapeHtml(swap['end_date']);
     } else {
         title += "<path fill=\"var(--font-color)\"\n" +
             "d=\"M32 160h319.9l.0791 72c0 9.547 5.652 18.19 14.41 22c8.754 3.812 18.93 2.078 25.93-4.406l112-104c10.24-9.5 10.24-25.69 0-35.19l-112-104c-6.992-6.484-17.17-8.217-25.93-4.408c-8.758 3.816-14.41 12.46-14.41 22L351.9 96H32C14.31 96 0 110.3 0 127.1S14.31 160 32 160zM480 352H160.1L160 279.1c0-9.547-5.652-18.19-14.41-22C136.9 254.2 126.7 255.9 119.7 262.4l-112 104c-10.24 9.5-10.24 25.69 0 35.19l112 104c6.992 6.484 17.17 8.219 25.93 4.406C154.4 506.2 160 497.5 160 488L160.1 416H480c17.69 0 32-14.31 32-32S497.7 352 480 352z\"/>\n" +
             "</svg>";
         title += "<span>"
-        title += "Troc initié par " + swap['user_from'] + " le : " + swap['creation_date'];
+        title += "Troc initié par " + escapeHtml(swap['user_from']['pseudo']) + " le : " + escapeHtml(swap['creation_date']);
     }
     title += "</span>";
     return title;
 }
 
 function getItemsUserFrom(swap) {
-    return swap['items'].filter(item => item['proprietary'] == swap['user_from']);
+    return swap['items'].filter(item => item['proprietary']['email'] == swap['user_from']['email']);
 }
 
 function getItemsUserTo(swap) {
-    return swap['items'].filter(item => item['proprietary'] == swap['user_to']);
+    return swap['items'].filter(item => item['proprietary']['email'] == swap['user_to']['email']);
 }

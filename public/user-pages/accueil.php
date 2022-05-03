@@ -10,6 +10,7 @@
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="../static/js/check-auth.js"></script>
     <script src="../static/js/templates.js"></script>
+    <script src="../static/js/structure.js"></script>
     <script src="../static/js/display-nav.js"></script>
     <script src="../static/js/apply-category-color.js"></script>
     <script src="../static/js/bar-chart.js"></script>
@@ -19,11 +20,13 @@
 <body>
 <?php
 require_once '../../vendor/autoload.php';
-include "../../src/templates/structure.php";
 use Db\Connection;
 use Db\CategoryManager;
 
 ?>
+<section id="structure">
+
+</section>
 <main class="search">
     <section class="my-card my-card-100">
         <section class="my-card-header">

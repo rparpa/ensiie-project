@@ -5,10 +5,11 @@ function loadPage() {
         .then(response => {
             return response.json();
         })
-        .then(isConnected => {
-           if (!isConnected) {
+        .then(user => {
+           if (user == null) {
                document.location.href = "/index.php";
            }
+           add_structure(user);
         });
 }
 

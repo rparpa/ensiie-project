@@ -7,11 +7,12 @@ function loadSwaps() {
         .then(response => {
             return response.json();
         })
-        .then(isConnected => {
-            if (!isConnected) {
+        .then(user => {
+            if (user == null) {
                 document.location.href = "/index.php";
             } else {
-                fetch('/api/trocs/findAll.php?mail=toto&is_done=true', {
+                add_structure(user);
+                fetch('/api/trocs/findAll.php?mail=' + parseJwt(localStorage.getItem('token'))['email'] +  '&is_done=true', {
                     headers: {
                         'Authorization': localStorage.getItem('token')
                     }

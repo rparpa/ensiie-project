@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/check-auth.js"></script>
     <script src="../static/js/templates.js"></script>
+    <script src="../static/js/structure.js"></script>
     <script src="../static/js/display-nav.js"></script>
     <script src="../static/js/apply-category-color.js"></script>
     <script src="../static/js/active-swaps.js"></script>
@@ -13,8 +14,10 @@
 <body>
 <?php
 require_once '../../vendor/autoload.php';
-include "../../src/templates/structure.php";
 ?>
+<section id="structure">
+
+</section>
 <main>
     <section id="swaps-container">
     </section>

@@ -5,17 +5,17 @@ function loadPage() {
         .then(response => {
             return response.json();
         })
-        .then(isConnected => {
-            if (!isConnected) {
+        .then(user => {
+            if (user == null) {
                 document.location.href = "/index.php";
             }
+            add_structure(user);
         });
 }
 
 function search() {
     let categoriesSelectedString = getValueCategoriesSelected();
     categoriesSelectedString = categoriesSelectedString.substring(0, categoriesSelectedString.length - 1);
-    console.log(categoriesSelectedString);
     let query = '/api/objets/search.php?';
     if (categoriesSelectedString != '') {
         query += 'categories=' + categoriesSelectedString + '&';
@@ -30,7 +30,7 @@ function search() {
         }
     }).then(data => {
         return data.json()
-    }).then(res => displayFoundItems(res));
+    }).then(res => displayFoundItems(res?.filter(it => it['is_swappable'])));
 }
 
 function displayFoundItems(items) {

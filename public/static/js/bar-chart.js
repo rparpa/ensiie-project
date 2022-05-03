@@ -6,12 +6,12 @@ let data;
 function sendRequestStats() {
     checkAuth()
         .then(response => {
-            console.log(response);
             return response.json();
         })
-        .then(isConnected => {
-            console.log(isConnected);
-            if (isConnected) {
+        .then(user => {
+            if (user != null) {
+                add_structure(user);
+
                 fetch('/api/trocs/stats.php', {
                     headers: {
                         'Authorization': localStorage.getItem('token')
@@ -130,7 +130,6 @@ function createBarChart() {
         })
         .attr("width", 25)
         .on("mouseover", function (d) {
-            console.log(d);
             tooltip.style("display", null);
         })
         .on("mouseout", function () {

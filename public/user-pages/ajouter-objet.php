@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/check-auth.js"></script>
     <script src="../static/js/templates.js"></script>
+    <script src="../static/js/structure.js"></script>
     <script src="../static/js/display-nav.js"></script>
     <script src="../static/js/categories-form.js"></script>
     <script src="../static/js/display-img.js"></script>
@@ -14,8 +15,10 @@
 <body>
 <?php
 require_once '../../vendor/autoload.php';
-include "../../src/templates/structure.php";
 ?>
+<section id="structure">
+
+</section>
 <main class="search">
     <section class="my-card my-card-100">
         <section class="my-card-header">

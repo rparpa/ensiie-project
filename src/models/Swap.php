@@ -12,8 +12,8 @@ class Swap
     public string $end_date;
     public bool $is_done;
     public int $status; // 0 = en attente, 1 = accepté, 2 = refusé
-    public string $user_from;
-    public string $user_to;
+    public User $user_from;
+    public User $user_to;
     public array $items;
 
     function __construct($id, $creation_date, $end_date, $is_done, $status, $user_from, $user_to, $items)
@@ -106,31 +106,31 @@ class Swap
     /**
      * @return string
      */
-    public function getUserFrom(): string
+    public function getUserFrom(): User
     {
         return $this->user_from;
     }
 
     /**
-     * @param string $user_from
+     * @param User $user_from
      */
-    public function setUserFrom(string $user_from): void
+    public function setUserFrom(User $user_from): void
     {
         $this->user_from = $user_from;
     }
 
     /**
-     * @return string
+     * @return User
      */
-    public function getUserTo(): string
+    public function getUserTo(): User
     {
         return $this->user_to;
     }
 
     /**
-     * @param string $user_to
+     * @param User $user_to
      */
-    public function setUserTo(string $user_to): void
+    public function setUserTo(User $user_to): void
     {
         $this->user_to = $user_to;
     }

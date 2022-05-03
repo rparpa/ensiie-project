@@ -58,7 +58,7 @@ CREATE TABLE "tc_swap"
     ts_is_done       BOOLEAN NOT NULL                                    DEFAULT FALSE,
     ts_tss_id        NUMERIC NOT NULL REFERENCES tc_swap_status (tss_id) DEFAULT 0,
     ts_us_mail_from  TEXT    NOT NULL REFERENCES tc_user (us_mail) ON DELETE CASCADE,
-    ts_us_mail_to    TEXT    NOT NULL REFERENCES tc_user (us_mail) ON DELETE CASCADE
+    ts_us_mail_to    TEXT    NOT NULL REFERENCES tc_user (us_mail) ON DELETE CASCADE CHECK ( ts_us_mail_from != ts_us_mail_to )
 );
 
 CREATE TABLE "tc_item_category"
@@ -115,22 +115,28 @@ VALUES ('titi',
         false,
         false);
 
-CREATE FUNCTION item_not_swappable() RETURNS trigger
+CREATE FUNCTION close_swap_of_item() RETURNS trigger
     LANGUAGE plpgsql
 AS
 $$
 DECLARE
 BEGIN
-    UPDATE tc_item SET it_is_swappable= FALSE WHERE it_id = new.id_item;
+    IF (new.it_is_swappable = FALSE AND old.it_is_swappable = TRUE) THEN
+        UPDATE tc_swap
+        SET ts_tss_id=2,ts_end_date=CURRENT_DATE, ts_is_done=true
+        WHERE ts_id IN (select id_swap from tc_swap_item WHERE id_item = new.it_id)
+          and ts_tss_id = 0;
+    end IF;
     RETURN new;
 END;
 $$;
 
-CREATE TRIGGER tr_item_not_swappable
-    AFTER INSERT
-    ON tc_swap_item
+CREATE TRIGGER tr_close_swaps
+    AFTER UPDATE
+    ON tc_item
     FOR EACH ROW
-EXECUTE PROCEDURE item_not_swappable();
+EXECUTE PROCEDURE close_swap_of_item();
+
 
 
 CREATE FUNCTION update_status_swap() RETURNS trigger
@@ -144,16 +150,21 @@ DECLARE
             WHERE id_swap = id_s;
     rec_items_id RECORD;
 BEGIN
-    new.ts_is_done = TRUE;
-    new.ts_end_date = CURRENT_DATE;
+    /* Si le troc est terminé alors on met les bons champs associés, si le troc est validé alors notre objet devient non trocable, cela aura pour conséquence de fermer tous les trocs
+       associés à cet objet
+     */
     IF new.ts_tss_id = 1 OR new.ts_tss_id = 2 THEN
-        IF new.ts_tss_id = 2 THEN
+        new.ts_is_done = TRUE;
+        new.ts_end_date = CURRENT_DATE;
+        IF new.ts_tss_id = 1 THEN
             OPEN cur_items_in_swap(new.ts_id);
             LOOP
                 FETCH cur_items_in_swap INTO rec_items_id;
                 EXIT WHEN NOT found;
-                UPDATE tc_item SET it_is_swappable= TRUE WHERE it_id = rec_items_id.id_item;
+                UPDATE tc_item SET it_is_swappable= FALSE where it_id = rec_items_id.id_item;
+
             END LOOP;
+            new.ts_tss_id = 1;
         END IF;
     END IF;
 
@@ -162,17 +173,19 @@ END;
 $$;
 
 CREATE TRIGGER tr_swap_status_changed
-    BEFORE UPDATE
+    AFTER UPDATE
     ON tc_swap
     FOR EACH ROW
 EXECUTE PROCEDURE update_status_swap();
 
-CREATE VIEW CALENDAR_LAST_SEVEN_DAYS AS SELECT  (current_date - (n || 'days')::INTERVAL)::DATE date
-                                        FROM generate_series(0, 6) n ORDER BY date;
+CREATE VIEW CALENDAR_LAST_SEVEN_DAYS AS
+SELECT (current_date - (n || 'days')::INTERVAL)::DATE date
+FROM generate_series(0, 6) n
+ORDER BY date;
 
 CREATE TABLE "tc_token"
 (
-    tr_token           TEXT     NOT NULL,
-    id_user            TEXT    NOT NULL REFERENCES tc_user (us_mail),
+    tr_token TEXT NOT NULL,
+    id_user  TEXT NOT NULL REFERENCES tc_user (us_mail),
     PRIMARY KEY (id_user, tr_token)
 );

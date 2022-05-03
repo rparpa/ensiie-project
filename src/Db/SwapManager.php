@@ -19,10 +19,13 @@ class SwapManager extends Manager
 
     private ItemManager $itemManager;
 
+    private UserManager $userManager;
+
     public function __construct(PDO $connection)
     {
         parent::__construct($connection);
         $this->itemManager = new ItemManager($connection);
+        $this->userManager = new UserManager($connection);
     }
 
     public function findAll(): array
@@ -35,7 +38,7 @@ class SwapManager extends Manager
     public function findAllOrderByEndDateDescLimit10(): array
     {
         $swaps = [];
-        $pdoStatement = $this->pdo->query('SELECT * FROM tc_swap WHERE ts_end_date IS NOT NULL ORDER BY ts_end_date DESC LIMIT 10');
+        $pdoStatement = $this->pdo->query('SELECT * FROM tc_swap WHERE ts_end_date IS NOT NULL AND ts_tss_id=1 ORDER BY ts_end_date DESC LIMIT 10');
         return $this->executeQueryAndReturnSwaps($pdoStatement, $swaps);
     }
 
@@ -61,8 +64,8 @@ class SwapManager extends Manager
 
             $pdoStatement = $this->pdo->prepare("INSERT INTO tc_swap(ts_us_mail_from, ts_us_mail_to) VALUES (:user_from, :user_to)");
 
-            $pdoStatement->bindValue(':user_from', $object->getUserFrom(), \PDO::PARAM_STR);
-            $pdoStatement->bindValue(':user_to', $object->getUserTo(), \PDO::PARAM_STR);
+            $pdoStatement->bindValue(':user_from', $object->getUserFrom()->getMail(), \PDO::PARAM_STR);
+            $pdoStatement->bindValue(':user_to', $object->getUserTo()->getMail(), \PDO::PARAM_STR);
             $execute = $pdoStatement->execute();
             if ($execute) {
                 $newSwapId = $this->pdo->lastInsertId();
@@ -99,8 +102,8 @@ class SwapManager extends Manager
                     $db_row[2],
                     $db_row[3],
                     $db_row[4],
-                    $db_row[5],
-                    $db_row[6],
+                    $this->userManager->findById($db_row[5]),
+                    $this->userManager->findById($db_row[6]),
                     $this->itemManager->findAllBySwapId($db_row[0]));
             }
         }
@@ -110,12 +113,13 @@ class SwapManager extends Manager
 
     public function update($object)
     {
+        // L'update a uniquement pour rôle de fermer le troc avec son statut REUSSITE ou ECHEC
         $swap = null;
         if ($object instanceof Swap) {
             $swap = $this->findById($object->getId());
             if ($swap != null) {
                 $swap->setStatus($object->getStatus());
-                $pdoStatement = $this->pdo->prepare("UPDATE tc_swap SET ts_tss_id = :new_status WHERE ts_id = :id");
+                $pdoStatement = $this->pdo->prepare("UPDATE tc_swap SET ts_tss_id = :new_status, ts_is_done=TRUE, ts_end_date=CURRENT_DATE WHERE ts_id = :id");
                 $pdoStatement->bindParam(':new_status', $swap->status, PDO::PARAM_INT);
                 $pdoStatement->bindParam(':id', $swap->id, PDO::PARAM_INT);
                 $execute = $pdoStatement->execute();
@@ -181,8 +185,8 @@ class SwapManager extends Manager
                 $db_row[2],
                 $db_row[3],
                 $db_row[4],
-                $db_row[5],
-                $db_row[6],
+                $this->userManager->findById($db_row[5]),
+                $this->userManager->findById($db_row[6]),
                 $this->itemManager->findAllBySwapId($db_row[0]));
         }
         return $swaps;

@@ -1,17 +1,10 @@
 let navDisplayed = false;
 
 document.addEventListener("DOMContentLoaded", function () {
-    let links = document.getElementsByClassName('link');
-    for (let i = 0; i < links.length; i++) {
-        if (links[i].href == window.location.href) {
-            links[i].classList.add('active-link');
-        }
-    }
     if (localStorage.getItem('theme') == null ||
         localStorage.getItem('theme') == '') {
         localStorage.setItem('theme', 'dark');
     }
-    applyTheme();
 });
 
 function displayNav() {

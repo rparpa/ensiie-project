@@ -15,7 +15,7 @@ if ((new TokenManager(Connection::get()))->findByToken($_SERVER["HTTP_AUTHORIZAT
     header('HTTP/1.0 401 Unauthorized');
     die();
 }
-if (isset($_GET["mail"]) && isset($_GET["is_done"]) && $_GET["mail"] === $jwt->getPayload($_SERVER["HTTP_AUTHORIZATION"])["email"]) {
+if (isset($_GET["mail"]) && isset($_GET["is_done"]) && $_GET["mail"] == $jwt->getPayload($_SERVER["HTTP_AUTHORIZATION"])["email"]) {
     $result = $swapManager->findAllByIsDoneAndUserMail($_GET["mail"], $_GET["is_done"]);
 } else if (isset($_GET["last-10"])) {
     $result = $swapManager->findAllOrderByEndDateDescLimit10();

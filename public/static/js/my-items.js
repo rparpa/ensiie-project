@@ -5,10 +5,11 @@ function loadItems() {
         .then(response => {
             return response.json();
         })
-        .then(isConnected => {
-            if (!isConnected) {
+        .then(user => {
+            if (user == null) {
                 document.location.href = "/index.php";
             } else {
+                add_structure(user);
                 fetch('/api/objets/findAll.php', {
                     method: 'GET',
                     headers: {
@@ -16,7 +17,7 @@ function loadItems() {
                     }
                 }).then(data => {
                     return data.json()
-                }).then(res => displayItems(res));
+                }).then(res => displayItems(res?.filter(it => it['is_swappable'])));
             }
         });
 

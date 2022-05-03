@@ -196,9 +196,11 @@ class ItemManager extends Manager
 
     public function deleteById($id)
     {
+        // On ne supprime pas les objets de la base de données, car on veut garder l'historique des trocs meme refusés mais
+        // donc on le rend non échangeables
         $item = $this->findById($id);
-        if ($item instanceof Item && $item->getIsSwappable()) {
-            $pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id=:id');
+        if ($item instanceof Item) {
+            $pdoStatement = $this->pdo->prepare('UPDATE tc_item SET it_is_swappable=FALSE WHERE it_id=:id');
             $pdoStatement->bindValue(':id', $id);
             $pdoStatement->execute();
         }
