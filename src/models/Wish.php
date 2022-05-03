@@ -2,6 +2,8 @@
 
 namespace models;
 
+use ReturnTypeWillChange;
+
 class Wish
 {
 
@@ -10,10 +12,11 @@ class Wish
     protected string $label;
 
 
-    function __construct($id,$mail,$label){
-        $this->id=$id;
-        $this->mail=$mail;
-        $this->label=$label;
+    function __construct($id, $mail, $label)
+    {
+        $this->id = $id;
+        $this->mail = $mail;
+        $this->label = $label;
     }
 
     /**
@@ -56,5 +59,12 @@ class Wish
         $this->label = $label;
     }
 
-
+    #[ReturnTypeWillChange] public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'mail' => $this->mail,
+            'label' => $this->label
+        ];
+    }
 }

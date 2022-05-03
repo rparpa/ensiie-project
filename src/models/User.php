@@ -2,7 +2,11 @@
 
 namespace models;
 
-class User {
+use JsonSerializable;
+use ReturnTypeWillChange;
+
+class User implements JsonSerializable
+{
 
     public string $mail;
     public string $firstname;
@@ -104,14 +108,16 @@ class User {
     /**
      * @return string
      */
-    public function getPassword(){
+    public function getPassword()
+    {
         return $this->password;
     }
 
     /**
      * @param $password
      */
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         $this->password = $password;
     }
 
@@ -212,5 +218,21 @@ class User {
     }
 
 
+    #[ReturnTypeWillChange] public function jsonSerialize()
+    {
+        return [
+            'email' => $this->mail,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'pseudo' => $this->pseudo,
+            'password' => $this->password,
+            'picture' => $this->picture,
+            'zipcode' => $this->zipcode,
+            'street' => $this->street,
+            'city' => $this->city,
+            'is_super_user' => $this->is_super_user,
+            'is_banned' => $this->is_banned
+        ];
+    }
 }
 

@@ -2,6 +2,8 @@
 
 namespace models;
 
+use ReturnTypeWillChange;
+
 class Notification
 {
 
@@ -63,8 +65,12 @@ class Notification
         $this->creation_date = $creation_date;
     }
 
-
-
-
-
+    #[ReturnTypeWillChange] public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'content' => $this->content,
+            'creationDate' => $this->creation_date
+        ];
+    }
 }

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Manager a pour role d'intéragir avec la base de données
+ */
 
 namespace Db;
 
@@ -7,6 +10,8 @@ use models\Category;
 use models\User;
 use PDO;
 
+
+#require_once '../models/Item.php';
 
 use models\Item;
 
@@ -141,35 +146,36 @@ class ItemManager extends Manager
      * Met un jour un objet
      * @return bool
      */
-    /*  private function update(Item $item)
-      {
+    public function update($object): bool
+    {
 
-          $this->pdoStatement = $this->pdo->prepare('UPDATE tc_item set it_name=:name,it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id');
-          $this->pdoStatement->bindValue(':name', $item->getName(), PDO::PARAM_STR);
-          $this->pdoStatement->bindValue(':proprietary', $item->getProprietary(), PDO::PARAM_STR);
-          $this->pdoStatement->bindValue(':picture', $item->getPicture(), PDO::PARAM_STR);
-          $this->pdoStatement->bindValue(':description', $item->getDescription(), PDO::PARAM_STR);
-          $this->pdoStatement->bindValue(':creation_date', $item->getCreationDate(), PDO::PARAM_STR);
-          $this->pdoStatement->bindValue(':is_swappable', $item->getIsSwappable(), PDO::PARAM_BOOL);
-          $this->pdoStatement->bindValue(':id', $item->getId(), PDO::PARAM_INT);
+        $this->pdoStatement = $this->pdo->prepare('UPDATE tc_item set it_name=:item_name,it_proprietary=:proprietary,it_picture=:picture,it_description=:description,it_creation_date=:creation_date,it_is_swappable=:is_swappable WHERE it_id=:id');
 
-          return $this->pdoStatement->execute();
+        $this->pdoStatement->bindValue(':item_name', $object->getName(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':proprietary', $object->getProprietary(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':picture', $object->getPicture(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':description', $object->getDescription(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':creation_date', $object->getCreationDate(), PDO::PARAM_STR);
+        $this->pdoStatement->bindValue(':is_swappable', $object->getIsSwappable(), PDO::PARAM_BOOL);
+        $this->pdoStatement->bindValue(':id', $object->getId(), PDO::PARAM_INT);
 
-      } */
+        return $this->pdoStatement->execute();
+
+    }
 
     /**
      * Methode utilise par le client
      * @param Item $item
      * @return bool
      */
-    /*  public function save(Item &$item): bool
-      {
-          if (is_null($item->getId())) {
-              return $this->insert($item);
-          } else {
-              return $this->update($item);
-          }
-      } */
+    public function save(Item &$item): bool
+    {
+        if (is_null($item->getId())) {
+            return $this->create($item);
+        } else {
+            return $this->update($item);
+        }
+    }
 
 
     /**
@@ -178,19 +184,15 @@ class ItemManager extends Manager
      * @return bool
      */
 
-    /* public function delete(Item $item): bool
-     {
-         $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id = :id');
-         $this->pdoStatement->bindValue(':id', $item->getId(), PDO::PARAM_INT);
-
-         return $this->pdoStatement->execute();
-     }  */
-
-
-    public function update($object)
+    public function delete(Item $item): bool
     {
-        // TODO: Implement update() method.
+        $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id = :id');
+        $this->pdoStatement->bindValue(':id', $item->getId(), PDO::PARAM_INT);
+
+        return $this->pdoStatement->execute();
     }
+
+
 
     public function deleteById($id)
     {
@@ -223,4 +225,5 @@ class ItemManager extends Manager
         }
         return $items;
     }
+
 }

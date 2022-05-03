@@ -2,6 +2,8 @@
 
 namespace models;
 
+use ReturnTypeWillChange;
+
 class Category
 {
     public int $id;
@@ -58,6 +60,15 @@ class Category
     public function setNumberSwap(int $number_swap): void
     {
         $this->number_swap = $number_swap;
+    }
+
+    #[ReturnTypeWillChange] public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'numberSwap' => $this->number_swap,
+        ];
     }
 
 }

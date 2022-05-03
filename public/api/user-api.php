@@ -13,18 +13,18 @@ $userManager = new UserManager(Connection::get());
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET["email"])) {
-        $userById = $userManager->findById($_GET["email"]);
-        if ($userById === null) {
-            echo json_encode(['UserIdNotFound' => "true", 'Message' => "L'utilisateur recherche n'est pas trouve"]);
+        //var_dump($userManager->findById($_GET["email"]));
+        $userFromDBById = $userManager->findById($_GET["email"]);
+        if ($userFromDBById === null) {
+            echo json_encode(['UserIdNotFound' => "true", 'Message' => "L'utilisateur recherche n'est pas trouve"]); // OK
         }
-        echo json_encode($userById);
+        echo json_encode($userFromDBById); // OK
     } else {
-        echo json_encode($userManager->findAll(), JSON_PRETTY_PRINT);
+        // Récupérer tout, A METTRE EN FORME, PAS FINI
+        json_encode($userManager->findAll(), JSON_PRETTY_PRINT);
     }
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_GET["email"])) {
-        $userManager->lockByEmail($_GET["email"]);
-    }
+
 } else if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
 
 } else {

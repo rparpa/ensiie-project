@@ -2,6 +2,8 @@
 
 namespace models;
 
+use ReturnTypeWillChange;
+
 class ItemCategory
 {
 
@@ -34,8 +36,11 @@ class ItemCategory
         return $this->id_category;
     }
 
-
-
-
-
+    #[ReturnTypeWillChange] public function jsonSerialize()
+    {
+        return [
+            'idItem' => $this->id_item,
+            'idCategory' => $this->id_category
+        ];
+    }
 }

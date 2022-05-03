@@ -49,9 +49,11 @@ function itemTemplateAllInformation(item) {
         "<div class='image'>" +
         "<img class='logo' src='/images/items/" + escapeHtml(item['picture']) + "'/>" +
         "<div class='categories' id='cat-container'>";
-    item['categories'].forEach(category => {
-        itemsHTML += "<span class='category'>" + escapeHtml(category['name']) + "</span>";
-    });
+    if (item['categories']) {
+        item['categories'].forEach(category => {
+            itemsHTML += "<span class='category'>" + escapeHtml(category['name']) + "</span>";
+        });
+    }
     itemsHTML += "</div>";
     itemsHTML += "</div>";
     itemsHTML += "<div class='information'>";
@@ -162,9 +164,11 @@ function itemTemplateShort(item) {
     resultHTML += "<h3>" + escapeHtml(item['name']) + "</h3>";
     resultHTML += "<span class='date'>Date d'ajout: " + escapeHtml(item['creation_date']) + "</span>";
     resultHTML += "<div class='categories'>"
-    item['categories'].forEach(category => {
-        resultHTML += "<span class='category'>" + escapeHtml(category['name']) + "</span>";
-    });
+    if (item['categories']) {
+        item['categories'].forEach(category => {
+            resultHTML += "<span class='category'>" + escapeHtml(category['name']) + "</span>";
+        });
+    }
     resultHTML += "</div>";
     resultHTML += "</div>";
     resultHTML += "<div class='user'>";
@@ -193,7 +197,7 @@ function swapTemplateAllInformation(swap) {
     if (!swap['is_done']) {
         swapTemplateHTML += "<div class='form'>";
         swapTemplateHTML += "<div class='actions'/>";
-        if (swap['user_from'] == 'titi') {
+        if (swap['user_from'] == 'toto') {
             swapTemplateHTML += "<button class='wait' disabled>EN ATTENTE</button>"
         } else {
             swapTemplateHTML += "<button class='refusal' onclick='updateSwap(" + swap['id'] + ", 2)'>REFUSER</button>";
