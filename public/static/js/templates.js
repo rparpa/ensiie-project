@@ -274,7 +274,7 @@ function templateItemsSwapped(swap, wantsPseudo) {
     })
     itemsSwappedTemplateHTML += "</div>";
     if (wantsPseudo) {
-        itemsSwappedTemplateHTML += "<span class='pseudo'>" + escapeHtml(swap['user_from']['email']) + "</span>";
+        itemsSwappedTemplateHTML += "<span class='pseudo'>" + escapeHtml(swap['user_from']['pseudo']) + "</span>";
     } else {
         itemsSwappedTemplateHTML += "<span class='pseudo'>" + getItemsUserFrom(swap)?.map(s => escapeHtml(s['name']))?.join(", ") + "</span>";
     }
@@ -295,7 +295,7 @@ function templateItemsSwapped(swap, wantsPseudo) {
     })
     itemsSwappedTemplateHTML += "</div>";
     if (wantsPseudo) {
-        itemsSwappedTemplateHTML += "<span class='pseudo'>" + escapeHtml(swap['user_to']['email']) + "</span>";
+        itemsSwappedTemplateHTML += "<span class='pseudo'>" + escapeHtml(swap['user_to']['pseudo']) + "</span>";
     } else {
         itemsSwappedTemplateHTML += "<span class='pseudo'>" + getItemsUserTo(swap)?.map(s => escapeHtml(s['name']))?.join(", ") + "</span>";
     }

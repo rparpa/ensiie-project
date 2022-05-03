@@ -44,7 +44,7 @@ class SwapManager extends Manager
 
     public function findAllByIsDoneAndUserMail($userMail, $isDone): array
     {
-        $pdoStatement = $this->pdo->prepare("SELECT * FROM tc_swap WHERE ts_is_done=:isDone AND (ts_us_mail_from=:userMail OR ts_us_mail_to=:userMail) ");
+        $pdoStatement = $this->pdo->prepare("SELECT * FROM tc_swap WHERE ts_is_done=:isDone AND (ts_us_mail_from=:userMail OR ts_us_mail_to=:userMail) ORDER BY ts_end_date DESC");
         $pdoStatement->bindValue(':userMail', $userMail, \PDO::PARAM_STR);
         $pdoStatement->bindValue(':isDone', $isDone, \PDO::PARAM_BOOL);
         $swaps = [];
