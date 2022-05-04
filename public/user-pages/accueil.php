@@ -61,8 +61,6 @@ use Db\CategoryManager;
                     <?php
 
                     $categoryManager = new CategoryManager(Connection::get());
-                    $category = new \models\Category(7, 'GOAT', 0);
-                    $categoryManager->update($category);
                     $categories = $categoryManager->findAllOrderByNumberSwapTop5();
 
                     foreach ($categories as $key => $category) {

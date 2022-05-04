@@ -129,7 +129,7 @@ class ItemManager extends Manager
             $prep[":id$i"] = $id;
             $i++;
         }
-
+        $req .= " ORDER BY it_name ASC";
         $pdoStatement = $this->pdo->prepare($req);
         $pdoStatement->bindValue(':recherche', '%' . $recherche . '%', PDO::PARAM_STR);
 
