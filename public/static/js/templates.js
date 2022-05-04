@@ -194,12 +194,12 @@ function getColorOfCategory(categoryName) {
 }
 
 function templateAllCategories(category) {
-    let userHTML = "";
+    let categoryHTML = "";
     let color = getColorOfCategory(category["name"]);
-    userHTML += '<div class="all-categories-item" style="background-color:' + color + '">' +
+    categoryHTML += '<div class="all-categories-item" style="background-color:' + color + '">' +
         '<div class="category-title">' + category['name'] + '</div>' +
         '</div>';
-    return userHTML;
+    return categoryHTML;
 }
 
 /*

@@ -21,8 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         echo json_encode($categoryManager->findAll(), JSON_PRETTY_PRINT);
     }
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_GET["categoryName"])) {
-        echo json_encode($categoryManager->create(new Category(0, $_GET["categoryName"], 0)));
+    $newCategoryJson = json_decode(file_get_contents('php://input'), true);
+    var_dump($newCategoryJson);
+    if (isset($newCategoryJson["categoryName"])) {
+        echo json_encode($categoryManager->create(new Category(0, $newCategoryJson["categoryName"], 0)));
     }
 } else {
     http_response_code(405);

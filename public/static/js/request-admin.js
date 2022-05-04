@@ -17,7 +17,7 @@ function getAllCategories() {
         }
     }).then(response => {
         return response.json();
-    }).then(res => displayAllCategories(res)); // PAS DISPLAY SWAP QU IL FAUT UTILISER
+    }).then(res => displayAllCategories(res));
 }
 
 function displayAllCategories(categories) {
@@ -27,20 +27,24 @@ function displayAllCategories(categories) {
             categoriesHTML += templateAllCategories(category);
         });
     } else {
-        categoriesHTML += noResultContent("Il n'y a pas de trocs en cours");
+        categoriesHTML += noResultContent("Il n'y a pas de catégories existantes");
     }
     document.getElementsByClassName('all-categories-container')[0].innerHTML = categoriesHTML;
 }
 
-function addCategory() {
+function addCategory(nameOfCategory) {
+    console.log(nameOfCategory);
+    let data = {"categoryName": nameOfCategory};
     fetch('/api/category-api.php', {
-        method: 'POST',
         headers: {
             'Authorization': localStorage.getItem('token')
-        }
+        },
+        method: 'POST',
+        body: JSON.stringify(data)
     }).then(response => {
+        window.location.reload();
         return response.json();
-    });
+    })
 }
 
 function banUser(email) {

@@ -114,7 +114,7 @@ function add_structure(user) {
     applyTheme();
     let links = document.getElementsByClassName('link');
     for (let i = 0; i < links.length; i++) {
-        if (links[i].href == window.location.href) {
+        if (links[i].href === window.location.href) {
             links[i].classList.add('active-link');
         }
     }

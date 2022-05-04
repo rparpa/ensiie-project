@@ -21,6 +21,18 @@ require_once '../../vendor/autoload.php';
     <div>
         Barre de recherche
     </div>
+    <div class="div-add-category">
+        <div class="form-add-category">
+            <input type="text" name="new-category-name" class="input-new-cat-name"
+                   placeholder="Nom de la nouvelle catégorie"/>
+        </div>
+        <div class="div-button-add-category">
+            <button class="button-add-category"
+                    onclick="addCategory(document.getElementsByClassName('input-new-cat-name')[0].value)">Ajouter une
+                catégorie
+            </button>
+        </div>
+    </div>
     <section id="structure" class="all-categories-container">
     </section>
 </main>
