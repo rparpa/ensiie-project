@@ -209,7 +209,7 @@ main {
 
 span.important {
     font-weight: 700;
-    color: var(--refusal-color);
+    color: var(--main-color);
 }
 
 @media screen and (max-width: 642px) {
