@@ -6,9 +6,8 @@ use Db\UserManager;
 use models\Token;
 use models\User;
 
-require_once '../vendor/autoload.php';
-require_once '../src/Bootstrap.php';
-include_once '../src/auth/generate.php';
+require_once '../../vendor/autoload.php';
+include_once '../../src/auth/generate.php';
 
 if (isset($_GET['login'])) {
     if (isset($_POST['email']) && isset($_POST['password'])) {
