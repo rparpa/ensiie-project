@@ -284,13 +284,14 @@ function templateUserInformation(user) {
     userTemplateHTML += "<div class='user-profile'>";
     userTemplateHTML += "<div class='adress'>";
     userTemplateHTML += "<span> <span class='label'> Nom et prénom : </span> " + escapeHtml(user['lastname']) + " " + escapeHtml(user['firstname']) + "</span>";
+    userTemplateHTML += "<span> <span class='label'> Adresse mail : </span> " + escapeHtml(user['email']) + "</span>";
     userTemplateHTML += "<span> <span class='label'> Adresse : </span> " + escapeHtml(user['street']) + ", " + escapeHtml(user['city']) + "(" + escapeHtml(user['zipcode']) + ")" + " </span>";
     userTemplateHTML += templateWishesUser(user);
     userTemplateHTML += "</div>";
-    userTemplateHTML += "<div class='user'>";
+    userTemplateHTML += "<a class='user' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
     userTemplateHTML += "<img src='../images/users/" + escapeHtml(user['picture']) + "'/>";
     userTemplateHTML += "<span>" + escapeHtml(user['pseudo']) + "</span>";
-    userTemplateHTML += "</div>";
+    userTemplateHTML += "</a>";
     userTemplateHTML += "</div>";
     return userTemplateHTML;
 }

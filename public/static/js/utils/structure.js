@@ -68,7 +68,7 @@ function add_structure(user) {
         '</div>\n' +
         '</div>\n' +
         '    <nav id="nav">\n' +
-        '        <a class="link" href="accueil.php">\n' +
+        '        <a class="link" href="/user-pages/accueil.php">\n' +
         '            <svg xmlns="http://www.w3.org/2000/svg"\n' +
         '                 viewBox="0 0 576 512">\n' +
         '                <path\n' +
@@ -76,7 +76,7 @@ function add_structure(user) {
         '            </svg>\n' +
         '            Accueil\n' +
         '        </a>\n' +
-        '        <a class="link" href="mes-objets.php">\n' +
+        '        <a class="link" href="/user-pages/mes-objets.php">\n' +
         '            <svg xmlns="http://www.w3.org/2000/svg"\n' +
         '                 viewBox="0 0 576 512">\n' +
         '                <path\n' +
@@ -84,7 +84,7 @@ function add_structure(user) {
         '            </svg>\n' +
         '            Mes objets trocables\n' +
         '        </a>\n' +
-        '        <a class="link" href="ajouter-objet.php">\n' +
+        '        <a class="link" href="/user-pages/ajouter-objet.php">\n' +
         '            <svg xmlns="http://www.w3.org/2000/svg"\n' +
         '                 viewBox="0 0 448 512">\n' +
         '                <path\n' +
@@ -92,7 +92,7 @@ function add_structure(user) {
         '            </svg>\n' +
         '            Ajouter un objet\n' +
         '        </a>\n' +
-        '        <a class="link" href="recherche.php">\n' +
+        '        <a class="link" href="/user-pages/recherche.php">\n' +
         '            <svg xmlns="http://www.w3.org/2000/svg"\n' +
         '                 viewBox="0 0 512 512">\n' +
         '                <path\n' +
@@ -100,7 +100,7 @@ function add_structure(user) {
         '            </svg>\n' +
         '            Rechercher un objet\n' +
         '        </a>\n' +
-        '        <a class="link" href="mes-trocs.php">\n' +
+        '        <a class="link" href="/user-pages/mes-trocs.php">\n' +
         '            <svg xmlns="http://www.w3.org/2000/svg"\n' +
         '                 viewBox="0 0 512 512">\n' +
         '                <path\n' +
@@ -108,7 +108,7 @@ function add_structure(user) {
         '            </svg>\n' +
         '            Trocs en cours\n' +
         '        </a>\n' +
-        '        <a class="link" href="historique.php">\n' +
+        '        <a class="link" href="/user-pages/historique.php">\n' +
         '            <svg xmlns="http://www.w3.org/2000/svg"\n' +
         '                 viewBox="0 0 512 512">\n' +
         '                <path\n' +
