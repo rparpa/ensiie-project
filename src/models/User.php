@@ -9,22 +9,40 @@ class User implements JsonSerializable
 {
 
     private string $mail;
+
     private string $firstname;
+
     private string $lastname;
+
     private string $pseudo;
+
     private string $password;
+
     private string $picture;
+
     private int $zipcode;
+
     private string $street;
+
     private string $city;
+
     private bool $is_super_user;
+
     private bool $is_banned;
 
 
 
-    function __construct($mail, $firstname, $lastname, $pseudo, $password, $picture,
-                         $zipcode, $street, $city, $is_super_user, $is_banned) {
-
+    function __construct($mail,
+                         $firstname,
+                         $lastname,
+                         $pseudo,
+                         $password,
+                         $picture,
+                         $zipcode,
+                         $street,
+                         $city,
+                         $is_super_user,
+                         $is_banned) {
         $this->mail = $mail;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
@@ -36,9 +54,24 @@ class User implements JsonSerializable
         $this->city = $city;
         $this->is_super_user = $is_super_user;
         $this->is_banned = $is_banned;
-
     }
 
+    #[ReturnTypeWillChange]
+    public function jsonSerialize(): array
+    {
+        return [
+            'email' => $this->mail,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'pseudo' => $this->pseudo,
+            'picture' => $this->picture,
+            'zipcode' => $this->zipcode,
+            'street' => $this->street,
+            'city' => $this->city,
+            'is_super_user' => $this->is_super_user,
+            'is_banned' => $this->is_banned
+        ];
+    }
 
 
     /**
@@ -217,22 +250,5 @@ class User implements JsonSerializable
         $this->is_banned = $is_banned;
     }
 
-
-    #[ReturnTypeWillChange] public function jsonSerialize(): array
-    {
-        return [
-            'email' => $this->mail,
-            'firstname' => $this->firstname,
-            'lastname' => $this->lastname,
-            'pseudo' => $this->pseudo,
-            'password' => $this->password,
-            'picture' => $this->picture,
-            'zipcode' => $this->zipcode,
-            'street' => $this->street,
-            'city' => $this->city,
-            'is_super_user' => $this->is_super_user,
-            'is_banned' => $this->is_banned
-        ];
-    }
 }
 

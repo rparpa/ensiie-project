@@ -6,7 +6,6 @@ use Db\TokenManager;
 use models\Item;
 
 include "../../../vendor/autoload.php";
-require_once "../../../src/templates/template-factory.php";
 $requestName = "";
 $categories = array();
 if ((new TokenManager(Connection::get()))->findByToken($_SERVER["HTTP_AUTHORIZATION"]) == null) {

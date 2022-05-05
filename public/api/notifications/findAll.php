@@ -8,7 +8,6 @@ use Db\NotificationManager;
 
 
 include "../../../vendor/autoload.php";
-require_once "../../../src/templates/template-factory.php";
 
 header('Content-type: application/json');
 $jwt = new JWT();

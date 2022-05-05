@@ -649,6 +649,6 @@ CREATE TRIGGER tr_notification_creation
     FOR EACH ROW
 EXECUTE PROCEDURE create_notification();
 
-SELECT setval('tc_category_ca_id_seq', 17, true);
-SELECT setval('tc_item_it_id_seq', 41, true);
-SELECT setval('tc_swap_ts_id_seq', 16, true);
+SELECT setval('tc_category_ca_id_seq', 16, true);
+SELECT setval('tc_item_it_id_seq', 40, true);
+SELECT setval('tc_swap_ts_id_seq', 15, true);

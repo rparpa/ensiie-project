@@ -2,6 +2,7 @@
 
 namespace models;
 
+use JetBrains\PhpStorm\ArrayShape;
 use JsonSerializable;
 use ReturnTypeWillChange;
 
@@ -21,7 +22,9 @@ class SwapStatistique implements JsonSerializable
         $this->cancel = $cancel;
     }
 
-    #[ReturnTypeWillChange] public function jsonSerialize(): array
+    #[ArrayShape(['date' => "string", 'validate' => "int", 'cancel' => "int"])]
+    #[ReturnTypeWillChange]
+    public function jsonSerialize(): array
     {
         return [
             'date' => $this->date,

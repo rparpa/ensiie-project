@@ -2,15 +2,17 @@
 
 namespace models;
 
+use JetBrains\PhpStorm\ArrayShape;
 use ReturnTypeWillChange;
 
 class Wish
 {
 
     protected int $id;
-    protected string $mail;
-    protected string $label;
 
+    protected string $mail;
+
+    protected string $label;
 
     function __construct($id, $mail, $label)
     {
@@ -59,7 +61,9 @@ class Wish
         $this->label = $label;
     }
 
-    #[ReturnTypeWillChange] public function jsonSerialize(): array
+    #[ArrayShape(['id' => "int", 'mail' => "string", 'label' => "string"])]
+    #[ReturnTypeWillChange]
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

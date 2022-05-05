@@ -2,6 +2,7 @@
 
 namespace models;
 
+use JetBrains\PhpStorm\ArrayShape;
 use phpDocumentor\Reflection\DocBlock\Description;
 use JsonSerializable;
 use ReturnTypeWillChange;
@@ -15,7 +16,6 @@ class Item implements JsonSerializable
 
     private string $name;
 
-
     private string $picture;
 
     private string $description;
@@ -28,7 +28,7 @@ class Item implements JsonSerializable
 
     function __construct(int    $id,
                          string $name,
-                         User $proprietary,
+                         User   $proprietary,
                          string $picture,
                          string $description,
                          string $creation_date,
@@ -45,8 +45,25 @@ class Item implements JsonSerializable
         $this->categories = $categories;
     }
 
-
-
+    #[ArrayShape(['id' => "int", 'name' => "string", 'proprietary' => "array", 'picture' => "string", 'description' => "string", 'creation_date' => "string", 'is_swappable' => "bool", 'categories' => "array"])]
+    #[ReturnTypeWillChange]
+    public function jsonSerialize(): array
+    {
+        $arrayCategories = [];
+        foreach ($this->categories as $category) {
+            $arrayCategories[] = $category->jsonSerialize();
+        }
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'proprietary' => $this->proprietary->jsonSerialize(),
+            'picture' => $this->picture,
+            'description' => $this->description,
+            'creation_date' => $this->creation_date,
+            'is_swappable' => $this->is_swappable,
+            'categories' => $arrayCategories
+        ];
+    }
 
     public function setName(string $name)
     {
@@ -139,7 +156,8 @@ class Item implements JsonSerializable
         $this->is_swappable = $is_swappable;
     }
 
-    public function getCategories(): array {
+    public function getCategories(): array
+    {
         return $this->categories;
     }
 
@@ -157,24 +175,5 @@ class Item implements JsonSerializable
         return ("ID: $this->id \t Propri: $this->proprietary \t Picture: $this->picture \t Description: $this->description \t Creation : $this->creation_date \t Swappable: $this->is_swappable");
     }
 
-    #[ReturnTypeWillChange] public function jsonSerialize()
-    {
-        $arrayCategories = [];
-        foreach ($this->categories as $category) {
-            $arrayCategories[] = $category->jsonSerialize();
-        }
-
-
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'proprietary' => $this->proprietary->jsonSerialize(),
-            'picture' => $this->picture,
-            'description' => $this->description,
-            'creation_date' => $this->creation_date,
-            'is_swappable' => $this->is_swappable,
-            'categories' => $arrayCategories
-        ];
-    }
 
 }

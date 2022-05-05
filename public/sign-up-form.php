@@ -10,7 +10,7 @@
 <body>
 <main class="signup-form-container">
     <div class="signup-form-wrapper">
-        <form class="signup" action="form-data.php?signup" method="POST" enctype="multipart/form-data">
+        <form class="signup" action="actions/auth-validator.php?signup" method="POST" enctype="multipart/form-data">
             <div class="signup-form-header">
                 <span class="signup-text"> Inscription : </span>
             </div>

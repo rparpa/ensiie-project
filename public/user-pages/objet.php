@@ -12,45 +12,13 @@
     <script src="../static/js/swap-form.js"></script>
 </head>
 <body>
-<?php
-require_once '../../vendor/autoload.php';
-require_once "../../src/templates/template-factory.php";
-?>
 <section id="structure">
-
 </section>
 <main class="search center">
-
-    <?php
-
-    use Db\Connection;
-    use Db\ItemManager;
-    use Db\CategoryManager;
-
-    $noResult = false;
-    if (isset($_GET["id"])) {
-        $itemManager = new ItemManager(Connection::get());
-        $item = $itemManager->findById($_GET["id"]);
-        if ($item !== null) {
-            templateItem($item);
-            echo '<script> sessionStorage.setItem("proprietary", "' . $item->getProprietary()->getMail() . '");</script>';
-            if ($item->getIsSwappable() == true) {
-                ?>
-                <section class="my-card my-card-100" id="form-my-card">
-                </section>
-
-                <?php
-            }
-        } else {
-            $noResult = true;
-        }
-    } else {
-        $noResult = true;
-    }
-    if ($noResult) {
-        require_once '../../src/templates/error-message.php';
-    }
-    ?>
+    <div id="grid" class="grid">
+    </div>
+    <section class="my-card my-card-100" id="form-my-card">
+    </section>
 </main>
 </body>
 </html>

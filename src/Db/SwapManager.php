@@ -68,7 +68,7 @@ class SwapManager extends Manager
             $pdoStatement->bindValue(':user_to', $object->getUserTo()->getMail(), \PDO::PARAM_STR);
             $execute = $pdoStatement->execute();
             if ($execute) {
-                $newSwapId = $this->pdo->lastInsertId();
+                $newSwapId = $this->pdo->lastInsertId('tc_swap_ts_id_seq');
                 foreach ($object->getItems() as $item) {
                     if ($item instanceof Item) {
                         $this->addItemToSwap($item->getId(), $newSwapId);

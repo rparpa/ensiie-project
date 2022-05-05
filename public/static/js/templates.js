@@ -48,7 +48,7 @@ function noResultContent(message) {
 /*
 Générer le code HTML pour un item avec toutes ses informations
  */
-function itemTemplateAllInformation(item) {
+function itemTemplateAllInformationWithoutUser(item) {
     let itemsHTML = "";
     itemsHTML += "<div class='item'> " +
         "<button class='trash' onclick='deleteItem(" + escapeHtml(item['id']) + ")'>" +
@@ -378,6 +378,67 @@ function getTitleSwap(swap, notifications) {
     return title;
 }
 
+function templateItemWithAllInformations(item) {
+    // Partie dédiée à l'objet
+    let templateItemHTML = "";
+    templateItemHTML += "<section class='my-card'>";
+    templateItemHTML += "<section class='my-card-header'>";
+    templateItemHTML += "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='var(--font-color)' d='M50.73 58.53C58.86 42.27 75.48 32 93.67 32H208V160H0L50.73 58.53zM240 160V32H354.3C372.5 32 389.1 42.27 397.3 58.53L448 160H240zM448 416C448 451.3 419.3 480 384 480H64C28.65 480 0 451.3 0 416V192H448V416z'/></svg>";
+    templateItemHTML += "<span>L'objet</span>";
+    templateItemHTML += "</section>";
+    templateItemHTML += "<section class='my-card-body'>";
+    templateItemHTML += "<div class='item'>";
+    templateItemHTML += "<div class='image'>";
+    templateItemHTML += "<img class='logo' src='/images/items/" + escapeHtml(item['picture']) + "'/>";
+    templateItemHTML += "<div class='categories' id='cat-container'>";
+    item['categories']?.forEach(category => {
+        templateItemHTML += "<span class='category'>" + escapeHtml(category['name']) + "</span>";
+    });
+    templateItemHTML += "</div>";
+    templateItemHTML += "</div>";
+    templateItemHTML += "<div class='information'>";
+    templateItemHTML += "<h3>" + escapeHtml(item['name']) + "</h3>";
+    templateItemHTML += "<span class='date'>Date d'ajout : " + escapeHtml(item['creation_date']) + "</span>";
+    templateItemHTML += "<p>" + escapeHtml(item['description']) + "</p>";
+    templateItemHTML += "</div>";
+    templateItemHTML += "</div>";
+    templateItemHTML += "</section>";
+    templateItemHTML += "</section>";
+
+    // Partie dédiée à l'utilisatateur
+    templateItemHTML += "<section class='my-card'>";
+    templateItemHTML += "<section class='my-card-header'>";
+    templateItemHTML += "<svg xmlns='http://www.w3.org/2000/svg'\n" +
+        "viewBox='0 0 448 512'>\n" +
+        "<path fill='var(--font-color)' d='M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z'/>\n" +
+        "</svg>";
+    templateItemHTML += "<span>Le propriétaire originel</span>";
+    templateItemHTML += "</section>";
+    templateItemHTML += "<section class='my-card-body'>";
+    templateItemHTML += "<div class='user-profile'>";
+    templateItemHTML += "<div class='adress'>";
+    templateItemHTML += "<span><span class='label'>Nom et prénom : </span>" + escapeHtml(item['proprietary']['lastname'].toUpperCase()) + " " + escapeHtml(item['proprietary']['firstname']) + "</span>";
+    templateItemHTML += "<span><span class='label'>Adresse mail : </span>" + escapeHtml(item['proprietary']['email']) + "</span>";
+    templateItemHTML += "<span><span class='label'>Adresse : </span>" + escapeHtml(item['proprietary']['street']) + ", " + escapeHtml(item['proprietary']['city']) + " (" + escapeHtml(item['proprietary']['zipcode']) + ")" + "</span>";
+    templateItemHTML += "<div class='wishes'>";
+    templateItemHTML += "<span> Souhaits : </span>";
+    templateItemHTML += "<ul>";
+    templateItemHTML += "<li> Stylo </li>";
+    templateItemHTML += "<li class='category'>DVD</li>";
+    templateItemHTML += "<li class='category'>LITTERATURE</li>";
+    templateItemHTML += "</ul>";
+    templateItemHTML += "</div>";
+    templateItemHTML += "</div>";
+    templateItemHTML += "<a class='user' href='/user-pages/user-profile.php?email=" + escapeHtml(item['proprietary']['email']) + "'>"
+    templateItemHTML += "<img src='../images/users/" + escapeHtml(item['proprietary']['picture']) + "'/>";
+    templateItemHTML += "<span>" + escapeHtml(item['proprietary']['pseudo']) + "</span>";
+    templateItemHTML += "</div>";
+    templateItemHTML += "</div>";
+    templateItemHTML += "</section>";
+    templateItemHTML += "</section>";
+    return templateItemHTML;
+}
+
 function getItemsUserFrom(swap) {
     return swap['items'].filter(item => item['proprietary']['email'] == swap['user_from']['email']);
 }
@@ -385,3 +446,4 @@ function getItemsUserFrom(swap) {
 function getItemsUserTo(swap) {
     return swap['items'].filter(item => item['proprietary']['email'] == swap['user_to']['email']);
 }
+

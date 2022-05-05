@@ -8,7 +8,6 @@ use models\Swap;
 use models\User;
 
 include "../../../vendor/autoload.php";
-require_once "../../../src/templates/template-factory.php";
 $jwt = new JWT();
 $swapJson = json_decode(file_get_contents('php://input'), true);
 $swapToUpdate = new Swap($swapJson["id"],

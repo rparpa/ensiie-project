@@ -6,7 +6,6 @@ use Db\SwapManager;
 use Db\TokenManager;
 
 include "../../../vendor/autoload.php";
-require_once "../../../src/templates/template-factory.php";
 header('Content-type: application/json');
 $swapManager = new SwapManager(Connection::get());
 $result = null;

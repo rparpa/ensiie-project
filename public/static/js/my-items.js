@@ -27,7 +27,7 @@ function displayItems(items) {
     let itemsHTML = "";
     if (items.length) {
         items.forEach(item => {
-            itemsHTML += itemTemplateAllInformation(item);
+            itemsHTML += itemTemplateAllInformationWithoutUser(item);
         });
     } else {
         itemsHTML += noResultContent("Vous n'avez pas d'objets");

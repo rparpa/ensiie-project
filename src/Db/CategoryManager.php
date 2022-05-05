@@ -37,15 +37,15 @@ class CategoryManager extends Manager
         return $category;
     }
 
-    public function create($category): ?Category
+    public function create($object): ?Category
     {
         $categoryCreated = null;
-        if ($category instanceof Category) {
+        if ($object instanceof Category) {
             $pdoManagement = $this->pdo->prepare('INSERT INTO tc_category(ca_name) VALUES (:name)');
-            $pdoManagement->bindValue(':name', $category->getName());
+            $pdoManagement->bindValue(':name', $object->getName());
             $isSuccess = $pdoManagement->execute();
             if ($isSuccess) {
-                $categoryCreated = $this->findById($this->pdo->lastInsertId());
+                $categoryCreated = $this->findById($this->pdo->lastInsertId('tc_category_ca_id_seq'));
             }
         }
         return $categoryCreated;

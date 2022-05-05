@@ -1,6 +1,9 @@
 window.onload = loadPage;
 
 function loadPage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    let id = -1;
+    id = urlParams.get('id');
     checkAuth()
         .then(response => {
             return response.json();
@@ -10,10 +13,14 @@ function loadPage() {
                 document.location.href = "/index.php";
             }
             add_structure(user);
-            // Si on est sur un objet à nous, alors on ne peut pas le troquer
-            if (user['email'] == sessionStorage.getItem('proprietary')) {
-                document.getElementById('form-my-card').remove();
-            } else {
+            fetch('/api/item-api.php?id=' + id, {
+                method: 'GET',
+                headers: {
+                    'Authorization': localStorage.getItem('token')
+                }
+            }).then(data => {
+                return data.json()
+            }).then(item => {
                 fetch('/api/objets/findAll.php', {
                     method: 'GET',
                     headers: {
@@ -21,15 +28,21 @@ function loadPage() {
                     }
                 }).then(data => {
                     return data.json()
-                }).then(res => {
-                    add_form(res?.filter(it => it['is_swappable']));
-                    const items = document.getElementById('button-item-container').getElementsByClassName('item-button');
-                    for (let i = 0; i < items.length; i++) {
-                        isItemSelectedMap.set(items[i].value, false);
+                }).then(userItems => {
+                    // On enlève le formulaire si notre utilisateur est celui qui possède l'objet
+                    if (user['email'] == item['proprietary']['email']) {
+                        document.getElementById('form-my-card').remove();
+                    } else {
+                        add_form(userItems?.filter(it => it['is_swappable']));
+                        const items = document.getElementById('button-item-container').getElementsByClassName('item-button');
+                        for (let i = 0; i < items.length; i++) {
+                            isItemSelectedMap.set(items[i].value, false);
+                        }
                     }
+                    document.getElementById('grid').innerHTML = templateItemWithAllInformations(item);
                     applyCategoriesColor();
                 });
-            }
+            });
         });
 }
 

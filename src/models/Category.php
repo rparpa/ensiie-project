@@ -2,24 +2,34 @@
 
 namespace models;
 
+use JetBrains\PhpStorm\ArrayShape;
 use ReturnTypeWillChange;
 
 class Category
 {
     private int $id;
-    private string $name;
-    private int $number_swap;
 
-    function __construct_2($name)
-    {
-        $this->name = $name;
-    }
+    private string $name;
+
+    private int $number_swap;
 
     function __construct($id, $name, $number_swap)
     {
         $this->id = $id;
         $this->name = $name;
         $this->number_swap = $number_swap;
+    }
+
+
+    #[ArrayShape(['id' => "int", 'name' => "string", 'numberSwap' => "int"])]
+    #[ReturnTypeWillChange]
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'numberSwap' => $this->number_swap
+        ];
     }
 
     /**
@@ -60,15 +70,6 @@ class Category
     public function setNumberSwap(int $number_swap): void
     {
         $this->number_swap = $number_swap;
-    }
-
-    #[ReturnTypeWillChange] public function jsonSerialize(): array
-    {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'numberSwap' => $this->number_swap
-        ];
     }
 
 }

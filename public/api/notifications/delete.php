@@ -7,7 +7,6 @@ use Db\NotificationManager;
 
 
 include "../../../vendor/autoload.php";
-require_once "../../../src/templates/template-factory.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     header('Content-type: application/json');

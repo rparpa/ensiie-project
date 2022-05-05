@@ -12,7 +12,7 @@ require_once '../vendor/autoload.php';
 <body>
 <main class="login-form-container">
     <div class="login-form-wrapper">
-        <form class="login" action="form-data.php?login" method="post">
+        <form class="login" action="actions/auth-validator.php?login" method="post">
             <div class="login-form-header">
                 <span class="connect-text"> Connexion : </span>
             </div>

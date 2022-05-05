@@ -3,6 +3,7 @@
 namespace models;
 
 
+use JetBrains\PhpStorm\ArrayShape;
 use JsonSerializable;
 use ReturnTypeWillChange;
 
@@ -10,8 +11,11 @@ class NotificationSwap implements JsonSerializable
 {
 
     private int $id;
+
     private User $user;
+
     private Swap $swap;
+
     private string $date;
 
     public function __construct(int $id, User $user, Swap $swap, string $date)
@@ -23,7 +27,9 @@ class NotificationSwap implements JsonSerializable
     }
 
 
-    #[ReturnTypeWillChange] public function jsonSerialize(): array
+    #[ArrayShape(['id' => "int", 'user' => "array", 'swap' => "array", 'date' => "string"])]
+    #[ReturnTypeWillChange]
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,
@@ -96,7 +102,6 @@ class NotificationSwap implements JsonSerializable
     {
         $this->date = $date;
     }
-
 
 
 }
