@@ -17,7 +17,7 @@ if (isset($_GET['login'])) {
         if ($doUserExists != null) {
             $password_hashed = hash("sha384", $_POST['password']); // Ne peut normalement pas renvoyer false car on lui donne bien une string
             // et pas autre chosee et ne peut pas renvoyer null puisque l'algorithme donné en paramètre est valide
-            if ($doUserExists->getPassword() === $password_hashed) {
+            if ($doUserExists->getPassword() === $password_hashed && !$doUserExists->getIsBanned()) {
                 $tokenManager = new TokenManager(Connection::get());
                 $result = $tokenManager->create(new Token(generateUserInfosArraysJWT($_POST["email"]), $_POST["email"]));
                 if ($result != null) {

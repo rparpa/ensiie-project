@@ -4,24 +4,16 @@ let swaps = null;
 
 function loadSwaps() {
     checkAuth()
-        .then(response => {
-            return response.json();
-        })
         .then(user => {
             if (user == null) {
                 document.location.href = "/index.php";
             } else {
                 add_structure(user);
-                fetch('/api/trocs/findAll.php?mail=' + parseJwt(localStorage.getItem('token'))['email'] +  '&is_done=true', {
-                    headers: {
-                        'Authorization': localStorage.getItem('token')
-                    }
-                }).then(data => {
-                    return data.json()
-                }).then(res => {
-                    swaps = res;
-                    displaySwaps(res);
-                });
+                listSwapsByUserMailAndIsDone(parseJwt(localStorage.getItem('token'))['email'], true)
+                    .then(res => {
+                        swaps = res;
+                        displaySwaps(res);
+                    });
             }
         });
 }

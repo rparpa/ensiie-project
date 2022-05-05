@@ -125,14 +125,7 @@ function add_structure(user) {
             links[i].classList.add('active-link');
         }
     }
-    fetch('/api/notifications/findAll.php', {
-        method: 'GET',
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
-    }).then(data => {
-        return data.json()
-    }).then(notifications => {
+    listNotificationsOfConnectedUser().then(notifications => {
         const label = document.createElement("span");
         label.innerText = notifications.length;
         if (notifications?.length) {

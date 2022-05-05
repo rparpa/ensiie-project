@@ -2,9 +2,6 @@ window.onload = loadPage;
 
 function loadPage() {
     checkAuth()
-        .then(response => {
-            return response.json();
-        })
         .then(user => {
            if (user == null) {
                document.location.href = "/index.php";

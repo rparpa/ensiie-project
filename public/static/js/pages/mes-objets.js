@@ -2,22 +2,12 @@ window.onload = loadItems;
 
 function loadItems() {
     checkAuth()
-        .then(response => {
-            return response.json();
-        })
         .then(user => {
             if (user == null) {
                 document.location.href = "/index.php";
             } else {
                 add_structure(user);
-                fetch('/api/objets/findAll.php', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': localStorage.getItem('token')
-                    }
-                }).then(data => {
-                    return data.json()
-                }).then(res => displayItems(res?.filter(it => it['is_swappable'])));
+                listItemsOfUser().then(res => displayItems(res?.filter(it => it['is_swappable'])));
             }
         });
 

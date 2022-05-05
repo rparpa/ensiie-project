@@ -5,20 +5,10 @@ let data;
 
 function sendRequestStats() {
     checkAuth()
-        .then(response => {
-            return response.json();
-        })
         .then(user => {
             if (user != null) {
                 add_structure(user);
-
-                fetch('/api/trocs/stats.php', {
-                    headers: {
-                        'Authorization': localStorage.getItem('token')
-                    }
-                }).then(data => {
-                    return data.json()
-                }).then(res => {
+                getStatsSwapsLastSevenDays().then(res => {
                     data = res;
                     data.forEach(stats => {
                         stats['date'] = stats['date'].substring(5, stats['date'].length);
@@ -27,30 +17,24 @@ function sendRequestStats() {
                     })
                     createBarChart();
                 });
-                fetch('/api/trocs/findAll.php?last-10=true', {
-                    headers: {
-                        'Authorization': localStorage.getItem('token')
-                    }
-                }).then(data => {
-                    return data.json()
-                }).then(res => {
+                listLast10Swaps().then(res => {
                     createCarousel(res);
                 });
             } else {
                 document.location.href = "/index.php"
             }
-        }).catch(err => document.location.href = "/index.php");
+        });
 
 
 }
 
 
 function createBarChart() {
-    var margin = {top: 20, right: 30, bottom: 35, left: 30};
-    var width = Math.max(388, (document.getElementById("container-bar-chart").offsetWidth - 40)) - margin.left - margin.right,
+    const margin = {top: 20, right: 30, bottom: 35, left: 30};
+    const width = Math.max(388, (document.getElementById("container-bar-chart").offsetWidth - 40)) - margin.left - margin.right,
         height = 360 - margin.top - margin.bottom;
 
-    var svg = d3.select("#graph")
+    const svg = d3.select("#graph")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -59,19 +43,19 @@ function createBarChart() {
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-    var dataset = d3.layout.stack()(["validate", "cancel"].map(function (type) {
+    const dataset = d3.layout.stack()(["validate", "cancel"].map(function (type) {
         return data.map(function (d) {
             return {x: d.date, y: +d[type], type: type};
         });
     }));
 
-    var x = d3.scale.ordinal()
+    const x = d3.scale.ordinal()
         .domain(dataset[0].map(function (d) {
             return d.x;
         }))
         .rangeRoundBands([10, width - 10], 0.02);
 
-    var y = d3.scale.linear()
+    const y = d3.scale.linear()
         .domain([0, d3.max(dataset, function (d) {
             return d3.max(d, function (d) {
                 return d.y0 + d.y;
@@ -79,10 +63,10 @@ function createBarChart() {
         })])
         .range([height, 0]);
 
-    var colors = ["var(--validation-color)", "var(--refusal-color)"];
+    const colors = ["var(--validation-color)", "var(--refusal-color)"];
 
 
-    var yAxis = d3.svg.axis()
+    const yAxis = d3.svg.axis()
         .scale(y)
         .orient("left")
         .ticks(5)
@@ -91,7 +75,7 @@ function createBarChart() {
             return d
         });
 
-    var xAxis = d3.svg.axis()
+    const xAxis = d3.svg.axis()
         .scale(x)
         .orient("bottom")
 
@@ -105,7 +89,7 @@ function createBarChart() {
         .call(xAxis);
 
 
-    var groups = svg.selectAll("g.cost")
+    const groups = svg.selectAll("g.cost")
         .data(dataset)
         .enter().append("g")
         .attr("class", "cost")
@@ -113,7 +97,7 @@ function createBarChart() {
             return colors[i];
         });
 
-    var rect = groups.selectAll("rect")
+    const rect = groups.selectAll("rect")
         .data(function (d) {
             return d;
         })
@@ -136,13 +120,13 @@ function createBarChart() {
             tooltip.style("display", "none");
         })
         .on("mousemove", function (d) {
-            var xPosition = d3.mouse(this)[0] - 15;
-            var yPosition = d3.mouse(this)[1] - 25;
+            const xPosition = d3.mouse(this)[0] - 15;
+            const yPosition = d3.mouse(this)[1] - 25;
             tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
             tooltip.select("text").text(d.y + (d.type == 'validate' ? ' trocs réussis' : ' trocs avortés'));
         });
 
-    var tooltip = svg.append("g")
+    const tooltip = svg.append("g")
         .attr("class", "tooltip")
         .style("display", "none");
 

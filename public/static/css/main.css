@@ -283,7 +283,6 @@ span.important {
 }
 
 .swap .objects a {
-    z-index: 2;
     position: absolute;
 }
 
@@ -296,7 +295,7 @@ span.important {
 }
 
 .swap .objects .images a:hover {
-    z-index: 3;
+    z-index: 15!important;
 }
 
 .swap .objects .images a:hover img {

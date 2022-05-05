@@ -265,8 +265,8 @@ function swapTemplateAllInformation(swap, notifications) {
         if (swap['user_from']['email'] == parseJwt(localStorage.getItem('token'))["email"]) {
             swapTemplateHTML += "<button class='wait' disabled>EN ATTENTE</button>"
         } else {
-            swapTemplateHTML += "<button class='refusal' onclick='updateSwap(" + swap['id'] + ", 2)'>REFUSER</button>";
-            swapTemplateHTML += "<button class='accept' onclick='updateSwap(" + swap['id'] + ", 1)'>ACCEPTER</button>"
+            swapTemplateHTML += "<button class='refusal' onclick='clickUpdateSwap(" + swap['id'] + ", 2)'>REFUSER</button>";
+            swapTemplateHTML += "<button class='accept' onclick='clickUpdateSwap(" + swap['id'] + ", 1)'>ACCEPTER</button>"
         }
         swapTemplateHTML += "</div>";
         swapTemplateHTML += "</div>";
@@ -322,7 +322,7 @@ function templateItemsSwapped(swap, wantsPseudo) {
     let deltaLeft = (200 - (baseDeltaLeft * 2) - 120) / (Math.max(1, sizeUserFrom - 1));
     getItemsUserFrom(swap)?.forEach((item, index) => {
         const leftValue = baseDeltaLeft + (index * deltaLeft);
-        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + (index == 0 ? "z-index:3" : "") + "' href='objet.php?id=" + item['id'] + "'>";
+        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + "z-index:" + (sizeUserFrom + 1 - index) + "' href='objet.php?id=" + item['id'] + "'>";
         itemsSwappedTemplateHTML += "<img src='/images/items/" + item['picture'] + "'/>";
         itemsSwappedTemplateHTML += "</a>";
     })
@@ -342,7 +342,7 @@ function templateItemsSwapped(swap, wantsPseudo) {
     deltaLeft = (200 - (baseDeltaLeft * 2) - 120) / (Math.max(1, sizeUserFrom - 1));
     getItemsUserTo(swap)?.forEach((item, index) => {
         const leftValue = baseDeltaLeft + (index * deltaLeft);
-        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + (index == 0 ? "z-index:3" : "") + "' href='objet.php?id=" + item['id'] + "'>";
+        itemsSwappedTemplateHTML += "<a style='left: " + leftValue + "px;" + "z-index:" + (sizeUserFrom + 1 - index) + "' href='objet.php?id=" + item['id'] + "'>";
         itemsSwappedTemplateHTML += "<img src='/images/items/" + item['picture'] + "'/>";
         itemsSwappedTemplateHTML += "</a>";
     })

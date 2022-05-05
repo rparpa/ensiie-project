@@ -2,9 +2,6 @@ window.onload = loadPage;
 
 function loadPage() {
     checkAuth()
-        .then(response => {
-            return response.json();
-        })
         .then(user => {
             if (user == null) {
                 document.location.href = "/index.php";
@@ -24,13 +21,8 @@ function search() {
         query += 'name=' + document.getElementById('search-name').value + '&';
     }
     query = query.substring(0, query.length - 1);
-    fetch(query, {
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
-    }).then(data => {
-        return data.json()
-    }).then(res => displayFoundItems(res?.filter(it => it['is_swappable'])));
+    searchItems(query)
+        .then(res => displayFoundItems(res?.filter(it => it['is_swappable'])));
 }
 
 function displayFoundItems(items) {

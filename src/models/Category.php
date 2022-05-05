@@ -3,9 +3,10 @@
 namespace models;
 
 use JetBrains\PhpStorm\ArrayShape;
+use JsonSerializable;
 use ReturnTypeWillChange;
 
-class Category
+class Category implements JsonSerializable
 {
     private int $id;
 

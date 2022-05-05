@@ -5,30 +5,13 @@ function loadPage() {
     let id = -1;
     id = urlParams.get('id');
     checkAuth()
-        .then(response => {
-            return response.json();
-        })
         .then(user => {
             if (user == null) {
                 document.location.href = "/index.php";
             }
             add_structure(user);
-            fetch('/api/item-api.php?id=' + id, {
-                method: 'GET',
-                headers: {
-                    'Authorization': localStorage.getItem('token')
-                }
-            }).then(data => {
-                return data.json()
-            }).then(item => {
-                fetch('/api/objets/findAll.php', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': localStorage.getItem('token')
-                    }
-                }).then(data => {
-                    return data.json()
-                }).then(userItems => {
+            getItemById(id).then(item => {
+                listItemsOfUser().then(userItems => {
                     // On enlève le formulaire si notre utilisateur est celui qui possède l'objet
                     if (user['email'] == item['proprietary']['email']) {
                         document.getElementById('form-my-card').remove();

@@ -8,12 +8,14 @@
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="../static/js/check-auth.js"></script>
-    <script src="../static/js/templates.js"></script>
-    <script src="../static/js/structure.js"></script>
-    <script src="../static/js/display-nav.js"></script>
-    <script src="../static/js/apply-category-color.js"></script>
-    <script src="../static/js/bar-chart.js"></script>
+    <script src="../static/js/services/auth-service.js"></script>
+    <script src="../static/js/services/swaps-service.js"></script>
+    <script src="../static/js/services/notifications-service.js"></script>
+    <script src="../static/js/utils/templates.js"></script>
+    <script src="../static/js/utils/structure.js"></script>
+    <script src="../static/js/utils/display-nav.js"></script>
+    <script src="../static/js/utils/apply-category-color.js"></script>
+    <script src="../static/js/pages/accueil.js"></script>
 
 
 </head>

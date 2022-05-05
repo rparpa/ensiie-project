@@ -4,8 +4,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/main.css">
-    <script src="static/js/display-nav.js"></script>
-    <script src="static/js/display-img.js"></script>
+    <script src="static/js/utils/display-nav.js"></script>
+    <script src="static/js/utils/display-img.js"></script>
 </head>
 <body>
 <main class="signup-form-container">
@@ -54,7 +54,7 @@
             <div class="error-login hidden">
                 <?php
                 if (isset($_GET['alreadyExists'])) {
-                    echo "<script src='./static/js/login.js'></script>";
+                    echo "<script src='static/js/pages/index.js'></script>";
                     echo "Votre email a déjà été inscrite !";
                 }
                 ?>

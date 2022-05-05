@@ -28,7 +28,7 @@ require_once '../vendor/autoload.php';
             <div class="error-login hidden">
                 <?php
                 if (isset($_GET['unknownUser'])) {
-                    echo "<script src='./static/js/login.js'></script>";
+                    echo "<script src='static/js/pages/index.js'></script>";
                     echo "Vous n'êtes pas inscrit !";
                 }
                 ?>
