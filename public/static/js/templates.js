@@ -103,7 +103,11 @@ function userListTemplateInformation(user) {
         '</div>' +
         '</div>';
     if (user['is_super_user'] === false) {
-        usersHTML += '<div class="button-ban" onclick="console.log(\'toto\'); banUser(\'' + user['mail'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+        if (user['is_banned']) {
+            usersHTML += '<div class="button-unban" onclick="console.log(\'toto\'); lockUnlockUser(\'' + user['email'] + '\'); ">Débannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+        } else {
+            usersHTML += '<div class="button-ban" onclick="console.log(\'to\'); lockUnlockUser(\'' + user['email'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+        }
     }
     usersHTML += '</a>';
     return usersHTML;
@@ -162,7 +166,11 @@ function userProfileTemplateAllInformation(user) {
         '</div>' +
         '</div>';
     if (user['is_super_user'] === false) {
-        userHTML += '<button class="user-profile-button-ban" onclick="banUser(\'' + user['email'] + '\')">Bannir</button> <!-- Ne pas oublier de faire le bouton "débannir-->'
+        if (user['is_banned']) {
+            userHTML += '<div class="button-unban" onclick="console.log(\'toto\'); lockUnlockUser(\'' + user['email'] + '\'); ">Débannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+        } else {
+            userHTML += '<div class="button-ban" onclick="console.log(\'to\'); lockUnlockUser(\'' + user['email'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+        }
     }
     return userHTML;
 }

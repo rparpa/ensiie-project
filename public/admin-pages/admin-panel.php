@@ -21,8 +21,6 @@ require_once '../../vendor/autoload.php';
 <section id="structure">
 </section>
 <main>
-    <!-- Au clic  sur le logo "accéder page admin", le menu à gauche change pour donner la possibilité de choisir des
-    menus admin, et si on reclic sur ce logo, on revient en mode "utilisateur" -->
     <div>
         Barre de recherche
     </div>

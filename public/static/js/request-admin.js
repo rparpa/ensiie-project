@@ -67,7 +67,7 @@ function addCategory(nameOfCategory) {
                 headers: {
                     'Authorization': localStorage.getItem('token'),
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
+                    'Accept': 'application/json'
                 },
                 method: 'POST',
                 body: JSON.stringify(data)
@@ -78,7 +78,7 @@ function addCategory(nameOfCategory) {
         })
 }
 
-function banUser(email) {
+function lockUnlockUser(email) {
     checkAuth()
         .then(response => {
             return response.json();
@@ -89,14 +89,18 @@ function banUser(email) {
             }
             add_structure(user);
             if (user['is_super_user']) {
-                fetch('/api/user-api.php?email=' + email, {
+                let data = {"lockEmail": email};
+                fetch('/api/user-api.php', {
                     method: 'POST',
                     headers: {
-                        'Authorization': localStorage.getItem('token')
-                    }
+                        'Authorization': localStorage.getItem('token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
                 }).then(response => {
-                    return response.json();
-                });
+                    return response.body;
+                }).then(res => console.log(res));
             }
         });
 }
