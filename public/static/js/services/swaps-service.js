@@ -1,5 +1,5 @@
 function listSwaps() {
-    return fetch('/api/trocs/findAll.php', {
+    return fetch('/api/swap-api.php', {
         method: 'GET',
         headers: {
             'Authorization': localStorage.getItem('token')
@@ -11,7 +11,7 @@ function listSwaps() {
 
 
 function listSwapsByUserMailAndIsDone(userMail, isDone) {
-    return fetch('/api/trocs/findAll.php?mail=' + userMail + '&is_done=' + isDone,
+    return fetch('/api/swap-api.php?mail=' + userMail + '&is_done=' + isDone,
         {
             headers: {
                 'Authorization': localStorage.getItem('token')
@@ -22,7 +22,7 @@ function listSwapsByUserMailAndIsDone(userMail, isDone) {
 }
 
 function listLast10Swaps() {
-    return fetch('/api/trocs/findAll.php?last-10=true', {
+    return fetch('/api/swap-api.php?last-10=true', {
         headers: {
             'Authorization': localStorage.getItem('token')
         }

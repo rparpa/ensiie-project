@@ -11,10 +11,13 @@ function listUsers() {
 
 function getUserByMail(email) {
     return fetch('/api/user-api.php?email=' + email, {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        },
         method: 'GET'
     }).then(response => {
         return response.json();
-    })
+    });
 }
 
 function updateUserToBlock(email) {
@@ -29,5 +32,5 @@ function updateUserToBlock(email) {
         body: JSON.stringify(data)
     }).then(response => {
         return response.body;
-    })
+    });
 }

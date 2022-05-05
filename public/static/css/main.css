@@ -6,6 +6,10 @@
     --font-color: white;
     --validation-color: #88B04B;
     --refusal-color: #DE453E;
+    --ban-button-color: #791111;
+    --unban-button-color: #3e8b15;
+    --unban-button-hover-color: #16c916;
+    --add-category-button-color: #8402c5;
     --sidebar-width: 180px;
     --header-height: 80px;
     --disable-color: lightgrey;
@@ -295,7 +299,7 @@ span.important {
 }
 
 .swap .objects .images a:hover {
-    z-index: 15!important;
+    z-index: 15 !important;
 }
 
 .swap .objects .images a:hover img {
@@ -1320,7 +1324,8 @@ input[data-autocompleted] {
     background: var(--dark-color);
     padding: 20px;
     border-radius: 10px;
-    width: 60%;
+    min-width: 50%;
+    max-width: 60%;
     grid-column-gap: 12px;
     justify-content: center;
     align-items: center;
@@ -1348,13 +1353,14 @@ input[data-autocompleted] {
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--font-color);
 }
 
 .button-ban, .button-unban {
     text-align: center;
-    max-width: 100%;
+    width: 120px;
     max-height: 92px;
-    color: white;
+    color: var(--font-color);
     padding: 24px 20px;
     font-size: 20px;
     font-weight: 500;
@@ -1366,11 +1372,11 @@ input[data-autocompleted] {
 }
 
 .button-ban {
-    background-color: #791111;
+    background-color: var(--ban-button-color);
 }
 
 .button-unban {
-    background-color: #3e8b15;
+    background-color: var(--unban-button-color);
 }
 
 .button-ban:hover, .button-unban:hover {
@@ -1383,7 +1389,7 @@ input[data-autocompleted] {
 }
 
 .button-unban:hover {
-    background-color: #16c916;
+    background-color: var(--unban-button-hover-color);
 }
 
 @media screen and (max-width: 525px) {
@@ -1400,6 +1406,8 @@ input[data-autocompleted] {
     display: flex;
     flex-direction: column;
     row-gap: 12px;
+    width: 100%;
+    align-items: center;
 }
 
 .user-profile-header {
@@ -1409,23 +1417,21 @@ input[data-autocompleted] {
     align-items: center;
     row-gap: 12px;
     font-size: 20px;
+    width: 100%;
 }
 
 .user-profile-image, .user-profile-image img {
     width: 150px;
     height: 150px;
     border-radius: 80px;
-
 }
 
-/* align-self: center;
-    justify-self: center;
- */
 .user-profile-infos {
     display: flex;
     flex-direction: column;
     row-gap: 12px;
     font-size: 20px;
+    width: 100%;
 }
 
 .user-profile-infos-header, .user-profile-header-email, .user-profile-header-username {
@@ -1454,7 +1460,7 @@ input[data-autocompleted] {
     justify-content: space-around;
 }
 
-.user-profile-button-ban {
+.user-profile-button-ban, .user-profile-button-unban {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -1466,17 +1472,31 @@ input[data-autocompleted] {
     padding: 24px 20px;
     font-weight: 500;
     cursor: pointer;
-    background-color: #791111;
     border-radius: 12px;
     border: none;
     transition: all 200ms ease;
     outline: 3px solid white;
 }
 
-.user-profile-button-ban:hover {
+.user-profile-button-ban {
+    background-color: var(--ban-button-color);
+}
+
+.user-profile-button-unban {
+    background-color: var(--unban-button-color);
+}
+
+.user-profile-button-ban:hover, .user-profile-button-unban:hover {
     transform: scale(1.1);
-    background-color: red;
     outline: 3px solid var(--main-color);
+}
+
+.user-profile-button-ban:hover {
+    background-color: red;
+}
+
+.user-profile-button-unban:hover {
+    background-color: var(--unban-button-hover-color);
 }
 
 .all-categories-container {
@@ -1527,7 +1547,7 @@ input[data-autocompleted] {
 
 .button-add-category:hover {
     transform: scale(1.2);
-    background-color: #8402c5;
+    background-color: var(--add-category-button-color);
     outline: 1px solid transparent;
 }
 

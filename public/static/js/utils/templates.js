@@ -167,9 +167,9 @@ function userProfileTemplateAllInformation(user) {
         '</div>';
     if (user['is_super_user'] === false) {
         if (user['is_banned']) {
-            userHTML += '<div class="button-unban" onclick="console.log(\'toto\'); lockUnlockUser(\'' + user['email'] + '\'); ">Débannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+            userHTML += '<div class="user-profile-button-unban" onclick="console.log(\'toto\'); lockUnlockUser(\'' + user['email'] + '\'); ">Débannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
         } else {
-            userHTML += '<div class="button-ban" onclick="console.log(\'to\'); lockUnlockUser(\'' + user['email'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+            userHTML += '<div class="user-profile-button-ban" onclick="console.log(\'to\'); lockUnlockUser(\'' + user['email'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
         }
     }
     return userHTML;

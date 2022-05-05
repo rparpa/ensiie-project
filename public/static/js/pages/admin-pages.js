@@ -12,7 +12,7 @@ function getAllTrocs() {
 function getAllCategories() {
     checkAuth()
         .then(user => {
-            if (user == null) {
+            if (user == null || user['is_banned'] || !user['is_super_user']) {
                 document.location.href = "/index.php";
             }
             add_structure(user);

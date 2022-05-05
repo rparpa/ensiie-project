@@ -10,10 +10,9 @@ function getUser(email) {
 }
 
 function displayUserProfile(user) {
-    // On reçoit le bon user
     let userHTML = "";
     if (user != null) {
-        userHTML = userProfileTemplateAllInformation(user); // Renvoie le bon template pour le profil, avec les bonnes données
+        userHTML = userProfileTemplateAllInformation(user);
     } else {
         userHTML = noResultContent("Vous n'avez pas d'utilisateur");
     }

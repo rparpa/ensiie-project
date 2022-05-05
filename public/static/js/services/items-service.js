@@ -1,5 +1,5 @@
 function listItemsOfUser() {
-    return fetch('/api/objets/findAll.php', {
+    return fetch('/api/item-api.php', {
         method: 'GET',
         headers: {
             'Authorization': localStorage.getItem('token')
