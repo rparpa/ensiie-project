@@ -2,7 +2,8 @@
 
 namespace models;
 
-use Cassandra\Date;
+
+use JsonSerializable;
 use ReturnTypeWillChange;
 
 class NotificationSwap implements JsonSerializable

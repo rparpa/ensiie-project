@@ -185,6 +185,33 @@ main {
     }
 }
 
+#bell {
+    position: relative;
+    text-decoration: none;
+}
+
+#bell span {
+    background: red;
+    font-style: normal;
+    text-decoration: none;
+    border-radius: 24px;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    top: -10px;
+    right: -8px;
+    color: var(--font-color);
+    font-weight: 700;
+}
+
+span.important {
+    font-weight: 700;
+    color: var(--refusal-color);
+}
+
 @media screen and (max-width: 642px) {
     #logo-trocOn {
         display: none;

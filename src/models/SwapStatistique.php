@@ -2,9 +2,10 @@
 
 namespace models;
 
+use JsonSerializable;
 use ReturnTypeWillChange;
 
-class SwapStatistique
+class SwapStatistique implements JsonSerializable
 {
 
     private string $date;

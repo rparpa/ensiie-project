@@ -231,11 +231,11 @@ function itemTemplateShort(item) {
 /*
 Fonction générant le code HTML pour un troc
  */
-function swapTemplateAllInformation(swap) {
+function swapTemplateAllInformation(swap, notifications) {
     let swapTemplateHTML = "";
     swapTemplateHTML += "<section class='my-card my-card-100'>";
     swapTemplateHTML += "<section class='my-card-header'>";
-    swapTemplateHTML += getTitleSwap(swap)
+    swapTemplateHTML += getTitleSwap(swap, notifications)
     swapTemplateHTML += "</section>";
     swapTemplateHTML += "<section class='my-card-body'>";
     swapTemplateHTML += "<div class='swap-content'/>";
@@ -344,7 +344,7 @@ function templateItemsSwapped(swap, wantsPseudo) {
     return itemsSwappedTemplateHTML;
 }
 
-function getTitleSwap(swap) {
+function getTitleSwap(swap, notifications) {
     let title = "<svg xmlns=\"http://www.w3.org/2000/svg\"\n" +
         "viewBox=\"0 0 512 512\">";
     if (swap['status'] == 2) {
@@ -366,6 +366,9 @@ function getTitleSwap(swap) {
             "</svg>";
         title += "<span>"
         title += "Troc initié par " + escapeHtml(swap['user_from']['pseudo']) + " le : " + escapeHtml(swap['creation_date']);
+        if (notifications?.some(notif => notif['swap']['id'] == swap['id'])) {
+            title += "<span class='important'> NOUVEAU ! </span>";
+        }
     }
     title += "</span>";
     return title;

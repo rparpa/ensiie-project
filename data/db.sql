@@ -188,6 +188,7 @@ EXECUTE PROCEDURE numberSwapIncr();
 
 
 
+
 /**
   INSERTION dans la base de données d'informations pour ne pas avoir une application vide
  */
@@ -630,3 +631,24 @@ INSERT INTO tc_swap_item (id_item, id_swap)
 VALUES (36, 15);
 INSERT INTO tc_swap_item (id_item, id_swap)
 VALUES (34, 15);
+
+
+CREATE FUNCTION create_notification() RETURNS trigger
+    LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    INSERT INTO tc_notification_swap(no_user_mail, no_swap_id) VALUES (new.ts_us_mail_to, new.ts_id);
+    RETURN new;
+END;
+$$;
+
+CREATE TRIGGER tr_notification_creation
+    AFTER INSERT
+    ON tc_swap
+    FOR EACH ROW
+EXECUTE PROCEDURE create_notification();
+
+SELECT setval('tc_category_ca_id_seq', 17, true);
+SELECT setval('tc_item_it_id_seq', 41, true);
+SELECT setval('tc_swap_ts_id_seq', 16, true);

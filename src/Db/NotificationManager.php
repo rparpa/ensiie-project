@@ -3,6 +3,7 @@
 namespace Db;
 
 use models\NotificationSwap;
+use PDO;
 
 class NotificationManager extends Manager
 {
@@ -29,7 +30,7 @@ class NotificationManager extends Manager
     public function findAllByUserMail(string $mail): array
     {
         $notifications = [];
-        $pdoStatement = $this->pdo->query('SELECT * FROM tc_notification_swap WHERE no_user_mail=:mail');
+        $pdoStatement = $this->pdo->prepare('SELECT * FROM tc_notification_swap WHERE no_user_mail=:mail');
         $pdoStatement->bindValue(':mail', $mail);
         return $this->executeQueryAndReturnNotifications($pdoStatement, $notifications);
     }

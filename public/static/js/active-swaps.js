@@ -20,17 +20,28 @@ function loadSwaps() {
                     return data.json()
                 }).then(res => {
                     swaps = res;
-                    displaySwaps(res);
+
+                    fetch('/api/notifications/delete.php?mail=' + parseJwt(localStorage.getItem('token'))['email'], {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': localStorage.getItem('token')
+                        }
+                    }).then(data => {
+                        return data.json()
+                    }).then(notifications => {
+                        console.log(notifications);
+                        displaySwaps(res, notifications);
+                    });
                 });
             }
         });
 }
 
-function displaySwaps(swaps) {
+function displaySwaps(swaps, notifications) {
     let swapsHTML = "";
     if (swaps.length) {
         swaps.forEach(swap => {
-            swapsHTML += swapTemplateAllInformation(swap);
+            swapsHTML += swapTemplateAllInformation(swap, notifications);
         });
     } else {
         swapsHTML += noResultContent("Vous n'avez pas de trocs en cours");
