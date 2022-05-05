@@ -84,8 +84,12 @@ Générer le code HTML pour un panneau utilisateur avec quelques unes de ses inf
  */
 function userListTemplateInformation(user) {
     let usersHTML = "";
-    usersHTML += "<a onclick='console.log(\"titi\");' class='all-users-item' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>" +
-        '<div class="user-item-image">' +
+    if (user['is_super_user']) {
+        usersHTML += "<a onclick='console.log(\"titi\");' class='all-users-item-admin' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
+    } else {
+        usersHTML += "<a onclick='console.log(\"titi\");' class='all-users-item' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
+    }
+    usersHTML += '<div class="user-item-image">' +
         '<img class="logo" class="photo" src="/images/users/' + escapeHtml(user['picture']) + '"/>' +
         '</div>' +
         '<div class="user-item-infos">' +

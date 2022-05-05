@@ -1319,13 +1319,10 @@ input[data-autocompleted] {
     row-gap: 16px;
 }
 
-.all-users-item {
+.all-users-item, .all-users-item-admin {
     display: grid;
-    background: var(--dark-color);
     padding: 20px;
     border-radius: 10px;
-    min-width: 50%;
-    max-width: 60%;
     grid-column-gap: 12px;
     justify-content: center;
     align-items: center;
@@ -1335,6 +1332,14 @@ input[data-autocompleted] {
     'img infos infos infos btn-ban';
     color: var(--disable-color);
     text-decoration: none;
+}
+
+.all-users-item {
+    background: var(--dark-color);
+}
+
+.all-users-item-admin {
+    background: var(--unban-button-color);
 }
 
 .all-users-item:hover {
