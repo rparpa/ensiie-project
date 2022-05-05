@@ -1,6 +1,5 @@
 <?php
 require_once '../../vendor/autoload.php';
-include "../../src/templates/structure.php";
 ?>
 
 <html lang="fr">
@@ -15,8 +14,12 @@ include "../../src/templates/structure.php";
     <script src="../static/js/display-img.js"></script>
     <script src="../static/js/check-form-item.js"></script>
     <script src="../static/js/request-user.js"></script>
+    <script src="../static/js/request-admin.js"></script>
+    <script src="../static/js/structure.js"></script>
 </head>
 <body onload="getAllUsers()">
+<section id="structure">
+</section>
 <main>
     <!-- Au clic  sur le logo "accéder page admin", le menu à gauche change pour donner la possibilité de choisir des
     menus admin, et si on reclic sur ce logo, on revient en mode "utilisateur" -->

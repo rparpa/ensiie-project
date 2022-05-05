@@ -84,13 +84,13 @@ Générer le code HTML pour un panneau utilisateur avec quelques unes de ses inf
  */
 function userListTemplateInformation(user) {
     let usersHTML = "";
-    usersHTML += '<div class="all-users-item" onclick="goToUserProfile(\'' + user['mail'] + '\')">' + // Mieux, passer directement le user, ça éviterait une requête pour rien
+    usersHTML += "<a onclick='console.log(\"titi\");' class='all-users-item' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>" +
         '<div class="user-item-image">' +
         '<img class="logo" class="photo" src="/images/users/' + escapeHtml(user['picture']) + '"/>' +
         '</div>' +
         '<div class="user-item-infos">' +
         '<div class="all-user-item-info user-item-email">' +
-        '<p> Email : ' + escapeHtml(user["mail"]) + '</p>' +
+        '<p> Email : ' + escapeHtml(user["email"]) + '</p>' +
         '</div>' +
         '<div class="all-user-item-info user-item-username">' +
         '<p>Pseudo : ' + escapeHtml(user["pseudo"]) + '</p>' +
@@ -101,9 +101,11 @@ function userListTemplateInformation(user) {
         '<div class="all-user-item-info user-item-lastname">' +
         '<p>  Nom : ' + escapeHtml(user["lastname"]) + '</p>' +
         '</div>' +
-        '</div>' +
-        '<div class="button-ban" onclick="banUser(\'' + user['mail'] + '\')">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->' +
         '</div>';
+    if (user['is_super_user'] === false) {
+        usersHTML += '<div class="button-ban" onclick="console.log(\'toto\'); banUser(\'' + user['mail'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+    }
+    usersHTML += '</a>';
     return usersHTML;
 }
 
@@ -121,7 +123,7 @@ function userProfileTemplateAllInformation(user) {
         '</div>' +
         '<div class="user-profile-header-email">' +
         '<h4>Email :</h4>' +
-        user['mail'] +
+        user['email'] +
         '</div>' +
         '<div class="user-profile-header-username">' +
         '<h4>Pseudo :</h4>' +
@@ -158,8 +160,10 @@ function userProfileTemplateAllInformation(user) {
         '</div>' +
         '</div>' +
         '</div>' +
-        '</div>' +
-        '<div class="user-profile-button-ban" onclick="banUser(\'' + user['mail'] + '\')">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+        '</div>';
+    if (user['is_super_user'] === false) {
+        userHTML += '<button class="user-profile-button-ban" onclick="banUser(\'' + user['email'] + '\')">Bannir</button> <!-- Ne pas oublier de faire le bouton "débannir-->'
+    }
     return userHTML;
 }
 

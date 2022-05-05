@@ -27,7 +27,7 @@ CREATE TABLE "tc_wish"
 CREATE TABLE "tc_category"
 (
     ca_id          SERIAL PRIMARY KEY,
-    ca_name        TEXT          NOT NULL,
+    ca_name        TEXT          NOT NULL UNIQUE,
     ca_number_swap INT DEFAULT 0 NOT NULL
 );
 

@@ -15,15 +15,20 @@ require_once '../../vendor/autoload.php';
     <script src="../static/js/check-form-item.js"></script>
     <script src="../static/js/request-admin.js"></script>
     <script src="../static/js/structure.js"></script>
+
+
 </head>
 <body onload="getAllCategories()">
+<section id="structure">
+
+</section>
 <main>
     <div>
         Barre de recherche
     </div>
     <div class="div-add-category">
         <div class="form-add-category">
-            <input type="text" name="new-category-name" class="input-new-cat-name"
+            <input type="text" name="new-category-name" class="input-new-cat-name required"
                    placeholder="Nom de la nouvelle catégorie"/>
         </div>
         <div class="div-button-add-category">
@@ -33,7 +38,7 @@ require_once '../../vendor/autoload.php';
             </button>
         </div>
     </div>
-    <section id="structure" class="all-categories-container">
+    <section class="all-categories-container">
     </section>
 </main>
 </body>

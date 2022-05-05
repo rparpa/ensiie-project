@@ -1,16 +1,27 @@
 function getAllUsers() {
-    fetch('/api/user-api.php', {
-        method: 'GET',
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
-    }).then(response => {
-        return response.json();
-    }).then(res => displayAllUsers(res));
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(user => {
+            if (user == null) {
+                document.location.href = "/index.php";
+            }
+            add_structure(user);
+            fetch('/api/user-api.php', {
+                method: 'GET',
+                headers: {
+                    'Authorization': localStorage.getItem('token')
+                }
+            }).then(response => {
+                return response.json();
+            }).then(res => displayAllUsers(res));
+        })
 }
 
 function displayAllUsers(users) {
     let usersHTML = "";
+    console.log(users);
     if (users.length) {
         users.forEach(user => {
             usersHTML += userListTemplateInformation(user);
@@ -22,11 +33,21 @@ function displayAllUsers(users) {
 }
 
 function getUser(email) {
-    fetch('/api/user-api.php?email=' + email, {
-        method: 'GET'
-    }).then(response => {
-        return response.json();
-    }).then(res => displayUserProfile(res));
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(user => {
+            if (user == null) {
+                document.location.href = "/index.php";
+            }
+            add_structure(user);
+            fetch('/api/user-api.php?email=' + email, {
+                method: 'GET'
+            }).then(response => {
+                return response.json();
+            }).then(res => displayUserProfile(res));
+        })
 }
 
 function displayUserProfile(user) {

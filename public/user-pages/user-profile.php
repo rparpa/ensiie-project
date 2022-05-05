@@ -1,6 +1,5 @@
 <?php
 require_once '../../vendor/autoload.php';
-include "../../src/templates/structure.php";
 ?>
 
 <html lang="fr">
@@ -13,11 +12,14 @@ include "../../src/templates/structure.php";
     <script src="../static/js/templates.js"></script>
     <script src="../static/js/display-nav.js"></script>
     <script src="../static/js/display-img.js"></script>
+    <script src="../static/js/request-admin.js"></script>
     <script src="../static/js/check-form-item.js"></script>
     <script src="../static/js/request-user.js"></script>
+    <script src="../static/js/structure.js"></script>
 </head>
-<?php $test = $_GET["email"]; ?>
-<?php echo "<body onload='getUser($test;)'>" ?> PUTAIN JE COMPRENDS RIEN POURQUOI CA MARCHE PAS
+<body onload="getUser('<?php echo $_GET["email"]; ?>')">
+<section id="structure">
+</section>
 <main>
     <!-- Au clic  sur le logo "accéder page admin", le menu à gauche change pour donner la possibilité de choisir des
     menus admin, et si on reclic sur ce logo, on revient en mode "utilisateur" -->

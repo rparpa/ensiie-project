@@ -1,23 +1,43 @@
 function getAllTrocs() {
-    fetch('/api/trocs/findAll.php', {
-        method: 'GET',
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
-    }).then(response => {
-        return response.json();
-    }).then(res => displaySwaps(res));
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(user => {
+            if (user == null) {
+                document.location.href = "/index.php";
+            }
+            add_structure(user);
+            fetch('/api/trocs/findAll.php', {
+                method: 'GET',
+                headers: {
+                    'Authorization': localStorage.getItem('token')
+                }
+            }).then(response => {
+                return response.json();
+            }).then(res => displaySwaps(res));
+        });
 }
 
 function getAllCategories() {
-    fetch('/api/category-api.php', {
-        method: 'GET',
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
-    }).then(response => {
-        return response.json();
-    }).then(res => displayAllCategories(res));
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(user => {
+            if (user == null) {
+                document.location.href = "/index.php";
+            }
+            add_structure(user);
+            fetch('/api/category-api.php', {
+                method: 'GET',
+                headers: {
+                    'Authorization': localStorage.getItem('token')
+                }
+            }).then(response => {
+                return response.json();
+            }).then(res => displayAllCategories(res));
+        });
 }
 
 function displayAllCategories(categories) {
@@ -33,27 +53,50 @@ function displayAllCategories(categories) {
 }
 
 function addCategory(nameOfCategory) {
-    console.log(nameOfCategory);
     let data = {"categoryName": nameOfCategory};
-    fetch('/api/category-api.php', {
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        },
-        method: 'POST',
-        body: JSON.stringify(data)
-    }).then(response => {
-        window.location.reload();
-        return response.json();
-    })
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(user => {
+            if (user == null) {
+                document.location.href = "/index.php";
+            }
+            add_structure(user);
+            fetch('/api/category-api.php', {
+                headers: {
+                    'Authorization': localStorage.getItem('token'),
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                method: 'POST',
+                body: JSON.stringify(data)
+            }).then(response => {
+                window.location.reload();
+                return response.json();
+            });
+        })
 }
 
 function banUser(email) {
-    fetch('/api/user-api.php?email=' + email, {
-        method: 'POST',
-        headers: {
-            'Authorization': localStorage.getItem('token')
-        }
-    }).then(response => {
-        return response.json();
-    });
+    checkAuth()
+        .then(response => {
+            return response.json();
+        })
+        .then(user => {
+            if (user == null) {
+                document.location.href = "/index.php";
+            }
+            add_structure(user);
+            if (user['is_super_user']) {
+                fetch('/api/user-api.php?email=' + email, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': localStorage.getItem('token')
+                    }
+                }).then(response => {
+                    return response.json();
+                });
+            }
+        });
 }

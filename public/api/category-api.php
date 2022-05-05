@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $newCategoryJson = json_decode(file_get_contents('php://input'), true);
-    var_dump($newCategoryJson);
+    echo "Je suis la donnée : ".$newCategoryJson;
     if (isset($newCategoryJson["categoryName"])) {
         echo json_encode($categoryManager->create(new Category(0, $newCategoryJson["categoryName"], 0)));
     }

@@ -20,8 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
         echo json_encode($userFromDBById); // OK
     } else {
-        // Récupérer tout, A METTRE EN FORME, PAS FINI
-        json_encode($userManager->findAll(), JSON_PRETTY_PRINT);
+        echo json_encode($userManager->findAll(), JSON_PRETTY_PRINT);
     }
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
