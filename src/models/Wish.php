@@ -59,7 +59,7 @@ class Wish
         $this->label = $label;
     }
 
-    #[ReturnTypeWillChange] public function jsonSerialize()
+    #[ReturnTypeWillChange] public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

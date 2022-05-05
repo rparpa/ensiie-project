@@ -2,26 +2,34 @@
 
 namespace models;
 
+use Cassandra\Date;
 use ReturnTypeWillChange;
 
-class Notification
+class NotificationSwap implements JsonSerializable
 {
 
     private int $id;
-    private string $content;
-    private string $creation_date;
+    private User $user;
+    private Swap $swap;
+    private string $date;
 
-
-    /**
-     * @param int $id
-     * @param string $content
-     * @param string $creation_date
-     */
-    public function __construct(int $id, string $content, string $creation_date)
+    public function __construct(int $id, User $user, Swap $swap, string $date)
     {
         $this->id = $id;
-        $this->content = $content;
-        $this->creation_date = $creation_date;
+        $this->user = $user;
+        $this->swap = $swap;
+        $this->date = $date;
+    }
+
+
+    #[ReturnTypeWillChange] public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'user' => $this->user->jsonSerialize(),
+            'swap' => $this->swap->jsonSerialize(),
+            'date' => $this->date
+        ];
     }
 
     /**
@@ -32,45 +40,62 @@ class Notification
         return $this->id;
     }
 
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return Swap
+     */
+    public function getSwap(): Swap
+    {
+        return $this->swap;
+    }
+
+    /**
+     * @param Swap $swap
+     */
+    public function setSwap(Swap $swap): void
+    {
+        $this->swap = $swap;
+    }
 
     /**
      * @return string
      */
-    public function getContent(): string
+    public function getDate(): string
     {
-        return $this->content;
+        return $this->date;
     }
 
     /**
-     * @param string $content
+     * @param string $date
      */
-    public function setContent(string $content): void
+    public function setDate(string $date): void
     {
-        $this->content = $content;
+        $this->date = $date;
     }
 
-    /**
-     * @return string
-     */
-    public function getCreationDate(): string
-    {
-        return $this->creation_date;
-    }
 
-    /**
-     * @param string $creation_date
-     */
-    public function setCreationDate(string $creation_date): void
-    {
-        $this->creation_date = $creation_date;
-    }
 
-    #[ReturnTypeWillChange] public function jsonSerialize()
-    {
-        return [
-            'id' => $this->id,
-            'content' => $this->content,
-            'creationDate' => $this->creation_date
-        ];
-    }
 }

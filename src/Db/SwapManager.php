@@ -120,11 +120,11 @@ class SwapManager extends Manager
             if ($swap != null) {
                 $swap->setStatus($object->getStatus());
                 $pdoStatement = $this->pdo->prepare("UPDATE tc_swap SET ts_tss_id = :new_status, ts_is_done=TRUE, ts_end_date=CURRENT_DATE WHERE ts_id = :id");
-                $pdoStatement->bindParam(':new_status', $swap->status, PDO::PARAM_INT);
-                $pdoStatement->bindParam(':id', $swap->id, PDO::PARAM_INT);
+                $pdoStatement->bindValue(':new_status', $swap->getStatus(), PDO::PARAM_INT);
+                $pdoStatement->bindValue(':id', $swap->getId());
                 $execute = $pdoStatement->execute();
                 if ($execute) {
-                    $swap = $this->findById($swap->id);
+                    $swap = $this->findById($swap->getId());
                 }
             }
         }
@@ -155,7 +155,7 @@ class SwapManager extends Manager
     public function deleteById($troc)
     {
         if ($troc instanceof Swap) {
-            $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_troc WHERE tr_id =:id');
+            $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_swap WHERE ts_id =:id');
             $this->pdoStatement->bindValue(':id', $troc->getId(), PDO::PARAM_INT);
 
             return $this->pdoStatement->execute();

@@ -177,23 +177,6 @@ class ItemManager extends Manager
         }
     }
 
-
-    /**
-     * Supprime un objet stocke en bdd
-     * @param Item $item
-     * @return bool
-     */
-
-    public function delete(Item $item): bool
-    {
-        $this->pdoStatement = $this->pdo->prepare('DELETE FROM tc_item WHERE it_id = :id');
-        $this->pdoStatement->bindValue(':id', $item->getId(), PDO::PARAM_INT);
-
-        return $this->pdoStatement->execute();
-    }
-
-
-
     public function deleteById($id)
     {
         // On ne supprime pas les objets de la base de données, car on veut garder l'historique des trocs meme refusés mais
@@ -204,6 +187,7 @@ class ItemManager extends Manager
             $pdoStatement->bindValue(':id', $id);
             $pdoStatement->execute();
         }
+        return $item;
     }
 
     /**

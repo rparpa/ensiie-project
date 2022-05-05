@@ -6,9 +6,9 @@ use ReturnTypeWillChange;
 
 class Category
 {
-    public int $id;
-    public string $name;
-    public int $number_swap;
+    private int $id;
+    private string $name;
+    private int $number_swap;
 
     function __construct_2($name)
     {
@@ -62,12 +62,12 @@ class Category
         $this->number_swap = $number_swap;
     }
 
-    #[ReturnTypeWillChange] public function jsonSerialize()
+    #[ReturnTypeWillChange] public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'numberSwap' => $this->number_swap,
+            'numberSwap' => $this->number_swap
         ];
     }
 

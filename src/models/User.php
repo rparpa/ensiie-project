@@ -8,17 +8,17 @@ use ReturnTypeWillChange;
 class User implements JsonSerializable
 {
 
-    public string $mail;
-    public string $firstname;
-    public string $lastname;
-    public string $pseudo;
-    public string $password;
-    public string $picture;
-    public int $zipcode;
-    public string $street;
-    public string $city;
-    public bool $is_super_user;
-    public bool $is_banned;
+    private string $mail;
+    private string $firstname;
+    private string $lastname;
+    private string $pseudo;
+    private string $password;
+    private string $picture;
+    private int $zipcode;
+    private string $street;
+    private string $city;
+    private bool $is_super_user;
+    private bool $is_banned;
 
 
 
@@ -218,7 +218,7 @@ class User implements JsonSerializable
     }
 
 
-    #[ReturnTypeWillChange] public function jsonSerialize()
+    #[ReturnTypeWillChange] public function jsonSerialize(): array
     {
         return [
             'email' => $this->mail,

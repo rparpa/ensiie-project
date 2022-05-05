@@ -3,18 +3,19 @@
 namespace models;
 
 
+use JsonSerializable;
 use ReturnTypeWillChange;
 
-class Swap
+class Swap implements JsonSerializable
 {
-    public int $id;
-    public string $creation_date;
-    public string $end_date;
-    public bool $is_done;
-    public int $status; // 0 = en attente, 1 = accepté, 2 = refusé
-    public User $user_from;
-    public User $user_to;
-    public array $items;
+    private int $id;
+    private string $creation_date;
+    private string $end_date;
+    private bool $is_done;
+    private int $status; // 0 = en attente, 1 = accepté, 2 = refusé
+    private User $user_from;
+    private User $user_to;
+    private array $items;
 
     function __construct($id, $creation_date, $end_date, $is_done, $status, $user_from, $user_to, $items)
     {
@@ -33,15 +34,38 @@ class Swap
         $this->items = $items;
     }
 
+    #[ReturnTypeWillChange] public function jsonSerialize(): array
+    {
+        $arrayItems = [];
+        foreach ($this->items as $item) {
+            $arrayItems[] = $item->jsonSerialize();
+        }
+        return [
+            'id' => $this->id,
+            'creation_date' => $this->creation_date,
+            'end_date' => $this->end_date,
+            'is_done' => $this->is_done,
+            'status' => $this->status,
+            'user_from' => $this->user_from->jsonSerialize(),
+            'user_to' => $this->user_to->jsonSerialize(),
+            'items' => $arrayItems
+        ];
+    }
 
-    function getId(): int
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getIsDone(): int
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
     {
-        return $this->is_done;
+        $this->id = $id;
     }
 
     /**
@@ -53,10 +77,9 @@ class Swap
     }
 
     /**
-     * @param $creation_date
-     * @return void
+     * @param string $creation_date
      */
-    public function setCreationDate($creation_date): void
+    public function setCreationDate(string $creation_date): void
     {
         $this->creation_date = $creation_date;
     }
@@ -70,19 +93,25 @@ class Swap
     }
 
     /**
-     * @param $end_date
-     * @return void
+     * @param string $end_date
      */
-    public function setEndDate($end_date): void
+    public function setEndDate(string $end_date): void
     {
         $this->end_date = $end_date;
     }
 
     /**
-     * @param $is_done
-     * @return void
+     * @return bool
      */
-    public function setIsDone($is_done): void
+    public function isIsDone(): bool
+    {
+        return $this->is_done;
+    }
+
+    /**
+     * @param bool $is_done
+     */
+    public function setIsDone(bool $is_done): void
     {
         $this->is_done = $is_done;
     }
@@ -96,7 +125,7 @@ class Swap
     }
 
     /**
-     * @param bool $status
+     * @param int $status
      */
     public function setStatus(int $status): void
     {
@@ -104,7 +133,7 @@ class Swap
     }
 
     /**
-     * @return string
+     * @return User
      */
     public function getUserFrom(): User
     {
@@ -151,18 +180,6 @@ class Swap
         $this->items = $items;
     }
 
-    #[ReturnTypeWillChange] public function jsonSerialize()
-    {
-        return [
-            'id' => $this->id,
-            'creation_date' => $this->creation_date,
-            'end_date' => $this->end_date,
-            'is_done' => $this->is_done,
-            'status' => $this->status,
-            'userFrom' => $this->user_from,
-            'userTo' => $this->user_to,
-            'items' => $this->items
-        ];
-    }
+
 
 }

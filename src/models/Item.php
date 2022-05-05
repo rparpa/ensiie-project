@@ -9,6 +9,23 @@ use ReturnTypeWillChange;
 class Item implements JsonSerializable
 {
 
+    private int $id;
+
+    private User $proprietary;
+
+    private string $name;
+
+
+    private string $picture;
+
+    private string $description;
+
+    private string $creation_date;
+
+    private bool $is_swappable;
+
+    private array $categories;
+
     function __construct(int    $id,
                          string $name,
                          User $proprietary,
@@ -29,59 +46,12 @@ class Item implements JsonSerializable
     }
 
 
-    /**
-     * /**
-     * @var int id identifiant de l'objet
-     * remarque : pas de setter pour l'identifiant
-     */
-    public int $id;
 
-    public User $proprietary;
 
-    /**
-     * @var string nom de l'objet
-     */
-    public string $name;
-
-    /**
-     * @param string $name
-     * @return void
-     */
     public function setName(string $name)
     {
         $this->name = $name;
     }
-
-
-    /**
-     * @var string adresse de la photo
-     */
-    public string $picture;
-
-    /**
-     * @var string description de l'objet
-     */
-    public string $description;
-
-    /**
-     * @var string date de creation
-     */
-    public string $creation_date;
-
-    /**
-     * @var boolean est échangeable
-     */
-    public bool $is_swappable;
-
-    public array $categories;
-
-
-
-
-    /**
-     * ajouté un constructeur
-     */
-
 
     /**
      * @return string
@@ -189,15 +159,21 @@ class Item implements JsonSerializable
 
     #[ReturnTypeWillChange] public function jsonSerialize()
     {
+        $arrayCategories = [];
+        foreach ($this->categories as $category) {
+            $arrayCategories[] = $category->jsonSerialize();
+        }
+
+
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'proprietary' => $this->proprietary,
+            'proprietary' => $this->proprietary->jsonSerialize(),
             'picture' => $this->picture,
             'description' => $this->description,
             'creation_date' => $this->creation_date,
             'is_swappable' => $this->is_swappable,
-            'categories' => $this->categories
+            'categories' => $arrayCategories
         ];
     }
 
