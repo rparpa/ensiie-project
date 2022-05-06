@@ -27,10 +27,10 @@ if (isset($_GET['login'])) {
                     echo '</script>';
                 }
             } else {
-                header('Location: index.php?unknownUser');
+                header('Location: ../index.php?unknownUser');
             }
         } else {
-            header('Location: index.php?unknownUser');
+            header('Location: ../index.php?unknownUser');
         }
     }
 }
@@ -67,7 +67,7 @@ if (isset($_GET['signup'])) {
 
         $doUserExists = $userManager->findById($email);
         if ($doUserExists != null) {
-            header('Location: sign-up-form.php?alreadyExists');
+            header('Location: ../sign-up-form.php?alreadyExists');
         } else {
             $createdUser = $userManager->create(new User($email, $prenom, $nom, $pseudo, $password_hashed, $file, $codePostal, $adresse, $ville, false, false));
             $tokenManager = new TokenManager(Connection::get());
