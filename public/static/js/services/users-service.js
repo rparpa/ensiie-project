@@ -23,7 +23,7 @@ function getUserByMail(email) {
 function updateUserToBlock(email) {
     let data = {"lockEmail": email};
     return fetch('/api/users.php', {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
             'Authorization': localStorage.getItem('token'),
             'Content-Type': 'application/json',

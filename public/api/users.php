@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     } else {
         echo json_encode($userManager->findAll(), JSON_PRETTY_PRINT);
     }
-} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+} else if ($_SERVER['REQUEST_METHOD'] == 'PATCH') {
     $lockEmailObject = json_decode(file_get_contents('php://input'), true);
     if (isset($lockEmailObject['lockEmail'])) {
         if (!$userManager->findById($token->getUserMail())->getIsSuperUser()) {

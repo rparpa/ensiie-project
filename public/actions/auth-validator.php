@@ -38,7 +38,7 @@ if (isset($_GET['signup'])) {
     if (isset($_POST['prenom']) && isset($_POST['nom']) && isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password'])
         && isset($_POST['adresse']) && isset($_POST['code-postal']) && isset($_POST['ville'])
         && isset($_FILES['file'])) {
-        $imagesLocation = 'images/users/';
+        $imagesLocation = '../images/users/';
         $tmpName = $_FILES['file']['tmp_name'];
         $name = $_FILES['file']['name'];
         $size = $_FILES['file']['size'];

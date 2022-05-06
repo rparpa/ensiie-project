@@ -85,9 +85,9 @@ Générer le code HTML pour un panneau utilisateur avec quelques unes de ses inf
 function userListTemplateInformation(user) {
     let usersHTML = "";
     if (user['is_super_user']) {
-        usersHTML += "<a onclick='console.log(\"titi\");' class='all-users-item-admin' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
+        usersHTML += "<a class='all-users-item-admin' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
     } else {
-        usersHTML += "<a onclick='console.log(\"titi\");' class='all-users-item' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
+        usersHTML += "<a class='all-users-item' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
     }
     usersHTML += '<div class="user-item-image">' +
         '<img class="logo photo  ' + (user['is_banned'] ? 'banned' : '') + '" src="/images/users/' + escapeHtml(user['picture']) + '"/>';
@@ -111,9 +111,9 @@ function userListTemplateInformation(user) {
         '</div>';
     if (user['is_super_user'] === false) {
         if (user['is_banned']) {
-            usersHTML += '<div class="button-unban" onclick="console.log(\'toto\'); lockUnlockUser(\'' + user['email'] + '\'); ">Débannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+            usersHTML += '<div class="button-unban" onclick="lockUnlockUser(\'' + user['email'] + '\'); ">Débannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
         } else {
-            usersHTML += '<div class="button-ban" onclick="console.log(\'to\'); lockUnlockUser(\'' + user['email'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+            usersHTML += '<div class="button-ban" onclick="lockUnlockUser(\'' + user['email'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
         }
     }
     usersHTML += '</a>';
@@ -179,9 +179,9 @@ function userProfileTemplateAllInformation(user, myUser) {
     if (user['is_super_user'] === false
         && myUser['is_super_user'] === true) {
         if (user['is_banned']) {
-            userHTML += '<div class="user-profile-button-unban" onclick="console.log(\'toto\'); lockUnlockUser(\'' + user['email'] + '\'); ">Débannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+            userHTML += '<div class="user-profile-button-unban" onclick="lockUnlockUser(\'' + user['email'] + '\'); ">Débannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
         } else {
-            userHTML += '<div class="user-profile-button-ban" onclick="console.log(\'to\'); lockUnlockUser(\'' + user['email'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
+            userHTML += '<div class="user-profile-button-ban" onclick="lockUnlockUser(\'' + user['email'] + '\'); ">Bannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
         }
     }
     return userHTML;
