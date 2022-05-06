@@ -83,7 +83,6 @@ function goToUserProfile(email) {
 Générer le code HTML pour un panneau utilisateur avec quelques unes de ses informations
  */
 function userListTemplateInformation(user) {
-    console.log(user);
     let usersHTML = "";
     if (user['is_super_user']) {
         usersHTML += "<a onclick='console.log(\"titi\");' class='all-users-item-admin' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
@@ -301,8 +300,11 @@ function templateUserInformation(user) {
     userTemplateHTML += "<span> <span class='label'> Adresse : </span> " + escapeHtml(user['street']) + ", " + escapeHtml(user['city']) + "(" + escapeHtml(user['zipcode']) + ")" + " </span>";
     userTemplateHTML += templateWishesUser(user);
     userTemplateHTML += "</div>";
-    userTemplateHTML += "<a class='user' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
-    userTemplateHTML += "<img src='../images/users/" + escapeHtml(user['picture']) + "'/>";
+    userTemplateHTML += "<a class='user user-item-image' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
+    if (user['is_banned']) {
+        userTemplateHTML += "<span class='ban'> BANNI </span>";
+    }
+    userTemplateHTML += "<img  class='" + (user['is_banned'] ? 'banned' : '') + "' src='../images/users/" + escapeHtml(user['picture']) + "'/>";
     userTemplateHTML += "<span>" + escapeHtml(user['pseudo']) + "</span>";
     userTemplateHTML += "</a>";
     userTemplateHTML += "</div>";
@@ -451,8 +453,11 @@ function templateItemWithAllInformations(item) {
     templateItemHTML += "</ul>";
     templateItemHTML += "</div>";
     templateItemHTML += "</div>";
-    templateItemHTML += "<a class='user' href='/user-pages/user-profile.php?email=" + escapeHtml(item['proprietary']['email']) + "'>"
-    templateItemHTML += "<img src='../images/users/" + escapeHtml(item['proprietary']['picture']) + "'/>";
+    templateItemHTML += "<a class='user user-item-image' href='/user-pages/user-profile.php?email=" + escapeHtml(item['proprietary']['email']) + "'>"
+    if (item['proprietary']['is_banned']) {
+        templateItemHTML += "<span class='ban'> BANNI </span>";
+    }
+    templateItemHTML += "<img  class='" + (item['proprietary']['is_banned'] ? 'banned' : '') + "' src='/images/users/" + escapeHtml(item['proprietary']['picture']) + "'/>";
     templateItemHTML += "<span>" + escapeHtml(item['proprietary']['pseudo']) + "</span>";
     templateItemHTML += "</div>";
     templateItemHTML += "</div>";
