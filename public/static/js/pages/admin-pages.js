@@ -1,8 +1,10 @@
 function getAllTrocs() {
     checkAuth()
         .then(user => {
-            if (user == null || user['is_banned'] || !user['is_super_user']) {
+            if (user == null || user['is_banned']) {
                 document.location.href = "/index.php";
+            } else if (!user['is_super_user']) {
+                document.location.href = "/user-pages/accueil.php";
             }
             add_structure(user);
             listSwaps().then(res => displaySwaps(res));
@@ -12,8 +14,10 @@ function getAllTrocs() {
 function getAllCategories() {
     checkAuth()
         .then(user => {
-            if (user == null || user['is_banned'] || !user['is_super_user']) {
+            if (user == null || user['is_banned']) {
                 document.location.href = "/index.php";
+            } else if (!user['is_super_user']) {
+                document.location.href = "/user-pages/accueil.php";
             }
             add_structure(user);
             listCategories().then(res => displayAllCategories(res));
@@ -47,15 +51,4 @@ function addCategory(nameOfCategory) {
         })
 }
 
-function lockUnlockUser(email) {
-    checkAuth()
-        .then(user => {
-            if (user == null) {
-                document.location.href = "/index.php";
-            }
-            add_structure(user);
-            if (user['is_super_user']) {
-                updateUserToBlock(email).then(res => console.log(res));
-            }
-        });
-}
+

@@ -1332,6 +1332,8 @@ input[data-autocompleted] {
     'img infos infos infos btn-ban';
     color: var(--disable-color);
     text-decoration: none;
+    width: 100%;
+    max-width: 688px;
 }
 
 .all-users-item {

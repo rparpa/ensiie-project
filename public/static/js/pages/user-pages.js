@@ -1,8 +1,10 @@
 function getAllUsers() {
     checkAuth()
         .then(user => {
-            if (user == null) {
+            if (user == null || user['is_banned']) {
                 document.location.href = "/index.php";
+            } else if (!user['is_super_user']) {
+                document.location.href = "/user-pages/accueil.php";
             }
             add_structure(user);
             listUsers().then(res => displayAllUsers(res));

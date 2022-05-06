@@ -72,7 +72,7 @@ class UserManager extends Manager
         return $user;
     }
 
-    public function lockByEmail(string $email): bool
+    public function lockByEmail(string $email): User
     {
         $status = $this->findById($email)->getIsBanned();
         $status = $status == 1 ? 0 : 1;
@@ -82,7 +82,9 @@ class UserManager extends Manager
         $pdoStatement->bindValue(':status', $status, PDO::PARAM_BOOL);
         $pdoStatement->bindValue(':email', $email, PDO::PARAM_INT);
 
-        return $pdoStatement->execute();
+        $pdoStatement->execute();
+
+        return $this->findById($email);
     }
 
     public function update($user): bool

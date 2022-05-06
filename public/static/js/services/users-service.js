@@ -31,6 +31,6 @@ function updateUserToBlock(email) {
         },
         body: JSON.stringify(data)
     }).then(response => {
-        return response.body;
+        return response.json();
     });
 }

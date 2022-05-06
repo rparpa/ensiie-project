@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         } else if ($userFromDBById->getIsSuperUser()) {
             echo json_encode(['UserIsAdmin' => "true", 'Message' => "Cet utilisateur est un administrateur. Il ne peut pas être banni."]);
         } else {
-            echo json_encode($userManager->lockByEmail($lockEmailObject['lockEmail']), JSON_PRETTY_PRINT);
+            echo json_encode($userManager->lockByEmail($lockEmailObject['lockEmail']));
         }
     }
 } else {
