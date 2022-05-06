@@ -28,9 +28,7 @@ function displayItems(items) {
 }
 
 function deleteItem(idItem) {
-    fetch('/api/objets/delete.php?id=' + idItem, {
-        method: 'DELETE'
-    }).then(() => {
+    deleteItemById(idItem).then(() => {
         loadItems();
     });
 }

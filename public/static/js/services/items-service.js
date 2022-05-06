@@ -29,3 +29,12 @@ function searchItems(query) {
         return data.json()
     });
 }
+
+function deleteItemById(idItem) {
+    return fetch('/api/items.php?id=' + idItem, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': localStorage.getItem('token')
+        }
+    })
+}
