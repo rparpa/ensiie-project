@@ -1,5 +1,5 @@
 function checkAuth() {
-    return fetch('/api/auth-api.php?token=' + localStorage.getItem('token'),
+    return fetch('/api/auth.php?token=' + localStorage.getItem('token'),
         {
             method: 'GET'
         })

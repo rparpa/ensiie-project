@@ -1,5 +1,5 @@
 function listCategories() {
-    return fetch('/api/category-api.php', {
+    return fetch('/api/categories.php', {
         method: 'GET',
         headers: {
             'Authorization': localStorage.getItem('token')
@@ -10,7 +10,7 @@ function listCategories() {
 }
 
 function createCategory(category) {
-    return fetch('/api/category-api.php', {
+    return fetch('/api/categories.php', {
         headers: {
             'Authorization': localStorage.getItem('token'),
             'Content-Type': 'application/json',

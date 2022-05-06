@@ -13,7 +13,7 @@ function loadPage() {
 function search() {
     let categoriesSelectedString = getValueCategoriesSelected();
     categoriesSelectedString = categoriesSelectedString.substring(0, categoriesSelectedString.length - 1);
-    let query = '/api/item-api.php?search=true&';
+    let query = '/api/items.php?search=true&';
     if (categoriesSelectedString != '') {
         query += 'categories=' + categoriesSelectedString + '&';
     }

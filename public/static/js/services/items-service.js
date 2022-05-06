@@ -1,5 +1,5 @@
 function listItemsOfUser() {
-    return fetch('/api/item-api.php', {
+    return fetch('/api/items.php', {
         method: 'GET',
         headers: {
             'Authorization': localStorage.getItem('token')
@@ -10,7 +10,7 @@ function listItemsOfUser() {
 }
 
 function getItemById(id) {
-    return fetch('/api/item-api.php?id=' + id, {
+    return fetch('/api/items.php?id=' + id, {
         method: 'GET',
         headers: {
             'Authorization': localStorage.getItem('token')

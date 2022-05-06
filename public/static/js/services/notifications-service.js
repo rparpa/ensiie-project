@@ -1,5 +1,5 @@
 function listNotificationsOfConnectedUser() {
-    return fetch('/api/notification-api.php', {
+    return fetch('/api/notifications.php', {
         method: 'GET',
         headers: {
             'Authorization': localStorage.getItem('token')
@@ -10,7 +10,7 @@ function listNotificationsOfConnectedUser() {
 }
 
 function deleteNotificationsByUserMail(userMail) {
-    return fetch('/api/notification-api.php?mail=' + userMail, {
+    return fetch('/api/notifications.php?mail=' + userMail, {
         method: 'DELETE',
         headers: {
             'Authorization': localStorage.getItem('token')

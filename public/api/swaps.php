@@ -4,6 +4,8 @@ use auth\JWT;
 use Db\SwapManager;
 use Db\Connection;
 use Db\TokenManager;
+use models\Swap;
+use models\User;
 
 require_once '../../vendor/autoload.php';
 
@@ -36,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-} else if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+} else if ($_SERVER['REQUEST_METHOD'] == 'PATCH') {
     $swapJson = json_decode(file_get_contents('php://input'), true);
     $swapToUpdate = new Swap($swapJson["id"],
         $swapJson["creation_date"],
@@ -47,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $swapJson["user_from"]["firstname"],
             $swapJson["user_from"]["lastname"],
             $swapJson["user_from"]["pseudo"],
-            $swapJson["user_from"]["password"],
+            "",
             $swapJson["user_from"]["picture"],
             $swapJson["user_from"]["zipcode"],
             $swapJson["user_from"]["street"],
@@ -59,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $swapJson["user_to"]["firstname"],
             $swapJson["user_to"]["lastname"],
             $swapJson["user_to"]["pseudo"],
-            $swapJson["user_to"]["password"],
+            "",
             $swapJson["user_to"]["picture"],
             $swapJson["user_to"]["zipcode"],
             $swapJson["user_to"]["street"],

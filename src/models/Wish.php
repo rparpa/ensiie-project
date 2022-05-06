@@ -3,9 +3,10 @@
 namespace models;
 
 use JetBrains\PhpStorm\ArrayShape;
+use JsonSerializable;
 use ReturnTypeWillChange;
 
-class Wish
+class Wish implements JsonSerializable
 {
 
     protected int $id;

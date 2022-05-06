@@ -18,10 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $userToken = (new UserManager(Connection::get()))->findById($token->getUserMail());
             echo json_encode($userToken);
         } else {
-            echo json_encode(['TokenNotFound' => 'Le token n\'a pas ete trouve']);
+            echo json_encode(null);
         }
     } else {
-        echo json_encode(['MissingParam' => 'Il manque un token en parametre']);
+        echo json_encode(null);
     }
 } else {
     http_response_code(405);

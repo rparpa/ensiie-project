@@ -1,5 +1,5 @@
 function listUsers() {
-    return fetch('/api/user-api.php', {
+    return fetch('/api/users.php', {
         method: 'GET',
         headers: {
             'Authorization': localStorage.getItem('token')
@@ -10,7 +10,7 @@ function listUsers() {
 }
 
 function getUserByMail(email) {
-    return fetch('/api/user-api.php?email=' + email, {
+    return fetch('/api/users.php?email=' + email, {
         headers: {
             'Authorization': localStorage.getItem('token')
         },
@@ -22,7 +22,7 @@ function getUserByMail(email) {
 
 function updateUserToBlock(email) {
     let data = {"lockEmail": email};
-    return fetch('/api/user-api.php', {
+    return fetch('/api/users.php', {
         method: 'POST',
         headers: {
             'Authorization': localStorage.getItem('token'),
