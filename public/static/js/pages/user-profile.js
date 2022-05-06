@@ -9,15 +9,15 @@ function getUser(email) {
             add_structure(user);
             getUserByMail(email).then(res => {
                 lookedUser = res;
-                displayUserProfile();
+                displayUserProfile(user);
             });
         })
 }
 
-function displayUserProfile() {
+function displayUserProfile(myUser) {
     let userHTML = "";
     if (lookedUser != null) {
-        userHTML = userProfileTemplateAllInformation(lookedUser);
+        userHTML = userProfileTemplateAllInformation(lookedUser, myUser);
     } else {
         userHTML = noResultContent("Vous n'avez pas d'utilisateur");
     }
@@ -34,10 +34,9 @@ function lockUnlockUser(email) {
             if (user['is_super_user']) {
                 updateUserToBlock(email).then(res => {
                     if (lookedUser != null) {
-                        console.log(res);
                         lookedUser = res;
                         document.getElementsByClassName('user-profile-container')[0].innerHTML = "";
-                        displayUserProfile();
+                        displayUserProfile(user);
                     }
                 });
             }

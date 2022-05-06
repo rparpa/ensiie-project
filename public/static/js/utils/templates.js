@@ -83,6 +83,7 @@ function goToUserProfile(email) {
 Générer le code HTML pour un panneau utilisateur avec quelques unes de ses informations
  */
 function userListTemplateInformation(user) {
+    console.log(user);
     let usersHTML = "";
     if (user['is_super_user']) {
         usersHTML += "<a onclick='console.log(\"titi\");' class='all-users-item-admin' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
@@ -90,8 +91,11 @@ function userListTemplateInformation(user) {
         usersHTML += "<a onclick='console.log(\"titi\");' class='all-users-item' href='/user-pages/user-profile.php?email=" + escapeHtml(user['email']) + "'>";
     }
     usersHTML += '<div class="user-item-image">' +
-        '<img class="logo" class="photo" src="/images/users/' + escapeHtml(user['picture']) + '"/>' +
-        '</div>' +
+        '<img class="logo photo  ' + (user['is_banned'] ? 'banned' : '') + '" src="/images/users/' + escapeHtml(user['picture']) + '"/>';
+    if (user['is_banned']) {
+        usersHTML += '<span class="ban">BANNI</span>'
+    }
+    usersHTML += '</div>' +
         '<div class="user-item-infos">' +
         '<div class="all-user-item-info user-item-email">' +
         '<p> Email : ' + escapeHtml(user["email"]) + '</p>' +
@@ -120,15 +124,19 @@ function userListTemplateInformation(user) {
 /*
 Générer le code HTML pour un panneau utilisateur avec quelques unes de ses informations
  */
-function userProfileTemplateAllInformation(user) {
+function userProfileTemplateAllInformation(user, myUser) {
     let userHTML = "";
     userHTML += '<div class="user-profile-header">' +
         '<div class="user-profile-page-title">' +
         '<h2>Profil utilisateur :</h2>' +
         '</div>' +
-        '<div class="user-profile-image">' +
-        '<img class="logo" class="photo" src="/images/users/' + escapeHtml(user['picture']) + '"/>' +
-        '</div>' +
+        '<div class="user-profile-image">';
+    userHTML += '<div class="user-item-image">' +
+        '<img class="logo photo  ' + (user['is_banned'] ? 'banned' : '') + '" src="/images/users/' + escapeHtml(user['picture']) + '"/>';
+    if (user['is_banned']) {
+        userHTML += '<span class="ban">BANNI</span>'
+    }
+    userHTML += '</div>' + '</div>' +
         '<div class="user-profile-header-email">' +
         '<h4>Email :</h4>' +
         user['email'] +
@@ -169,7 +177,8 @@ function userProfileTemplateAllInformation(user) {
         '</div>' +
         '</div>' +
         '</div>';
-    if (user['is_super_user'] === false) {
+    if (user['is_super_user'] === false
+        && myUser['is_super_user'] === true) {
         if (user['is_banned']) {
             userHTML += '<div class="user-profile-button-unban" onclick="console.log(\'toto\'); lockUnlockUser(\'' + user['email'] + '\'); ">Débannir</div> <!-- Ne pas oublier de faire le bouton "débannir-->'
         } else {

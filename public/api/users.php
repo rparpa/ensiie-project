@@ -13,7 +13,8 @@ header('Content-Type: application/json');
 
 $userManager = new UserManager(Connection::get());
 $jwt = new JWT();
-if ((new TokenManager(Connection::get()))->findByToken($_SERVER["HTTP_AUTHORIZATION"]) == null) {
+$token = (new TokenManager(Connection::get()))->findByToken($_SERVER["HTTP_AUTHORIZATION"]);
+if ($token == null) {
     header('HTTP/1.0 401 Unauthorized');
     die();
 }
@@ -31,6 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $lockEmailObject = json_decode(file_get_contents('php://input'), true);
     if (isset($lockEmailObject['lockEmail'])) {
+        if (!$userManager->findById($token->getUserMail())->getIsSuperUser()) {
+            header('HTTP/1.0 401 Unauthorized');
+            die();
+        }
         $userFromDBById = $userManager->findById($lockEmailObject['lockEmail']);
         if ($userFromDBById === null) {
             echo json_encode(['UserIdNotFound' => "true", 'Message' => "L'utilisateur recherche n'existe pas."]);

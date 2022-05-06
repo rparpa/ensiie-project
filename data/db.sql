@@ -162,10 +162,6 @@ CREATE TABLE "tc_token"
     PRIMARY KEY (id_user, tr_token)
 );
 
-/*
- Ce trigger ne fonctionne pas bien pour l'instant
- */
-
 CREATE OR REPLACE FUNCTION numberSwapIncr()
     RETURNS trigger
     LANGUAGE plpgsql AS
@@ -186,7 +182,29 @@ CREATE TRIGGER incrementCaNumberSwap
     FOR EACH ROW
 EXECUTE PROCEDURE numberSwapIncr();
 
+/*
+ Ce trigger ne fonctionne pas bien pour l'instant
+ */
 
+CREATE OR REPLACE FUNCTION make_items_user_banned_unswappable()
+    RETURNS trigger
+    LANGUAGE plpgsql AS
+$$
+BEGIN
+    IF (new.us_is_banned = true AND old.us_is_banned = false) THEN
+        UPDATE tc_item
+        SET it_is_swappable = false
+        WHERE it_proprietary = new.us_mail;
+    end if;
+    RETURN new;
+END;
+$$;
+
+CREATE TRIGGER make_items_user_banned_unswappable_tr
+    AFTER UPDATE
+    ON tc_user
+    FOR EACH ROW
+EXECUTE PROCEDURE make_items_user_banned_unswappable();
 
 
 /**
@@ -199,7 +217,7 @@ INSERT INTO tc_user (us_mail, us_firstname, us_lastname, us_pseudo, us_password,
                      us_city, us_is_super_user, us_is_banned)
 VALUES ('ange@gmail.com', 'Angela', 'Ziegler', 'Ange',
         'eeb7aaa5565aa8ef732ec9a2999cd72258b2df354fbaf735b9cdf36169cd0e8484c667e42c31bc0d932995723b88a3dc',
-        '6272d067db9096.09601097.png', 13311, '10 rue du soin', 'Geneve', false, false);
+        '6272d067db9096.09601097.png', 13311, '10 rue du soin', 'Geneve', true, false);
 INSERT INTO tc_user (us_mail, us_firstname, us_lastname, us_pseudo, us_password, us_picture, us_zipcode, us_street,
                      us_city, us_is_super_user, us_is_banned)
 VALUES ('ana@gmail.com', 'Ana', 'Amari', 'Ana',

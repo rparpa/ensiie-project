@@ -19,7 +19,7 @@ class UserManager extends Manager
 
     public function findAll(): array
     {
-        $pdoStatement = $this->pdo->query('SELECT * FROM tc_user');
+        $pdoStatement = $this->pdo->query('SELECT * FROM tc_user ORDER BY  us_is_banned ASC, us_pseudo ASC');
         $users = [];
 
         $dbarray = $pdoStatement->fetchAll();
