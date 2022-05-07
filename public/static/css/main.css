@@ -271,6 +271,7 @@ span.important {
     gap: 35px;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .swap .information .objects {
