@@ -1,6 +1,4 @@
-![matters](https://cdn-images-1.medium.com/max/2000/1*Pl-fB1X01RfcEbPP-FVlew.jpeg)
-
-Projet web ENSIIE 1A 2018
+Projet web ENSIIE 2022
 ======
 
 Objectif pédagogique
@@ -8,6 +6,7 @@ Objectif pédagogique
 
 >Apprendre à concevoir et développer des applications web utilisant un serveur de bases de données.
 >Prendre conscience des problématiques d’organisation d’équipes et de répartition des tâches.
+
 
 Les sujets
 ------------
@@ -30,6 +29,7 @@ Must have
 
 ### Les sujets devront tous proposer **au minimum**
 
+> * POO (design pattern, héritage)
 > * Une authentification
 > * Un compte administrateur donnant les droits à certaines fonctionnalités (au choix)
 > * Un profil utilisateur éditable
@@ -39,38 +39,40 @@ Must have
 > * au moins une jointure dans une requête
 > * des INSERT, DELETE, UPDATE, SELECT
 > * Un CRUD (Create Read Update Delete)
+> * Du javascript client (au minimum validation JS des formulaires)
 
-Du javascript (au minimum validation JS des formulaires).
 Nous attendons de la part des élèves une véritable appropriation du sujet. Il ne suffira pas de remplir des cases à cocher pour avoir la moyenne, nous voulons voir une démarche d’ingénieur, pas d’exécutant.
 
 ### Les technologies
 
 #### On oblige
 
-> * PHP 7.0
+> * PHP 8+ ou node 16
 > * PostgreSQL
-> * JavaScript
+> * JavaScript client
 
 #### On aimera
 
-> * Toutes les bonnes pratiques citées sur http://www.phptherightway.com/
-> * PHP 7.1+
-> * Les tests automatisés (unitaires, fonctionnels, de sécurité, de performance, …)
-> * Une API REST bien faite
-> * Les animations CSS parcimonieuses qui profitent à l’UX
+* Toutes les bonnes pratiques citées sur http://www.phptherightway.com/
+* PHP 8.0+
+* Les tests automatisés (unitaires, fonctionnels, de sécurité, de performance, …)
+* Une API REST bien faite
+* Les animations CSS parcimonieuses qui profitent à l’UX
+* Typescript
 
 #### On n’aimera pas
 
-* Les frameworks (Zend Framework, Symfony, Angular, etc)
 * Le XML
 * jQuery utilisé n’importe comment
 * HTML5 utilisé n’importe comment
 
 ### Séances
 
-> * **3 avril 2018** : choix du sujet, début des projets, présentation de Docker (documentation)
-> * **24 avril 2018** : point d’avancement, échange sur les bonnes pratiques, analyse du code
-> * **22 mai 2018** : soutenance, livraison des sources
+* **09 mars** : choix du sujet, début des projets, présentation de la stack
+* **23 mars** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+* **7 avril** : point d’avancement, échange sur les bonnes pratiques, analyse du code
+* **15 avril (matin, à distance)** : point d’avancement, échange sur les bonnes pratiques, analyse du 
+* **6 mai (matin, sur place)** : Soutenances
 
 ### La notation
 
@@ -88,11 +90,15 @@ Une partie de la note sera attribuée par groupe, une autre réservée à l’in
 Afin de s’affranchir de problème d’infrastructure, nous vous mettons à disposition un environnement de développement pour ce projet.
 >Lors du premier cours nous vous présenterons l'utilisation du git que nous avons mis à votre disposition ainsi que le fonctionnement d'un Docker entièrement configuré et prêt à être utilisé pour développer votre projet.
 
+L'environnement de développement existe également sous [node/typescript](https://github.com/rparpa/ensiie-project-ts). 
+
 ### Le rendu des sources et du rapport
 
->Les projets devront être pushé sur ce [repository git](https://github.com/Un3x/ensiie-project) sur une branche ```<nom-de-votre-groupe>-group```.
+Une pull request devra être créée sur ce [repository git](https://github.com/rparpa/ensiie-project).
 
-**ATTENTION**: ce repo git n'as pas pour but d'être utilisé pendant le développement. Il s'agit de notre outil pour récupérer vos projets et pouvoir les utiliser. L'utilisation d'un git au cours du développement n'est pas obligatoire, mais nous vous encourageons à en utiliser un (github, arise, ensiie, bitbucket, gitlab etc)/
+Aide : https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request
+
+**ATTENTION**: ce repo git n'a pas pour but d'être utilisé pendant le développement. Il s'agit de notre outil pour récupérer vos projets et pouvoir les utiliser. L'utilisation d'un git au cours du développement n'est pas obligatoire, mais nous vous encourageons à en utiliser un (github, arise, ensiie, bitbucket, gitlab etc)/
 
 > Le rapport doit être inclus dans les sources du projet, à la racine: ```/rapport.pdf```
 
@@ -127,14 +133,10 @@ Aussi, n’oubliez pas qu’on est là pour passer un bon moment, pas de lynchag
 > * Expression
 > * Adaptabilité
 
-### Notre équipe
+### Présentation
 
-* Thomas COMES : ENSIIE promo 2012, Project Lead chez Matters.
-* Nassim Kirouane : Tech Lead chez Matters.
-* Remi Parpaillon : Php Gourou chez Matters.
+* Remi Parpaillon : Back-end engineer chez Tenable / Alsid
 
 ### Comment nous contacter
 
-Nous mettons un slack à votre disposition pour échanger avec nous. L'url vous sera communiqué lors du premier cours.
-
-Vous êtes également les bienvenus tous les jeudis après-midi dans nos locaux au 10 rue du Faubourg Poissonnière 75010 PARIS. Ce sera l’occasion de faire un peu plus connaissance, et d’assister à nos SteamLearn, les formations hebdo !
+* remi.parpaillon@protonmail.ch

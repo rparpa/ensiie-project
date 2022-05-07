@@ -1,9 +1,6 @@
 bold=$(shell (tput bold))
 normal=$(shell (tput sgr0))
 .DEFAULT_GOAL=help
-DISTRIB:=$(shell lsb_release -is | tr '[:upper:]' '[:lower:]')
-VERSION:=$(shell lsb_release -cs)
-ARCHITECTURE:=$(shell dpkg --print-architecture)
 
 help:
 	@echo "${bold}install${normal}\n\t Installs the whole appplication.\n"
@@ -20,10 +17,7 @@ stop:
 	docker-compose down -v
 	docker-compose rm -v
 
-install: uninstall start composer.install db.install
-
-uninstall: stop
-	@sudo rm -rf postgres-data
+install: stop start composer.install db.install
 
 reinstall: install
 

@@ -1,5 +1,3 @@
-![matters](https://cdn-images-1.medium.com/max/2000/1*Pl-fB1X01RfcEbPP-FVlew.jpeg)
-
 Accueil des petits nouveaux
 ======
 
@@ -11,20 +9,8 @@ Les premiers jours à Evry, c’est pas toujours facile. On arrive dans une tout
 La vie serait tellement plus simple si les élèves s’entraidaient un peu plus pour échanger sur tout ce qu’il y a à savoir. Connaître les endroits importants dans la ville, connaître la répartition des salles de l’école, qui contacter lorsqu’on a tel ou tel problème, où retrouver le planning de l’école, comment fonctionne le bar, etc.
 
 ### Pré-requis
-Comme pour tous les sujets, on devra au moins retrouver dans l’application finale les parties suivantes :
 
-> * Une authentification
-> * Un compte administrateur donnant les droits à certaines > * fonctionnalités (au choix)
-> * Un profil utilisateur éditable
-> * Une base de données relationnelle :
-> * au moins 3 tables
-> * au moins une table de jointure ( n…n)
-> * au moins une jointure dans une requête
-> * des INSERT, DELETE, UPDATE, SELECT
-> * Un CRUD (Create Read Update Delete)
-> * Du javascript (au minimum validation JS des formulaires)
-
-Nous attendons de la part des élèves une véritable appropriation du sujet. Il ne suffira pas de remplir des cases à cocher pour avoir la moyenne, nous voulons voir une démarche d’ingénieur, pas d’exécutant.
+Voir présentation.
 
 ### Objectifs
 
@@ -61,7 +47,5 @@ Voici en exemple une petite liste de fonctionnalités qui pourraient être impl�
 > * La gestion des promotions. Les étudiants appartiennent à une promotion. Gérer les changements de promo.
 > * Le suivi de l’avancée de l’accueil d’une promo. Une page permettant de savoir quels élèves ont quels tuteurs et où ils en sont de l’avancée de leur onboarding.
 > * Ce sont ici bien évidemment des propositions de fonctionnalités supplémentaires, il y en a beaucoup d’autres qui pourraient être pertinentes dans le cadre du projet. Ces fonctionnalités dépendront des objectifs que vous souhaiterez donner à votre projet.
-
-Ce sont ici bien évidemment des propositions de fonctionnalités supplémentaires, il y en a beaucoup d’autres qui pourraient être pertinentes dans le cadre du projet. Ces fonctionnalités dépendront des objectifs que vous souhaiterez donner à votre projet.
 
 **Bon courage.**
