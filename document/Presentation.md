@@ -14,7 +14,7 @@ Les sujets
 Nous proposons trois sujets qui seront détaillés ultérieurement et présentés lors de la première séance :
 
 * [Agenda des associations](sujets/agenda-des-associations.md)
-* [Accueil des nouveaux arrivants](/sujets/accueil-des-nouveaux-arrivants.md)
+* [Accueil des nouveaux arrivants](sujets/accueil-des-nouveaux-arrivants.md)
 * [Le twitter de l’ENSIIE](sujets/twittiie-le-twitter-de-ensiie.md)
 
 PROJET LIBRE
