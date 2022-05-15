@@ -44,7 +44,7 @@ COPY ./config/ /docker/
 ADD config/custom-php.ini /usr/local/etc/php/conf.d/custom-php.ini
 
 
-# Add local user
+# Add local users
 RUN useradd --shell /bin/bash -u ${DOCKER_USER_ID} -o -c "" -m ${DOCKER_USER} -l \
     && adduser ${DOCKER_USER} sudo \
     && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \

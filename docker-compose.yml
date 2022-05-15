@@ -33,7 +33,6 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
     volumes:
       - .:/var/www/html
-      - $SSH_AUTH_SOCK:/ssh-agent
     working_dir: /var/www/html
     user: "${DOCKER_USER}"
     entrypoint:
@@ -58,5 +57,5 @@ services:
       - "ensiie"
 
 networks:
-    ensiie:
-        driver: bridge
+  ensiie:
+    driver: bridge
